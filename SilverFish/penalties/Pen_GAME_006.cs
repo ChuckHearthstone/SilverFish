@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_GAME_006 : PenTemplate //noooooooooooo
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    leider wurde die karte, die ihr einst besaßt, entfernt. aber nehmt doch diese hier!
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

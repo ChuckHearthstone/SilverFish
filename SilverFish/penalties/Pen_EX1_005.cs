@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_005 : PenTemplate //biggamehunter
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kampfschrei:/ vernichtet einen diener mit mind. 7 angriff.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

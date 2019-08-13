@@ -7,6 +7,7 @@ namespace HREngine.Bots
     class Sim_EX1_565 : SimTemplate//Flametongue Totem
     {
         // note buff and debuff is handled by playfield (faster)
+        // Handled in updateBoards()
         /*
         public override void onAuraStarts(Playfield p, Minion own)
         {

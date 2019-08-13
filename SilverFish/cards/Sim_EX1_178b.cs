@@ -4,16 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_178b : SimTemplate //uproot
+    class Sim_EX1_178b : SimTemplate //* Uproot
 	{
+        //+5 Attack.
 
-//    +5 angriff.
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-		{
-            p.minionGetBuffed(own, 5, 0);
-		}
-
-
-
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
+            p.minionGetBuffed(target, 5, 0);
+        }
 	}
 }

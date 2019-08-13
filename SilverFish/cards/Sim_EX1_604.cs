@@ -4,14 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_604 : SimTemplate //frothingberserker
+	class Sim_EX1_604 : SimTemplate //* frothingberserker
 	{
+        // Whenever a minion takes damage, gain +1 Attack.
+        // if will be increase attack trigger in the game - rebuild it
 
-//    erhält jedes mal +1 angriff, wenn ein diener schaden erleidet.
-
-        public override void onMinionGotDmgTrigger(Playfield p, Minion triggerEffectMinion, bool ownDmgdmin)
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            p.minionGetBuffed(triggerEffectMinion, 1, 0);
+            p.minionGetBuffed(m, anzOwnMinionsGotDmg + anzEnemyMinionsGotDmg - anzOwnHeroGotDmg - anzEnemyHeroGotDmg, 0);
         }
 
 	}

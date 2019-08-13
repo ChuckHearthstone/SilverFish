@@ -1,29 +1,26 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_066 : SimTemplate //Dalaran Aspirant
-    {
+	class Sim_AT_066 : SimTemplate //* Orgrimmar Aspirant
+	{
+		//Inspire: Give your weapon +1 Attack.
 
-        //insprire: gain Spell Damage +1
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            
-            if (m.own && p.ownWeaponDurability>=1)
-            {
-                p.ownWeaponAttack++;
-            }
-            if (!m.own && p.enemyWeaponDurability >= 1)
-            {
-                p.enemyWeaponAttack++;
-            }
+			if (m.own == own)
+			{
+                if (own)
+                {
+                    if (p.ownWeapon.Durability > 0) p.ownWeapon.Angr++;
+                }
+                else
+                {
+                    if (p.enemyWeapon.Durability > 0) p.enemyWeapon.Angr++;
+                }
+			}
         }
-
-
-
-    }
-
+	}
 }

@@ -11,19 +11,19 @@ namespace HREngine.Bots
 		{
             if (own.own)
             {
-                if (p.ownWeaponDurability >= 1)
+                if (p.ownWeapon.Durability >= 1)
                 {
-                    p.ownWeaponDurability++;
-                    p.ownWeaponAttack++;
+                    p.ownWeapon.Durability++;
+                    p.ownWeapon.Angr++;
                     p.minionGetBuffed(p.ownHero, 1, 0);
                 }
             }
             else
             {
-                if (p.enemyWeaponDurability >= 1)
+                if (p.enemyWeapon.Durability >= 1)
                 {
-                    p.enemyWeaponDurability++;
-                    p.enemyWeaponAttack++;
+                    p.enemyWeapon.Durability++;
+                    p.enemyWeapon.Angr++;
                     p.minionGetBuffed(p.enemyHero, 1, 0);
                 }
             }

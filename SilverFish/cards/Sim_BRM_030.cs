@@ -1,79 +1,57 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_BRM_030 : SimTemplate //Nefarian
-    {
-        //TODO
-        //   Add 2 random spells to your hand (from your opponent's class).
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            if (p.isServer)
-            {
-                p.drawACard(CardDB.cardIDEnum.BRM_030t, own.own, true);
-                p.drawACard(CardDB.cardIDEnum.BRM_030t, own.own, true);
-                return;
-            }
+	class Sim_BRM_030 : SimTemplate //* Nefarian
+	{
+		// Battlecry: Add 2 random spells to your hand (from your opponent's class).
+		
+		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
+		{
+            TAG_CLASS opponentHeroClass = (m.own) ? p.enemyHeroStartClass : p.ownHeroStartClass;
 
-            if (own.own)
+            switch (opponentHeroClass)
             {
-                /*if (p.enemyHeroName == HeroEnum.druid)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.hunter)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.mage)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.pala)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.priest)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.shaman)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.thief)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.warlock || p.enemyHeroName == HeroEnum.lordjaraxxus)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }
-                if (p.enemyHeroName == HeroEnum.warrior)
-                {
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                    p.drawACard(CardDB.cardIDEnum.None, true, true);
-                }*/
-                p.drawACard(CardDB.cardIDEnum.BRM_030t, true, true);
-                p.drawACard(CardDB.cardIDEnum.BRM_030t, true, true);
-                
-            }
-            else
-            {
-                p.drawACard(CardDB.cardIDEnum.None, false, true);
-                p.drawACard(CardDB.cardIDEnum.None, false, true);
-            }
-        }
-
-    }
+                case TAG_CLASS.WARRIOR:
+					p.drawACard(CardDB.cardName.shieldblock, m.own, true);
+					p.drawACard(CardDB.cardName.shieldblock, m.own, true);
+					break;
+                case TAG_CLASS.WARLOCK:
+					p.drawACard(CardDB.cardName.baneofdoom, m.own, true);
+					p.drawACard(CardDB.cardName.baneofdoom, m.own, true);
+                    break;
+                case TAG_CLASS.ROGUE:
+					p.drawACard(CardDB.cardName.sprint, m.own, true);
+					p.drawACard(CardDB.cardName.sprint, m.own, true);
+					break;
+                case TAG_CLASS.SHAMAN:
+					p.drawACard(CardDB.cardName.farsight, m.own, true);
+					p.drawACard(CardDB.cardName.farsight, m.own, true);
+					break;
+                case TAG_CLASS.PRIEST:
+					p.drawACard(CardDB.cardName.thoughtsteal, m.own, true);
+					p.drawACard(CardDB.cardName.thoughtsteal, m.own, true);
+					break;
+                case TAG_CLASS.PALADIN:
+					p.drawACard(CardDB.cardName.hammerofwrath, m.own, true);
+					p.drawACard(CardDB.cardName.hammerofwrath, m.own, true);
+					break;
+                case TAG_CLASS.MAGE:
+					p.drawACard(CardDB.cardName.frostnova, m.own, true);
+					p.drawACard(CardDB.cardName.frostnova, m.own, true);
+					break;
+                case TAG_CLASS.HUNTER:
+					p.drawACard(CardDB.cardName.cobrashot, m.own, true);
+					p.drawACard(CardDB.cardName.cobrashot, m.own, true);
+					break;
+                case TAG_CLASS.DRUID:
+					p.drawACard(CardDB.cardName.wildgrowth, m.own, true);
+					p.drawACard(CardDB.cardName.wildgrowth, m.own, true);
+                    break;
+				//default:
+			}
+		}
+	}
 }

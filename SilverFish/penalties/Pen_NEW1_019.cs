@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_019 : PenTemplate //knifejuggler
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt einem zufälligen feind 1 schaden zu, nachdem ihr einen diener herbeigerufen habt.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -4,18 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_EX1_007 : SimTemplate//Acolyte of Pain
+    class Sim_EX1_007 : SimTemplate//* Acolyte of Pain
     {
-        //  <deDE>Zieht jedes Mal eine Karte, wenn dieser Diener Schaden erleidet.</deDE>
-        public override void onMinionGotDmgTrigger(Playfield p, Minion triggerEffectMinion, bool ownDmgdMinion)
+        // Whenever this minion takes damage, draw a card.
+
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            if (triggerEffectMinion.anzGotDmg >= 1)
+            if (m.anzGotDmg > 0)
             {
-                for (int i = 0; i < triggerEffectMinion.anzGotDmg; i++)
+                int tmp = m.anzGotDmg;
+                m.anzGotDmg = 0;
+                for (int i = 0; i < tmp; i++)
                 {
-                    p.drawACard(CardDB.cardIDEnum.None, triggerEffectMinion.own);
+                    p.drawACard(CardDB.cardName.unknown, m.own);
                 }
-                triggerEffectMinion.anzGotDmg = 0;
             }
         }
     }

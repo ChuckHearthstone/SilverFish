@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_026 : PenTemplate //frostnova
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    friert/ alle feindlichen diener ein.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

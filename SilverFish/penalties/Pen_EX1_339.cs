@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_339 : PenTemplate //thoughtsteal
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kopiert 2 karten aus dem deck eures gegners und fügt sie eurer hand hinzu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

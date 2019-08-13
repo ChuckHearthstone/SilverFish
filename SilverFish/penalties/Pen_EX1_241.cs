@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_241 : PenTemplate //lavaburst
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verursacht $5 schaden. überladung:/ (2)
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

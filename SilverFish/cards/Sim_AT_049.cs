@@ -4,21 +4,23 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_049 : SimTemplate //Thunder Bluff Valiant
-    {
+	class Sim_AT_049 : SimTemplate //* Thunder Bluff Valiant
+	{
+		//Inspire: Give your Totems +2 Attack.
 
-        //insprire: Give your Totems +2 Attack
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            foreach (Minion min in (m.own) ? p.ownMinions : p.enemyMinions)
-            {
-                if (min.handcard.card.race == TAG_RACE.TOTEM) p.minionGetBuffed(min, 2, 0);
-            }
+			if (m.own == own)
+			{
+				List<Minion> temp = (own) ? p.ownMinions : p.enemyMinions;
+				foreach (Minion mnn in temp)
+				{
+					if ((TAG_RACE)mnn.handcard.card.race == TAG_RACE.TOTEM)
+					{
+						p.minionGetBuffed(mnn, 2, 0);
+					}
+				}
+			}
         }
-
-
-
-    }
-
+	}
 }

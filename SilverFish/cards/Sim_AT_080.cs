@@ -1,39 +1,57 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_080 : SimTemplate //Garrison Commander
-    {
-
-        //You can use your Hero Power twice a turn.
-
-        public override void onAuraStarts(Playfield p, Minion m)
-        {
-            if (m.own)
+	class Sim_AT_080 : SimTemplate //* Garrison Commander
+	{
+		//You can use your Hero Power twice on your turn.
+	
+        public override void onAuraStarts(Playfield p, Minion own)
+		{
+            if (own.own)
             {
-                p.anzOwnGarrisonCommander+=1;
+                bool another = false;
+                foreach (Minion m in p.ownMinions)
+                {
+                    if (m.name == CardDB.cardName.garrisoncommander && own.entitiyID != m.entitiyID) another = true;
+                }
+                if (!another) p.ownHeroPowerAllowedQuantity++;
             }
             else
             {
-                p.anzEnemyGarrisonCommander+=1;
+                bool another = false;
+                foreach (Minion m in p.enemyMinions)
+                {
+                    if (m.name == CardDB.cardName.garrisoncommander && own.entitiyID != m.entitiyID) another = true;
+                }
+                if (!another) p.enemyHeroPowerAllowedQuantity++;
             }
-        }
+		}
 
-        public override void onAuraEnds(Playfield p, Minion m)
+        public override void onAuraEnds(Playfield p, Minion own)
         {
-            if (m.own)
+            if (own.own)
             {
-                p.anzOwnGarrisonCommander -= 1;
+                bool another = false;
+                foreach (Minion m in p.ownMinions)
+                {
+                    if (m.name == CardDB.cardName.garrisoncommander && own.entitiyID != m.entitiyID) another = true;
+                }
+                if (!another) p.ownHeroPowerAllowedQuantity--;
+                if (p.anzUsedOwnHeroPower >= p.ownHeroPowerAllowedQuantity) p.ownAbilityReady = false;
             }
             else
             {
-                p.anzEnemyGarrisonCommander -= 1;
+                bool another = false;
+                foreach (Minion m in p.enemyMinions)
+                {
+                    if (m.name == CardDB.cardName.garrisoncommander && own.entitiyID != m.entitiyID) another = true;
+                }
+                if (!another) p.enemyHeroPowerAllowedQuantity--;
+                if (p.anzUsedEnemyHeroPower >= p.enemyHeroPowerAllowedQuantity) p.enemyAbilityReady = false;
             }
         }
-
-       
-
-    }
+	}
 }

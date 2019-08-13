@@ -1,23 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_026 : SimTemplate //Wrathguard
-    {
+	class Sim_AT_026 : SimTemplate //* Wrathguard
+	{
+		//Whenever this minion takes damage, also deal that amount to your hero.
 
-        //Whenever this minion takes damage, also deal that amount to your hero.
-
-        public override void onMinionGotDmgTrigger(Playfield p, Minion triggerEffectMinion, bool ownDmgdMinion)
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            if (triggerEffectMinion.anzGotDmg >= 1)
+            if (m.anzGotDmg > 0)
             {
-                p.minionGetDamageOrHeal((triggerEffectMinion.own)? p.ownHero : p.enemyHero, triggerEffectMinion.gotDmgRaw );
+                m.anzGotDmg = 0;
+				p.minionGetDamageOrHeal(m.own ? p.ownHero : p.enemyHero, m.GotDmgValue);
             }
         }
-
-       
-
-    }
+	}
 }

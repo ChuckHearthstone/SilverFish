@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_586 : PenTemplate //seagiant
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kostet (1) weniger für jeden anderen diener auf dem schlachtfeld.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_249 : PenTemplate //barongeddon
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt am ende eures zuges allen anderen charakteren 2 schaden zu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

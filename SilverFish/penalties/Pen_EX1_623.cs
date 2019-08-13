@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_623 : PenTemplate //templeenforcer
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kampfschrei:/ verleiht einem befreundeten diener +3 leben.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

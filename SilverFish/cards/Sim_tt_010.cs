@@ -17,6 +17,7 @@ namespace HREngine.Bots
             if (ownplay)
             {
                 int posi = p.ownMinions.Count;
+                if (posi > 6) return;
                 p.callKid(kid, posi, true);
                 if (p.ownMinions.Count >= 1)
                 {
@@ -29,6 +30,7 @@ namespace HREngine.Bots
             else
             {
                 int posi = p.enemyMinions.Count;
+                if (posi > 6) return;
                 p.callKid(kid, posi, false);
 
                 if (p.enemyMinions.Count >= 1)

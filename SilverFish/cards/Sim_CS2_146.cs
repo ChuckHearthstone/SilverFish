@@ -12,14 +12,14 @@ namespace HREngine.Bots
 		{
             if (own.own)
             {
-                if (p.ownWeaponDurability >= 1)
+                if (p.ownWeapon.Durability >= 1)
                 {
                     p.minionGetCharge(own);
                 }
             }
             else
             {
-                if (p.enemyWeaponDurability >= 1)
+                if (p.enemyWeapon.Durability >= 1)
                 {
                     p.minionGetCharge(own);
                 }

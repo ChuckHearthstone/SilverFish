@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_033 : PenTemplate //leokk
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    andere befreundete diener haben +1 angriff.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

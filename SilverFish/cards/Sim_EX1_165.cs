@@ -4,24 +4,31 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_165 : SimTemplate //druidoftheclaw
-	{
+    class Sim_EX1_165 : SimTemplate  //* Druid of the Claw
+    {
+        // Choose One - Charge; or +2 Health and Taunt.
 
-//    wählt aus:/ ansturm/; oder +2 leben und spott/.
         CardDB.Card cat = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1);
         CardDB.Card bear = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t2);
+        CardDB.Card bearcat = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_044a);
+
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (choice == 1)
+            if (p.ownFandralStaghelm > 0)
             {
-                p.minionTransform(own, cat);
+                p.minionTransform(own, bearcat);
             }
-            if (choice == 2)
+            else
             {
-                p.minionTransform(own, bear);
+                if (choice == 1)
+                {
+                    p.minionTransform(own, cat);
+                }
+                if (choice == 2)
+                {
+                    p.minionTransform(own, bear);
+                }
             }
 		}
-
-
 	}
 }

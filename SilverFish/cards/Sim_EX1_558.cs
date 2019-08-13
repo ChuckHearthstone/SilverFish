@@ -12,17 +12,17 @@ namespace HREngine.Bots
             if (own.own)
             {
                 //this.owncarddraw += enemyWeaponDurability;
-                for (int i = 0; i < p.enemyWeaponDurability; i++)
+                for (int i = 0; i < p.enemyWeapon.Durability; i++)
                 {
-                    p.drawACard(CardDB.cardIDEnum.None, true);
+                    p.drawACard(CardDB.cardName.unknown, true);
                 }
                 p.lowerWeaponDurability(1000, false);
             }
             else
             {
-                for (int i = 0; i < p.enemyWeaponDurability; i++)
+                for (int i = 0; i < p.enemyWeapon.Durability; i++)
                 {
-                    p.drawACard(CardDB.cardIDEnum.None, false);
+                    p.drawACard(CardDB.cardName.unknown, false);
                 }
                 p.lowerWeaponDurability(1000, true);
             }

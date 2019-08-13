@@ -4,24 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_308 : SimTemplate //soulfire
+    class Sim_EX1_308 : SimTemplate //* Soulfire
 	{
-
-//    verursacht $4 schaden. werft eine zufällige karte ab.
+        // Deal $4 damage. Discard a random card.
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
             p.minionGetDamageOrHeal(target, dmg);
-
-            if (p.isServer)
-            {
-                p.discardRandomCard_SERVER(ownplay);
-                return;
-            }
-
-            p.disCardACard(ownplay);
+            p.discardCards(1, ownplay);
 		}
-
 	}
 }

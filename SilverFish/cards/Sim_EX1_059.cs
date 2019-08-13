@@ -4,15 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_059 : SimTemplate //crazedalchemist
+    class Sim_EX1_059 : SimTemplate //* Crazed Alchemist
 	{
+        // Battlecry: Swap the Attack and Health of a minion.
 
-//    kampfschrei:/ vertauscht angriff und leben eines dieners.
-        //todo: use buffs after that
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
 		{
             if (target != null) p.minionSwapAngrAndHP(target);
 		}
-
 	}
 }

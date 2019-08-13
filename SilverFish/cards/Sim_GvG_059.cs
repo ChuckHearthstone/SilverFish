@@ -4,34 +4,27 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_059 : SimTemplate //Coghammer
+    internal class Sim_GVG_059 : SimTemplate //Coghammer
     {
-
         //   Battlecry: Give a random friendly minion Divine Shield and Taunt;.
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_059);
+        private CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_059);
+
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.equipWeapon(w, ownplay);
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             if (temp.Count <= 0) return;
-
-            if (p.isServer)
+            Minion m = p.searchRandomMinion(temp, searchmode.searchLowestHP);
+            if (m != null)
             {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(ownplay, false);
-                if (choosen != null)
+                m.divineshild = true;
+                if (!m.taunt)
                 {
-                    choosen.divineshild = true;
-                    choosen.taunt = true;
+                    m.taunt = true;
+                    if (m.own) p.anzOwnTaunt++;
+                    else p.anzEnemyTaunt++;
                 }
-                return;
             }
-
-            Minion m = p.searchRandomMinion(temp, (ownplay ? Playfield.searchmode.searchLowestAttack : Playfield.searchmode.searchHighestAttack));
-            m.divineshild = true;
-            m.taunt = true;
         }
-
-
     }
-
 }

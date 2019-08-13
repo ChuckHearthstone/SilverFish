@@ -11,12 +11,11 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
            
-            p.drawACard(CardDB.cardIDEnum.None, own.own);
+            p.drawACard(CardDB.cardName.unknown, own.own);
 		}
 
         public override void onAuraStarts(Playfield p, Minion m)
         {
-            m.spellpower = 1;
             if (m.own)
             {
                 p.spellpower++;
@@ -27,7 +26,18 @@ namespace HREngine.Bots
             }
         }
 
-      
+        public override void onAuraEnds(Playfield p, Minion m)
+        {
+            if (m.own)
+            {
+                p.spellpower--;
+            }
+            else
+            {
+                p.enemyspellpower--;
+            }
+        }
+
 
 	}
 }

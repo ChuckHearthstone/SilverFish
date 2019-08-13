@@ -6,8 +6,7 @@ namespace HREngine.Bots
 {
 	class Sim_EX1_316 : SimTemplate //poweroverwhelming
 	{
-
-//    verleiht einem befreundeten diener bis zum ende des zuges +4/+4. dann stirbt er. auf schreckliche art und weise.
+        //Give a friendly minion +4/+4 until end of turn. Then, it dies. Horribly.
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
@@ -20,8 +19,6 @@ namespace HREngine.Bots
             {
                 target.destroyOnEnemyTurnEnd = true;
             }
-
 		}
-
 	}
 }

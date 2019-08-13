@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-             own.Angr += p.ownWeaponAttack;
+             own.Angr += p.ownWeapon.Angr;
         }
 
     }

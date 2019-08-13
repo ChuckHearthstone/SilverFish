@@ -4,14 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_114 : SimTemplate //Evil Heckler
-    {
-
-        //taunt
-
-
-
-
-    }
-
+	class Sim_AT_114 : SimTemplate //* Evil Heckler
+	{
+		//Taunt
+	}
 }

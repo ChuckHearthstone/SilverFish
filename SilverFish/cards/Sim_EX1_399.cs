@@ -4,18 +4,21 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_399 : SimTemplate //gurubashiberserker
+	class Sim_EX1_399 : SimTemplate //* gurubashiberserker
 	{
+    // Whenever this minion takes damage, gain +3 Attack.
 
-//    erhält jedes mal +3 angriff, wenn dieser diener schaden erleidet.
-        public override void onMinionGotDmgTrigger(Playfield p, Minion triggerEffectMinion, bool ownDmgdmin)
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            if (triggerEffectMinion.anzGotDmg>=1)
+            if (m.anzGotDmg > 0)
             {
-                p.minionGetBuffed(triggerEffectMinion, 3 * triggerEffectMinion.anzGotDmg, 0);
-                triggerEffectMinion.anzGotDmg = 0;
+                int tmp = m.anzGotDmg;
+                m.anzGotDmg = 0;
+                for (int i = 0; i < tmp; i++)
+                {
+					p.minionGetBuffed(m, 3, 0);
+                }
             }
         }
-
 	}
 }

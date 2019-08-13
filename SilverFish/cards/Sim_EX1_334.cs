@@ -11,6 +11,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             target.shadowmadnessed = true;
+            p.shadowmadnessed++;
             p.minionGetControlled(target, ownplay, true);
 		}
 

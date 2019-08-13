@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_315 : PenTemplate //summoningportal
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    eure diener kosten (2) weniger, aber nicht weniger als (1).
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

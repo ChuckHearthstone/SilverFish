@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_571 : PenTemplate //forceofnature
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    ruft drei treants (2/2) mit ansturm/ herbei, die am ende des zuges sterben.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

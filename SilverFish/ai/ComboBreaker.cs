@@ -16,18 +16,33 @@
         }
 
         private Dictionary<CardDB.cardIDEnum, int> playByValue = new Dictionary<CardDB.cardIDEnum, int>();
-
         private List<combo> combos = new List<combo>();
+        public int attackFaceHP = -1;
+
+        Helpfunctions help;
+        CardDB cdb;
+
         private static ComboBreaker instance;
 
-        Handmanager hm = Handmanager.Instance;
-        Hrtprozis hp = Hrtprozis.Instance;
+        public static ComboBreaker Instance
+        {
+            get
+            {
+                return instance ?? (instance = new ComboBreaker());
+            }
+        }
 
-        public int attackFaceHP = -1;
+
+        public void setInstances()
+        {
+            help = Helpfunctions.Instance;
+            cdb = CardDB.Instance;
+        }
 
 
         class combo
         {
+            private ComboBreaker cb;
             public combotype type = combotype.combo;
             public int neededMana = 0;
             public Dictionary<CardDB.cardIDEnum, int> combocards = new Dictionary<CardDB.cardIDEnum, int>();
@@ -361,45 +376,54 @@
             }
 
         }
-
-        public static ComboBreaker Instance
-        {
-            get
-            {
-                return instance ?? (instance = new ComboBreaker());
-            }
-        }
-
+        
         private ComboBreaker()
         {
-            readCombos();
             if (attackFaceHP != -1)
             {
-                hp.setAttackFaceHP(attackFaceHP);
+                Hrtprozis.Instance.setAttackFaceHP(attackFaceHP);
             }
         }
 
-        private void readCombos()
+        public void readCombos(string behavName, bool nameIsPath = false)
         {
+            string pathToCombo = behavName;
+            if (!nameIsPath)
+            {
+                if (!Silverfish.Instance.BehaviorPath.ContainsKey(behavName))
+                {
+                    help.ErrorLog(behavName + ": no special combos.");
+                    return;
+                }
+                pathToCombo = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_combo.txt");
+            }
+
+            if (!System.IO.File.Exists(pathToCombo))
+            {
+                help.ErrorLog(behavName + ": no special combos.");
+                return;
+            }
+            
+            help.ErrorLog("[Combo] Load combos for " + behavName);
             string[] lines = new string[0] { };
             combos.Clear();
+            playByValue.Clear();
             try
             {
-                string path = Settings.Instance.path;
-                lines = System.IO.File.ReadAllLines(path + "_combo.txt");
+                lines = System.IO.File.ReadAllLines(pathToCombo);
             }
             catch
             {
-                Helpfunctions.Instance.logg("cant find _combo.txt");
-                Helpfunctions.Instance.ErrorLog("cant find _combo.txt (if you dont created your own combos, ignore this message)");
+                help.logg("cant find _combo.txt");
+                help.ErrorLog("cant find _combo.txt (if you dont created your own combos, ignore this message)");
                 return;
             }
-            Helpfunctions.Instance.logg("read _combo.txt...");
-            Helpfunctions.Instance.ErrorLog("read _combo.txt...");
+            help.logg("read _combo.txt...");
+            help.ErrorLog("read _combo.txt...");
             foreach (string line in lines)
             {
-                string shortline = line.Replace(" ", "");
-                if(shortline.StartsWith("//")) continue;
+                if (line == "" || line == null) continue;
+                if (line.StartsWith("//")) continue;
                 if (line.Contains("weapon:"))
                 {
                     try
@@ -408,8 +432,8 @@
                     }
                     catch
                     {
-                        Helpfunctions.Instance.logg("combomaker cant read: " + line);
-                        Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
+                        help.logg("combomaker cant read: " + line);
+                        help.ErrorLog("combomaker cant read: " + line);
                     }
                 }
                 else
@@ -419,16 +443,16 @@
                         try
                         {
                             string cardvalue = line.Replace("cardvalue:", "");
-                            CardDB.cardIDEnum ce = CardDB.Instance.cardIdstringToEnum(cardvalue.Split(',')[0]);
+                            CardDB.cardIDEnum ce = cdb.cardIdstringToEnum(cardvalue.Split(',')[0]);
                             int val = Convert.ToInt32(cardvalue.Split(',')[1]);
                             if (this.playByValue.ContainsKey(ce)) continue;
                             this.playByValue.Add(ce, val);
-                            //Helpfunctions.Instance.ErrorLog("adding: " + line);
+                            //help.ErrorLog("adding: " + line);
                         }
                         catch
                         {
-                            Helpfunctions.Instance.logg("combomaker cant read: " + line);
-                            Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
+                            help.logg("combomaker cant read: " + line);
+                            help.ErrorLog("combomaker cant read: " + line);
                         }
                     }
                     else
@@ -440,14 +464,14 @@
                         }
                         catch
                         {
-                            Helpfunctions.Instance.logg("combomaker cant read: " + line);
-                            Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
+                            help.logg("combomaker cant read: " + line);
+                            help.ErrorLog("combomaker cant read: " + line);
                         }
                     }
                 }
 
             }
-
+            help.ErrorLog("[Combo] " + combos.Count + " combos loaded successfully, " + playByValue.Count + " values loaded successfully");
         }
 
         public int getPenalityForDestroyingCombo(CardDB.Card crd, Playfield p)
@@ -455,13 +479,13 @@
             if (this.combos.Count == 0) return 0;
             int pen = int.MaxValue;
             bool found = false;
-            int mana = Math.Max(hp.ownMaxMana, hp.currentMana);
+            int mana = Math.Max(p.ownMaxMana, p.mana);
             foreach (combo c in this.combos)
             {
                 if ((c.oHero == HeroEnum.None || c.oHero == p.ownHeroName) && c.isCardInCombo(crd))
                 {
-                    int iia = c.isInCombo(hm.handCards, hp.ownMaxMana);//check if we have all cards for a combo, and if the choosen card is one
-                    int iib = c.isMultiTurnComboTurn1(hm.handCards, mana, p.ownMinions, p.ownWeaponName);
+                    int iia = c.isInCombo(p.owncards, p.ownMaxMana);//check if we have all cards for a combo, and if the choosen card is one
+                    int iib = c.isMultiTurnComboTurn1(p.owncards, mana, p.ownMinions, p.ownWeapon.name);
 
                     int iic = Math.Max(iia, iib);
                     if (iia == 2 && iib != 2 && c.isMultiTurn1Card(crd))// it is a card of the combo, is a turn 1 card, but turn 1 is not possible -> we have to play turn 0 cards first
@@ -479,25 +503,29 @@
 
         }
 
-        public int checkIfComboWasPlayed(List<Action> alist, CardDB.cardName weapon, HeroEnum heroname)
+        public int checkIfComboWasPlayed(Playfield p)
         {
             if (this.combos.Count == 0) return 0;
+
+            List<Action> alist = p.playactions;
+            CardDB.cardName weapon = p.ownWeapon.name;
+            HeroEnum heroname = p.ownHeroName;
+
             //returns a penalty only if the combo could be played, but is not played completely
             List<Handmanager.Handcard> playedcards = new List<Handmanager.Handcard>();
             List<combo> searchingCombo = new List<combo>();
             // only check the cards, that are in a combo that can be played:
-            int mana = Math.Max(hp.ownMaxMana, hp.currentMana);
+            int mana = Math.Max(p.ownMaxMana, p.mana);
             foreach (Action a in alist)
             {
-                if (a.actionType != actionEnum.playcard && a.actionType != actionEnum.useHeroPower) continue;
+                if (a.actionType != actionEnum.playcard) continue;
                 CardDB.Card crd = a.card.card;
-                //playedcards.Add(a.handcard);
                 foreach (combo c in this.combos)
                 {
-                    if ((c.oHero == HeroEnum.None || c.oHero == heroname) && c.isCardInCombo(crd))
+                    if ((c.oHero == HeroEnum.None || c.oHero == p.ownHeroName) && c.isCardInCombo(crd))
                     {
-                        int iia = c.isInCombo(hm.handCards, hp.ownMaxMana);
-                        int iib = c.isMultiTurnComboTurn1(hm.handCards, mana, hp.ownMinions, weapon);
+                        int iia = c.isInCombo(p.owncards, p.ownMaxMana);
+                        int iib = c.isMultiTurnComboTurn1(p.owncards, mana, p.ownMinions, weapon);
                         int iic = Math.Max(iia, iib);
                         if (iia == 2 && iib != 2 && c.isMultiTurn1Card(crd))
                         {
@@ -508,7 +536,6 @@
                             playedcards.Add(a.card); // add only the cards, which dont get a penalty
                         }
                     }
-
                 }
             }
 
@@ -539,7 +566,7 @@
             if (this.playByValue.Count == 0) return 0;
             if (this.playByValue.ContainsKey(ce))
             {
-                return this.playByValue[ce];
+                return -this.playByValue[ce];
             }
             return 0;
 

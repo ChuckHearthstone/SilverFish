@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_590 : SimTemplate //bloodknight
+    class Sim_EX1_590 : SimTemplate //* Blood Knight
 	{
+        //Battlecry: All minions lose Divine Shield. Gain +3/+3 for each Shield lost.
 
-//    kampfschrei:/ alle diener verlieren gottesschild/. erhält +3/+3 für jeden verlorenen schild.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             int shilds = 0;
@@ -15,7 +15,7 @@ namespace HREngine.Bots
             {
                 if (m.divineshild)
                 {
-                    m.divineshild = false;
+                    p.minionLosesDivineShield(m);
                     shilds++;
                 }
             }
@@ -23,13 +23,11 @@ namespace HREngine.Bots
             {
                 if (m.divineshild)
                 {
-                    m.divineshild = false;
+                    p.minionLosesDivineShield(m);
                     shilds++;
                 }
             }
             p.minionGetBuffed(own, 3 * shilds, 3 * shilds);
 		}
-
-
 	}
 }

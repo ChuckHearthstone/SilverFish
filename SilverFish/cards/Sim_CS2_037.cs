@@ -4,17 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_037 : SimTemplate //frostshock
+    class Sim_CS2_037 : SimTemplate //* Frost Shock
 	{
+        //Deal $1 damage to an enemy character and Freeze it.
 
-//    fügt einem feindlichen charakter $1 schaden zu und friert/ ihn ein.
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
-            target.frozen = true;
+            p.minionGetFrozen(target);
             p.minionGetDamageOrHeal(target, dmg);
-            
 		}
-
 	}
 }

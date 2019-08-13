@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_595 : PenTemplate //cultmaster
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    zieht jedes mal eine karte, wenn einer eurer anderen diener stirbt.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

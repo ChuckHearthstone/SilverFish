@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_578 : PenTemplate //savagery
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt einem diener schaden zu, der dem angriff eures helden entspricht.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

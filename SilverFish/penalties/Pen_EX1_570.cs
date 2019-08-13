@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_570 : PenTemplate //bite
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verleiht eurem helden +4 angriff in diesem zug und 4 rüstung.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

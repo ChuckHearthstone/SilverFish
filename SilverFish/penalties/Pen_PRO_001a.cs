@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_PRO_001a : PenTemplate //iammurloc
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    ruft drei, vier oder fünf murlocs herbei (1/1).
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

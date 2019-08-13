@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_076 : PenTemplate //pintsizedsummoner
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    der erste diener, den ihr in einem zug ausspielt, kostet (1) weniger.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -4,10 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-
-    class Sim_GVG_041b : SimTemplate //Dark Wispers
+    class Sim_GVG_041b : SimTemplate //* Dark Wispers
     {
-
         //   Summon 5 Wisps;
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
@@ -15,13 +13,9 @@ namespace HREngine.Bots
         {
             for (int i = 0; i < 5; i++)
             {
-                int posi = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kid, posi, ownplay);
+                int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
+                p.callKid(kid, pos, ownplay);
             }
-
         }
-
-
     }
-
 }

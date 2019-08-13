@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_164a : PenTemplate //nourish
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    erhaltet 2 manakristalle.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

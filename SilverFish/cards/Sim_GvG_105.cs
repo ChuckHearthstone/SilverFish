@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_105 : SimTemplate //Piloted Sky Golem
+    class Sim_GVG_105 : SimTemplate //* Piloted Sky Golem
     {
 
         // Deathrattle: Summon a random 4-Cost minion.  
@@ -13,12 +13,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-
-            int pos = (m.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, pos, m.own);
+            p.callKid(kid, m.zonepos - 1, m.own);
         }
-
-
     }
-
 }

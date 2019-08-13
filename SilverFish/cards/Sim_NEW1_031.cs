@@ -4,16 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_031 : SimTemplate //animalcompanion
+	class Sim_NEW1_031 : SimTemplate //* animalcompanion
 	{
+        //Summon a random Beast Companion.
 
-//    ruft einen zufälligen wildtierbegleiter herbei.
-        CardDB.Card c2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_032);//misha
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_032);//misha
         
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            int placeoffather = (ownplay)?  p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(c2, placeoffather, ownplay);
+            int pos = (ownplay)?  p.ownMinions.Count : p.enemyMinions.Count;
+            p.callKid(kid, pos, ownplay, false);
 		}
 
 	}

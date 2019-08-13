@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 t.cantLowerHPbelowONE = true;
             }
-            p.drawACard(CardDB.cardIDEnum.None, ownplay);
+            p.drawACard(CardDB.cardName.unknown, ownplay);
         }
 
     }

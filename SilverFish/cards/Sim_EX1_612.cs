@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (own.own) p.playedmagierinderkirintor = true;
+            if (own.own) p.nextSecretThisTurnCost0 = true;
 		}
 
 

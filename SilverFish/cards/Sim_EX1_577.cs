@@ -4,17 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_577 : SimTemplate //thebeast
+	class Sim_EX1_577 : SimTemplate //* thebeast
 	{
+        //Deathrattle: Summon a 3/3 Finkle Einhorn for your opponent.
 
-//    todesröcheln:/ ruft finkle einhorn (3/3) für euren gegner herbei.
         CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_finkle);//finkleeinhorn
         public override void onDeathrattle(Playfield p, Minion m)
         {
-
-            int place = (m.own) ? p.enemyMinions.Count : p.ownMinions.Count;
-            p.callKid(c, place, !m.own);
+            int pos = (m.own) ? p.enemyMinions.Count : p.ownMinions.Count;
+            p.callKid(c, pos, !m.own);
         }
-
 	}
 }

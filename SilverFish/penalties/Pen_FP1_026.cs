@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_026 : PenTemplate //anubarambusher
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    todesröcheln:/ lasst einen zufälligen befreundeten diener auf eure hand zurückkehren.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

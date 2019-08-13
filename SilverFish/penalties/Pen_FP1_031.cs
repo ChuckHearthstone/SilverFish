@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_031 : PenTemplate //baronrivendare
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    die todesröcheln/-effekte eurer diener werden 2-mal ausgelöst.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

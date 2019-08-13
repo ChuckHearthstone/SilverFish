@@ -4,19 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_080 : SimTemplate //secretkeeper
+	class Sim_EX1_080 : SimTemplate //* Secretkeeper
 	{
+		// Whenever a Secret: is played, gain +1/+1.
 
-//    erhält jedes mal +1/+1, wenn ein geheimnis/ ausgespielt wird.
-
-        //we do them manually in playfield
-        /*public override void onCardWasPlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (wasOwnCard && c.Secret)
-            {
-                p.minionGetBuffed(triggerEffectMinion, 1, 1);
-            }
-        }*/
+            if (hc.card.Secret) p.minionGetBuffed(m, 1, 1);
+        }
 
 	}
 }

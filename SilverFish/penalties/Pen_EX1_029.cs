@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_029 : PenTemplate //lepergnome
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    todesröcheln:/ fügt dem feindlichen helden 2 schaden zu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

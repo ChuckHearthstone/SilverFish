@@ -6,8 +6,7 @@ namespace HREngine.Bots
 {
     class Sim_GVG_011 : SimTemplate //Shrinkmeister
     {
-
-        //    Your Mechs cost (1) less.
+        // Battlecry: Give a minion -2 Attack this turn.
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
@@ -16,8 +15,5 @@ namespace HREngine.Bots
                 p.minionGetTempBuff(target, -2, 0);
             }
         }
-
-
     }
-
 }

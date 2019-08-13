@@ -7,8 +7,9 @@ namespace HREngine.Bots
 	class Sim_EX1_162 : SimTemplate //direwolfalpha
 	{
 
-//    benachbarte diener haben +1 angriff.
+        //    benachbarte diener haben +1 angriff.
         // note buff and debuff is handled by playfield (faster)
+        // Handled in updateBoards()
         /*
         public override void onAuraStarts(Playfield p, Minion own)
         {

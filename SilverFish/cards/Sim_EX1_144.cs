@@ -4,14 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_144 : SimTemplate //shadowstep
+	class Sim_EX1_144 : SimTemplate //* shadowstep
 	{
-
-//    lasst einen befreundeten diener auf eure hand zurückkehren. der diener kostet (2) weniger.
+        //Return a friendly minion to your hand. It costs (2) less.
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.minionReturnToHand(target, ownplay, target.handcard.card.cost - 2);
+            p.minionReturnToHand(target, ownplay, -2);
 		}
 
 	}

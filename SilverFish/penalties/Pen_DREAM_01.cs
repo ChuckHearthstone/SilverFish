@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_DREAM_01 : PenTemplate //laughingsister
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kann nicht als ziel von zaubern oder heldenfähigkeiten gewählt werden.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

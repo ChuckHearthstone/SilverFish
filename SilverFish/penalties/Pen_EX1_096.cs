@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_096 : PenTemplate //loothoarder
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    todesröcheln:/ zieht eine karte.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -4,13 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_382 : SimTemplate //aldorpeacekeeper
+    class Sim_EX1_382 : SimTemplate //* Aldor Peacekeeper
 	{
+        //Battlecry: Change an enemy minion's Attack to 1.
 
-//    kampfschrei:/ setzt den angriff eines feindlichen dieners auf 1.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if(target != null) p.minionSetAngrToOne(target);
+            if(target != null) p.minionSetAngrToX(target, 1);
 		}
 
 	}

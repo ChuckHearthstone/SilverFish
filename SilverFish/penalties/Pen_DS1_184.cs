@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_DS1_184 : PenTemplate //tracking
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    schaut euch die drei obersten karten eures decks an. zieht eine davon und werft die anderen beiden ab.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

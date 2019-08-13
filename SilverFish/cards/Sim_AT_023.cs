@@ -4,35 +4,25 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_023 : SimTemplate //Void Crusher
-    {
+	class Sim_AT_023 : SimTemplate //* Void Crusher
+	{
+		//Inspire: Destroy a random minion for each player.
 
-        //insprire: Destroy a random minion for each player.
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-
-            if(p.isServer)
-            {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(false, false);
-                if(choosen!=null) p.minionGetDestroyed(choosen);
-
-                choosen = p.getRandomMinionFromSide_SERVER(true, false);
-                if(choosen!=null) p.minionGetDestroyed(choosen);
-                return;
+			if (m.own == own)
+			{
+                Minion found = p.searchRandomMinion(p.enemyMinions, searchmode.searchLowestHP);
+                if (found != null)
+                {
+                    p.minionGetDestroyed(found);
+                }
+				found = p.searchRandomMinion(p.ownMinions, searchmode.searchHighHPLowAttack);
+                if (found != null)
+                {
+                    p.minionGetDestroyed(found);
+                }
             }
-
-
-            Minion choosen2 = p.searchRandomMinion(p.enemyMinions, Playfield.searchmode.searchLowestAttack);
-            if (choosen2 != null) p.minionGetDestroyed(choosen2);
-
-            Minion choosen1 = p.searchRandomMinion(p.ownMinions, Playfield.searchmode.searchHighestAttack);
-            if (choosen1 != null) p.minionGetDestroyed(choosen1);
-            
         }
-
-
-
-    }
-
+	}
 }

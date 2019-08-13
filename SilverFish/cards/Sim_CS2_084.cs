@@ -4,13 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_084 : SimTemplate //huntersmark
+	class Sim_CS2_084 : SimTemplate //* huntersmark
 	{
+        //Change a minion's Health to 1.
 
-//    setzt das leben eines dieners auf 1.
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.minionSetLifetoOne(target);
+            p.minionSetLifetoX(target, 1);
 		}
 
 	}

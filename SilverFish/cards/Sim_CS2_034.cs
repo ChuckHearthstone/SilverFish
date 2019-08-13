@@ -4,27 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_034 : SimTemplate //fireblast
+	class Sim_CS2_034 : SimTemplate //* Fireblast
 	{
-
-//    heldenfähigkeit/\nverursacht 1 schaden.
+		//Hero Power: Deal 1 damage.
+		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            int dmg = 1;
-            if (ownplay)
-            {
-                dmg += p.anzOwnFallenHeros;
-                if (p.doublepriest >= 1) dmg *= (2 * p.doublepriest);
-                
-            }
-            else
-            {
-                dmg += p.anzEnemyFallenHeros;
-                if (p.enemydoublepriest >= 1) dmg *= (2 * p.enemydoublepriest);
-                
-            }
+            int dmg = (ownplay) ? p.getHeroPowerDamage(1) : p.getEnemyHeroPowerDamage(1);
             p.minionGetDamageOrHeal(target, dmg);
         }
-
 	}
 }

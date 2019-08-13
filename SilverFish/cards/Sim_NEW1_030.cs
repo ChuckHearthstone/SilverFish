@@ -4,27 +4,21 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_030 : SimTemplate //deathwing
+    class Sim_NEW1_030 : SimTemplate //* Deathwing
 	{
+        //Battlecry: Destroy all other minions and discard your hand.
 
-//    kampfschrei:/ vernichtet alle anderen diener und werft eure hand ab.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.allMinionsGetDestroyed();
-            if (own.own)
+            foreach (Minion m in p.ownMinions)
             {
-                p.owncards.Clear();
-                p.triggerCardsChanged(true);
+                if (m.entitiyID != own.entitiyID) p.minionGetDestroyed(m);
             }
-            else
+            foreach (Minion m in p.enemyMinions)
             {
-                p.enemycarddraw = 0;
-                p.enemyAnzCards = 0;
-                p.triggerCardsChanged(false);
+                if (m.entitiyID != own.entitiyID) p.minionGetDestroyed(m);
             }
+            p.discardCards(10, own.own);
 		}
-
-	
-
 	}
 }

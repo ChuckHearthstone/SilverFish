@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_tk9 : PenTemplate //treant
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    ansturm/. vernichtet diesen diener am ende des zuges.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

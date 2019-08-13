@@ -4,18 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_119 : SimTemplate //Kvaldir Raider
-    {
+	class Sim_AT_119 : SimTemplate //* Kvaldir Raider
+	{
+		//Inspire: Gain +2/+2.
 
-        //insprire: Gain +2/+2.
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            p.minionGetBuffed(m, 2, 2);
+			if (m.own == own)
+			{
+				p.minionGetBuffed(m, 2, 2);
+			}
         }
-
-
-
-    }
-
+	}
 }

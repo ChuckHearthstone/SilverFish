@@ -4,32 +4,31 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_407 : SimTemplate //brawl
+	class Sim_EX1_407 : SimTemplate //* Brawl
 	{
-
-//    vernichtet alle diener bis auf einen. (zufällige auswahl)
+        // Destroy all minions except one. (chosen randomly)
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-
-            if (p.isServer)
+        {
+            bool hasWinner = false;
+            foreach (Minion m in p.enemyMinions)
             {
-                Minion choosen = p.getRandomCharExcept_SERVER(null, false);
-
-                foreach (Minion m in p.ownMinions)
+                if ((m.name == CardDB.cardName.darkironbouncer || m.name == CardDB.cardName.corendirebrew) && !hasWinner)
                 {
-                    if (m == choosen) continue;
-                    p.minionGetDestroyed(m);
+                    hasWinner = true;
+                    continue;
                 }
-                foreach (Minion m in p.enemyMinions)
-                {
-                    if (m == choosen) continue;
-                    p.minionGetDestroyed(m);
-                }
+                p.minionGetDestroyed(m);
             }
-
-            p.allMinionsGetDestroyed();
+            foreach (Minion m in p.ownMinions)
+            {
+                if ((m.name == CardDB.cardName.darkironbouncer || m.name == CardDB.cardName.corendirebrew) && !hasWinner)
+                {
+                    hasWinner = true;
+                    continue;
+                }
+                p.minionGetDestroyed(m);
+            }
 		}
-
 	}
 }

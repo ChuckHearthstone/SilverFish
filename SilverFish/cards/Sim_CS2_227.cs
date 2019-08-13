@@ -4,19 +4,18 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_227 : SimTemplate //venturecomercenary
+	class Sim_CS2_227 : SimTemplate //* Venture Co. Mercenary
 	{
+        //Your minions cost (3) more.
 
-//    eure diener kosten (3) mehr.
         public override void onAuraStarts(Playfield p, Minion own)
 		{
-           if(own.own) p.soeldnerDerVenture++;
+           if(own.own) p.ownMinionsCostMore += 3;
 		}
 
         public override void onAuraEnds(Playfield p, Minion own)
         {
-           if(own.own) p.soeldnerDerVenture--;
+           if(own.own) p.ownMinionsCostMore -= 3;
         }
-
 	}
 }

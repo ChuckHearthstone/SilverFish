@@ -14,7 +14,7 @@ namespace HREngine.Bots
             int heal = 2;
             if (ownplay)
             {
-                if (p.anzOwnAuchenaiSoulpriest >= 1) heal = -heal;
+                if (p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0) heal = -heal;
                 if (p.doublepriest >= 1) heal *= (2 * p.doublepriest);
             }
             else

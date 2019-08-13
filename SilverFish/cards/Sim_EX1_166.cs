@@ -4,26 +4,21 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_166 : SimTemplate //keeperofthegrove
+    class Sim_EX1_166 : SimTemplate //* Keeper of the Grove
 	{
+        // Choose One - Deal 2 damage; or Silence a minion.
 
-//    wählt aus:/ verursacht 2 schaden; oder bringt einen diener zum schweigen/.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (target != null)
+            if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                if (choice == 1)
-                {
-                    p.minionGetDamageOrHeal(target, 2);
-                }
+                p.minionGetDamageOrHeal(target, 2);
+            }
 
-                if (choice == 2)
-                {
-                    p.minionGetSilenced(target);
-                }
+            if (choice == 2 || (p.ownFandralStaghelm > 0 && own.own))
+            {
+                p.minionGetSilenced(target);
             }
 		}
-
-
 	}
 }

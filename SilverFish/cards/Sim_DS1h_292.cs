@@ -4,29 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_DS1h_292 : SimTemplate //steadyshot
+	class Sim_DS1h_292 : SimTemplate //* Steady Shot
 	{
-
-//    heldenfähigkeit/\nfügt dem feindlichen helden 2 schaden zu.
-
+		//Hero Power: Deal 2 damage to the enemy hero.
+		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            int dmg = 2;
-
-            if (ownplay)
-            {
-                dmg += p.anzOwnFallenHeros;
-                if (p.doublepriest >= 1) dmg *= (2 * p.doublepriest);
-                p.minionGetDamageOrHeal(target, dmg);
-            }
-            else
-            {
-                dmg += p.anzEnemyFallenHeros;
-                if (p.enemydoublepriest >= 1) dmg *= (2 * p.enemydoublepriest);
-                p.minionGetDamageOrHeal(target, dmg);
-            }
-
+        {
+            int dmg = (ownplay) ? p.getHeroPowerDamage(2) : p.getEnemyHeroPowerDamage(2);
+            if (target == null) target = ownplay ? p.enemyHero : p.ownHero;
+            p.minionGetDamageOrHeal(target, dmg);
 		}
-
 	}
 }

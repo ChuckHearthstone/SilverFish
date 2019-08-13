@@ -17,9 +17,7 @@
         private bool dontRecalc = true;
         private bool useLethalCheck = true;
         private bool useComparison = true;
-
-        public bool doEnemySecondTurn = false;
-
+        
         List<Playfield> posmoves = new List<Playfield>(7000);
 
         public Action bestmove = null;
@@ -32,7 +30,7 @@
         private bool simulateSecondTurn = false;
 
         Movegenerator movegen = Movegenerator.Instance;
-
+        
 
         public MiniSimulatorNextTurn()
         {
@@ -40,100 +38,64 @@
 
 
 
-        private void addToPosmoves(Playfield pf, int totalboards)
-        {
-            if (pf.ownHero.Hp <= 0) return;
-            /*foreach (Playfield p in this.posmoves)
-            {
-                if (pf.isEqual(p, false)) return;
-            }*/
-            this.posmoves.Add(pf);
-            //posmoves.Sort((a, b) => -(botBase.getPlayfieldValue(a)).CompareTo(botBase.getPlayfieldValue(b)));//want to keep the best
-            //if (posmoves.Count > this.maxwide) posmoves.RemoveAt(this.maxwide);
-            if (totalboards >= 1)
-            {
-                this.calculated++;
-            }
-        }
 
         private void startEnemyTurnSim(Playfield p, bool simulateTwoTurns, bool print, bool playaround, int playaroundprob, int playaroundprob2)
         {
-            if (p.ownHero.Hp >= 1 && p.enemyHero.Hp>=1)
+            if (p.guessingHeroHP >= 1)
             {
-                //simulateEnemysTurn(simulateTwoTurns, playaround, print, pprob, pprob2);
-                p.prepareNextTurn(p.isOwnTurn);
-                //Helpfunctions.Instance.ErrorLog("tc " + p.turnCounter);
+
                 Ai.Instance.enemySecondTurnSim[this.thread].simulateEnemysTurn(p, simulateTwoTurns, playaround, print, playaroundprob, playaroundprob2);
-                /*
-                if (p.turnCounter >= 2)
-                    Ai.Instance.enemySecondTurnSim.simulateEnemysTurn(p, simulateTwoTurns, playaround, print, playaroundprob, playaroundprob2);
-                else
-                    Ai.Instance.enemyTurnSim.simulateEnemysTurn(p, simulateTwoTurns, playaround, print, playaroundprob, playaroundprob2);
-                */
             }
             p.complete = true;
         }
 
-        public float doallmoves(Playfield playf, bool isLethalCheck, bool print = false)
+        public float doallmoves(Playfield playf, bool print = false)
         {
-
             //todo only one time!
-            this.doEnemySecondTurn = Settings.Instance.simEnemySecondTurn;
+            bool isLethalCheck = playf.isLethalCheck;
             int totalboards = Settings.Instance.nextTurnTotalBoards;
             int maxwide = Settings.Instance.nextTurnMaxWide;
             int maxdeep = Settings.Instance.nextTurnDeep;
-            bool playaround = Settings.Instance.playarround;
+            bool playaround = Settings.Instance.playaround;
             int playaroundprob = Settings.Instance.playaroundprob;
             int playaroundprob2 = Settings.Instance.playaroundprob2;
-
-
-            //Helpfunctions.Instance.logg("NXTTRN" + playf.mana);
-            if (botBase == null) botBase = Ai.Instance.botBase;
-            bool test = false;
+            
+            botBase = Ai.Instance.botBase;
             this.posmoves.Clear();
-            this.addToPosmoves(playf, totalboards);
+            this.posmoves.Add(new Playfield(playf));
             bool havedonesomething = true;
             List<Playfield> temp = new List<Playfield>();
             int deep = 0;
-            //Helpfunctions.Instance.logg("NXTTRN" + playf.mana + " " + posmoves.Count);
             this.calculated = 0;
+            Playfield bestold = null;
+            float bestoldval = -20000000;
             while (havedonesomething)
             {
-                //if (this.printNormalstuff) Helpfunctions.Instance.logg("ailoop");
                 //GC.Collect();
                 temp.Clear();
                 temp.AddRange(this.posmoves);
                 havedonesomething = false;
-                Playfield bestold = null;
-                float bestoldval = -20000000;
                 foreach (Playfield p in temp)
                 {
-
                     if (p.complete || p.ownHero.Hp <= 0)
                     {
                         continue;
                     }
 
-                    List<Action> actions = movegen.getMoveList(p, isLethalCheck, usePenalityManager, useCutingTargets);
+                    List<Action> actions = movegen.getMoveList(p, usePenalityManager, useCutingTargets, true);
                     foreach (Action a in actions)
                     {
                         havedonesomething = true;
                         Playfield pf = new Playfield(p);
                         pf.doAction(a);
-                        addToPosmoves(pf, totalboards);
+                        if (pf.ownHero.Hp > 0) this.posmoves.Add(pf);
+                        if (totalboards > 0) this.calculated++;
                     }
 
 
-                    if (isLethalCheck)
-                    {
-                        p.complete = true;
-                    }
-                    else
-                    {
-                        p.sEnemTurn = this.doEnemySecondTurn;
-                        p.endTurn(this.simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
-                        this.startEnemyTurnSim(p, this.simulateSecondTurn, false, playaround, playaroundprob, playaroundprob2);
-                    }
+                    p.endTurn();
+
+                    if (!isLethalCheck) this.startEnemyTurnSim(p, this.simulateSecondTurn, false, playaround, playaroundprob, playaroundprob2);
 
                     //sort stupid stuff ouf
 
@@ -142,96 +104,50 @@
                         bestoldval = botBase.getPlayfieldValue(p);
                         bestold = p;
                     }
-                    if (!test)
-                    {
-                        posmoves.Remove(p);
-                    }
+                    posmoves.Remove(p);
 
                     if (this.calculated > totalboards) break;
                 }
-
-                if (!test && bestoldval >= -10000 && bestold != null)
-                {
-                    this.posmoves.Add(bestold);
-                }
-
-                //Helpfunctions.Instance.loggonoff(true);
-                /*if (this.printNormalstuff)
-                {
-                    int donec = 0;
-                    foreach (Playfield p in posmoves)
-                    {
-                        if (p.complete) donec++;
-                    }
-                    Helpfunctions.Instance.logg("deep " + deep + " len " + this.posmoves.Count + " dones " + donec);
-                }*/
-
-                if (!test)
-                {
-                    cuttingposibilities(maxwide);
-                }
-
-                //if (this.printNormalstuff) Helpfunctions.Instance.logg("cut to len " + this.posmoves.Count);
-                //Helpfunctions.Instance.loggonoff(false);
+                cuttingposibilities(maxwide);
+                
                 deep++;
 
                 if (this.calculated > totalboards) break;
-                if (deep >= maxdeep) break;//remove this?
+                if (deep >= maxdeep) break;
             }
 
-            foreach (Playfield p in posmoves)//temp
+            posmoves.Add(bestold);
+            foreach (Playfield p in posmoves)
             {
                 if (!p.complete)
                 {
-                    if (isLethalCheck)
-                    {
-                        p.complete = true;
-                    }
-                    else
-                    {
-                        p.sEnemTurn = this.doEnemySecondTurn;
-                        p.endTurn(this.simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
-                        this.startEnemyTurnSim(p, this.simulateSecondTurn, false, playaround, playaroundprob, playaroundprob2);
-                    }
+
+                    p.endTurn();
+                    if (!isLethalCheck) this.startEnemyTurnSim(p, this.simulateSecondTurn, false, playaround, playaroundprob, playaroundprob2);
                 }
             }
-            // Helpfunctions.Instance.logg("find best ");
+            // find best
+
             if (posmoves.Count >= 1)
             {
-                float bestval = int.MinValue;
-                int bestanzactions = 1000;
-                Playfield bestplay = posmoves[0];//temp[0]
-                foreach (Playfield p in posmoves)//temp
+                posmoves.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));
+
+                Playfield bestplay = posmoves[0];
+                float bestval = botBase.getPlayfieldValue(bestplay);
+                int pcount = posmoves.Count;
+                for (int i = 1; i < pcount; i++)
                 {
-                    float val = botBase.getPlayfieldValue(p);
-                    if (bestval <= val)
-                    {
-                        if (bestval == val && bestanzactions < p.playactions.Count) continue;
-                        bestplay = p;
-                        bestval = val;
-                        bestanzactions = p.playactions.Count;
-                    }
-
-                }
-                this.bestboard = new Playfield(bestplay);
-
-                if (print)
-                {
-                    Helpfunctions.Instance.ErrorLog("best board after your second turn (value included enemy second turn)----------");
-                    bestplay.printBoard();
-                    bestplay.value = int.MinValue;
-                    bestplay.sEnemTurn = this.doEnemySecondTurn;
-                    Ai.Instance.enemySecondTurnSim[this.thread].simulateEnemysTurn(bestplay, false, playaround, false, playaroundprob, playaroundprob2);
-                    //Ai.Instance.enemySecondTurnSim.simulateEnemysTurn(bestplay, false, false, true, 100, 100); //dont play arround in enemys second turn
-
+                    float val = botBase.getPlayfieldValue(posmoves[i]);
+                    if (bestval > val) break;
+                    if (bestplay.playactions.Count <= posmoves[i].playactions.Count) continue; //priority to the minimum acts
+                    bestplay = posmoves[i];
+                    bestval = val;
                 }
                 this.bestmove = bestplay.getNextAction();
                 this.bestmoveValue = bestval;
                 this.bestboard = new Playfield(bestplay);
-                //Helpfunctions.Instance.logg("return");
                 return bestval;
             }
-            //Helpfunctions.Instance.logg("return");
             this.bestmove = null;
             this.bestmoveValue = -100000;
             this.bestboard = playf;
@@ -242,6 +158,7 @@
         {
             // take the x best values
             List<Playfield> temp = new List<Playfield>();
+            Dictionary<Int64, Playfield> tempDict = new Dictionary<Int64, Playfield>();
             posmoves.Sort((a, b) => -(botBase.getPlayfieldValue(a)).CompareTo(botBase.getPlayfieldValue(b)));//want to keep the best
 
             if (this.useComparison)
@@ -250,34 +167,19 @@
                 int max = Math.Min(posmoves.Count, maxwide);
 
                 Playfield p = null;
-                Playfield pp = null;
                 //foreach (Playfield p in posmoves)
                 for (i = 0; i < max; i++)
                 {
                     p = posmoves[i];
-                    int hash = p.GetHashCode();
+                    Int64 hash = p.GetPHash();
                     p.hashcode = hash;
-                    bool found = false;
-                    //foreach (Playfield pp in temp)
-                    for (int j = 0; j < temp.Count; j++)
-                    {
-                        pp = temp[j];
-                        if (pp.hashcode == p.hashcode)
-                        {
-                            if (pp.isEqualf(p))
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (!found) temp.Add(p);
-                    //i++;
-                    //if (i >= this.maxwide) break;
+                    if (!tempDict.ContainsKey(hash)) tempDict.Add(hash, p);
 
                 }
-
-
+                foreach (KeyValuePair<Int64, Playfield> d in tempDict)
+                {
+                    temp.Add(d.Value);
+                }
             }
             else
             {
@@ -285,8 +187,6 @@
             }
             posmoves.Clear();
             posmoves.AddRange(temp.GetRange(0, Math.Min(maxwide, temp.Count)));
-            //posmoves.Clear();
-            //posmoves.AddRange(Helpfunctions.TakeList(temp, takenumber));
 
         }
 
@@ -331,7 +231,7 @@
 
                         if ((!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced))) // both are not special, if they are the same, dont add
                         {
-                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous) goingtoadd = false;
+                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 
@@ -342,7 +242,7 @@
                                 continue;
                             }
                             // same name -> test whether they are equal
-                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous) goingtoadd = false;
+                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 

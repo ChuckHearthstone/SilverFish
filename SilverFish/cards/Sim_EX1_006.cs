@@ -4,32 +4,12 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_006 : SimTemplate //alarmobot
+    class Sim_EX1_006 : SimTemplate //* Alarm-o-Bot
 	{
-
-//    tauscht zu beginn eures zuges diesen diener gegen einen zufälligen diener auf eurer hand aus.
+        //At the start of your turn, swap this minion with a random one in your hand.
 
         public override void onTurnStartTrigger(Playfield p, Minion triggerEffectMinion, bool turnStartOfOwner)
         {
-            if (p.isServer && triggerEffectMinion.own == turnStartOfOwner)
-            {
-                List<Handmanager.Handcard> temp2 = new List<Handmanager.Handcard>();
-                List<Handmanager.Handcard> hand = (turnStartOfOwner) ? p.owncards : p.EnemyCards;
-                foreach (Handmanager.Handcard hc in hand)
-                {
-                    if (hc.card.type == CardDB.cardtype.MOB) temp2.Add(hc);
-                }
-                if (temp2.Count == 0) return;
-
-                int random = p.getRandomNumber_SERVER(0, temp2.Count - 1);
-                p.minionTransform(triggerEffectMinion, temp2[random].card);
-                p.removeCard(temp2[random]);
-                p.drawACard(CardDB.cardIDEnum.EX1_006, turnStartOfOwner, true);
-
-                return;
-            }
-
-
             if (turnStartOfOwner && triggerEffectMinion.own == turnStartOfOwner)
             {
                 List<Handmanager.Handcard> temp2 = new List<Handmanager.Handcard>();
@@ -42,8 +22,10 @@ namespace HREngine.Bots
                 {
                     CardDB.Card c = CardDB.Instance.getCardDataFromID(mins.card.cardIDenum);
                     p.minionTransform(triggerEffectMinion, c);
+                    triggerEffectMinion.playedThisTurn = false;
+                    triggerEffectMinion.Ready = true;
                     p.removeCard(mins);
-                    p.drawACard(CardDB.cardIDEnum.EX1_006, true, true);
+                    p.drawACard(CardDB.cardName.alarmobot, true, true);
                     break;
                 }
                 return;

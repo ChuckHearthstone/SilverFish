@@ -4,15 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_226 : SimTemplate //frostwolfwarlord
+    class Sim_CS2_226 : SimTemplate //* Frostwolf Warlord
 	{
+        // Battlecry: Gain +1/+1 for each other friendly minion on the battlefield.
 
-//    kampfschrei:/ erhält +1/+1 für jeden anderen befreundeten diener auf dem schlachtfeld.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            int buff = (own.own) ? p.ownMinions.Count : p.enemyMinions.Count;
+            int buff = (own.own) ? p.ownMinions.Count - 1 : p.enemyMinions.Count - 1;
             p.minionGetBuffed(own, buff, buff);
 		}
-
 	}
 }

@@ -4,25 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_046 : SimTemplate //Tuskarr Totemic
+    class Sim_AT_046 : SimTemplate //* Tuskarr Totemic
     {
+        //Battlecry: Summon a random basic Totem.
 
-        //   btlcry: Summon ANY random Totem.
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_050);//searing
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_050);//Searing Totem
+
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            int pos = own.zonepos;
-            if (p.isServer)
-            {
-                //TODO
-                p.callKid(kid, pos, own.own, true);
-                return;
-            }
-            p.callKid(kid, pos, own.own, true);
+            p.callKid(kid, own.zonepos, own.own);
         }
-
-
     }
-
-
 }

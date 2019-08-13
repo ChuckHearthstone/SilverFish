@@ -4,25 +4,26 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_402 : SimTemplate //armorsmith
+	class Sim_EX1_402 : SimTemplate //* armorsmith
 	{
+    // Whenever a friendly minion takes damage, gain 1 Armor.
 
-//    erhaltet jedes mal 1 rüstung, wenn ein befreundeter diener schaden erleidet.
-
-        public override void onMinionGotDmgTrigger(Playfield p, Minion triggerEffectMinion, bool ownDmgdmin)
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            if (triggerEffectMinion.own == ownDmgdmin)
+            if (m.own)
             {
-                if (triggerEffectMinion.own)
+                for (int i = 0; i < anzOwnMinionsGotDmg - anzOwnHeroGotDmg; i++)
                 {
-                    p.minionGetArmor(p.ownHero, 1);
+					p.minionGetArmor(p.ownHero, 1);
                 }
-                else
+            }
+            else
+            {
+                for (int i = 0; i < anzEnemyMinionsGotDmg - anzEnemyHeroGotDmg; i++)
                 {
                     p.minionGetArmor(p.enemyHero, 1);
                 }
             }
         }
-
 	}
 }

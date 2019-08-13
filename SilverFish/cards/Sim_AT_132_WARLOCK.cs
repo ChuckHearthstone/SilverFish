@@ -4,27 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_WARLOCK : SimTemplate //lifetap
+	class Sim_AT_132_WARLOCK : SimTemplate //* Soul Tap
 	{
-
-        //    heldenfähigkeit/\Draw a card.
+		//Hero Power. Draw a card (without the Health penalty)
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-
-            bool reduceToZero = false;
-            if (ownplay && p.anzOwnFizzlebang >= 1)
-            {
-                reduceToZero = true;
-            }
-            if (!ownplay && p.anzEnemyFizzlebang >= 1)
-            {
-                reduceToZero = true;
-            }
-            p.drawACard(CardDB.cardIDEnum.None, ownplay, false, reduceToZero);
-
+            p.drawACard(CardDB.cardName.unknown, ownplay);
         }
-
-
 	}
 }

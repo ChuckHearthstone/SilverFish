@@ -4,26 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_093 : SimTemplate //Frigid Snobold
-    {
+	class Sim_AT_093 : SimTemplate //* Frigid Snobold
+	{
+		//Spell Damage +1.
 
-        //insprire: gain Spell Damage +1
+        public override void onAuraStarts(Playfield p, Minion own)
+		{
+            if (own.own) p.spellpower++;
+            else p.enemyspellpower++;
+		}
 
-        public override void onInspire(Playfield p, Minion m)
+        public override void onAuraEnds(Playfield p, Minion m)
         {
-            m.spellpower++;
-            if (m.own)
-            {
-                p.spellpower++;
-            }
-            else
-            {
-                p.enemyspellpower++;
-            }
+            if (m.own) p.spellpower--;
+            else p.enemyspellpower--;
         }
-
-
-
-    }
-
+	}
 }

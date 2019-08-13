@@ -4,15 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_283 : SimTemplate //frostelemental
+    class Sim_EX1_283 : SimTemplate //* Frost Elemental
 	{
+        //Battlecry: Freeze a character.
 
-//    kampfschrei:/ friert/ einen charakter ein.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-		{
-            target.frozen = true;
+        {
+            p.minionGetFrozen(target);
 		}
-
-
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_022 : PenTemplate //voidcaller
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    todesröcheln:/ legt einen zufälligen dämon aus eurer hand auf das schlachtfeld.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

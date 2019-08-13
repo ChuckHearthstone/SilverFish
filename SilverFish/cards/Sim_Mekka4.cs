@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_Mekka4 : SimTemplate //poultryizer
+	class Sim_Mekka4 : SimTemplate //* poultryizer
 	{
         CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.Mekka4t);
                                 
@@ -14,13 +14,6 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                if (p.isServer)
-                {
-                    Minion choosen = p.getRandomCharExcept_SERVER(null, false);
-                    if (choosen != null) p.minionTransform(choosen, c);
-                    return;
-                }
-
                 Minion tm = null;
                 int ges = 1000;
                 foreach (Minion m in p.ownMinions)
@@ -42,6 +35,8 @@ namespace HREngine.Bots
                 if (ges <= 999)
                 {
                     p.minionTransform(tm, c);
+                    tm.playedThisTurn = false;
+                    tm.Ready = true;
                 }
             }
         }

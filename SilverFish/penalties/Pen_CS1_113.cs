@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS1_113 : PenTemplate //mindcontrol
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    übernehmt die kontrolle über einen feindlichen diener.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

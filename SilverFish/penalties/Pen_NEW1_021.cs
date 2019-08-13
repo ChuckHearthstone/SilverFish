@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_021 : PenTemplate //doomsayer
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    vernichtet zu beginn eures zuges alle diener.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

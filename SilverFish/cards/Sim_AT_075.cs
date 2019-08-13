@@ -4,50 +4,32 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_075 : SimTemplate //Warhorse Trainer
+	class Sim_AT_075 : SimTemplate //* Warhorse Trainer
 	{
+		//Your Silver Hand Recruits have +1 Attack.
 
-        //    Your Silver Hand Recruits have +1 Attack.
         public override void onAuraStarts(Playfield p, Minion own)
-        {
-            if (own.own)
+		{
+            if (own.own) p.anzOwnWarhorseTrainer++;
+            else p.anzEnemyWarhorseTrainer++;
+			
+			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion m in temp)
             {
-                p.anzOwnWarhorseTrainer++;
-                foreach (Minion m in p.ownMinions)
-                {
-                    if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
-                }
-            }
-            else
-            {
-                p.anzEnemyWarhorseTrainer++;
-                foreach (Minion m in p.enemyMinions)
-                {
-                    if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
-                }
-            }
-
-        }
+                if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
+            }            
+		}
 
         public override void onAuraEnds(Playfield p, Minion own)
         {
-            if (own.own)
+            if (own.own) p.anzOwnWarhorseTrainer--;
+            else p.anzEnemyWarhorseTrainer--;
+			
+			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion m in temp)
             {
-                p.anzOwnWarhorseTrainer--;
-                foreach (Minion m in p.ownMinions)
-                {
-                    if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
-                }
-            }
-            else
-            {
-                p.anzEnemyWarhorseTrainer--;
-                foreach (Minion m in p.enemyMinions)
-                {
-                    if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
-                }
+                if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
             }
         }
-
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_126 : PenTemplate //betrayal
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    zwingt einen feindlichen diener, seinen schaden benachbarten dienern zuzufügen.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

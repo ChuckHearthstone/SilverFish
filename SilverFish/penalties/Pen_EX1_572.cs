@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_572 : PenTemplate //ysera
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    zieht am ende eures zuges eine traumkarte.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }
