@@ -1,0 +1,50 @@
+// This File: _combo.txt
+//    Author: Sepefeets
+//   Version: 0.40 (11-Jan-16)
+//   History: 
+//			: [fix] Use more accurate board value estimates for penalties/bonuses
+//			: [add] more Competitive Spirit + Muster for Battle combos (avoid wasting coin if we draw into it later)
+//			: [rem] Dragons
+//			: [fix] Knife Juggler + Muster for Battle (play more liberally)
+//			: [add] Haunted Creeper + Knife Juggler
+//
+//			: [add] Knife Juggler + Reinforce
+//			: [fix] Muster for Battle
+//			: [fix] Knife Juggler + Muster for Battle
+//			: [add] The Coin + Shielded Minibot (Opener)
+//   Credits: Blackoak, Dre
+// Deck Name: SecretPaladin
+//      Hero: Paladin
+// Deck Type: Mid-Range (Control)
+
+// [Nudge] Equality (EX1_619) + Consecration (CS2_093)
+EX1_619,0;CS2_093,0;bonus:5;hero:pala
+// [Nudge] Knife Juggler (NEW1_019) + Muster for Battle (GVG_061) [tuning WIP]
+NEW1_019,15;GVG_061,30;bonus:30;hero:pala
+// [Nudge] Haunted Creeper (FP1_002) > Knife Juggler (NEW1_019)
+FP1_002,0;nxttrn;NEW1_019,15;bonusfirst:10;bonussecond:20;hero:pala
+
+// [Nudge] Reinforce(CS2_101)
+// 		[4] Murloc Knight (AT_076)
+AT_076,25;CS2_101,0;bonus:25;hero:pala
+// 		[5] Nexus-Champion Saraad (AT_127)
+AT_127,25;CS2_101,0;bonus:25;hero:pala
+// 		[5] Mukla's Champion (AT_090)
+AT_090,25;CS2_101,0;bonus:25;hero:pala
+//		[2] Knife Juggler (NEW1_019)
+NEW1_019,15;CS2_101,0;bonus:5;hero:pala
+
+
+// [Nudge] [0] The Coin (GAME_005) + [6] Mysterious Challenger (AT_079)
+GAME_005,5;AT_079,0;bonus:50;hero:pala
+
+// - OPENING HAND -------------------------------
+// [Combo] [1] Competitive Spirit (AT_073) > [0] The Coin (GAME_005) + [3] Muster for Battle (GVG_061) [good opener]
+AT_073,0;nxttrn;GAME_005,5;GVG_061,30;mana:1;bonusfirst:15;bonussecond:10;hero:pala
+// [Combo] [1] Competitive Spirit (AT_073) > [3] Muster for Battle (GVG_061) [muster if a CS was out for an empty board]
+AT_073,0;nxttrn;GVG_061,30;bonusfirst:0;bonussecond:25;hero:pala
+// [Combo] [1] Competitive Spirit (AT_073) + [3] Muster for Battle (GVG_061) [play both if we have mana]
+AT_073,0;GVG_061,30;bonus:30;hero:pala
+
+// [Nudge] [0] The Coin (GAME_005) + [2] Shielded Minibot (GVG_058)
+GAME_005,5;GVG_058,0;mana:1;bonus:10;hero:pala

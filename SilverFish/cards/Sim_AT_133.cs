@@ -12,20 +12,8 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-
-            //Random minion!
-
-
-            if (p.isServer)
-            {
-                //TODO
-                p.minionGetBuffed(own, 1, 1);
-        
-                return;
-            }
             //we assume we get the buff!
             p.minionGetBuffed(own, 1, 1);
         }
-
     }
 }

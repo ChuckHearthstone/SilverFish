@@ -16,12 +16,12 @@ namespace HREngine.Bots
 
                 if (p.ownMaxMana == 10)
                 {
-                    discardHand(p, ownplay);
+                    p.discardACard(ownplay, true);
                     p.drawACard(CardDB.cardIDEnum.CS2_013t, ownplay);
                 }
                 else
                 {
-                    discardHand(p, ownplay);
+                    p.discardACard(ownplay, true);
                     p.ownMaxMana = 10;
                 }
 
@@ -30,37 +30,16 @@ namespace HREngine.Bots
             {
                 if (p.enemyMaxMana == 10)
                 {
-                    discardHand(p, ownplay);
+                    p.discardACard(ownplay, true);
                     p.drawACard(CardDB.cardIDEnum.CS2_013t, ownplay);
                 }
                 else
                 {
-                    discardHand(p,ownplay);
+                    p.discardACard(ownplay, true);
                     p.enemyMaxMana = 10;
                 }
             }
             
         }
-
-        private void discardHand(Playfield p, bool own)
-        {
-            int anz = (own) ? p.owncards.Count : p.enemyAnzCards;
-            if (own)
-            {
-                p.owncards.Clear();
-            }
-            else
-            {
-                p.enemyAnzCards = 0;
-            }
-
-            for (int i = 0; i < anz; i++)
-            {
-                p.triggerACardWasDiscarded(own);
-            }
-        }
-
-
     }
-
 }

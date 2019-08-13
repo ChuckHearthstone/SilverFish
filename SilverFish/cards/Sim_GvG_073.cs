@@ -15,8 +15,7 @@ namespace HREngine.Bots
 
             p.minionGetDamageOrHeal(target, dmg);
 
-            if (ownplay) p.minionGetDamageOrHeal(p.enemyHero, dmg);
-            else p.minionGetDamageOrHeal(p.ownHero, dmg);
+            p.minionGetDamageOrHeal(ownplay ? p.enemyHero : p.ownHero, dmg);
         }
 
 

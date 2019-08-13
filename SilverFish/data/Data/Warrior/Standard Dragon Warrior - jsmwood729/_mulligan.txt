@@ -1,0 +1,137 @@
+// This File: _mulligan.txt
+// Author: jsmwood729
+// Version: 0.1 (July 2, 2016)
+// Deck Name: Dragon Warrior
+// Hero: Warrior
+// Deck Type: Aggro (Rush)
+
+
+// - ALL -------------------------
+
+// 1 x N'Zoth's First Mate
+hold;warrior;all;OG_312:1;
+// 1 x Fiery War Axe
+hold;warrior;all;CS2_106:1;
+// 1 x Frothing Berserker
+hold;warrior;all;EX1_604:1;
+// 1 x Sir Finley Mrrgglton
+hold;warrior;all;LOE_076:1;
+
+//DRUID ---------------------
+
+// 1 x Faerie Dragon
+hold;warrior;druid;NEW1_023:1;
+// 1 x Alexstrasza's Champion
+hold;warrior;druid;AT_071:1;
+// 1 x Frothing Berserker
+hold;warrior;druid;EX1_604:1;
+// 1 x Twilight Guardian
+hold;warrior;druid;AT_017:1;
+// 1 x Fiery War Axe
+hold;warrior;druid;CS2_106:1;
+
+//HUNTER ---------------------
+
+// 1 x Alexstrasza's Champion
+hold;warrior;hunter;AT_071:1;
+// 1 x Fiery War Axe
+hold;warrior;hunter;CS2_106:1;
+// 1 x Frothing Berserker
+hold;warrior;hunter;EX1_604:1;
+// 1 x Ravaging Ghoul
+hold;warrior;hunter;OG_149:1;
+// 1 x N'Zoth's First Mate
+hold;warrior;hunter;OG_312:1;
+
+//MAGE ------------------------
+
+// 1 x Fiery War Axe
+hold;warrior;mage;CS2_106:1;
+// 1 x Faerie Dragon
+hold;warrior;mage;NEW1_023:1;
+// Alexstrasza's Champion
+hold;warrior;mage;AT_071:1;
+// 1 x Kor'kron Elite
+hold;warrior;mage;NEW1_011:1;
+// 1 x Frothing Berserker
+hold;warrior;mage;EX1_604:1;
+
+// - PALADIN --------------------------------------
+
+// 1 x Fiery War Axe
+hold;warrior;pala;CS2_106:1
+// 1 x Faerie Dragon
+hold;warrior;pala;NEW1_023:1;
+// 1 x Frothing Berserker
+hold;warrior;pala;EX1_604:1;
+// 1 x Alexstrasza's Champion
+hold;warrior;pala;AT_071:1;
+// 1 x Sir Finley Mrrgglton
+hold;warrior;pala;LOE_076:1;
+
+// - PRIEST --------------------------------------
+
+// 1 x Sir Finley Mrrgglton
+hold;warrior;priest;LOE_076:1;
+// 1 x Twilight Guardian
+hold;warrior;priest;AT_017:1;
+// 1 x Azure Drake
+hold;warrior;priest;EX1_284:1;
+// 1 x Frothing Berserker
+hold;warrior;priest;EX1_604:1;
+// 1 x Faerie Dragon
+hold;warrior;priest;NEW1_023:1;
+// 1 x Alexstrasza's Champion
+hold;warrior;priest;AT_071:1;
+
+// - ROGUE --------------------------------------
+
+// 1 x Alexstrasza's Champion
+hold;warrior;thief;AT_071:1;
+// 1 x Blackwing Corruptor
+hold;warrior;thief;BRM_034:1;
+// 1 x Fiery War Axe
+hold;warrior;thief;CS2_106:1
+// 1 x Faerie Dragon
+hold;warrior;thief;NEW1_023:1;
+// 1 x Frothing Berserker
+hold;warrior;thief;EX1_604:1;
+
+// - SHAMAN --------------------------------------
+
+// 1 x Fiery War Axe
+hold;warrior;shaman;CS2_106:1
+// 1 x Alexstrasza's Champion
+hold;warrior;shaman;AT_071:1;
+// 1 x Blood to Ichor
+hold;warrior;shaman;OG_314:1;
+// 1 x Sir Finley Mrrgglton
+hold;warrior;shaman;LOE_076:1;
+// 1 x N'Zoth's First Mate
+hold;warrior;shaman;OG_312:1;
+
+// - WARLOCK --------------------------------------
+
+// 1 x Alexstrasza's Champion
+hold;warrior;warlock;AT_071:1;
+// 1 x Ravaging Ghoul
+hold;warrior;warlock;OG_149:1;
+// 1 x Frothing Berserker
+hold;warrior;warlock;EX1_604:1;
+// 1 x Faerie Dragon
+hold;warrior;warlock;NEW1_023:1;
+// 1 x Fiery War Axe
+hold;warrior;warlock;CS2_106:1
+
+// - WARRIOR --------------------------------------
+
+// 1 x Fiery War Axe
+hold;warrior;warrior;CS2_106:1
+// 1 x Frothing Berserker
+hold;warrior;warrior;EX1_604:1;
+// 1 x Twilight Guardian
+hold;warrior;warrior;AT_017:1;
+// 1 x Blackwing Corruptor
+hold;warrior;warrior;BRM_034:1;
+// 1 x Azure Drake
+hold;warrior;warrior;EX1_284:1;

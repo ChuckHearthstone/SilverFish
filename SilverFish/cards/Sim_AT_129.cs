@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
         public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL && target!=null && target.entitiyID == triggerEffectMinion.entitiyID)
+            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL && target!=null && target.entityID == triggerEffectMinion.entityID)
             {
                 triggerEffectMinion.divineshild = true;
             }

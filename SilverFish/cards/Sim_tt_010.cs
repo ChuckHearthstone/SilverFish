@@ -22,7 +22,7 @@ namespace HREngine.Bots
                 {
                     if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.cardName.spellbender)
                     {
-                        number = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
+                        number = p.ownMinions[p.ownMinions.Count - 1].entityID;
                     }
                 }
             }
@@ -35,7 +35,7 @@ namespace HREngine.Bots
                 {
                     if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardDB.cardName.spellbender)
                     {
-                        number = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
+                        number = p.enemyMinions[p.enemyMinions.Count - 1].entityID;
                     }
                 }
             }

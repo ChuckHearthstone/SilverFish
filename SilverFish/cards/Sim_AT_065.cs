@@ -9,7 +9,7 @@ namespace HREngine.Bots
 
         //Battlecry: If you have a minion with Taunt gain +1 Durability.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_034);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_065);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -6,29 +6,29 @@ namespace HREngine.Bots
 {
     class Sim_EX1_508 : SimTemplate//Grimscale Oracle
     {
+        //Your other Murlocs have +1 Attack.
+
         public override void onAuraStarts(Playfield p, Minion own)
         {
-            p.anzGrimscaleOracle++;
-            foreach (Minion m in p.ownMinions)
+            if (own.own) p.anzOwnGrimscaleOracle++;
+            else p.anzEnemyGrimscaleOracle++;
+
+            List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion m in temp)
             {
-                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, 1, 0);
-            }
-            foreach (Minion m in p.enemyMinions)
-            {
-                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, 1, 0);
+                if (m.handcard.card.race == TAG_RACE.MURLOC && own.entityID != m.entityID) p.minionGetBuffed(m, 1, 0);
             }
         }
 
         public override void onAuraEnds(Playfield p, Minion m)
         {
-            p.anzGrimscaleOracle--;
-            foreach (Minion mn in p.ownMinions)
+            if (m.own) p.anzOwnGrimscaleOracle--;
+            else p.anzEnemyGrimscaleOracle--;
+
+            List<Minion> temp = (m.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion mn in temp)
             {
-                if ((TAG_RACE)mn.handcard.card.race == TAG_RACE.MURLOC && mn.entitiyID != m.entitiyID) p.minionGetBuffed(m, -1, 0);
-            }
-            foreach (Minion mn in p.enemyMinions)
-            {
-                if ((TAG_RACE)mn.handcard.card.race == TAG_RACE.MURLOC && mn.entitiyID != m.entitiyID) p.minionGetBuffed(m, -1, 0);
+                if (mn.handcard.card.race == TAG_RACE.MURLOC && mn.entityID != m.entityID) p.minionGetBuffed(m, -1, 0);
             }
         }
     }

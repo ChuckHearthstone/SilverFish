@@ -19,7 +19,7 @@
 
     public class SecretItem
     {
-        public bool triggered = false;
+        public bool triggered;
 
         public bool canbeTriggeredWithAttackingHero = true;
         public bool canbeTriggeredWithAttackingMinion = true;
@@ -59,7 +59,10 @@
         public bool canBe_Trial = true;
         public bool canBe_Dart = true;//hunter
 
-        public int entityId = 0;
+        // Kara
+        public bool canBe_cattrick = true;
+
+        public int entityId;
 
         public SecretItem()
         {
@@ -98,6 +101,9 @@
 
             this.canBe_Trial = sec.canBe_Trial;
             this.canBe_Dart = sec.canBe_Dart;
+
+            this.canBe_cattrick = sec.canBe_cattrick;
+
 
             this.entityId = sec.entityId;
 
@@ -156,6 +162,15 @@
             {
                 this.canBe_Trial = false;
                 this.canBe_Dart = false;
+            }
+
+            try
+            {
+                this.canBe_cattrick = (canbe[22] == '1');
+            }
+            catch
+            {
+                this.canBe_cattrick = false;
             }
 
             this.updateCanBeTriggered();
@@ -220,6 +235,7 @@
         public void usedTrigger_SpellIsPlayed(bool minionIsTarget)
         {
             this.canBe_counterspell = false;
+            this.canBe_cattrick = false;
             if (minionIsTarget) this.canBe_spellbender = false;
             updateCanBeTriggered();
         }
@@ -283,8 +299,9 @@
             retval += "" + ((canBe_competivespirit) ? "1" : "0");
 
             retval += "" + ((canBe_Trial) ? "1" : "0");
-
-            retval += "" + ((this.canBe_Dart) ? "1" : "0");
+            retval += "" + ((canBe_Dart) ? "1" : "0");
+            
+            retval += "" + ((canBe_cattrick) ? "1" : "0");
 
             return retval + ",";
         }
@@ -297,43 +314,42 @@
             result = result && this.canBe_mirrorentity == s.canBe_mirrorentity && this.canBe_missdirection == s.canBe_missdirection && this.canBe_noblesacrifice == s.canBe_noblesacrifice && this.canBe_redemption == s.canBe_redemption;
             result = result && this.canBe_repentance == s.canBe_repentance && this.canBe_snaketrap == s.canBe_snaketrap && this.canBe_snipe == s.canBe_snipe && this.canBe_spellbender == s.canBe_spellbender && this.canBe_vaporize == s.canBe_vaporize;
             result = result && this.canBe_effigy == s.canBe_effigy && this.canBe_beartrap == s.canBe_beartrap && this.canBe_competivespirit == s.canBe_competivespirit;
-            result = result && this.canBe_Trial == s.canBe_Trial;
-
-            result = result && this.canBe_Dart == s.canBe_Dart;
+            result = result && this.canBe_Trial == s.canBe_Trial && this.canBe_Dart == s.canBe_Dart;
+            result = result && this.canBe_cattrick == s.canBe_cattrick;
 
             return result;
         }
 
     }
 
-    public class Probabilitymaker
+    public sealed class Probabilitymaker
     {
         public bool hasDeck = false;
 
-        public Dictionary<CardDB.cardIDEnum, int> ownCardsPlayed = new Dictionary<CardDB.cardIDEnum, int>();
-        public Dictionary<CardDB.cardIDEnum, int> enemyCardsPlayed = new Dictionary<CardDB.cardIDEnum, int>();
-        List<CardDB.Card> ownDeckGuessed = new List<CardDB.Card>();
-        List<CardDB.Card> enemyDeckGuessed = new List<CardDB.Card>();
-        List<GraveYardItem> graveyard = new List<GraveYardItem>();
+        public Dictionary<CardDB.cardIDEnum, int> ownGraveyard = new Dictionary<CardDB.cardIDEnum, int>();
+        public Dictionary<CardDB.cardIDEnum, int> enemyGraveyard = new Dictionary<CardDB.cardIDEnum, int>();
+        List<CardDB.Card> enemyDeckGuessed = new List<CardDB.Card>(); //what the enemy has played already
         public List<GraveYardItem> turngraveyard = new List<GraveYardItem>();//MOBS only
-        List<GraveYardItem> graveyartTillTurnStart = new List<GraveYardItem>();
+        List<GraveYardItem> graveyardTillTurnStart = new List<GraveYardItem>();
 
         public List<SecretItem> enemySecrets = new List<SecretItem>();
 
-        public int ownGraveYardCommonAttack = 0;
+        public int ownGraveYardCommonAttack;
         public int ownGraveYardCommonHP = 0;
-        public int ownGraveYardCommonTaunt = 0;
+        public int ownGraveYardCommonTaunt;
 
-        public int enemyGraveYardCommonAttack = 0;
-        public int enemyGraveYardCommonHP = 0;
-        public int enemyGraveYardCommonTaunt = 0;
+        public int enemyGraveYardCommonAttack;
+        public int enemyGraveYardCommonHP;
+        public int enemyGraveYardCommonTaunt;
 
-        public int anzMinionSinGrave = 0;
+        public int anzMinionSinGrave;
 
-        public bool feugenDead = false;
-        public bool stalaggDead = false;
+        public bool feugenDead;
+        public bool stalaggDead;
+
 
         private static Probabilitymaker instance;
+
         public static Probabilitymaker Instance
         {
             get
@@ -342,19 +358,40 @@
             }
         }
 
-        private Probabilitymaker()
-        {
+        private Probabilitymaker() { }
+        
 
+        public void setOwnCards(List<CardDB.cardIDEnum> newGraveyardCards)
+        {
+            updateGraveyard(newGraveyardCards, ownGraveyard);
         }
 
-        public void setOwnCards(List<CardDB.cardIDEnum> list)
+        public void setEnemyCards(List<CardDB.cardIDEnum> newGraveyardCards)
         {
-            setupDeck(list, ownDeckGuessed, ownCardsPlayed);
+            updateGraveyard(newGraveyardCards, enemyGraveyard);
+            enemyDeckGuessed.Clear();
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in enemyGraveyard)
+            {
+                if (kvp.Value == 1) enemyDeckGuessed.Add(CardDB.Instance.getCardDataFromID(kvp.Key));
+            }
         }
 
-        public void setEnemyCards(List<CardDB.cardIDEnum> list)
+        private void updateGraveyard(List<CardDB.cardIDEnum> newGraveyardCards, Dictionary<CardDB.cardIDEnum, int> knownGraveyardCards)
         {
-            setupDeck(list, enemyDeckGuessed, enemyCardsPlayed);
+            knownGraveyardCards.Clear();
+            foreach (CardDB.cardIDEnum crdidnm in newGraveyardCards)
+            {
+                if (crdidnm == CardDB.cardIDEnum.GAME_005) continue; //(im sure, he has no coins in his deck :D)
+                if (knownGraveyardCards.ContainsKey(crdidnm))
+                {
+                    if (CardDB.Instance.getCardDataFromID(crdidnm).rarity != 5) knownGraveyardCards[crdidnm]++; //you cant include legendaries more than once!
+                }
+                else
+                {
+                    knownGraveyardCards.Add(crdidnm, 1);
+                    //Helpfunctions.Instance.logg("updateGraveyard gy: " + crdidnm);
+                }
+            }
         }
 
         public string printTurnGraveYard(bool writetobuffer = false, bool dontwrite=false)
@@ -424,12 +461,10 @@
 
         public void setGraveYard(List<GraveYardItem> list, bool turnStart)
         {
-            graveyard.Clear();
-            graveyard.AddRange(list);
             if (turnStart)
             {
-                this.graveyartTillTurnStart.Clear();
-                this.graveyartTillTurnStart.AddRange(list);
+                this.graveyardTillTurnStart.Clear();
+                this.graveyardTillTurnStart.AddRange(list);
             }
 
             this.stalaggDead = false;
@@ -438,19 +473,12 @@
 
             foreach (GraveYardItem en in list)
             {
-                if (en.cardid == CardDB.cardIDEnum.FP1_015)
-                {
-                    this.feugenDead = true;
-                }
-
-                if (en.cardid == CardDB.cardIDEnum.FP1_014)
-                {
-                    this.stalaggDead = true;
-                }
+                if (en.cardid == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
+                if (en.cardid == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
 
                 bool found = false;
 
-                foreach (GraveYardItem gyi in this.graveyartTillTurnStart)
+                foreach (GraveYardItem gyi in this.graveyardTillTurnStart)
                 {
                     if (en.entity == gyi.entity)
                     {
@@ -467,8 +495,6 @@
                     }
                 }
             }
-
-
         }
 
         public void setTurnGraveYard(List<GraveYardItem> list)
@@ -477,40 +503,11 @@
             this.turngraveyard.AddRange(list);
         }
 
-        private void setupDeck(List<CardDB.cardIDEnum> cardsPlayed, List<CardDB.Card> deckGuessed, Dictionary<CardDB.cardIDEnum, int> knownCards)
-        {
-            deckGuessed.Clear();
-            knownCards.Clear();
-            foreach (CardDB.cardIDEnum crdidnm in cardsPlayed)
-            {
-                if (crdidnm == CardDB.cardIDEnum.GAME_005) continue; //(im sure, he has no coins in his deck :D)
-                if (knownCards.ContainsKey(crdidnm))
-                {
-                    knownCards[crdidnm]++;
-                }
-                else
-                {
-                    if (CardDB.Instance.getCardDataFromID(crdidnm).rarity == 5)
-                    {
-                        //you cant own rare ones more than once!
-                        knownCards.Add(crdidnm, 2);
-                        continue;
-                    }
-                    knownCards.Add(crdidnm, 1);
-                }
-            }
-
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in knownCards)
-            {
-                if (kvp.Value == 1) deckGuessed.Add(CardDB.Instance.getCardDataFromID(kvp.Key));
-            }
-        }
-
         public bool hasEnemyThisCardInDeck(CardDB.cardIDEnum cardid)
         {
-            if (this.enemyCardsPlayed.ContainsKey(cardid))
+            if (this.enemyGraveyard.ContainsKey(cardid))
             {
-                if (this.enemyCardsPlayed[cardid] == 1)
+                if (this.enemyGraveyard[cardid] == 1)
                 {
 
                     return true;
@@ -526,9 +523,9 @@
             CardDB.Card c = CardDB.Instance.getCardDataFromID(cardid);
             if (c.rarity == 5) ret = 1;//you can have only one rare;
 
-            if (this.enemyCardsPlayed.ContainsKey(cardid))
+            if (this.enemyGraveyard.ContainsKey(cardid))
             {
-                if (this.enemyCardsPlayed[cardid] == 1)
+                if (this.enemyGraveyard[cardid] == 1)
                 {
 
                     return 1;
@@ -542,12 +539,12 @@
         public string printGraveyards(bool writetobuffer = false, bool dontwrite = false)
         {
             string og = "og: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.ownCardsPlayed)
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.ownGraveyard)
             {
                 og += (int)e.Key + "," + e.Value + ";";
             }
             string eg = "eg: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.enemyCardsPlayed)
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.enemyGraveyard)
             {
                 eg += (int)e.Key + "," + e.Value + ";";
             }
@@ -566,8 +563,8 @@
 
         public void readGraveyards(string owngrave, string enemygrave)
         {
-            this.ownCardsPlayed.Clear();
-            this.enemyCardsPlayed.Clear();
+            this.ownGraveyard.Clear();
+            this.enemyGraveyard.Clear();
             string temp = owngrave.Replace("og: ", "");
             this.stalaggDead = false;
             this.feugenDead = false;
@@ -602,11 +599,8 @@
 
                     }
                 }
-                this.ownCardsPlayed.Add(cdbe, anz);
-                if (cdbe == CardDB.cardIDEnum.FP1_015)
-                {
-                    this.feugenDead = true;
-                }
+                this.ownGraveyard.Add(cdbe, anz);
+                if (cdbe == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
                 if (cdbe == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
 
                 CardDB.Card tempcard = CardDB.Instance.getCardDataFromID(cdbe);
@@ -625,7 +619,7 @@
             if(tempamount>=1)
             {
             this.ownGraveYardCommonAttack =  (int)(tempattack / tempamount);
-            this.ownGraveYardCommonAttack = (int)(temphp / tempamount);
+            this.ownGraveYardCommonHP = (int)(temphp / tempamount);
             if (2 * temptaunt >= tempamount) this.ownGraveYardCommonTaunt = 1;
             }
 
@@ -663,7 +657,7 @@
                     }
                 }
 
-                this.enemyCardsPlayed.Add(cdbe, anz);
+                this.enemyGraveyard.Add(cdbe, anz);
                 if (cdbe == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
                 if (cdbe == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
 
@@ -698,9 +692,9 @@
             int cardsremaining = this.anzCardsInDeck(cardid);
             if (cardsremaining == 0) return 0;
 
-            foreach (CardDB.cardIDEnum playedcard in this.enemyCardsPlayed.Keys)
+            foreach (CardDB.cardIDEnum playedcard in this.enemyGraveyard.Keys)
             {
-                handsize += this.enemyCardsPlayed[playedcard];
+                handsize += this.enemyGraveyard[playedcard];
                 if (CardDB.Instance.getCardDataFromID(playedcard).rarity == 5)
                     handsize -= 1;  // don't doublecount legendaries like the dictionary does
             }
@@ -720,15 +714,6 @@
             retval = Math.Min(retval, 1.0);
 
             return (int)(100.0 * retval);
-        }
-
-        public bool hasCardinGraveyard(CardDB.cardIDEnum cardid)
-        {
-            foreach (GraveYardItem gyi in this.graveyard)
-            {
-                if (gyi.cardid == cardid) return true;
-            }
-            return false;
         }
 
         public void getEnemySecretGuesses(List<int> enemySecretIds, HeroEnum enemyHeroName)
@@ -780,39 +765,44 @@
                 
 
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_554) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_554] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_554) && enemyGraveyard[CardDB.cardIDEnum.EX1_554] >= 2)
                 {
                     sec.canBe_snaketrap = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_609) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_609] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_609) && enemyGraveyard[CardDB.cardIDEnum.EX1_609] >= 2)
                 {
                     sec.canBe_snipe = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_610) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_610] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_610) && enemyGraveyard[CardDB.cardIDEnum.EX1_610] >= 2)
                 {
                     sec.canBe_explosive = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_611) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_611] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_611) && enemyGraveyard[CardDB.cardIDEnum.EX1_611] >= 2)
                 {
                     sec.canBe_freezing = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_533) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_533] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_533) && enemyGraveyard[CardDB.cardIDEnum.EX1_533] >= 2)
                 {
                     sec.canBe_missdirection = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.AT_060) && enemyCardsPlayed[CardDB.cardIDEnum.AT_060] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_060) && enemyGraveyard[CardDB.cardIDEnum.AT_060] >= 2)
                 {
                     sec.canBe_beartrap = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.LOE_021) && enemyCardsPlayed[CardDB.cardIDEnum.LOE_021] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.LOE_021) && enemyGraveyard[CardDB.cardIDEnum.LOE_021] >= 2)
                 {
                     sec.canBe_Dart = false;
+                }
+
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.KAR_004) && enemyGraveyard[CardDB.cardIDEnum.KAR_004] >= 2)
+                {
+                    sec.canBe_cattrick = false;
                 }
             }
 
@@ -836,42 +826,44 @@
                 sec.canBe_Trial = false;
                 sec.canBe_Dart = false;
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_287) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_287] >= 2)
+                sec.canBe_cattrick = false;
+
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_287) && enemyGraveyard[CardDB.cardIDEnum.EX1_287] >= 2)
                 {
                     sec.canBe_counterspell = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_289) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_289] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_289) && enemyGraveyard[CardDB.cardIDEnum.EX1_289] >= 2)
                 {
                     sec.canBe_icebarrier = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_295) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_295] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_295) && enemyGraveyard[CardDB.cardIDEnum.EX1_295] >= 2)
                 {
                     sec.canBe_iceblock = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_294) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_294] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_294) && enemyGraveyard[CardDB.cardIDEnum.EX1_294] >= 2)
                 {
                     sec.canBe_mirrorentity = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.tt_010) && enemyCardsPlayed[CardDB.cardIDEnum.tt_010] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.tt_010) && enemyGraveyard[CardDB.cardIDEnum.tt_010] >= 2)
                 {
                     sec.canBe_spellbender = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_594) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_594] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_594) && enemyGraveyard[CardDB.cardIDEnum.EX1_594] >= 2)
                 {
                     sec.canBe_vaporize = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.FP1_018) && enemyCardsPlayed[CardDB.cardIDEnum.FP1_018] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.FP1_018) && enemyGraveyard[CardDB.cardIDEnum.FP1_018] >= 2)
                 {
                     sec.canBe_duplicate = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.AT_002) && enemyCardsPlayed[CardDB.cardIDEnum.AT_002] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_002) && enemyGraveyard[CardDB.cardIDEnum.AT_002] >= 2)
                 {
                     sec.canBe_effigy = false;
                 }
@@ -897,39 +889,40 @@
                 sec.canBe_beartrap = false;
                 sec.canBe_Dart = false;
 
+                sec.canBe_cattrick = false;
 
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_132) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_132] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_132) && enemyGraveyard[CardDB.cardIDEnum.EX1_132] >= 2)
                 {
                     sec.canBe_eyeforaneye = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_130) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_130] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_130) && enemyGraveyard[CardDB.cardIDEnum.EX1_130] >= 2)
                 {
                     sec.canBe_noblesacrifice = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_136) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_136] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_136) && enemyGraveyard[CardDB.cardIDEnum.EX1_136] >= 2)
                 {
                     sec.canBe_redemption = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.EX1_379) && enemyCardsPlayed[CardDB.cardIDEnum.EX1_379] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_379) && enemyGraveyard[CardDB.cardIDEnum.EX1_379] >= 2)
                 {
                     sec.canBe_repentance = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.FP1_020) && enemyCardsPlayed[CardDB.cardIDEnum.FP1_020] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.FP1_020) && enemyGraveyard[CardDB.cardIDEnum.FP1_020] >= 2)
                 {
                     sec.canBe_avenge = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.AT_073) && enemyCardsPlayed[CardDB.cardIDEnum.AT_073] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_073) && enemyGraveyard[CardDB.cardIDEnum.AT_073] >= 2)
                 {
                     sec.canBe_competivespirit = false;
                 }
 
-                if (enemyCardsPlayed.ContainsKey(CardDB.cardIDEnum.LOE_027) && enemyCardsPlayed[CardDB.cardIDEnum.LOE_027] >= 2)
+                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.LOE_027) && enemyGraveyard[CardDB.cardIDEnum.LOE_027] >= 2)
                 {
                     sec.canBe_Trial = false;
                 }
@@ -1038,25 +1031,25 @@
                     if (hcard.card.type == CardDB.cardtype.SPELL) usedspell = true;
                     int entityOfLastAffected = Silverfish.getCardTarget(hcard.entity);
                     if (entityOfLastAffected >= 1) lastEffectedIsMinion = 2;
-                    if (entityOfLastAffected == p.enemyHero.entitiyID) lastEffectedIsMinion = 1;
+                    if (entityOfLastAffected == p.enemyHero.entityID) lastEffectedIsMinion = 1;
                 }
 
                 if (hcard != null && hcard.card.type == CardDB.cardtype.MOB)
                 {
                     int entityOfLastAffected = Silverfish.getLastAffected(hcard.entity);
                     if (entityOfLastAffected >= 1) lastEffectedIsMinion = 2;
-                    if (entityOfLastAffected == p.enemyHero.entitiyID && (p.enemyHero.Hp < old.enemyHero.Hp || p.enemyHero.immune)) lastEffectedIsMinion = 1;
+                    if (entityOfLastAffected == p.enemyHero.entityID && (p.enemyHero.Hp < old.enemyHero.Hp || p.enemyHero.immune)) lastEffectedIsMinion = 1;
 
                     entityOfLastAffected = Silverfish.getCardTarget(hcard.entity);
                     if (entityOfLastAffected >= 1)
                     {
                         lastEffectedIsMinion = 2;
-                        if (entityOfLastAffected == p.enemyHero.entitiyID) lastEffectedIsMinion = 1;
+                        if (entityOfLastAffected == p.enemyHero.entityID) lastEffectedIsMinion = 1;
                     }
                 }
             }
 
-            if (p.mobsplayedThisTurn > old.mobsplayedThisTurn)
+            if (p.mobsPlayedThisTurn > old.mobsPlayedThisTurn)
             {
                 playedMob = true;
             }
@@ -1076,7 +1069,7 @@
             }
 
             //used heropower?
-            if (old.own_TIMES_HERO_POWER_USED_THIS_GAME < p.own_TIMES_HERO_POWER_USED_THIS_GAME)
+            if (old.ownHeroPowerUses < p.ownHeroPowerUses)
             {
                 usedHeropower = true;
             }

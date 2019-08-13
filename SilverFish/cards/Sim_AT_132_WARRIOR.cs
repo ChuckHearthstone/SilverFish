@@ -11,15 +11,7 @@ namespace HREngine.Bots
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            if (ownplay)
-            {
-                p.minionGetArmor(p.ownHero, 4);
-            }
-            else
-            {
-                p.minionGetArmor(p.enemyHero, 4);
-            }
+		    p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 4);
 		}
-
 	}
 }

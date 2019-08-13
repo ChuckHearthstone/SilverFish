@@ -1,0 +1,86 @@
+// This File: _mulligan.txt
+// Author: Dre
+// Version: 1.1 (24-jan-2017)
+// Deck Name: Jade Aggro Shaman
+// Hero: Shaman
+// Deck Type: Aggro (Rush)
+
+// - D E C K --------------------------------
+
+// [1] Lightning Bolt x2 (EX1_238)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [1] Southsea Deckhand x2 (CS2_146)
+// [1] Spirit Claws x2 (KAR_063)
+// [1] Tunnel Trogg ×2 (LOE_018)
+// [2] Bloodmage Thalnos 1x (EX1_012)
+// [2] Flametongue Totem ×2 (EX1_565)
+// [2] Jade Claws x2 (CFM_717)
+// [2] Maelstrom Portal x1 (KAR_073)
+// [2] Totem Golem ×2 (AT_052)
+// [3] Feral Spirit x2 (EX1_248)
+// [3] Lava Burst x2 (EX1_241)
+// [4] Flamewreathed Faceless x2 (OG_024)
+// [4] Jade Lightning x2 (CFM_707)
+// [5] Azure Drake x2 (EX1_284)
+// [6] Aya Blackpaw x1 (CFM_902)
+
+// - A L L --------------------------------------
+// 1-DROP
+// Spirit Claws:1
+hold;shaman;all;KAR_063
+// Tunnel Trogg
+hold;shaman;all;LOE_018
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// Jade Claws:1
+hold;shaman;all;CFM_717
+// 1x Lightning Bolt + Tunnel Trogg
+hold;shaman;all;EX1_238:1:LOE_018
+
+// 2-DROP
+// 1x Bloodmage Thalnos + Spirit Claws
+hold;shaman;all;EX1_012:1:KAR_063
+// 1x Totem Golem
+hold;shaman;all;AT_052:1
+// 2x Totem Golem + 1-Drop + coin
+hold;shaman;all;AT_052:2:LOE_018;coin
+// 1x Flametongue Totem + 2x Tunnel Trogg + coin
+hold;shaman;all;EX1_565:1:LOE_018,2,2;coin 
+// 1x Flametongue Totem + Small-Time Buccaneer
+hold;shaman;all;EX1_565:1:CFM_325
+
+// 3-DROP
+// 1x Feral Spirit + Tunnel Trogg + coin
+hold;shaman;all;EX1_248:1:LOE_018;coin
+// Discard Feral spirit when you have Totem Golem and no coin
+discard;shaman;all;EX1_248:2:AT_052;nocoin
+
+
+// - D R U I D ----------------------------------
+
+// - H U N T E R --------------------------------
+// 2-DROP
+// Maelstrom Portal
+hold;shaman;hunter;KAR_073:1
+
+// - M A G E ------------------------------------
+
+// - P A L A D I N ------------------------------
+
+// - P R I E S T --------------------------------
+
+// - R O G U E ----------------------------------
+
+// - S H A M A N --------------------------------
+// 2-DROP
+// Maelstrom Portal
+hold;shaman;shaman;KAR_073:1
+
+// - W A R L O C K ------------------------------
+
+// - W A R R I O R ------------------------------
+// 2-DROP
+// Maelstrom Portal
+hold;shaman;warrior;KAR_073:1
+

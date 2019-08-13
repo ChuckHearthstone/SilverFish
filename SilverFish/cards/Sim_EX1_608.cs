@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (own.own)
             {
-                p.anzOwnsorcerersapprentice++;
+                p.anzOwnSorcerersApprentice++;
             }
             else
             {
@@ -26,7 +26,7 @@ namespace HREngine.Bots
         {
             if (own.own)
             {
-                p.anzOwnsorcerersapprentice--;
+                p.anzOwnSorcerersApprentice--;
             }
             else
             {

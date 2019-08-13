@@ -1,0 +1,28 @@
+// This File: settings.txt
+// Author: TheRandomOne
+// Version: 0.1 (28-Dec-16)
+// Deck Name: Pirate Shammy
+// Hero: Shaman
+// Deck Type: Aggro
+
+enfacehp = 30;
+maxwide = 7000;
+twotsamount = 1400;
+simEnemySecondTurn = true;
+playarround = false;
+playaroundprob = 50;
+playaroundprob2 = 80;
+enemyTurnMaxWide = 40;
+enemyTurnMaxWideSecondTime = 280;
+enemySecondTurnMaxWide = 40;
+nextTurnDeep = 6;
+nextTurnMaxWide = 28;
+nextTurnTotalBoards = 280;
+useSecretsPlayArround = false;
+alpha = 50;
+simulatePlacement = true;
+useExternalProcess = true;
+passiveWaiting = false;
+behave = face;
+concedeOnBadBoard = false;
+speed = false; 

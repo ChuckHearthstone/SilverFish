@@ -7,7 +7,6 @@
     {
         None,
         druid,
-        hogger,
         hunter,
         priest,
         warlock,
@@ -17,76 +16,82 @@
         shaman,
         mage,
         lordjaraxxus,
-        ragnarosthefirelord
+        ragnarosthefirelord,
+        hogger,
+        all
     }
 
-    public class Hrtprozis
+    public sealed class Hrtprozis
     {
+        public string deckName = "";
 
-        public int enemyCursedCardsinHand = 0;
-        public int ownFenciCoaches=0;
-        public int ownSaboteur=0;
-        public int enemySaboteur=0;
+        public int enemyCursedCardsinHand;
+        public int ownFenciCoaches;
+        public int ownSaboteur;
+        public int enemySaboteur;
 
         public int attackFaceHp = 15;
-        public int ownHeroFatigue = 0;
+        public int ownHeroFatigue;
         public int ownDeckSize = 30;
         public int enemyDeckSize = 30;
-        public int enemyHeroFatigue = 0;
+        public int enemyHeroFatigue;
 
         public int ownHeroEntity = -1;
         public int enemyHeroEntitiy = -1;
         public DateTime roundstart = DateTime.Now;
-        public int currentMana = 0;
+        public int currentMana;
 
         public int heroHp = 30, enemyHp = 30;
-        public int heroAtk = 0, enemyAtk = 0;
-        public int heroDefence = 0, enemyDefence = 0;
-        public bool ownheroisread = false;
-        public int ownHeroNumAttacksThisTurn = 0;
-        public bool ownHeroWindfury = false;
-        public bool herofrozen = false;
-        public bool enemyfrozen = false;
+        public int heroAtk, enemyAtk;
+        public int heroDefence, enemyDefence;
+        public bool ownheroisread;
+        public int ownHeroNumAttacksThisTurn;
+        public bool ownHeroWindfury;
+        public bool herofrozen;
+        public bool enemyfrozen;
 
         public List<CardDB.cardIDEnum> ownSecretList = new List<CardDB.cardIDEnum>();
-        public int enemySecretCount = 0;
+        public int enemySecretCount;
 
+        public Dictionary<CardDB.cardIDEnum, int> startDeck = new Dictionary<CardDB.cardIDEnum, int>();
+        public Dictionary<CardDB.cardIDEnum, int> turnDeck = new Dictionary<CardDB.cardIDEnum, int>();
+        public bool noDuplicates = false;
 
 
         public HeroEnum heroname = HeroEnum.druid, enemyHeroname = HeroEnum.druid;
         public CardDB.Card heroAbility;
-        public bool ownAbilityisReady = false;
+        public bool ownAbilityisReady;
         public CardDB.Card enemyAbility;
-        public int numOptionsPlayedThisTurn = 0;
-        public int numMinionsPlayedThisTurn = 0;
+        public int numOptionsPlayedThisTurn;
+        public int numMinionsPlayedThisTurn;
 
-        public int heroPowerUsesThisTurn = 0;
-        public int ownHeroPowerUsesThisGame = 0;
-        public int enemyHeroPowerUsesThisGame = 0;
-        public int lockAndLoads = 0;
+        public int heroPowerUsesThisTurn;
+        public int ownHeroPowerUsesThisGame;
+        public int enemyHeroPowerUsesThisGame;
+        public int lockAndLoads;
 
-        public int numberMinionsDiedThisTurn = 0;
+        public int numberMinionsDiedThisTurn;
         
 
-        public int cardsPlayedThisTurn = 0;
-        public int owedRecall = 0;
-        public int ownCurrentRecall = 0;
+        public int cardsPlayedThisTurn;
+        public int owedRecall;
+        public int ownCurrentRecall;
         public int enemyRecall;
 
-        public int ownMaxMana = 0;
-        public int enemyMaxMana = 0;
+        public int ownMaxMana;
+        public int enemyMaxMana;
 
-        public int enemyWeaponDurability = 0;
-        public int enemyWeaponAttack = 0;
+        public int enemyWeaponDurability;
+        public int enemyWeaponAttack;
         public CardDB.cardName enemyHeroWeapon = CardDB.cardName.unknown;
 
-        public int heroWeaponDurability = 0;
-        public int heroWeaponAttack = 0;
+        public int heroWeaponDurability;
+        public int heroWeaponAttack;
         public CardDB.cardName ownHeroWeapon = CardDB.cardName.unknown;
 
-        public bool heroImmuneToDamageWhileAttacking = false;
-        public bool heroImmune = false;
-        public bool enemyHeroImmune = false;
+        public bool heroImmuneToDamageWhileAttacking;
+        public bool heroImmune;
+        public bool enemyHeroImmune;
 
 
         public List<Minion> ownMinions = new List<Minion>();
@@ -94,45 +99,41 @@
         public Minion ownHero = new Minion();
         public Minion enemyHero = new Minion();
 
-        public int ownDragonConsort = 0;
-        public int enemyDragonConsort = 0;
-        public int ownLoatheb = 0;
-        public int enemyLoatheb = 0;
-        public int ownMillhouse=0;
-        public int enemyMillhouse = 0;
-        public int ownKirinTorEffect = 0;
-        public int ownPreparation = 0;
+        public int anzOgOwnCThunHpBonus;
+        public int anzOgOwnCThunAngrBonus;
+        public int anzOgOwnCThunTaunt;
+        public int anzOwnJadeGolem;
+        public int anzEnemyJadeGolem;
+
+        public int ownDragonConsort;
+        public int enemyDragonConsort;
+        public int ownLoatheb;
+        public int enemyLoatheb;
+        public int ownMillhouse;
+        public int enemyMillhouse;
+        public int nextSecretThisTurnCost0;
+        public int ownPreparation;
 
         Helpfunctions help = Helpfunctions.Instance;
         //Imagecomparer icom = Imagecomparer.Instance;
         //HrtNumbers hrtnumbers = HrtNumbers.Instance;
         CardDB cdb = CardDB.Instance;
 
-        private int ownPlayerController = 0;
+        private int ownPlayerController;
+        
+        
+        private static readonly Lazy<Hrtprozis> lazy =
+            new Lazy<Hrtprozis>(() => new Hrtprozis());
 
-        private static Hrtprozis instance;
+        public static Hrtprozis Instance { get { return lazy.Value; } }
 
-        public static Hrtprozis Instance
-        {
-            get
-            {
-                return instance ?? (instance = new Hrtprozis());
-            }
-        }
+        private Hrtprozis() {}
 
-
-
-        private Hrtprozis()
-        {
-        }
 
         public void setAttackFaceHP(int hp)
         {
             this.attackFaceHp = hp;
         }
-
-
-
 
         public void clearAll()
         {
@@ -174,9 +175,52 @@
             ownCurrentRecall = 0;
             this.ownHeroWeapon = CardDB.cardName.unknown;
             this.enemyHeroWeapon = CardDB.cardName.unknown;
-
+            noDuplicates = false;
         }
 
+        public void clearDecks()
+        {
+            startDeck.Clear();
+            turnDeck.Clear();
+        }
+
+        public void addCardToDecks(CardDB.cardIDEnum card, int num)
+        {
+            startDeck.Add(card, num);
+            turnDeck.Add(card, num);
+        }
+
+        public void setTurnDeck(string td)
+        {
+            turnDeck.Clear();
+            string temp = td.Replace("td: ", "");
+            foreach (string s in temp.Split(';'))
+            {
+                string ss = s.Replace(" ", "");
+                if (ss == "" || ss == " ") continue;
+                string[] pair = ss.Split(',');
+                CardDB.cardIDEnum card = CardDB.Instance.cardIdstringToEnum(pair[0]);
+                int num = 1;
+                if (pair.Length > 1) num = Convert.ToInt32(pair[1]);
+
+                turnDeck.Add(card, num);
+            }
+        }
+
+        public void setDeckName(string deckname)
+        {
+            this.deckName = deckname;
+        }
+
+        public void setHeroName(string heron)
+        {
+            this.heroname = this.heroNametoEnum(heron);
+        }
+
+        public void setEnemyHeroName(string heron)
+        {
+            this.enemyHeroname = this.heroNametoEnum(heron);
+        }
 
         public void setOwnPlayer(int player)
         {
@@ -188,173 +232,156 @@
             return this.ownPlayerController;
         }
 
+        public void updateJadeGolemsInfo(int anzOwnJG, int anzEmemyJG)
+        {
+            anzOwnJadeGolem = anzOwnJG;
+            anzEnemyJadeGolem = anzEmemyJG;
+        }
+
         public string heroIDtoName(string s)
         {
-            string retval = "druid";
+            switch (s) //keep 1 extra of each for future proofing
+            {
+                case "HERO_01": return "warrior";
+                case "HERO_01a": return "warrior";
+                case "HERO_01b": return "warrior";
+                case "HERO_02": return "shaman";
+                case "HERO_02a": return "shaman";
+                case "HERO_02b": return "shaman";
+                case "HERO_03": return "thief";
+                case "HERO_03a": return "thief";
+                case "HERO_04": return "pala";
+                case "HERO_04a": return "pala";
+                case "HERO_04b": return "pala";
+                case "HERO_05": return "hunter";
+                case "HERO_05a": return "hunter";
+                case "HERO_05b": return "hunter";
+                case "HERO_06": return "druid";
+                case "HERO_06a": return "druid";
+                case "HERO_07": return "warlock";
+                case "HERO_07a": return "warlock";
+                case "HERO_08": return "mage";
+                case "HERO_08a": return "mage";
+                case "HERO_08b": return "mage";
+                case "HERO_08c": return "mage";
+                case "HERO_09": return "priest";
+                case "HERO_09a": return "priest";
+                case "HERO_09b": return "priest";
+                case "EX1_323h": return "lordjaraxxus";
+                case "BRM_027h": return "ragnarosthefirelord";
+                case "XXX_040": return "hogger";
+                default:
+                    string retval = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(s)).name.ToString();
+                    return retval;
+            }
+        }
 
-            if (s == "XXX_040")
+        // for class/deck mulligan paths
+        public string heroEnumtoCommonName(HeroEnum he)
+        {
+            switch (he)
             {
-                retval = "hogger";
+                case HeroEnum.druid: return "Druid";
+                case HeroEnum.hunter: return "Hunter";
+                case HeroEnum.mage: return "Mage";
+                case HeroEnum.pala: return "Paladin";
+                case HeroEnum.priest: return "Priest";
+                case HeroEnum.shaman: return "Shaman";
+                case HeroEnum.thief: return "Rogue";
+                case HeroEnum.warlock: return "Warlock";
+                case HeroEnum.warrior: return "Warrior";
+                default: return "none";
             }
-            if (s == "HERO_05" || s == "HERO_05a")
-            {
-                retval = "hunter";
-            }
-            if (s == "HERO_09" || s == "HERO_09a")
-            {
-                retval = "priest";
-            }
-            if (s == "HERO_06" || s == "HERO_06a")
-            {
-                retval = "druid";
-            }
-            if (s == "HERO_07" || s == "HERO_07a")
-            {
-                retval = "warlock";
-            }
-            if (s == "HERO_03" || s == "HERO_03a")
-            {
-                retval = "thief";
-            }
-            if (s == "HERO_04" || s == "HERO_04a")
-            {
-                retval = "pala";
-            }
-            if (s == "HERO_01" || s == "HERO_01a")
-            {
-                retval = "warrior";
-            }
-            if (s == "HERO_02" || s == "HERO_02a")
-            {
-                retval = "shaman";
-            }
-            if (s == "HERO_08" || s == "HERO_08a")
-            {
-                retval = "mage";
-            }
-            if (s == "BRM_027h")
-            {
-                retval = "ragnarosthefirelord";
-            }
-            if (s == "EX1_323h")
-            {
-                retval = "lordjaraxxus";
-            }
-
-            return retval;
         }
 
 
-        public static string heroEnumtoName(HeroEnum s)
+        public static string heroEnumtoName(HeroEnum he)
         {
-
-            if (s ==HeroEnum.hogger )
+            switch (he)
             {
-                return "hogger";
+                case HeroEnum.druid: return "druid";
+                case HeroEnum.hunter: return "hunter";
+                case HeroEnum.mage: return "mage";
+                case HeroEnum.pala: return "pala";
+                case HeroEnum.priest: return "priest";
+                case HeroEnum.shaman: return "shaman";
+                case HeroEnum.thief: return "thief";
+                case HeroEnum.warlock: return "warlock";
+                case HeroEnum.warrior: return "warrior";
+                case HeroEnum.lordjaraxxus: return "lordjaraxxus";
+                case HeroEnum.ragnarosthefirelord: return "ragnarosthefirelord";
+                case HeroEnum.hogger: return "hogger";
+                default: return "druid";
             }
-            if (s == HeroEnum.hunter)
-            {
-                return "hunter";
-            }
-            if (s == HeroEnum.priest)
-            {
-                return "priest";
-            }
-            if (s == HeroEnum.druid)
-            {
-                return "druid";
-            }
-            if (s == HeroEnum.warlock)
-            {
-                return "warlock";
-            }
-            if (s == HeroEnum.thief)
-            {
-                return "thief";
-            }
-            if (s == HeroEnum.pala)
-            {
-                return "pala";
-            }
-            if (s == HeroEnum.warrior)
-            {
-                return "warrior";
-            }
-            if (s == HeroEnum.shaman)
-            {
-                return "shaman";
-            }
-            if (s == HeroEnum.mage)
-            {
-                return "mage";
-            }
-            if (s == HeroEnum.lordjaraxxus)
-            {
-                return "lordjaraxxus";
-            }
-            if (s == HeroEnum.ragnarosthefirelord)
-            {
-                return "ragnarosthefirelord";
-            }
-
-            return "druid";
         }
 
         public HeroEnum heroNametoEnum(string s)
         {
-
-            if (s == "hogger")
+            switch (s)
             {
-                return HeroEnum.hogger;
+                case "all": return HeroEnum.all;
+                case "druid": return HeroEnum.druid;
+                case "hunter": return HeroEnum.hunter;
+                case "mage": return HeroEnum.mage;
+                case "pala": return HeroEnum.pala;
+                case "paladin": return HeroEnum.pala; //for mulligan/combo/discovery
+                case "priest": return HeroEnum.priest;
+                case "shaman": return HeroEnum.shaman;
+                case "rogue": return HeroEnum.thief; //for mulligan/combo/discovery
+                case "thief": return HeroEnum.thief;
+                case "warlock": return HeroEnum.warlock;
+                case "warrior": return HeroEnum.warrior;
+                case "lordjaraxxus": return HeroEnum.lordjaraxxus;
+                case "ragnarosthefirelord": return HeroEnum.ragnarosthefirelord;
+                case "hogger": return HeroEnum.hogger;
+                default: return HeroEnum.None;
             }
-            if (s == "hunter")
-            {
-                return HeroEnum.hunter;
-            }
-            if (s == "priest")
-            {
-                return HeroEnum.priest;
-            }
-            if (s == "druid")
-            {
-                return HeroEnum.druid;
-            }
-            if (s == "warlock")
-            {
-                return HeroEnum.warlock;
-            }
-            if (s == "thief")
-            {
-                return HeroEnum.thief;
-            }
-            if (s == "pala")
-            {
-                return HeroEnum.pala;
-            }
-            if (s == "warrior")
-            {
-                return HeroEnum.warrior;
-            }
-            if (s == "shaman")
-            {
-                return HeroEnum.shaman;
-            }
-            if (s == "mage")
-            {
-                return HeroEnum.mage;
-            }
-            if (s == "lordjaraxxus")
-            {
-                return HeroEnum.lordjaraxxus;
-            }
-            if (s == "ragnarosthefirelord")
-            {
-                return HeroEnum.ragnarosthefirelord;
-            }
-
-            return HeroEnum.None;
         }
 
+        public TAG_CLASS heroEnumtoTagClass(HeroEnum he)
+        {
+            switch (he)
+            {
+                case HeroEnum.druid: return TAG_CLASS.DRUID;
+                case HeroEnum.hunter: return TAG_CLASS.HUNTER;
+                case HeroEnum.mage: return TAG_CLASS.MAGE;
+                case HeroEnum.pala: return TAG_CLASS.PALADIN;
+                case HeroEnum.priest: return TAG_CLASS.PRIEST;
+                case HeroEnum.shaman: return TAG_CLASS.SHAMAN;
+                case HeroEnum.thief: return TAG_CLASS.ROGUE;
+                case HeroEnum.warlock: return TAG_CLASS.WARLOCK;
+                case HeroEnum.warrior: return TAG_CLASS.WARRIOR;
+                case HeroEnum.all: return TAG_CLASS.ALL;
+                default: return TAG_CLASS.INVALID;
+            }
+        }
+
+        public HeroEnum heroTAG_CLASSstringToEnum(string s)
+        {
+            switch (s)
+            {
+                case "DRUID": return HeroEnum.druid;
+                case "HUNTER": return HeroEnum.hunter;
+                case "MAGE": return HeroEnum.mage;
+                case "PALADIN": return HeroEnum.pala;
+                case "PRIEST": return HeroEnum.priest;
+                case "SHAMAN": return HeroEnum.shaman;
+                case "ROGUE": return HeroEnum.thief;
+                case "WARLOCK": return HeroEnum.warlock;
+                case "WARRIOR": return HeroEnum.warrior;
+                default: return HeroEnum.None;
+            }
+        }
+
+
+        public void removeCardFromTurnDeck(CardDB.cardIDEnum crd)
+        {
+            if (turnDeck.ContainsKey(crd))
+            {
+                if (turnDeck[crd] > 1) turnDeck[crd]--;
+                else turnDeck.Remove(crd);
+            }
+        }
 
         public void updateMinions(List<Minion> om, List<Minion> em)
         {
@@ -406,7 +433,7 @@
             
         }
 
-        public void setPlayereffects(int ownDragonConsorts, int enemyDragonConsorts, int ownLoathebs, int enemyLoathebs, int ownMillhouses, int enemyMillhouses, int ownKirin, int ownPrep, int ownSabo, int enemySabo, int ownFenciCoachess, int enemycurses)
+        public void setPlayereffects(int ownDragonConsorts, int enemyDragonConsorts, int ownLoathebs, int enemyLoathebs, int ownMillhouses, int enemyMillhouses, int nextSecretThisTurnCost0, int ownPrep, int ownSabo, int enemySabo, int ownFenciCoachess, int enemycurses)
         {
             this.ownDragonConsort = ownDragonConsorts;
             this.enemyDragonConsort = enemyDragonConsorts;
@@ -417,7 +444,7 @@
             this.ownMillhouse = ownMillhouses;
             this.enemyMillhouse = enemyMillhouses;
 
-            this.ownKirinTorEffect = ownKirin;
+            this.nextSecretThisTurnCost0 = nextSecretThisTurnCost0;
 
             this.ownPreparation = ownPrep;
 
@@ -464,6 +491,13 @@
 
         }
 
+        public void updateCThunInfo(int OgOwnCThunAngrBonus, int OgOwnCThunHpBonus, int OgOwnCThunTaunt)
+        {
+            this.anzOgOwnCThunAngrBonus = OgOwnCThunAngrBonus;
+            this.anzOgOwnCThunHpBonus = OgOwnCThunHpBonus;
+            this.anzOgOwnCThunTaunt = OgOwnCThunTaunt;
+        }
+
         public void updateFatigueStats(int ods, int ohf, int eds, int ehf)
         {
             this.ownDeckSize = ods;
@@ -507,7 +541,7 @@
             {
                 handcard = new Handmanager.Handcard(hc),
                 zonepos = id + 1,
-                entitiyID = hc.entity,
+                entityID = hc.entity,
                 Angr = hc.card.Attack,
                 Hp = hc.card.Health,
                 maxHp = hc.card.Health,

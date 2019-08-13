@@ -1,5 +1,6 @@
 ﻿namespace HREngine.Bots
 {
+    using System;
     using System.Collections.Generic;
 
     public class Movegenerator
@@ -16,9 +17,7 @@
             }
         }
 
-        private Movegenerator()
-        {
-        }
+        private Movegenerator() { }
 
 
         public List<Action> doAllChoices(Playfield p, Handmanager.Handcard hcc, bool lethalcheck, bool usePenalityManager, int tracing = 0)
@@ -39,184 +38,142 @@
                 int basemana = hc.manacost;
                 if (c.cardIDenum == CardDB.cardIDEnum.AT_132_SHAMAN)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANa);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANb);
-                    }
-                    if (i == 3)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANc);
-                    }
-                    if (i == 4)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANd);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANa);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANb);
+                    if (i == 3) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANc);
+                    if (i == 4) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_SHAMANd);
                 }
 
+                //Druid 'choose one' cards; count = 19
+                //  1.  darkwispers
+                //  2.  starfall
+                //  3.  ancientoflore
+                //  4.  powerofthewild
+                //  5.  ancientofwar
+                //  6.  druidoftheclaw
+                //  7.  druidoftheflame
+                //  8.  keeperofthegrove
+                //  9.  markofnature
+                //  10. nourish
+                //  11. wrath
+                //  12. livingroots
+                //  13. druidofthesaber
+                //  14. feralrage
+                //  15. grovetender
+                //  16. mirekeeper
+                //  17. ravenidol
+                //  18. wispsoftheoldgods
+                //  19. anodizedrobocub
+                // missing: cenarius
                 if (c.name == CardDB.cardName.darkwispers)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_041a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_041b);
-                    }
-                }
-
-                if (c.name == CardDB.cardName.keeperofthegrove)
-                {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_041a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_041b);
                 }
 
                 if (c.name == CardDB.cardName.starfall)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_007b);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_007a);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_007b);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_007a);
                 }
 
                 if (c.name == CardDB.cardName.ancientoflore)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_008a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_008b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_008a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_008b);
                 }
 
                 if (c.name == CardDB.cardName.powerofthewild)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_160b);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_160a);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_160b);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_160a);
                 }
                 if (c.name == CardDB.cardName.ancientofwar)
                 {
 
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_178b);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_178a);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_178b);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_178a);
                 }
                 if (c.name == CardDB.cardName.druidoftheclaw)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t2);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t2);
                 }
                 if (c.name == CardDB.cardName.druidoftheflame)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_010t);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_010t2);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_010t);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_010t2);
                 }
                 //cenarius dont need
                 if (c.name == CardDB.cardName.keeperofthegrove)//keeper of the grove
                 {
-
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_166b);
                 }
                 if (c.name == CardDB.cardName.markofnature)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_155a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_155b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_155a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_155b);
                 }
                 if (c.name == CardDB.cardName.nourish)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_164a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_164b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_164a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_164b);
                 }
                 if (c.name == CardDB.cardName.wrath)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_154a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_154b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_154a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_154b);
                 }
                 if (c.name == CardDB.cardName.livingroots)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_037a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_037b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_037a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_037b);
                 }
                 if (c.name == CardDB.cardName.druidofthesaber)
                 {
-                    if (i == 1)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042a);
-                    }
-                    if (i == 2)
-                    {
-                        c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042b);
-                    }
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042b);
+                }
+                if (c.name == CardDB.cardName.feralrage)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_047a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_047b);
+                }
+                if (c.name == CardDB.cardName.grovetender)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_032a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_032b);
+                }
+                if (c.name == CardDB.cardName.mirekeeper)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_202a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_202b);
+                }
+                if (c.name == CardDB.cardName.ravenidol)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_115a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_115b);
+                }
+                if (c.name == CardDB.cardName.wispsoftheoldgods)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_195a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_195b);
+                }
+                if (c.name == CardDB.cardName.anodizedrobocub)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_030a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_030b);
+                }
+                if (c.name == CardDB.cardName.kuntheforgottenking)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_308a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_308b);
+                }
+                if (c.name == CardDB.cardName.jadeidol)
+                {
+                    if (i == 1) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_602a);
+                    if (i == 2) c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_602b);
                 }
 
                 if (hcc.isChoiceTemp)
@@ -241,7 +198,7 @@
                 {
 
                     int bestplace = p.getBestPlace(c, lethalcheck);
-                    List<Minion> trgts = c.getTargetsForCard(p);
+                    List<Minion> trgts = c.getTargetsForCard(p, false, true);
                     int cardplayPenality = 0;
                     if (trgts.Count == 0)
                     {
@@ -250,7 +207,7 @@
                         if (usePenalityManager)
                         {
                             cardplayPenality = pen.getPlayCardPenality(hc, null, p, i, lethalcheck);
-                            if (cardplayPenality <= 499)
+                            if (cardplayPenality < 500)
                             {
                                 //help.logg(hc.card.name + " is played");
                                 //pf.playCard(hc, hc.position - 1, hc.entity, -1, -1, i, bestplace, cardplayPenality);
@@ -278,7 +235,7 @@
                             {
                                 cardplayPenality = pen.getPlayCardPenality(hc, trgt, p, i, lethalcheck);
 
-                                if (cardplayPenality <= 499)
+                                if (cardplayPenality < 500)
                                 {
                                     //help.logg(hc.card.name + " is played");
                                     //pf.playCard(hc, hc.position - 1, hc.entity, trgt.target, trgt.targetEntity, i, bestplace, cardplayPenality);
@@ -320,7 +277,7 @@
             //play cards:
 
             List<CardDB.cardName> playedcards = new List<CardDB.cardName>();
-
+            /*
             bool superplacement = false;
             bool useplacement = Settings.Instance.simulatePlacement && p.turnCounter == 0 && p.ownMinions.Count >= 2;
             foreach (Minion hc in p.ownMinions)
@@ -333,7 +290,7 @@
                 }
 
             }
-
+            */
             foreach (Handmanager.Handcard hc in p.owncards)
             {
                 CardDB.Card c = hc.card;
@@ -350,7 +307,7 @@
                     int bestplace = p.getBestPlace(c, isLethalCheck);
                     if (hc.canplayCard(p))
                     {
-                        List<Minion> trgts = c.getTargetsForCard(p);
+                        List<Minion> trgts = c.getTargetsForCard(p, false, true);
 
                         if (isLethalCheck && trgts.Count >= 1 && (c.damagesTarget || c.damagesTargetWithSpecial))// only target enemy hero during Lethal check!
                         {
@@ -381,9 +338,17 @@
                             if (usePenalityManager)
                             {
                                 cardplayPenality = pen.getPlayCardPenality(hc, null, p, 0, isLethalCheck);
-                                if (cardplayPenality <= 499)
-                                {
 
+
+                                if (cardplayPenality < 500)
+                                {
+                                    /*
+                                    if (hc.card.name == CardDB.cardName.tuskarrtotemic)
+                                    {
+                                        bestplace = (p.ownMinions.Count / 2) + 1; //just put it center left
+                                        Action a = new Action(actionEnum.playcard, hc, null, bestplace, null, cardplayPenality, 0);
+                                        ret.Add(a);
+                                    }
                                     if (useplacement && ((hc.card.name == CardDB.cardName.direwolfalpha || hc.card.name == CardDB.cardName.flametonguetotem || hc.card.name == CardDB.cardName.defenderofargus || hc.card.name == CardDB.cardName.voidterror) || (superplacement && hc.card.type == CardDB.cardtype.MOB)))
                                     {
                                         int adding = 1;
@@ -407,7 +372,10 @@
                                         Action a = new Action(actionEnum.playcard, hc, null, bestplace, null, cardplayPenality, 0);
                                         //pf.playCard(hc, hc.position - 1, hc.entity, -1, -1, 0, bestplace, cardplayPenality);
                                         ret.Add(a);
-                                    }
+                                    }*/
+
+                                    Action a = new Action(actionEnum.playcard, hc, null, bestplace, null, cardplayPenality, 0);
+                                    ret.Add(a);
                                 }
                             }
                             else
@@ -429,7 +397,7 @@
                                 if (usePenalityManager)
                                 {
                                     cardplayPenality = pen.getPlayCardPenality(hc, trgt, p, 0, isLethalCheck);
-                                    if (cardplayPenality <= 499)
+                                    if (cardplayPenality < 500)
                                     {
                                         //pf.playCard(hc, hc.position - 1, hc.entity, trgt.target, trgt.targetEntity, 0, bestplace, cardplayPenality);
                                         Action a = new Action(actionEnum.playcard, hc, null, bestplace, trgt, cardplayPenality, 0);
@@ -463,6 +431,8 @@
 
                 if (m.Ready && m.Angr >= 1 && !m.frozen)
                 {
+                    if (m.name == CardDB.cardName.silithidswarmer && !m.silenced && p.ownHero.numAttacksThisTurn == 0) continue; //this minion can't attack unless hero attacked
+
                     //BEGIN:cut (double/similar) attacking minions out#####################################
                     // DONT LET SIMMILAR MINIONS ATTACK IN ONE TURN (example 3 unlesh the hounds-hounds doesnt need to simulated hole)
                     if (attackordermatters)
@@ -607,20 +577,24 @@
 
                 foreach (Minion trgt in trgts)
                 {
+                    if (p.ownWeaponName == CardDB.cardName.foolsbane && trgt.isHero) continue; //this weapon cant attack heros!
                     int heroAttackPen = 0;
                     if (usePenalityManager)
                     {
                         heroAttackPen = pen.getAttackWithHeroPenality(trgt, p, isLethalCheck);
                     }
-                    //pf.attackWithWeapon(trgt.target, trgt.targetEntity, heroAttackPen);
-                    Action a = new Action(actionEnum.attackWithHero, null, p.ownHero, 0, trgt, heroAttackPen, 0);
-                    ret.Add(a);
+                    if (heroAttackPen < 500)
+                    {
+                        //pf.attackWithWeapon(trgt.target, trgt.targetEntity, heroAttackPen);
+                        Action a = new Action(actionEnum.attackWithHero, null, p.ownHero, 0, trgt, heroAttackPen, 0);
+                        ret.Add(a);
+                    }
 
                 }
             }
 
             // use ability
-            /// TODO check if ready after manaup
+            // TODO check if ready after manaup
             if (p.ownAbilityReady && p.ownHeroAblility.card.canplayCard(p, 2))
             {
                 int abilityPenality = 0;
@@ -628,10 +602,10 @@
 
                 if (pen.TargetAbilitysDatabase.ContainsKey(p.ownHeroAblility.card.cardIDenum))
                 {
-                    List<Minion> trgts = p.ownHeroAblility.card.getTargetsForCard(p);
+                    List<Minion> trgts = p.ownHeroAblility.card.getTargetsForCard(p, false, true);
                     if (isLethalCheck && (p.ownHeroName == HeroEnum.mage || (p.ownHeroName == HeroEnum.priest && (p.ownHeroAblility.card.name != CardDB.cardName.lesserheal || (p.ownHeroAblility.card.name == CardDB.cardName.lesserheal && p.anzOwnAuchenaiSoulpriest >= 1)))))// only target enemy hero during Lethal check!
                     {
-                        if (trgts.Count >= 1 && trgts[0].entitiyID == p.enemyHero.entitiyID)
+                        if (trgts.Count >= 1 && trgts[0].entityID == p.enemyHero.entityID)
                         {
                             trgts.Clear();
                             trgts.Add(p.enemyHero);
@@ -650,13 +624,10 @@
 
                     foreach (Minion trgt in trgts)
                     {
-
-
-
                         if (usePenalityManager)
                         {
                             abilityPenality = pen.getPlayCardPenality(p.ownHeroAblility, trgt, p, 0, isLethalCheck);
-                            if (abilityPenality <= 499)
+                            if (abilityPenality < 500)
                             {
                                 //pf.activateAbility(p.ownHeroAblility, trgt.target, trgt.targetEntity, abilityPenality);
                                 Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, 0, trgt, abilityPenality, 0);
@@ -680,7 +651,7 @@
                     if (usePenalityManager)
                     {
                         abilityPenality = pen.getPlayCardPenality(p.ownHeroAblility, null, p, 0, isLethalCheck);
-                        if (abilityPenality <= 499)
+                        if (abilityPenality < 500)
                         {
                             //havedonesomething = true;
                             //pf.activateAbility(p.ownHeroAblility, -1, -1, abilityPenality);
@@ -720,14 +691,14 @@
             //is not called, because of trundeep is allways >0 (in enemys turn) 
             //currently all enemy heropower use is handled in enemyTurnSimulator
             //if he can use ability use it on his turnstart or never!###########################################################################################
-            if (turndeep == 0 && p.enemyAbilityReady && p.mana >= 2 && p.enemyHeroAblility.card.canplayCard(p, 0) && p.ownSaboteur==0)
+            if (turndeep == 0 && p.enemyAbilityReady && p.mana >= 2 && p.enemyHeroAblility.card.canplayCard(p, 0) && p.anzOwnSaboteur==0)
             {
                 int abilityPenality = 0;
 
                 // if we have mage or priest, we have to target something####################################################
                 if (pen.TargetAbilitysDatabase.ContainsKey(p.enemyHeroAblility.card.cardIDenum))
                 {
-                    List<Minion> trgts = p.enemyHeroAblility.card.getTargetsForCardEnemy(p);
+                    List<Minion> trgts = p.enemyHeroAblility.card.getTargetsForCard(p, false, false);
                     foreach (Minion trgt in trgts)
                     {
                         if (trgt.isHero) continue;//dont target hero
@@ -837,6 +808,7 @@
 
                 foreach (Minion trgt in trgts)
                 {
+                    if (p.enemyWeaponName == CardDB.cardName.foolsbane && trgt.isHero) continue; //this weapon cant attack heros!
                     //pf.attackWithWeapon(trgt.target, trgt.targetEntity, heroAttackPen);
                     Action a = new Action(actionEnum.attackWithHero, null, p.enemyHero, 0, trgt, 0, 0);
                     ret.Add(a);
@@ -937,14 +909,16 @@
                 if (m.name == CardDB.cardName.flametonguetotem || m.name == CardDB.cardName.direwolfalpha) return true;
             }
 
-            int haspets = 0;
-            bool hashyena = false;
+            int hasBeasts = 0;
+            bool hasHyena = false;
             bool hasJuggler = false;
-            bool spawnminions = false;
+            bool hasCouncilman = false;
+            bool spawnMinions = false;
             foreach (Minion m in ownm)
             {
                 if (m.name == CardDB.cardName.cultmaster) return true;
                 if (m.name == CardDB.cardName.knifejuggler) hasJuggler = true;
+                if (m.name == CardDB.cardName.darkshirecouncilman) hasCouncilman = true;
                 if (m.Ready && m.Angr >= 1)
                 {
                     if (m.AdjacentAngr >= 1) return true;//wolphalfa or flametongue is in play
@@ -969,15 +943,15 @@
                     if (m.name == CardDB.cardName.raidleader || m.name == CardDB.cardName.stormwindchampion || m.name == CardDB.cardName.timberwolf || m.name == CardDB.cardName.southseacaptain || m.name == CardDB.cardName.murlocwarleader || m.name == CardDB.cardName.grimscaleoracle || m.name == CardDB.cardName.leokk) return true;
 
 
-                    if (m.name == CardDB.cardName.scavenginghyena) hashyena = true;
-                    if (m.handcard.card.race == TAG_RACE.PET) haspets++;
-                    if (m.name == CardDB.cardName.harvestgolem || m.name == CardDB.cardName.hauntedcreeper || m.souloftheforest >= 1 || m.ancestralspirit >= 1 || m.name == CardDB.cardName.nerubianegg || m.name == CardDB.cardName.savannahhighmane || m.name == CardDB.cardName.sludgebelcher || m.name == CardDB.cardName.cairnebloodhoof || m.name == CardDB.cardName.feugen || m.name == CardDB.cardName.stalagg || m.name == CardDB.cardName.thebeast) spawnminions = true;
+                    if (m.name == CardDB.cardName.scavenginghyena) hasHyena = true;
+                    if (m.handcard.card.race == TAG_RACE.PET) hasBeasts++;
+                    if (m.name == CardDB.cardName.harvestgolem || m.name == CardDB.cardName.hauntedcreeper || m.souloftheforest >= 1 || m.ancestralspirit >= 1 || m.name == CardDB.cardName.nerubianegg || m.name == CardDB.cardName.savannahhighmane || m.name == CardDB.cardName.sludgebelcher || m.name == CardDB.cardName.cairnebloodhoof || m.name == CardDB.cardName.feugen || m.name == CardDB.cardName.stalagg || m.name == CardDB.cardName.thebeast) spawnMinions = true;
 
                 }
             }
 
-            if (haspets >= 1 && hashyena) return true;
-            if (hasJuggler && spawnminions) return true;
+            if (hasBeasts >= 1 && hasHyena) return true;
+            if ((hasJuggler || hasCouncilman) && spawnMinions) return true;
 
 
 

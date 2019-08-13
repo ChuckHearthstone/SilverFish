@@ -13,12 +13,6 @@ namespace HREngine.Bots
         {
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
-            if (p.isServer)
-            {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(!ownplay, true);
-                if (choosen != null) p.minionGetDamageOrHeal(choosen, dmg);
-                return;
-            }
             p.doDmgToRandomEnemyCLIENT2(dmg, true, ownplay);
         }
 
@@ -27,17 +21,7 @@ namespace HREngine.Bots
 
             int dmg = (own) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
 
-            if (p.isServer)
-            {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(!own, true);
-                if (choosen != null) p.minionGetDamageOrHeal(choosen, dmg);
-                return;
-            }
-
             p.doDmgToRandomEnemyCLIENT2(dmg, true, own);
         }
-
-
     }
-
 }

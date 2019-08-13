@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_PRIEST : SimTemplate //lesserheal
+    class Sim_AT_132_PRIEST : SimTemplate //heal
 	{
 
         //    Restore #4 Health.

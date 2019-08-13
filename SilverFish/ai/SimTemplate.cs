@@ -56,16 +56,15 @@
             return;
         }
 
-        public virtual void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion, bool ownerOfMinionGotHealed)
+        public virtual void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
         {
             return;
         }
 
-        public virtual void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion, bool ownerOfHeroGotHealed)
+        public virtual void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
         {
             return;
         }
-
 
         public virtual void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {

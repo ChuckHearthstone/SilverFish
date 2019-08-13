@@ -1,0 +1,58 @@
+// This File: _mulligan.txt
+// Author: scottbreak
+// Version: 1.1 (19-Jan-17)
+// Deck Name: Wild Pirate Warrior
+// Hero: Warrior
+// Deck Type: Aggro
+
+//- D E C K (WILD) ------------------------------
+// [1] N'Zoth's First Mate x2 (OG_312)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Sir Finley Mrrgglton x1 (LOE_076)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [1] Southsea Deckhand x2 (CS2_146)
+// [1] Upgrade! x2 (EX1_409)
+// [2] Acidic Swamp Ooze x1 (EX1_066)
+// [2] Bloodsail Raider x2 (NEW1_018)
+// [2] Fiery War Axe x2 (CS2_106)
+// [2] Heroic Strike x2 (CS2_105)
+// [2] Ship's Cannon x2 (GVG_075)
+// [3] Bloodsail Cultist x2 (OG_315)
+// [4] Death's Bite x2 (FP1_021)
+// [4] Dread Corsair x2 (NEW1_022)
+// [4] Kor'kron Elite x2 (NEW1_011)
+// [4] Mortal Strike x1 (EX1_408)
+// [5] Arcanite Reaper x2 (CS2_112)
+
+
+// - A L L --------------------------------------
+// DISCARD Patches the Pirate (CFM_637)
+discard;warrior;all;CFM_637
+// N'Zoth's First Mate (OG_312)
+hold;warrior;all;OG_312:1
+// Small-Time Buccaneer (CFM_325)
+hold;warrior;all;CFM_325
+// Sir Finley Mrrgglton (LOE_076) + N'Zoth's First Mate (OG_312)/Small-Time Buccaneer (CFM_325) + Coin
+hold;warrior;all;LOE_076:1:OG_312/CFM_325;coin
+// Southsea Deckhand (CS2_146) + N'Zoth's First Mate (OG_312)
+hold;warrior;all;CS2_146:2:OG_312
+// Fiery War Axe (CS2_106)
+hold;warrior;all;CS2_106:1
+// Ship's Cannon (GVG_075)
+hold;warrior;all;GVG_075:1
+// Bloodsail Raider (NEW1_018) + Fiery War Axe (CS2_106)/N'Zoth's First Mate (OG_312)
+hold;warrior;all;NEW1_018:1:CS2_106/OG_312
+// Bloodsail Cultist (OG_315) + N'Zoth's First Mate (OG_312) + Coin
+hold;warrior;all;OG_315:1:OG_312;coin
+// Dread Corsair (NEW1_022) + Fiery War Axe (CS2_106)
+hold;warrior;all;NEW1_022:1:CS2_106
+
+
+// - S H A M A N --------------------------------
+// Acid Swamp Ooze (EX1_066)
+hold;warrior;shaman;EX1_066:1
+
+
+// - W A R R I O R ------------------------------
+// Acid Swamp Ooze (EX1_066)
+hold;warrior;warrior;EX1_066:1

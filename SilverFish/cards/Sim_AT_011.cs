@@ -8,12 +8,12 @@ namespace HREngine.Bots
 	{
 
         //   Whenever a character is healed, gain +2 Attack.
-        public override void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion, bool ownerOfHeroGotHealed)
+        public override void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
         {
             p.minionGetBuffed(triggerEffectMinion, 2, 0);
         }
 
-        public override void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion, bool ownerOfMinionGotHealed)
+        public override void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
         {
             p.minionGetBuffed(triggerEffectMinion, 2, 0);
         }

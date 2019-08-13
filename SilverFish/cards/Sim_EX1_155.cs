@@ -4,22 +4,26 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_155 : SimTemplate //markofnature
-	{
+    class Sim_EX1_155 : SimTemplate //* markofnature
+    {
+        //Choose One - Give a minion +4 Attack; or +4 Health and Taunt.
 
-//    wählt aus:/ verleiht einem diener +4 angriff; oder +4 leben und spott/.
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            if (choice == 1)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
+            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
                 p.minionGetBuffed(target, 4, 0);
             }
-            if (choice == 2)
+            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
                 p.minionGetBuffed(target, 0, 4);
-                target.taunt = true;
+                if (!target.taunt)
+                {
+                    target.taunt = true;
+                    if (target.own) p.anzOwnTaunt++;
+                    else p.anzEnemyTaunt++;
+                }
             }
-		}
-
-	}
+        }
+    }
 }

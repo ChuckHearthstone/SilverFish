@@ -4,26 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_EX1_277 : SimTemplate //arcanemissiles
+    class Sim_EX1_277 : SimTemplate //* Arcane Missiles
     {
 
-        //    verursacht $3 schaden, der zufällig auf feindliche charaktere verteilt wird.
+        //Deal $3 damage randomly split among all enemies.
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-
-            if (p.isServer)
-            {
-                int timesS = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-                for (int iS = 0; iS < timesS; iS++)
-                {
-                    Minion poortarget = p.getRandomMinionFromSide_SERVER(!ownplay, true);
-                    if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                }
-                return;
-            }
-
-
             List<Minion> targets = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
             int times = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
 
@@ -50,19 +37,6 @@ namespace HREngine.Bots
 
         public  void onCardPlayold(Playfield p, bool ownplay, Minion target, int choice)
         {
-
-            if (p.isServer)
-            {
-                int timesS = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-                for (int iS = 0; iS < timesS; iS++)
-                {
-                    Minion poortarget = p.getRandomMinionFromSide_SERVER(!ownplay, true);
-                    if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                }
-                return;
-            }
-
-
             // optimistic
             int i = 0;
             List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;
@@ -114,7 +88,5 @@ namespace HREngine.Bots
                 }
             }
         }
-
     }
-
 }

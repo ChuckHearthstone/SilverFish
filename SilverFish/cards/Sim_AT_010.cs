@@ -23,18 +23,7 @@ namespace HREngine.Bots
 
             int pos = (own.own) ? p.ownMinions.Count : p.enemyMinions.Count;
 
-            if (p.isServer)
-            {
-                //TODO
-                p.callKid(kid, pos, own.own, true);
-                return;
-            }
-
             p.callKid(kid, pos, own.own, true);
-
         }
-
-       
-
     }
 }

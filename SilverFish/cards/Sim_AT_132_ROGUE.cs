@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 
         //    heldenfähigkeit/ Equip a 2/2 Weapon.
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_082);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_ROGUEt);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             if (ownplay && p.ownWeaponDurability >= 1 && p.ownWeaponName == CardDB.cardName.poisonedblade)
@@ -23,6 +23,5 @@ namespace HREngine.Bots
             }
             p.equipWeapon(weapon, ownplay);
         }
-
 	}
 }

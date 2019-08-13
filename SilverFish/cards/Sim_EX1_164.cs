@@ -4,14 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_EX1_164 : SimTemplate //nourish
+    class Sim_EX1_164 : SimTemplate //* nourish
     {
 
-        //    wählt aus:/ erhaltet 2 manakristalle; oder zieht 3 karten.
+        //    Choose One - Gain 2 Mana Crystals or Draw 3 cards.
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (choice == 1)
+            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
                 if (ownplay)
                 {
@@ -24,16 +24,13 @@ namespace HREngine.Bots
                     p.enemyMaxMana = Math.Min(10, p.enemyMaxMana + 2);
                 }
             }
-            if (choice == 2)
+            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
                 //this.owncarddraw+=3;
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
+                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.cardName.unknown, ownplay);
             }
         }
-
     }
-
-
 }

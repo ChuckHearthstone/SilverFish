@@ -24,18 +24,9 @@ namespace HREngine.Bots
                 }
                 if (tempmech.Count >= 1)
                 {
-                    if (p.isServer)
-                    {
-                        int random = p.getRandomNumber_SERVER(0, tempmech.Count - 1);
-                        p.minionGetBuffed(tempmech[random], 2, 2);
-                        return;
-                    }
                     p.minionGetBuffed(p.searchRandomMinion(tempmech, (triggerEffectMinion.own ? Playfield.searchmode.searchLowestHP : Playfield.searchmode.searchHighestHP)), 2, 2);
                 }
             }
         }
-
-
     }
-
 }

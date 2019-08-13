@@ -11,17 +11,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            if (p.isServer)
-            {
-                //TODO
-                p.drawACard(CardDB.cardIDEnum.AT_128, m.own, true);
-                return;
-            }
-
             p.drawACard(CardDB.cardIDEnum.AT_128, m.own, true);
         }
-
-       
-
     }
 }

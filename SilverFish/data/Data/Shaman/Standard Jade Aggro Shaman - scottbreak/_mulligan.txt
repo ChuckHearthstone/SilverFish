@@ -1,0 +1,88 @@
+// This File: _mulligan.txt
+// Author: scottbreak
+// Version: 0.3 (5-Jan-17)
+// Deck Name: Jade Aggro Shaman
+// Hero: Shaman
+// Deck Type: Aggro
+
+// - D E C K ------------------------------------
+// [1] Lightning Bolt x2 (EX1_238)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Sir Finley Mrrgglton x1 (LOE_076)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [1] Southsea Deckhand x2 (CS2_146)
+// [1] Spirit Claws x2 (KAR_063)
+// [1] Tunnel Trogg x2 (LOE_018)
+// [2] Bloodmage Thalnos x1 (EX1_012)
+// [2] Flametongue Totem x2 (EX1_565)
+// [2] Jade Claws x2 (CFM_717)
+// [2] Maelstrom Portal x1 (KAR_073)
+// [2] Totem Golem x2 (AT_052)
+// [3] Feral Spirit x2 (EX1_248)
+// [3] Lava Burst x2 (EX1_241)
+// [4] Flamewreathed Faceless x2 (OG_024)
+// [4] Jade Lightning x2 (CFM_707)
+// [5] Azure Drake (EX1_284)
+// [6] Aya Blackpaw x1 (CFM_902)
+
+// - A L L --------------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// 1x Spirit Claws
+hold;shaman;all;KAR_063:1
+// Tunnel Trog
+hold;shaman;all;LOE_018
+// 1x Jade Claws
+hold;shaman;all;CFM_717:1
+// 1x Totem Golem
+hold;shaman;all;AT_052:1
+// 2x Totem Golem + Tunnel Trog + coin
+hold;shaman;all;AT_052:2:LOE_018;coin
+// 1x Flametongue Totem + 2x Tunnel Trogg + coin
+hold;shaman;all;EX1_565:1:LOE_018,2,2;coin
+// 1x Flametongue Totem + 2x Small-Time Buccaneer + coin
+hold;shaman;all;EX1_565:1:CFM_325,2,2;coin
+
+// - D R U I D ----------------------------------
+//1x Flametongue Totem
+hold;shaman;druid;CFM_717:1
+
+
+// - H U N T E R --------------------------------
+// 1x Maelstrom Portal
+hold;shaman;hunter;KAR_073:1
+
+
+// - M A G E ------------------------------------
+//1x Flametongue Totem
+hold;shaman;mage;CFM_717:1
+
+
+// - P A L A D I N ------------------------------
+//1x Flametongue Totem
+hold;shaman;paladin;CFM_717:1
+
+
+// - P R I E S T --------------------------------
+//1x Flametongue Totem
+hold;shaman;priest;CFM_717:1
+
+
+// - R O G U E ----------------------------------
+// Sir Finley Mrrgglton
+hold;shaman;rogue;LOE_076
+
+
+// - S H A M A N --------------------------------
+// 1x Maelstrom Portal
+hold;shaman;shaman;KAR_073:1
+
+
+// - W A R L O C K ------------------------------
+//1x Flametongue Totem
+hold;shaman;warlock;CFM_717:1
+
+
+// - W A R R I O R ------------------------------
+// 1x Maelstrom Portal
+hold;shaman;warrior;KAR_073:1

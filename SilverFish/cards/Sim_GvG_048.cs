@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            List<Minion> temp = (own.own) ? p.enemyMinions : p.ownMinions;
+            List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL)

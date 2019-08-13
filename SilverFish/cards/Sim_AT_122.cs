@@ -15,8 +15,7 @@ namespace HREngine.Bots
             if (target != null)
             {
                 int count = 0;
-                if (own.own) count = p.ownMinions.Count;
-                else count = p.enemyMinions.Count;
+                count = own.own ? p.ownMinions.Count : p.enemyMinions.Count;
                 if (count >= 4)
                 {
                     p.minionGetDamageOrHeal(target, 4);

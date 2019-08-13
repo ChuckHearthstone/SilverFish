@@ -9,7 +9,7 @@ namespace HREngine.Bots
 
 //    zieht jedes mal eine karte, wenn ein diener geheilt wird.
 
-        public override void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion, bool ownerOfMinionGotHealed)
+        public override void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
         {
             p.drawACard(CardDB.cardIDEnum.None, triggerEffectMinion.own);
         }

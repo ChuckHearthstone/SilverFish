@@ -12,11 +12,6 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            if (p.isServer)
-            {
-                //TODO (others too..)
-            }
-
             bool hasdragon = false;
             if (m.own)
             {

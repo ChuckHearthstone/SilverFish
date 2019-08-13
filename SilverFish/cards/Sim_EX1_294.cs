@@ -18,9 +18,9 @@ namespace HREngine.Bots
             {
                 if (p.ownMinions.Count >= 1 && p.ownMinions[p.ownMinions.Count - 1].name == target.handcard.card.name)
                 {
-                    int e = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
+                    int e = p.ownMinions[p.ownMinions.Count - 1].entityID;
                     p.ownMinions[p.ownMinions.Count - 1].setMinionTominion(target);
-                    p.ownMinions[p.ownMinions.Count - 1].entitiyID = e;
+                    p.ownMinions[p.ownMinions.Count - 1].entityID = e;
                     p.ownMinions[p.ownMinions.Count - 1].own = true;
                 }
             }
@@ -28,9 +28,9 @@ namespace HREngine.Bots
             {
                 if (p.enemyMinions.Count >= 1 && p.enemyMinions[p.enemyMinions.Count - 1].name == target.handcard.card.name)
                 {
-                    int e = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
+                    int e = p.enemyMinions[p.enemyMinions.Count - 1].entityID;
                     p.enemyMinions[p.enemyMinions.Count - 1].setMinionTominion(target);
-                    p.enemyMinions[p.enemyMinions.Count - 1].entitiyID = e;
+                    p.enemyMinions[p.enemyMinions.Count - 1].entityID = e;
                     p.enemyMinions[p.enemyMinions.Count - 1].own = false;
                 }
             }

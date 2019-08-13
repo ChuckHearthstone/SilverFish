@@ -1,0 +1,25 @@
+// This File: _discovery.txt
+// Author: TheRandomOne
+// Version: 0.1 (28-Dec-16)
+// Deck Name: Pirate Shammy
+// Hero: Shaman
+// Deck Type: Aggro
+
+//Steady Shot
+DS1h_292,9;all;all
+//Life Tap
+CS2_056,8;all;all
+//Fireblast
+CS2_034,7;all;all
+//Shapeshift
+CS2_017,6;all;all
+//Reinforce
+CS2_101,4;all;all
+//Lesser Heal
+CS1h_001,5;all;all
+//Dagger Mastery
+CS2_083b,3;all;all
+//Totemic Call
+CS2_049,2;all;all
+//Armor Up!
+CS2_102,1;all;all 

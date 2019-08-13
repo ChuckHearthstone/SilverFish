@@ -25,7 +25,8 @@ namespace HREngine.Bots
                 }
                 if (p.ownHeroName == HeroEnum.pala)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
+                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130); //noble sac
+                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.FP1_020); //avenge
                 }
             }
             else

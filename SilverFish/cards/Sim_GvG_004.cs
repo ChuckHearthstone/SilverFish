@@ -25,18 +25,7 @@ namespace HREngine.Bots
                 }
             }
             if (!haveAMech) return;
-
-            if (p.isServer)
-            {
-                int timesS = 4;
-                for (int iS = 0; iS < timesS; iS++)
-                {
-                    Minion poortarget = p.getRandomMinionFromSide_SERVER(!ownplay, true);
-                    if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                }
-                return;
-            }
-
+            
             List<Minion> targets = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
             int times = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
 

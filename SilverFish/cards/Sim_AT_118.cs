@@ -11,19 +11,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-
-            if (p.isServer)
-            {
-                //TODO
-                p.drawACard(CardDB.cardIDEnum.CS2_093, own.own, true); //consecration
-                return;
-            }
-
             p.drawACard(CardDB.cardIDEnum.CS2_093, own.own, true); //consecration
-
         }
-
-       
-
     }
 }

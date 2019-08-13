@@ -1,0 +1,47 @@
+//Sir Finley hero powers
+
+//Life Tap
+CS2_056,9;warrior;priest
+CS2_056,9;warrior;warrior
+CS2_056,9;warrior;druid
+CS2_056,9;warrior;pala
+CS2_056,9;warrior;druid
+CS2_056,9;warrior;warlock
+CS2_056,9;warrior;shaman
+
+CS2_056,8;warrior;thief
+CS2_056,8;warrior;mage
+CS2_056,8;warrior;hunter
+
+//Steady Shot
+DS1h_292,8;warrior;priest
+DS1h_292,8;warrior;warrior
+DS1h_292,8;warrior;druid
+DS1h_292,8;warrior;pala
+DS1h_292,8;warrior;druid
+DS1h_292,8;warrior;warlock
+DS1h_292,8;warrior;shaman
+DS1h_292,9;warrior;thief
+DS1h_292,9;warrior;mage
+DS1h_292,9;warrior;hunter
+
+//Shapeshift
+CS2_017,7;warrior;all
+
+//Fireblast
+CS2_034,6;warrior;all
+
+//Dagger Mastery
+CS2_083b,5;warrior;all
+
+//Reinforce
+CS2_101,4;warrior;all
+
+//Totemic Call
+CS2_049,3;warrior;all
+
+//Lesser Heal
+CS1h_001,2;warrior;all
+
+//Armor Up!
+CS2_102,1;warrior;all 

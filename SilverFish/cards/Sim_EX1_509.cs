@@ -5,13 +5,16 @@ using System.Text;
 namespace HREngine.Bots
 {
 	class Sim_EX1_509 : SimTemplate //murloctidecaller
-	{
+    {
+        //Whenever you summon a Murloc, gain +1 Attack.
 
-//    erhält jedes mal +1 angriff, wenn ein murloc herbeigerufen wird.
         public override void onMinionIsSummoned(Playfield p, Minion triggerEffectMinion, Minion summonedMinion)
         {
-            if ((TAG_RACE)summonedMinion.handcard.card.race == TAG_RACE.MURLOC) p.minionGetBuffed(triggerEffectMinion, 1, 0);
+            if (triggerEffectMinion.own == summonedMinion.own && summonedMinion.handcard.card.race == TAG_RACE.MURLOC)
+            {
+                p.minionGetBuffed(triggerEffectMinion, 1, 0);
+            }
         }
 
-	}
+    }
 }

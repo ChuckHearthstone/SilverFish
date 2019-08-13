@@ -4,8 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_HUNTER : SimTemplate //steadyshot
-	{
+    class Sim_AT_132_HUNTER : SimTemplate //* Ballista Shot
+    {
 
         //    Deal $3 damage to the enemy hero
 

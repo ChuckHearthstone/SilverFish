@@ -14,9 +14,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            
-            int pos = (m.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid((m.own ? treant : bloodfen), pos, m.own);
+            p.callKid((m.own ? treant : bloodfen), m.zonepos - 1, m.own);
         }
 
 

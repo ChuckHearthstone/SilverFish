@@ -14,11 +14,11 @@ namespace HREngine.Bots
         {
             if (own.own)
             {
-                p.ownDragonConsort++;
+                p.anzOwnDragonConsort++;
             }
             else
             {
-                p.enemyDragonConsort++;
+                p.anzEnemyDragonConsort++;
             }
             
         }

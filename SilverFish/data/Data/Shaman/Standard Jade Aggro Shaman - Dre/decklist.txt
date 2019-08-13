@@ -1,0 +1,24 @@
+// This File: decklist.txt
+// Author: Dre
+// Version: 1.0 (16-jan-2017)
+// Deck Name: Jade Aggro Shaman
+// Hero: Shaman
+// Deck Type: Aggro (Rush)
+
+Lightning Bolt x2
+Patches the Pirate x1
+Small-Time Buccaneer x2
+Southsea Deckhand x2 
+Spirit Claws x2 
+Tunnel Trogg ×2 
+Bloodmage Thalnos 1x 
+Flametongue Totem ×2 
+Jade Claws x2 
+Maelstrom Portal x1 
+Totem Golem ×2 
+Feral Spirit x2 
+Lava Burst x2 
+Flamewreathed Faceless x2
+Jade Lightning x2 
+Azure Drake x2 
+Aya Blackpaw x1

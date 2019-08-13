@@ -13,19 +13,7 @@ namespace HREngine.Bots
 //    kampfschrei:/ konstruiert eine fantastische erfindung.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (p.isServer)
-            {
-                int random = p.getRandomNumber_SERVER(0, 3);
-                if (random == 0) p.callKid(kid, own.zonepos, own.own, true);
-                if (random == 1) p.callKid(kid1, own.zonepos, own.own, true);
-                if (random == 2) p.callKid(kid2, own.zonepos, own.own, true);
-                if (random == 3) p.callKid(kid3, own.zonepos, own.own, true);
-                
-                return;
-            }
             p.callKid(kid, own.zonepos, own.own, true);
 		}
-
-
 	}
 }

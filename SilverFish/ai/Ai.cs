@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Ai
+    public sealed class Ai
     {
 
         private int maxdeep = 12;
@@ -12,12 +12,11 @@
         //public int playaroundprob = 40;
         public int playaroundprob2 = 80;
 
-
-        private bool usePenalityManager = true;
-        private bool useCutingTargets = true;
+        
         private bool dontRecalc = true;
         private bool useLethalCheck = true;
-        private bool useComparison = true;
+
+        public Playfield bestplay = new Playfield();
 
 
         public int lethalMissing = 30; //RR
@@ -38,20 +37,20 @@
         Handmanager hm = Handmanager.Instance;
         Helpfunctions help = Helpfunctions.Instance;
 
-        public Action bestmove = null;
-        public float bestmoveValue = 0;
+        public Action bestmove;
+        public float bestmoveValue;
         public Playfield nextMoveGuess = new Playfield();
         public Playfield oldMoveGuess = new Playfield();//used for queque actions
-        public Behavior botBase = null;
+        public Behavior botBase;
 
         public List<Action> bestActions = new List<Action>();
 
-        public bool secondturnsim = false;
+        public bool secondturnsim;
         //public int secondTurnAmount = 256;
         public bool playaround = false;
 
         public int bestTracking = -1;
-        public int bestTrackingStatus = 0;//0=optimal, 1= suboptimal 2=random
+        public int bestTrackingStatus;//0=optimal, 1= suboptimal 2=random
 
 
         private static Ai instance;
@@ -128,7 +127,7 @@
             if (isLethalCheck) this.posmoves[0].enemySecretList.Clear();
             this.mainTurnSimulator.doallmoves(this.posmoves[0], isLethalCheck);
 
-            Playfield bestplay = this.mainTurnSimulator.bestboard;
+            bestplay = this.mainTurnSimulator.bestboard;
             float bestval = this.mainTurnSimulator.bestmoveValue;
 
             help.loggonoff(true);
@@ -158,7 +157,7 @@
                 this.bestActions.Add(new Action(a));
                 a.print();
             }
-            //this.bestActions.Add(new Action(actionEnum.endturn, null, null, 0, null, 0, 0));
+            //todo sepefeets - enable after implementing anzEnemyTaunt or finding alternative            //if (isLethalCheck) reorderingActions();
 
             if (this.bestActions.Count >= 1)
             {
@@ -182,19 +181,114 @@
 
         }
 
+        private void reorderingActions()
+        {
+            if (bestplay.enemySecretCount > 0) return;
+            if (bestplay.playactions.Count < 2) return;
+            if (Ai.Instance.botBase.getPlayfieldValue(bestplay) < 10000) return;
+            Playfield tmpPf = new Playfield();
+            if (tmpPf.anzEnemyTaunt > 0) return;
+
+            List<Action> reorderedActions = new List<Action>();
+            Dictionary<Action, int> actDmgDict = new Dictionary<Action, int>();
+            tmpPf.enemyHero.Hp = 30;
+            try
+
+            {
+                int useability = 0;
+                foreach (Action a in bestplay.playactions)
+                {
+                    if (a.actionType == actionEnum.useHeroPower) useability = 1;
+                    if (a.actionType == actionEnum.attackWithHero) useability++;
+                    int actDmd = tmpPf.enemyHero.Hp + tmpPf.enemyHero.armor;
+                    tmpPf.doAction(a);
+                    actDmd -= (tmpPf.enemyHero.Hp + tmpPf.enemyHero.armor);
+                    actDmgDict.Add(a, actDmd);
+                }
+                if (useability > 1) return;
+            }
+            catch { return; }
+
+            foreach (var pair in actDmgDict.OrderByDescending(pair => pair.Value))
+            {
+                reorderedActions.Add(pair.Key);
+            }
+
+            tmpPf = new Playfield();
+            foreach (Action a in reorderedActions)
+            {
+                bool found = false;
+
+                switch (a.actionType)
+                {
+                    case actionEnum.playcard:
+                        foreach (Handmanager.Handcard hc in tmpPf.owncards)
+                        {
+                            if (hc.entity == a.card.entity)
+                            {
+                                if (tmpPf.mana >= hc.card.getManaCost(tmpPf, hc.manacost)) found = true;
+                                break;
+                            }
+                        }
+                        break;
+                    case actionEnum.attackWithMinion:
+                        foreach (Minion m in tmpPf.ownMinions)
+                        {
+                            if (m.entityID == a.own.entityID)
+                            {
+                                if (!a.own.Ready) return;
+                                found = true;
+                                break;
+                            }
+                        }
+                        break;
+                    case actionEnum.attackWithHero:
+                        if (tmpPf.ownHero.Ready) found = true;
+                        break;
+                    case actionEnum.useHeroPower:
+                        if (tmpPf.ownAbilityReady && tmpPf.mana >= tmpPf.ownHeroAblility.card.getManaCost(tmpPf, tmpPf.ownHeroAblility.manacost)) found = true;
+                        break;
+                }
+                if (!found) return;
+                tmpPf.doAction(a);
+            }
+
+            if (Ai.Instance.botBase.getPlayfieldValue(tmpPf) >= 10000)
+            {
+                bestplay.playactions.Clear();
+                bestActions.Clear();
+                bestplay.playactions.AddRange(reorderedActions);
+                Helpfunctions.Instance.logg("Reordered actions:");
+
+                foreach (Action a in bestplay.playactions)
+                {
+                    this.bestActions.Add(new Action(a));
+                    a.print();
+                }
+            }
+        }
+
         private void selectBestTracking()
         {
             int trackingchoice = 0;
             int trackingstatus = 0;
-            //wich choice-card to draw?
-            if (mainTurnSimulator.bestboard.selectedChoice >= 1)
+            //which choice-card to draw?
+            int choice = Discovery.Instance.getChoice(mainTurnSimulator.bestboard);
+            if (choice >= 1)
+            {
+                trackingchoice = choice;
+                //Helpfunctions.Instance.ErrorLog("discovering using user choice..." + trackingchoice);
+                trackingstatus = 3;
+            }
+
+            if (trackingchoice == 0 && mainTurnSimulator.bestboard.selectedChoice >= 1)
             {
                 trackingchoice = mainTurnSimulator.bestboard.selectedChoice;
-                //Helpfunctions.Instance.logg("discovering using optimal choice..." + trackingchoice);
+                //Helpfunctions.Instance.ErrorLog("discovering using optimal choice..." + trackingchoice);
                 trackingstatus = 0;
             }
 
-            //TODO: select card based on mana + usefullness?
+            //TODO: select card based on mana + usefulness?
 
             if (trackingchoice == 0)
             {
@@ -205,7 +299,7 @@
                     if (trackingchoice == 0 && tc.selectedChoice >= 1) trackingchoice = tc.selectedChoice;
                 }
                 if (trackingchoice >= 1) trackingstatus = 1;//use tracking of other board
-                //if (trackingchoice >= 1) Helpfunctions.Instance.logg("discovering using suboptimal choice..." + trackingchoice);
+                //if (trackingchoice >= 1) Helpfunctions.Instance.ErrorLog("discovering using suboptimal choice..." + trackingchoice);
             }
 
             if (trackingchoice == 0)
@@ -213,7 +307,7 @@
                 //random card
                 Random randovar = new Random();
                 trackingchoice = randovar.Next(1, Handmanager.Instance.getNumberChoices() + 1);
-                //if (trackingchoice >= 1) Helpfunctions.Instance.logg("discovering using random choice..." + trackingchoice);
+                //if (trackingchoice >= 1) Helpfunctions.Instance.ErrorLog("discovering using random choice..." + trackingchoice);
                 trackingstatus = 2;//use random card
             }
 
@@ -288,6 +382,7 @@
                 this.bestActions.RemoveAt(0);
             }
             if (this.nextMoveGuess == null) this.nextMoveGuess = new Playfield();
+            else Hrtprozis.Instance.updateCThunInfo(nextMoveGuess.anzOgOwnCThunAngrBonus, nextMoveGuess.anzOgOwnCThunHpBonus, nextMoveGuess.anzOgOwnCThunTaunt);
             this.oldMoveGuess = new Playfield(this.nextMoveGuess);
             //this.nextMoveGuess.printBoardDebug();
 
@@ -313,6 +408,15 @@
             {
                 //Helpfunctions.Instance.logg("nd trn");
                 nextMoveGuess.mana = -100;
+                int twilightelderBonus = 0;
+                foreach (Minion m in this.nextMoveGuess.ownMinions)
+                {
+                    if (m.name == CardDB.cardName.twilightelder && !m.silenced) twilightelderBonus++;
+                }
+                if (twilightelderBonus > 0)
+                {
+                    Hrtprozis.Instance.updateCThunInfo(nextMoveGuess.anzOgOwnCThunAngrBonus + twilightelderBonus, nextMoveGuess.anzOgOwnCThunHpBonus + twilightelderBonus, nextMoveGuess.anzOgOwnCThunTaunt);
+                }
             }
 
         }
@@ -345,7 +449,7 @@
             }
             else
             {
-                help.logg("Leathal-check###########");
+                help.logg("Lethal-check###########");
                 bestmoveValue = -1000000;
                 DateTime strt = DateTime.Now;
                 if (useLethalCheck)
@@ -360,11 +464,17 @@
                     posmoves.Clear();
                     posmoves.Add(new Playfield());
                     posmoves[0].sEnemTurn = Settings.Instance.simulateEnemysTurn;
+
+                    List<Handmanager.Handcard> newcards = posmoves[0].getNewHandCards(Ai.Instance.nextMoveGuess);
+                    foreach (var card in newcards)
+                    {
+                        if (!Silverfish.Instance.isCardCreated(card)) Hrtprozis.Instance.removeCardFromTurnDeck(card.card.cardIDenum);
+                    }
+
                     help.logg("no lethal, do something random######");
                     strt = DateTime.Now;
                     doallmoves(false, false);
                     help.logg("calculated " + (DateTime.Now - strt).TotalSeconds);
-
                 }
             }
 
@@ -424,6 +534,11 @@
             {
                 this.mainTurnSimulator.printPosmoves();
                 simmulateWholeTurn(this.mainTurnSimulator.bestboard);
+
+                help.logg("Best Board Actions:");
+                this.mainTurnSimulator.bestboard.printActions();
+                help.logg("");
+
                 help.logg("calculated " + timeneeded);
             }
 
@@ -461,14 +576,13 @@
             //this.bestboard.printActions();
 
             Playfield tempbestboard = new Playfield();
+            tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
             tempbestboard.printBoard();
 
             foreach (Action bestmovee in board.playactions)
             {
-
                 help.logg("stepp");
-
-
+                
                 if (bestmovee != null && bestmovee.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
                 {
                     bestmovee.print();
@@ -481,6 +595,7 @@
                     tempbestboard.mana = -100;
                 }
                 help.logg("-------------");
+                tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
                 tempbestboard.printBoard();
             }
 
@@ -488,7 +603,7 @@
             tempbestboard.sEnemTurn = true;
             tempbestboard.endTurn(false, this.playaround, false, Settings.Instance.playaroundprob, Settings.Instance.playaroundprob2);
             help.logg("ENEMY TURN:-----------------------------");
-            tempbestboard.value = int.MinValue;
+            tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
             tempbestboard.prepareNextTurn(tempbestboard.isOwnTurn);
             Ai.Instance.enemyTurnSim[0].simulateEnemysTurn(tempbestboard, true, playaround, true, Settings.Instance.playaroundprob, Settings.Instance.playaroundprob2);
         }
@@ -501,6 +616,7 @@
             //this.bestboard.printActions();
 
             Playfield tempbestboard = new Playfield();
+            tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
             tempbestboard.printBoard();
 
             if (bestmove != null && bestmove.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
@@ -515,6 +631,7 @@
                 tempbestboard.mana = -100;
             }
             help.logg("-------------");
+            tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
             tempbestboard.printBoard();
 
             foreach (Action bestmovee in this.bestActions)
@@ -535,6 +652,7 @@
                     tempbestboard.mana = -100;
                 }
                 help.logg("-------------");
+                tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
                 tempbestboard.printBoard();
             }
 
@@ -542,7 +660,7 @@
             tempbestboard.sEnemTurn = true;
             tempbestboard.endTurn(false, this.playaround, false, Settings.Instance.playaroundprob, Settings.Instance.playaroundprob2);
             help.logg("ENEMY TURN:-----------------------------");
-            tempbestboard.value = int.MinValue;
+            tempbestboard.value = botBase.getPlayfieldValue(tempbestboard);
             tempbestboard.prepareNextTurn(tempbestboard.isOwnTurn);
             Ai.Instance.enemyTurnSim[0].simulateEnemysTurn(tempbestboard, true, playaround, true, Settings.Instance.playaroundprob, Settings.Instance.playaroundprob2);
         }
@@ -578,7 +696,7 @@
             foreach (Action bestmovee in this.bestActions)
             {
 
-                if (bestmovee != null && bestmove.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
+                if (bestmovee != null && bestmovee.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
                 {
                     //bestmovee.print();
                     tempbestboard.doAction(bestmovee);
@@ -600,17 +718,17 @@
             {
                 foreach (Minion m in this.nextMoveGuess.ownMinions)
                 {
-                    if (m.entitiyID == old) m.entitiyID = newone;
+                    if (m.entityID == old) m.entityID = newone;
                 }
                 foreach (Minion m in this.nextMoveGuess.enemyMinions)
                 {
-                    if (m.entitiyID == old) m.entitiyID = newone;
+                    if (m.entityID == old) m.entityID = newone;
                 }
             }
             foreach (Action a in this.bestActions)
             {
-                if (a.own != null && a.own.entitiyID == old) a.own.entitiyID = newone;
-                if (a.target != null && a.target.entitiyID == old) a.target.entitiyID = newone;
+                if (a.own != null && a.own.entityID == old) a.own.entityID = newone;
+                if (a.target != null && a.target.entityID == old) a.target.entityID = newone;
                 if (a.card != null && a.card.entity == old) a.card.entity = newone;
             }
 
@@ -618,7 +736,7 @@
 
 
 
-        //queque stuff (done by xytrix)
+        //queue stuff (done by xytrix)
         // Looks through a list of playfields from previous moves to find one that matches our current board state.
         // If any is found, we "rollback" our bestactions list to that point in time.
         public bool restoreBestMoves(Playfield currentField, List<Playfield> oldMoveGuesses)

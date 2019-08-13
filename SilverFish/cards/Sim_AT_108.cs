@@ -9,16 +9,7 @@ namespace HREngine.Bots
         //Battlecry: Reveal a minion in each deck. If yours costs more, gain Charge
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-
-            if (p.isServer)
-            {
-                //TODO
-                p.minionGetCharge(own);
-                return;
-            }
-
             p.minionGetCharge(own);
         }
-
     }
 }

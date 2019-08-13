@@ -11,13 +11,6 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            if (p.isServer)
-            {
-                Minion poortarget = p.getRandomMinionFromSide_SERVER(m.own, false);
-                if (poortarget != null) p.minionReturnToHand(poortarget, m.own, 0);
-                return;
-            }
-
             List<Minion> temp = new List<Minion>();
 
             if (m.own)

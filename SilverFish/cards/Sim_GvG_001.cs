@@ -11,14 +11,6 @@ namespace HREngine.Bots
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (p.isServer)
-            {
-                int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
-                Minion poortarget = p.getRandomMinionFromSide_SERVER(!ownplay, false);
-                if (poortarget != null) p.minionGetDamageOrHeal(poortarget, dmg);
-                return;
-            }
-
             // conservative
 
             List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;

@@ -16,7 +16,7 @@ namespace HREngine.Bots
                 List<Minion> temp = (turnEndOfOwner) ? p.ownMinions : p.enemyMinions;
                 foreach (Minion mnn in temp)
                 {
-                    if (mnn.name == CardDB.cardName.echoingooze && triggerEffectMinion.entitiyID != mnn.entitiyID)
+                    if (mnn.name == CardDB.cardName.echoingooze && triggerEffectMinion.entityID != mnn.entityID)
                     {
                         mnn.setMinionTominion(triggerEffectMinion);
                         break;

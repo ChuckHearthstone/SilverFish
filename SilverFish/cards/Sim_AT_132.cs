@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132 : SimTemplate //Spellslinger
+    class Sim_AT_132 : SimTemplate //Justicar Trueheart
     {
 
-        //Battlecry: Add a random spell to each player's hand.
+        //Battlecry: Replace your starting Hero Power with a better one.
 
         CardDB.Card drui = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_DRUID);
         CardDB.Card hunti = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_132_HUNTER);

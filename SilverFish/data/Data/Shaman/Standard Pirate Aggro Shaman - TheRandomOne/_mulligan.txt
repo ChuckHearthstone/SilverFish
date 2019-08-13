@@ -1,0 +1,94 @@
+// This File: _mulligan.txt
+// Author: TheRandomOne
+// Version: 0.1 (28-Dec-16)
+// Deck Name: Pirate Shammy
+// Hero: Shaman
+// Deck Type: Aggro
+
+//- D E C K (WILD) -------------------------------------
+// [1] Lightning Bolt x2 (EX1_238)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Sir Finley Mrrgglton x1 (LOE_076)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [1] Southsea Deckhand x1 (CS2_146)
+// [1] Tunnel Trogg x2 (LOE_018)
+// [2] Ancestral Knowledge x2 ()
+// [2] Flametongue Totem x2 (EX1_565)
+// [2] Jade Claws x2 (CFM_717)
+// [2] Lava Shock x 2 ()
+// [2] Rockbiter Weapon x 2 ()
+// [2] Totem Golem x2 (AT_052)
+// [3] Argent Horserider x 1 ()
+// [3] Feral Spirit x2 (EX1_248)
+// [3] Lava Burst x2 (EX1_241)
+// [4] Jade Lightning x2 (CFM_707)
+// [4] Doomhammer x 2 ()
+
+// - A L L --------------------------------------
+// Tunnel Trog
+hold;shaman;all;LOE_018
+// 1x Totem Golem
+hold;shaman;all;AT_052:1
+// 2x Totem Golem + Tunnel Trog + coin
+hold;shaman;all;AT_052:2:LOE_018;coin
+// 1x Flametongue Totem + 2x Tunnel Trogg + coin
+hold;shaman;all;EX1_565:1:LOE_018,2,2;coin
+// 1x Flametongue Totem + 2x Small-Time Buccaneer + coin
+hold;shaman;all;EX1_565:1:CFM_325,2,2;coin
+// 1x Feral Spirit + Tunnel Trog + coin
+hold;shaman;all;EX1_248:1:LOE_018;coin
+// Discard Feral spirit when you have Totem Golem and no coin
+discard;shaman;all;EX1_248:2:AT_052;nocoinar Axe (CS2_106)
+hold;warrior;all;NEW1_022:1:CS2_106
+
+
+// - D R U I D ----------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// 1x Feral Spirit
+hold;shaman;all;EX1_248:1
+
+// - H U N T E R --------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+
+// - M A G E ------------------------------------
+// 1x Lightning Bolt + Tunnel Trog
+hold;shaman;mage;EX1_238:1:LOE_018
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+
+// - P A L A D I N ------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// 1x Feral Spirit
+hold;shaman;pala;EX1_248:1
+
+// - P R I E S T --------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+
+// - R O G U E ----------------------------------
+// Sir Finley Mrrgglton
+hold;shaman;all;LOE_076
+// 1x Feral Spirit
+hold;shaman;thief;EX1_248:1
+
+// - S H A M A N --------------------------------
+// 1x Lightning Bolt + Tunnel Trog
+hold;shaman;shaman;EX1_238:1:LOE_018
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+
+// - W A R L O C K ------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// 1x Feral Spirit
+hold;shaman;warlock;EX1_248:1
+
+
+// - W A R R I O R ------------------------------
+// Small-Time Buccaneer
+hold;shaman;all;CFM_325
+// Sir Finley Mrrgglton
+hold;shaman;all;LOE_076

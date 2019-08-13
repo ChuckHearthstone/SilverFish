@@ -1,0 +1,30 @@
+// This File: deck.txt
+//    Author: Sepefeets
+//   Version: 0.2 (29-Jun-2016)
+// Deck Name: Wild Secret Paladin (oldschool)
+//      Hero: Paladin
+// Deck Type: Midrange (Control)
+
+// Cards
+Avenge x2
+Competitive Spirit x1
+Noble Sacrifice x2
+Redemption x1
+Secretkeeper x1
+Haunted Creeper x2
+Knife Juggler x2
+Shielded Minibot x2
+Coghammer x1
+Divine Favor x1
+Muster for Battle x2
+Truesilver Champion x1
+Blessing of Kings x1
+Consecration x1
+Keeper of Uldaman x1
+Piloted Shredder x2
+Loatheb x1
+Sludge Belcher x1
+Mysterious Challenger x2
+Dr. Boom x1
+Tirion Fordring x1
+N'Zoth x1

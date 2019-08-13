@@ -1,0 +1,36 @@
+// This File: decklist.txt
+// Author: Dre
+// Version: 2.6 (24-dec-2016)
+// Deck Name: Midrange-shaman
+// Hero: Shaman
+// Deck Type: Midrange (Control)
+
+Spirit Claws x2
+Tunnel Trogg ×2 
+Lightning Bolt x2 
+Bloodmage Thalnos 1x
+Flametongue Totem ×2
+Maelstrom Portal x2 
+Totem Golem ×2 
+Feral Spirit x2 
+Hex ×2 
+Lightning Storm x1
+Mana Tide Totem ×1 
+Barnes x1 
+Jinyu waterspeaker x2
+Azure Drake x2 
+Thunder Bluff Valiant ×2
+Thing from Below ×2
+Ragnaros the Firelord x1
+Al'Akir the Windlord x1
+
+Variation:
+
++ 1x Lightning storm
+- 1x Ragnaros
+
+-1x Barnes
++1x Flameweathed Faceless
+
+-1x Thunder bluff Valiant
++1x Bloodlust

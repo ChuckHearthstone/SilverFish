@@ -24,16 +24,6 @@ namespace HREngine.Bots
                 if (p.enemydoublepriest >= 1) dmg *= (2 * p.enemydoublepriest);
             }
 
-            if (p.isServer)
-            {
-                Minion poortarget = p.getRandomMinionFromSide_SERVER(!ownplay, true);
-                if (poortarget != null) p.minionGetDamageOrHeal(poortarget, dmg);
-                return;
-            }
-
-
-
-
             int count = (ownplay) ? p.enemyMinions.Count : p.ownMinions.Count;
             if (count >= 1)
             {

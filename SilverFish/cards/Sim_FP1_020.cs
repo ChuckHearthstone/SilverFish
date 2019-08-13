@@ -11,16 +11,7 @@ namespace HREngine.Bots
 
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
-
-            if (p.isServer)
-            {
-                Minion poortarget = p.getRandomMinionFromSide_SERVER(ownplay, false);
-                if (poortarget != null) p.minionGetBuffed(poortarget, 3, 2);
-                return;
-            }
-
             List<Minion> temp = new List<Minion>();
-
 
             if (ownplay)
             {

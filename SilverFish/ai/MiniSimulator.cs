@@ -12,36 +12,33 @@
         private int totalboards = 50;
         private bool usePenalityManager = true;
         private bool useCutingTargets = true;
-        private bool dontRecalc = true;
-        private bool useLethalCheck = true;
         private bool useComparison = true;
 
 
-        private bool printNormalstuff = false;
+        private bool printNormalstuff;
 
-        public int boardindexToSimulate = 0;
+        public int boardindexToSimulate;
         List<Playfield> posmoves = new List<Playfield>(7000);
         List<Playfield> twoturnfields = new List<Playfield>(500);
 
         List<List<Playfield>> threadresults = new List<List<Playfield>>(64);
         private int dirtyTwoTurnSim = 256;
 
-        public Action bestmove = null;
-        public float bestmoveValue = 0;
+        public Action bestmove;
+        public float bestmoveValue;
         public Playfield bestboard = new Playfield();
 
-        public Behavior botBase = null;
-        private int calculated = 0;
+        private Behavior botBase;
+
+        private Movegenerator movegen = Movegenerator.Instance;
+
+        private int calculated;
 
         private bool simulateSecondTurn = false;
-        private bool playaround = false;
+        private bool playaround;
         private int playaroundprob = 50;
         private int playaroundprob2 = 80;
-
-        Movegenerator movegen = Movegenerator.Instance;
-
-        PenalityManager pen = PenalityManager.Instance;
-
+        
         public MiniSimulator()
         {
         }
@@ -168,10 +165,10 @@
                     }
 
                     //sort stupid stuff ouf
-
-                    if (botBase.getPlayfieldValue(p) > bestoldval)
+                    float newPlayfieldValue = botBase.getPlayfieldValue(p);
+                    if (newPlayfieldValue > bestoldval)
                     {
-                        bestoldval = botBase.getPlayfieldValue(p);
+                        bestoldval = newPlayfieldValue;
                         bestold = p;
                     }
                     if (!test)
@@ -574,7 +571,7 @@
             int i = 0;
             foreach (Playfield p in this.posmoves)
             {
-                p.printBoard(i);
+                p.printBoard(true, i);
                 i++;
                 if (i >= 200) break;
             }

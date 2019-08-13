@@ -1,0 +1,162 @@
+// This File: _mulligan.txt
+//    Author: Dre
+//   Version: 1.5 (17-Sept-2016)
+// Deck Name: Standard Midrange Hunter
+//      Hero: Hunter
+// Deck Type: Midrange (Control)
+
+// - H U N T E R --------------------------------
+// [1] Fiery Bat (OG_179)		
+// [2] Kindly Grandmother (KAR_005)	
+// [2] Quick Shot (BRM_013)		
+// [2] Scavenging Hyena (EX1_531) 	
+// [2] Kings Elek (AT_058)		
+// [3] Deadly Shot (EX1_617)		
+// [3] Animal Companion (NEW1_031)	
+// [3] Eaglehorn Bow (EX1_536)		
+// [3] Kill Command (EX1_539)		
+// [3] Unleash the Hounds (EX1_538)	
+// [4] Houndmaster (DS1_070)		
+// [4] Infested Wolf (OG_216)		
+// [5] Tundra Rhino (DS1_178)		
+// [6] Savannah Highmane (EX1_534)	
+// [8] Call of the Wild (OG_211)	
+// - N E U T R A L -----------------------------
+// [2] Huge Toad (LOE_046)		
+// [4] Barnes (KAR_114)			
+// [8] Ragnaros the Firelord (EX1_298)	
+
+// - A L L --------------------------------------
+// 1-DROP
+// 1x Fiery Bat
+hold;hunter;all;OG_179:1
+// 1x Fiery Bat + coin
+hold;hunter;all;OG_179:2;coin
+
+// 2-DROP
+// 1x Huge Toad
+hold;hunter;all;LOE_046:1
+// 1x Huge Toad + coin
+hold;hunter;all;LOE_046:2;coin
+// 1x Kindly Grandmother
+hold;hunter;all;KAR_005:1
+// 2x Kindly Grandmother + coin
+hold;hunter;all;KAR_005:2;coin
+// 1x King's Elekk
+hold;hunter;all;AT_058:1
+// 2x King's Elekk + coin
+hold;hunter;all;AT_058:2;coin
+// 1x Scavenging Hyena + Fiery Bat
+hold;hunter;all;EX1_531:1:OG_179
+// 1x Scavenging Hyena + 2-drop + coin
+hold;hunter;all;EX1_531:1:LOE_046/KAR_005/AT_058;coin
+
+// 4-DROP
+// 1 x Houndmaster + 1-drop + 2-drop + 3-drop
+hold;hunter;all;DS1_070:1:OG_179+LOE_046+NEW1_031/OG_179+AT_058+NEW1_031
+hold;hunter;all;DS1_070:1:OG_179+KAR_005+NEW1_031/OG_179+EX1_531+NEW1_031
+
+// - D R U I D ----------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;druid;NEW1_031:1
+
+// 4-DROP
+// 1 x Barnes
+hold;hunter;druid;KAR_114:1
+
+// - H U N T E R --------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;hunter;NEW1_031:1
+
+// - M A G E ------------------------------------
+// 2-DROP
+// Quick Shot
+hold;hunter;mage;BRM_013:1
+
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;mage;NEW1_031:1
+// 1 x Eaglehorn Bow + 2 drop
+hold;hunter;mage;EX1_536:1:LOE_046/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 1-drop + 2 drop
+hold;hunter;mage;EX1_536:1:OG_179+LOE_046/OG_179+KAR_005/OG_179+AT_058
+// 1 x Eaglehorn Bow + 1 drop + coin
+hold;hunter;mage;EX1_536:1:OG_179;coin
+
+// - P A L A D I N ------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;pala;NEW1_031:1
+
+// 4-DROP
+// 1 x Barnes
+hold;hunter;pala;KAR_114:1
+
+// - P R I E S T --------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;priest;NEW1_031:1
+// 1 x Eaglehorn Bow + 2 drop
+hold;hunter;priest;EX1_536:1:LOE_046/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 1-drop + 2 drop
+hold;hunter;priest;EX1_536:1:OG_179+LOE_046/OG_179+KAR_005/OG_179+AT_058
+// 1 x Eaglehorn Bow + 1 drop + coin
+hold;hunter;priest;EX1_536:1:OG_179;coin
+
+// - R O G U E ----------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;thief;NEW1_031:1
+// 1 x Eaglehorn Bow + 2 drop
+hold;hunter;thief;EX1_536:1:LOE_046/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 1-drop + 2 drop
+hold;hunter;thief;EX1_536:1:OG_179+LOE_046/OG_179+KAR_005/OG_179+AT_058
+// 1 x Eaglehorn Bow + 1 drop + coin
+hold;hunter;thief;EX1_536:1:OG_179;coin
+
+// - S H A M A N --------------------------------
+// 2-DROP
+// Quick Shot + 1 or 2-drop
+hold;hunter;shaman;BRM_013:1:LOE_046/OG_179/KAR_005/AT_058
+
+// 3-DROP
+// 1 x Animal Companion + 1 or 2 drop
+hold;hunter;shaman;NEW1_031:1:LOE_046/OG_179/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 2 drop
+hold;hunter;shaman;EX1_536:1:LOE_046/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 1-drop + 2 drop
+hold;hunter;shaman;EX1_536:1:OG_179+LOE_046/OG_179+KAR_005/OG_179+AT_058
+// 1 x Eaglehorn Bow + 1 drop + coin
+hold;hunter;shaman;EX1_536:1:OG_179;coin
+// Unleash the Hounds (EX1_538) + coin
+hold;hunter;shaman;EX1_538:1;coin
+// Unleash the Hounds (EX1_538) + 1 or 2 drop
+hold;hunter;shaman;EX1_538:1:LOE_046/OG_179/KAR_005/AT_058/EX1_531
+
+
+// - W A R L O C K ------------------------------
+// 2-DROP
+// Quick Shot + 1 or 2-drop
+hold;hunter;warlock;BRM_013:1:LOE_046/OG_179/KAR_005/AT_058
+
+// 3-DROP
+// 1 x Animal Companion + 1 or 2 drop
+hold;hunter;warlock;NEW1_031:1:LOE_046/OG_179/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 2 drop
+hold;hunter;warlock;EX1_536:1:LOE_046/KAR_005/AT_058
+// 1 x Eaglehorn Bow + 1-drop + 2 drop
+hold;hunter;warlock;EX1_536:1:OG_179+LOE_046/OG_179+KAR_005/OG_179+AT_058
+// 1 x Eaglehorn Bow + 1 drop + coin
+hold;hunter;warlock;EX1_536:1:OG_179;coin
+
+// - W A R R I O R ------------------------------
+// 3-DROP
+// 1 x Animal Companion
+hold;hunter;warrior;NEW1_031:1
+
+// 4-DROP
+// 1 x Barnes
+hold;hunter;warrior;KAR_114:1
+

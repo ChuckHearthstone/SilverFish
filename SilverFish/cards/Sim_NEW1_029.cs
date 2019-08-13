@@ -13,11 +13,11 @@ namespace HREngine.Bots
 		{
             if (own.own)
             {
-                p.weHavePlayedMillhouseManastorm = true;
+                p.anzOwnMillhouseManastorm = true;
             }
             else
             {
-                p.enemyHavePlayedMillhouseManastorm = true;
+                p.anzEnemyMillhouseManastorm = true;
             }
 
 		}

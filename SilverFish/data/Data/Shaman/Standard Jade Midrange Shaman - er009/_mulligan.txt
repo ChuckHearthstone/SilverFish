@@ -1,0 +1,93 @@
+// This File: _mulligan.txt
+// Author: er009 (Based on Dre midrange shaman)
+// Version: 1.3 (2-Jan-2017)
+// Deck Name: midrange MSOG-shaman
+// Hero: Shaman
+// Deck Type: Midrange (Control)
+
+// - D E C K --------------------------------
+// [1] Spirit Claws x2 (KAR_063)
+// [1] Tunnel Trogg ×2 (LOE_018)
+// [1] Lightning Bolt x1 (EX1_238)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [2] Bloodmage Thalnos 1x (EX1_012)
+// [2] Flametongue Totem ×2 (EX1_565)
+// [2] Jade Claws x2 (CFM_717)
+// [2] Maelstrom Portal x2 (KAR_073)
+// [2] Totem Golem ×2 (AT_052)
+// [3] Hex ×2 (EX1_246)
+// [3] Lightning Storm x1 (EX1_259)
+// [4] Barnes x1 (KAR_114)
+// [4] Jade Lightning x2 (CFM_707)
+// [5] Azure Drake x2 (EX1_284)
+// [6] Aya Blackpaw (CFM_902)
+// [6] Thing from Below ×2 (OG_028)
+// [8] Al'Akir (NEW1_010)
+// [8] Ragnaros the Firelord x1 (EX1_298)
+
+
+// - A L L --------------------------------------
+// 1-DROP
+// DISCARD Patches the Pirate (CFM_637)
+discard;shaman;all;CFM_637
+// Spirit Claws
+hold;shaman;all;KAR_063:1
+// Tunnel Trogg
+hold;shaman;all;LOE_018
+// Small-Time Buccaneer (CFM_325)
+hold;shaman;all;CFM_325
+
+// 2-DROP
+// 1x Bloodmage Thalnos + Spirit Claws
+hold;shaman;all;EX1_012:1:KAR_063
+// 1x Kobold Geomancer + Spirit Claws
+hold;shaman;all;CS2_142:1:KAR_063
+
+// 1x Totem Golem
+hold;shaman;all;AT_052:1
+// 2x Totem Golem + 1-Drop + coin
+hold;shaman;all;AT_052:2:LOE_018;coin
+// 1x Flametongue Totem + 2x Tunnel Trogg + coin
+hold;shaman;all;EX1_565:1:LOE_018,2,2;coin
+
+
+
+// 3-DROP
+// 1x Feral Spirit + Tunnel Trogg + coin
+hold;shaman;all;EX1_248:1:LOE_018;coin
+// Discard Feral spirit when you have Totem Golem and no coin
+discard;shaman;all;EX1_248:2:AT_052;nocoin
+
+// - D R U I D ----------------------------------
+// 1x Flamewreathed Faceless
+hold;shaman;all;OG_024:1
+
+// - H U N T E R --------------------------------
+
+// - M A G E ------------------------------------
+// 1x Flamewreathed Faceless
+hold;shaman;all;OG_024:1
+
+// - P A L A D I N ------------------------------
+
+// - P R I E S T --------------------------------
+// 1x Flamewreathed Faceless
+hold;shaman;all;OG_024:1
+
+// - R O G U E ----------------------------------
+
+// - S H A M A N --------------------------------
+// 1-DROP
+// 1x Lightning Bolt + Tunnel Trogg
+hold;shaman;shaman;EX1_238:1:LOE_018
+
+// 3-DROP
+// 1x Lightning Storm + 1-drop + coin
+hold;shaman;shaman;EX1_259:1:LOE_018;coin
+// 1x Lightning Storm + Tunnel Trogg + Totem Golem
+hold;shaman;shaman;EX1_259:1:LOE_018+AT_052
+
+// - W A R L O C K ------------------------------
+// 1x Flamewreathed Faceless
+hold;shaman;all;OG_024:1

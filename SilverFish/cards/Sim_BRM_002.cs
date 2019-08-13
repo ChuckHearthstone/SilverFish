@@ -14,17 +14,6 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == wasOwnCard)
             {
-                if (p.isServer)
-                {
-                    int timesS = 2;
-                    for (int iS = 0; iS < timesS; iS++)
-                    {
-                        Minion poortarget = p.getRandomMinionFromSide_SERVER(!wasOwnCard, true);
-                        if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                    }
-                    return;
-                }
-
                 List<Minion> targets = (triggerEffectMinion.own) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
 
                 if (triggerEffectMinion.own)
@@ -55,17 +44,6 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == wasOwnCard)
             {
-                if (p.isServer)
-                {
-                    int timesS = 2;
-                    for (int iS = 0; iS < timesS; iS++)
-                    {
-                        Minion poortarget = p.getRandomMinionFromSide_SERVER(!wasOwnCard, true);
-                        if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                    }
-                    return;
-                }
-
                 List<Minion> temp = (triggerEffectMinion.own) ? p.enemyMinions : p.ownMinions;
                 for (int i = 0; i < 2; i++)
                 {

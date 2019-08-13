@@ -18,16 +18,6 @@ namespace HREngine.Bots
                     if (hc.manacost >= 1) hc.manacost -= 1;
                 }
             }
-
-            if (p.isServer && turnEndOfOwner == false && triggerEffectMinion.own == turnEndOfOwner)
-            {
-                foreach (Handmanager.Handcard hc in p.EnemyCards)
-                {
-                    if (hc.manacost >= 1) hc.manacost -= 1;
-                }
-            }
         }
-
-
     }
 }

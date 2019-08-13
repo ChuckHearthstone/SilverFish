@@ -13,21 +13,7 @@ namespace HREngine.Bots
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            if (p.isServer)
-            {
-                //TODO
-                if (ownplay)
-                {
-                    p.enemyDeckSize += 3;
-                }
-                else
-                {
-                    p.ownDeckSize += 3;
-                }
-                p.callKid(kid, pos, ownplay);
-                p.callKid(kid, pos, ownplay);
-                return;
-            }
+
             //hard to simulate
             if (ownplay)
             {
@@ -40,8 +26,5 @@ namespace HREngine.Bots
             p.callKid(kid, pos, ownplay);
             p.callKid(kid, pos, ownplay);
         }
-
     }
-
-    
 }

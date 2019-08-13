@@ -65,9 +65,13 @@ namespace HREngine.Bots
             int usecoin = 0;
             foreach (Action a in p.playactions)
             {
-                if (a.actionType == actionEnum.attackWithHero && p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                if (a.actionType == actionEnum.attackWithHero)
+                {
+                    if (p.enemyMinions.Find(m => m.entityID == a.target.entityID) != null) retval -= a.target.Angr;
+                    if (p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                    if (p.ownHeroName == HeroEnum.warrior && useAbili) retval -= 1;
+                }
                 if (a.actionType == actionEnum.useHeroPower) useAbili = true;
-                if (p.ownHeroName == HeroEnum.warrior && a.actionType == actionEnum.attackWithHero && useAbili) retval -= 1;
                 //if (a.actionType == actionEnum.useHeroPower && a.card.card.name == CardDB.cardName.lesserheal && (!a.target.own)) retval -= 5;
                 if (a.actionType != actionEnum.playcard) continue;
                 if (a.card.card.name == CardDB.cardName.thecoin)
@@ -84,7 +88,7 @@ namespace HREngine.Bots
             int heropowermana = p.ownHeroAblility.card.getManaCost(p, 2);
             if (p.manaTurnEnd >= heropowermana && !useAbili && p.ownAbilityReady)
             {
-                if (!(p.ownHeroName == HeroEnum.thief && (p.ownWeaponDurability >= 2 || p.ownWeaponAttack >= 2))) retval -= 20;
+                if (!(p.ownHeroName == HeroEnum.thief && (p.ownWeaponDurability >= 2 || p.ownWeaponAttack >= 2))) retval -= 100;
             }
             if (useAbili) retval -= 3;  // penalty in case the hero power was chosen over playing a card (penalty == card count bonus)
             if (useAbili && usecoin == 2) retval -= 5;  // prevent being wasteful with innervate if we could've just not used hero power for 2mana
@@ -102,33 +106,42 @@ namespace HREngine.Bots
                 }
             }
 
-            foreach (Minion m in p.ownMinions)
-            {
-                retval += m.Hp * 1;
-                retval += m.Angr * 2;
-                retval += m.handcard.card.rarity;
-                if (m.windfury) retval += m.Angr;
-                if (m.divineshild) retval += ((m.Angr + 2) / 3) + ((m.Hp + 2) / 3);
-                if (m.stealth) retval += 1;
-                if (m.taunt) retval += 1;
-                if (m.handcard.card.isSpecialMinion)
-                {
-                    retval += 1;
-                    if (!m.taunt && m.stealth) retval += (m.Angr < 4 ? 10 : 20);
-                }
-                //if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Angr == 1 && m.Hp == 1) retval -= 5;
-                if (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.nerubianegg)
-                {
-                    if (m.Angr >= 1) retval += 2;
-                    if ((!m.taunt && m.Angr == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
-                    if (p.ownMinions.Count >= 3) retval += 15;
-                }
-            }
+            bool enemyDoomsayer = false;
+            bool ownDoomsayer = false;
 
-            foreach (Minion m in p.enemyMinions)
+            if (p.enemyMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null) enemyDoomsayer = true;
+            if (p.ownMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null) ownDoomsayer = true;
+
+            if (!enemyDoomsayer && !ownDoomsayer)
             {
-                retval -= this.getEnemyMinionValue(m, p);
+                foreach (Minion m in p.ownMinions)
+                {
+                    retval += m.Hp * 1;
+                    retval += m.Angr * 2;
+                    retval += m.handcard.card.rarity;
+                    if (m.windfury) retval += m.Angr;
+                    if (m.divineshild) retval += ((m.Angr + 2) / 3) + ((m.Hp + 2) / 3);
+                    if (m.stealth) retval += 1;
+                    if (m.taunt) retval += 1;
+                    if (m.handcard.card.isSpecialMinion)
+                    {
+                        retval += 1;
+                        if (!m.taunt && m.stealth) retval += (m.Angr < 4 ? 10 : 20);
+                    }
+                    //if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Angr == 1 && m.Hp == 1) retval -= 5;
+                    if (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader) retval += 10;
+                    if (m.handcard.card.name == CardDB.cardName.nerubianegg)
+                    {
+                        if (m.Angr >= 1) retval += 2;
+                        if ((!m.taunt && m.Angr == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
+                        if (p.ownMinions.Count >= 3) retval += 15;
+                    }
+                }
+
+                foreach (Minion m in p.enemyMinions)
+                {
+                    retval -= this.getEnemyMinionValue(m, p);
+                }
             }
 
             retval -= p.enemySecretCount;
@@ -232,7 +245,7 @@ namespace HREngine.Bots
                 if (!m.frozen && m.Angr >= 7)
                 {
                     List<Minion> myTaunts = p.ownMinions.FindAll(own => own.taunt);
-                    List<Minion> enemyAttackers = p.enemyMinions.FindAll(enm => enm.entitiyID != m.entitiyID && enm.Angr > 0 && !enm.frozen);
+                    List<Minion> enemyAttackers = p.enemyMinions.FindAll(enm => enm.entityID != m.entityID && enm.Angr > 0 && !enm.frozen);
                     int totalTauntHp = 0;
                     int totalAtkDmg = 0;
                     myTaunts.ForEach(taunt => totalTauntHp += taunt.Hp);

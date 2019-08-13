@@ -5,7 +5,7 @@
     using System.IO;
 
 
-    public class ComboBreaker
+    public sealed class ComboBreaker
     {
 
         enum combotype
@@ -18,38 +18,40 @@
         private Dictionary<CardDB.cardIDEnum, int> playByValue = new Dictionary<CardDB.cardIDEnum, int>();
 
         private List<combo> combos = new List<combo>();
-        private static ComboBreaker instance;
 
         Handmanager hm = Handmanager.Instance;
         Hrtprozis hp = Hrtprozis.Instance;
 
         public int attackFaceHP = -1;
 
+        private string ownClass = Hrtprozis.Instance.heroEnumtoCommonName(Hrtprozis.Instance.heroname);
+        private string deckName = Hrtprozis.Instance.deckName;
+        private string cleanPath = "";
+
 
         class combo
         {
             public combotype type = combotype.combo;
-            public int neededMana = 0;
+            public int neededMana;
             public Dictionary<CardDB.cardIDEnum, int> combocards = new Dictionary<CardDB.cardIDEnum, int>();
             public Dictionary<CardDB.cardIDEnum, int> cardspen = new Dictionary<CardDB.cardIDEnum, int>();
             public Dictionary<CardDB.cardIDEnum, int> combocardsTurn0Mobs = new Dictionary<CardDB.cardIDEnum, int>();
             public Dictionary<CardDB.cardIDEnum, int> combocardsTurn0All = new Dictionary<CardDB.cardIDEnum, int>();
             public Dictionary<CardDB.cardIDEnum, int> combocardsTurn1 = new Dictionary<CardDB.cardIDEnum, int>();
             public int penality = 0;
-            public int combolength = 0;
-            public int combot0len = 0;
-            public int combot1len = 0;
-            public int combot0lenAll = 0;
-            public bool twoTurnCombo = false;
-            public int bonusForPlaying = 0;
-            public int bonusForPlayingT0 = 0;
-            public int bonusForPlayingT1 = 0;
+            public int combolength;
+            public int combot0len;
+            public int combot1len;
+            public int combot0lenAll;
+            public bool twoTurnCombo;
+            public int bonusForPlaying;
+            public int bonusForPlayingT0;
+            public int bonusForPlayingT1;
             public CardDB.cardName requiredWeapon = CardDB.cardName.unknown;
             public HeroEnum oHero = HeroEnum.None;
 
             public combo(string s)
             {
-                int i = 0;
                 this.neededMana = 0;
                 requiredWeapon = CardDB.cardName.unknown;
                 this.type = combotype.combo;
@@ -362,6 +364,8 @@
 
         }
 
+        private static ComboBreaker instance;
+
         public static ComboBreaker Instance
         {
             get
@@ -379,27 +383,85 @@
             }
         }
 
+        public void updateInstance()
+        {
+            ownClass = Hrtprozis.Instance.heroEnumtoCommonName(Hrtprozis.Instance.heroname);
+            deckName = Hrtprozis.Instance.deckName;
+            lock (instance)
+            {
+            readCombos();
+            }
+            if (attackFaceHP != -1)
+            {
+                hp.setAttackFaceHP(attackFaceHP);
+            }
+            //Helpfunctions.Instance.ErrorLog("ComboBreaker Deck: " + deckName + " , Class: " + ownClass);
+        }
+
+        public void loggCleanPath()
+        {
+            Helpfunctions.Instance.logg(cleanPath);
+        }
+
         private void readCombos()
         {
             string[] lines = new string[0] { };
             combos.Clear();
+
+            string path = Settings.Instance.path;
+            string cleanpath = "Silverfish" + System.IO.Path.DirectorySeparatorChar;
+            string datapath = path + "Data" + System.IO.Path.DirectorySeparatorChar;
+            string cleandatapath = cleanpath + "Data" + System.IO.Path.DirectorySeparatorChar;
+            string classpath = datapath + ownClass + System.IO.Path.DirectorySeparatorChar;
+            string cleanclasspath = cleandatapath + ownClass + System.IO.Path.DirectorySeparatorChar;
+            string deckpath = classpath + deckName + System.IO.Path.DirectorySeparatorChar;
+            string cleandeckpath = cleanclasspath + deckName + System.IO.Path.DirectorySeparatorChar;
+            const string filestring = "_combo.txt";
+
+
+            if (deckName != "" && System.IO.File.Exists(deckpath + filestring))
+            {
+                path = deckpath;
+                cleanPath = cleandeckpath + filestring;
+            }
+            else if (deckName != "" && System.IO.File.Exists(classpath + filestring))
+            {
+                path = classpath;
+                cleanPath = cleanclasspath + filestring;
+            }
+            else if (deckName != "" && System.IO.File.Exists(datapath + filestring))
+            {
+                path = datapath;
+                cleanPath = cleandatapath + filestring;
+            }
+            else if (System.IO.File.Exists(path + filestring))
+            {
+                cleanPath = cleanpath + filestring;
+            }
+            else
+            {
+                Helpfunctions.Instance.ErrorLog("[Combo] cant find base _combo.txt, consider creating one");
+                return;
+            }
+            Helpfunctions.Instance.ErrorLog("[Combo] read " + cleanPath);
+
+
             try
             {
-                string path = Settings.Instance.path;
-                lines = System.IO.File.ReadAllLines(path + "_combo.txt");
+                lines = System.IO.File.ReadAllLines(path + filestring);
             }
             catch
             {
-                Helpfunctions.Instance.logg("cant find _combo.txt");
-                Helpfunctions.Instance.ErrorLog("cant find _combo.txt (if you dont created your own combos, ignore this message)");
+                Helpfunctions.Instance.ErrorLog("_combo.txt read error. Continuing without user-defined rules.");
                 return;
             }
-            Helpfunctions.Instance.logg("read _combo.txt...");
-            Helpfunctions.Instance.ErrorLog("read _combo.txt...");
+
             foreach (string line in lines)
             {
                 string shortline = line.Replace(" ", "");
-                if(shortline.StartsWith("//")) continue;
+                if (shortline.StartsWith("//")) continue;
+                if (shortline.Length == 0) continue;
+
                 if (line.Contains("weapon:"))
                 {
                     try
@@ -408,7 +470,6 @@
                     }
                     catch
                     {
-                        Helpfunctions.Instance.logg("combomaker cant read: " + line);
                         Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
                     }
                 }
@@ -427,7 +488,6 @@
                         }
                         catch
                         {
-                            Helpfunctions.Instance.logg("combomaker cant read: " + line);
                             Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
                         }
                     }
@@ -440,14 +500,13 @@
                         }
                         catch
                         {
-                            Helpfunctions.Instance.logg("combomaker cant read: " + line);
                             Helpfunctions.Instance.ErrorLog("combomaker cant read: " + line);
                         }
                     }
                 }
-
             }
-
+            if (combos.Count > 0) Helpfunctions.Instance.ErrorLog("[Combo] " + combos.Count + " combo rules found");
+            if (playByValue.Count > 0) Helpfunctions.Instance.ErrorLog("[Combo] " + playByValue.Count + " card value rules found");
         }
 
         public int getPenalityForDestroyingCombo(CardDB.Card crd, Playfield p)

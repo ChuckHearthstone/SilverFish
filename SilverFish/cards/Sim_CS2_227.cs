@@ -10,12 +10,12 @@ namespace HREngine.Bots
 //    eure diener kosten (3) mehr.
         public override void onAuraStarts(Playfield p, Minion own)
 		{
-           if(own.own) p.soeldnerDerVenture++;
+           if(own.own) p.anzVentureCoMercenary++;
 		}
 
         public override void onAuraEnds(Playfield p, Minion own)
         {
-           if(own.own) p.soeldnerDerVenture--;
+           if(own.own) p.anzVentureCoMercenary--;
         }
 
 	}

@@ -1,0 +1,52 @@
+// -------------COMBO-------------------------
+
+// [Nudge]Tunnel Trogg (LOE_018) > Totem Golem (AT_052)
+LOE_018,0;nxttrn;AT_052,0;mana:1;bonusfirst:10;bonussecond:2;hero:shaman
+
+// [Nudge]Tunnel Trogg (LOE_018) > Jade Claws (CFM_717)
+LOE_018,0;nxttrn;CFM_717,0;mana:1;bonusfirst:10;bonussecond:2;hero:shaman
+
+// [Nudge]The Coin (GAME_005) + Tunnel Trogg (LOE_018) + Tunnel Trogg (LOE_018)
+GAME_005,0;LOE_018,0;LOE_018,0;bonus:10;hero:shaman
+
+// [Combo]Tunnel Trogg (LOE_018) > The Coin (GAME_005) + Feral Spirit (EX1_248)
+LOE_018,0;nxttrn;GAME_005,1;EX1_248,0;mana:1;bonusfirst:10;bonussecond:11;hero:shaman
+
+// [Nudge]Brann Bronzebeard (LEO_077) > Jade Spirit (CFM_715)
+LEO_077,0;nxttrn;CFM_715,0;mana:3;bonusfirst:10;bonussecond:20;hero:shaman
+
+// [Nudge]Brann Bronzebeard (LEO_077) > Aya Blackpaw (CFM_902)
+LEO_077,0;nxttrn;CFM_902,0;mana:5;bonusfirst:10;bonussecond:20;hero:shaman
+
+// [Nudge]Brann Bronzebeard (LEO_077) > Jade Chieftain (CFM_312)
+LEO_077,0;nxttrn;CFM_312,0;mana:9;bonusfirst:10;bonussecond:20;hero:shaman
+
+// [NUDGE] Bloodmage Thalnos (EX1_012) + Maelstrom Portal (KAR_073)
+EX1_012,5;KAR_073,0;bonus:3;hero:shaman
+
+// [NUDGE] Bloodmage Thalnos (EX1_012) + Spirit Claws (KAR_063)
+EX1_012,5;KAR_063,0;bonus:2;hero:shaman
+
+
+// -------------CARDVALUE---------------------
+
+// Cardvalue Brann Bronzebeard (LOE_077)
+cardvalue:LOE_077,-2
+
+// Cardvalue Aya Blackpaw (CFM_902)
+cardvalue:CFM_902,-4
+
+// Cardvalue Jade Lightning (CFM_707)
+cardvalue:CFM_707,10
+
+// Cardvalue Thing from Below (OG_028)
+cardvalue:OG_028,-1
+
+// Cardvalue Totem Golem (AT_052)
+cardvalue:AT_052,-2
+
+// Cardvalue Lightning Storm (EX1_259)
+cardvalue:EX1_259,14
+
+// Cardvalue Bloodmage Thalnos (EX1_012)
+cardvalue:EX1_012,11

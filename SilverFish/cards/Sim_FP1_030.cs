@@ -12,11 +12,11 @@ namespace HREngine.Bots
 		{
             if (own.own)
             {
-                p.ownloatheb++;
+                p.anzOwnLoatheb++;
             }
             else
             {
-                p.enemyloatheb++;
+                p.anzEnemyLoatheb++;
             }
 
 		}

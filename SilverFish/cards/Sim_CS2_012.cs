@@ -17,21 +17,21 @@ namespace HREngine.Bots
             p.minionGetDamageOrHeal(target, dmg1);
             foreach (Minion m in temp)
             {
-                if (m.entitiyID != target.entitiyID)
+                if (m.entityID != target.entityID)
                 {
                     p.minionGetDamageOrHeal(m, dmg);
                 }
             }
             if (ownplay)
             {
-                if (p.enemyHero.entitiyID != target.entitiyID)
+                if (p.enemyHero.entityID != target.entityID)
                 {
                     p.minionGetDamageOrHeal(p.enemyHero, dmg);
                 }
             }
             else
             {
-                if (p.ownHero.entitiyID != target.entitiyID)
+                if (p.ownHero.entityID != target.entityID)
                 {
                     p.minionGetDamageOrHeal(p.ownHero, dmg);
                 }

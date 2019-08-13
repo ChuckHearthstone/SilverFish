@@ -11,7 +11,7 @@ namespace HREngine.Bots
     ///     The helpfunctions.
     /// </summary>
 
-    public class Helpfunctions
+    public sealed class Helpfunctions
     {
         /// <summary>The logger for this type.</summary>
         private static readonly ILog Log = Logger.GetLoggerInstanceForType();
@@ -33,6 +33,7 @@ namespace HREngine.Bots
 
 
         public bool runningbot = false;
+
 
         private static Helpfunctions instance;
 
@@ -104,6 +105,11 @@ namespace HREngine.Bots
             this.sendbuffer += "\r\n" + data;
         }
 
+        public void writeBufferToNetwork(string msgtype)
+        {
+            FishNet.Instance.sendMessage(msgtype + "\r\n" + this.sendbuffer);
+        }
+
         public void writeBufferToFile()
         {
             bool writed = true;
@@ -113,6 +119,25 @@ namespace HREngine.Bots
                 try
                 {
                     System.IO.File.WriteAllText(Settings.Instance.path + "crrntbrd.txt", this.sendbuffer);
+                    writed = false;
+                }
+                catch
+                {
+                    writed = true;
+                }
+            }
+            this.sendbuffer = "";
+        }
+
+        public void writeBufferToDeckFile()
+        {
+            bool writed = true;
+            this.sendbuffer += "<EoF>";
+            while (writed)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(Settings.Instance.path + "curdeck.txt", this.sendbuffer);
                     writed = false;
                 }
                 catch
@@ -133,6 +158,24 @@ namespace HREngine.Bots
                 try
                 {
                     System.IO.File.WriteAllText(Settings.Instance.path + "actionstodo.txt", this.sendbuffer);
+                    writed = false;
+                }
+                catch
+                {
+                    writed = true;
+                }
+            }
+            this.sendbuffer = "";
+        }
+
+        public void writeBufferToCardDB()
+        {
+            bool writed = true;
+            while (writed)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(Settings.Instance.path + "newCardDB.cs", this.sendbuffer);
                     writed = false;
                 }
                 catch

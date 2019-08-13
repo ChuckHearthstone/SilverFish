@@ -9,24 +9,13 @@ namespace HREngine.Bots
 
         //Battlecry: Reveal a minion in each deck. If yours costs more, +1 Durability.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_034);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_077);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.equipWeapon(w, ownplay);
-
-            if (p.isServer)
-            {
-                //TODO
-                p.lowerWeaponDurability(-1, ownplay);//-1 = raise dura :D
-                return;
-            }
-
+            
             p.lowerWeaponDurability(-1, ownplay);//-1 = raise dura :D
         }
-
-
-       
-
     }
 }

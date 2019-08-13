@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -38,18 +39,17 @@ namespace HREngine.Bots
         private readonly List<Tuple<string, string>> _mulliganRules = new List<Tuple<string, string>>();
 
         private int dirtyTargetSource = -1;
-        private int stopAfterWins = 30;
-        private int concedeLvl = 5; // the rank, till you want to concede
         private int dirtytarget = -1;
         private int dirtychoice = -1;
         private int dirtytrackingchoice = -1;
         private string choiceCardId = "";
         DateTime starttime = DateTime.Now;
-        bool enemyConcede = false;
 
         public bool learnmode = false;
         public bool printlearnmode = true;
-        
+
+        private bool startedexe = false;
+
         public Behavior behave = new BehaviorControl();//change this to new BehaviorRush() for rush mode
         //Behavior behave = new BehaviorRush();
 
@@ -69,9 +69,7 @@ namespace HREngine.Bots
 
             // Example rule for matchups.
             //_mulliganRules.Add(new Tuple<string, string>("mulliganData.userClass == TAG_CLASS.HUNTER && mulliganData.OpponentClass == TAG_CLASS.DRUID", "card.Cost >= 2"));
-
-            bool concede = false;
-
+            
             HREngine.Bots.Settings set = HREngine.Bots.Settings.Instance;
             Silverfish sfff = Silverfish.Instance;
             behave = set.setSettings();
@@ -111,37 +109,13 @@ namespace HREngine.Bots
             if (HREngine.Bots.Settings.Instance.useExternalProcess) Helpfunctions.Instance.ErrorLog("YOU USE SILVER.EXE FOR CALCULATION, MAKE SURE YOU STARTED IT!");
             if (HREngine.Bots.Settings.Instance.useExternalProcess) Helpfunctions.Instance.ErrorLog("SILVER.EXE IS LOCATED IN: " + HREngine.Bots.Settings.Instance.path);
             
-            try{
-
-            if (HREngine.Bots.Settings.Instance.useExternalProcess)
+            try
             {
-                System.Diagnostics.Process[] pname = System.Diagnostics.Process.GetProcessesByName("Silver");
-                string directory = HREngine.Bots.Settings.Instance.path + "Silver.exe";
-                directory = Path.GetFullPath(directory);
-                Helpfunctions.Instance.ErrorLog("searching silver.exe in " + directory);
-
-                bool hasToOpen = true;
-                
-                if (pname.Length >= 1)
+                if (!startedexe && set.useExternalProcess && (!set.useNetwork || (set.useNetwork && set.netAddress == "127.0.0.1")))
                 {
-                    
-                    for (int i = 0; i < pname.Length; i++)
-                    {
-                        
-                        string fullPath = pname[i].Modules[0].FileName;
-                        if (fullPath == directory) hasToOpen = false;
-                    }
+                    startedexe = true;
+                    Task.Run(() => startExeAsync());
                 }
-
-                if (hasToOpen)
-                {
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo(directory);
-                    startInfo.WorkingDirectory = HREngine.Bots.Settings.Instance.path;
-                    System.Diagnostics.Process.Start(startInfo);
-                }
-
-                System.Threading.Thread.Sleep(500);
-            }
             }
             catch (Exception e)
             {
@@ -159,51 +133,6 @@ namespace HREngine.Bots
 
             Silverfish.Instance.setnewLoggFile();
             
-           
-            /*Helpfunctions.Instance.ErrorLog("set enemy-face-hp to: " + enfacehp);
-            ComboBreaker.Instance.attackFaceHP = enfacehp;
-
-            Ai.Instance.setMaxWide(mxwde);
-            Helpfunctions.Instance.ErrorLog("set maxwide to: " + mxwde);
-
-            Ai.Instance.setTwoTurnSimulation(false, twotsamount);
-            Helpfunctions.Instance.ErrorLog("calculate the second turn of the " + twotsamount + " best boards");
-            if (twotsamount >= 1)
-            {
-                //Ai.Instance.nextTurnSimulator.setEnemyTurnsim(enemySecondTurnSim);
-                HREngine.Bots.Settings.Instance.simEnemySecondTurn = enemySecondTurnSim;
-                if (enemySecondTurnSim) Helpfunctions.Instance.ErrorLog("simulates the enemy turn on your second turn");
-            }
-
-            if (secrets)
-            {
-
-                HREngine.Bots.Settings.Instance.useSecretsPlayArround = secrets;
-                Helpfunctions.Instance.ErrorLog("playing arround secrets is " + secrets);
-            }
-
-
-            if (playaround)
-            {
-                HREngine.Bots.Settings.Instance.playarround = playaround;
-                HREngine.Bots.Settings.Instance.playaroundprob = playaroundprob;
-                HREngine.Bots.Settings.Instance.playaroundprob2 = playaroundprob2;
-                Ai.Instance.setPlayAround();
-                Helpfunctions.Instance.ErrorLog("activated playaround");
-            }
-
-            HREngine.Bots.Settings.Instance.setWeights(alpha);
-             
-            HREngine.Bots.Settings.Instance.enemyTurnMaxWide = amountBoardsInEnemyTurnSim;
-            HREngine.Bots.Settings.Instance.enemySecondTurnMaxWide = amountBoardsInEnemySecondTurnSim;
-
-            HREngine.Bots.Settings.Instance.nextTurnDeep = nextturnsimDeep;
-            HREngine.Bots.Settings.Instance.nextTurnMaxWide = nextturnsimMaxWidth;
-            HREngine.Bots.Settings.Instance.nextTurnTotalBoards = nexttunsimMaxBoards;
-            //HREngine.Bots.Settings.Instance.ImprovedCalculations = ImprovedCalculations;
-             
-             */
-
 
             bool teststuff = false;
             // set to true, to run a testfile (requires test.txt file in filder where _cardDB.txt file is located)
@@ -219,6 +148,35 @@ namespace HREngine.Bots
             {
                 Ai.Instance.autoTester(printstuff);
             }
+        }
+
+        private void startExeAsync()
+        {
+            System.Diagnostics.Process[] pname = System.Diagnostics.Process.GetProcessesByName("Silver");
+            string directory = HREngine.Bots.Settings.Instance.path + "Silver.exe";
+            directory = Path.GetFullPath(directory);
+            Helpfunctions.Instance.ErrorLog("searching silver.exe in " + directory);
+
+            bool hasToOpen = true;
+
+            if (pname.Length >= 1)
+            {
+
+                for (int i = 0; i < pname.Length; i++)
+                {
+
+                    string fullPath = pname[i].Modules[0].FileName;
+                    if (fullPath == directory) hasToOpen = false;
+                }
+            }
+
+            if (hasToOpen)
+            {
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo(directory);
+                startInfo.WorkingDirectory = HREngine.Bots.Settings.Instance.path;
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            startedexe = false; //reset it in case user closes exe
         }
 
         #region Scripting
@@ -623,21 +581,10 @@ def Execute():
         {
             var random = Client.Random;
             var type = random.Next(0, 100)%4;
-
-            if (type == 0)
-            {
-                return random.Next(1000, 1500);
-            }
-
-            if (type == 1)
-            {
-                return random.Next(2500, 3500);
-            }
-
-            if (type == 2)
-            {
-                return random.Next(4500, 5500);
-            }
+            
+            if (type == 0) return random.Next(800, 1200);
+            if (type == 1) return random.Next(1200, 2500);
+            if (type == 2) return random.Next(2500, 3700);
 
             return 0;
         }
@@ -654,48 +601,68 @@ def Execute():
         /// <returns></returns>
         public async Task MulliganLogic(MulliganData mulliganData)
         {
+            Silverfish.Instance.setNewGame();
+
             Log.InfoFormat("[Mulligan] {0} vs {1}.", mulliganData.UserClass, mulliganData.OpponentClass);
 
             var count = mulliganData.Cards.Count;
 
-            /*string ownName = mulliganData.UserClass.ToString();
-            string enemName = mulliganData.OpponentClass.ToString();
+            string ownName = mulliganData.UserClass.ToString().ToLower();
+            string enemName = mulliganData.OpponentClass.ToString().ToLower();
             if (Mulligan.Instance.hasmulliganrules(ownName, enemName))
             {
-                    bool hascoin = false;
-                    List<Mulligan.CardIDEntity> celist = new List<Mulligan.CardIDEntity>();
-                    
+                bool hascoin = false;
+                List<Mulligan.CardIDEntity> celist = new List<Mulligan.CardIDEntity>();
 
-                    for (var i = 0; i < mulliganData.Cards.Count; i++)
+
+                for (var i = 0; i < mulliganData.Cards.Count; i++)
+                {
+                    string id = mulliganData.Cards[i].Entity.Id;
+                    if (id != "GAME_005")// dont mulligan coin
                     {
-                        string id = mulliganData.Cards[i].Entity.Id
-                        if ( id != "GAME_005")// dont mulligan coin
-                        {
-                            celist.Add(new Mulligan.CardIDEntity(id, i));
-                        }
-                        else
-                        {
-                            hascoin = true;
-                        }
-                        
+                        celist.Add(new Mulligan.CardIDEntity(id, i));
+                    }
+                    else
+                    {
+                        hascoin = true;
+                    }
+                }
+
+                if (celist.Count >= 4) hascoin = true;
+                List<int> mullentities = Mulligan.Instance.whatShouldIMulligan(celist, ownName, enemName, hascoin);
+
+                for (var i = 0; i < mulliganData.Cards.Count; i++)
+                {
+                    if (mullentities.Contains(i))
+                    {
+                        mulliganData.Mulligans[i] = true;
+                        Helpfunctions.Instance.ErrorLog("Rejecting Mulligan Card " + mulliganData.Cards[i].Entity.Name + " because of your rules");
+                    }
+                    else
+                    {                    
+                        mulliganData.Mulligans[i] = false;
+                    }
+                }
+            }
+            else
+            {
+                for (var i = 0; i < mulliganData.Cards.Count; i++)
+                {
+                    if (mulliganData.Cards[i].Entity.Cost >= 4)
+                    {
+                        Helpfunctions.Instance.ErrorLog("Rejecting Mulligan Card " + mulliganData.Cards[i].Entity.Name + " because it cost is >= 4.");
+                        mulliganData.Mulligans[i] = true;
                     }
 
-                    if (celist.Count >= 4) hascoin = true;
-                    List<int> mullientitys = Mulligan.Instance.whatShouldIMulligan(celist, ownName, enemName, hascoin);
-
-                    for (var i = 0; i < mulliganData.Cards.Count; i++)
+                    if (mulliganData.Cards[i].Entity.Id == "EX1_308" || mulliganData.Cards[i].Entity.Id == "EX1_622" || mulliganData.Cards[i].Entity.Id == "EX1_005")
                     {
-                        if (mullientitys.Contains(i))
-                        {
-                            Helpfunctions.Instance.ErrorLog("Rejecting Mulligan Card " + mulliganData.Cards[i].Entity.Id + " because of your rules");                            
-
-                            
-                        }
+                        Helpfunctions.Instance.ErrorLog("Rejecting Mulligan Card " + mulliganData.Cards[i].Entity.Name + " because it is soulfire or shadow word: death");
+                        mulliganData.Mulligans[i] = true;
                     }
+                }
+            }
 
-            }*/
-
-            if (Mulligan.Instance.mulliganRulesLoaded)
+            /*if (Mulligan.Instance.mulliganRulesLoaded)
             {
                 Mulligan.Instance.getHoldList(mulliganData);
             }
@@ -743,7 +710,7 @@ def Execute():
                         return;
                     }
                 }
-            }
+            }*/
 
             var thinkList = new List<KeyValuePair<int, int>>();
             for (var i = 0; i < count; i++)
@@ -960,7 +927,7 @@ def Execute():
 
             bool nodruidchoice = true; //to indicate, that the tracking-choice is not a druid-choice-card.
             if(dirtychoice >=1) nodruidchoice = false; //should not occour
-            bool templearn = Silverfish.Instance.updateEverything(behave, false,useExtern, passiveWaiting, nodruidchoice);
+            bool templearn = Silverfish.Instance.updateEverything(behave,useExtern, passiveWaiting, nodruidchoice);
             if (templearn == true) this.printlearnmode = true;
             
             if (this.learnmode)
@@ -992,6 +959,7 @@ def Execute():
                     //detect which choice
 
                     int trackingchoice = Ai.Instance.bestTracking;
+                    if (Ai.Instance.bestTrackingStatus == 3) Helpfunctions.Instance.logg("discovering using user choice..." + trackingchoice);
                     if (Ai.Instance.bestTrackingStatus == 0) Helpfunctions.Instance.logg("discovering using optimal choice..." + trackingchoice);
                     if (Ai.Instance.bestTrackingStatus == 1) Helpfunctions.Instance.logg("discovering using suboptimal choice..." + trackingchoice);
                     if (Ai.Instance.bestTrackingStatus == 2) Helpfunctions.Instance.logg("discovering using random choice..." + trackingchoice);
@@ -1026,7 +994,7 @@ def Execute():
                 HSCard cardtoplay = getCardWithNumber(moveTodo.card.entity);
                 if (moveTodo.target != null)
                 {
-                    HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
+                    HSCard target = getEntityWithNumber(moveTodo.target.entityID);
                     Helpfunctions.Instance.ErrorLog("play: " + cardtoplay.Name + " target: " + target.Name +
                                                     " targetEnt " + target.EntityId);
                     Helpfunctions.Instance.logg("play: " + cardtoplay.Name + " target: " + target.Name + " choice: " +
@@ -1034,14 +1002,14 @@ def Execute():
 
                     if (moveTodo.druidchoice >= 1)
                     {
-                        dirtytarget = moveTodo.target.entitiyID;
+                        dirtytarget = moveTodo.target.entityID;
                         dirtychoice = moveTodo.druidchoice; //1=leftcard, 2= rightcard
                         choiceCardId = moveTodo.card.card.cardIDenum.ToString();
                     }
 
                     //safe targeting stuff for hsbuddy
                     dirtyTargetSource = moveTodo.card.entity;
-                    dirtytarget = moveTodo.target.entitiyID;
+                    dirtytarget = moveTodo.target.entityID;
 
 
                     //we can place mobs (if api supports it)
@@ -1120,8 +1088,8 @@ def Execute():
             //attack with minion
             if (moveTodo.actionType == actionEnum.attackWithMinion)
             {
-                HSCard attacker = getEntityWithNumber(moveTodo.own.entitiyID);
-                HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
+                HSCard attacker = getEntityWithNumber(moveTodo.own.entityID);
+                HSCard target = getEntityWithNumber(moveTodo.target.entityID);
                 Helpfunctions.Instance.ErrorLog("minion attack: " + attacker.Name + " target: " + target.Name);
                 Helpfunctions.Instance.logg("minion attack: " + attacker.Name + " target: " + target.Name);
 
@@ -1134,15 +1102,15 @@ def Execute():
             //attack with hero
             if (moveTodo.actionType == actionEnum.attackWithHero)
             {
-                HSCard attacker = getEntityWithNumber(moveTodo.own.entitiyID);
-                HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
-                dirtytarget = moveTodo.target.entitiyID;
+                HSCard attacker = getEntityWithNumber(moveTodo.own.entityID);
+                HSCard target = getEntityWithNumber(moveTodo.target.entityID);
+                dirtytarget = moveTodo.target.entityID;
                 Helpfunctions.Instance.ErrorLog("heroattack: " + attacker.Name + " target: " + target.Name);
                 Helpfunctions.Instance.logg("heroattack: " + attacker.Name + " target: " + target.Name);
 
                 //safe targeting stuff for hsbuddy
-                dirtyTargetSource = moveTodo.own.entitiyID;
-                dirtytarget = moveTodo.target.entitiyID;
+                dirtyTargetSource = moveTodo.own.entityID;
+                dirtytarget = moveTodo.target.entityID;
                 await attacker.DoAttack(target);
 				await Coroutine.Sleep(250);
                 return;
@@ -1158,9 +1126,9 @@ def Execute():
 
                 if (moveTodo.target != null)
                 {
-                    HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
+                    HSCard target = getEntityWithNumber(moveTodo.target.entityID);
                     dirtyTargetSource = 9000;
-                    dirtytarget = moveTodo.target.entitiyID;
+                    dirtytarget = moveTodo.target.entityID;
 
                     Helpfunctions.Instance.ErrorLog("use ablitiy: " + cardtoplay.Name + " target " + target.Name);
                     Helpfunctions.Instance.logg("use ablitiy: " + cardtoplay.Name + " target " + target.Name);
@@ -1387,14 +1355,14 @@ def Execute():
         {
             Log.InfoFormat("[GameEventManagerOnGameOver] {0}{2} => {1}.", gameOverEventArgs.Result,
                 GameEventManager.Instance.LastGamePresenceStatus, gameOverEventArgs.Conceded ? " [conceded]" : "");
+            if (gameOverEventArgs.Result == GameOverFlag.Victory) Helpfunctions.Instance.logg("Match Won!");
+            else Helpfunctions.Instance.logg("Match Lost :(");
         }
 
         private void GameEventManagerOnNewGame(object sender, NewGameEventArgs newGameEventArgs)
         {
             Log.InfoFormat("[GameEventManagerOnNewGame]");
-            Hrtprozis.Instance.clearAll();
-            //Hrtprozis.Instance.ownHeroStartClass = TAG_CLASS.INVALID;
-            //Hrtprozis.Instance.enemyHeroStartClass = TAG_CLASS.INVALID;
+            
         }
 
         private void GameEventManagerOnQuestUpdate(object sender, QuestUpdateEventArgs questUpdateEventArgs)

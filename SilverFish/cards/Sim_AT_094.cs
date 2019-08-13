@@ -12,20 +12,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-
-            //Random minion!
-
-
-            if (p.isServer)
-            {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(!own.own, true);
-                if (choosen != null) p.minionGetDamageOrHeal(choosen, 1);
-                return;
-            }
-
             p.doDmgToRandomEnemyCLIENT2(1, true, own.own);
-            
         }
-
     }
 }

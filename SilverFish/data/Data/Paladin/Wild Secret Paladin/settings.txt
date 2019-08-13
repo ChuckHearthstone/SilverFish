@@ -1,0 +1,28 @@
+// This File: Settings.txt
+//    Author: Sepefeets
+//   Version: 0.3 (29-Sept-16)
+// Deck Name: SecretPaladin
+//      Hero: Paladin
+// Deck Type: Tempo (Control)
+
+enfacehp = 29;
+maxwide = 5000;
+twotsamount = 1000;
+simEnemySecondTurn = true;
+playarround = true;
+playaroundprob = 50;
+playaroundprob2 = 80;
+enemyTurnMaxWide = 40;
+enemyTurnMaxWideSecondTime = 200;
+enemySecondTurnMaxWide = 40;
+nextTurnDeep = 6;
+nextTurnMaxWide = 20;
+nextTurnTotalBoards = 200;
+useSecretsPlayArround = true;
+alpha = 50;
+simulatePlacement = false;
+useExternalProcess = true;
+passiveWaiting = false;
+behave = control;
+concedeOnBadBoard = false;
+speed = false;

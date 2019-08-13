@@ -1,0 +1,30 @@
+// This File: decklist.txt
+// Author: Kray
+// Version: 0.1.1 (13-Dec-16)
+// Deck Name: Midrange-Jade-Shaman
+// Hero: Shaman
+// Deck Type: Midrange
+
+// ---------------Deck---------------
+// [1]Lightning Bold x2 (EX1_238)
+// [1]Tunnel Trogg x2 (LOE_018)
+// [2]Flametongue Totem x1 (EX1_565)
+// [2]Jade Claws x2 (CFM_717)
+// [2]Maelstrom Portal x2 (KAR_073)
+// [2]Totem Golem x2 (AT_052)
+// [3]Brann Bronzebeard x1 (LOE_077)
+// [3]Feral Spirit x1 (EX1_248)
+// [3]Hex x2 (EX1_246)
+// [3]Mana Tide Totem x1 (EX1_575)
+// [4]Jade Lightning x2 (CFM_707)
+// [4]Jade Spirit x2 (CFM_715)
+// [4]Jinyu Waterspeaker x2 (CFM_061)
+// [5]Azure Drake x2 (EX1_284)
+// [5]White Eyes x1 (CFM_324)
+// [6]Aya Blackpaw x1 (CFM_902)
+// [6]Thing from Below x2 (OG_028)
+// [7]Jade Chieftain x2 (CFM_312)
+
+// -----------Replacements------------
+
+// Currently no replacements.

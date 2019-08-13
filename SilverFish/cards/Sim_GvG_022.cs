@@ -11,36 +11,6 @@ namespace HREngine.Bots
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (p.isServer)
-            {
-                if (ownplay)
-                {
-                    if (p.ownWeaponDurability >= 1)
-                    {
-                        p.ownWeaponAttack += 3;
-                        p.minionGetBuffed(p.ownHero, 3, 0);
-                    }
-                    
-                }
-                else
-                {
-                    if (p.enemyWeaponDurability >= 1)
-                    {
-                        p.enemyWeaponAttack += 3;
-                        p.minionGetBuffed(p.enemyHero, 3, 0);
-                    }
-                    
-                }
-
-                if (p.cardsPlayedThisTurn >= 1 )
-                {
-                    Minion choosen = p.getRandomMinionFromSide_SERVER(ownplay, false);
-                    if (choosen != null) p.minionGetBuffed(choosen, 3, 0); 
-                }
-                
-                return;
-            }
-
             if (ownplay)
             {
                 if (p.ownWeaponDurability >= 1)
@@ -66,8 +36,5 @@ namespace HREngine.Bots
                 }
             }
         }
-
-
     }
-
 }

@@ -14,13 +14,6 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                if (p.isServer)
-                {
-                    Minion choosen = p.getRandomCharExcept_SERVER(null, false);
-                    if (choosen != null) p.minionTransform(choosen, c);
-                    return;
-                }
-
                 Minion tm = null;
                 int ges = 1000;
                 foreach (Minion m in p.ownMinions)
@@ -45,8 +38,5 @@ namespace HREngine.Bots
                 }
             }
         }
-
-      
-
 	}
 }

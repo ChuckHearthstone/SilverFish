@@ -1,0 +1,30 @@
+// This File: _combo.txt
+// Author: scottbreak
+// Version: 1.1 (19-Jan-17)
+// Deck Name: Wild Pirate Warrior
+// Hero: Warrior
+// Deck Type: Aggro
+
+// [Nudge] The Coin (GAME_005) + Ship's Cannon (GVG_075) + N'Zoth's First Mate (OG_312)
+GAME_005,0;GVG_075,0;OG_312,10;mana:2;bonus:100;hero:warrior
+
+// [Nudge] The Coin (GAME_005) + Ship's Cannon (GVG_075) + Small-Time Buccaneer (CFM_325)
+GAME_005,0;GVG_075,0;CFM_325,10;mana:2;bonus:90;hero:warrior
+
+// [Nudge] The Coin (GAME_005) + Ship's Cannon (GVG_075) + Southsea Deckhand (CS2_146)
+GAME_005,0;GVG_075,0;CS2_146,10;mana:2;bonus:80;hero:warrior
+
+// [Nudge] The Coin (GAME_005) + N'Zoth's First Mate (OG_312) + Small-Time Buccaneer (CFM_325)
+GAME_005,0;OG_312,0;CFM_325,0;mana:1;bonus:50;hero:warrior
+
+// [Nudge] The Coin (GAME_005) + N'Zoth's First Mate (OG_312) + Southsea Deckhand (CS2_146)
+GAME_005,0;OG_312,0;CS2_146,0;mana:1;bonus:50;hero:warrior
+
+// [Nudge] The Coin (GAME_005) + N'Zoth's First Mate (OG_312) + Sir Finley Mrrgglton (LOE_076)
+GAME_005,0;OG_312,0;LOE_076,0;mana:1;bonus:40;hero:warrior
+
+//Cardvalue Ship's Cannon (GVG_075)
+cardvalue:GVG_075,-2
+
+// Cardvalue Astral Communion (AT_043)
+cardvalue:AT_043,500

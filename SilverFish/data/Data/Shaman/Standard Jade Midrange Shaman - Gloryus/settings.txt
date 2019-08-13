@@ -1,0 +1,37 @@
+// This File: settings.txt
+// Author: Kray, Credits to Dre for explanations.
+// Version: 0.1 (13-Dec-16)
+// Deck Name: Midrange-Jade-Shaman
+// Hero: Shaman
+// Deck Type: Midrange
+
+enfacehp = 29; //hp of enemy when your hero is allowed to attack the enemy face with his weapon
+maxwide = 7200; //number of boards which are taken to the next deep-lvl where another move may be added to them
+twotsamount = 1300; //number of boards where the next turn is simulated
+simEnemySecondTurn = true; //simulate a 2nd enemy turn (might have been removed?)
+playarround = false; //play around some enemy aoe spells?
+playaroundprob = 50; //probability where the enemy plays the aoe spell but your minions are forced to survive
+playaroundprob2 = 80; //probability where the enemy plays the aoe spell and your minions can die!
+enemyTurnMaxWide = 40; //boards calculated in enemy first turn in first AI step (lower than enemySecondTurnMaxWide)
+enemyTurnMaxWideSecondTime = 270; //boards calculated in enemys-first-turn BUT in the second AI step (higher than enemyTurnMaxWide)
+enemySecondTurnMaxWide = 30; //number of enemy boards calculated in enemys second TURN (might have been removed?)
+nextTurnDeep = 6; //maximum deep-lvls (total moves) in your second turn (recommended = dont touch this)
+nextTurnMaxWide = 29; //maximum boards calculated in one second turn deep-lvl
+nextTurnTotalBoards = 270; //maximum boards calculated in second turn simulation
+useSecretsPlayArround = true; //try to play around enemy secrets
+alpha = 50; //weight in % of your 2nd turn vs your 1st (0<= alpha <= 100) eg. 30 = 30% 2nd turn result + 70% first turn result
+simulatePlacement = true; //simulate all placements for direwolfalpha/flametongue/defenderofargus
+behave = controll; //select the behavior of the ai: control, rush, face (new) or mana (very experimental, dont use that :D)
+
+// everything below is recommended to only be in your base settings.txt because they are personal choices
+// some may purposefully not reload with auto-config-switching
+// deck builders please start omitting these from your deck specific settings
+
+useExternalProcess = true; //use silver.exe for calculations, a lot faster than turning it off (recommended = true)
+concedeOnBadBoard = false; //concede if the enemy board is too good (recommended = false)
+//concedeOnBoardValue = -900 //concedeOnBadBoard will trigger if our best board is lower value than this (recommended = dont touch this)
+speed = false; //set this true to support sending multiple actions to bot (currently buggy so forced false)
+useNetwork = false; //use networking to communicate with silver.exe instead of a file (experimental, likely to fail after some time)
+netAddress = 127.0.0.1; //network address where silver.exe is running (127.0.0.1 = this computer)
+tcpPort = 14804; //tcp port to connect on
+logBuffer = 0; //max log messages to buffer before writing to disk (0 causes a lot of disk activity but helps ensure data is written before possible crashes)

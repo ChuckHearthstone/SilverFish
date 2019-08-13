@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
 		{
-		if (p.enemyHeroName == HeroEnum.warrior || p.enemyHeroName == HeroEnum.thief || p.enemyHeroName == HeroEnum.pala)
+		    if (p.enemyHeroName == HeroEnum.warrior || p.enemyHeroName == HeroEnum.thief || p.enemyHeroName == HeroEnum.pala || p.enemyHeroName == HeroEnum.shaman)
             {
                 bool canPlayAnotherMob = false;
                 foreach (Handmanager.Handcard hcc in p.owncards)

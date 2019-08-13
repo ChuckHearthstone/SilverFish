@@ -13,7 +13,7 @@ namespace HREngine.Bots
         {
             if (m.own)
             {
-                p.anzownShadowfiends++;
+                p.anzOwnShadowfiends++;
             }
             else
             {
@@ -25,7 +25,7 @@ namespace HREngine.Bots
         {
             if (m.own)
             {
-                p.anzownShadowfiends--;
+                p.anzOwnShadowfiends--;
             }
             else
             {

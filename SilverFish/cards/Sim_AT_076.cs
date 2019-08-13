@@ -14,19 +14,8 @@ namespace HREngine.Bots
         public override void onInspire(Playfield p, Minion m)
         {
             int pos = (m.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-
-            if (p.isServer)
-            {
-                //TODO
-                p.callKid(kid, pos, m.own);
-                return;
-            }
-
+            
             p.callKid((m.own ? kid : warleader), pos, m.own);  // assume worse scenario (warleader) for enemy vs average scenario (oracle) for us
         }
-
-
-
     }
-
 }

@@ -1,0 +1,27 @@
+// This File: decklist.txt
+// Author: er009
+// Version: 1.1 (28-dec-2016)
+// Deck Name: Midrange-shaman
+// Hero: Shaman
+// Deck Type: Midrange (Control)
+
+// - D E C K --------------------------------
+// [1] Spirit Claws x2 (KAR_063)
+// [1] Tunnel Trogg ×2 (LOE_018)
+// [1] Lightning Bolt x1 (EX1_238)
+// [1] Patches the Pirate x1 (CFM_637)
+// [1] Small-Time Buccaneer x2 (CFM_325)
+// [2] Bloodmage Thalnos 1x (EX1_012)
+// [2] Flametongue Totem ×2 (EX1_565)
+// [2] Jade Claws x2 (CFM_717)
+// [2] Maelstrom Portal x2 (KAR_073)
+// [2] Totem Golem ×2 (AT_052)
+// [3] Hex ×2 (EX1_246)
+// [3] Lightning Storm x1 (EX1_259)
+// [4] Barnes x1 (KAR_114)
+// [4] Jade Lightning x2 (CFM_707)
+// [5] Azure Drake x2 (EX1_284)
+// [6] Thing from Below ×2 (OG_028)
+// [6] Aya Blackpaw (CFM_902)
+// [8] Al'Akir (NEW1_010)
+// [8] Ragnaros the Firelord x1 (EX1_298)

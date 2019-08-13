@@ -1,9 +1,11 @@
-﻿namespace HREngine.Bots
+﻿using System.Security.Policy;
+
+namespace HREngine.Bots
 {
     using System;
     using System.Collections.Generic;
 
-    public class PenalityManager
+    public sealed class PenalityManager
     {
         //todo acolyteofpain
         //todo better aoe-penality
@@ -17,14 +19,14 @@
 
 
         Dictionary<CardDB.cardName, int> DamageAllDatabase = new Dictionary<CardDB.cardName, int>();
-        Dictionary<CardDB.cardName, int> DamageHeroDatabase = new Dictionary<CardDB.cardName, int>();
+        Dictionary<CardDB.cardName, int> DamageHeroDatabase = new Dictionary<CardDB.cardName, int>(); //not used
         Dictionary<CardDB.cardName, int> DamageRandomDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> DamageAllEnemysDatabase = new Dictionary<CardDB.cardName, int>();
 
         Dictionary<CardDB.cardName, int> enrageDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> silenceDatabase = new Dictionary<CardDB.cardName, int>();
 
-        Dictionary<CardDB.cardName, int> heroAttackBuffDatabase = new Dictionary<CardDB.cardName, int>();
+        Dictionary<CardDB.cardName, int> heroAttackBuffDatabase = new Dictionary<CardDB.cardName, int>(); //not used
         Dictionary<CardDB.cardName, int> attackBuffDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> healthBuffDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> tauntBuffDatabase = new Dictionary<CardDB.cardName, int>();
@@ -37,24 +39,26 @@
         Dictionary<CardDB.cardName, int> cardDiscardDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> destroyOwnDatabase = new Dictionary<CardDB.cardName, int>();
         Dictionary<CardDB.cardName, int> destroyDatabase = new Dictionary<CardDB.cardName, int>();
-        Dictionary<CardDB.cardName, int> buffingMinionsDatabase = new Dictionary<CardDB.cardName, int>();
-        Dictionary<CardDB.cardName, int> buffing1TurnDatabase = new Dictionary<CardDB.cardName, int>();
-        Dictionary<CardDB.cardName, int> heroDamagingAoeDatabase = new Dictionary<CardDB.cardName, int>();
+        public Dictionary<CardDB.cardName, int> buffingMinionsDatabase = new Dictionary<CardDB.cardName, int>();
+        public Dictionary<CardDB.cardName, int> buffing1TurnDatabase = new Dictionary<CardDB.cardName, int>();
         public Dictionary<CardDB.cardName, int> randomEffects = new Dictionary<CardDB.cardName, int>();
 
         Dictionary<CardDB.cardName, int> silenceTargets = new Dictionary<CardDB.cardName, int>();
 
-        Dictionary<CardDB.cardName, int> priorityDatabase = new Dictionary<CardDB.cardName, int>();
+        public Dictionary<CardDB.cardName, int> priorityDatabase = new Dictionary<CardDB.cardName, int>(); //minions we want to keep around
 
         public Dictionary<CardDB.cardName, int> DamageTargetDatabase = new Dictionary<CardDB.cardName, int>();
         public Dictionary<CardDB.cardName, int> DamageTargetSpecialDatabase = new Dictionary<CardDB.cardName, int>();
         public Dictionary<CardDB.cardName, int> cardDrawBattleCryDatabase = new Dictionary<CardDB.cardName, int>();
-        public Dictionary<CardDB.cardName, int> priorityTargets = new Dictionary<CardDB.cardName, int>();
+        public Dictionary<CardDB.cardName, int> cardDrawDeathrattleDatabase = new Dictionary<CardDB.cardName, int>();
+        public Dictionary<CardDB.cardName, int> priorityTargets = new Dictionary<CardDB.cardName, int>(); //enemy minions we want to kill
         public Dictionary<CardDB.cardName, int> specialMinions = new Dictionary<CardDB.cardName, int>(); //minions with cardtext, but no battlecry
 
-        private Dictionary<CardDB.cardName, int> discoverMinions = new Dictionary<CardDB.cardName, int>();
+        private Dictionary<CardDB.cardName, int> discoverCards = new Dictionary<CardDB.cardName, int>();
 
         Dictionary<CardDB.cardName, int> strongInspireEffectMinions = new Dictionary<CardDB.cardName, int>();
+        Dictionary<CardDB.cardName, int> summonMinionSpellsDatabase = new Dictionary<CardDB.cardName, int>(); // spells/hero powers that summon minions immediately
+        Dictionary<CardDB.cardName, int> alsoEquipsWeaponDB = new Dictionary<CardDB.cardName, int>(); //cards that aren't weapons but equip one immediately
 
 
         private static PenalityManager instance;
@@ -84,14 +88,14 @@
             setupDestroyOwnCards();
             setupSpecialMins();
             setupEnemyTargetPriority();
-            setupHeroDamagingAOE();
             setupBuffingMinions();
             setupRandomCards();
             setupLethalHelpMinions();
             setupSilenceTargets();
             setupTargetAbilitys();
             setupStrongInspireMinions();
-            
+            setupSummonMinionSpellsDatabase();
+            setupAlsoEquipsWeaponDB();
         }
 
         public void setCombos()
@@ -103,7 +107,7 @@
         {
             int pen = 0;
             pen = getAttackSecretPenality(m, p, target);
-            if (!lethal && target.entitiyID == p.enemyHero.entitiyID && m.destroyOnOwnTurnEnd) pen += 50;
+            if (!lethal && target.entityID == p.enemyHero.entityID && m.destroyOnOwnTurnEnd) pen += 50;
             if (!lethal && m.name == CardDB.cardName.bloodimp) pen += 50;
             if (m.name == CardDB.cardName.leeroyjenkins)
             {
@@ -114,46 +118,82 @@
 
             }
 
-            if (!lethal && target.isHero && !target.own && m.tempAttack >= 3
-                && p.playactions.Find(a => a.actionType == actionEnum.playcard && a.card.card.name == CardDB.cardName.rockbiterweapon && a.target.entitiyID == m.entitiyID) != null)
+            bool rockbiterMinion = p.playactions.Find(a => a.actionType == actionEnum.playcard && a.card.card.name == CardDB.cardName.rockbiterweapon && a.target.entityID == m.entityID) != null;
+            if (!lethal && target.isHero && !target.own && rockbiterMinion)
             {
                 pen += 50;
             }
+            if (!target.isHero && !target.own && rockbiterMinion) pen += -5; //to counter hero not waste rockbiter bonus
 
             if (!m.silenced && (m.name == CardDB.cardName.acolyteofpain || ((m.name == CardDB.cardName.loothoarder || m.name == CardDB.cardName.bloodmagethalnos) && !target.isHero && target.Angr >= m.Hp)))
             {
                 pen += p.playactions.Count;  // penalize not utilizing the card draw as early as possible
             }
 
+            bool freezingtrap = false;
+            foreach (CardDB.cardIDEnum secretID in p.ownSecretsIDList)
+            {
+                if (secretID == CardDB.cardIDEnum.EX1_611) //freezing trap
+                {
+                    freezingtrap = true;
+                }
+            }
+
+            // todo sepefeets - consider divine shield, killing off small minions, etc.
+            if (freezingtrap && target.taunt) //don't kill off our own minions for no reason
+            {
+                int totalAngr = 0;
+                foreach (Minion mnn in p.ownMinions)
+                {
+                    totalAngr += mnn.Angr;
+                }
+                if (totalAngr < target.Hp) return 500;
+            }
+            //Avoid wasting attacks into doomsayer
+            /*// must lower HP with spells prior
+            if (target.name == CardDB.cardName.doomsayer && !m.poisonous)
+            {
+                int totalAngr = 0;
+                foreach (Minion mnn in p.ownMinions)
+                {
+                    if (mnn.Ready) totalAngr += mnn.Angr;
+                }
+                if (p.ownWeaponAttack >= 1) totalAngr += p.ownWeaponAttack;
+                if (p.ownHero.tempAttack >= 1) totalAngr += p.ownHero.tempAttack;
+                if (totalAngr < target.Hp) return 500;
+            }*/
+            
             return pen;
         }
 
 
         int enfacehp = -142;
         
-        public int getAttackWithHeroPenality(Minion target, Playfield p, bool leathal)
+        public int getAttackWithHeroPenality(Minion target, Playfield p, bool lethal)
         {
             if (enfacehp == -142) enfacehp = Settings.Instance.enfacehp;
             int retval = 0;
+            bool rockbiterHero = p.playactions.Find(a => a.actionType == actionEnum.playcard && a.card.card.name == CardDB.cardName.rockbiterweapon && a.target.entityID == p.ownHero.entityID) != null;
 
-            if (!leathal && p.ownWeaponName == CardDB.cardName.swordofjustice)
+            if (p.ownWeaponName == CardDB.cardName.atiesh) return 500;
+
+            if (!lethal && p.ownWeaponName == CardDB.cardName.swordofjustice)
             {
                 return 28;
             }
 
-            if (!leathal && target.entitiyID == p.enemyHero.entitiyID)
+            if (!lethal && target.entityID == p.enemyHero.entityID)
             {
                 if (p.ownWeaponAttack >= 1 && p.enemyHero.Hp >= enfacehp)
                 {
-                    if (p.ownWeaponName == CardDB.cardName.lightsjustice && p.ownWeaponDurability >= 3) return 0;
+                    if (p.ownWeaponName == CardDB.cardName.lightsjustice && p.ownWeaponDurability >= 3) return -1;
                     if (!(p.ownHeroName == HeroEnum.thief && p.ownWeaponAttack == 1)) return 50 + p.ownWeaponAttack;
                 }
 
-                if (p.ownHero.tempAttack > 0 && p.playactions.Find(a => a.actionType == actionEnum.playcard && a.card.card.name == CardDB.cardName.rockbiterweapon && a.target.entitiyID == p.ownHero.entitiyID) != null)
+                if (p.ownHero.tempAttack > 0 && !p.ownHero.windfury && rockbiterHero)
                 {
                     return 50;
                 }
-
             }
 
             if (p.ownWeaponDurability == 1 && p.ownWeaponName == CardDB.cardName.eaglehornbow)
@@ -170,23 +210,86 @@
                 }
             }
 
-            //no penality, but a bonus, if he has weapon on hand!
+            if (p.ownWeaponName == CardDB.cardName.doomhammer)
+            {
+                foreach (Handmanager.Handcard hc in p.owncards)
+                {
+                    if (hc.card.name == CardDB.cardName.rockbiterweapon && hc.canplayCard(p)) return 10;
+                }
+                if (!target.isHero && target.Hp <= p.ownWeaponAttack && p.ownHero.tempAttack > 0) return 20;
+                if (target.isHero && !target.own && rockbiterHero) return -5; //bonus to not waste rockbiter
+            }
+
             if (target.isHero && !target.own && p.ownWeaponName == CardDB.cardName.gorehowl && p.ownWeaponAttack >= 3)
             {
                 return 10;
             }
+
+            if (p.ownWeaponName == CardDB.cardName.spiritclaws)
+            {
+                if (p.ownWeaponAttack == 1)
+                {
+                    if (target.isHero && !target.own && !lethal) return 500;
+                    if (target.Hp > p.ownHero.Angr && target.divineshild == false) return 10;
+                }
+            }
+
+            //no penalty, but a bonus, if he has weapon on hand!
             if (p.ownWeaponDurability >= 1)
             {
                 bool hasweapon = false;
                 foreach (Handmanager.Handcard c in p.owncards)
                 {
-                    if (c.card.type == CardDB.cardtype.WEAPON) hasweapon = true;
+                    if (c.card.type == CardDB.cardtype.WEAPON || alsoEquipsWeaponDB.ContainsKey(c.card.name)) hasweapon = true;
                 }
                 if (p.ownWeaponAttack == 1 && p.ownHeroName == HeroEnum.thief) hasweapon = true;
-                if (hasweapon) retval = -p.ownWeaponAttack - 1; // so he doesnt "lose" the weapon in evaluation :D
+                if (hasweapon && target.name != CardDB.cardName.doomsayer) retval = -p.ownWeaponAttack - 1; // so he doesnt "lose" the weapon in evaluation :D
             }
             if (p.ownWeaponAttack == 1 && p.ownHeroName == HeroEnum.thief) retval += -1;
+            if (p.ownHero.tempAttack > 0) retval += -5; //bonus to not waste rockbiter
+
+            //Avoid wasting durability into doomsayer
+            // must lower HP with spells prior
+            /*if (target.name == CardDB.cardName.doomsayer)
+            {
+                int totalAngr = 0;
+                foreach (Minion mnn in p.ownMinions)
+                {
+                    if (mnn.Ready) totalAngr += mnn.Angr;
+                }
+                if (p.ownWeaponAttack >= 1) totalAngr += p.ownWeaponAttack;
+                if (p.ownHero.tempAttack >= 1) totalAngr += p.ownHero.tempAttack;
+                if (totalAngr < target.Hp) return 500;
+            }*/
             return retval;
+        }
+
+        // penalize overwriting current weapon for worse ones
+        public int getEquipWeaponPenalty(CardDB.Card card, Playfield p, bool lethal)
+        {
+            if (p.ownWeaponDurability == 0)
+            {
+                if (card.name == CardDB.cardName.spiritclaws) return -3;
+                return 0;
+            }
+            if (card.type != CardDB.cardtype.WEAPON && !alsoEquipsWeaponDB.ContainsKey(card.name)) return 0;
+            /*
+            if (card.type == CardDB.cardtype.WEAPON && card.Attack < p.ownWeaponAttack)
+            {
+                return 25 * ((p.ownWeaponAttack * p.ownWeaponDurability) - (2 * card.Attack)); //I think this case is already handled elsewhere
+            }*/
+            if (p.ownWeaponDurability != 0 && alsoEquipsWeaponDB.ContainsKey(card.name) && alsoEquipsWeaponDB[card.name] < p.ownWeaponAttack)
+            {
+                if (card.name != CardDB.cardName.upgrade) return 25 * ((p.ownWeaponAttack * p.ownWeaponDurability) - (2 * alsoEquipsWeaponDB[card.name]));
+            }
+            if (card.name == CardDB.cardName.spiritclaws && p.ownWeaponName == CardDB.cardName.spiritclaws) return 500;
+            if (card.name == CardDB.cardName.jadeclaws) return 25; //to counter the value a jade golems a bit
+
+            if (card.type == CardDB.cardtype.WEAPON && card.Attack <= p.ownWeaponAttack)
+            {
+                return Math.Max(10 + p.ownWeaponAttack * p.ownWeaponDurability - card.Attack * card.Durability, 0); //small penalty for replacing similar attack for more charges
+            }
+            return 0;
         }
 
         public int getPlayCardPenality(Handmanager.Handcard hcard, Minion target, Playfield p, int choice, bool lethal)
@@ -210,7 +313,7 @@
             retval += getSilencePenality(name, target, p, choice, lethal);
             retval += getDamagePenality(name, target, p, choice, lethal);
             retval += getHealPenality(name, target, p, choice, lethal);
-            //if(retval < 500) 
+
             retval += getCardDrawPenality(name, target, p, choice, lethal);
             retval += getCardDrawofEffectMinions(card, p);
             retval += getCardDiscardPenality(name, p);
@@ -218,9 +321,11 @@
 
             retval += getDestroyPenality(name, target, p, lethal);
             retval += getbackToHandPenality(name, target, p, lethal);
-            retval += getSpecialCardComboPenalitys(hcard, target, p, lethal, choice);
+            retval += getSpecialCardComboPenalties(hcard, target, p, lethal, choice);
             //if (lethal) Console.WriteLine(retval+ " " + name);
-            retval += getRandomPenaltiy(card, p, target);
+            retval += getRandomPenalty(card, p, target);
+            retval += getEquipWeaponPenalty(card, p, lethal);
+
             if (!lethal)
             {
                 retval += cb.getPenalityForDestroyingCombo(card, p);
@@ -230,9 +335,10 @@
                 if (card.name == p.ownHeroAblility.card.name) retval += getHeroPowerPenality(hcard, target, p);
             }
 
-            retval += playSecretPenality(card, p);
+            retval += getPlaySecretPenalty(card, p);
             retval += getPlayCardSecretPenality(card, p);
 
+            retval += getPlayPenalty(name, p, choice);
             retval += (int)card.pen_card.getPlayPenalty(p, hcard, target, choice, lethal);
             //Helpfunctions.Instance.ErrorLog("retval " + retval);
             return retval;
@@ -289,6 +395,22 @@
                 return 60;
             }
 
+            if (target.own && name == CardDB.cardName.rockbiterweapon)
+            {
+                if (p.playactions.Find(a => a.actionType == actionEnum.attackWithMinion && a.own.windfury) != null) return 500;
+                if (target.isHero)
+                {
+                    if (p.playactions.Find(a => a.actionType == actionEnum.attackWithHero) != null) return 500;
+                    if (!target.windfury && (p.ownMinions.Find(m => m.windfury) != null || p.owncards.Find(c => c.card.windfury && c.card.Charge) != null)) return 30;
+                }
+                else
+                {
+                    if (!target.Ready) return 500;
+                    if (p.ownHero.windfury) return 30;
+                }
+                return (target.windfury) ? 10 : 15;
+            }
+
             if (!target.isHero && !target.own)
             {
                 if (card.type == CardDB.cardtype.MOB && p.ownMinions.Count == 0) return 0;
@@ -331,7 +453,7 @@
                 //vs mage or hunter we need board presence at early game? so we skip the minion ready-check.
                 // for everyone else, we penalize buffing minions when they are not ready
 
-                if (p.ownMaxMana > 2 || (p.enemyHeroName != HeroEnum.mage && p.enemyHeroName != HeroEnum.hunter))
+                if (p.ownMaxMana > 1)// || (p.enemyHeroName != HeroEnum.mage && p.enemyHeroName != HeroEnum.hunter))
                 {
                     if (card.name == CardDB.cardName.clockworkknight || card.name == CardDB.cardName.screwjankclunker)
                     {
@@ -348,15 +470,28 @@
                                 break;
                             }
                         }
+                        if (p.playactions.Find(a => a.actionType == actionEnum.attackWithMinion) != null) hasownready = true; //we HAD something ready but already attacked with it so penalize it still
                     }
                 }
 
-                if (!m.Ready && !m.taunt && hasownready)
+                if (this.buffing1TurnDatabase.ContainsKey(name))
                 {
-                    if (this.buffing1TurnDatabase.ContainsKey(name)) return 50;
-
-                    return 5 * attackBuffDatabase[name];
+                    if (m.Ready)
+                    {
+                        if (this.priorityDatabase.ContainsKey(m.name)) return 5 + priorityDatabase[m.name];
+                        return m.taunt ? 5 : 0;
+                    }
+                    else
+                    {
+                        return (hasownready) ? 50 : 5;
+                    }
                 }
+                if (!m.Ready)
+                {
+                    if (!m.taunt && hasownready) return 5 * attackBuffDatabase[name];
+                    else return attackBuffDatabase[name];
+                }
+                
                 if (m.Hp == 1 && !m.divineshild && !this.buffing1TurnDatabase.ContainsKey(name))
                 {
                     if (this.healthBuffDatabase.ContainsKey(name)) return 0;  // m.Hp no longer == 1
@@ -367,11 +502,6 @@
                 if (card.name == CardDB.cardName.blessingofmight) return 6;
             }
 
-            if (target.own && name == CardDB.cardName.rockbiterweapon)
-            {
-                return 10;
-            }
-
             return 0;
         }
 
@@ -379,7 +509,6 @@
         {
             CardDB.cardName name = card.name;
             if (name == CardDB.cardName.darkwispers && choice != 1) return 0;
-            int pen = 0;
             //buff enemy?
             if (!this.healthBuffDatabase.ContainsKey(name)) return 0;
              if (target == null)
@@ -556,6 +685,7 @@
             if (name == CardDB.cardName.savagery && p.ownHero.Angr == 0) return 500;
             if (name == CardDB.cardName.keeperofthegrove && choice != 1) return 0; // look at silence penality
             if (name == CardDB.cardName.livingroots && choice != 1) return 0; // look at silence penality
+            if (name == CardDB.cardName.swipe && !target.own) return -p.enemyMinions.Count * 7; // treat it as single target spell with bonus for aoe
 
             if (this.DamageAllDatabase.ContainsKey(name) || (p.anzOwnAuchenaiSoulpriest >= 1 && HealAllDatabase.ContainsKey(name))) // aoe penality
             {
@@ -661,10 +791,16 @@
                 {
                     pen = 500;
                 }
-                if (name == CardDB.cardName.lavashock && p.owedRecall == 0 && p.currentRecall==0)
+                if (name == CardDB.cardName.lavashock && p.owedRecall == 0 && p.currentRecall == 0) //todo sepefeets - eternal sentinal penalty
                 {
-                    pen = 30;
+                    pen = 20;
                 }
+                if (name == CardDB.cardName.fireblast && p.enemyMinions.Count > 0)
+                {
+                    pen = 10;
+                }
+
+                if (name == CardDB.cardName.mortalstrike && p.ownHero.Hp > 12) pen = 20;
             }
 
             if (target.own && !target.isHero)
@@ -684,11 +820,11 @@
                     int dmg = this.DamageTargetDatabase.ContainsKey(name) ? this.DamageTargetDatabase[name] : this.HealTargetDatabase[name];
 
                     if (m.name == CardDB.cardName.madscientist && p.ownHeroName == HeroEnum.hunter) return 500;
-                    if (m.name == CardDB.cardName.sylvanaswindrunner) return 0;
+                    if (m.name == CardDB.cardName.sylvanaswindrunner) return 5;
                     if (m.handcard.card.deathrattle) return 60;
                     if (m.Hp > dmg)
                     {
-                        if (m.name == CardDB.cardName.acolyteofpain && p.owncards.Count <= 3) return 0;
+                        if (m.name == CardDB.cardName.acolyteofpain && p.owncards.Count <= 3) return pen;
                         foreach (Handmanager.Handcard hc in p.owncards)
                         {
                             if (hc.card.name == CardDB.cardName.battlerage) return pen;
@@ -755,10 +891,11 @@
 
                     if (name == CardDB.cardName.shieldslam && (m.Hp <= 4 || m.Angr <= 4)) pen = 20;
 
-                    if (name == CardDB.cardName.lavashock && p.owedRecall == 0 && p.currentRecall == 0)
-                    {
-                        pen = 15;
-                    }
+                    if (name == CardDB.cardName.lavashock && p.owedRecall == 0 && p.currentRecall == 0) pen = 15;
+
+                    if (name == CardDB.cardName.fireblast && !lethal && m.Hp == 1) pen = -10;
+
+                    if (name == CardDB.cardName.mortalstrike && p.ownHero.Hp > 12) pen = 20;
                 }
             }
 
@@ -767,11 +904,13 @@
 
         private int getHealPenality(CardDB.cardName name, Minion target, Playfield p, int choice, bool lethal)
         {
-            ///Todo healpenality for aoe heal
-            ///todo auchenai soulpriest
+            if (!HealTargetDatabase.ContainsKey(name) && !HealHeroDatabase.ContainsKey(name) && !HealAllDatabase.ContainsKey(name)) return 0; 
+            //Todo healpenality for aoe heal
+            //todo auchenai soulpriest
             if (p.anzOwnAuchenaiSoulpriest >= 1) return 0;
             if (name == CardDB.cardName.ancientoflore && choice != 2) return 0;
             int pen = 0;
+            int offset = 0;
             int heal = 0;
             /*if (HealHeroDatabase.ContainsKey(name))
             {
@@ -779,6 +918,20 @@
                 if (target == 200) pen = 500; // dont heal enemy
                 if ((target == 100 || target == -1) && p.ownHeroHp + heal > 30) pen = p.ownHeroHp + heal - 30;
             }*/
+
+            // small bonus if we have heal-trigger, big penalty if enemy does
+            foreach (Minion mnn in p.ownMinions)
+            {
+                if (mnn.name == CardDB.cardName.northshirecleric) offset -= 20;
+                if (mnn.name == CardDB.cardName.lightwarden) offset -= 20;
+                if (mnn.name == CardDB.cardName.holychampion) offset -= 50;
+            }
+            foreach (Minion mnn in p.enemyMinions)
+            {
+                if (mnn.name == CardDB.cardName.northshirecleric) offset += 30;
+                if (mnn.name == CardDB.cardName.lightwarden) offset += 30;
+                if (mnn.name == CardDB.cardName.holychampion) offset += 75;
+            }
 
             if (name == CardDB.cardName.treeoflife)
             {
@@ -792,8 +945,40 @@
                     if (mi.wounded) wounded++;
                 }
                 //Console.WriteLine(mheal + " circle");
-                if (mheal == 0) return 500;
-                if (mheal <= 7 && wounded <= 2) return 20;
+                if (p.ownHero.Hp < 16)
+                {
+                    pen += p.ownHero.Hp;
+                    if (p.guessHeroDamage(false) >= p.ownHero.Hp + p.ownHero.armor) return (pen * 2) + offset;
+                    else return (pen * 10) + offset;
+                }
+                else
+                {
+                    pen = (p.ownHero.Hp * 15) + 20 - mheal;
+                    return pen + offset;
+                }
+            }
+
+            if (name == CardDB.cardName.renojackson)
+            {
+                if (p.ownHero.Hp < 16)
+                {
+                    pen = p.ownHero.Hp;
+                    if (p.guessHeroDamage(false) >= p.ownHero.Hp + p.ownHero.armor) return (pen * 2) + offset;
+                    else return (pen * 10) + offset;
+                }
+                else
+                {
+                    pen = p.ownHero.Hp * 15;
+                    //extra penalty if we can draw cards
+                    if (p.ownAbilityReady && cardDrawBattleCryDatabase.ContainsKey(p.ownHeroAblility.card.name)) pen += 20;
+                    foreach (Handmanager.Handcard hc in p.owncards)
+                    {
+                        if (!cardDrawBattleCryDatabase.ContainsKey(hc.card.name)) continue;
+                        pen += 20;
+                        break;
+                    }
+                    return pen + offset;
+                }
             }
 
             if (name == CardDB.cardName.circleofhealing)
@@ -807,8 +992,8 @@
                     if (mi.wounded) wounded++;
                 }
                 //Console.WriteLine(mheal + " circle");
-                if (mheal == 0) return 500;
-                if (mheal <= 7 && wounded <= 2) return 20;
+                if (mheal == 0) return 500 + offset;
+                if (mheal <= 7 && wounded <= 2) return 20 + offset;
             }
 
             if (HealTargetDatabase.ContainsKey(name) || HealHeroDatabase.ContainsKey(name))
@@ -821,13 +1006,13 @@
                 }
                 else
                 {
-                    if (target == null) return 10;
+                    if (target == null) return 10 + offset;
                     //Helpfunctions.Instance.ErrorLog("pencheck for " + name + " " + target.entitiyID + " " + target.isHero  + " " + target.own);
                     heal = HealTargetDatabase[name];
                 }
-                if (target.isHero && !target.own) return 510; // dont heal enemy
+                if (target.isHero && !target.own) return 510 + offset; // dont heal enemy
                 //Helpfunctions.Instance.ErrorLog("pencheck for " + name + " " + target.entitiyID + " " + target.isHero + " " + target.own);
-                if ((target.isHero && target.own) && p.ownHero.Hp == 30) return 150;
+                if ((target.isHero && target.own) && p.ownHero.Hp == 30) return 150 + offset;
                 if ((target.isHero && target.own) && p.ownHero.Hp + heal > 30) pen = p.ownHero.Hp + heal - 30;
                 Minion m = new Minion();
 
@@ -835,7 +1020,7 @@
                 {
                     m = target;
                     int wasted = 0;
-                    if (m.Hp == m.maxHp) return 500;
+                    if (m.Hp == m.maxHp) return 500 + offset;
                     if (m.Hp + heal - 1 > m.maxHp) wasted = m.Hp + heal - m.maxHp;
                     pen = wasted;
 
@@ -847,32 +1032,19 @@
                 if (!target.isHero && !target.own)
                 {
                     m = target;
-                    if (m.Hp == m.maxHp) return 500;
+                    if (m.Hp == m.maxHp) return 500 + offset;
                     // no penality if we heal enrage enemy
                     if (enrageDatabase.ContainsKey(m.name))
                     {
-                        return pen;
+                        return pen + offset;
                     }
-                    // no penality if we have heal-trigger :D
-                    int i = 0;
-                    foreach (Minion mnn in p.ownMinions)
-                    {
-                        if (mnn.name == CardDB.cardName.northshirecleric) i++;
-                        if (mnn.name == CardDB.cardName.lightwarden) i++;
-                    }
-                    foreach (Minion mnn in p.enemyMinions)
-                    {
-                        if (mnn.name == CardDB.cardName.northshirecleric) i--;
-                        if (mnn.name == CardDB.cardName.lightwarden) i--;
-                    }
-                    if (i >= 1) return pen;
 
                     // no pen if we have slam
 
                     foreach (Handmanager.Handcard hc in p.owncards)
                     {
-                        if (hc.card.name == CardDB.cardName.slam && m.Hp < 2) return pen;
-                        if (hc.card.name == CardDB.cardName.backstab) return pen;
+                        if (hc.card.name == CardDB.cardName.slam && m.Hp < 2) return pen + offset;
+                        if (hc.card.name == CardDB.cardName.backstab) return pen + offset;
                     }
 
                     pen = 500;
@@ -881,18 +1053,18 @@
 
             }
 
-            return pen;
+            return pen + offset;
         }
 
         private int getCardDrawPenality(CardDB.cardName name, Minion target, Playfield p, int choice, bool lethal)
         {
-            // penality if carddraw is late or you have enough cards
-            int pen = 0;
+            // penalty if carddraw is late or you have enough cards
             if (!cardDrawBattleCryDatabase.ContainsKey(name)) return 0;
             if (name == CardDB.cardName.ancientoflore && choice != 1) return 0;
             if (name == CardDB.cardName.wrath && choice != 2) return 0;
             if (name == CardDB.cardName.nourish && choice != 2) return 0;
             if (name == CardDB.cardName.grovetender && choice != 2) return 0;
+            if (name == CardDB.cardName.quickshot && p.owncards.Count != 1) return 0;
 
             int carddraw = cardDrawBattleCryDatabase[name];
             if (name == CardDB.cardName.harrisonjones)
@@ -928,14 +1100,20 @@
             {
                 Minion m = target;
                 carddraw = 0;
-                if (m != null && m.Hp == 1) carddraw = 1;
-                if (carddraw == 0) return 15;
+                if (m != null && m.Hp <= 1 + p.spellpower) carddraw = 1;
+                if (carddraw == 0) return 20;
             }
 
             if (name == CardDB.cardName.tinkertowntechnician)
             {
                 carddraw = (p.ownMinions.Find(m => m.handcard.card.race == TAG_RACE.MECHANICAL) != null ? 1 : 0);
                 if (carddraw == 0) return 2;
+            }
+
+            if (name == CardDB.cardName.netherspitehistorian)
+            {
+                carddraw = (p.owncards.Find(x => x.card.race == TAG_RACE.DRAGON) != null ? 1 : 0);
+                if (carddraw == 0) return 10;
             }
 
             if (name == CardDB.cardName.lifetap || name == CardDB.cardName.soultap)
@@ -958,7 +1136,7 @@
 
                 }
 
-                if (Ai.Instance.botBase is BehaviorRush && p.ownMaxMana <= 3 && cardOnLimit) return 6; //RR penalization for drawing the 3 first turns if we have a card in hand that we won't be able to play in Rush
+                if ((Ai.Instance.botBase is BehaviorRush || Ai.Instance.botBase is BehaviorFace) && p.ownMaxMana <= 3 && cardOnLimit) return 6; //RR penalization for drawing the 3 first turns if we have a card in hand that we won't be able to play in Rush
 
 
                 if (p.owncards.Count + p.cardsPlayedThisTurn <= 5 && minmana > p.ownMaxMana) return 0;
@@ -966,8 +1144,11 @@
                 return Math.Max(-carddraw + 2 * p.optionsPlayedThisTurn + p.ownMaxMana - p.mana, 0);
             }
 
-            if (p.owncards.Count + carddraw > 10) return 15 * (p.owncards.Count + carddraw - 10);
-            if (p.owncards.Count + p.cardsPlayedThisTurn > 5) return (5 * carddraw) + 1;
+            if (p.owncards.Count + carddraw > 10) return 15 * (p.owncards.Count + carddraw - 10); //big penalty if drawing raises us over 9 cards ( > 10 because 1 card is lost when played to do the drawing)
+            if (p.owncards.Count + carddraw > 8) return 5 * (p.owncards.Count + carddraw - 8); ; //smaller penalty if it brings us to 8-9 cards
+            
+            if (name == CardDB.cardName.battlerage) return -carddraw - p.optionsPlayedThisTurn + p.ownMaxMana - p.mana;
+            if (name == CardDB.cardName.quickshot) return -carddraw - p.cardsPlayedThisTurn + p.optionsPlayedThisTurn;
 
             return -carddraw + 2 * p.optionsPlayedThisTurn + p.ownMaxMana - p.mana;
             /*pen = -carddraw + p.ownMaxMana - p.mana;
@@ -1002,7 +1183,17 @@
             return pen;
         }
 
-        private int getRandomPenaltiy(CardDB.Card card, Playfield p, Minion target)
+        public int getCardDrawDeathrattlePenality(CardDB.cardName name, Playfield p)
+        {
+            // penality if carddraw is late or you have enough cards
+            if (!cardDrawDeathrattleDatabase.ContainsKey(name)) return 0;
+
+            int carddraw = cardDrawDeathrattleDatabase[name];
+            if (p.owncards.Count + carddraw > 10) return 15 * (p.owncards.Count + carddraw - 10);
+            return 3 * p.optionsPlayedThisTurn;
+        }
+
+        private int getRandomPenalty(CardDB.Card card, Playfield p, Minion target)
         {
             int pen = 0;
             if (p.turnCounter >= 1)
@@ -1011,42 +1202,27 @@
             }
 
             bool first = true;
-            bool hasgadget = false;
-            bool hasstarving = false;
-            bool hasknife = false;
-            bool hasflamewaker = false;
-            bool hasmech = false;
-            bool hadkn = false;
+            bool hasAuctioneer = false;
+            bool hasBuzzard = false;
+            bool hasJuggler = false;
+            bool hasFlamewaker = false;
+            bool hasMech = false;
+            bool hasCouncilman = false;
+            bool hasThunderbluffV = false;
 
-            
 
             foreach (Minion mnn in p.ownMinions)
             {
-
-                if (mnn.handcard.card.race == TAG_RACE.MECHANICAL) hasmech = true;
+                if (mnn.handcard.card.race == TAG_RACE.MECHANICAL) hasMech = true;
 
                 if (mnn.silenced) continue;
 
-
-                if (mnn.name == CardDB.cardName.gadgetzanauctioneer)
-                {
-                    hasgadget = true;
-                }
-
-                if (mnn.name == CardDB.cardName.starvingbuzzard)
-                {
-                    hasstarving = true;
-                }
-
-                if (mnn.name == CardDB.cardName.knifejuggler)
-                {
-                    hasknife = true;
-                }
-
-                if (mnn.name == CardDB.cardName.flamewaker)
-                {
-                    hasflamewaker = true;
-                }
+                if (mnn.name == CardDB.cardName.gadgetzanauctioneer) hasAuctioneer = true;
+                if (mnn.name == CardDB.cardName.starvingbuzzard) hasBuzzard = true;
+                if (mnn.name == CardDB.cardName.knifejuggler) hasJuggler = true;
+                if (mnn.name == CardDB.cardName.flamewaker) hasFlamewaker = true;
+                if (mnn.name == CardDB.cardName.darkshirecouncilman) hasCouncilman = true; //not actually random but needs to be played early as if it were
+                if (mnn.name == CardDB.cardName.thunderbluffvaliant) hasThunderbluffV = true; //not actually random but totemic call/slam are
             }
 
             foreach (Action a in p.playactions) // penalty for "killing" combos (like had knifejuggler, traded him in last enemy-minion and then played a minion)
@@ -1057,25 +1233,51 @@
                         continue;
                     if (a.own.name == CardDB.cardName.gadgetzanauctioneer)
                     {
-                        if (!hasgadget && card.type == CardDB.cardtype.SPELL && p.owncards.Count <= 5) pen += 10;
+                        if (!hasAuctioneer && card.type == CardDB.cardtype.SPELL && p.owncards.Count <= 5) pen += 20;
                     }
 
                     if (a.own.name == CardDB.cardName.starvingbuzzard)
                     {
-                        if (!hasstarving && card.race == TAG_RACE.PET) pen += 10; 
+                        if (!hasBuzzard && card.race == TAG_RACE.PET) pen += 20; 
                     }
 
                     if (a.own.name == CardDB.cardName.knifejuggler)
                     {
-                        if (!hasknife && card.type == CardDB.cardtype.MOB) pen += 10; 
+                        if (!hasJuggler && (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name))) pen += 20; 
                     }
 
                     if (a.own.name == CardDB.cardName.flamewaker)
                     {
-                        if (!hasflamewaker && card.type == CardDB.cardtype.SPELL) pen += 10; 
+                        if (!hasFlamewaker && card.type == CardDB.cardtype.SPELL) pen += 20;
+                    }
+
+                    if (a.own.name == CardDB.cardName.darkshirecouncilman)
+                    {
+                        if (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name)) pen += 20;
+                    }
+
+                    if (a.own.name == CardDB.cardName.tunneltrogg)
+                    {
+                        if (card.overload > 0 && card.name != CardDB.cardName.elementaldestruction) pen += 20 * card.overload;
                     }
                 }
+                if (a.actionType == actionEnum.playcard)
+                {
+                    if (a.card.card.overload > 0 && a.card.card.name != CardDB.cardName.elementaldestruction && card.name == CardDB.cardName.tunneltrogg)
+                    {
+                        pen += 25 * a.card.card.overload;
+                    }
 
+                    if (card.name == CardDB.cardName.knifejuggler && (a.card.card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(a.card.card.name))) //prioritize jugglers 1st
+                    {
+                        if (a.card.card.name != CardDB.cardName.knifejuggler) pen += 20;
+                    }
+
+                    if (card.name == CardDB.cardName.darkshirecouncilman && (a.card.card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(a.card.card.name))) //and councilman 2nd
+                    {
+                        if (a.card.card.name != CardDB.cardName.knifejuggler && a.card.card.name != CardDB.cardName.darkshirecouncilman) pen += 20;
+                    }
+                }
             }
 
             // Don't penalize for cases that don't actually have random outcomes
@@ -1083,17 +1285,19 @@
 
             if (!this.randomEffects.ContainsKey(card.name) 
                 && !this.cardDrawBattleCryDatabase.ContainsKey(card.name)
-                && !(hasknife && card.type == CardDB.cardtype.MOB && p.enemyMinions.Count > 0) 
-                && !(hasgadget && card.type == CardDB.cardtype.SPELL)
-                && !(hasflamewaker && card.type == CardDB.cardtype.SPELL && p.enemyMinions.Count > 0)
-                && !(hasstarving && (TAG_RACE)card.race == TAG_RACE.PET))
+                && !(hasJuggler && (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name)) && p.enemyMinions.Count > 0)
+                && !(hasCouncilman && (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name)))
+                && !(hasAuctioneer && card.type == CardDB.cardtype.SPELL)
+                && !(hasFlamewaker && card.type == CardDB.cardtype.SPELL && p.enemyMinions.Count > 0)
+                && !(hasThunderbluffV && (TAG_RACE)card.race == TAG_RACE.TOTEM)
+                && !(hasBuzzard && (TAG_RACE)card.race == TAG_RACE.PET))
              {
                  return pen;
              }
 
 
             if (card.name == CardDB.cardName.brawl || ((card.name == CardDB.cardName.bouncingblade && p.enemyMinions.Count + p.ownMinions.Count == 1)
-                || ( (card.name == CardDB.cardName.goblinblastmage || card.name == CardDB.cardName.tinkertowntechnician) && !hasmech)
+                || ( (card.name == CardDB.cardName.goblinblastmage || card.name == CardDB.cardName.tinkertowntechnician) && !hasMech)
                 || (card.name == CardDB.cardName.coghammer && p.ownMinions.Count == 1)))
              {
                  return pen;
@@ -1110,6 +1314,17 @@
                  return pen;
              }
 
+            if (card.name == CardDB.cardName.deadlyshot)
+            {
+                int bigminions = 0;
+                foreach (Minion mm in p.enemyMinions)
+                {
+                    if (!(mm.Angr > 4 && mm.Hp > 4 || mm.Angr > 6)) pen += 10;
+                    else bigminions += 1;
+                }
+                if (p.enemyMinions.Count == bigminions) pen += -100; //huge bonus if they only have big minions, may be too much
+            }
+
             if (p.enemyMinions.Count == 1 && (card.name == CardDB.cardName.deadlyshot
                 || card.name == CardDB.cardName.flamecannon
                 || card.name == CardDB.cardName.bomblobber))
@@ -1125,20 +1340,21 @@
                  return pen;
              }
 
-            int cards = 0;
-            cards = this.randomEffects.ContainsKey(card.name) ? this.randomEffects[card.name] : (this.cardDrawBattleCryDatabase.ContainsKey(card.name) ? this.cardDrawBattleCryDatabase[card.name] : 0);
+            int cards = this.randomEffects.ContainsKey(card.name) ? this.randomEffects[card.name] : (this.cardDrawBattleCryDatabase.ContainsKey(card.name) ? this.cardDrawBattleCryDatabase[card.name] : 0);
+            int mobsAfterKnife = 0;
+            int mobsAfterCouncilman = 0;
 
-            int mobsafterKnife = 0;
             foreach (Action a in p.playactions) // penalize for any non-random actions taken before playing this random one
             {
-                if (first == false) break;
                 if (a.actionType == actionEnum.attackWithHero)
                 {
                     first = false;
                     continue;
                 }
 
-                if (a.actionType == actionEnum.useHeroPower && (p.ownHeroName != HeroEnum.shaman && p.ownHeroName != HeroEnum.warlock))
+                if (a.actionType == actionEnum.useHeroPower
+                    && p.ownHeroAblility.card.name != CardDB.cardName.totemiccall && p.ownHeroAblility.card.name != CardDB.cardName.totemicslam
+                    && p.ownHeroAblility.card.name != CardDB.cardName.lifetap && p.ownHeroAblility.card.name != CardDB.cardName.soultap)
                 {
                     first = false;
                     continue;
@@ -1152,54 +1368,56 @@
 
                 if (a.actionType == actionEnum.playcard)
                 {
-
-
-                    if (this.cardDrawBattleCryDatabase.ContainsKey(a.card.card.name))
-                    {
-                        continue;
-                    }
-
-                    if (this.randomEffects.ContainsKey(a.card.card.name))
-                    {
-                        continue;
-                    }
+                    if (this.cardDrawBattleCryDatabase.ContainsKey(a.card.card.name)) continue;
+                    if (this.lethalHelpers.ContainsKey(a.card.card.name)) continue;
+                    if (this.randomEffects.ContainsKey(a.card.card.name)) continue;
+                    if (a.card.card.name == CardDB.cardName.thecoin) continue; //no penalty for using coin first
+                    if (hasBuzzard && a.card.card.race == TAG_RACE.PET) continue;
+                    if (hasThunderbluffV && a.card.card.race == TAG_RACE.TOTEM) continue;
 
                     // no penalty for spells or other cards that obtain bonuses from playing spells
-                    if ((hasgadget || hasflamewaker) && (a.card.card.type == CardDB.cardtype.SPELL
+                    if ((hasAuctioneer || hasFlamewaker) && (a.card.card.type == CardDB.cardtype.SPELL
                         || a.card.card.name == CardDB.cardName.gadgetzanauctioneer || a.card.card.name == CardDB.cardName.flamewaker
                         || a.card.card.name == CardDB.cardName.manawyrm || a.card.card.name == CardDB.cardName.manaaddict
                         || a.card.card.name == CardDB.cardName.questingadventurer || a.card.card.name == CardDB.cardName.wildpyromancer
                         || a.card.card.name == CardDB.cardName.violetteacher || a.card.card.name == CardDB.cardName.archmageantonidas))
-                     {
-                         continue;
-                     }
-
-                    if (hasstarving && a.card.card.race == TAG_RACE.PET)
                     {
                         continue;
                     }
 
-
-                    if (hasknife && (a.card.card.type == CardDB.cardtype.MOB || a.card.card.name == CardDB.cardName.swordofjustice || a.card.card.name == CardDB.cardName.mirrorentity)) //and others
+                    //todo sepefeets - does this even do anything?
+                    if (hasJuggler && (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name))) //and others
                      {
-                        if (card.name == CardDB.cardName.knifejuggler && mobsafterKnife >= 1)
+                        if (card.name == CardDB.cardName.knifejuggler && mobsAfterKnife >= 1)
                         {
                             first = false;   // penalize playing 2nd knife juggler after other mobs
                         }
                         else
                         {
-                            if (a.card.card.type == CardDB.cardtype.MOB && a.card.card.name != CardDB.cardName.knifejuggler) mobsafterKnife++;
+                            if (a.card.card.type == CardDB.cardtype.MOB && a.card.card.name != CardDB.cardName.knifejuggler) mobsAfterKnife++;
                             continue;
                         }
-                     }
+                    }
 
-                    first = false;
+                    if (hasCouncilman && (card.type == CardDB.cardtype.MOB || this.summonMinionSpellsDatabase.ContainsKey(card.name))) //and others
+                    {
+                        if (card.name == CardDB.cardName.darkshirecouncilman && mobsAfterCouncilman >= 1)
+                        {
+                            first = false;   // penalize playing 2nd darkshire councilman after other mobs
+                        }
+                        else
+                        {
+                            if (a.card.card.type == CardDB.cardtype.MOB && a.card.card.name != CardDB.cardName.darkshirecouncilman) mobsAfterCouncilman++;
+                            continue;
+                        }
+                    }
                 }
+                cards+=2;
             }
 
             if (first == false)
             {
-                pen += cards + p.playactions.Count + 1;
+                pen += cards;
             }
 
             return pen;
@@ -1217,6 +1435,11 @@
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
                     if (this.cardDiscardDatabase.ContainsKey(hc.card.name)) continue;
+                    if (hc.card.name == CardDB.cardName.silverwaregolem || hc.card.name == CardDB.cardName.fistofjaraxxus)
+                    {
+                        pen += -20; //bonus for discarding these
+                        continue;
+                    }
                     if (hc.card.getManaCost(p, hc.manacost) <= newmana)
                     {
                         canplayanothercard = true;
@@ -1233,19 +1456,31 @@
         {
             if (!this.destroyOwnDatabase.ContainsKey(name)) return 0;
             int pen = 0;
-            if ((name == CardDB.cardName.brawl || name == CardDB.cardName.deathwing || name == CardDB.cardName.twistingnether) && p.mobsplayedThisTurn >= 1) return 500;
 
-            if (name == CardDB.cardName.brawl || name == CardDB.cardName.twistingnether)
+            if (name == CardDB.cardName.brawl || name == CardDB.cardName.deathwing || name == CardDB.cardName.twistingnether || name == CardDB.cardName.doomsayer || name == CardDB.cardName.doom)
             {
+                if (p.mobsPlayedThisTurn >= 1) return 500;
                 if (name == CardDB.cardName.brawl && p.ownMinions.Count + p.enemyMinions.Count <= 1) return 500;
                 int highminion = 0;
                 int veryhighminion = 0;
+                int readyAngr = 0;
                 foreach (Minion m in p.enemyMinions)
                 {
+                    if (!m.frozen)
+                    {
+                        readyAngr += m.Angr;
+                    }
                     if (m.Angr >= 5 || m.Hp >= 5) highminion++;
                     if (m.Angr >= 8 || m.Hp >= 8) veryhighminion++;
                 }
 
+                if (name == CardDB.cardName.doomsayer)
+                {
+                    if (readyAngr > 5) return 500;
+                    else if (p.enemyMinions.Count <= 2 || p.enemyMinions.Count + 2 <= p.ownMinions.Count || p.ownMinions.Count >= 3) return 30;
+                    else return 0;
+                }
+                
                 if (highminion >= 2 || veryhighminion >= 1)
                 {
                     return 0;
@@ -1255,6 +1490,8 @@
                 {
                     return 30;
                 }
+
+                return 0;
             }
             if (target == null) return 0;
             if (target.own && !target.isHero)
@@ -1262,15 +1499,15 @@
                 // dont destroy owns ;_; (except mins with deathrattle effects)
 
                 Minion m = target;
-                if (m.handcard.card.deathrattle) return 10;
+                if (m.handcard.card.deathrattle) return 30;
                 if (lethal && name == CardDB.cardName.sacrificialpact)
                 {
-                    int beasts = 0;
+                    int demons = 0;
                     foreach (Minion mm in p.ownMinions)
                     {
-                        if (mm.Ready && mm.handcard.card.name == CardDB.cardName.lightwarden) beasts++;
+                        if (mm.Ready && mm.handcard.card.race == TAG_RACE.DEMON) demons++;
                     }
-                    if (beasts == 0) return 500;
+                    if (demons == 0) return 500;
                 }
                 else
                 {
@@ -1287,15 +1524,9 @@
             if (!this.destroyDatabase.ContainsKey(name) || lethal) return 0;
             int pen = 0;
             if (target == null) return 0;
-            if (target.own && !target.isHero)
-            {
-                // dont destroy owns ;_; (except mins with deathrattle effects)
-                Minion m = target;
-                if (!m.handcard.card.deathrattle)
-                {
-                    pen = 500;
-                }
-            }
+            if (name == CardDB.cardName.shatter && !target.frozen) return 500; //todo sepefeets - remove after CardDB.getTargetsForCard() updated/merged?
+
+            //if (target.own && !target.isHero){} //handled in getDestroyOwnPenality()
 
             if (!target.own && !target.isHero)
             {
@@ -1308,7 +1539,7 @@
                     return 50;
                 }*/
 
-                if (name == CardDB.cardName.shadowwordpain)
+                if (name == CardDB.cardName.shadowwordpain || name == CardDB.cardName.bookwyrm)
                 {
                     if (this.specialMinions.ContainsKey(m.name) || m.Angr == 3 || m.Hp >= 4)
                     {
@@ -1331,7 +1562,7 @@
                     pen = 30;
                 }
 
-                if ( m.name == CardDB.cardName.doomsayer )
+                if (m.name == CardDB.cardName.doomsayer)
                 {
                     pen = 0;
                 }
@@ -1443,32 +1674,59 @@
         {
             CardDB.Card card = hcard.card;
             CardDB.cardName name = card.name;
+            int pen = 0;
 
             // penalize playing hero power after spell dmg cards
             if (name == CardDB.cardName.totemiccall || name == CardDB.cardName.totemicslam)  // shaman
             {
-                if (p.ownMinions.Find(m => m.name == CardDB.cardName.wrathofairtotem) != null) return 0;  // already have spelldmg totem, so no penalty
-
-                return p.playactions.FindAll(a => a.actionType == actionEnum.playcard && a.card.card.type == CardDB.cardtype.SPELL
-                    && (DamageTargetSpecialDatabase.ContainsKey(a.card.card.name) || DamageTargetDatabase.ContainsKey(a.card.card.name)
-                        || a.card.card.name == CardDB.cardName.lightningstorm || a.card.card.name == CardDB.cardName.elementaldestruction)).Count;
+                pen += p.playactions.FindAll(a => a.actionType == actionEnum.playcard && a.card.card.type == CardDB.cardtype.SPELL
+                    && (DamageTargetSpecialDatabase.ContainsKey(a.card.card.name) || DamageTargetDatabase.ContainsKey(a.card.card.name) 
+                        || DamageAllEnemysDatabase.ContainsKey(a.card.card.name) || DamageHeroDatabase.ContainsKey(a.card.card.name)
+                        || DamageRandomDatabase.ContainsKey(a.card.card.name) || a.card.card.name == CardDB.cardName.elementaldestruction)).Count * 9;
             }
 
-            return 0;
+            // slightly penalize playing shapeshift after other moves to recover a bit from HR data sync
+            if (name == CardDB.cardName.shapeshift || name == CardDB.cardName.direshapeshift)
+            {
+                pen += p.playactions.Count;
+            }
+            /*
+            //to counteract randomness penalty for playing hero power 2nd after inspire minion (maybe move to getRandomPenalty) - moved
+            if ((name == CardDB.cardName.totemiccall || name == CardDB.cardName.totemicslam || name == CardDB.cardName.lifetap || name == CardDB.cardName.soultap)
+                && p.playactions.Find(a => a.actionType == actionEnum.playcard && this.strongInspireEffectMinions.ContainsKey(a.card.card.name)) != null) pen += -7;
+            */
+
+
+            return pen;
         }
 
         private int getPlayMobPenalty(Handmanager.Handcard card, Minion target, Playfield p, bool lethal)
         {
-            if (card.card.type != CardDB.cardtype.MOB) return 0;
+            if (card.card.type != CardDB.cardtype.MOB && !this.summonMinionSpellsDatabase.ContainsKey(card.card.name)) return 0;
             int retval = 0;
 
+            if (card.card.name == CardDB.cardName.doomcaller && p.diedMinions != null && p.diedMinions.Find(ct => ct.own && ct.cardid == CardDB.cardIDEnum.OG_279).cardid == CardDB.cardIDEnum.OG_279) retval += 5; //OG_279 = cthun; penalize playing if cthun is not dead
+            if (p.ownMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null || p.enemyMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null)
+            {
+                // todo sepefeets - why doesn't penalizing this in behavior code work?
+                if (card.card.Charge || card.card.battlecry) return 5 * card.card.cost; //should really check all the dmg databases
+                else if (card.card.deathrattle) return 10 * card.card.cost; //just estimate the value by the cost
+                //else if (this.buffing1TurnDatabase.ContainsKey(card.card.name) || this.attackBuffDatabase.ContainsKey(card.card.name)) return 0;
+                else return 500;
+            }
             if (p.ownMinions.Find(m => m.name == CardDB.cardName.muklaschampion && !m.silenced) != null && p.playactions.Find(a => a.actionType == actionEnum.useHeroPower) != null)
             {
                 // penalize playing minions after mukla's +1/+1 buff
                 retval += 5;
             }
 
-            int buffs =0;
+            if (p.ownMinions.Find(m => m.name == CardDB.cardName.thunderbluffvaliant && !m.silenced) != null && p.playactions.Find(a => a.actionType == actionEnum.useHeroPower) != null && card.card.race == TAG_RACE.TOTEM)
+            {
+                // penalize playing totems after tbluff +2 ap buff
+                retval += 20;
+            }
+
+            int buffs = 0;
             foreach (Action a in p.playactions)
             {
                 if (a.card == null || a.actionType != actionEnum.playcard) continue;
@@ -1477,8 +1735,8 @@
                 if (a.card.card.name == CardDB.cardName.savageroar) buffs++;
                 if (a.card.card.name == CardDB.cardName.bloodlust) buffs++;
                 if (a.card.card.name == CardDB.cardName.souloftheforest) buffs++;
-                if (a.card.card.name == CardDB.cardName.powerofthewild) buffs++;
-                if (a.card.card.name == CardDB.cardName.cenarius) buffs++;
+                if (a.card.card.name == CardDB.cardName.powerofthewild && a.druidchoice == 1) buffs++;
+                if (a.card.card.name == CardDB.cardName.cenarius && a.druidchoice == 1) buffs++;
                 if (a.card.card.name == CardDB.cardName.metaltoothleaper) buffs++;
                 if (a.card.card.name == CardDB.cardName.enhanceomechano) buffs++;
                 if (card.card.tank && a.card.card.name == CardDB.cardName.bolster) buffs++;
@@ -1493,7 +1751,7 @@
             return retval;
         }
 
-        private int getSpecialCardComboPenalitys(Handmanager.Handcard playedhcard, Minion target, Playfield p, bool lethal, int choice)
+        private int getSpecialCardComboPenalties(Handmanager.Handcard playedhcard, Minion target, Playfield p, bool lethal, int choice)
         {
             CardDB.Card card = playedhcard.card;
             CardDB.cardName name = card.name;
@@ -1524,74 +1782,75 @@
 
                     if (name == CardDB.cardName.warsongcommander)
                     {
-                        int beasts = 0;
+                        int chargers = 0;
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (mm.charge>=1) beasts++;
+                            if (mm.charge>=1) chargers++;
                         }
-                        if (beasts == 0) return 500;
+                        if (chargers == 0) return 500;
                     }
 
                     if (name == CardDB.cardName.southseacaptain)
                     {
-                        int beasts = 0;
+                        int pirates = 0;
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (mm.Ready && (TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE) beasts++;
+                            if (mm.Ready && (TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE) pirates++;
                         }
-                        if (beasts == 0) return 500;
+                        if (pirates == 0) return 500;
                     }
                     if (name == CardDB.cardName.murlocwarleader || name == CardDB.cardName.grimscaleoracle || name == CardDB.cardName.coldlightseer)
                     {
-                        int beasts = 0;
+                        int murlocs = 0;
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (mm.Ready && (TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC) beasts++;
+                            if (mm.Ready && (TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC) murlocs++;
                         }
-                        if (beasts == 0) return 500;
+                        if (murlocs == 0) return 500;
                     }
 
                     if (name == CardDB.cardName.warhorsetrainer)
                     {
-                        int beasts = 0;
+                        int recruits = 0;
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (mm.Ready &&  mm.name == CardDB.cardName.silverhandrecruit) beasts++;
+                            if (mm.Ready &&  mm.name == CardDB.cardName.silverhandrecruit) recruits++;
                         }
-                        if (beasts == 0) return 500;
+                        if (recruits == 0) return 500;
                     }
 
                     if (name == CardDB.cardName.malganis)
                     {
-                        int beasts = 0;
+                        int demons = 0;
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (mm.Ready && mm.handcard.card.race == TAG_RACE.DEMON) beasts++;
+                            if (mm.Ready && mm.handcard.card.race == TAG_RACE.DEMON) demons++;
                         }
-                        if (beasts == 0) return 500;
+                        if (demons == 0) return 500;
                     }
                 }
                 else
                 {
                     if (name == CardDB.cardName.theblackknight)
                     {
-                        int beasts = 0;
+                        int taunts = 0;
                         foreach (Minion mm in p.enemyMinions)
                         {
-                            if (mm.taunt) beasts++;
+                            if (mm.taunt) taunts++;
                         }
-                        if (beasts == 0) return 500;
+                        if (taunts == 0) return 500;
                     }
                     else
                     {
                         if ((this.HealTargetDatabase.ContainsKey(name) || this.HealHeroDatabase.ContainsKey(name) || this.HealAllDatabase.ContainsKey(name)))
                         {
-                            int beasts = 0;
+                            int wardens = 0;
                             foreach (Minion mm in p.ownMinions)
                             {
-                                if (mm.Ready && mm.handcard.card.name == CardDB.cardName.lightwarden) beasts++;
+                                if (mm.Ready && mm.handcard.card.name == CardDB.cardName.lightwarden) wardens++;
+                                if (mm.Ready && mm.handcard.card.name == CardDB.cardName.holychampion) wardens++;
                             }
-                            if (beasts == 0) return 500;
+                            if (wardens == 0) return 500;
                         }
                         else
                         {
@@ -1607,21 +1866,20 @@
 
             //lethal end########################################################
 
-            //bonus for early thread
-            if (p.ownMaxMana == 1 )
+            //bonus for early threat
+            if (p.ownMaxMana == 1)
             {
-                //if (card.name == CardDB.cardName.nerubianegg) return -10;
-                if (card.name == CardDB.cardName.lepergnome) return -10;
-                if (card.name == CardDB.cardName.faeriedragon) return -20;
-                if (card.name == CardDB.cardName.shrinkmeister) return 0;
-                if (card.Attack >= 3 && card.Health >= 2) return -20;
-                if (card.name == CardDB.cardName.wildgrowth) return -150;
-                
+                if (card.Attack >= 3 && card.Health >= 4) return -10;
+                if (card.Attack >= 3 && card.Health >= 3) return -8;
+                if (card.Attack >= 3 && card.Health >= 2) return -5;
+                if (card.Health > 0) p.evaluatePenality += -3; //-card.Attack - card.Health; //nudge any minion playable
             }
 
-            if (p.ownMaxMana == 2)
+            if (p.mana <= 2 && p.ownMaxMana <= 2)
             {
-                if (card.name == CardDB.cardName.nerubianegg) return -15;
+                if (card.name == CardDB.cardName.nerubianegg) return -2;
+                if (card.name == CardDB.cardName.wildgrowth) return -150; //bonus for turn 1 coin+growth or turn 2 growth but not innervate+growth
+                if (card.name == CardDB.cardName.sirfinleymrrgglton) return 5; //don't play early over other options
             }
 
             /*if (card.name == CardDB.cardName.flamewaker && p.turnCounter == 0)
@@ -1635,6 +1893,17 @@
             }*/
 
 
+            switch (card.name)
+            {
+                case CardDB.cardName.twilightdarkmender:
+                case CardDB.cardName.twinemperorveklor:
+                case CardDB.cardName.klaxxiamberweaver:
+                case CardDB.cardName.ancientshieldbearer:
+                    if ((p.anzOgOwnCThunAngrBonus + 6) > 9) return 20;
+                    break;
+            }
+
+
 
             //if (card.name == CardDB.cardName.unstableportal && p.owncards.Count <= 9) return -15;
 
@@ -1645,10 +1914,8 @@
 
             if (card.name == CardDB.cardName.upgrade)
             {
-                if (p.ownWeaponDurability == 0)
-                {
-                    return 16;
-                }
+                if (p.playactions.Find(a => a.actionType == actionEnum.attackWithHero) != null) return 20;
+                if (p.ownWeaponDurability == 0) return 10;
             }
 
             if (card.name == CardDB.cardName.baronrivendare)
@@ -1674,7 +1941,7 @@
             if (name == CardDB.cardName.finickycloakfield || name == CardDB.cardName.emergencycoolant || name == CardDB.cardName.reversingswitch)
                 return 20;
 
-            if (name == CardDB.cardName.flare) 
+            if (name == CardDB.cardName.flare || name == CardDB.cardName.kezanmystic || name == CardDB.cardName.eaterofsecrets) 
             {
                 if (p.enemyHeroName != HeroEnum.hunter && p.enemyHeroName != HeroEnum.mage && p.enemyHeroName != HeroEnum.pala) return 0;
                 //it is a hunter/mage or pala:
@@ -1686,7 +1953,7 @@
             int pen = 0;
             if (name == CardDB.cardName.houndmaster)
             {
-                if (target == null) return 50;
+                if (target == null || !target.Ready) return 50;
             }
 
             if ((card.name == CardDB.cardName.biggamehunter) && (target == null || target.own))
@@ -1783,9 +2050,9 @@
             {
                 if (m.own)
                 {
-                    if (m.handcard.card.deathrattle || m.ancestralspirit >= 1 || m.souloftheforest >= 1 || m.enemyBlessingOfWisdom >= 1 || m.explorersHat >=1) return 0;
+                    if (m.handcard.card.deathrattle || m.ancestralspirit >= 1 || m.souloftheforest >= 1 || m.enemyBlessingOfWisdom >= 1 || m.explorershat >=1) return 0;
                     if (m.handcard.card.Charge && ((m.numAttacksThisTurn == 1 && !m.windfury) || (m.numAttacksThisTurn == 2 && m.windfury))) return 0;
-                    if (m.wounded || m.Angr < m.handcard.card.Attack || (m.silenced && PenalityManager.instance.specialMinions.ContainsKey(m.name))) return 0;
+                    if (m.wounded || m.Angr < m.handcard.card.Attack || (m.silenced && instance.specialMinions.ContainsKey(m.name))) return 0;
 
 
                     bool hasOnMinionDiesMinion = false;
@@ -1901,7 +2168,7 @@
                     bool hasNerubianEgg = false;
                     foreach (Minion mnn in p.enemyMinions)
                     {
-                        if (mnn.handcard.card.name == CardDB.cardName.nerubianegg && !m.silenced && m.Hp <= 2)
+                        if (mnn.handcard.card.name == CardDB.cardName.nerubianegg && !mnn.silenced && mnn.Hp <= 2)
                         {
                             hasNerubianEgg = true;
                             break;
@@ -1914,10 +2181,15 @@
             }
 
 
-            if (card.name == CardDB.cardName.knifejuggler && (p.mobsplayedThisTurn > 1 || ((p.ownHeroName == HeroEnum.shaman || p.ownHeroName == HeroEnum.pala) && p.ownAbilityReady == false)))
+            if (card.name == CardDB.cardName.knifejuggler && (p.mobsPlayedThisTurn > 1 || (p.ownAbilityReady == false && this.summonMinionSpellsDatabase.ContainsKey(p.ownHeroAblility.card.name))))
              {
                  return 20;
-             }
+            }
+
+            if (card.name == CardDB.cardName.darkshirecouncilman && (p.mobsPlayedThisTurn > 0 || (p.ownAbilityReady == false && this.summonMinionSpellsDatabase.ContainsKey(p.ownHeroAblility.card.name))))
+            {
+                return 20;
+            }
 
             if (card.name == CardDB.cardName.flametonguetotem && p.ownMinions.Count == 0)
             {
@@ -1940,7 +2212,12 @@
                 if (m.own && !m.Ready) return 500;
             }
 
-            if ((name == CardDB.cardName.wildgrowth || name == CardDB.cardName.nourish) && p.ownMaxMana == 9 && !(p.ownHeroName == HeroEnum.thief && p.cardsPlayedThisTurn == 0))
+            if (name == CardDB.cardName.wildgrowth && p.ownMaxMana > 5 && p.ownMaxMana < 10)
+            {
+                return 500;
+            }
+
+            if (name == CardDB.cardName.nourish && choice == 1 && p.ownMaxMana > 6)
             {
                 return 500;
             }
@@ -1973,20 +2250,11 @@
                 if (m.Angr == 0) return 30;
                 if (p.enemyMinions.Count == 1) return 30;
             }
+            
 
-
-
-
-            if (name == CardDB.cardName.bite)
+            if (heroAttackBuffDatabase.ContainsKey(name))
             {
-                if ((p.ownHero.numAttacksThisTurn == 0 || (p.ownHero.windfury && p.ownHero.numAttacksThisTurn == 1)) && !p.ownHero.frozen)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 20;
-                }
+                return ((p.ownHero.numAttacksThisTurn == 0) && !p.ownHero.frozen) ? 0 : 20;
             }
 
             if (name == CardDB.cardName.deadlypoison)
@@ -2033,7 +2301,7 @@
 
             if (!lethal && choice == 1 && name == CardDB.cardName.druidoftheclaw)
             {
-                return 20;
+                return 10;
             }
 
 
@@ -2045,11 +2313,15 @@
                     if (target.name == CardDB.cardName.sylvanaswindrunner) return 100;
                     return 500;
                 }
+                else
+                {
+                    if (this.priorityDatabase.ContainsKey(target.name)) return 10 + priorityDatabase[target.name];
+                }
             }
 
             if (name == CardDB.cardName.frothingberserker)
             {
-                if (p.cardsPlayedThisTurn >= 1) return  5;
+                if (p.cardsPlayedThisTurn >= 1 || p.playactions.Find(a => (a.actionType == actionEnum.attackWithHero || a.actionType == actionEnum.attackWithMinion) && !a.target.isHero) != null) return 15;
             }
 
             if (name == CardDB.cardName.handofprotection)
@@ -2123,37 +2395,29 @@
 
             if ((name == CardDB.cardName.polymorph || name == CardDB.cardName.hex))
             {
-
-
-
-                if (target.own && !target.isHero)
+                if (target.own && !target.isHero) return 500;
+                foreach (Action a in p.playactions)
                 {
-                    return 500;
+                    if (a.target != null && a.target == target) return 500;
+                    if (a.card != null && (DamageAllDatabase.ContainsKey(a.card.card.name) || DamageAllEnemysDatabase.ContainsKey(a.card.card.name)
+                        || DamageRandomDatabase.ContainsKey(a.card.card.name) || randomEffects.ContainsKey(a.card.card.name))) return 500;
                 }
 
                 if (!target.own && !target.isHero)
                 {
-                    int hexpen = 10;  // base penalty so we don't waste the spell on small minions
+                    int hexpen = 30 - (2 * target.Angr) - target.Hp;  // base penalty so we don't waste the spell on small minions
                     if (target.allreadyAttacked) hexpen += 30;
-                    Minion frog = target;
-                    if (!frog.silenced && this.priorityTargets.ContainsKey(frog.name) && this.priorityTargets[frog.name] >= 5) return hexpen;
-                    if (frog.Angr >= 4 && frog.Hp >= 4) return 0;  // no base penalty because minion is not small
-                    if (frog.Angr >= 4 && !frog.silenced && this.silenceTargets.ContainsKey(frog.name)) return hexpen+5;
+                    if (!target.silenced)
+                    {
+                        if (specialMinions.ContainsKey(target.name)) hexpen -= specialMinions[target.name];
+                        if (this.priorityTargets.ContainsKey(target.name) && this.priorityTargets[target.name] >= 5) return hexpen;
+                        if (target.Angr >= 4 && this.silenceTargets.ContainsKey(target.name)) return hexpen;
+                    }
                     return hexpen+30;
-
                 }
-
             }
 
 
-            if ((name == CardDB.cardName.defenderofargus || name == CardDB.cardName.sunfuryprotector) && p.ownMinions.Count == 1)
-            {
-                return 40;
-            }
-            if ((name == CardDB.cardName.defenderofargus || name == CardDB.cardName.sunfuryprotector) && p.ownMinions.Count == 0)
-            {
-                return 50;
-            }
 
             if (name == CardDB.cardName.unleashthehounds)
             {
@@ -2251,13 +2515,15 @@
                 int ready = 0;
                 foreach (Minion min in p.ownMinions)
                 {
-                    if (min.Ready)
-                    { ready++; }
+                    if (min.Ready) ready++;
                 }
-                if (ready == 0)
-                { return 5; }
+                if (ready == 0) return 10;
+                if (ready == 1) return 5;
             }
-            if (name == CardDB.cardName.abusivesergeant)
+
+
+/*
+            if (name == CardDB.cardName.abusivesergeant)  //penalty handled by buffing1TurnDatabase
             {
                 int ready = 0;
                 foreach (Minion min in p.ownMinions)
@@ -2269,7 +2535,7 @@
                 {
                     return 5;
                 }
-            }
+            }*/
 
             if (p.turnCounter >= 1 && name == CardDB.cardName.reversingswitch && target.Angr == target.Hp) return 500;
 
@@ -2278,19 +2544,34 @@
             return pen;
         }
 
-        private int playSecretPenality(CardDB.Card card, Playfield p)
+        private int getPlaySecretPenalty(CardDB.Card card, Playfield p)
         {
-            //penality if we play secret and have playable kirintormage
             int pen = 0;
             if (card.Secret)
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
+                    //penalty if we play secret and have playable kirintormage
                     if (hc.card.name == CardDB.cardName.kirintormage && p.mana >= hc.getManaCost(p))
                     {
                         pen = 500;
                     }
+
+                    if (hc.card.name == CardDB.cardName.secretkeeper && p.mana >= card.cost)
+                    {
+                        pen = 500;
+                    }
                 }
+
+                int smallAngr = 0;
+                foreach (Minion m in p.enemyMinions)
+                {
+                    if (m.Angr < 4)
+                    {
+                        smallAngr++;
+                    }
+                }
+                if (smallAngr > 0) pen += 50; //not 500 because we might need to protect ourself from lethal
             }
 
             return pen;
@@ -2324,7 +2605,7 @@
 
             bool hasHighHealthMinion = false;
 
-            if (c.name == CardDB.cardName.flare || c.name == CardDB.cardName.kezanmystic)
+            if (c.name == CardDB.cardName.flare || c.name == CardDB.cardName.kezanmystic || c.name == CardDB.cardName.eaterofsecrets)
             {
                 if (p.playactions.Count >= 1) return 100;
                 return 0;
@@ -2335,6 +2616,7 @@
                 {
                     if (hc.card.name == CardDB.cardName.flare && hc.canplayCard(p)) return 100 * p.enemySecretCount;
                     if (hc.card.name == CardDB.cardName.kezanmystic && hc.canplayCard(p)) return 50;
+                    if (hc.card.name == CardDB.cardName.eaterofsecrets && hc.canplayCard(p)) return 100 * p.enemySecretCount;
 
                     if (hc.card.type == CardDB.cardtype.MOB && hc.card.Health > 4 && hc.canplayCard(p)) hasHighHealthMinion = true;
                 }
@@ -2380,8 +2662,8 @@
                     };
 
                     // play first the small minion:
-                    if ((!this.isOwnLowestInHand(m, p) && p.mobsplayedThisTurn == 0)
-                        || (p.mobsplayedThisTurn == 0 && attackedbefore >= 1))
+                    if ((!this.isOwnLowestInHand(m, p) && p.mobsPlayedThisTurn == 0)
+                        || (p.mobsPlayedThisTurn == 0 && attackedbefore >= 1))
                     {
                         pen += 10;
                     }
@@ -2406,7 +2688,7 @@
                         taunt = c.tank,
                         name = c.name
                     };
-                    if ((!this.isOwnLowestInHand(m, p) && p.mobsplayedThisTurn == 0) || (attackedbefore == 0 && canattack > 0))
+                    if ((!this.isOwnLowestInHand(m, p) && p.mobsPlayedThisTurn == 0) || (attackedbefore == 0 && canattack > 0))
                     {
                         pen += 10;
                     }
@@ -2427,6 +2709,7 @@
             {
                 if (hc.card.name == CardDB.cardName.flare && hc.canplayCard(p)) return 100 * p.enemySecretCount;
                 if (hc.card.name == CardDB.cardName.kezanmystic && hc.canplayCard(p)) return 50;
+                if (hc.card.name == CardDB.cardName.eaterofsecrets && hc.canplayCard(p)) return 100 * p.enemySecretCount;
             }
 
             int pen = 0;
@@ -2446,14 +2729,13 @@
 
                 if (target.isHero && !target.own && p.enemyMinions.Count >= 1)
                 {
-                    //penality if we doestn attacked before
-                    if (hasMinionsWithLowHeal(p)) pen += 10; //penality if we doestn attacked minions before
+                    if (hasMinionsWithLowHeal(p)) pen += 10; //penality if we didn't attack minions before
                 }
             }
 
             if (p.enemyHeroName == HeroEnum.mage)
             {
-                if (p.mobsplayedThisTurn == 0) pen += 10;
+                if (p.mobsPlayedThisTurn == 0) pen += 10;
 
                 bool islow = isOwnLowest(m, p);
 
@@ -2461,7 +2743,7 @@
                 {
                     pen += 10;
                 }
-                if (target.isHero && !target.own && islow && p.mobsplayedThisTurn >= 1)
+                if (target.isHero && !target.own && islow && p.mobsPlayedThisTurn >= 1)
                 {
                     pen -= 20;
                 }
@@ -2497,6 +2779,48 @@
             return pen;
         }
 
+        private int getPlayPenalty(CardDB.cardName name, Playfield p, int choice)
+        {
+            switch (name)
+            {
+                case CardDB.cardName.brannbronzebeard: //play brann before good battlecries
+                    return p.playactions.Find(a => a.actionType == actionEnum.playcard && a.card.card.battlecry && a.card.card.name != CardDB.cardName.flameimp) != null ? 20 : 0;
+                case CardDB.cardName.dream:
+                    return 6;
+                case CardDB.cardName.reliquaryseeker:
+                    return (p.ownMinions.Count == 6) ? 0 : 5;
+                case CardDB.cardName.silverwaregolem:
+                    return 10 + p.owncards.Count;
+                case CardDB.cardName.malchezaarsimp:
+                    return 5;
+                case CardDB.cardName.scavenginghyena: //play hyena before attacking with beasts
+                    return p.playactions.Find(a => a.actionType == actionEnum.attackWithMinion && a.own.handcard.card.race == TAG_RACE.PET) != null ? 20 : 0;
+                case CardDB.cardName.maelstromportal:
+                    return -5;
+                case CardDB.cardName.netherspitehistorian:
+                    return -8;
+                case CardDB.cardName.lunarvisions:
+                    return (p.owncards.Count > 7) ? 5 : 0;
+                case CardDB.cardName.grimestreetprotector:
+                case CardDB.cardName.defenderofargus:
+                case CardDB.cardName.sunfuryprotector:
+                    if (p.ownMinions.Count == 0) return 50;
+                    if (p.ownMinions.Count == 1) return 40;
+                    return 0;
+                case CardDB.cardName.jadeidol:
+                    if (choice == 1 && !Hrtprozis.Instance.turnDeck.ContainsKey(CardDB.cardIDEnum.CFM_602)) return 50; //don't waste our last copy
+                    if (choice == 2 && Hrtprozis.Instance.turnDeck.ContainsKey(CardDB.cardIDEnum.CFM_602)) return 50; //don't shuffle more in if some still in deck
+                    return 0;
+                case CardDB.cardName.twilightguardian: //penalty if no dragon in hand
+                    return p.owncards.Find(c => c.card.race == TAG_RACE.DRAGON) != null ? 10 : 0;
+                case CardDB.cardName.bloodsailcultist:
+                    if (p.playactions.Find(a => a.actionType == actionEnum.attackWithHero) != null && p.ownWeaponDurability > 0) return 20;
+                    if (p.ownWeaponDurability == 0 || p.ownMinions.Find(m => m.handcard.card.race == TAG_RACE.PIRATE) == null) return 20;
+                    return 0;
+                default:
+                    return 0;
+            }
+        }
 
 
 
@@ -2557,7 +2881,7 @@
             int val = getValueOfEnemyMinion(mnn);
             foreach (Minion m in p.enemyMinions)
             {
-                if (litt.Find(x => x.entitiyID == m.entitiyID) == null) continue;
+                if (litt.Find(x => x.entityID == m.entityID) == null) continue;
                 if (getValueOfEnemyMinion(m) < val) ret = false;
             }
             return ret;
@@ -2582,14 +2906,16 @@
             enrageDatabase.Add(CardDB.cardName.spitefulsmith, 0);
             enrageDatabase.Add(CardDB.cardName.taurenwarrior, 0);
             enrageDatabase.Add(CardDB.cardName.warbot, 0);
+            enrageDatabase.Add(CardDB.cardName.aberrantberserker, 2);
+            enrageDatabase.Add(CardDB.cardName.bloodhoofbrave, 3);
         }
 
         private void setupHealDatabase()
         {
-            HealAllDatabase.Add(CardDB.cardName.holynova, 2);//to all own minions
-            HealAllDatabase.Add(CardDB.cardName.circleofhealing, 4);//allminions
+            HealAllDatabase.Add(CardDB.cardName.holynova, 2);//to all friends
+            HealAllDatabase.Add(CardDB.cardName.circleofhealing, 4);//all minions
             HealAllDatabase.Add(CardDB.cardName.darkscalehealer, 2);//all friends
-            HealAllDatabase.Add(CardDB.cardName.treeoflife, 3);//all friends
+            HealAllDatabase.Add(CardDB.cardName.treeoflife, 100);//all chars to max
 
             HealHeroDatabase.Add(CardDB.cardName.drainlife, 2);//tohero
             HealHeroDatabase.Add(CardDB.cardName.guardianofkings, 6);//tohero
@@ -2599,6 +2925,13 @@
             HealHeroDatabase.Add(CardDB.cardName.siphonsoul, 3); //tohero
             HealHeroDatabase.Add(CardDB.cardName.sealoflight, 4); //tohero
             HealHeroDatabase.Add(CardDB.cardName.antiquehealbot, 8); //tohero
+            HealHeroDatabase.Add(CardDB.cardName.renojackson, 30); //tohero
+            HealHeroDatabase.Add(CardDB.cardName.tuskarrjouster, 7);
+            HealHeroDatabase.Add(CardDB.cardName.tournamentmedic, 2);
+            HealHeroDatabase.Add(CardDB.cardName.refreshmentvendor, 4);
+            HealHeroDatabase.Add(CardDB.cardName.cultapothecary, 2);
+            HealHeroDatabase.Add(CardDB.cardName.twilightdarkmender, 10);
+            HealHeroDatabase.Add(CardDB.cardName.ivoryknight, 5); //heal = mana cost of discovered spell
 
             HealTargetDatabase.Add(CardDB.cardName.lightofthenaaru, 3);
             HealTargetDatabase.Add(CardDB.cardName.ancestralhealing, 3);
@@ -2611,261 +2944,443 @@
             HealTargetDatabase.Add(CardDB.cardName.voodoodoctor, 2);
             HealTargetDatabase.Add(CardDB.cardName.willofmukla, 8);
             HealTargetDatabase.Add(CardDB.cardName.ancientoflore, 5);
-            //HealTargetDatabase.Add(CardDB.cardName.divinespirit, 2);
-
-            HealTargetDatabase.Add(CardDB.cardName.refreshmentvendor, 4);
-            HealTargetDatabase.Add(CardDB.cardName.flashheal, 5);
+            HealTargetDatabase.Add(CardDB.cardName.healingwave, 14);
             HealTargetDatabase.Add(CardDB.cardName.heal, 4);
-            HealTargetDatabase.Add(CardDB.cardName.healingwave, 7);
+            HealTargetDatabase.Add(CardDB.cardName.flashheal, 5);
+            HealTargetDatabase.Add(CardDB.cardName.darkshirealchemist, 5);
+            HealTargetDatabase.Add(CardDB.cardName.forbiddenhealing, 2);//heal = 2x mana spent
+            HealTargetDatabase.Add(CardDB.cardName.moongladeportal, 5);
+            HealTargetDatabase.Add(CardDB.cardName.greaterhealingpotion, 12); //to friendly char
+            HealTargetDatabase.Add(CardDB.cardName.jinyuwaterspeaker, 6);
+            HealTargetDatabase.Add(CardDB.cardName.gadgetzansocialite, 2);
+            HealTargetDatabase.Add(CardDB.cardName.hozenhealer, 30); //minion to full hp
 
+            //HealTargetDatabase.Add(CardDB.cardName.divinespirit, 2);
         }
 
         private void setupDamageDatabase()
         {
-
-            DamageHeroDatabase.Add(CardDB.cardName.headcrack, 2);
-            DamageHeroDatabase.Add(CardDB.cardName.shadowbomber, 2);
-            DamageHeroDatabase.Add(CardDB.cardName.ballistashot, 3);
-
-            DamageAllDatabase.Add(CardDB.cardName.demonwrath, 2);
-            DamageAllDatabase.Add(CardDB.cardName.revenge, 1);
-
+            //DamageAllDatabase.Add(CardDB.cardName.flameleviathan, 2);
             DamageAllDatabase.Add(CardDB.cardName.abomination, 2);
+            DamageAllDatabase.Add(CardDB.cardName.barongeddon, 2);
+            DamageAllDatabase.Add(CardDB.cardName.demonwrath, 2);
             DamageAllDatabase.Add(CardDB.cardName.dreadinfernal, 1);
+            DamageAllDatabase.Add(CardDB.cardName.dreadscale, 1);
+            DamageAllDatabase.Add(CardDB.cardName.elementaldestruction, 4);
+            DamageAllDatabase.Add(CardDB.cardName.excavatedevil, 3);
+            DamageAllDatabase.Add(CardDB.cardName.explosivesheep, 2);
             DamageAllDatabase.Add(CardDB.cardName.hellfire, 3);
+            DamageAllDatabase.Add(CardDB.cardName.lava, 2);
+            DamageAllDatabase.Add(CardDB.cardName.lightbomb, 5);
+            DamageAllDatabase.Add(CardDB.cardName.magmapulse, 1);
+            DamageAllDatabase.Add(CardDB.cardName.revenge, 1);
+            DamageAllDatabase.Add(CardDB.cardName.scarletpurifier, 2);
+            DamageAllDatabase.Add(CardDB.cardName.unstableghoul, 1);
             DamageAllDatabase.Add(CardDB.cardName.whirlwind, 1);
             DamageAllDatabase.Add(CardDB.cardName.yseraawakens, 5);
-            DamageAllDatabase.Add(CardDB.cardName.lightbomb, 5);
+            DamageAllDatabase.Add(CardDB.cardName.anomalus, 8);
+            DamageAllDatabase.Add(CardDB.cardName.ravagingghoul, 1);
+            DamageAllDatabase.Add(CardDB.cardName.tentacleofnzoth, 1);
+            DamageAllDatabase.Add(CardDB.cardName.volcanicpotion, 2);
+            DamageAllDatabase.Add(CardDB.cardName.dragonfirepotion, 5);
+            DamageAllDatabase.Add(CardDB.cardName.felfirepotion, 5);
+            DamageAllDatabase.Add(CardDB.cardName.abyssalenforcer, 3);
+            DamageAllDatabase.Add(CardDB.cardName.sleepwiththefishes, 3);
 
-            DamageAllDatabase.Add(CardDB.cardName.elementaldestruction, 4);
 
             DamageAllEnemysDatabase.Add(CardDB.cardName.arcaneexplosion, 1);
-            DamageAllEnemysDatabase.Add(CardDB.cardName.shadowflame, 2);
-            DamageAllEnemysDatabase.Add(CardDB.cardName.consecration, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.bladeflurry, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.blizzard, 2);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.consecration, 2);
             DamageAllEnemysDatabase.Add(CardDB.cardName.fanofknives, 1);
             DamageAllEnemysDatabase.Add(CardDB.cardName.flamestrike, 4);
             DamageAllEnemysDatabase.Add(CardDB.cardName.holynova, 2);
             DamageAllEnemysDatabase.Add(CardDB.cardName.lightningstorm, 2);
-            DamageAllEnemysDatabase.Add(CardDB.cardName.stomp, 1);
-            
-            DamageAllEnemysDatabase.Add(CardDB.cardName.swipe, 4);//1 to others
-            DamageAllEnemysDatabase.Add(CardDB.cardName.bladeflurry, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.locustswarm, 3);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.shadowflame, 2);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.sporeburst, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.starfall, 2);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.stomp, 2);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.swipe, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.darkironskulker, 2);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.livingbomb, 5);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.poisoncloud, 1);//todo 1 or 2
+            DamageAllEnemysDatabase.Add(CardDB.cardName.cthun, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.twilightflamecaller, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.maelstromportal, 1);
+            DamageAllEnemysDatabase.Add(CardDB.cardName.sergeantsally, 1);// dmg = ap
 
 
-            DamageAllEnemysDatabase.Add(CardDB.cardName.madbomber, 1);
-            DamageRandomDatabase.Add(CardDB.cardName.goblinblastmage, 1);
-            DamageRandomDatabase.Add(CardDB.cardName.flamecannon, 4);
+            DamageHeroDatabase.Add(CardDB.cardName.curseofrafaam, 2);
+            DamageHeroDatabase.Add(CardDB.cardName.headcrack, 2);
+            DamageHeroDatabase.Add(CardDB.cardName.lepergnome, 2);
+            DamageHeroDatabase.Add(CardDB.cardName.mindblast, 5);
+            DamageHeroDatabase.Add(CardDB.cardName.nightblade, 3);
+            DamageHeroDatabase.Add(CardDB.cardName.purecold, 8);
+            DamageHeroDatabase.Add(CardDB.cardName.shadowbomber, 3);
+            DamageHeroDatabase.Add(CardDB.cardName.sinisterstrike, 3);
+            DamageHeroDatabase.Add(CardDB.cardName.frostblast, 3);
+            DamageHeroDatabase.Add(CardDB.cardName.necroticaura, 3);
+            DamageHeroDatabase.Add(CardDB.cardName.backstreetleper, 2);
+
+
             DamageRandomDatabase.Add(CardDB.cardName.arcanemissiles, 1);
             DamageRandomDatabase.Add(CardDB.cardName.avengingwrath, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.bomblobber, 4);
+            DamageRandomDatabase.Add(CardDB.cardName.boombot, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.bouncingblade, 1);
             DamageRandomDatabase.Add(CardDB.cardName.cleave, 2);
-            DamageRandomDatabase.Add(CardDB.cardName.forkedlightning, 2);
-            DamageRandomDatabase.Add(CardDB.cardName.multishot, 3);
-
+            DamageRandomDatabase.Add(CardDB.cardName.demolisher, 2);
+            DamageRandomDatabase.Add(CardDB.cardName.flamecannon, 4);
             DamageRandomDatabase.Add(CardDB.cardName.flamejuggler, 1);
-
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.crueltaskmaster, 1); // gives 2 attack
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.innerrage, 1); // gives 2 attack
-
-
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.lavashock, 2); //erases overload
-
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.demonfire, 2); // friendly demon get +2/+2
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.demonheart, 5);
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.earthshock, 1); //SILENCE /good for raggy etc or iced
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.hammerofwrath, 3); //draw a card
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.holywrath, 2);//draw a card
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.roguesdoit, 4);//draw a card
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.shiv, 1);//draw a card
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.savagery, 1);//dmg=herodamage
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.shieldslam, 1);//dmg=armor
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.slam, 2);//draw card if it survives
-            DamageTargetSpecialDatabase.Add(CardDB.cardName.soulfire, 4);//delete a card
+            DamageRandomDatabase.Add(CardDB.cardName.flamewaker, 2);
+            DamageRandomDatabase.Add(CardDB.cardName.forkedlightning, 2);
+            DamageRandomDatabase.Add(CardDB.cardName.goblinblastmage, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.hugetoad, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.knifejuggler, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.madbomber, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.madderbomber, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.multishot, 3);
+            DamageRandomDatabase.Add(CardDB.cardName.ragnarosthefirelord, 8);
+            DamageRandomDatabase.Add(CardDB.cardName.rumblingelemental, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.shadowboxer, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.shipscannon, 2);
+            DamageRandomDatabase.Add(CardDB.cardName.boombotjr, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.dieinsect, 8);
+            DamageRandomDatabase.Add(CardDB.cardName.dieinsects, 8);
+            DamageRandomDatabase.Add(CardDB.cardName.throwrocks, 3);
+            DamageRandomDatabase.Add(CardDB.cardName.fierybat, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.spreadingmadness, 1);
+            DamageRandomDatabase.Add(CardDB.cardName.greaterarcanemissiles, 9);
 
 
             DamageTargetDatabase.Add(CardDB.cardName.keeperofthegrove, 2); // or silence
-            DamageTargetDatabase.Add(CardDB.cardName.wrath, 3);//or 1 + card
-
-            DamageTargetDatabase.Add(CardDB.cardName.quickshot, 3);//brmcard
-            DamageTargetDatabase.Add(CardDB.cardName.dragonsbreath, 4);//brmcard
-
-            DamageTargetDatabase.Add(CardDB.cardName.steadyshot, 2);//or 1 + card
-            DamageTargetDatabase.Add(CardDB.cardName.coneofcold, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.arcaneblast, 2);
             DamageTargetDatabase.Add(CardDB.cardName.arcaneshot, 2);
             DamageTargetDatabase.Add(CardDB.cardName.backstab, 2);
-            DamageTargetDatabase.Add(CardDB.cardName.baneofdoom, 2);
             DamageTargetDatabase.Add(CardDB.cardName.barreltoss, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.betrayal, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.blackwingcorruptor, 3);//if dragon in hand
             DamageTargetDatabase.Add(CardDB.cardName.blizzard, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.cobrashot, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.coneofcold, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.crackle, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.damage1, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.damage5, 5);
+            DamageTargetDatabase.Add(CardDB.cardName.darkbomb, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.dragonsbreath, 4);
             DamageTargetDatabase.Add(CardDB.cardName.drainlife, 2);
             DamageTargetDatabase.Add(CardDB.cardName.elvenarcher, 1);
-            DamageTargetDatabase.Add(CardDB.cardName.eviscerate, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.eviscerate, 2);
             DamageTargetDatabase.Add(CardDB.cardName.explosiveshot, 5);
-            DamageTargetDatabase.Add(CardDB.cardName.fireelemental, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.felcannon, 2);
             DamageTargetDatabase.Add(CardDB.cardName.fireball, 6);
             DamageTargetDatabase.Add(CardDB.cardName.fireblast, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.fireblastrank2, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.fireelemental, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.flamelance, 5);// i know its 8 :D
+            DamageTargetDatabase.Add(CardDB.cardName.forgottentorch, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.frostbolt, 3);
             DamageTargetDatabase.Add(CardDB.cardName.frostshock, 1);
-            DamageTargetDatabase.Add(CardDB.cardName.frostbolt, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.gormoktheimpaler, 4);
             DamageTargetDatabase.Add(CardDB.cardName.hoggersmash, 4);
             DamageTargetDatabase.Add(CardDB.cardName.holyfire, 5);
             DamageTargetDatabase.Add(CardDB.cardName.holysmite, 2);
             DamageTargetDatabase.Add(CardDB.cardName.icelance, 4);//only if iced
+            DamageTargetDatabase.Add(CardDB.cardName.implosion, 2);
             DamageTargetDatabase.Add(CardDB.cardName.ironforgerifleman, 1);
             DamageTargetDatabase.Add(CardDB.cardName.killcommand, 3);//or 5
             DamageTargetDatabase.Add(CardDB.cardName.lavaburst, 5);
-            DamageTargetDatabase.Add(CardDB.cardName.lightningbolt, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.lightningbolt, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.lightningjolt, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.livingroots, 2);//choice 1
             DamageTargetDatabase.Add(CardDB.cardName.mindshatter, 3);
             DamageTargetDatabase.Add(CardDB.cardName.mindspike, 2);
             DamageTargetDatabase.Add(CardDB.cardName.moonfire, 1);
             DamageTargetDatabase.Add(CardDB.cardName.mortalcoil, 1);
             DamageTargetDatabase.Add(CardDB.cardName.mortalstrike, 4);
+            DamageTargetDatabase.Add(CardDB.cardName.northseakraken, 4);
             DamageTargetDatabase.Add(CardDB.cardName.perditionsblade, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.powershot, 2);
             DamageTargetDatabase.Add(CardDB.cardName.pyroblast, 10);
+            DamageTargetDatabase.Add(CardDB.cardName.quickshot, 3);//brmcard
+            DamageTargetDatabase.Add(CardDB.cardName.roaringtorch, 6);
             DamageTargetDatabase.Add(CardDB.cardName.shadowbolt, 4);
+            DamageTargetDatabase.Add(CardDB.cardName.shadowform, 2);
             DamageTargetDatabase.Add(CardDB.cardName.shotgunblast, 1);
             DamageTargetDatabase.Add(CardDB.cardName.si7agent, 2);
-            DamageTargetDatabase.Add(CardDB.cardName.starfall, 5);
-            DamageTargetDatabase.Add(CardDB.cardName.starfire, 5);//draw a card, but its to strong
-            DamageTargetDatabase.Add(CardDB.cardName.stormpikecommando, 5);
-
-            DamageTargetDatabase.Add(CardDB.cardName.darkbomb, 3);
-            DamageTargetDatabase.Add(CardDB.cardName.crackle, 3);
-            DamageTargetDatabase.Add(CardDB.cardName.implosion, 2);
-            DamageTargetDatabase.Add(CardDB.cardName.cobrashot, 3);
-            DamageTargetDatabase.Add(CardDB.cardName.blackwingcorruptor, 3);
-
-            DamageTargetDatabase.Add(CardDB.cardName.northseakraken, 4);
-            DamageTargetDatabase.Add(CardDB.cardName.livingroots, 2);//choice 1
-            DamageTargetDatabase.Add(CardDB.cardName.powershot, 2);
-            DamageTargetDatabase.Add(CardDB.cardName.flamelance, 5);// i know its 8 :D
-            DamageTargetDatabase.Add(CardDB.cardName.arcaneblast, 2);
-
-            DamageTargetDatabase.Add(CardDB.cardName.undercityvaliant, 1);//combo
-            DamageTargetDatabase.Add(CardDB.cardName.bash, 3);//combo
-            DamageTargetDatabase.Add(CardDB.cardName.fireblastrank2, 3);//combo
-
-            //LOE
-            DamageAllDatabase.Add(CardDB.cardName.excavatedevil, 3);
-
-            DamageTargetDatabase.Add(CardDB.cardName.forgottentorch, 3);
-            DamageTargetDatabase.Add(CardDB.cardName.roaringtorch, 6);
+            DamageTargetDatabase.Add(CardDB.cardName.starfall, 5);//2 to all enemy
+            DamageTargetDatabase.Add(CardDB.cardName.starfire, 5);//draw a card
+            DamageTargetDatabase.Add(CardDB.cardName.steadyshot, 2);//or 1 + card
+            DamageTargetDatabase.Add(CardDB.cardName.stormpikecommando, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.swipe, 4);//1 to others
+            DamageTargetDatabase.Add(CardDB.cardName.undercityvaliant, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.wrath, 1);//todo 3 or 1+card
+            DamageTargetDatabase.Add(CardDB.cardName.sonicbreath, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.ballistashot, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.unbalancingstrike, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.discipleofcthun, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.firebloomtoxin, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.forbiddenflame, 1); //dmg = mana spent
+            DamageTargetDatabase.Add(CardDB.cardName.onthehunt, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.shadowstrike, 5);
+            DamageTargetDatabase.Add(CardDB.cardName.stormcrack, 4);
+            DamageTargetDatabase.Add(CardDB.cardName.firelandsportal, 5);
+            DamageTargetDatabase.Add(CardDB.cardName.dispatchkodo, 2); //dmg = ap
+            DamageTargetDatabase.Add(CardDB.cardName.jadeshuriken, 2);
+            DamageTargetDatabase.Add(CardDB.cardName.jadelightning, 4);
+            DamageTargetDatabase.Add(CardDB.cardName.blowgillsniper, 1);
+            DamageTargetDatabase.Add(CardDB.cardName.bombsquad, 5);
 
 
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.bash, 3); //+3 armor
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.crueltaskmaster, 1); // gives 2 attack
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.deathbloom, 5);
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.demonfire, 2); // friendly demon get +2/+2
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.demonheart, 5);
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.earthshock, 1); //SILENCE /good for raggy etc or iced
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.hammerofwrath, 3); //draw a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.holywrath, 2);//draw a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.innerrage, 1); // gives 2 attack
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.lavashock, 2); //erases overload
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.roguesdoit, 4);//draw a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.savagery, 1);//dmg=herodamage
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.shieldslam, 1);//dmg=armor
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.shiv, 1);//draw a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.slam, 2);//draw card if it survives
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.soulfire, 4);//delete a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.quickshot, 3); //draw a card
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.bloodtoichor, 1); 
+            DamageTargetSpecialDatabase.Add(CardDB.cardName.baneofdoom, 2); 
         }
 
         private void setupsilenceDatabase()
         {
-            this.silenceDatabase.Add(CardDB.cardName.dispel, 1);
-            this.silenceDatabase.Add(CardDB.cardName.earthshock, 1);
-            this.silenceDatabase.Add(CardDB.cardName.massdispel, 1);
-            this.silenceDatabase.Add(CardDB.cardName.silence, 1);
-            this.silenceDatabase.Add(CardDB.cardName.keeperofthegrove, 1);
-            this.silenceDatabase.Add(CardDB.cardName.ironbeakowl, 1);
-            this.silenceDatabase.Add(CardDB.cardName.spellbreaker, 1);
-            this.silenceDatabase.Add(CardDB.cardName.lightschampion, 1);
+            silenceDatabase.Add(CardDB.cardName.dispel, 1);
+            silenceDatabase.Add(CardDB.cardName.earthshock, 1);
+            silenceDatabase.Add(CardDB.cardName.massdispel, 1); //enemy minions
+            silenceDatabase.Add(CardDB.cardName.silence, 1);
+            silenceDatabase.Add(CardDB.cardName.keeperofthegrove, 1);
+            silenceDatabase.Add(CardDB.cardName.ironbeakowl, 1);
+            silenceDatabase.Add(CardDB.cardName.spellbreaker, 1);
+            silenceDatabase.Add(CardDB.cardName.lightschampion, 1); //a demon
+            silenceDatabase.Add(CardDB.cardName.purify, 1); //a friendly minion
+            silenceDatabase.Add(CardDB.cardName.kabalsongstealer, 1);
+            silenceDatabase.Add(CardDB.cardName.defiascleaner, 1); //a deathrattle minion
+            silenceDatabase.Add(CardDB.cardName.wailingsoul, 1); //your minions
         }
 
         private void setupPriorityList()
         {
-            this.priorityDatabase.Add(CardDB.cardName.prophetvelen, 5);
-            this.priorityDatabase.Add(CardDB.cardName.archmageantonidas, 5);
-            this.priorityDatabase.Add(CardDB.cardName.flametonguetotem, 6);
-            this.priorityDatabase.Add(CardDB.cardName.raidleader, 5);
-            this.priorityDatabase.Add(CardDB.cardName.grimscaleoracle, 5);
-            this.priorityDatabase.Add(CardDB.cardName.direwolfalpha, 6);
-            this.priorityDatabase.Add(CardDB.cardName.murlocwarleader, 5);
-            this.priorityDatabase.Add(CardDB.cardName.southseacaptain, 5);
-            this.priorityDatabase.Add(CardDB.cardName.stormwindchampion, 5);
-            this.priorityDatabase.Add(CardDB.cardName.timberwolf, 5);
-            this.priorityDatabase.Add(CardDB.cardName.leokk, 5);
-            this.priorityDatabase.Add(CardDB.cardName.northshirecleric, 5);
-            this.priorityDatabase.Add(CardDB.cardName.sorcerersapprentice, 3);
-            this.priorityDatabase.Add(CardDB.cardName.summoningportal, 5);
-            this.priorityDatabase.Add(CardDB.cardName.pintsizedsummoner, 3);
-            this.priorityDatabase.Add(CardDB.cardName.scavenginghyena, 5);
-            this.priorityDatabase.Add(CardDB.cardName.manatidetotem, 5);
-            this.priorityDatabase.Add(CardDB.cardName.emperorthaurissan, 5);
-            this.priorityDatabase.Add(CardDB.cardName.wilfredfizzlebang, 5);
-            this.priorityDatabase.Add(CardDB.cardName.confessorpaletress, 5);
-            this.priorityDatabase.Add(CardDB.cardName.acidmaw, 5);
-            this.priorityDatabase.Add(CardDB.cardName.aviana, 5);
-
-            this.priorityDatabase.Add(CardDB.cardName.brannbronzebeard, 5);
+            priorityDatabase.Add(CardDB.cardName.acidmaw, 3);
+            priorityDatabase.Add(CardDB.cardName.alakirthewindlord, 4);
+            priorityDatabase.Add(CardDB.cardName.animatedarmor, 2);
+            priorityDatabase.Add(CardDB.cardName.archmageantonidas, 10);
+            priorityDatabase.Add(CardDB.cardName.armorsmith, 1);
+            priorityDatabase.Add(CardDB.cardName.auchenaisoulpriest, 2);
+            priorityDatabase.Add(CardDB.cardName.aviana, 5);
+            priorityDatabase.Add(CardDB.cardName.brannbronzebeard, 4);
+            priorityDatabase.Add(CardDB.cardName.bloodmagethalnos, 2);
+            priorityDatabase.Add(CardDB.cardName.buccaneer, 2);
+            priorityDatabase.Add(CardDB.cardName.cloakedhuntress, 5);
+            priorityDatabase.Add(CardDB.cardName.coldarradrake, 2);
+            priorityDatabase.Add(CardDB.cardName.confessorpaletress, 7);
+            priorityDatabase.Add(CardDB.cardName.crowdfavorite, 6);
+            priorityDatabase.Add(CardDB.cardName.cultmaster, 3);
+            priorityDatabase.Add(CardDB.cardName.cutpurse, 2);
+            priorityDatabase.Add(CardDB.cardName.dalaranaspirant, 4);
+            priorityDatabase.Add(CardDB.cardName.darkshirecouncilman, 4);
+            priorityDatabase.Add(CardDB.cardName.dementedfrostcaller, 2);
+            priorityDatabase.Add(CardDB.cardName.demolisher, 1);
+            priorityDatabase.Add(CardDB.cardName.djinniofzephyrs, 4);
+            priorityDatabase.Add(CardDB.cardName.direwolfalpha, 5);
+            priorityDatabase.Add(CardDB.cardName.dragonhawkrider, 2);
+            priorityDatabase.Add(CardDB.cardName.dustdevil, 1);
+            priorityDatabase.Add(CardDB.cardName.emperorthaurissan, 5);
+            priorityDatabase.Add(CardDB.cardName.etherealarcanist, 3);
+            priorityDatabase.Add(CardDB.cardName.fandralstaghelm, 6);
+            priorityDatabase.Add(CardDB.cardName.flametonguetotem, 6);
+            priorityDatabase.Add(CardDB.cardName.flesheatingghoul, 1);
+            priorityDatabase.Add(CardDB.cardName.flamewaker, 5);
+            priorityDatabase.Add(CardDB.cardName.frothingberserker, 3);
+            priorityDatabase.Add(CardDB.cardName.gadgetzanauctioneer, 5);
+            priorityDatabase.Add(CardDB.cardName.garrisoncommander, 1);
+            priorityDatabase.Add(CardDB.cardName.grimpatron, 5);
+            priorityDatabase.Add(CardDB.cardName.grimscaleoracle, 5);
+            priorityDatabase.Add(CardDB.cardName.grommashhellscream, 4);
+            priorityDatabase.Add(CardDB.cardName.hallazealtheascended, 4);
+            priorityDatabase.Add(CardDB.cardName.hogger, 4);
+            priorityDatabase.Add(CardDB.cardName.holychampion, 5);
+            priorityDatabase.Add(CardDB.cardName.hoodedacolyte, 2);
+            priorityDatabase.Add(CardDB.cardName.illidanstormrage, 4);
+            priorityDatabase.Add(CardDB.cardName.knifejuggler, 4);
+            priorityDatabase.Add(CardDB.cardName.kodorider, 6);
+            priorityDatabase.Add(CardDB.cardName.kvaldirraider, 1);
+            priorityDatabase.Add(CardDB.cardName.leokk, 5);
+            priorityDatabase.Add(CardDB.cardName.lightspawn, 4);
+            priorityDatabase.Add(CardDB.cardName.maidenofthelake, 2);
+            priorityDatabase.Add(CardDB.cardName.malchezaarsimp, 1);
+            priorityDatabase.Add(CardDB.cardName.malganis, 10);
+            priorityDatabase.Add(CardDB.cardName.malygos, 10);
+            priorityDatabase.Add(CardDB.cardName.manaaddict, 1);
+            priorityDatabase.Add(CardDB.cardName.manatidetotem, 5);
+            priorityDatabase.Add(CardDB.cardName.manawyrm, 1);
+            priorityDatabase.Add(CardDB.cardName.masterswordsmith, 1);
+            priorityDatabase.Add(CardDB.cardName.mechwarper, 1);
+            priorityDatabase.Add(CardDB.cardName.moroes, 10);
+            priorityDatabase.Add(CardDB.cardName.muklaschampion, 5);
+            priorityDatabase.Add(CardDB.cardName.murlocknight, 5);
+            priorityDatabase.Add(CardDB.cardName.murloctidecaller, 2);
+            priorityDatabase.Add(CardDB.cardName.murlocwarleader, 5);
+            priorityDatabase.Add(CardDB.cardName.natpagle, 2);
+            priorityDatabase.Add(CardDB.cardName.nexuschampionsaraad, 6);
+            priorityDatabase.Add(CardDB.cardName.northshirecleric, 5);
+            priorityDatabase.Add(CardDB.cardName.obsidiandestroyer, 4);
+            priorityDatabase.Add(CardDB.cardName.orgrimmaraspirant, 2);
+            priorityDatabase.Add(CardDB.cardName.pintsizedsummoner, 3);
+            priorityDatabase.Add(CardDB.cardName.priestofthefeast, 3);
+            priorityDatabase.Add(CardDB.cardName.prophetvelen, 5);
+            priorityDatabase.Add(CardDB.cardName.questingadventurer, 4);
+            priorityDatabase.Add(CardDB.cardName.ragnaroslightlord, 5);
+            priorityDatabase.Add(CardDB.cardName.raidleader, 5);
+            priorityDatabase.Add(CardDB.cardName.recruiter, 1);
+            priorityDatabase.Add(CardDB.cardName.rumblingelemental, 2);
+            priorityDatabase.Add(CardDB.cardName.savagecombatant, 5);
+            priorityDatabase.Add(CardDB.cardName.scalednightmare, 4);
+            priorityDatabase.Add(CardDB.cardName.scavenginghyena, 5);
+            priorityDatabase.Add(CardDB.cardName.secretkeeper, 1);
+            priorityDatabase.Add(CardDB.cardName.shadowfiend, 3);
+            priorityDatabase.Add(CardDB.cardName.sorcerersapprentice, 3);
+            priorityDatabase.Add(CardDB.cardName.southseacaptain, 5);
+            priorityDatabase.Add(CardDB.cardName.stormwindchampion, 5);
+            priorityDatabase.Add(CardDB.cardName.summoningportal, 5);
+            priorityDatabase.Add(CardDB.cardName.summoningstone, 5);
+            priorityDatabase.Add(CardDB.cardName.tournamentmedic, 2);
+            priorityDatabase.Add(CardDB.cardName.thunderbluffvaliant, 3);
+            priorityDatabase.Add(CardDB.cardName.timberwolf, 3);
+            priorityDatabase.Add(CardDB.cardName.tinyknightofevil, 1);
+            priorityDatabase.Add(CardDB.cardName.tunneltrogg, 4);
+            priorityDatabase.Add(CardDB.cardName.unboundelemental, 2);
+            priorityDatabase.Add(CardDB.cardName.usherofsouls, 2);
+            priorityDatabase.Add(CardDB.cardName.voidcrusher, 1);
+            priorityDatabase.Add(CardDB.cardName.violetillusionist, 10);
+            priorityDatabase.Add(CardDB.cardName.violetteacher, 1);
+            priorityDatabase.Add(CardDB.cardName.warhorsetrainer, 5);
+            priorityDatabase.Add(CardDB.cardName.warsongcommander, 2);
+            priorityDatabase.Add(CardDB.cardName.wickedwitchdoctor, 3);
+            priorityDatabase.Add(CardDB.cardName.wilfredfizzlebang, 5);
+            priorityDatabase.Add(CardDB.cardName.ysera, 10);
+            
+            priorityDatabase.Add(CardDB.cardName.grimestreetenforcer, 10);
+            priorityDatabase.Add(CardDB.cardName.shakuthecollector, 5);
+            priorityDatabase.Add(CardDB.cardName.kabaltrafficker, 5);
+            priorityDatabase.Add(CardDB.cardName.grimygadgeteer, 5);
+            priorityDatabase.Add(CardDB.cardName.friendlybartender, 1);
+            priorityDatabase.Add(CardDB.cardName.auctionmasterbeardo, 5);
+            priorityDatabase.Add(CardDB.cardName.backroombouncer, 5);
+            priorityDatabase.Add(CardDB.cardName.daringreporter, 1);
+            priorityDatabase.Add(CardDB.cardName.burglybully, 3);
+            priorityDatabase.Add(CardDB.cardName.redmanawyrm, 5);
         }
 
         private void setupAttackBuff()
         {
             heroAttackBuffDatabase.Add(CardDB.cardName.bite, 4);
             heroAttackBuffDatabase.Add(CardDB.cardName.claw, 2);
-            heroAttackBuffDatabase.Add(CardDB.cardName.heroicstrike, 2);
+            heroAttackBuffDatabase.Add(CardDB.cardName.heroicstrike, 4);
+            heroAttackBuffDatabase.Add(CardDB.cardName.evolvespines, 4);
+            heroAttackBuffDatabase.Add(CardDB.cardName.feralrage, 4);
 
-            this.attackBuffDatabase.Add(CardDB.cardName.abusivesergeant, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.bananas, 1);
-            this.attackBuffDatabase.Add(CardDB.cardName.bestialwrath, 2); // NEVER ON enemy MINION
-            this.attackBuffDatabase.Add(CardDB.cardName.blessingofkings, 4);
-            this.attackBuffDatabase.Add(CardDB.cardName.blessingofmight, 3);
-            this.attackBuffDatabase.Add(CardDB.cardName.coldblood, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.crueltaskmaster, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.darkirondwarf, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.innerrage, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.markofnature, 4);//choice1 
-            this.attackBuffDatabase.Add(CardDB.cardName.markofthewild, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.nightmare, 5); //destroy minion on next turn
-            this.attackBuffDatabase.Add(CardDB.cardName.rampage, 3);//only damaged minion 
-            this.attackBuffDatabase.Add(CardDB.cardName.uproot, 5);
-            this.attackBuffDatabase.Add(CardDB.cardName.velenschosen, 2);
-
-            this.attackBuffDatabase.Add(CardDB.cardName.rockbiterweapon, 3);
-
-            this.attackBuffDatabase.Add(CardDB.cardName.darkwispers, 5);//choice 1
-            this.attackBuffDatabase.Add(CardDB.cardName.whirlingblades, 1);
-
-            this.attackBuffDatabase.Add(CardDB.cardName.metaltoothleaper, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.screwjankclunker, 2);
-
-            this.attackBuffDatabase.Add(CardDB.cardName.lancecarrier, 2);
-            this.attackBuffDatabase.Add(CardDB.cardName.clockworkknight, 1);
-            this.attackBuffDatabase.Add(CardDB.cardName.demonfuse, 3);
-            this.attackBuffDatabase.Add(CardDB.cardName.sealofchampions, 3);
-            this.attackBuffDatabase.Add(CardDB.cardName.bolster, 2);
-
-            this.attackBuffDatabase.Add(CardDB.cardName.explorershat, 1);
-
-
+            attackBuffDatabase.Add(CardDB.cardName.abusivesergeant, 2);
+            attackBuffDatabase.Add(CardDB.cardName.bananas, 1);
+            attackBuffDatabase.Add(CardDB.cardName.bestialwrath, 2); // NEVER ON enemy MINION
+            attackBuffDatabase.Add(CardDB.cardName.blessingofkings, 4);
+            attackBuffDatabase.Add(CardDB.cardName.blessingofmight, 3);
+            attackBuffDatabase.Add(CardDB.cardName.bolster, 2);
+            attackBuffDatabase.Add(CardDB.cardName.clockworkknight, 1);
+            attackBuffDatabase.Add(CardDB.cardName.coldblood, 2);
+            attackBuffDatabase.Add(CardDB.cardName.crueltaskmaster, 2);
+            attackBuffDatabase.Add(CardDB.cardName.darkirondwarf, 2);
+            attackBuffDatabase.Add(CardDB.cardName.darkwispers, 5); //choice 2
+            attackBuffDatabase.Add(CardDB.cardName.demonfuse, 3);
+            attackBuffDatabase.Add(CardDB.cardName.explorershat, 1);
+            attackBuffDatabase.Add(CardDB.cardName.innerrage, 2);
+            attackBuffDatabase.Add(CardDB.cardName.lancecarrier, 2);
+            attackBuffDatabase.Add(CardDB.cardName.markofnature, 4); //choice 1 
+            attackBuffDatabase.Add(CardDB.cardName.markofthewild, 2);
+            attackBuffDatabase.Add(CardDB.cardName.metaltoothleaper, 2);
+            attackBuffDatabase.Add(CardDB.cardName.nightmare, 5); //destroy minion on next turn
+            attackBuffDatabase.Add(CardDB.cardName.rampage, 3); //only damaged minion 
+            attackBuffDatabase.Add(CardDB.cardName.rockbiterweapon, 3);
+            attackBuffDatabase.Add(CardDB.cardName.screwjankclunker, 2);
+            attackBuffDatabase.Add(CardDB.cardName.sealofchampions, 3);
+            attackBuffDatabase.Add(CardDB.cardName.uproot, 5);
+            attackBuffDatabase.Add(CardDB.cardName.velenschosen, 2);
+            attackBuffDatabase.Add(CardDB.cardName.whirlingblades, 1);
+            attackBuffDatabase.Add(CardDB.cardName.briarthorntoxin, 3);
+            attackBuffDatabase.Add(CardDB.cardName.divinestrength, 1);
+            attackBuffDatabase.Add(CardDB.cardName.lanternofpower, 10);
+            attackBuffDatabase.Add(CardDB.cardName.markofyshaarj, 2);
+            attackBuffDatabase.Add(CardDB.cardName.mutatinginjection, 4);
+            attackBuffDatabase.Add(CardDB.cardName.powerwordtentacles, 2);
+            attackBuffDatabase.Add(CardDB.cardName.primalfusion, 1);
+            attackBuffDatabase.Add(CardDB.cardName.silvermoonportal, 2);
+            attackBuffDatabase.Add(CardDB.cardName.zoobot, 1);
+            attackBuffDatabase.Add(CardDB.cardName.menageriemagician, 2);
+            attackBuffDatabase.Add(CardDB.cardName.powerofthewild, 1); //choice 1
+            attackBuffDatabase.Add(CardDB.cardName.markofthelotus, 1);
+            attackBuffDatabase.Add(CardDB.cardName.virmensensei, 2); //to a beast
+            attackBuffDatabase.Add(CardDB.cardName.shadowsensei, 2); //to a stealth
+            attackBuffDatabase.Add(CardDB.cardName.bloodfurypotion, 3);
+            attackBuffDatabase.Add(CardDB.cardName.crystalweaver, 1); //to demons
         }
 
         private void setupHealthBuff()
         {
+            //healthBuffDatabase.Add(CardDB.cardName.ancientofwar, 5);//choice2 is only buffing himself!
+            //healthBuffDatabase.Add(CardDB.cardName.rooted, 5);
+            healthBuffDatabase.Add(CardDB.cardName.armorplating, 1);
+            healthBuffDatabase.Add(CardDB.cardName.bananas, 1);
+            healthBuffDatabase.Add(CardDB.cardName.blessingofkings, 4);
+            healthBuffDatabase.Add(CardDB.cardName.bolster, 2);
+            healthBuffDatabase.Add(CardDB.cardName.clockworkknight, 1);
+            healthBuffDatabase.Add(CardDB.cardName.competitivespirit, 1);
+            healthBuffDatabase.Add(CardDB.cardName.darkwispers, 5);//choice2
+            healthBuffDatabase.Add(CardDB.cardName.demonfuse, 3);
+            healthBuffDatabase.Add(CardDB.cardName.explorershat, 1);
+            healthBuffDatabase.Add(CardDB.cardName.markofnature, 4);//choice2
+            healthBuffDatabase.Add(CardDB.cardName.markofthewild, 2);
+            healthBuffDatabase.Add(CardDB.cardName.nightmare, 5);
+            healthBuffDatabase.Add(CardDB.cardName.powerwordshield, 2);
+            healthBuffDatabase.Add(CardDB.cardName.rampage, 3);
+            healthBuffDatabase.Add(CardDB.cardName.screwjankclunker, 2);
+            healthBuffDatabase.Add(CardDB.cardName.upgradedrepairbot, 4);
+            healthBuffDatabase.Add(CardDB.cardName.velenschosen, 4);
+            healthBuffDatabase.Add(CardDB.cardName.wildwalker, 3);
+            healthBuffDatabase.Add(CardDB.cardName.divinestrength, 2);
+            healthBuffDatabase.Add(CardDB.cardName.lanternofpower, 10);
+            healthBuffDatabase.Add(CardDB.cardName.markofyshaarj, 2);
+            healthBuffDatabase.Add(CardDB.cardName.mutatinginjection, 4);
+            healthBuffDatabase.Add(CardDB.cardName.powerwordtentacles, 6);
+            healthBuffDatabase.Add(CardDB.cardName.primalfusion, 1);
+            healthBuffDatabase.Add(CardDB.cardName.silvermoonportal, 2);
+            healthBuffDatabase.Add(CardDB.cardName.zoobot, 1);
+            healthBuffDatabase.Add(CardDB.cardName.menageriemagician, 2);
+            healthBuffDatabase.Add(CardDB.cardName.powerofthewild, 1); //choice 1
+            healthBuffDatabase.Add(CardDB.cardName.markofthelotus, 1);
+            healthBuffDatabase.Add(CardDB.cardName.virmensensei, 2); //to a beast
+            healthBuffDatabase.Add(CardDB.cardName.shadowsensei, 2); //to a stealth
+            healthBuffDatabase.Add(CardDB.cardName.bloodfurypotion, 3); //if demon
+            healthBuffDatabase.Add(CardDB.cardName.crystalweaver, 1); //to demons
+            healthBuffDatabase.Add(CardDB.cardName.kabaltalonpriest, 3);
 
-            //this.healthBuffDatabase.Add(CardDB.cardName.ancientofwar, 5);//choice2 is only buffing himself!
-            this.healthBuffDatabase.Add(CardDB.cardName.bananas, 1);
-            this.healthBuffDatabase.Add(CardDB.cardName.blessingofkings, 4);
-            this.healthBuffDatabase.Add(CardDB.cardName.markofnature, 4);//choice2
-            this.healthBuffDatabase.Add(CardDB.cardName.markofthewild, 2);
-            this.healthBuffDatabase.Add(CardDB.cardName.nightmare, 5);
-            this.healthBuffDatabase.Add(CardDB.cardName.powerwordshield, 2);
-            this.healthBuffDatabase.Add(CardDB.cardName.rampage, 3);
-            this.healthBuffDatabase.Add(CardDB.cardName.velenschosen, 4);
-            this.healthBuffDatabase.Add(CardDB.cardName.darkwispers, 5);//choice1
-            this.healthBuffDatabase.Add(CardDB.cardName.upgradedrepairbot, 4);
-            this.healthBuffDatabase.Add(CardDB.cardName.screwjankclunker, 2);
-            this.healthBuffDatabase.Add(CardDB.cardName.armorplating, 1);
-            //this.healthBuffDatabase.Add(CardDB.cardName.rooted, 5);
-
-            this.tauntBuffDatabase.Add(CardDB.cardName.markofnature, 1);
-            this.tauntBuffDatabase.Add(CardDB.cardName.markofthewild, 1);
-            this.tauntBuffDatabase.Add(CardDB.cardName.darkwispers, 1);
-            this.tauntBuffDatabase.Add(CardDB.cardName.rustyhorn, 1);
-
-            //this.tauntBuffDatabase.Add(CardDB.cardName.rooted, 1);
-
-            this.healthBuffDatabase.Add(CardDB.cardName.clockworkknight, 1);
-            this.healthBuffDatabase.Add(CardDB.cardName.wildwalker, 3);
-            this.healthBuffDatabase.Add(CardDB.cardName.demonfuse, 3);
-            this.healthBuffDatabase.Add(CardDB.cardName.bolster, 2);
-
-            this.healthBuffDatabase.Add(CardDB.cardName.explorershat, 1);
-
-            this.tauntBuffDatabase.Add(CardDB.cardName.sparringpartner, 1);
-
+            tauntBuffDatabase.Add(CardDB.cardName.markofnature, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.markofthewild, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.darkwispers, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.rustyhorn, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.mutatinginjection, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.ancestralhealing, 1);
+            tauntBuffDatabase.Add(CardDB.cardName.sparringpartner, 1);
         }
 
         private void setupCardDrawBattlecry()
@@ -2929,10 +3444,51 @@
             cardDrawBattleCryDatabase.Add(CardDB.cardName.maptothegoldenmonkey, 1);
             cardDrawBattleCryDatabase.Add(CardDB.cardName.goldenmonkey, 1); //no carddraw, but new cards
 
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.bloodwarriors, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.cabaliststome, 3);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.darkshirelibrarian, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.flameheart, 2);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.kingsbloodtoxin, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.markofyshaarj, 0);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.muklatyrantofthevale, 2);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.shadowcaster, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.thistletea, 3);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.xarilpoisonedmind, 1);
+
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.babblingbook, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.thecurator, 1);
+            
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.quickshot, 1);
+
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.fightpromoter, 2);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.wrathion, 1);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.lunarvisions, 2);
+            cardDrawBattleCryDatabase.Add(CardDB.cardName.smalltimerecruits, 3);
+
+
+            
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.bloodmagethalnos, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.clockworkgnome, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.dancingswords, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.loothoarder, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.mechanicalyeti, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.mechbearcat, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.tombpillager, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.toshley, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.webspinner, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.acolyteofpain, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.pollutedhoarder, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.shiftingshade, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.undercityhuckster, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.xarilpoisonedmind, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.deadlyfork, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.runicegg, 1);
+            cardDrawDeathrattleDatabase.Add(CardDB.cardName.meanstreetmarshal, 1);
+
 
 
             //add discover minions
-            foreach (CardDB.cardName discoverCard in this.discoverMinions.Keys)
+            foreach (CardDB.cardName discoverCard in this.discoverCards.Keys)
             {
                 cardDrawBattleCryDatabase.Add(discoverCard, 1);
             }
@@ -2944,6 +3500,7 @@
             cardDiscardDatabase.Add(CardDB.cardName.soulfire, 0);
             cardDiscardDatabase.Add(CardDB.cardName.succubus, 2);
             cardDiscardDatabase.Add(CardDB.cardName.darkbargain, 2);
+            cardDiscardDatabase.Add(CardDB.cardName.darkshirelibrarian, 1);
         }
 
         private void setupDestroyOwnCards()
@@ -2951,26 +3508,62 @@
             this.destroyOwnDatabase.Add(CardDB.cardName.brawl, 0);
             this.destroyOwnDatabase.Add(CardDB.cardName.deathwing, 0);
             this.destroyOwnDatabase.Add(CardDB.cardName.twistingnether, 0);
-            this.destroyOwnDatabase.Add(CardDB.cardName.naturalize, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.shadowworddeath, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.shadowwordpain, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.siphonsoul, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.biggamehunter, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.hungrycrab, 0);//not own mins
-            this.destroyOwnDatabase.Add(CardDB.cardName.sacrificialpact, 0);//not own mins
+            this.destroyOwnDatabase.Add(CardDB.cardName.doom, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.doomsayer, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.poisonseeds, 0); //replace all minions with 2/2 treants
+            this.destroyOwnDatabase.Add(CardDB.cardName.shadowwordhorror, 0); //all minions with 2 or less ap
+            this.destroyOwnDatabase.Add(CardDB.cardName.shadowflame, 0); //destroy own minion, deal its ap to all enemies
+            this.destroyOwnDatabase.Add(CardDB.cardName.enterthecoliseum, 0);//all but each player's highest ap
 
-            this.destroyDatabase.Add(CardDB.cardName.assassinate, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.corruption, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.execute, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.naturalize, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.siphonsoul, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.mindcontrol, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.theblackknight, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.sabotage, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.crush, 0);//not own mins
-            this.destroyDatabase.Add(CardDB.cardName.hemetnesingwary, 0);//not own mins
+            this.destroyOwnDatabase.Add(CardDB.cardName.naturalize, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.shadowworddeath, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.shadowwordpain, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.siphonsoul, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.biggamehunter, 0); //a minion ap>=7
+            this.destroyOwnDatabase.Add(CardDB.cardName.hungrycrab, 0); //a murloc
+            this.destroyOwnDatabase.Add(CardDB.cardName.sacrificialpact, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.mulch, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.bladeofcthun, 0); //add stats to c'thun
+            this.destroyOwnDatabase.Add(CardDB.cardName.reincarnate, 0); //and resummon
+            this.destroyOwnDatabase.Add(CardDB.cardName.voidterror, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.blastcrystalpotion, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.crush, 0);
+            this.destroyOwnDatabase.Add(CardDB.cardName.hemetnesingwary, 0); //a beast
+            this.destroyOwnDatabase.Add(CardDB.cardName.moatlurker, 0); //resummon deathrattle
+            this.destroyOwnDatabase.Add(CardDB.cardName.rendblackhand, 0); //a legendary if holding dragon
+            this.destroyOwnDatabase.Add(CardDB.cardName.shatter, 0); //frozen
+            this.destroyOwnDatabase.Add(CardDB.cardName.execute, 0); //hurt
 
+
+            this.destroyDatabase.Add(CardDB.cardName.brawl, 0);
+            this.destroyDatabase.Add(CardDB.cardName.deathwing, 0);
+            this.destroyDatabase.Add(CardDB.cardName.twistingnether, 0);
+            this.destroyDatabase.Add(CardDB.cardName.doom, 0);
+            this.destroyDatabase.Add(CardDB.cardName.doomsayer, 0);
+            this.destroyDatabase.Add(CardDB.cardName.poisonseeds, 0); //replace all minions with 2/2 treants
+            this.destroyDatabase.Add(CardDB.cardName.shadowwordhorror, 0); //all minions with 2 or less ap
+            this.destroyDatabase.Add(CardDB.cardName.shadowflame, 0); //destroy own minion, deal its ap to all enemies
+            this.destroyDatabase.Add(CardDB.cardName.enterthecoliseum, 0);//all but each player's highest ap
+
+            this.destroyDatabase.Add(CardDB.cardName.assassinate, 0); //not own mins
+            this.destroyDatabase.Add(CardDB.cardName.corruption, 0); //not own mins
+            this.destroyDatabase.Add(CardDB.cardName.execute, 0); //hurt
+            this.destroyDatabase.Add(CardDB.cardName.naturalize, 0);
+            this.destroyDatabase.Add(CardDB.cardName.siphonsoul, 0);
+            this.destroyDatabase.Add(CardDB.cardName.mindcontrol, 0); //not own mins
+            this.destroyDatabase.Add(CardDB.cardName.theblackknight, 0); //not own mins
+            this.destroyDatabase.Add(CardDB.cardName.sabotage, 0); //not own mins
+            this.destroyDatabase.Add(CardDB.cardName.crush, 0);
+            this.destroyDatabase.Add(CardDB.cardName.hemetnesingwary, 0); //a beast
             this.destroyDatabase.Add(CardDB.cardName.mulch, 0);
+            this.destroyDatabase.Add(CardDB.cardName.bladeofcthun, 0); //add stats to c'thun
+            this.destroyDatabase.Add(CardDB.cardName.shatter, 0); //frozen
+            this.destroyDatabase.Add(CardDB.cardName.moatlurker, 0); //resummon deathrattle
+            this.destroyDatabase.Add(CardDB.cardName.bookwyrm, 0); //enemy ap<=3
+            this.destroyDatabase.Add(CardDB.cardName.deadlyshot, 0); //random enemy
+            this.destroyDatabase.Add(CardDB.cardName.darkbargain, 0);
+            this.destroyDatabase.Add(CardDB.cardName.rendblackhand, 0); //a legendary if holding dragon
+            this.destroyDatabase.Add(CardDB.cardName.blastcrystalpotion, 0);
 
 
             this.backToHandDatabase.Add(CardDB.cardName.sap, 0);
@@ -2982,13 +3575,9 @@
             this.backToHandDatabase.Add(CardDB.cardName.kidnapper, 0);
             this.backToHandDatabase.Add(CardDB.cardName.recycle, 0);
             this.backToHandDatabase.Add(CardDB.cardName.vanish, 0);
+            this.backToHandDatabase.Add(CardDB.cardName.bloodthistletoxin, 0);
+            this.backToHandDatabase.Add(CardDB.cardName.gadgetzanferryman, 0); //combo
 
-        }
-
-
-        private void setupHeroDamagingAOE()
-        {
-            this.heroDamagingAoeDatabase.Add(CardDB.cardName.unknown, 0);
         }
 
         private void setupSpecialMins()
@@ -2996,6 +3585,7 @@
 
             //== everything with an effect (other than battlecry and normal stuff like taunt, charge, divshield)
             //also deathrattles?
+            // value used for hex/poly priority
             this.specialMinions.Add(CardDB.cardName.amaniberserker, 0);
             this.specialMinions.Add(CardDB.cardName.angrychicken, 0);
             this.specialMinions.Add(CardDB.cardName.abomination, 0);
@@ -3053,8 +3643,9 @@
             this.specialMinions.Add(CardDB.cardName.prophetvelen, 0);
             this.specialMinions.Add(CardDB.cardName.questingadventurer, 0);
             this.specialMinions.Add(CardDB.cardName.ragingworgen, 0);
+            this.specialMinions.Add(CardDB.cardName.ragnarosthefirelord, 10);
             this.specialMinions.Add(CardDB.cardName.raidleader, 0);
-            this.specialMinions.Add(CardDB.cardName.savannahhighmane, 0);
+            this.specialMinions.Add(CardDB.cardName.savannahhighmane, 20);
             this.specialMinions.Add(CardDB.cardName.scavenginghyena, 0);
             this.specialMinions.Add(CardDB.cardName.secretkeeper, 0);
             this.specialMinions.Add(CardDB.cardName.sorcerersapprentice, 0);
@@ -3187,6 +3778,7 @@
             this.specialMinions.Add(CardDB.cardName.wilfredfizzlebang, 0);
             this.specialMinions.Add(CardDB.cardName.orgrimmaraspirant, 0);
             this.specialMinions.Add(CardDB.cardName.magnatauralpha, 0);
+            this.specialMinions.Add(CardDB.cardName.chillmaw, 20);
 
             //LOE (week 1 and 2 :D)
             this.specialMinions.Add(CardDB.cardName.obsidiandestroyer, 0);
@@ -3196,7 +3788,85 @@
             this.specialMinions.Add(CardDB.cardName.tunneltrogg, 0);
             this.specialMinions.Add(CardDB.cardName.brannbronzebeard, 0);
 
+            //OG
+            specialMinions.Add(CardDB.cardName.aberrantberserker, 0);
+            specialMinions.Add(CardDB.cardName.addledgrizzly, 0);
+            specialMinions.Add(CardDB.cardName.ancientharbinger, 0);
+            specialMinions.Add(CardDB.cardName.blackwaterpirate, 0);
+            specialMinions.Add(CardDB.cardName.bloodhoofbrave, 0);
+            specialMinions.Add(CardDB.cardName.crazedworshipper, 0);
+            specialMinions.Add(CardDB.cardName.cthun, 0);
+            specialMinions.Add(CardDB.cardName.cultsorcerer, 0);
+            specialMinions.Add(CardDB.cardName.darkshirecouncilman, 0);
+            specialMinions.Add(CardDB.cardName.dementedfrostcaller, 0);
+            specialMinions.Add(CardDB.cardName.evolvedkobold, 0);
+            specialMinions.Add(CardDB.cardName.fandralstaghelm, 0);
+            specialMinions.Add(CardDB.cardName.giantsandworm, 0);
+            specialMinions.Add(CardDB.cardName.hallazealtheascended, 0);
+            specialMinions.Add(CardDB.cardName.hoggerdoomofelwynn, 0);
+            specialMinions.Add(CardDB.cardName.hoodedacolyte, 0);
+            specialMinions.Add(CardDB.cardName.infestedtauren, 0);
+            specialMinions.Add(CardDB.cardName.infestedwolf, 0);
+            specialMinions.Add(CardDB.cardName.ragnaroslightlord, 10);
+            specialMinions.Add(CardDB.cardName.scalednightmare, 0);
+            specialMinions.Add(CardDB.cardName.shiftingshade, 0);
+            specialMinions.Add(CardDB.cardName.southseasquidface, 0);
+            specialMinions.Add(CardDB.cardName.spawnofnzoth, 0);
+            specialMinions.Add(CardDB.cardName.stewardofdarkshire, 0);
+            specialMinions.Add(CardDB.cardName.theboogeymonster, 0);
+            specialMinions.Add(CardDB.cardName.twilightelder, 0);
+            specialMinions.Add(CardDB.cardName.undercityhuckster, 0);
+            specialMinions.Add(CardDB.cardName.usherofsouls, 0);
+            specialMinions.Add(CardDB.cardName.wobblingrunts, 0);
+            specialMinions.Add(CardDB.cardName.xarilpoisonedmind, 0);
+            specialMinions.Add(CardDB.cardName.ysera, 0);
+            specialMinions.Add(CardDB.cardName.yshaarjrageunbound, 0);
+            
+            //Kara
+            specialMinions.Add(CardDB.cardName.arcaneanomaly, 0);
+            specialMinions.Add(CardDB.cardName.cloakedhuntress, 0);
+            specialMinions.Add(CardDB.cardName.deadlyfork, 0);
+            specialMinions.Add(CardDB.cardName.moroes, 0);
+            specialMinions.Add(CardDB.cardName.priestofthefeast, 0);
+            specialMinions.Add(CardDB.cardName.kindlygrandmother, 0);
+            specialMinions.Add(CardDB.cardName.wickedwitchdoctor, 0);
+            specialMinions.Add(CardDB.cardName.moatlurker, 0);
 
+            //MSG
+            specialMinions.Add(CardDB.cardName.ratpack, 0);
+            specialMinions.Add(CardDB.cardName.shakyzipgunner, 0);
+            specialMinions.Add(CardDB.cardName.knuckles, 0);
+            specialMinions.Add(CardDB.cardName.meanstreetmarshal, 0);
+            specialMinions.Add(CardDB.cardName.wickerflameburnbristle, 0);
+            specialMinions.Add(CardDB.cardName.grimestreetenforcer, 0);
+            specialMinions.Add(CardDB.cardName.manageode, 0);
+            specialMinions.Add(CardDB.cardName.jadeswarmer, 0);
+            specialMinions.Add(CardDB.cardName.shakuthecollector, 0);
+            specialMinions.Add(CardDB.cardName.lotusassassin, 0);
+            specialMinions.Add(CardDB.cardName.lotusillusionist, 0);
+            specialMinions.Add(CardDB.cardName.whiteeyes, 0);
+            specialMinions.Add(CardDB.cardName.unlicensedapothecary, 0);
+            specialMinions.Add(CardDB.cardName.kabaltrafficker, 0);
+            specialMinions.Add(CardDB.cardName.grimygadgeteer, 0);
+            specialMinions.Add(CardDB.cardName.alleyarmorsmith, 0);
+            specialMinions.Add(CardDB.cardName.mistressofmixtures, 0);
+            specialMinions.Add(CardDB.cardName.smalltimebuccaneer, 0);
+            specialMinions.Add(CardDB.cardName.weaseltunneler, 0);
+            specialMinions.Add(CardDB.cardName.friendlybartender, 0);
+            specialMinions.Add(CardDB.cardName.auctionmasterbeardo, 0);
+            specialMinions.Add(CardDB.cardName.backstreetleper, 0);
+            specialMinions.Add(CardDB.cardName.felorcsoulfiend, 0);
+            specialMinions.Add(CardDB.cardName.sergeantsally, 0);
+            specialMinions.Add(CardDB.cardName.backroombouncer, 0);
+            specialMinions.Add(CardDB.cardName.daringreporter, 0);
+            specialMinions.Add(CardDB.cardName.genzotheshark, 0);
+            specialMinions.Add(CardDB.cardName.bombsquad, 0);
+            specialMinions.Add(CardDB.cardName.burglybully, 0);
+            specialMinions.Add(CardDB.cardName.finjatheflyingstar, 0);
+            specialMinions.Add(CardDB.cardName.redmanawyrm, 0);
+            specialMinions.Add(CardDB.cardName.windupburglebot, 0);
+            specialMinions.Add(CardDB.cardName.mayornoggenfogger, 0);
+            specialMinions.Add(CardDB.cardName.ayablackpaw, 10);
 
         }
 
@@ -3225,10 +3895,6 @@
             buffingMinionsDatabase.Add(CardDB.cardName.malganis, 0);
             buffingMinionsDatabase.Add(CardDB.cardName.warsongcommander, 0);
 
-            buffing1TurnDatabase.Add(CardDB.cardName.abusivesergeant, 0);
-            buffing1TurnDatabase.Add(CardDB.cardName.darkirondwarf, 0);
-            buffing1TurnDatabase.Add(CardDB.cardName.rockbiterweapon, 0);
-
             buffingMinionsDatabase.Add(CardDB.cardName.metaltoothleaper, 0);
             buffingMinionsDatabase.Add(CardDB.cardName.quartermaster, 0);
             buffingMinionsDatabase.Add(CardDB.cardName.screwjankclunker, 0);
@@ -3238,20 +3904,33 @@
             buffingMinionsDatabase.Add(CardDB.cardName.wildwalker, 0);
             buffingMinionsDatabase.Add(CardDB.cardName.warhorsetrainer, 0);
             buffingMinionsDatabase.Add(CardDB.cardName.thunderbluffvaliant, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.bloodsailcultist, 5);
+
+            buffingMinionsDatabase.Add(CardDB.cardName.virmensensei, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.grimestreetprotector, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.kabaltalonpriest, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.shadowsensei, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.crystalweaver, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.hobartgrapplehammer, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.grimestreetpawnbroker, 0);
+            buffingMinionsDatabase.Add(CardDB.cardName.nagacorsair, 0);
 
 
+
+            buffing1TurnDatabase.Add(CardDB.cardName.abusivesergeant, 0);
+            buffing1TurnDatabase.Add(CardDB.cardName.darkirondwarf, 0);
+            buffing1TurnDatabase.Add(CardDB.cardName.rockbiterweapon, 0);
         }
 
         private void setupEnemyTargetPriority()
         {
-            //priorityTargets.Add(CardDB.cardName.angrychicken, 1);  // minion canot be enraged until hp is buffed, so generally not a priority
             priorityTargets.Add(CardDB.cardName.lightwarden, 4);
             priorityTargets.Add(CardDB.cardName.secretkeeper, 3);
             priorityTargets.Add(CardDB.cardName.youngdragonhawk, 4);
-            priorityTargets.Add(CardDB.cardName.bloodmagethalnos, 3);
+            priorityTargets.Add(CardDB.cardName.bloodmagethalnos, 10);
             priorityTargets.Add(CardDB.cardName.direwolfalpha, 4);
             priorityTargets.Add(CardDB.cardName.doomsayer, 10);
-            priorityTargets.Add(CardDB.cardName.knifejuggler, 4);
+            priorityTargets.Add(CardDB.cardName.knifejuggler, 10);
             priorityTargets.Add(CardDB.cardName.koboldgeomancer, 3);
             priorityTargets.Add(CardDB.cardName.manaaddict, 4);
             priorityTargets.Add(CardDB.cardName.masterswordsmith, 2);
@@ -3268,7 +3947,6 @@
             priorityTargets.Add(CardDB.cardName.raidleader, 6);
             priorityTargets.Add(CardDB.cardName.thrallmarfarseer, 10);
             priorityTargets.Add(CardDB.cardName.cultmaster, 10);
-            //priorityTargets.Add(CardDB.cardName.leeroyjenkins, 10);  // charge already used when on the field, no need for additional penalty
             priorityTargets.Add(CardDB.cardName.violetteacher, 6);
             priorityTargets.Add(CardDB.cardName.gadgetzanauctioneer, 10);
             priorityTargets.Add(CardDB.cardName.hogger, 10);
@@ -3276,6 +3954,7 @@
             priorityTargets.Add(CardDB.cardName.barongeddon, 10);
             priorityTargets.Add(CardDB.cardName.stormwindchampion, 10);
             priorityTargets.Add(CardDB.cardName.gurubashiberserker, 10);
+            priorityTargets.Add(CardDB.cardName.ragnarosthefirelord, 20);
 
             //warrior cards
             priorityTargets.Add(CardDB.cardName.frothingberserker, 10);
@@ -3288,8 +3967,9 @@
             priorityTargets.Add(CardDB.cardName.dustdevil, 10);
             priorityTargets.Add(CardDB.cardName.wrathofairtotem, 2);
             priorityTargets.Add(CardDB.cardName.flametonguetotem, 10);
-            priorityTargets.Add(CardDB.cardName.manatidetotem, 10);
+            priorityTargets.Add(CardDB.cardName.manatidetotem, 7);
             priorityTargets.Add(CardDB.cardName.unboundelemental, 5);
+            priorityTargets.Add(CardDB.cardName.thunderbluffvaliant, 10);
 
             //rogue cards
 
@@ -3338,7 +4018,7 @@
             this.priorityTargets.Add(CardDB.cardName.troggzortheearthinator, 10);
             
             //BRM
-            this.priorityTargets.Add(CardDB.cardName.flamewaker, 5);
+            this.priorityTargets.Add(CardDB.cardName.flamewaker, 10);
             this.priorityTargets.Add(CardDB.cardName.impgangboss, 5);
             this.priorityTargets.Add(CardDB.cardName.grimpatron, 10);
             this.priorityTargets.Add(CardDB.cardName.dragonkinsorcerer, 4);
@@ -3361,15 +4041,47 @@
             this.priorityTargets.Add(CardDB.cardName.wilfredfizzlebang, 10);
 
             //LOE
-
-            this.priorityTargets.Add(CardDB.cardName.brannbronzebeard, 10);
+            this.priorityTargets.Add(CardDB.cardName.brannbronzebeard, 20);
             this.priorityTargets.Add(CardDB.cardName.obsidiandestroyer, 10);
             this.priorityTargets.Add(CardDB.cardName.summoningstone, 10);
             this.priorityTargets.Add(CardDB.cardName.djinniofzephyrs, 5);
             this.priorityTargets.Add(CardDB.cardName.rumblingelemental, 5);
             this.priorityTargets.Add(CardDB.cardName.animatedarmor, 5);
+            priorityTargets.Add(CardDB.cardName.tunneltrogg, 5);
 
+            //OG
+            priorityTargets.Add(CardDB.cardName.addledgrizzly, 10);
+            priorityTargets.Add(CardDB.cardName.cthun, 10);
+            priorityTargets.Add(CardDB.cardName.cultsorcerer, 10);
+            priorityTargets.Add(CardDB.cardName.darkshirecouncilman, 10);
+            priorityTargets.Add(CardDB.cardName.dementedfrostcaller, 10);
+            priorityTargets.Add(CardDB.cardName.fandralstaghelm, 10);
+            priorityTargets.Add(CardDB.cardName.giantsandworm, 10);
+            priorityTargets.Add(CardDB.cardName.hoggerdoomofelwynn, 10);
+            priorityTargets.Add(CardDB.cardName.hoodedacolyte, 10);
+            priorityTargets.Add(CardDB.cardName.ragnaroslightlord, 10);
+            priorityTargets.Add(CardDB.cardName.scalednightmare, 10);
+            priorityTargets.Add(CardDB.cardName.theboogeymonster, 10);
+            priorityTargets.Add(CardDB.cardName.twilightsummoner, 10);
+            priorityTargets.Add(CardDB.cardName.yshaarjrageunbound, 10);
 
+            //Kara
+            priorityTargets.Add(CardDB.cardName.cloakedhuntress, 10);
+            priorityTargets.Add(CardDB.cardName.moroes, 5);
+            priorityTargets.Add(CardDB.cardName.priestofthefeast, 10);
+            priorityTargets.Add(CardDB.cardName.wickedwitchdoctor, 5);
+
+            //MSG
+            priorityTargets.Add(CardDB.cardName.grimestreetenforcer, 10);
+            priorityTargets.Add(CardDB.cardName.shakuthecollector, 5);
+            priorityTargets.Add(CardDB.cardName.kabaltrafficker, 5);
+            priorityTargets.Add(CardDB.cardName.grimygadgeteer, 5);
+            priorityTargets.Add(CardDB.cardName.friendlybartender, 1);
+            priorityTargets.Add(CardDB.cardName.auctionmasterbeardo, 5);
+            priorityTargets.Add(CardDB.cardName.backroombouncer, 5);
+            priorityTargets.Add(CardDB.cardName.daringreporter, 1);
+            priorityTargets.Add(CardDB.cardName.burglybully, 3);
+            priorityTargets.Add(CardDB.cardName.redmanawyrm, 5);
         }
 
         private void setupLethalHelpMinions()
@@ -3384,7 +4096,6 @@
             lethalHelpers.Add(CardDB.cardName.azuredrake, 0);
             lethalHelpers.Add(CardDB.cardName.bloodmagethalnos, 0);
             lethalHelpers.Add(CardDB.cardName.malygos, 0);
-            lethalHelpers.Add(CardDB.cardName.velenschosen, 0);
             lethalHelpers.Add(CardDB.cardName.sootspewer, 0);
             lethalHelpers.Add(CardDB.cardName.minimage, 0);
 
@@ -3394,6 +4105,8 @@
             lethalHelpers.Add(CardDB.cardName.coldarradrake, 0);
             lethalHelpers.Add(CardDB.cardName.polymorphboar, 0);
             //
+            lethalHelpers.Add(CardDB.cardName.cultsorcerer, 0);
+            lethalHelpers.Add(CardDB.cardName.evolvedkobold, 0);
 
         }
 
@@ -3516,7 +4229,6 @@
             this.silenceTargets.Add(CardDB.cardName.quartermaster, 0);
 
             //TGT
-
             this.silenceTargets.Add(CardDB.cardName.silverhandregent, 0);
             this.silenceTargets.Add(CardDB.cardName.muklaschampion, 0);
             this.silenceTargets.Add(CardDB.cardName.maidenofthelake, 0);
@@ -3527,75 +4239,95 @@
             this.silenceTargets.Add(CardDB.cardName.nexuschampionsaraad, 0);
             this.silenceTargets.Add(CardDB.cardName.theskeletonknight, 0);
             this.silenceTargets.Add(CardDB.cardName.chillmaw, 0);
-
             this.silenceTargets.Add(CardDB.cardName.savagecombatant, 0);
             this.silenceTargets.Add(CardDB.cardName.aviana, 0);
             this.silenceTargets.Add(CardDB.cardName.dreadscale, 0);
             this.silenceTargets.Add(CardDB.cardName.acidmaw, 0);
-
             this.silenceTargets.Add(CardDB.cardName.coldarradrake, 0);
             this.silenceTargets.Add(CardDB.cardName.rhonin, 0);
-
             this.silenceTargets.Add(CardDB.cardName.warhorsetrainer, 0);
             this.silenceTargets.Add(CardDB.cardName.murlocknight, 0);
-
             this.silenceTargets.Add(CardDB.cardName.holychampion, 0);
             this.silenceTargets.Add(CardDB.cardName.confessorpaletress, 0);
-
             this.silenceTargets.Add(CardDB.cardName.thunderbluffvaliant, 0);
-
             this.silenceTargets.Add(CardDB.cardName.voidcrusher, 0);
-
             this.silenceTargets.Add(CardDB.cardName.wilfredfizzlebang, 0);
-
             this.silenceTargets.Add(CardDB.cardName.magnatauralpha, 0);
-
             this.silenceTargets.Add(CardDB.cardName.anubarak, 0);
 
             //LOE
+            silenceTargets.Add(CardDB.cardName.addledgrizzly, 0);
+            silenceTargets.Add(CardDB.cardName.ancientharbinger, 0);
+            silenceTargets.Add(CardDB.cardName.anomalus, 0);
+            silenceTargets.Add(CardDB.cardName.anubisathsentinel, 0);
+            silenceTargets.Add(CardDB.cardName.blackwaterpirate, 0);
+            silenceTargets.Add(CardDB.cardName.crazedworshipper, 0);
+            silenceTargets.Add(CardDB.cardName.cthun, 0);
+            silenceTargets.Add(CardDB.cardName.cultsorcerer, 0);
+            silenceTargets.Add(CardDB.cardName.darkshirecouncilman, 0);
+            silenceTargets.Add(CardDB.cardName.dementedfrostcaller, 0);
+            silenceTargets.Add(CardDB.cardName.evolvedkobold, 0);
+            silenceTargets.Add(CardDB.cardName.fandralstaghelm, 0);
+            silenceTargets.Add(CardDB.cardName.giantsandworm, 0);
+            silenceTargets.Add(CardDB.cardName.hallazealtheascended, 0);
+            silenceTargets.Add(CardDB.cardName.hoggerdoomofelwynn, 0);
+            silenceTargets.Add(CardDB.cardName.hoodedacolyte, 0);
+            silenceTargets.Add(CardDB.cardName.scalednightmare, 0);
+            silenceTargets.Add(CardDB.cardName.shiftingshade, 0);
+            silenceTargets.Add(CardDB.cardName.southseasquidface, 0);
+            silenceTargets.Add(CardDB.cardName.spawnofnzoth, 0);
+            silenceTargets.Add(CardDB.cardName.stewardofdarkshire, 0);
+            silenceTargets.Add(CardDB.cardName.theboogeymonster, 0);
+            silenceTargets.Add(CardDB.cardName.twilightelder, 0);
+            silenceTargets.Add(CardDB.cardName.undercityhuckster, 0);
+            silenceTargets.Add(CardDB.cardName.usherofsouls, 0);
+            silenceTargets.Add(CardDB.cardName.wobblingrunts, 0);
+            silenceTargets.Add(CardDB.cardName.yshaarjrageunbound, 0);
 
 
+            silenceTargets.Add(CardDB.cardName.ayablackpaw, 0);
 
         }
 
         private void setupRandomCards()
         {
-            this.randomEffects.Add(CardDB.cardName.deadlyshot, 1);
+            this.randomEffects.Add(CardDB.cardName.deadlyshot, 1); //destroy random enemy minion
             this.randomEffects.Add(CardDB.cardName.multishot, 1);
 
-            this.randomEffects.Add(CardDB.cardName.animalcompanion, 1);
-            this.randomEffects.Add(CardDB.cardName.arcanemissiles, 3);
-            this.randomEffects.Add(CardDB.cardName.goblinblastmage, 1);
-            this.randomEffects.Add(CardDB.cardName.avengingwrath, 8);
+            this.randomEffects.Add(CardDB.cardName.animalcompanion, 1); //random "companion" beast
+            this.randomEffects.Add(CardDB.cardName.arcanemissiles, 3); //random 3 dmg split enemies
+            this.randomEffects.Add(CardDB.cardName.goblinblastmage, 1); //random 4 dmg split enemies if have mech
+            this.randomEffects.Add(CardDB.cardName.avengingwrath, 8); //random 8 dmg split enemies
 
-            this.randomEffects.Add(CardDB.cardName.flamecannon, 4);
+            this.randomEffects.Add(CardDB.cardName.flamecannon, 4); //random 4 dmg enemy minion
 
             //this.randomEffects.Add(CardDB.cardName.baneofdoom, 1);
-            this.randomEffects.Add(CardDB.cardName.brawl, 1);
+            this.randomEffects.Add(CardDB.cardName.brawl, 1); //random 1 minion lives
             this.randomEffects.Add(CardDB.cardName.captainsparrot, 1);
             this.randomEffects.Add(CardDB.cardName.cleave, 1);
             this.randomEffects.Add(CardDB.cardName.forkedlightning, 1);
             this.randomEffects.Add(CardDB.cardName.gelbinmekkatorque, 1);
             this.randomEffects.Add(CardDB.cardName.iammurloc, 3);
-            this.randomEffects.Add(CardDB.cardName.lightningstorm, 1);
-            this.randomEffects.Add(CardDB.cardName.madbomber, 3);
+            this.randomEffects.Add(CardDB.cardName.lightningstorm, 1); //deal 2-3 dmg all enemy minions
+            this.randomEffects.Add(CardDB.cardName.madbomber, 3); //random 3 dmg split all
             this.randomEffects.Add(CardDB.cardName.mindgames, 1);
-            this.randomEffects.Add(CardDB.cardName.mindcontroltech, 1);
+            this.randomEffects.Add(CardDB.cardName.mindcontroltech, 1); //steal random minion if they have >3
             this.randomEffects.Add(CardDB.cardName.mindvision, 1);
             this.randomEffects.Add(CardDB.cardName.powerofthehorde, 1);
             this.randomEffects.Add(CardDB.cardName.sensedemons, 2);
             this.randomEffects.Add(CardDB.cardName.tinkmasteroverspark, 1);
-            this.randomEffects.Add(CardDB.cardName.totemiccall, 1);
-            this.randomEffects.Add(CardDB.cardName.elitetaurenchieftain, 1);
-            this.randomEffects.Add(CardDB.cardName.lifetap, 1);
+            this.randomEffects.Add(CardDB.cardName.totemiccall, 1); //random totem
+            this.randomEffects.Add(CardDB.cardName.elitetaurenchieftain, 1); //random "power cord" card both hands
+            this.randomEffects.Add(CardDB.cardName.lifetap, 1); //draw card
+            this.randomEffects.Add(CardDB.cardName.soultap, 1); //draw card
 
-            this.randomEffects.Add(CardDB.cardName.unstableportal, 1);
-            this.randomEffects.Add(CardDB.cardName.crackle, 1);
-            this.randomEffects.Add(CardDB.cardName.bouncingblade, 3);
-            this.randomEffects.Add(CardDB.cardName.coghammer, 1);
-            this.randomEffects.Add(CardDB.cardName.madderbomber, 6);
-            this.randomEffects.Add(CardDB.cardName.bomblobber, 1);
-            this.randomEffects.Add(CardDB.cardName.enhanceomechano, 1);
+            this.randomEffects.Add(CardDB.cardName.unstableportal, 1); //random minion to hand
+            this.randomEffects.Add(CardDB.cardName.crackle, 1); //deal 3-6 dmg
+            this.randomEffects.Add(CardDB.cardName.bouncingblade, 3); //random 1 dmg until minion dies
+            this.randomEffects.Add(CardDB.cardName.coghammer, 1); //random taunt/divine shield
+            this.randomEffects.Add(CardDB.cardName.madderbomber, 6); //random 6 dmg split all
+            this.randomEffects.Add(CardDB.cardName.bomblobber, 1); //random 4 dmg enemy
+            this.randomEffects.Add(CardDB.cardName.enhanceomechano, 1); //random taunt/windfury/divine shield own minions
 
             this.randomEffects.Add(CardDB.cardName.nefarian, 2);
             this.randomEffects.Add(CardDB.cardName.dieinsect, 2);
@@ -3610,55 +4342,132 @@
             this.randomEffects.Add(CardDB.cardName.armoredwarhorse, 1);
             this.randomEffects.Add(CardDB.cardName.masterjouster, 1);
             this.randomEffects.Add(CardDB.cardName.tuskarrjouster, 1);
-            this.randomEffects.Add(CardDB.cardName.tuskarrtotemic, 1);
-            this.randomEffects.Add(CardDB.cardName.healingwave, 1);
-            this.randomEffects.Add(CardDB.cardName.elementaldestruction, 1);
+            this.randomEffects.Add(CardDB.cardName.tuskarrtotemic, 1); //random totem
+            this.randomEffects.Add(CardDB.cardName.healingwave, 1); //heal 7/14 joust
+            this.randomEffects.Add(CardDB.cardName.elementaldestruction, 1); //deal 4-5 dmg to all minions
             this.randomEffects.Add(CardDB.cardName.darkbargain, 2);
-            this.randomEffects.Add(CardDB.cardName.varianwrynn, 3);
+            this.randomEffects.Add(CardDB.cardName.varianwrynn, 3); //draw 3 cards, minions get summoned
 
-            this.randomEffects.Add(CardDB.cardName.lockandload, 10);
-            this.randomEffects.Add(CardDB.cardName.flamejuggler, 1);
+            this.randomEffects.Add(CardDB.cardName.lockandload, 10); //random hunter card for each spell cast
+            this.randomEffects.Add(CardDB.cardName.flamejuggler, 1); //random 1 dmg
             this.randomEffects.Add(CardDB.cardName.grandcrusader, 1);
-            this.randomEffects.Add(CardDB.cardName.spellslinger, 1);
+            this.randomEffects.Add(CardDB.cardName.spellslinger, 1); //random spell to both hands
+            randomEffects.Add(CardDB.cardName.cthun, 10); //random X dmg split enemies, X=attack
+            randomEffects.Add(CardDB.cardName.fierybat, 1); //random 1 dmg
+            randomEffects.Add(CardDB.cardName.spreadingmadness, 9); //random 9 dmg split all
 
+            //todo these need more thought in getRandomPenalty
+            this.randomEffects.Add(CardDB.cardName.servantofyoggsaron, 1); //random 1 spell
+            this.randomEffects.Add(CardDB.cardName.cabaliststome, 1); //random 3 mage spells
+            this.randomEffects.Add(CardDB.cardName.nexuschampionsaraad, 1); //random spell inspire
+            this.randomEffects.Add(CardDB.cardName.xarilpoisonedmind, 1); //random toxin, random toxin deathrattle
+            this.randomEffects.Add(CardDB.cardName.yoggsaronhopesend, 1); //cast X random spells equal to # previous casts
+            this.randomEffects.Add(CardDB.cardName.infest, 1); //add random beast deathrattle
+
+            this.randomEffects.Add(CardDB.cardName.goldenmonkey, 1); //replace your cards with legendaries
+            this.randomEffects.Add(CardDB.cardName.timepieceofhorror, 1); //random 10 dmg split enemies
+            this.randomEffects.Add(CardDB.cardName.succubus, 1); //discard card
+            this.randomEffects.Add(CardDB.cardName.desertcamel, 1); //summon 1 cost from both decks
+            this.randomEffects.Add(CardDB.cardName.facelesssummoner, 1); //summon random 3 cost
+            this.randomEffects.Add(CardDB.cardName.hugetoad, 1); //random 1 dmg deathrattle
+            this.randomEffects.Add(CardDB.cardName.hungrydragon, 1); //summon random 1 cost for enemy
+            this.randomEffects.Add(CardDB.cardName.mountedraptor, 1); //summon random 1 cost deathrattle
+            this.randomEffects.Add(CardDB.cardName.murlocknight, 1); //summon random murloc inspire
+            this.randomEffects.Add(CardDB.cardName.rumblingelemental, 2); //random 2 dmg after each battlecry
+            this.randomEffects.Add(CardDB.cardName.soulfire, 1); //discard card
+            this.randomEffects.Add(CardDB.cardName.thoughtsteal, 1); //copy 2 cards from enemy deck
+            this.randomEffects.Add(CardDB.cardName.zealousinitiate, 1); //give random +1/1 deathrattle
+            this.randomEffects.Add(CardDB.cardName.burgle, 1); //add 2 random enemy class cards
+            this.randomEffects.Add(CardDB.cardName.darkshirelibrarian, 1); //discard card, draw card deathrattle
+            this.randomEffects.Add(CardDB.cardName.dementedfrostcaller, 1); //freeze random enemy every spell
+            this.randomEffects.Add(CardDB.cardName.doomguard, 1); //discard 2
+            this.randomEffects.Add(CardDB.cardName.evolve, 1); //replace all your minions with ones that cost 1 more
+            this.randomEffects.Add(CardDB.cardName.fistofjaraxxus, 1); //random 4 dmg
+            this.randomEffects.Add(CardDB.cardName.flamewaker, 1); //random 2 dmg split after spell
+            this.randomEffects.Add(CardDB.cardName.knifejuggler, 1); //random 1 dmg every summon
+            this.randomEffects.Add(CardDB.cardName.masterofevolution, 1); //replace minion with one that costs 1 more
+            this.randomEffects.Add(CardDB.cardName.ramwrangler, 1); //summon random beast if you have a beast
+            this.randomEffects.Add(CardDB.cardName.selflesshero, 1); //random divine shield deathrattle
+            this.randomEffects.Add(CardDB.cardName.shifterzerus, 1); //his morphing doesn't matter but w/e he becomes could have random effects //todo sepefeets - remove him once we properly detect what he becomes
+            this.randomEffects.Add(CardDB.cardName.shiftingshade, 1); //copy card from enemy deck deathrattle
+            this.randomEffects.Add(CardDB.cardName.stampedingkodo, 1); // destroy random <3 attack minion
+            this.randomEffects.Add(CardDB.cardName.summoningstone, 1); // summon minion with equal cost to any spell cast
+            this.randomEffects.Add(CardDB.cardName.undercityhuckster, 1); //add random enemy class card deathrattle
+            this.randomEffects.Add(CardDB.cardName.voidcrusher, 1); //destroy random minion for both players inspire
+            this.randomEffects.Add(CardDB.cardName.renouncedarkness, 1); //replace cards/power with a new class
+            this.randomEffects.Add(CardDB.cardName.confessorpaletress, 1); //random legendary inspire
+            this.randomEffects.Add(CardDB.cardName.eydisdarkbane, 1); //random 3 dmg when you target her with spell
+            this.randomEffects.Add(CardDB.cardName.malkorok, 1); //equip random weapon
+            this.randomEffects.Add(CardDB.cardName.sylvanaswindrunner, 1); //steal random enemy deathrattle
+
+            randomEffects.Add(CardDB.cardName.firelandsportal, 1);
+            randomEffects.Add(CardDB.cardName.maelstromportal, 1);
+            randomEffects.Add(CardDB.cardName.ivoryknight, 1);
+            randomEffects.Add(CardDB.cardName.silvermoonportal, 1);
+            randomEffects.Add(CardDB.cardName.onyxbishop, 1);
+            randomEffects.Add(CardDB.cardName.swashburglar, 1);
+            randomEffects.Add(CardDB.cardName.wickedwitchdoctor, 1);
+            randomEffects.Add(CardDB.cardName.barnes, 1);
+            randomEffects.Add(CardDB.cardName.babblingbook, 1);
+            randomEffects.Add(CardDB.cardName.zoobot, 1);
+            randomEffects.Add(CardDB.cardName.menageriemagician, 1);
+            randomEffects.Add(CardDB.cardName.thecurator, 1);
+            randomEffects.Add(CardDB.cardName.malchezaarsimp, 1);
+            randomEffects.Add(CardDB.cardName.ironforgeportal, 1);
+            randomEffects.Add(CardDB.cardName.netherspitehistorian, 1);
+            randomEffects.Add(CardDB.cardName.atiesh, 1);
+            randomEffects.Add(CardDB.cardName.moongladeportal, 1);
         }
 
         private void setupTargetAbilitys()
         {
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS1h_001, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.DS1h_292, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.EX1_625t, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.EX1_625t2, 1);
-            //this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H1, 1);
-            //this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H1_AT_132, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_050t, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_HUNTER, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_MAGE, 1);
-            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_PRIEST, 1);
+            //todo sepefeets - can these be converted to card names easily so that we don't need to update for every new skin?
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS1h_001, 1);  //Lesser Heal
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS1h_001_H1, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_PRIEST, 1); //Heal
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS1h_001_H1_AT_132, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034, 1);  //Fireblast
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H1, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H2, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_MAGE, 1);  //Fireblast Rank 2
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H1_AT_132, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.CS2_034_H2_AT_132, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.DS1h_292, 1);  //Steady Shot
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.DS1h_292_H1, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_132_HUNTER, 1);  //Ballista Shot
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.DS1h_292_H1_AT_132, 1);
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.EX1_625t, 1);  //Mind Spike r1
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.EX1_625t2, 1);  //Mind Spike r2
+            this.TargetAbilitysDatabase.Add(CardDB.cardIDEnum.AT_050t, 1);  //Lightning Jolt
         }
 
         private void setupDiscover()
         {
-            this.discoverMinions.Add(CardDB.cardName.tracking, 1);
-            this.discoverMinions.Add(CardDB.cardName.jeweledscarab, 1);
-            this.discoverMinions.Add(CardDB.cardName.ancientshade, 1);
-            this.discoverMinions.Add(CardDB.cardName.darkpeddler, 1);
-            this.discoverMinions.Add(CardDB.cardName.tombspider, 1);
-            this.discoverMinions.Add(CardDB.cardName.gorillabota3, 1);  // only if you have a mech
-            this.discoverMinions.Add(CardDB.cardName.etherealconjurer, 1);
-            this.discoverMinions.Add(CardDB.cardName.museumcurator, 1);
-            this.discoverMinions.Add(CardDB.cardName.ravenidol, 1);
-            this.discoverMinions.Add(CardDB.cardName.archthiefrafaam, 1);
-
-
+            discoverCards.Add(CardDB.cardName.tracking, 1);
+            discoverCards.Add(CardDB.cardName.jeweledscarab, 1);
+            discoverCards.Add(CardDB.cardName.ancientshade, 1);
+            discoverCards.Add(CardDB.cardName.darkpeddler, 1);
+            discoverCards.Add(CardDB.cardName.tombspider, 1);
+            discoverCards.Add(CardDB.cardName.gorillabota3, 1);  // only if you have a mech
+            discoverCards.Add(CardDB.cardName.etherealconjurer, 1);
+            discoverCards.Add(CardDB.cardName.museumcurator, 1);
+            discoverCards.Add(CardDB.cardName.ravenidol, 1);
+            discoverCards.Add(CardDB.cardName.archthiefrafaam, 1);
+            discoverCards.Add(CardDB.cardName.alightinthedarkness, 1);
+            discoverCards.Add(CardDB.cardName.journeybelow, 1);
+            discoverCards.Add(CardDB.cardName.ivoryknight, 1);
+            discoverCards.Add(CardDB.cardName.netherspitehistorian, 1);
+            discoverCards.Add(CardDB.cardName.drakonidoperative, 1);
+            discoverCards.Add(CardDB.cardName.finderskeepers, 1);
+            discoverCards.Add(CardDB.cardName.iknowaguy, 1);
+            discoverCards.Add(CardDB.cardName.grimestreetinformant, 1);
+            discoverCards.Add(CardDB.cardName.kabalcourier, 1);
+            discoverCards.Add(CardDB.cardName.lotusagents, 1);
         }
 
 
         private void setupStrongInspireMinions()
         {
-            
-
             strongInspireEffectMinions.Add(CardDB.cardName.boneguardlieutenant, 0);
             strongInspireEffectMinions.Add(CardDB.cardName.confessorpaletress, 10);
             strongInspireEffectMinions.Add(CardDB.cardName.dalaranaspirant, 1);
@@ -3675,7 +4484,58 @@
             strongInspireEffectMinions.Add(CardDB.cardName.silverhandregent, 3);
         }
 
+        private void setupSummonMinionSpellsDatabase()
+        {
+            summonMinionSpellsDatabase.Add(CardDB.cardName.mirrorimage, 2);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.totemiccall, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.reinforce, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.animalcompanion, 3);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.powerofthewild, 1); //choice
+            summonMinionSpellsDatabase.Add(CardDB.cardName.feralspirit, 2);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.baneofdoom, 1); //only if it kills
+            summonMinionSpellsDatabase.Add(CardDB.cardName.unleashthehounds, 1); //count=enemy minions
+            summonMinionSpellsDatabase.Add(CardDB.cardName.forceofnature, 3);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.thesilverhand, 2);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.anyfincanhappen, 1); //count=dead murlocs
+            summonMinionSpellsDatabase.Add(CardDB.cardName.thetidalhand, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.onthehunt, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.forbiddenshaping, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.forbiddenritual, 1); //count=mana spent
+            summonMinionSpellsDatabase.Add(CardDB.cardName.wispsoftheoldgods, 7); //choice
+            summonMinionSpellsDatabase.Add(CardDB.cardName.callofthewild, 3);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.standagainstdarkness, 5);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.bloodtoichor, 1); //if it doesn't kill
+            summonMinionSpellsDatabase.Add(CardDB.cardName.iammurloc, 3); //3-5
+            summonMinionSpellsDatabase.Add(CardDB.cardName.powerofthehorde, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.lightofthenaaru, 1); //if it doesn't heal to full
+            summonMinionSpellsDatabase.Add(CardDB.cardName.darkwispers, 5); //choice
+            summonMinionSpellsDatabase.Add(CardDB.cardName.musterforbattle, 3);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.livingroots, 2); //choice
+            summonMinionSpellsDatabase.Add(CardDB.cardName.ballofspiders, 3);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.totemicslam, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.firelandsportal, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.maelstromportal, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.protecttheking, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.silvermoonportal, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.karakazham, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.moongladeportal, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.ironforgeportal, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.jadeidol, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.jadeblossom, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.jadeshuriken, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.callinthefinishers, 1);
+            summonMinionSpellsDatabase.Add(CardDB.cardName.jadelightning, 1);
+        }
 
+        private void setupAlsoEquipsWeaponDB()
+        {
+            alsoEquipsWeaponDB.Add(CardDB.cardName.arathiweaponsmith, 2);
+            alsoEquipsWeaponDB.Add(CardDB.cardName.blingtron3000, 3); //random weapon so be conservative
+            alsoEquipsWeaponDB.Add(CardDB.cardName.malkorok, 3); //random weapon so be conservative
+            alsoEquipsWeaponDB.Add(CardDB.cardName.musterforbattle, 1);
+            alsoEquipsWeaponDB.Add(CardDB.cardName.nzothsfirstmate, 1);
+            alsoEquipsWeaponDB.Add(CardDB.cardName.upgrade, 1); //if we don't have a weapon
+            alsoEquipsWeaponDB.Add(CardDB.cardName.medivhtheguardian, 1);
+        }
     }
-
 }

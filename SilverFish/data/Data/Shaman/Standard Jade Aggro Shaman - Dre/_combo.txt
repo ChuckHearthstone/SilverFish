@@ -1,0 +1,51 @@
+// This File: _combo.txt
+// Author: Dre
+// Version: 1.1 (24-jan-2017)
+// Deck Name: Jade Aggro Shaman
+// Hero: Shaman
+// Deck Type: Aggro (Rush)
+
+// [Nudge] Force [1] Small-Time Buccaneer (CFM_325)
+CFM_325,0;mana:1;bonus:3;hero:shaman
+
+// [Combo] [1] Tunnel Trogg (LOE_018) > [0] The Coin (GAME_005) + [3] Feral Spirit (EX1_248)
+LOE_018,0;nxttrn;GAME_005,1;EX1_248,0;mana:1;bonusfirst:10;bonussecond:11;hero:shaman
+
+// [Nudge] [1] Tunnel Trogg (LOE_018) > [2] Totem Golem (AT_052)
+LOE_018,0;nxttrn;AT_052,0;mana:1;bonusfirst:10;bonussecond:2;hero:shaman
+
+// [Nudge] [0] The Coin (GAME_005) + [1] Tunnel Trogg (LOE_018) + [1] Tunnel Trogg (LOE_018)
+GAME_005,0;LOE_018,0;LOE_018,0;mana:1;bonus:20;hero:shaman
+
+// [Nudge] [0] The Coin (GAME_005) + [1] Small-Time Buccaneer (CFM_325) + [1] Spirit Claws x2 (KAR_063)
+GAME_005,0;CFM_325,0;KAR_063,0;mana:1;bonus:19;hero:shaman
+
+// [NUDGE] [2] Bloodmage Thalnos (EX1_012) + [2] Maelstrom Portal (KAR_073)
+EX1_012,5;KAR_073,0;bonus:3;hero:shaman
+
+// [NUDGE] [2] Bloodmage Thalnos (EX1_012) + [2] Maelstrom Portal (KAR_073)
+EX1_012,5;KAR_073,0;bonus:3;hero:shaman
+
+// [Nudge] [0] The Coin (GAME_005) + [4] Flamewreathed Faceless (OG_024)
+GAME_005,5;OG_024,0;mana:3;bonus:11;hero:shaman
+
+// Cardvalue Totem Golem (AT_052)
+cardvalue:AT_052,-3
+
+// Cardvalue Lightning Storm (EX1_259)
+cardvalue:EX1_259,14
+
+// Cardvalue Astral Communion (AT_043) 
+cardvalue:AT_043,500
+
+// Cardvalue Bloodmage Thalnos (EX1_012)
+cardvalue:EX1_012,11
+
+// Cardvalue Lava Burst (EX1_241)
+cardvalue:EX1_241,10
+
+// Cardvalue Lightning Bolt (EX1_238)	
+cardvalue:EX1_238,10
+
+// Cardvalue Jade Lightning (CFM_707)
+cardvalue:CFM_707,5

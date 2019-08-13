@@ -1,0 +1,54 @@
+// This File: _combo.txt
+//    Author: Dre
+//   Version: 1.6 (3-Okt-2016)
+// Deck Name: Standard Midrange Hunter
+//      Hero: Hunter
+// Deck Type: Midrange (Control)
+
+// [Nudge] [1] Fiery Bat (OG_179) > [2] King's Elekk (AT_058)
+OG_179,0;nxttrn;AT_058,0;mana:1;bonusfirst:15;bonussecond:0;hero:hunter
+
+// [Nudge] [0] The Coin (GAME_005) + [6] Savannah Highmane (EX1_534)
+GAME_005,1;EX1_534,0;mana:5;bonus:50;hero:hunter
+
+// [Nudge] Force [4] Barnes (KAR_114)
+KAR_114,0;mana:4;bonus:11;hero:hunter
+
+// [Nudge] [5] Tundra Rhino (DS1_178) > [6] Savannah Highmane (EX1_534)
+DS1_178,0;nxttrn;EX1_534,0;mana:5;bonusfirst:10;bonussecond:20;hero:hunter
+
+// [Nudge] Force [6] Savannah Highmane (EX1_534)
+EX1_534,0;mana:6;bonus:10;hero:hunter
+
+// Cardvalue Quickshot (BRM_013)
+cardvalue:BRM_013,4
+
+// Cardvalue Unleash the Hounds (EX1_538)
+cardvalue:EX1_538,10
+
+// Cardvalue Kill Command (EX1_539)
+cardvalue:EX1_539,7
+
+// Cardvalue Deadly shot (EX1_617)
+cardvalue:EX1_617,8
+
+// Cardvalue Infested Wolf (OG_216)	
+cardvalue:OG_216,-11
+
+// Houndmaster (DS1_070)	
+cardvalue:DS1_070,-3
+
+// Cardvalue Barnes (KAR_114)	
+cardvalue:KAR_114,-10
+
+// Cardvalue Kindly Grandmother (KAR_005)	
+cardvalue:KAR_005,-1
+
+// Cardvalue Eaglehorn Bow (EX1_536)	
+cardvalue:EX1_536,-2
+
+// Cardvalue Steady Shot (DS1h_292) 
+cardvalue:DS1h_292,4
+
+// Cardvalue Astral Communion (AT_043) 
+cardvalue:AT_043,500

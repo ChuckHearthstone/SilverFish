@@ -1,0 +1,34 @@
+// ----------------ALL------------------
+// Tunnel Trogg
+hold;shaman;all;LOE_018
+// Totem Golem
+hold;shaman;all;AT_052:1
+// Totem Golem + Tunnel Trogg + coin
+hold;shaman;all;AT_052:2:LOE_018;coin
+// Flametongue Totem + 2 Tunnel Trogg + coin
+hold;shaman;all;EX1_565:1:LOE_018,2,2;coin
+// Jade Claws + coin
+hold;shaman;all;CFM_717;coin
+// Feral Spirit + Tunnel Trogg + coin
+hold;shaman;all;EX1_248:1:LOE_018;coin
+// Discard Feral spirit when Totem Golem & nocoin
+discard;shaman;all;EX1_248:2:AT_052;nocoin
+
+// ----------------SHAMAN---------------
+// Spirit Claws
+hold;shaman;shaman;CFM_717:1
+
+// ----------------WARLOCK--------------
+// Spirit Claws
+hold;shaman;warlock;CFM_717:1
+
+// ----------------PRIEST---------------
+// Spirit Claws
+hold;shaman;priest;CFM_717:1
+
+// ----------------WARRIOR---------------
+// Spirit Claws
+hold;shaman;warrior;CFM_717:1
+
+// Maelstrom Portal + coin
+hold;shaman;warrior;KAR_073:1;coin

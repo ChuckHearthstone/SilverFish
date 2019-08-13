@@ -1,0 +1,36 @@
+// This File: _combo.txt
+// Author: TheRandomOne
+// Version: 0.1 (28-Dec-16)
+// Deck Name: Pirate Shammy
+// Hero: Shaman
+// Deck Type: Aggro
+
+// [Combo] Tunnel Trogg (LOE_018) > The Coin (GAME_005) + Feral Spirit (EX1_248)
+LOE_018,0;nxttrn;GAME_005,1;EX1_248,0;mana:1;bonusfirst:10;bonussecond:11;hero:shaman
+
+// [Combo] Small-Time Buccaneer (CFM_325) + The Coin (GAME_005) + Small-Time Buccaneer (CFM_325) > Jade Claws (CFM_717)
+CFM_325,0;GAME_005,1;CFM_325,0;nxttrn;CFM_717,0;mana:1;bonusfirst:10;bonussecond:35;hero:shaman
+
+// [Nudge] Tunnel Trogg (LOE_018) > Totem Golem (AT_052)
+LOE_018,0;nxttrn;AT_052,0;mana:1;bonusfirst:10;bonussecond:2;hero:shaman
+
+// [Nudge] Small-Time Buccaneer (CFM_325) > Jade Claws (CFM_717)
+CFM_325,0;nxttrn;CFM_717,0;mana:1;bonusfirst:10;bonussecond:5;hero:shaman
+
+// [Nudge] The Coin (GAME_005) + Tunnel Trogg (LOE_018) + Tunnel Trogg (LOE_018)
+GAME_005,0;LOE_018,0;LOE_018,0;bonus:20;hero:shaman
+
+// [Combo] The Coin (GAME_005) + 2x Small-Time Buccaneer (CFM_325) > Flametongue Totem (EX1_565)
+GAME_005,1;CFM_325,0;CFM_325,0;nxttrn;EX1_565,0;mana:1;bonusfirst:25;bonussecond:50;hero:shaman
+
+// [Combo] The Coin (GAME_005) + 2x Tunnel Trogg (LOE_018) > Flametongue Totem (EX1_565)
+GAME_005,1;LOE_018,0;LOE_018,0;nxttrn;EX1_565,0;mana:1;bonusfirst:25;bonussecond:50;hero:shaman
+
+// [Combo] Doomhammer (EX1_567) + Rockbiter Weapon (CS2_045e)
+EX1_567,0;CS2_045e,15;bonusfirst:25;hero:shaman
+
+// [Combo] Doomhammer (EX1_567) + 2x Rockbiter Weapon (CS2_045e)
+EX1_567,0;CS2_045e,15;CS2_045e,15;bonusfirst:25;bonussecond:50;hero:shaman
+
+//[Combo] Jade Claws (CFM_717) + Southsea Deckhand (CS2_146)
+CFM_717,0;CS2_146,5;bonusfirst:5;hero:shaman

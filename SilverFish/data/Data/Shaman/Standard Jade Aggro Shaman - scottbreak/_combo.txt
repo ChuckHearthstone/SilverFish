@@ -1,0 +1,36 @@
+// This File: _combo.txt
+// Author: scottbreak
+// Version: 0.2 (11-Dec-16)
+// Deck Name: Jade Aggro Shaman
+// Hero: Shaman
+// Deck Type: Aggro
+
+// [Combo] Tunnel Trogg (LOE_018) > The Coin (GAME_005) + Feral Spirit (EX1_248)
+LOE_018,0;nxttrn;GAME_005,1;EX1_248,0;mana:1;bonusfirst:10;bonussecond:11;hero:shaman
+
+// [Nudge] Tunnel Trogg (LOE_018) > Totem Golem (AT_052)
+LOE_018,0;nxttrn;AT_052,0;mana:1;bonusfirst:10;bonussecond:2;hero:shaman
+
+// [Nudge] The Coin (GAME_005) + Tunnel Trogg (LOE_018) + Tunnel Trogg (LOE_018)
+GAME_005,0;LOE_018,0;LOE_018,0;bonus:20;hero:shaman
+
+// [NUDGE] Bloodmage Thalnos (EX1_012) + Maelstrom Portal (KAR_073)
+EX1_012,5;KAR_073,0;bonus:3;hero:shaman
+
+// [NUDGE] Bloodmage Thalnos (EX1_012) + Spirit Claws (KAR_063)
+EX1_012,5;KAR_063,0;bonus:2;hero:shaman
+
+// [NUDGE] Kobold Geomancer (CS2_142) + Maelstrom Portal (KAR_073)
+CS2_142,5;KAR_073,0;bonus:3;hero:shaman
+
+// [NUDGE] Kobold Geomancer (CS2_142) + Spirit Claws x2 (KAR_063)
+CS2_142,5;KAR_063,0;bonus:2;hero:shaman
+
+// [Combo] The Coin (GAME_005) + 2x Small-Time Buccaneer (CFM_325) > Flametongue Totem (EX1_565)
+GAME_005,1;CFM_325,0;CFM_325,0;nxttrn;EX1_565,0;mana:1;bonusfirst:25;bonussecond:50;hero:shaman
+
+// [Combo] The Coin (GAME_005) + 2x Tunnel Trogg (LOE_018) > Flametongue Totem (EX1_565)
+GAME_005,1;LOE_018,0;LOE_018,0;nxttrn;EX1_565,0;mana:1;bonusfirst:25;bonussecond:50;hero:shaman
+
+// [Combo] The Coin (GAME_005) + 2x Argent squire (EX1_008) > Flametongue Totem (EX1_565)
+GAME_005,1;EX1_008,0;EX1_008,0;nxttrn;EX1_565,0;mana:1;bonusfirst:25;bonussecond:50;hero:shaman

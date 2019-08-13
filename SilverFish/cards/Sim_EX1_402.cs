@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,16 +13,8 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == ownDmgdmin)
             {
-                if (triggerEffectMinion.own)
-                {
-                    p.minionGetArmor(p.ownHero, 1);
-                }
-                else
-                {
-                    p.minionGetArmor(p.enemyHero, 1);
-                }
+                p.minionGetArmor(triggerEffectMinion.own ? p.ownHero : p.enemyHero, 1);
             }
         }
-
 	}
 }

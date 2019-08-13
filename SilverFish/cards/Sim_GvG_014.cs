@@ -13,25 +13,16 @@ namespace HREngine.Bots
         {
             if (target == null) return;
 
-            int volMHp = own.maxHp;
-            int tarMHp = target.Hp;
+            own.maxHp = target.Hp;
+            target.maxHp = own.Hp;
 
-
-            target.maxHp = volMHp;
-            if (tarMHp < volMHp)//minion has lower maxHp as his card -> heal his hp
+            own.Hp = own.maxHp;
+            target.Hp = target.maxHp;
+            if (target.wounded)
             {
-                target.Hp += volMHp - tarMHp; //heal minion
+                target.wounded = false;
+                target.handcard.card.sim_card.onEnrageStop(p, target);
             }
-            if (target.Hp > target.maxHp) 
-            {
-                target.Hp = target.maxHp;
-            }
-
-            own.maxHp = tarMHp;
-            own.Hp = tarMHp;
-
         }
-
     }
-
 }

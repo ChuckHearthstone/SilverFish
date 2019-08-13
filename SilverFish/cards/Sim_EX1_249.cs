@@ -15,11 +15,11 @@ namespace HREngine.Bots
             {
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if (triggerEffectMinion.entitiyID != m.entitiyID) p.minionGetDamageOrHeal(m, 2);
+                    if (triggerEffectMinion.entityID != m.entityID) p.minionGetDamageOrHeal(m, 2);
                 }
                 foreach (Minion m in p.ownMinions)
                 {
-                    if (triggerEffectMinion.entitiyID != m.entitiyID) p.minionGetDamageOrHeal(m, 2);
+                    if (triggerEffectMinion.entityID != m.entityID) p.minionGetDamageOrHeal(m, 2);
                 }
                 p.minionGetDamageOrHeal(p.ownHero, 2);
                 p.minionGetDamageOrHeal(p.enemyHero, 2);

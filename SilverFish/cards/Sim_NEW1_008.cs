@@ -4,23 +4,22 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_NEW1_008: SimTemplate//ancient of lore
+    class Sim_NEW1_008 : SimTemplate //* Ancient of Lore
     {
+        //Choose One - Draw a card; or Restore 5 Health.
 
-        //Zieht 2 Karten; oder stellt 5 Leben wieder her
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (choice == 2)
+            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && own.own))
             {
                 int heal = (own.own) ? p.getMinionHeal(5) : p.getEnemyMinionHeal(5);
                 p.minionGetDamageOrHeal(target, -heal);
             }
-            else
+
+            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && own.own))
             {
-                p.drawACard(CardDB.cardIDEnum.None, own.own);
-                p.drawACard(CardDB.cardIDEnum.None, own.own);
+                p.drawACard(CardDB.cardName.unknown, own.own);
             }
         }
-
     }
 }

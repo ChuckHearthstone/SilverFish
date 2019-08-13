@@ -1,0 +1,35 @@
+// This File: decklist.txt (not needed in folder, just information)
+//    Author: Dre
+//   Version: 1.5 (17-Sept-2016)
+// Deck Name: Standard Midrange Hunter
+//      Hero: Hunter
+// Deck Type: Midrange (Control)
+
+// - H U N T E R --------------------------------
+// [1] Fiery Bat (OG_179)		2x
+// [2] Kindly Grandmother (KAR_005)	2x
+// [2] Quick Shot (BRM_013)		2x
+// [2] Scavenging Hyena (EX1_531) 	2x
+// [2] Kings Elek (AT_058)		2x
+// [3] Animal Companion (NEW1_031)	2x
+// [3] Eaglehorn Bow (EX1_536)		2x
+// [3] Kill Command (EX1_539)		2x
+// [3] Unleash the Hounds (EX1_538)	2x
+// [4] Houndmaster (DS1_070)		2x
+// [4] Infested Wolf (OG_216)		2x
+// [5] Tundra Rhino (DS1_178)		1x 
+// [6] Savannah Highmane (EX1_534)	2x
+// [8] Call of the Wild (OG_211)	2x
+// - N E U T R A L -----------------------------
+// [2] Huge Toad (LOE_046)		2x
+// [4] Barnes (KAR_114)			1x
+
+
+
+Possible changes vs Control:
+
+-2x Scavenging Hyena (EX1_531) 
+-1x Tundra Rhino (DS1_178)	
+
++2x Deadly Shot (EX1_617)
++1x Ragnaros the Firelord (EX1_298)

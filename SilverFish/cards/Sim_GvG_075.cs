@@ -13,18 +13,8 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == summonedMinion.own && summonedMinion.handcard.card.race == TAG_RACE.PIRATE)
             {
-                if (p.isServer)
-                {
-                    Minion randomguy = p.getRandomMinionFromSide_SERVER(!triggerEffectMinion.own, true);
-                    if (randomguy != null) p.minionGetDamageOrHeal(randomguy, 2, true);
-                    return;
-                }
-
                 p.doDmgToRandomEnemyCLIENT2(2, true, triggerEffectMinion.own);
             }
         }
-
-
     }
-
 }

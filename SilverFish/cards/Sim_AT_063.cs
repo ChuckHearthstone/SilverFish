@@ -11,26 +11,12 @@ namespace HREngine.Bots
         //destroying done in triggerAMinionGotDmg
         public override void onAuraStarts(Playfield p, Minion m)
         {
-            if (m.own)
-            {
-                p.anzOwnAcidMaw++;
-            }
-            else
-            {
-                p.anzEnemyAcidMaw++;
-            }
+            p.anzAcidmaw++;
         }
 
         public override void onAuraEnds(Playfield p, Minion m)
         {
-            if (m.own)
-            {
-                p.anzOwnAcidMaw--;
-            }
-            else
-            {
-                p.anzEnemyAcidMaw--;
-            }
+            p.anzAcidmaw--;
         }
 
        

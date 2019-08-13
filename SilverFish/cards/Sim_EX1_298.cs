@@ -11,13 +11,6 @@ namespace HREngine.Bots
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
-            if (p.isServer)
-            {
-                Minion choosen = p.getRandomMinionFromSide_SERVER(!triggerEffectMinion.own, true);
-                if (choosen != null) p.minionGetDamageOrHeal(choosen, 8);
-                return;
-            }
-
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
                 int count = (turnEndOfOwner) ? p.enemyMinions.Count : p.ownMinions.Count;
@@ -38,7 +31,5 @@ namespace HREngine.Bots
                 triggerEffectMinion.stealth = false;
             }
         }
-
     }
-
 }

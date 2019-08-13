@@ -1,0 +1,24 @@
+// This File: decklist.txt
+// Author: scottbreak
+// Version: 1.1 (19-Jan-17)
+// Deck Name: Wild Pirate Warrior
+// Hero: Warrior
+// Deck Type: Aggro
+
+Upgrade! x2
+Arcanite Reaper x2
+Southsea Deckhand x2
+Mortal Strike x1
+Dread Corsair x2
+Bloodsail Raider x2
+Death's Bite x2
+Ship's Cannon x2
+N'Zoth's First Mate x2
+Bloodsail Cultist x2
+Patches the Pirate x1
+Small-Time Buccaneer x2
+Kor'kron Elite x2
+Heroic Strike x2
+Fiery War Axe x2
+Acidic Swamp Ooze x1
+Sir Finley Mrrgglton x1

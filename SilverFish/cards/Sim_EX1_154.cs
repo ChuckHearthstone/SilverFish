@@ -4,29 +4,24 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_154 : SimTemplate //wrath
-	{
+    class Sim_EX1_154 : SimTemplate //* Wrath
+    {
+        // Choose One - Deal $3 damage to a minion; or $1 damage and draw a card.
 
-//    wählt aus:/ fügt einem diener $3 schaden zu; oder fügt einem diener $1 schaden zu und zieht eine karte.
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
             int damage = 0;
-            if (choice == 1)
+            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
-                damage = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
+                damage += (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             }
-            if (choice == 2)
+            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
             {
-                damage = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
+                damage += (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
+                p.drawACard(CardDB.cardName.unknown, ownplay);
             }
 
             p.minionGetDamageOrHeal(target, damage);
-
-            if (choice == 2)
-            {
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
-            }
-		}
-
-	}
+        }
+    }
 }

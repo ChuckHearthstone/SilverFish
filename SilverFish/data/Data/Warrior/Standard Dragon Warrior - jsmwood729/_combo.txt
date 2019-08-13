@@ -1,0 +1,23 @@
+// Cardvalue Inner Rage (EX1_607)
+cardvalue:EX1_607,10
+
+// [Nudge] [8] Grommash Hellscream (EX1_414) + [0] Inner Rage (EX1_607)
+EX1_414,5;EX1_607,0;bonus:5;hero:warrior
+
+// [Nudge] [8] Grommash Hellscream (EX1_414) + [1] Blood To Ichor (OG_314)
+EX1_414,5;OG_314,0;bonus:5;hero:warrior
+
+// [Nudge] [3] Frothing Berserker (EX1_604) + [3] Ravaging Ghoul (OG_149)
+EX1_604,0;OG_149,0;bonus:8;hero:warrior
+
+// [Combo] [8] Grommash Hellscream (EX1_414) + [0] Inner Rage (EX1_607)
+EX1_414,0;EX1_607,0;bonus:10;hero:warrior
+
+// [PUSH] [0] The Coin (GAME_005) + [2] Alexstrasza's Champion (AT_071)
+GAME_005,0;AT_071,0;bonus:200;mana:2;hero:warrior
+
+// [Nudge] [2] Alexstrasza's Champion (AT_071)
+AT_071,0;bonus:8;mana:2;hero:warrior
+
+// [Nudge] Force [2] Fiery War Axe (CS2_106)
+CS2_106,0;mana:2;bonus:10;hero:warrior 

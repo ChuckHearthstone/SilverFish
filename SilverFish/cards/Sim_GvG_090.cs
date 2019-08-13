@@ -11,18 +11,6 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-
-            if (p.isServer)
-            {
-                int timesS = 6;
-                for (int iS = 0; iS < timesS; iS++)
-                {
-                    Minion poortarget = p.getRandomCharExcept_SERVER(own, true);
-                    if (poortarget != null) p.minionGetDamageOrHeal(poortarget, 1);
-                }
-                return;
-            }
-
             int anz = 6;
             for (int i = 0; i < anz; i++)
             {
@@ -46,8 +34,5 @@ namespace HREngine.Bots
                 p.minionGetDamageOrHeal(p.enemyHero, 1);
             }
         }
-
-
     }
-
 }

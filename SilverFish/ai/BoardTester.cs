@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using System.Security.Cryptography;
+
+namespace HREngine.Bots
 {
     using System;
     using System.Collections.Generic;
@@ -10,82 +12,87 @@
         public string evalFunction = "control";
         int maxwide = 3000;
         int twoturnsim = 256;
-        bool simEnemy2Turn = false;
+        bool simEnemy2Turn;
         int pprob1 = 50;
         int pprob2 = 80;
-        bool playarround = false;
+        bool playarround;
 
         int ownPlayer = 1;
-        int enemmaxman = 0;
+        int enemmaxman;
 
         Minion ownHero;
         Minion enemyHero;
 
-        int ownHEntity = 0;
+        int ownHEntity;
         int enemyHEntity = 1;
 
-        int mana = 0;
-        int maxmana = 0;
+        int mana;
+        int maxmana;
         string ownheroname = "";
-        int ownherohp = 0;
+        int ownherohp;
         int ownheromaxhp = 30;
         int enemyheromaxhp = 30;
-        int ownherodefence = 0;
-        bool ownheroready = false;
-        bool ownHeroimmunewhileattacking = false;
-        int ownheroattacksThisRound = 0;
-        int ownHeroAttack = 0;
-        int ownHeroTempAttack = 0;
+        int ownherodefence;
+        bool ownheroready;
+        bool ownHeroimmunewhileattacking;
+        int ownheroattacksThisRound;
+        int ownHeroAttack;
+        int ownHeroTempAttack;
         string ownHeroWeapon = "";
-        int ownHeroWeaponAttack = 0;
-        int ownHeroWeaponDurability = 0;
-        int numOptionPlayedThisTurn = 0;
-        int numMinionsPlayedThisTurn = 0;
-        int cardsPlayedThisTurn = 0;
-        int overdrive = 0;
-        int numberMinionsDiedThisturn = 0;
-        int owncurrentRecall = 0;
-        int enemyRecall = 0;
+        int ownHeroWeaponAttack;
+        int ownHeroWeaponDurability;
+        int numOptionPlayedThisTurn;
+        int numMinionsPlayedThisTurn;
+        int cardsPlayedThisTurn;
+        int overdrive;
+        int numberMinionsDiedThisturn;
+        int owncurrentRecall;
+        int enemyRecall;
 
-        int ownDragonConsort = 0;
-        int enemyDragonConsort = 0;
-        int ownLoathebs = 0;
-        int enemyLoathebs = 0;
-        int ownMillhouse = 0;
-        int enemyMillhouse = 0;
-        int ownKirintor = 0;
-        int ownPrep = 0;
+        int ownDragonConsort;
+        int enemyDragonConsort;
+        int ownLoathebs;
+        int enemyLoathebs;
+        int ownMillhouse;
+        int enemyMillhouse;
+        int ownKirintor;
+        int ownPrep;
 
-        int ownSab = 0;
-        int enemySab = 0;
-
+        int ownSab;
+        int enemySab;
+        
+        int anzOgOwnCThunHpBonus;
+        int anzOgOwnCThunAngrBonus;
+        int anzOgOwnCThunTaunt;
+        int anzOwnJadeGolem;
+        int anzEnemyJadeGolem;
 
         int ownDecksize = 30;
         int enemyDecksize = 30;
-        int ownFatigue = 0;
-        int enemyFatigue = 0;
+        int ownFatigue;
+        int enemyFatigue;
 
-        bool heroImmune = false;
-        bool enemyHeroImmune = false;
+        bool heroImmune;
+        bool enemyHeroImmune;
 
-        int enemySecretAmount = 0;
+        int enemySecretAmount;
         List<SecretItem> enemySecrets = new List<SecretItem>();
 
         List<CardDB.cardIDEnum> choiceCards = new List<CardDB.cardIDEnum>();
 
-        bool ownHeroFrozen = false;
+        bool ownHeroFrozen;
 
         List<string> ownsecretlist = new List<string>();
         string enemyheroname = "";
-        int enemyherohp = 0;
-        int enemyherodefence = 0;
-        bool enemyFrozen = false;
-        int enemyWeaponAttack = 0;
-        int enemyWeaponDur = 0;
+        int enemyherohp;
+        int enemyherodefence;
+        bool enemyFrozen;
+        int enemyWeaponAttack;
+        int enemyWeaponDur;
         string enemyWeapon = "";
         int enemyNumberHand = 5;
 
-        int enemyCursedCards = 0;
+        int enemyCursedCards;
 
         List<Minion> ownminions = new List<Minion>();
         List<Minion> enemyminions = new List<Minion>();
@@ -93,22 +100,23 @@
         List<CardDB.cardIDEnum> enemycards = new List<CardDB.cardIDEnum>();
         List<GraveYardItem> turnGraveYard = new List<GraveYardItem>();
 
-        int ownFenci = 0;
+        int ownFenci;
 
-        int ownHeropowerUsesThisGame = 0;
-        int enemyHeropowerUsesThisGame = 0;
-        int heropowerUsesThisTurn = 0;
-        int locknload = 0;
+        int ownHeropowerUsesThisGame;
+        int enemyHeropowerUsesThisGame;
+        int heropowerUsesThisTurn;
+        int locknload;
 
-        bool feugendead = false;
-        bool stalaggdead = false;
-        public bool datareaded = false;
+        bool feugendead;
+        bool stalaggdead;
+        public bool datareaded;
 
         public BoardTester(string data = "")
         {
             this.boardToSimulate = -1;
             string og = "";
             string eg = "";
+            string td = "";
 
             string omd = "";
             string emd = "";
@@ -141,7 +149,6 @@
                 catch
                 {
                     this.datareaded = false;
-                    Helpfunctions.Instance.logg("cant find test.txt");
                     Helpfunctions.Instance.ErrorLog("cant find test.txt");
                     return;
                 }
@@ -176,6 +183,10 @@
                     {
                         this.boardToSimulate = 1;
                     }
+                    continue;
+                }
+                if (string.IsNullOrWhiteSpace(s))
+                {
                     continue;
                 }
 
@@ -361,6 +372,21 @@
                     continue;
                 }
 
+                if (s.StartsWith("cthunbonus: "))
+                {
+                    String[] ss = s.Split(' ');
+                    anzOgOwnCThunAngrBonus = Convert.ToInt32(ss[1]);
+                    anzOgOwnCThunHpBonus = Convert.ToInt32(ss[2]);
+                    anzOgOwnCThunTaunt = Convert.ToInt32(ss[3]);
+                }
+
+                if (s.StartsWith("jadegolems: "))
+                {
+                    String[] ss = s.Split(' ');
+                    anzOwnJadeGolem = Convert.ToInt32(ss[1]);
+                    anzEnemyJadeGolem = Convert.ToInt32(ss[2]);
+                }
+
                 if (s.StartsWith("ownDiedMinions: "))
                 {
                     omd = s;
@@ -452,6 +478,15 @@
                 if (s.StartsWith("eg:"))
                 {
                     eg = s;
+                    continue;
+                }
+                if (s.StartsWith("td:"))
+                {
+                    td = s;
+                    continue;
+                }
+                if (s.StartsWith("tdc:")) //ignore it, will eventually be removed
+                {
                     continue;
                 }
 
@@ -575,7 +610,7 @@
 
                 if (readstate == 1 && counter >= 5) // secrets
                 {
-                    if (!s.StartsWith("enemyhero:"))
+                    if (!(s.StartsWith("enemyhero:") || s.StartsWith("cthunbonus:") || s.StartsWith("jadegolems:")))
                     {
                         ownsecretlist.Add(s.Replace(" ", ""));
                     }
@@ -700,11 +735,13 @@
                         int explorersHat = 0;
                         if (s.Contains(" explht(")) explorersHat = Convert.ToInt32(s.Split(new string[] { " explht(" }, StringSplitOptions.RemoveEmptyEntries)[1].Split(')')[0]);
 
+                        int infest = 0;//adjadmg
+                        if (s.Contains(" infest(")) infest = Convert.ToInt32(s.Split(new string[] { " infest(" }, StringSplitOptions.RemoveEmptyEntries)[1].Split(')')[0]);
 
 
                         tempminion = createNewMinion(new Handmanager.Handcard(CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(minionid))), zp, true);
                         tempminion.own = true;
-                        tempminion.entitiyID = ent;
+                        tempminion.entityID = ent;
                         tempminion.handcard.entity = ent;
                         tempminion.Angr = attack;
                         tempminion.Hp = hp;
@@ -742,8 +779,8 @@
                         tempminion.ownPowerWordGlory = ownPwordGlory;
                         tempminion.enemyPowerWordGlory = enemyPwordGlory;
                         tempminion.souloftheforest = souloftheforest;
-
-                        tempminion.explorersHat = explorersHat;
+                        tempminion.explorershat = explorersHat;
+                        tempminion.infest = infest;
 
                         tempminion.canAttackNormal = false;
                         if (ready == true) tempminion.canAttackNormal = true;
@@ -831,9 +868,12 @@
                         int explorersHat = 0;
                         if (s.Contains(" explht(")) explorersHat = Convert.ToInt32(s.Split(new string[] { " explht(" }, StringSplitOptions.RemoveEmptyEntries)[1].Split(')')[0]);
 
+                        int infest = 0;//adjadmg
+                        if (s.Contains(" infest(")) infest = Convert.ToInt32(s.Split(new string[] { " infest(" }, StringSplitOptions.RemoveEmptyEntries)[1].Split(')')[0]);
+
                         tempminion = createNewMinion(new Handmanager.Handcard(CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(minionid))), zp, false);
                         tempminion.own = false;
-                        tempminion.entitiyID = ent;
+                        tempminion.entityID = ent;
                         tempminion.handcard.entity = ent;
                         tempminion.Angr = attack;
                         tempminion.Hp = hp;
@@ -871,8 +911,8 @@
                         tempminion.ownPowerWordGlory = ownPwordGlory;
                         tempminion.enemyPowerWordGlory = enemyPwordGlory;
                         tempminion.souloftheforest = souloftheforest;
-
-                        tempminion.explorersHat = explorersHat;
+                        tempminion.explorershat = explorersHat;
+                        tempminion.infest = infest;
 
                         if (maxhp > hp) tempminion.wounded = true;
                         tempminion.updateReadyness();
@@ -907,10 +947,11 @@
                     }
                     catch
                     {
- 
+
                     }
                     card.manacost = mana;
                     card.position = pos;
+
                     handcards.Add(card);
 
                 }
@@ -939,12 +980,14 @@
 
             Hrtprozis.Instance.updatePlayer(this.maxmana, this.mana, this.cardsPlayedThisTurn, this.numMinionsPlayedThisTurn, this.numOptionPlayedThisTurn, this.overdrive, ownHEntity, enemyHEntity, this.numberMinionsDiedThisturn, this.owncurrentRecall, this.enemyRecall, this.heropowerUsesThisTurn, this.locknload);
             Hrtprozis.Instance.setPlayereffects(this.ownDragonConsort, this.enemyDragonConsort, this.ownLoathebs, this.enemyLoathebs, this.ownMillhouse, this.enemyMillhouse, this.ownKirintor, this.ownPrep, this.ownSab, this.enemySab, this.ownFenci, this.enemyCursedCards);
+            Hrtprozis.Instance.updateCThunInfo(this.anzOgOwnCThunAngrBonus, this.anzOgOwnCThunHpBonus, this.anzOgOwnCThunTaunt);
+            Hrtprozis.Instance.updateJadeGolemsInfo(this.anzOwnJadeGolem, this.anzEnemyJadeGolem);
 
 
             Hrtprozis.Instance.updateSecretStuff(this.ownsecretlist, enemySecretAmount);
 
             bool herowindfury = false;
-            if (this.ownHeroWeapon == "doomhammer") herowindfury = true;
+            if (this.ownHeroWeapon == "doomhammer" || this.ownHeroWeapon == "foolsbane") herowindfury = true;
 
             //create heros:
 
@@ -956,8 +999,8 @@
             this.enemyHero.own = false;
             this.ownHero.maxHp = this.ownheromaxhp;
             this.enemyHero.maxHp = this.enemyheromaxhp;
-            this.ownHero.entitiyID = ownHEntity;
-            this.enemyHero.entitiyID = enemyHEntity;
+            this.ownHero.entityID = ownHEntity;
+            this.enemyHero.entityID = enemyHEntity;
 
             this.ownHero.Angr = ownHeroAttack;
             this.ownHero.tempAttack = ownHeroTempAttack;//fix
@@ -1016,6 +1059,7 @@
 
             if (og != "") Probabilitymaker.Instance.readGraveyards(og, eg);
             if (omd != "") Probabilitymaker.Instance.readTurnGraveYard(omd, emd);
+            if (td != "") Hrtprozis.Instance.setTurnDeck(td);
             //Ai.Instance.enemyTurnSim.maxwide = ets;
             //Ai.Instance.enemySecondTurnSim.maxwide = ents;
             Settings.Instance.enemyTurnMaxWide = ets;
@@ -1040,18 +1084,18 @@
             {
                 handcard = new Handmanager.Handcard(hc),
                 zonepos = zonepos,
-                entitiyID = hc.entity,
+                entityID = hc.entity,
                 Angr = hc.card.Attack,
                 Hp = hc.card.Health,
                 maxHp = hc.card.Health,
                 name = hc.card.name,
                 playedThisTurn = true,
-                numAttacksThisTurn = 0
+                numAttacksThisTurn = 0,
+                own = own,
+                isHero = false
             };
 
-            m.own = own;
-            m.isHero = false;
-            m.entitiyID = hc.entity;
+            m.entityID = hc.entity;
             m.playedThisTurn = true;
             m.numAttacksThisTurn = 0;
             m.windfury = hc.card.windfury;

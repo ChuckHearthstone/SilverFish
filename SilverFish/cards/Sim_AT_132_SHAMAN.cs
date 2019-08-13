@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_SHAMAN : SimTemplate //totemiccall
+    class Sim_AT_132_SHAMAN : SimTemplate //totemicslam
     {
 
         //    heldenfähigkeit/\nbeschwört ein zufälliges totem.

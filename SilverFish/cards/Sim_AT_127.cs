@@ -11,19 +11,7 @@ namespace HREngine.Bots
 
         public override void onInspire(Playfield p, Minion m)
         {
-            if (p.isServer)
-            {
-                //TODO
-                p.drawACard(CardDB.cardIDEnum.None, m.own, true);
-                return;
-            }
-
             p.drawACard(CardDB.cardIDEnum.None, m.own, true); 
-
         }
-
-
-       
-
     }
 }

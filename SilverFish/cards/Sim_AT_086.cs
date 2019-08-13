@@ -11,8 +11,8 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (own.own) p.ownSaboteur++;
-            else p.enemySaboteur++;
+            if (own.own) p.anzOwnSaboteur++;
+            else p.anzEnemySaboteur++;
         }
 
         

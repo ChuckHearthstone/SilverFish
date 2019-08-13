@@ -14,7 +14,7 @@ namespace HREngine.Bots
             temp2.Sort((a, b) => a.Hp.CompareTo(b.Hp));//buff the weakest
             foreach (Minion mins in temp2)
             {
-                if (triggerEffectMinion.entitiyID == mins.entitiyID) continue;
+                if (triggerEffectMinion.entityID == mins.entityID) continue;
                 p.minionGetBuffed(mins, 0, 1);
                 break;
             }

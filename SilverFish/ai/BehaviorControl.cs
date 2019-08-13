@@ -11,14 +11,11 @@
             
             if (p.value >= -2000000) return p.value;
             int retval = 0;
-            int hpboarder = 10;
+            int hpboarder = 12;
             if (p.ownHeroName == HeroEnum.warlock && p.enemyHeroName != HeroEnum.mage) hpboarder = 6;
-            int aggroboarder = 11;
+            int aggroboarder = 13;
             retval -= p.evaluatePenality;
             retval += p.owncards.Count * 5;
-
-            retval += p.ownMaxMana;
-            retval -= p.enemyMaxMana;
             
             retval += p.ownMaxMana * 20 - p.enemyMaxMana * 20;
 
@@ -85,75 +82,114 @@
             int ownMinionsCount = 0;
 
             bool enemyhaspatron = false;
+            bool enemyDoomsayer = false;
+            bool ownDoomsayer = false;
+
+            if (p.enemyMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null) enemyDoomsayer = true;
+            if (p.ownMinions.Find(m => m.name == CardDB.cardName.doomsayer && !m.silenced) != null) ownDoomsayer = true;
 
             //
             bool canPingMinions = (p.ownHeroAblility.card.name == CardDB.cardName.fireblast);
-            bool hasPingedMinion = false;
 
-
-            foreach (Minion m in p.enemyMinions)
+            if (enemyDoomsayer)
             {
-                if (m.name == CardDB.cardName.grimpatron && !m.silenced) enemyhaspatron = true;
-
-                int currMinionValue = this.getEnemyMinionValue(m, p);
-
-                // Give a bonus for 1 hp minions as a mage, since we can remove it easier in the future with ping.
-                // But we make sure we only give this bonus once among all enemies. We also give another +1 bonus once if the atk >= 4.
-                if (canPingMinions && !hasPingedMinion && currMinionValue > 2 && m.Hp == 1)
+                foreach (Minion m in p.enemyMinions)
                 {
-                    currMinionValue -= 1;
-                    canPingMinions = false;  // only 1 per turn (-1 bonus regardless of atk)
-                    hasPingedMinion = true;
+                    if (m.name == CardDB.cardName.doomsayer && m.Hp != m.maxHp) retval += -500;
+                    //todo sepefeets - why does this affect all playfields and make it flip flop between attacking doomsayer or another minion?
+                    /*foreach (Action a in p.playactions)
+                    {
+                        if (a.target != null && a.target.entityID == m.entityID) retval += -500;
+                    }*/
                 }
-                if (hasPingedMinion && currMinionValue > 2 && m.Hp == 1 && m.Angr >= 4)
-                {
-                    currMinionValue -= 1;
-                    hasPingedMinion = false;  // only 1 per turn (-1 bonus additional for atk >= 4)
-                }
-
-                retval -= currMinionValue;
-
-                //hasTank = hasTank || m.taunt;
+                //retval += -p.mobsPlayedThisTurn * 500;
             }
-
-            foreach (Minion m in p.ownMinions)
+            if (!enemyDoomsayer && !ownDoomsayer)
             {
-                retval += 5;
-                retval += m.Hp * 2;
-                retval += m.Angr * 2;
-                retval += m.handcard.card.rarity;
-                if (!m.playedThisTurn && m.windfury) retval += m.Angr;
-                if (m.divineshild) retval += 1;
-                if (m.stealth) retval += 1;
-                if (m.handcard.card.isSpecialMinion)
+                foreach (Minion m in p.enemyMinions)
                 {
-                    retval += 1;
-                    if (!m.taunt && m.stealth) retval += 20;
-                }
-                else
-                {
-                    if (m.Angr <= 2 && m.Hp <= 2 && !m.divineshild) retval -= 5;
-                }
-                //if (m.Angr <= m.Hp + 1) retval += m.Angr;
-                //if (!m.taunt && m.stealth && penman.specialMinions.ContainsKey(m.name)) retval += 20;
-                //if (m.poisonous) retval += 1;
-                if (m.divineshild && m.taunt) retval += 4;
-                //if (m.taunt && m.handcard.card.name == CardDB.cardName.frog) owntaunt++;
-                //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
-                //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
-                if (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.bloodmagethalnos) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.nerubianegg)
-                {
-                    if (m.Angr >= 1) retval += 2;
-                    if (m.divineshild || (m.maxHp > 2 && !m.destroyOnOwnTurnEnd)) retval -= 10;
-                    if (p.ownMinions.Count >= 3) retval += 15;
-                }
-                if (m.Ready) readycount++;
-                if (m.maxHp >= 4 && (m.Angr > 2 || m.Hp > 3)) ownMinionsCount++;
-            }
+                    if (m.name == CardDB.cardName.grimpatron && !m.silenced) enemyhaspatron = true;
 
+                    int currMinionValue = this.getEnemyMinionValue(m, p);
+
+                    // Give a bonus for 1 hp minions as a mage, since we can remove it easier in the future with ping.
+                    // But we make sure we only give this bonus once among all enemies. We also give another +1 bonus once if the atk >= 4.
+                    if (canPingMinions && currMinionValue > 2 && m.Hp == 1)
+                    {
+                        currMinionValue -= (m.Angr >= 4) ? 2 : 1;
+                        canPingMinions = false;  // only 1 per turn (-1 bonus regardless of atk)
+                    }
+
+                    retval -= currMinionValue;
+
+                    //hasTank = hasTank || m.taunt;
+                }
+
+                foreach (Minion m in p.ownMinions)
+                {
+                    retval += 5;
+                    retval += m.Hp * 2;
+                    retval += m.Angr * 2;
+                    retval += m.handcard.card.rarity;
+                    if (!m.playedThisTurn && m.windfury) retval += m.Angr;
+                    if (m.divineshild) retval += 1;
+                    if (m.stealth) retval += 1;
+                    if (m.handcard.card.isSpecialMinion)
+                    {
+                        retval += 1;
+                        if (!m.taunt && m.stealth) retval += 20;
+                    }
+                    else
+                    {
+                        if (m.Angr <= 2 && m.Hp <= 2 && !m.divineshild) retval -= 5;
+                    }
+                    //if (m.Angr <= m.Hp + 1) retval += m.Angr;
+                    //if (!m.taunt && m.stealth && penman.specialMinions.ContainsKey(m.name)) retval += 20;
+                    //if (m.poisonous) retval += 1;
+                    if (m.divineshild && m.taunt) retval += 4;
+                    //if (m.taunt && m.handcard.card.name == CardDB.cardName.frog) owntaunt++;
+                    //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
+                    //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
+                    if (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader) retval += 10;
+                    if (m.handcard.card.name == CardDB.cardName.bloodmagethalnos) retval += 10;
+                    if (m.handcard.card.name == CardDB.cardName.nerubianegg)
+                    {
+                        if (m.Angr >= 1) retval += 2;
+                        if (m.divineshild || (m.maxHp > 2 && !m.destroyOnOwnTurnEnd)) retval -= 10;
+                        if (p.ownMinions.Count >= 3) retval += 15;
+                    }
+                    if (m.Ready) readycount++;
+                    if (m.maxHp >= 4 && (m.Angr > 2 || m.Hp > 3)) ownMinionsCount++;
+                }
+
+                int mobsInHand = 0;
+                int bigMobsInHand = 0;
+                foreach (Handmanager.Handcard hc in p.owncards)
+                {
+                    if (hc.card.type == CardDB.cardtype.MOB)
+                    {
+                        mobsInHand++;
+                        if (hc.card.Attack >= 3 && hc.card.Health >= 3) bigMobsInHand++;
+                    }
+                }
+
+                //stuff for not flooding board
+                int mobsturnbegin = Hrtprozis.Instance.ownMinions.Count;
+                if (ownMinionsCount > mobsturnbegin)
+                {
+                    if (ownMinionsCount - p.enemyMinions.Count >= 3)
+                    {
+                        retval += bigMobsInHand * 50 + mobsInHand * 10;
+                    }
+
+                    if (p.turnCounter <= 1 && p.ownMinions.Count - p.enemyMinions.Count >= 4)
+                    {
+                        retval -= (p.ownMinions.Count - p.enemyMinions.Count - 3) * 10;
+                    }
+                }
+            }
            
+
 
             /*if (p.enemyMinions.Count >= 0)
             {
@@ -164,13 +200,18 @@
 
             bool useAbili = false;
             int usecoin = 0;
+            int deletecardsAtLast = 0;
             //bool lastCoin = false;
             foreach (Action a in p.playactions)
             {
                 //lastCoin = false;
-                if (a.actionType == actionEnum.attackWithHero && p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                if (a.actionType == actionEnum.attackWithHero)
+                {
+                    if (p.enemyMinions.Find(m => m.entityID == a.target.entityID) != null) retval -= a.target.Angr;
+                    if (p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                    if (p.ownHeroName == HeroEnum.warrior && useAbili) retval -= 1;
+                }
                 if (a.actionType == actionEnum.useHeroPower) useAbili = true;
-                if (p.ownHeroName == HeroEnum.warrior && a.actionType == actionEnum.attackWithHero && useAbili) retval -= 1;
                 //if (a.actionType == actionEnum.useHeroPower && a.card.card.name == CardDB.cardName.lesserheal && (!a.target.own)) retval -= 5;
                 if (a.actionType != actionEnum.playcard) continue;
                 if (a.card.card.name == CardDB.cardName.thecoin)
@@ -181,6 +222,8 @@
                 {
                     usecoin = 2;
                 }
+                if (a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus) deletecardsAtLast = 1;
+                if (deletecardsAtLast == 1 && !(a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus)) retval -= 20;
                 //save spell for all classes: (except for rouge if he has no combo)
                 if (a.target == null) continue;
                 if (p.ownHeroName != HeroEnum.thief && a.card.card.type == CardDB.cardtype.SPELL && (!a.target.own && a.target.isHero) && a.card.card.name != CardDB.cardName.shieldblock) retval -= 11;
@@ -192,37 +235,12 @@
             int heropowermana = p.ownHeroAblility.card.getManaCost(p, 2);
             if (p.manaTurnEnd >= heropowermana && !useAbili && p.ownAbilityReady)
             {
-                if (!(p.ownHeroName == HeroEnum.thief && (p.ownWeaponDurability >= 2 || p.ownWeaponAttack >= 2))) retval -= 20;
-                if (p.ownHeroName == HeroEnum.pala && enemyhaspatron) retval += 20;
+                if (!(p.ownHeroName == HeroEnum.thief && (p.ownWeaponDurability >= 2 || p.ownWeaponAttack >= 2))) retval -= 100;
+                if (p.ownHeroName == HeroEnum.pala && enemyhaspatron) retval += 100;
             }
             if (useAbili && usecoin == 2) retval -= 5;
             //if (usecoin && p.manaTurnEnd >= 1 && p.owncards.Count <= 8) retval -= 100;
 
-            int mobsInHand = 0;
-            int bigMobsInHand = 0;
-            foreach (Handmanager.Handcard hc in p.owncards)
-            {
-                if (hc.card.type == CardDB.cardtype.MOB)
-                {
-                    mobsInHand++;
-                    if (hc.card.Attack >= 3 && hc.card.Health >= 3) bigMobsInHand++;
-                }
-            }
-
-            //stuff for not flooding board
-            int mobsturnbegin = Hrtprozis.Instance.ownMinions.Count;
-            if (ownMinionsCount > mobsturnbegin)
-            {
-                if (ownMinionsCount - p.enemyMinions.Count >= 3)
-                {
-                    retval += bigMobsInHand * 50 + mobsInHand * 10;
-                }
-
-                if (p.turnCounter <= 1 && p.ownMinions.Count - p.enemyMinions.Count >= 4)
-                {
-                    retval -= (p.ownMinions.Count - p.enemyMinions.Count - 3) * 10;
-                }
-            }
 
 
             //bool hasTank = false;
@@ -270,16 +288,6 @@
             {
                 // if our damage on board is lethal, give a strong bonus so enemy AI avoids this outcome in its turn (i.e. AI will clear our minions if it can instead of ignoring them)
                 if (p.turnCounter == 1 && p.guessHeroDamage(true) >= p.enemyHero.Hp + p.enemyHero.armor) retval += 100;
-            }
-
-
-            //soulfire etc
-            int deletecardsAtLast = 0;
-            foreach (Action a in p.playactions)
-            {
-                if (a.actionType != actionEnum.playcard) continue;
-                if (a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus) deletecardsAtLast = 1;
-                if (deletecardsAtLast == 1 && !(a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus)) retval -= 20;
             }
 
             if (p.enemyHero.Hp >= 1 && p.ownHero.Hp <= 0)
@@ -380,7 +388,7 @@
 
             if (m.handcard.card.targetPriority >= 1 && !m.silenced)
             {
-                retval += m.handcard.card.targetPriority;
+                retval += 5 + m.handcard.card.targetPriority;
             }
             if (m.name == CardDB.cardName.nerubianegg && m.Angr <= 3 && !m.taunt) retval = 0;
 

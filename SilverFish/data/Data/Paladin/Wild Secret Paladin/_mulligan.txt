@@ -1,0 +1,239 @@
+// This File: _mulligan.txt
+//    Author: Sepefeets
+//   Credits: Blackoak, emilcoff, Dre, Per4mer
+//   Version: 0.4 (11-Jan-16)
+//   History: [fix] Massive overhaul for current meta https://tempostorm.com/hearthstone/decks/secret-paladin-meta-snapshot-43
+//			: [fix] Improved All classes
+//			: [add] Faerie Dragon
+//			: [add] Gadgetzan Jouster thanks Per4mer
+//			: [fix] Many!
+// Deck Name: SecretPaladin
+//      Hero: Paladin
+// Deck Type: Mid-Range (Control)
+
+// - P A L A D I N ------------------------------
+// [1] Avenge (FP1_020)
+// [1] Noble Sacrifice (EX1_130)
+// [1] Redemption (EX1_136)
+// [1] Competitive Spirit (AT_073)
+// [2] Shielded Minibot (GVG_058)
+// [3] Coghammer (GVG_059)
+// [3] Muster for Battle (GVG_061)
+// [4] Blessing of Kings (CS2_092)
+// [4] Consecration (CS2_093)
+// [4] Truesilver Champion (CS2_097)
+// [6] Mysterious Challenger (AT_079)
+// [8] Tirion Fordring (EX1_383)
+// - N E U T R A L ------------------------------
+// [1] Secretkeeper (EX1_080)
+// [2] Haunted Creeper (FP1_002)
+// [2] Knife Juggler (NEW1_019)
+// [4] Piloted Shredder (GVG_096)
+// [5] Loatheb (FP1_030)
+// [5] Sludge Belcher (FP1_012)
+// [7] Dr. Boom (GVG_110)
+// - V A R I A T I O N S ------------------------
+// [1] Repentance (EX1_379)
+// [1] Argent Squire (EX1_008)
+// [2] Ironbeak Owl (CS2_203)
+// [2] Equality (EX1_619)
+// [3] Divine Favor (EX1_349)
+// [8] Ragnaros the Firelord (EX1_298)
+// [4] Murloc Knight (AT_076)
+
+// - A L L --------------------------------------
+// 1-DROP
+// Keep 1x Secretkeeper (and either 1x Noble Sacrifice or 1x Avenge if we have Secretkeeper)
+// 1x Secretkeeper
+hold;pala;all;EX1_080:1
+// 1x Avenge + Secretkeeper
+hold;pala;all;FP1_020:1:EX1_080
+// 1x Noble Sacrifice + Secretkeeper
+hold;pala;all;EX1_130:1:EX1_080
+
+// 2-DROP
+// Haunted Creeper
+hold;pala;all;FP1_002:1
+// Shielded Minibot
+hold;pala;all;GVG_058:1
+hold;pala;all;GVG_058:2;coin
+
+// 3-DROP
+// 1x Muster for Battle
+hold;pala;all;GVG_061:1
+
+// 4-DROP
+// 1x Blessing of Kings + Argent Squire + Shielded Minibot
+// hold;pala;all;CS2_092:1:EX1_008+GVG_058;coin
+
+// 6-DROP
+// 1x Mysterious Challenger + Coin
+hold;pala;all;AT_079:1;coin
+
+// IDEAL HAND -----------------------------------
+// [1] Competitive Spirit + [3] Muster for Battle + Coin
+hold;pala;all;AT_073:1:GVG_061;coin
+
+
+
+// - D R U I D ----------------------------------
+// 2-DROP
+// Knife Juggler
+hold;pala;druid;NEW1_019:1
+hold;pala;druid;NEW1_019:2;coin
+
+// 3-DROP
+// 1x Coghammer
+//hold;pala;druid;GVG_059:1
+
+// 4-DROP
+// 1x Piloted Shredder
+//hold;pala;druid;GVG_096:1
+// 1x Piloted Shredder + 1-Drop + 2-Drop + Coin
+// hold;pala;druid;GVG_096:1:EX1_080+FP1_002/EX1_080+NEW1_019/EX1_080+GVG_058;coin
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;druid;AT_079:1
+// 1x Mysterious Challenger + Secretkeeper + Coin
+//hold;pala;druid;AT_079:1:EX1_080;coin
+
+
+// - H U N T E R --------------------------------
+// 1-DROP
+// 1x Noble Sacrifice
+hold;pala;hunter;EX1_130:1
+
+// 2-DROP
+// 1x Ironbeak Owl
+//hold;pala;hunter;CS2_203:1
+
+// 3-DROP
+// 1x Coghammer if no 1x Muster for Battle
+//hold;pala;hunter;GVG_059:1:-GVG_061
+
+// 4-DROP
+// 1x Consecration
+// hold;pala;hunter;CS2_093:1
+
+
+// - M A G E ------------------------------------
+// 2-DROP
+// 1x Ironbeak Owl
+//hold;pala;mage;CS2_203:1
+// Knife Juggler
+hold;pala;mage;NEW1_019:1
+hold;pala;mage;NEW1_019:2;coin
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;mage;AT_079:1
+
+
+// - P A L A D I N ------------------------------
+// 2-DROP
+// Knife Juggler
+hold;pala;pala;NEW1_019:1
+hold;pala;pala;NEW1_019:2;coin
+
+// 3-DROP
+// 1x Coghammer + Coin
+// hold;pala;pala;GVG_059:1;coin
+
+// 4-DROP
+// 1x Consecration
+hold;pala;pala;CS2_093:1
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;pala;AT_079:1
+
+
+// - P R I E S T --------------------------------
+// 2-DROP
+// Knife Juggler
+hold;pala;priest;NEW1_019:1
+hold;pala;priest;NEW1_019:2;coin
+
+// 3-DROP
+// 1x Coghammer
+//hold;pala;priest;GVG_059:1
+
+// 4-DROP
+// 1x Piloted Shredder
+hold;pala;priest;GVG_096:1
+
+// 6-DROP
+// 1x Mysterious Challenger
+hold;pala;priest;AT_079:1
+
+
+// - R O G U E ----------------------------------
+// 2-DROP
+// Knife Juggler
+hold;pala;thief;NEW1_019:1
+hold;pala;thief;NEW1_019:2;coin
+
+// 3-DROP
+// 1x Coghammer if no 1x Truesilver Champion
+//hold;pala;thief;GVG_059:1:-CS2_097
+
+// 4-DROP
+// 1x Piloted Shredder + 1-Drop + 2-Drop + Coin
+//hold;pala;thief;GVG_096:1:EX1_080+FP1_002/EX1_080+NEW1_019/EX1_080+GVG_058;coin
+// 1x Truesilver Champion
+hold;pala;thief;CS2_097:1
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;thief;AT_079:1
+
+
+// - S H A M A N --------------------------------
+// 2-DROP
+// Knife Juggler
+hold;pala;shaman;NEW1_019:1
+hold;pala;shaman;NEW1_019:2;coin
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;shaman;AT_079:1
+
+
+// - W A R L O C K ------------------------------
+// 2-DROP
+// 1x Ironbeak Owl
+//hold;pala;warlock;CS2_203:1
+// Knife Juggler
+hold;pala;warlock;NEW1_019:1
+hold;pala;warlock;NEW1_019:2;coin
+
+// 3-DROP
+// 1x Coghammer + Coin
+// hold;pala;warlock;GVG_059:1;coin
+
+// 4-DROP
+// 1x Consecration + Coin
+// hold;pala;warlock;CS2_093:1;coin
+
+// 6-DROP
+// 1x Mysterious Challenger
+//hold;pala;warlock;AT_079:1
+
+
+// - W A R R I O R ------------------------------
+// 2-DROP
+// 1x Ironbeak Owl
+//hold;pala;warrior;CS2_203:1
+// Knife Juggler
+hold;pala;warrior;NEW1_019:1
+hold;pala;warrior;NEW1_019:2;coin
+
+// 4-DROP
+// 1x Piloted Shredder
+//hold;pala;warrior;GVG_096:1
+
+// 6-DROP
+// 1x Mysterious Challenger
+hold;pala;warrior;AT_079:1
+

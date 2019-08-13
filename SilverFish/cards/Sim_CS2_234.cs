@@ -6,13 +6,14 @@ namespace HREngine.Bots
 {
 	class Sim_CS2_234 : SimTemplate //shadowwordpain
 	{
+        // Destroy a minion with 3 or less Attack.
 
-//    vernichtet einen diener mit max. 3 angriff.
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            p.minionGetDestroyed(target);
-		}
-
-
+        {
+            if (target.Angr <= 3)
+            {
+                p.minionGetDestroyed(target);
+            }
+        }
 	}
 }

@@ -13,7 +13,7 @@ namespace HREngine.Bots
         {
             foreach (Minion mini in (m.own) ? p.ownMinions : p.enemyMinions)
             {
-                if (m.entitiyID != mini.entitiyID) p.minionGetBuffed(mini, 1, 1);
+                if (m.entityID != mini.entityID) p.minionGetBuffed(mini, 1, 1);
             }
         }
 
