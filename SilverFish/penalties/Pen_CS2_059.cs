@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_059 : PenTemplate //bloodimp
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verstohlenheit/. verleiht am ende eures zuges einem anderen zufälligen befreundeten diener +1 leben.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -6,13 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_565 : PenTemplate //flametonguetotem
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    benachbarte diener haben +2 angriff.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-            if (p.enemyMinions.Count == 0)
-                return 20;
-
-
-			return 0;
+		return 0;
 		}
+
 	}
 }

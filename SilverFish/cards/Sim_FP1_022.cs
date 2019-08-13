@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_FP1_022 : SimTemplate //voidcaller
+	class Sim_FP1_022 : SimTemplate //* voidcaller
 	{
+        //Deathrattle: Put a random Demon from your hand into the battlefield.
         CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_301);//felguard
-//    todesröcheln:/ legt einen zufälligen dämon aus eurer hand auf das schlachtfeld.
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
@@ -26,20 +26,18 @@ namespace HREngine.Bots
 
                 foreach (Handmanager.Handcard mnn in temp)
                 {
-                    p.callKid(mnn.card, p.ownMinions.Count, true);
+                    p.callKid(mnn.card, p.ownMinions.Count, true, false);
                     p.removeCard(mnn);
                     break;
                 }
-
             }
             else
             {
                 if (p.enemyAnzCards >= 1)
                 {
-                    p.callKid(c, p.enemyMinions.Count , false);
+                    p.callKid(c, p.enemyMinions.Count, false, false);
                 }
             }
         }
-
 	}
 }

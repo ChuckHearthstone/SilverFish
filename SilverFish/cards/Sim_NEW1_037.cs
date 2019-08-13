@@ -4,21 +4,28 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_037 : SimTemplate //masterswordsmith
+    class Sim_NEW1_037 : SimTemplate //* Master Swordsmith
 	{
+        //At the end of your turn, give another random friendly minion +1 Attack.
 
-//    verleiht am ende eures zuges einem anderen zufälligen befreundeten diener +1 angriff.
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
-            if (turnEndOfOwner == triggerEffectMinion.own)
+            if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                List<Minion> temp2 = new List<Minion>(p.ownMinions);
-                temp2.Sort((a, b) => a.Angr.CompareTo(b.Angr));//buff the weakest
-                foreach (Minion mins in temp2)
+                List<Minion> tmp = turnEndOfOwner ? p.ownMinions : p.enemyMinions;
+                int count = tmp.Count;
+                if (count > 1)
                 {
-                    if (triggerEffectMinion.zonepos == mins.zonepos) continue;
-                    p.minionGetBuffed(mins, 1, 0);
-                    break;
+                    Minion mnn = null;
+                    if (triggerEffectMinion.entitiyID != tmp[0].entitiyID) mnn = tmp[0];
+                    else mnn = tmp[1];
+
+                    for (int i = 1; i < count; i++)
+                    {
+                        if (triggerEffectMinion.entitiyID == tmp[i].entitiyID) continue;
+                        if (tmp[i].Hp < mnn.Hp) mnn = tmp[i]; //take the weakest
+                    }
+                    if (mnn != null) p.minionGetBuffed(mnn, 1, 0);
                 }
             }
         }

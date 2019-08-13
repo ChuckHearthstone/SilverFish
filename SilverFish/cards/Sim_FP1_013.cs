@@ -4,22 +4,21 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_FP1_013 : SimTemplate //kelthuzad
+    class Sim_FP1_013 : SimTemplate //* Kel'Thuzad
 	{
+        // At the end of each turn, summon all friendly minions that died this turn.
 
-//    ruft am ende jedes zuges alle befreundeten diener herbei, die in diesem zug gestorben sind.
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
-            foreach (GraveYardItem m in p.diedMinions.ToArray()) // toArray() because a knifejuggler could kill a minion due to the summon :D
+            foreach (GraveYardItem gyi in p.diedMinions.ToArray()) // toArray() because a knifejuggler could kill a minion due to the summon :D
             {
-                if (triggerEffectMinion.own == m.own)
+                if (gyi.own == triggerEffectMinion.own)
                 {
-                    CardDB.Card card = CardDB.Instance.getCardDataFromID(m.cardid);
-                    p.callKid(card, p.ownMinions.Count, m.own);
+                    CardDB.Card card = CardDB.Instance.getCardDataFromID(gyi.cardid);
+                    int pos = triggerEffectMinion.own ? p.ownMinions.Count : p.enemyMinions.Count;
+                    p.callKid(card, p.ownMinions.Count, gyi.own);
                 }
             }
         }
-
 	}
-
 }

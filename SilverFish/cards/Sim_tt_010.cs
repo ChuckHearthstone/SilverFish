@@ -17,25 +17,27 @@ namespace HREngine.Bots
             if (ownplay)
             {
                 int posi = p.ownMinions.Count;
+                if (posi > 6) return;
                 p.callKid(kid, posi, true);
                 if (p.ownMinions.Count >= 1)
                 {
                     if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.cardName.spellbender)
                     {
-                        number = p.ownMinions[p.ownMinions.Count - 1].entityID;
+                        number = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
                     }
                 }
             }
             else
             {
                 int posi = p.enemyMinions.Count;
+                if (posi > 6) return;
                 p.callKid(kid, posi, false);
 
                 if (p.enemyMinions.Count >= 1)
                 {
                     if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardDB.cardName.spellbender)
                     {
-                        number = p.enemyMinions[p.enemyMinions.Count - 1].entityID;
+                        number = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
                     }
                 }
             }

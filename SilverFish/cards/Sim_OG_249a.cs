@@ -6,6 +6,6 @@ namespace HREngine.Bots
 {
 	class Sim_OG_249a : SimTemplate //* Slime 2/2
 	{
-		
+		// -
 	}
 }

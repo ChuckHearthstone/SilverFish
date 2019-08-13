@@ -15,7 +15,7 @@ namespace HREngine.Bots
             if (dmg >= target.Hp && !target.divineshild && !target.immune)
             {
                 //this.owncarddraw++;
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
+                p.drawACard(CardDB.cardName.unknown, ownplay);
             }
             p.minionGetDamageOrHeal(target, dmg);
             

@@ -4,22 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_060 : SimTemplate //bear trap
-    {
+	class Sim_AT_060 : SimTemplate //* Bear Trap
+	{
+		//Secret: After your hero is attacked, summon a 3/3 Bear with Taunt.
 
-        //    After your hero is attacked, summon a 3/3 Bear with taunt
-
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125);
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125);//Ironfur Grizzly
 
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
-            int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, pos, ownplay);
+            int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
+            p.callKid(kid, place, ownplay);
         }
-
-       
-
-
     }
-
 }

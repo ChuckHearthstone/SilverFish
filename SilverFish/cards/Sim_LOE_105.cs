@@ -4,18 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_105 : SimTemplate //explorershat
-    {
+	class Sim_LOE_105 : SimTemplate //* Explorer's Hat
+	{
+		//Give a minion +1/+1 and "Deathrattle: Add an Explorer's Hat to your hand."
 
-        //   give a minion +1/+1 and Deathrattle: Add an Explorer's Hat to your hand.
-
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-        {
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		{
             p.minionGetBuffed(target, 1, 1);
             target.explorershat++;
-        }
-
-
-    }
-
+		}
+	}
 }

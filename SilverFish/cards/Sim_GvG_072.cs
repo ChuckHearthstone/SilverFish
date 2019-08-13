@@ -4,22 +4,24 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_072 : SimTemplate //Shadowboxer
+    class Sim_GVG_072 : SimTemplate //* Shadowboxer
     {
-
         // Whenever a character is healed, deal 1 damage to a random enemy.  
 
-        public override void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
+        public override void onACharGotHealed(Playfield p, Minion triggerEffectMinion, int charsGotHealed)
         {
-            Minion t = p.searchRandomMinion((triggerEffectMinion.own) ? p.enemyMinions : p.ownMinions, Playfield.searchmode.searchHighestHP);
-            if (t != null)
+            Minion target = null;
+
+            if (triggerEffectMinion.own)
             {
-                p.minionGetDamageOrHeal(t, 1);
+                target = p.getEnemyCharTargetForRandomSingleDamage(charsGotHealed);
             }
             else
             {
-                p.minionGetDamageOrHeal((triggerEffectMinion.own) ? p.enemyHero : p.ownHero, 1);
+                target = p.searchRandomMinion(p.ownMinions, searchmode.searchHighestAttack); //damage the Highest (pessimistic)
+                if (target == null) target = p.ownHero;
             }
+            p.minionGetDamageOrHeal(target, charsGotHealed, true);
         }
     }
 }

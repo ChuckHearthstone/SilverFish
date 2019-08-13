@@ -4,34 +4,23 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_BRM_027p : SimTemplate //DIE, INSECT!
-    {
-
-        //   Hero Power: Deal 8 damage to a random enemy.
-
+	class Sim_BRM_027p : SimTemplate //* DIE, INSECT!
+	{
+		// Hero Power: Deal 8 damage to a random enemy.
+		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-
-            int count = (ownplay) ? p.enemyMinions.Count : p.ownMinions.Count;
-            if (count >= 1)
+            int dmg = (ownplay) ? p.getHeroPowerDamage(8) : p.getEnemyHeroPowerDamage(8);
+            if (ownplay)
             {
-                List<Minion> temp2 = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
-                temp2.Sort((a, b) => a.Hp.CompareTo(b.Hp));//damage the lowest
-                foreach (Minion mins in temp2)
-                {
-                    p.minionGetDamageOrHeal(mins, 8);
-                    break;
-                }
+                target = p.getEnemyCharTargetForRandomSingleDamage(dmg);
             }
             else
             {
-                p.minionGetDamageOrHeal(ownplay ? p.enemyHero : p.ownHero, 8);
+                target = p.searchRandomMinion(p.ownMinions, searchmode.searchHighestAttack); //damage the Highest (pessimistic)
+                if (target == null) target = p.ownHero;
             }
-
+            p.minionGetDamageOrHeal(target, dmg, true);
         }
-
-
-
-    }
-
+	}
 }

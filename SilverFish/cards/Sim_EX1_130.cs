@@ -4,10 +4,9 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_EX1_130 : SimTemplate //noblesacrifice
+    class Sim_EX1_130 : SimTemplate //* noblesacrifice
     {
-        //todo secret
-        //    geheimnis:/ wenn ein feind angreift, ruft ihr einen verteidiger (2/1) als neues ziel herbei.
+        //Secret: When an enemy attacks, summon a 2/1 Defender as the new target.
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_130a);
 
@@ -16,32 +15,29 @@ namespace HREngine.Bots
             number = 0;
             if (ownplay)
             {
-                int posi = p.ownMinions.Count;
-                p.callKid(kid, posi, true);
+                int pos = p.ownMinions.Count;
+                p.callKid(kid, pos, true, true, true);
                 if (p.ownMinions.Count >= 1)
                 {
                     if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.cardName.defender)
                     {
-                        number = p.ownMinions[p.ownMinions.Count - 1].entityID;
+                        number = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
                     }
                 }
             }
             else
             {
-                int posi = p.enemyMinions.Count;
-                p.callKid(kid, posi, false);
+                int pos = p.enemyMinions.Count;
+                p.callKid(kid, pos, false, true, true);
 
                 if (p.enemyMinions.Count >= 1)
                 {
                     if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardDB.cardName.defender)
                     {
-                        number = p.enemyMinions[p.enemyMinions.Count - 1].entityID;
+                        number = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
                     }
                 }
             }
-
         }
-
     }
-
 }

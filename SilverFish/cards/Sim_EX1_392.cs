@@ -16,11 +16,11 @@ namespace HREngine.Bots
             {
                 if (mnn.wounded)
                 {
-                    p.drawACard(CardDB.cardIDEnum.None, ownplay);
+                    p.drawACard(CardDB.cardName.unknown, ownplay);
                 }
             }
-            if (ownplay && p.ownHero.Hp < 30) p.drawACard(CardDB.cardIDEnum.None, true);
-            if (!ownplay && p.enemyHero.Hp < 30) p.drawACard(CardDB.cardIDEnum.None, false);
+            if (ownplay && p.ownHero.Hp < 30) p.drawACard(CardDB.cardName.unknown, true);
+            if (!ownplay && p.enemyHero.Hp < 30) p.drawACard(CardDB.cardName.unknown, false);
 
 		}
 

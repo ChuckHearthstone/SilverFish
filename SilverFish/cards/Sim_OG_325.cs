@@ -6,6 +6,6 @@ namespace HREngine.Bots
 {
 	class Sim_OG_325 : SimTemplate //* Carrion Grub
 	{
-		
+		// -
 	}
 }

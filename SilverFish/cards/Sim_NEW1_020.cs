@@ -4,18 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_020 : SimTemplate //wildpyromancer
+	class Sim_NEW1_020 : SimTemplate //* Wild Pyromancer
 	{
+		// After you cast a spell, deal 1 damage to ALL minions.
 
-//    fügt allen dienern 1 schaden zu, nachdem ihr einen zauber gewirkt habt.
-        //we do this manually (because there are only 2 minions which have this trigger)
-        /*public override void onCardWasPlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (triggerEffectMinion.own == wasOwnCard)
-            {
-                p.allMinionsGetDamage(1);
-            }
+            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL) p.allMinionsGetDamage(1);
         }
-        */
 	}
 }

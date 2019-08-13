@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_020 : PenTemplate //avenge
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    geheimnis:/ wenn einer eurer diener stirbt, erhält ein zufälliger befreundeter diener +3/+2.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_131 : PenTemplate //defiasringleader
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    combo:/ ruft einen banditen der defias (2/1) herbei.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

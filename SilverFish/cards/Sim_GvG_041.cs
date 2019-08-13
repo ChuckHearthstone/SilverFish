@@ -11,7 +11,7 @@ namespace HREngine.Bots
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -19,7 +19,7 @@ namespace HREngine.Bots
                     p.callKid(kid, pos, ownplay);
                 }
             }
-            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 if (target != null)
                 {

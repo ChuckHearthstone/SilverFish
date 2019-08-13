@@ -4,18 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_110 : SimTemplate //Argent Watchman
-    {
+	class Sim_AT_110 : SimTemplate //* Coliseum Manager
+	{
+		//Inspire: Return this minion to your hand.
 
-        //insprire: Can attack as normal this turn.
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            p.minionReturnToHand(m, m.own, 0);
+			if (m.own == own)
+			{
+				p.minionReturnToHand(m, own, 0);
+			}
         }
-
-
-
-    }
-
+	}
 }

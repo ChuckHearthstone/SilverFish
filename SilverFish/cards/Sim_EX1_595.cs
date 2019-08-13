@@ -4,18 +4,21 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_595 : SimTemplate //cultmaster
+	class Sim_EX1_595 : SimTemplate //* cultmaster
 	{
+        // Whenever one of your other minions dies, draw a card.
 
-//    zieht jedes mal eine karte, wenn einer eurer anderen diener stirbt.
-
-        public override void onMinionDiedTrigger(Playfield p, Minion triggerEffectMinion, Minion diedMinion)
+        public override void onMinionDiedTrigger(Playfield p, Minion m, Minion diedMinion)
         {
-            if (triggerEffectMinion.own == diedMinion.own)
+            int diedMinions = (m.own) ? p.tempTrigger.ownMinionsDied : p.tempTrigger.enemyMinionsDied;
+            if (diedMinions == 0) return;
+            int residual = (p.pID == m.pID) ? diedMinions - m.extraParam2 : diedMinions;
+            m.pID = p.pID;
+            m.extraParam2 = diedMinions;
+            for (int i = 0; i < residual; i++)
             {
-                p.drawACard(CardDB.cardIDEnum.None, triggerEffectMinion.own);
+                p.drawACard(CardDB.cardName.unknown, m.own);
             }
         }
-
 	}
 }

@@ -17,7 +17,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(p.ownWeaponName, m.own, true);
+            p.drawACard(p.ownWeapon.name, m.own, true);
         }
     }
 }

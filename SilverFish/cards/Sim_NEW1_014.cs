@@ -4,15 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_014 : SimTemplate //masterofdisguise
+    class Sim_NEW1_014 : SimTemplate //* Master of Disguise
 	{
+        // Battlecry: Give a friendly minion Stealth until your next turn.
 
-//    kampfschrei:/ verleiht einem befreundeten diener verstohlenheit/.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (target != null) target.stealth = true;
+            if (target != null)
+            {
+                target.stealth = true;
+                target.conceal = true;
+            }
 		}
-
-
 	}
 }

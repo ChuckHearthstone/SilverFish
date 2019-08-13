@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
 
         //   Adjacent minions can't be targeted by spells or Hero Powers.
-
+        // Handled in updateBoards()
 
 
 

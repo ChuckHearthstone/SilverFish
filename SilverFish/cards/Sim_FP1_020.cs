@@ -13,16 +13,17 @@ namespace HREngine.Bots
         {
             List<Minion> temp = new List<Minion>();
 
+
             if (ownplay)
             {
                 List<Minion> temp2 = new List<Minion>(p.ownMinions);
-                temp2.Sort((a, b) => a.Angr.CompareTo(b.Angr));
+                temp2.Sort((a, b) => -a.Angr.CompareTo(b.Angr));
                 temp.AddRange(temp2);
             }
             else
             {
                 List<Minion> temp2 = new List<Minion>(p.enemyMinions);
-                temp2.Sort((a, b) => -a.Angr.CompareTo(b.Angr));
+                temp2.Sort((a, b) => a.Angr.CompareTo(b.Angr));
                 temp.AddRange(temp2);
             }
 

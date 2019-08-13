@@ -12,8 +12,7 @@ namespace HREngine.Bots
 		{
             if (own.own)
             {
-                p.anzOgOwnCThunHpBonus += 2;
-                p.anzOgOwnCThunAngrBonus += 2;
+                p.cthunGetBuffed(2, 2, 0);
             }
 		}
 	}

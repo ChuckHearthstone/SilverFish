@@ -1,31 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_063t : SimTemplate //Dreadscale
-    {
+	class Sim_AT_063t : SimTemplate //* Dreadscale
+	{
+		//At the end of your turn, deal 1 damage to all other minions.
 
-        //Whenever another minion takes damage, destroy it
-        //destroying done in triggerAMinionGotDmg
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                foreach (Minion m in p.ownMinions)
-                {
-                    if (m.entityID != triggerEffectMinion.entityID) p.minionGetDamageOrHeal(m, 1);
-                }
-
-                foreach (Minion m in p.enemyMinions)
-                {
-                    if (m.entityID != triggerEffectMinion.entityID) p.minionGetDamageOrHeal(m, 1);
-                }
+                p.allMinionsGetDamage(1, triggerEffectMinion.entitiyID);
             }
         }
-
-       
-
-    }
+	}
 }

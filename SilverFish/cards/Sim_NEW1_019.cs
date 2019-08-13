@@ -11,7 +11,7 @@ namespace HREngine.Bots
         //    fügt einem zufälligen feind 1 schaden zu, nachdem ihr einen diener herbeigerufen habt.
         public override void onMinionWasSummoned(Playfield p, Minion triggerEffectMinion, Minion summonedMinion)
         {
-            if (triggerEffectMinion.entityID != summonedMinion.entityID && triggerEffectMinion.own == summonedMinion.own)
+            if (triggerEffectMinion.entitiyID != summonedMinion.entitiyID && triggerEffectMinion.own == summonedMinion.own)
             {
                 List<Minion> temp = (triggerEffectMinion.own) ? p.enemyMinions : p.ownMinions;
 
@@ -53,5 +53,7 @@ namespace HREngine.Bots
                 triggerEffectMinion.stealth = false;
             }
         }
+
     }
+
 }

@@ -1,22 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_007t : SimTemplate //Cursed!
-    {
+	class Sim_LOE_007t : SimTemplate //* Cursed!
+	{
+		//While this is in your hand, take 2 damage at the start of your turn.
 
-        //While this is in your hand, take 2 damage at the start of your turn.
-
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onTurnStartTrigger(Playfield p, Minion triggerEffectMinion, bool turnStartOfOwner)
         {
-            if (!ownplay)
+            if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                p.anzEnemyCursed--;
+                p.minionGetDamageOrHeal(turnStartOfOwner ? p.ownHero : p.enemyHero, 2, true);
             }
         }
-
-
     }
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_154b : PenTemplate //wrath
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt einem diener $1 schaden zu. zieht eine karte.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

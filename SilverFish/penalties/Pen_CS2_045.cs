@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_045 : PenTemplate //rockbiterweapon
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verleiht einem befreundeten charakter +3 angriff in diesem zug.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

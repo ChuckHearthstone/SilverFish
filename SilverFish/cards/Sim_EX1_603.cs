@@ -4,19 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_603 : SimTemplate //crueltaskmaster
+    class Sim_EX1_603 : SimTemplate //* Cruel Taskmaster
 	{
+        // Battlecry: Deal 1 damage to a minion and give it +2 
 
-//    kampfschrei:/ fügt einem diener 1 schaden zu und verleiht ihm +2 angriff.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             if (target != null)
             {
                 p.minionGetDamageOrHeal(target, 1);
-                p.minionGetTempBuff(target, 2, 0);
+                p.minionGetBuffed(target, 2, 0);
             }
-
 		}
-
 	}
 }

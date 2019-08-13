@@ -4,21 +4,25 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_058 : SimTemplate //sunfuryprotector
+	class Sim_EX1_058 : SimTemplate //* sunfuryprotector
 	{
+        //Battlecry: Give adjacent minions Taunt.
 
-//    kampfschrei:/ verleiht benachbarten dienern spott/.
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.zonepos == own.zonepos - 1 || m.zonepos == own.zonepos)
+                if (m.zonepos == own.zonepos - 1 || m.zonepos == own.zonepos + 1)
                 {
-                    m.taunt = true;
+                    if (!m.taunt)
+                    {
+                        m.taunt = true;
+                        if (m.own) p.anzOwnTaunt++;
+                        else p.anzEnemyTaunt++;
+                    }
                 }
             }
 		}
-
 	}
 }

@@ -10,7 +10,7 @@ namespace HREngine.Bots
 				
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (own.own && Hrtprozis.Instance.noDuplicates) p.ownHeroAblility.manacost = 0;
+            if (own.own && p.prozis.noDuplicates) p.ownHeroAblility.manacost = 0;
         }
 	}
 }

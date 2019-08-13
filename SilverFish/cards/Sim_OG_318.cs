@@ -9,16 +9,17 @@ namespace HREngine.Bots
 		//Whenever this minion takes damage, summon a 2/2 Gnoll with Taunt.
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_318t);
-		
-        public override void onMinionGotDmgTrigger(Playfield p, Minion m, bool ownDmgdmin)
+
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
-            if (m.anzGotDmg>=1)
+            if (m.anzGotDmg >= 1)
             {
-                for (int i = 0; i < m.anzGotDmg; i++)
+                int tmp = m.anzGotDmg;
+                m.anzGotDmg = 0;
+                for (int i = 0; i < tmp; i++)
                 {
 					p.callKid(kid, m.zonepos, m.own);
                 }
-                m.anzGotDmg = 0;
             }
         }
 	}

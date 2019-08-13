@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_105 : PenTemplate //mountaingiant
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kostet (1) weniger für jede andere karte auf eurer hand.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

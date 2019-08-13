@@ -10,22 +10,13 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            p.callKid(p.getNextJadeGolem(m.own), m.zonepos, m.own, true);
-
-            List<Minion> tmp = m.own ? p.ownMinions : p.enemyMinions;
-            int pos = m.own ? p.ownMinions.Count : p.enemyMinions.Count;
-            pos--;
-            Minion mnn;
-            for (; pos > -1; pos--)
+            p.callKid(p.getNextJadeGolem(m.own), m.zonepos, m.own);
+            Minion mnn = m.own ? p.ownMinions[m.zonepos] : p.enemyMinions[m.zonepos];
+            if (mnn.playedThisTurn && !mnn.taunt)
             {
-                mnn = tmp[pos];
-                if (mnn.playedThisTurn && !mnn.taunt)
-                {
-                    mnn.taunt = true;
-                    if (mnn.own) p.anzOwnTaunt++;
-                    else p.anzEnemyTaunt++;
-                    break;
-                }
+                mnn.taunt = true;
+                if (mnn.own) p.anzOwnTaunt++;
+                else p.anzEnemyTaunt++;
             }
         }
     }

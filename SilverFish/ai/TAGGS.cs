@@ -1,6 +1,19 @@
 ﻿namespace HREngine.Bots
 {
 
+
+    public enum searchmode
+    {
+        searchLowestHP,
+        searchHighestHP,
+        searchLowestAttack,
+        searchHighestAttack,
+        searchHighAttackLowHP, //get max attack/hp ratio
+        searchHighHPLowAttack, //get max hp/attack ratio
+        searchLowestCost,
+        searchHighesCost,
+    }
+    
     public enum GAME_TAGs
     {
         TAG_SCRIPT_DATA_NUM_1 = 2,
@@ -138,7 +151,7 @@
         SILENCE = 339,
         COUNTER = 340,
         ARTISTNAME = 342,
-        HAND_REVEALED = 348,
+        ZONES_REVEALED = 348,
         ADJACENT_BUFF = 350,
         FLAVORTEXT = 351,
         FORCED_PLAY = 352,
@@ -228,11 +241,13 @@
         CANT_BE_FATIGUED = 456,
         AUTOATTACK = 457,
         ARMS_DEALING = 458,
+        PENDING_EVOLUTIONS = 461,
+        QUEST = 462,
         TAG_LAST_KNOWN_COST_IN_HAND = 466,
         DEFINING_ENCHANTMENT = 469,
         FINISH_ATTACK_SPELL_ON_DAMAGE = 470,
-        KAZAKUS_POTION_POWER_1 = 471,
-        KAZAKUS_POTION_POWER_2 = 472,
+        MODULAR_ENTITY_PART_1 = 471,
+        MODULAR_ENTITY_PART_2 = 472,
         MODIFY_DEFINITION_ATTACK = 473,
         MODIFY_DEFINITION_HEALTH = 474,
         MODIFY_DEFINITION_COST = 475,
@@ -245,6 +260,40 @@
         KABAL = 484,
         ADDITIONAL_PLAY_REQS_1 = 515,
         ADDITIONAL_PLAY_REQS_2 = 516,
+        ELEMENTAL_POWERED_UP = 532,
+        QUEST_PROGRESS = 534,
+        QUEST_PROGRESS_TOTAL = 535,
+        QUEST_CONTRIBUTOR = 541,
+        ADAPT = 546,
+        IS_CURRENT_TURN_AN_EXTRA_TURN = 547,
+        EXTRA_TURNS_TAKEN_THIS_GAME = 548,
+        SHIFTING_MINION = 549,
+        SHIFTING_WEAPON = 550,
+        DEATH_KNIGHT = 554,
+        BOSS = 556,
+        STAMPEDE = 564,
+        IS_VAMPIRE = 680,
+        CORRUPTED = 681,
+        LIFESTEAL = 685,
+        OVERRIDE_EMOTE_0 = 740,
+        OVERRIDE_EMOTE_1 = 741,
+        OVERRIDE_EMOTE_2 = 742,
+        OVERRIDE_EMOTE_3 = 743,
+        OVERRIDE_EMOTE_4 = 744,
+        OVERRIDE_EMOTE_5 = 745,
+        SCORE_FOOTERID = 751,
+        HERO_POWER_DISABLED = 777,
+        VALEERASHADOW = 779,
+        OVERRIDECARDNAME = 781,
+        OVERRIDECARDTEXTBUILDER = 782,
+        HIDDEN_CHOICE = 813,
+        ZOMBEAST = 823,
+        HERO_EMOTE_SILENCED = 832,
+
+        None,
+        Mob,
+        Spell,
+        Weapon
     }
 
     public enum TAG_ZONE
@@ -305,7 +354,7 @@
         PIRATE = 23,
         DRAGON = 24
     }
-
+    
     public enum TAG_CARDTYPE
     {
         INVALID = 0,
@@ -350,6 +399,8 @@
         KARA_RESERVE = 24,
         GANGS = 25,
         GANGS_RESERVE = 26,
+        UNGORO = 27,
+        ICECROWN = 1001
     }
 
     public enum TAG_RARITY
@@ -362,5 +413,5 @@
         LEGENDARY = 5,
     }
 
-
+   
 }

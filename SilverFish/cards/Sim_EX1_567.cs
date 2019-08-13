@@ -12,9 +12,8 @@ namespace HREngine.Bots
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            
             p.equipWeapon(card, ownplay);
-            p.changeRecall(ownplay, 2);
+            if (ownplay) p.ueberladung += 2;
 		}
 
 	}

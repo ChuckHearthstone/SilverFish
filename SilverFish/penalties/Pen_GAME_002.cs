@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_GAME_002 : PenTemplate //avatarofthecoin
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    i&gt;ihr habt den münzwurf verloren, aber einen freund gewonnen./i&gt;
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

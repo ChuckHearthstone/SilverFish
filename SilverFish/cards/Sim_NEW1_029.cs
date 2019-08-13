@@ -11,15 +11,7 @@ namespace HREngine.Bots
         //todo implement the nomanacosts for the enemyturn
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (own.own)
-            {
-                p.anzOwnMillhouseManastorm = true;
-            }
-            else
-            {
-                p.anzEnemyMillhouseManastorm = true;
-            }
-
+            if (own.own) p.weHavePlayedMillhouseManastorm = true;
 		}
 
 

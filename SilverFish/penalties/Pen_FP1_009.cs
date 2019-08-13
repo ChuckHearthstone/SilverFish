@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_009 : PenTemplate //deathlord
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    spott. todesröcheln:/ euer gegner legt einen diener aus seinem deck auf das schlachtfeld.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

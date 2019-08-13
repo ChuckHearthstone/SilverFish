@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_022 : PenTemplate //polymorph
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verwandelt einen diener in ein schaf (1/1).
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

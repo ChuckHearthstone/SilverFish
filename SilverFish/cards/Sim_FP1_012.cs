@@ -4,15 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_FP1_012 : SimTemplate //sludgebelcher
+	class Sim_FP1_012 : SimTemplate //* Sludge Belcher
 	{
+		//Taunt. Deathrattle: Summon a 1/2 Slime with Taunt.
+		
         CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_012t);
-//    spott.\ntodesröcheln:/ ruft einen schleim (1/2) mit spott/ herbei.
+		
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            
             p.callKid(c, m.zonepos - 1, m.own);
         }
-
 	}
 }

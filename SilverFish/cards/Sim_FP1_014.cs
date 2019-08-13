@@ -4,11 +4,11 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_FP1_014 : SimTemplate //stalagg
+	class Sim_FP1_014 : SimTemplate //* stalagg
 	{
+        //todesröcheln:/ ruft thaddius herbei, wenn feugen in diesem duell bereits gestorben ist.
 
         CardDB.Card thaddius = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_014t);
-//    todesröcheln:/ ruft thaddius herbei, wenn feugen in diesem duell bereits gestorben ist.
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
@@ -17,6 +17,5 @@ namespace HREngine.Bots
                 p.callKid(thaddius, m.zonepos - 1, m.own);
             }
         }
-
 	}
 }

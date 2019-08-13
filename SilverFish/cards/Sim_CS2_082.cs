@@ -4,10 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_CS2_082 : SimTemplate //wickedknife
+	class Sim_CS2_082 : SimTemplate //* wickedknife
 	{
+        //-
 
-//    tückisches messer
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_082);
 
-	}
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
+            p.equipWeapon(weapon, ownplay);
+        }
+    }
 }

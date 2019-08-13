@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    kampfschrei:/ ruft einen knappen (2/2) herbei.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.callKid(kid, own.zonepos, own.own, true);
+            p.callKid(kid, own.zonepos, own.own);
 		}
 
 	}

@@ -18,7 +18,7 @@ namespace HREngine.Bots
                     if (!m.stealth)
                     {
                         m.stealth = true;
-                        m.concedal = true;
+                        m.conceal = true;
                     }
                 }
             }
@@ -29,7 +29,7 @@ namespace HREngine.Bots
                     if (!m.stealth)
                     {
                         m.stealth = true;
-                        m.concedal = true;
+                        m.conceal = true;
                     }
                 }
             }

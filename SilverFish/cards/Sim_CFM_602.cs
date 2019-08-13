@@ -10,12 +10,12 @@ namespace HREngine.Bots
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
                 p.callKid(p.getNextJadeGolem(ownplay), pos, ownplay);
             }
-            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 if (ownplay)
                 {

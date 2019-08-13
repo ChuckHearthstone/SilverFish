@@ -4,9 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_011 : SimTemplate //Pompous Thespian
-    {
-        // Taunt
-
-    }
+	class Sim_KAR_011 : SimTemplate //* Pompous Thespian
+	{
+		//Taunt
+	}
 }

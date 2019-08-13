@@ -12,11 +12,7 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                if (triggerEffectMinion.own)
-                {
-                    p.anzOgOwnCThunHpBonus++;
-                    p.anzOgOwnCThunAngrBonus++;
-                }
+                if (triggerEffectMinion.own) p.cthunGetBuffed(1, 1, 0);
             }
         }
 	}

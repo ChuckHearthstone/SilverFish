@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_tk33 : PenTemplate //inferno
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    heldenfähigkeit/\nbeschwört eine höllenbestie (6/6).
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

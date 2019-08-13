@@ -10,11 +10,12 @@ namespace HREngine.Bots
 		
         public override void onMinionDiedTrigger(Playfield p, Minion m, Minion diedMinion)
         {
-            if (m.own)
-            {
-                p.anzOgOwnCThunHpBonus += 1;
-                p.anzOgOwnCThunAngrBonus += 1;
-            }
+            int diedMinions = p.tempTrigger.ownMinionsDied;
+            if (diedMinions == 0) return;
+            int residual = (p.pID == m.pID) ? diedMinions - m.extraParam2 : diedMinions;
+            m.pID = p.pID;
+            m.extraParam2 = diedMinions;
+            p.cthunGetBuffed(residual, residual, 0);
         }
 	}
 }

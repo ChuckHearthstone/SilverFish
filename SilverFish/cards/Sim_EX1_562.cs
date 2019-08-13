@@ -16,7 +16,7 @@ namespace HREngine.Bots
            
             for (int i = 0; i < kids; i++)
             {
-                p.callKid(kid, own.zonepos, own.own, true);
+                p.callKid(kid, own.zonepos, own.own);
             }
 
 		}

@@ -4,25 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_104 : SimTemplate //entomb
-    {
+	class Sim_LOE_104 : SimTemplate //* Entomb
+	{
+		//Choose an enemy minion. Shuffle it into your deck.
 
-        //   choose enemy minion, shuffle it in your deck
-
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-        {
-            if (target != null)
-            {
-                p.minionGetDestroyed(target);
-                if (ownplay)
-                {
-                    p.ownDeckSize++;
-                }
-                else
-                {
-                    p.enemyDeckSize++;
-                }
-            }
-        }
-    }
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		{
+            p.minionReturnToDeck(target, ownplay);
+		}
+	}
 }

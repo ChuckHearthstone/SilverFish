@@ -4,12 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_022 : SimTemplate //reliquary seeker
+	class Sim_LOE_022 : SimTemplate //* Fierce Monkey
 	{
-        //taunt
-
-        
-
+		//Taunt
 	}
-
 }

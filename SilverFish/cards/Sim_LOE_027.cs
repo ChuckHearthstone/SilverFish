@@ -4,16 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_LOE_027 : SimTemplate //snipe
+	class Sim_LOE_027 : SimTemplate //* Sacred Trial
 	{
-        //todo secret
-//    geheimnis:/ wenn euer gegner einen diener ausspielt, werden diesem $4 schaden zugefügt.
+		//Secret: When your opponent has at least 3 minions and plays another, destroy it.
 
-        public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
+		public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
-            p.minionGetDestroyed(target);
+            List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;
+            if (temp.Count > 3) p.minionGetDestroyed(target);
         }
-
-	}
-
+    }
 }

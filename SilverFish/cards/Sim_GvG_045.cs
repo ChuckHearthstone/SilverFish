@@ -21,5 +21,8 @@ namespace HREngine.Bots
             posi++;
             p.callKid(kid, posi, ownplay);
         }
+
+
     }
+
 }

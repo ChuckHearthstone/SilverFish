@@ -4,20 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_086 : SimTemplate //Summoning Stone
+	class Sim_LOE_086 : SimTemplate //* Summoning Stone
 	{
-
-        CardDB.Card kid0 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
-
-        //    Whenever you cast a spell, summon a random minion of the same Cost.
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+		//Whenever you cast a spell, summon a random minion of the same Cost.
+		
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.cardtype.SPELL)
             {
                 int pos = (wasOwnCard) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(p.getRandomCardForManaMinion(c.cost), pos, wasOwnCard);
+                p.callKid(p.getRandomCardForManaMinion(hc.manacost), pos, wasOwnCard);
             }
         }
-
 	}
 }

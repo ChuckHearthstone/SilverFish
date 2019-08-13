@@ -23,14 +23,14 @@ namespace HREngine.Bots
                 }
                 if (dragonInHand)
                 {
-                    p.drawACard(CardDB.cardName.unknown, m.own, true);
+                    p.drawACard(CardDB.cardName.enchantedraven, m.own, true);
                 }
             }
             else
             {
                 if (p.enemyAnzCards >= 2)
                 {
-                    p.drawACard(CardDB.cardName.unknown, m.own, true);
+                    p.drawACard(CardDB.cardName.drakonidcrusher, m.own, true);
                 }
             }
         }

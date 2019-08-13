@@ -10,12 +10,12 @@ namespace HREngine.Bots
 
         public override void onAuraStarts(Playfield p, Minion own)
         {
-            if (own.own) p.anzOwnFandralStaghelm++;
+            if (own.own) p.ownFandralStaghelm++;
         }
 
         public override void onAuraEnds(Playfield p, Minion m)
         {
-            if (m.own) p.anzOwnFandralStaghelm--;
+            if (m.own) p.ownFandralStaghelm--;
         }
 	}
 }

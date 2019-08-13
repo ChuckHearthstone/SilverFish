@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_379 : PenTemplate //repentance
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    geheimnis:/ wenn euer gegner einen diener ausspielt, wird dessen leben auf 1 verringert.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

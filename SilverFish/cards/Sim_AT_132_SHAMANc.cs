@@ -4,11 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_SHAMANc : SimTemplate //stoneclawtotem
+	class Sim_AT_132_SHAMANc : SimTemplate //* Stoneclaw Totem
 	{
-
-//    spott/
-
-
+		//Taunt
 	}
 }

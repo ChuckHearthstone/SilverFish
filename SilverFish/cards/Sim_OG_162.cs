@@ -11,11 +11,7 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             p.minionGetDamageOrHeal(target, 2);
-            if (own.own)
-            {
-                p.anzOgOwnCThunHpBonus += 2;
-                p.anzOgOwnCThunAngrBonus += 2;
-            }
+            if (own.own) p.cthunGetBuffed(2, 2, 0);
 		}
 	}
 }

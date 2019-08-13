@@ -4,26 +4,14 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_625t2 : SimTemplate //mindshatter
+	class Sim_EX1_625t2 : SimTemplate //* Mind Shatter
 	{
-
-//    heldenfähigkeit/\nverursacht 3 schaden.
+		//Hero Power: Deal 3 damage.
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            int dmg = 3;
-            if (ownplay)
-            {
-                dmg += p.anzOwnFallenHeros;
-                if (p.doublepriest >= 1) dmg *= (2 * p.doublepriest);
-            }
-            else
-            {
-                dmg += p.anzEnemyFallenHeros;
-                if (p.enemydoublepriest >= 1) dmg *= (2 * p.enemydoublepriest);
-            }
+        {
+            int dmg = (ownplay) ? p.getHeroPowerDamage(3) : p.getEnemyHeroPowerDamage(3);
             p.minionGetDamageOrHeal(target, dmg);
 		}
-
 	}
 }

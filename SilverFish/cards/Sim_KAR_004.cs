@@ -4,41 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_004 : SimTemplate //Cat Trick
-    {
-        // Secret: After your opponent casts a spell, summon a 4/2 Panther with Stealth.
+	class Sim_KAR_004 : SimTemplate //* Cat Trick
+	{
+		//Secret: After your opponent casts a spell, summon a 4/2 Panther with Stealth.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_004a); // 4/2 Panther
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_004a);//Panther - Cat in a Hat
 
-        public override void onSecretPlay(Playfield p, bool ownplay, Minion attacker, Minion target, out int number)
+        public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
-            number = 0;
-            if (ownplay)
-            {
-                int pos = p.ownMinions.Count;
-                p.callKid(kid, pos, true);
-                if (p.ownMinions.Count >= 1)
-                {
-                    if (p.ownMinions[pos - 1].name == CardDB.cardName.catinahat)
-                    {
-                        number = p.ownMinions[pos - 1].entityID;
-                    }
-                }
-            }
-            else
-            {
-                int pos = p.enemyMinions.Count;
-                p.callKid(kid, pos, false);
-
-                if (p.enemyMinions.Count >= 1)
-                {
-                    if (p.enemyMinions[pos - 1].name == CardDB.cardName.catinahat)
-                    {
-                        number = p.enemyMinions[pos - 1].entityID;
-                    }
-                }
-            }
-
+            int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
+			p.callKid(kid, pos, ownplay, false);
         }
     }
 }

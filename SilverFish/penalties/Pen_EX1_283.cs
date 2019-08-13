@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_283 : PenTemplate //frostelemental
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kampfschrei:/ friert/ einen charakter ein.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

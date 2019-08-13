@@ -4,15 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_028 : SimTemplate //Fool's Bane
-    {
-        // Unlimited attacks each turn. Can't attack heroes.
+	class Sim_KAR_028 : SimTemplate //* Fool's Bane
+	{
+        //Unlimited attacks each turn. Can't attack heroes.
+        // handled in public void getMoveList
 
-        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_028);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_028);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.equipWeapon(card, ownplay);
+            p.equipWeapon(weapon, ownplay);
         }
-    }
+	}
 }

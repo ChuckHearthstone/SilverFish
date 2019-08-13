@@ -30,12 +30,20 @@ namespace HREngine.Bots
             }
             else
             {
-				CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_561);//Alexstrasza
-                p.callKid(kid, p.enemyMinions.Count, false);
 				if (p.enemyAnzCards > 1)
-				{
+                {
+                    int pos = p.enemyMinions.Count;
+                    p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_561), pos, false); //Alexstrasza
 					p.enemyAnzCards--;
-					p.triggerCardsChanged(false);
+                    p.triggerCardsChanged(false);
+                    if (p.ownHeroHasDirectLethal())
+                    {
+                        p.enemyMinions[pos].Angr = 3;
+                        if (p.ownHeroHasDirectLethal())
+                        {
+                            p.enemyMinions[pos].Angr = 0;
+                        }
+                    }
 				}
             }
         }

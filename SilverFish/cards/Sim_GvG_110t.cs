@@ -4,17 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_110t : SimTemplate //Boom Bot
+    class Sim_GVG_110t : SimTemplate //* Boom Bot
     {
-
         //  Deathrattle: Deal 1-4 damage to a random enemy.
-
-        
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            int dmg = (m.own ? 2 : 3);
-            p.doDmgToRandomEnemyCLIENT2(dmg, true, m.own);
+            List<Minion> temp = (m.own) ? p.enemyMinions : p.ownMinions;
+            Minion target = p.searchRandomMinion(temp, searchmode.searchHighestHP);
+            if (target == null) target = (m.own) ? p.enemyHero : p.ownHero;
+            p.minionGetDamageOrHeal(target, 2);
         }
     }
 }

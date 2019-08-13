@@ -10,11 +10,7 @@ namespace HREngine.Bots
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			if (own.own)
-			{
-				p.anzOgOwnCThunHpBonus += 3;
-				p.anzOgOwnCThunAngrBonus += 3;
-			}
+            if (own.own) p.cthunGetBuffed(3, 3, 0);
 		}
 	}
 }

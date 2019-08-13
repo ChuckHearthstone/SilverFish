@@ -17,14 +17,14 @@ namespace HREngine.Bots
 
             if (kids > 0)
             {
-                foreach (KeyValuePair<CardDB.cardIDEnum, int> e in Probabilitymaker.Instance.ownGraveyard)
+                foreach (KeyValuePair<CardDB.cardIDEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
                 {
                     kid = CardDBI.getCardDataFromID(e.Key);
                     if (kid.deathrattle)
                     {
                         for (int i = 0; i < e.Value; i++)
                         {
-                            p.callKid(kid, own.zonepos, own.own, true);
+                            p.callKid(kid, own.zonepos, own.own);
                             kids--;
                             if (kids < 1) break;
                         }

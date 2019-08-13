@@ -4,20 +4,18 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_079 : SimTemplate //elise starseeker
+	class Sim_LOE_079 : SimTemplate //* Elise Starseeker
 	{
-        //bc: shuffle the map of the golden monkey into your deck
+		//Battlecry: Shuffle the 'Map to the Golden Monkey' into your deck.
 
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             if (own.own)
-            {
-                p.ownDeckSize++;
-            }
-            else
-            {
-                p.enemyDeckSize++;
-            }
+			{
+				p.ownDeckSize++;
+				p.evaluatePenality -= 6;
+			}
+            else p.enemyDeckSize++;
         }
-	}
+    }
 }

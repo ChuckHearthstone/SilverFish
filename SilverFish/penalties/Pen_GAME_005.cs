@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_GAME_005 : PenTemplate //thecoin
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    erhaltet 1 manakristall nur für diesen zug.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

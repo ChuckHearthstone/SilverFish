@@ -6,15 +6,11 @@ namespace HREngine.Bots
 {
     class Sim_GVG_066 : SimTemplate //Dunemaul Shaman
     {
-
-        //   Windfury, Overload: (1)&lt;/b&gt
+        //   Windfury, Overload: (1)
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.changeRecall(own.own, 1);
+            if (own.own) p.ueberladung++;
         }
-
-
     }
-
 }

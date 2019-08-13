@@ -8,9 +8,9 @@ namespace HREngine.Bots
 	{
 
 //    erhält jedes mal +2 angriff in diesem zug, wenn ihr einen zauber wirkt.
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.cardtype.SPELL)
             {
                 p.minionGetTempBuff(triggerEffectMinion, 2, 0);
             }

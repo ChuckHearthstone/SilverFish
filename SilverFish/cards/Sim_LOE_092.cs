@@ -4,14 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_092 : SimTemplate //arch-thief-rafaam
+	class Sim_LOE_092 : SimTemplate //* Arch-Thief Rafaam
 	{
-        //bc: discover a powerful artifact.
-
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            //TODO add a choice card with all 3 artifacts?
-            p.drawACard(CardDB.cardIDEnum.LOEA16_4, own.own, true);
-        }
+		//Battlecry: Discover a powerful Artifact.
+		
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+            p.drawACard(CardDB.cardName.lanternofpower, own.own, true);
+		}
 	}
 }

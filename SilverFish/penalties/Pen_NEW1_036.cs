@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_036 : PenTemplate //commandingshout
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    das leben eurer diener kann in diesem zug nicht unter 1 fallen. zieht eine karte.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

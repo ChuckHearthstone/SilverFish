@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, m.own, true);
+            p.drawACard(CardDB.cardName.frostbolt, m.own, true);
         }
     }
 }

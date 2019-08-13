@@ -6,6 +6,6 @@ namespace HREngine.Bots
 {
 	class Sim_OG_173a : SimTemplate //* The Ancient One
 	{
-		
+		// -
 	}
 }

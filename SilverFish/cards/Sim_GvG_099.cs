@@ -12,7 +12,7 @@ namespace HREngine.Bots
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             List<Minion> temp = (own.own) ? p.enemyMinions : p.ownMinions;
-            int times = 4;
+            int times = (own.own) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
 
             if (temp.Count >= 1)
             {
@@ -32,5 +32,7 @@ namespace HREngine.Bots
 
             } 
         }
+
     }
+
 }

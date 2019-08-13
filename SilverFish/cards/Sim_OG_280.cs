@@ -14,6 +14,7 @@ namespace HREngine.Bots
             if (times < 1) times = own.Angr;
             else times += own.Angr;
             p.allCharsOfASideGetRandomDamage(!own.own, times);
+            p.allMinionOfASideGetDamage(!own.own, 1);
         }
     }
 }

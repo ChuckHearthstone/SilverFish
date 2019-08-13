@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_608 : PenTemplate //sorcerersapprentice
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    eure zauber kosten (1) weniger.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 CardDB.Card c;
                 int count = 0;
-                foreach (KeyValuePair<CardDB.cardIDEnum, int> cid in Hrtprozis.Instance.turnDeck)
+                foreach (KeyValuePair<CardDB.cardIDEnum, int> cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if (c.cost == 1)

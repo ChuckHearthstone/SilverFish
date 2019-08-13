@@ -12,8 +12,8 @@ namespace HREngine.Bots
         {
             if (target != null)
             {
-                target.frozen = true;
-                p.drawACard(CardDB.cardName.unknown, m.own, true);
+                p.minionGetFrozen(target);
+                p.drawACard(CardDB.cardName.aberration, m.own, true);
             }
         }
     }

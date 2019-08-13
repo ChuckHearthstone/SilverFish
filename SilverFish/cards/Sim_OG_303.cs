@@ -6,14 +6,11 @@ namespace HREngine.Bots
 {
 	class Sim_OG_303 : SimTemplate //* Cult Sorcerer
 	{
-        //Spell Damage +1. After you cast a spell, give your C'Thun +1/+1 (wherever it is).
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+		//Spell Damage +1. After you cast a spell, give your C'Thun +1/+1 (wherever it is).
+		
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
-            {
-                p.anzOgOwnCThunHpBonus++;
-                p.anzOgOwnCThunAngrBonus++;
-            }
+            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL) p.cthunGetBuffed(1, 1, 0);
         }
 		
         public override void onAuraStarts(Playfield p, Minion own)

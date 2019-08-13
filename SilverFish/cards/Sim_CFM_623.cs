@@ -17,7 +17,7 @@ namespace HREngine.Bots
                 if (ownplay) target = p.getEnemyCharTargetForRandomSingleDamage(3);
                 else
                 {
-                    target = p.searchRandomMinion(p.ownMinions, Playfield.searchmode.searchHighestAttack); //damage the Highest (pessimistic)
+                    target = p.searchRandomMinion(p.ownMinions, searchmode.searchHighestAttack); //damage the Highest (pessimistic)
                     if (target == null) target = p.ownHero;
                 }
                 p.minionGetDamageOrHeal(target, 3);

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_107 : SimTemplate //Enhance-o Mechano
+    class Sim_GVG_107 : SimTemplate //* Enhance-o Mechano
     {
-
         //  Battlecry: Give your other minions Windfury Taunt or Divine Shield
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
@@ -15,7 +14,13 @@ namespace HREngine.Bots
 
             foreach (Minion m in temp)
             {
-                m.taunt = true;
+                if (m.entitiyID == own.entitiyID) continue;
+                if (!m.taunt)
+                {
+                    m.taunt = true;
+                    if (m.own) p.anzOwnTaunt++;
+                    else p.anzEnemyTaunt++;
+                }
             }
         }
     }

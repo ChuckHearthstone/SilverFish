@@ -4,24 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_121 : SimTemplate //Crowd Favorite
-    {
+	class Sim_AT_121 : SimTemplate //* Crowd Favorite
+	{
+		//Whenever you play a card with Battlecry, gain +1/+1.
 
-        //Whenever you play a card with Battlecry, gain +1/+1.
-
-
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.battlecry)
             {
-                if (c.battlecry)
-                {
-                    p.minionGetBuffed(triggerEffectMinion, 1, 1);
-                }
+				p.minionGetBuffed(triggerEffectMinion, 1, 1);
             }
         }
-
-
-    }
-
+	}
 }

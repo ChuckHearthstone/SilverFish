@@ -4,20 +4,19 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_571 : SimTemplate //forceofnature
+    class Sim_EX1_571 : SimTemplate //* Force of Nature
 	{
+        //Summon three 2/2 Treants.
 
-//    ruft drei treants (2/2) mit ansturm/ herbei, die am ende des zuges sterben.
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_tk9);//Treant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_158t);//Treant
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            int posi =(ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
+            int pos =(ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
-            p.callKid(kid, posi, ownplay);
-            p.callKid(kid, posi, ownplay);
-            p.callKid(kid, posi, ownplay);
+            p.callKid(kid, pos, ownplay, false);
+            p.callKid(kid, pos, ownplay);
+            p.callKid(kid, pos, ownplay);
 		}
-
 	}
 }

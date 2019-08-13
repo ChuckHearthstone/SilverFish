@@ -4,30 +4,26 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_EX1_298 : SimTemplate //ragnarosthefirelord
+    class Sim_EX1_298 : SimTemplate //* Ragnaros the Firelord
     {
-
-        //    kann nicht angreifen. fügt am ende eures zuges einem zufälligen feind 8 schaden zu.
+        // Can't Attack. At the end of your turn, deal 8 damage to a random enemy.
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                int count = (turnEndOfOwner) ? p.enemyMinions.Count : p.ownMinions.Count;
-                if (count >= 1)
+                Minion target = null;
+
+                if (turnEndOfOwner)
                 {
-                    List<Minion> temp2 = (turnEndOfOwner) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
-                    temp2.Sort((a, b) => a.Hp.CompareTo(b.Hp));//damage the lowest
-                    foreach (Minion mins in temp2)
-                    {
-                        p.minionGetDamageOrHeal(mins, 8);
-                        break;
-                    }
+                    target = p.getEnemyCharTargetForRandomSingleDamage(8);
                 }
                 else
                 {
-                    p.minionGetDamageOrHeal(turnEndOfOwner ? p.enemyHero : p.ownHero, 8);
+                    target = p.searchRandomMinion(p.ownMinions, searchmode.searchHighestAttack); //damage the Highest (pessimistic)
+                    if (target == null) target = p.ownHero;
                 }
+                p.minionGetDamageOrHeal(target, 8, true);
                 triggerEffectMinion.stealth = false;
             }
         }

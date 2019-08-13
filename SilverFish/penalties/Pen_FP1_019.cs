@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_019 : PenTemplate //poisonseeds
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    vernichtet alle diener und ruft für jeden einen treant (2/2) als ersatz herbei.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -4,19 +4,22 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_DS1_070 : SimTemplate //houndmaster
+	class Sim_DS1_070 : SimTemplate //* houndmaster
 	{
+        //Battlecry: Give a friendly Beast +2/+2 and Taunt.
 
-//    kampfschrei:/ verleiht einem befreundeten wildtier +2/+2 und spott/.
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             if (target != null)
             {
                 p.minionGetBuffed(target, 2, 2);
-                target.taunt = true;
+                if (!target.taunt)
+                {
+                    target.taunt = true;
+                    if (target.own) p.anzOwnTaunt++;
+                    else p.anzEnemyTaunt++;
+                }
             }
 		}
-
-
 	}
 }

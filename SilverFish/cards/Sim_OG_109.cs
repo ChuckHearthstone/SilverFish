@@ -15,7 +15,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.discardACard(own.own);
+            p.discardCards(1, own.own);
         }
     }
 }

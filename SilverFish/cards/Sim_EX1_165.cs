@@ -12,20 +12,23 @@ namespace HREngine.Bots
         CardDB.Card bear = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t2);
         CardDB.Card bearcat = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_044a);
 
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            if (p.anzOwnFandralStaghelm > 0 && own.own)
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+            if (p.ownFandralStaghelm > 0)
             {
                 p.minionTransform(own, bearcat);
             }
-            else if (choice == 1)
+            else
             {
-                p.minionTransform(own, cat);
+                if (choice == 1)
+                {
+                    p.minionTransform(own, cat);
+                }
+                if (choice == 2)
+                {
+                    p.minionTransform(own, bear);
+                }
             }
-            else if (choice == 2)
-            {
-                p.minionTransform(own, bear);
-            }
-        }
-    }
+		}
+	}
 }

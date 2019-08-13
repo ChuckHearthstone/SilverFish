@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			Minion target = (m.own) ? p.searchRandomMinion(p.ownMinions, Playfield.searchmode.searchLowestAttack) : p.searchRandomMinion(p.enemyMinions, Playfield.searchmode.searchLowestAttack);
+			Minion target = (m.own) ? p.searchRandomMinion(p.ownMinions, searchmode.searchLowestAttack) : p.searchRandomMinion(p.enemyMinions, searchmode.searchLowestAttack);
 			if (target != null) p.minionGetBuffed(target, 1, 1);
         }
     }

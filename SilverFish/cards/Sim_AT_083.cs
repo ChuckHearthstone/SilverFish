@@ -1,25 +1,32 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_083 : SimTemplate //Dragonhawk Rider
-    {
+	class Sim_AT_083 : SimTemplate //* Dragonhawk Rider
+	{
+		//Inspire: Gain Windfury this turn.
 
-        //Inspire: Gain Windfury this turn.
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            p.minionGetWindfurry(m);
+			if (m.own == own)
+			{
+				m.gotInspire = true;
+				p.minionGetWindfurry(m);
+			}
         }
-
-        public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
+		
+		public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
-            //We do it dirty! we remove allways windfurry of him at end of turn :D //its unlikely that someone buffs this with windfury!
-            triggerEffectMinion.windfury = false;
+            if (triggerEffectMinion.own == turnEndOfOwner)
+            {
+                if (triggerEffectMinion.gotInspire)
+                {
+                    triggerEffectMinion.windfury = false;
+                    triggerEffectMinion.gotInspire = false;
+                }
+            }
         }
-
-
-    }
+	}
 }

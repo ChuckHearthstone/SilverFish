@@ -9,18 +9,8 @@ namespace HREngine.Bots
 		//Battlecry: Your Hero Power becomes 'Summon a 1/1 Murloc.'
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-		{
-			CardDB.Card hewHeroPower = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_006b); //The Tidal Hand
-            if (own.own)
-            {
-                p.ownHeroAblility.card = hewHeroPower;
-                p.ownAbilityReady = true;
-            }
-            else
-            {
-                p.enemyHeroAblility.card = hewHeroPower;
-                p.enemyAbilityReady = true;
-            }
+        {
+            p.setNewHeroPower(CardDB.cardIDEnum.OG_006b, own.own); // The Tidal Hand
 		}
 	}
 }

@@ -6,15 +6,14 @@ namespace HREngine.Bots
 {
 	class Sim_OG_209 : SimTemplate //* Hallazeal the Ascended
 	{
-        //Whenever your spells deal damage, restore that much Health to your hero.
-
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+		//Whenever your spells deal damage, restore that much Health to your hero.
+		
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
             {
-                Minion target2 = (wasOwnCard) ? p.ownHero : p.enemyHero;
-                int spellpower = (wasOwnCard) ? p.spellpower : p.enemyspellpower;
-                p.minionGetDamageOrHeal(target2, spellpower);
+                Minion target = (ownplay) ? p.ownHero : p.enemyHero;
+                p.minionGetDamageOrHeal(target, -p.prozis.penman.guessTotalSpellDamage(p, hc.card.name, ownplay));
             }
         }
     }

@@ -4,35 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_LOE_077 : SimTemplate //Brann bronzebeard
+	class Sim_LOE_077 : SimTemplate //* Brann Bronzebeard
 	{
-
-        //    YourBattlecries trigger twice.
-
-
+		//Your Battlecries trigger twice.
+		
         public override void onAuraStarts(Playfield p, Minion own)
-        {
-            
-            if (own.own)
-            {
-                p.anzOwnBranns++;
-            }
-            else
-            {
-                p.anzEnemyBranns++;
-            }
-        }
+		{
+            if (own.own) p.ownBrannBronzebeard++;
+            else p.enemyBrannBronzebeard++;
+		}
 
-        public override void onAuraEnds(Playfield p, Minion own)
+        public override void onAuraEnds(Playfield p, Minion m)
         {
-            if (own.own)
-            {
-                p.anzOwnBranns--;
-            }
-            else
-            {
-                p.anzEnemyBranns--;
-            }
+            if (m.own) p.ownBrannBronzebeard--;
+            else p.enemyBrannBronzebeard--;
         }
 	}
 }

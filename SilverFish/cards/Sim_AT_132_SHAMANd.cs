@@ -4,13 +4,12 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_SHAMANd : SimTemplate //wrathofairtotem
+	class Sim_AT_132_SHAMANd : SimTemplate //* Wrath of Air Totem
 	{
-
-//    zauberschaden +1/
+		//Spell Damage +1
+		
 		public override void  onAuraStarts(Playfield p, Minion m)
         {
-            m.spellpower = 1;
             if (m.own)
             {
                 p.spellpower++;
@@ -20,8 +19,19 @@ namespace HREngine.Bots
                 p.enemyspellpower++;
             }
         }
+		
 
-        
+        public override void onAuraEnds(Playfield p, Minion m)
+        {
+            if (m.own)
+            {
+                p.spellpower--;
+            }
+            else
+            {
+                p.enemyspellpower--;
+            }
+        }
 
 	}
 }

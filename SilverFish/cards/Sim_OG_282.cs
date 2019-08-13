@@ -12,11 +12,7 @@ namespace HREngine.Bots
 		{
             if(target != null)
 			{
-                if (own.own)
-                {
-                    p.anzOgOwnCThunHpBonus += target.Hp;
-                    p.anzOgOwnCThunAngrBonus += target.Angr;
-                }
+                if (own.own) p.cthunGetBuffed(target.Angr, target.Hp, 0);
 				p.minionGetDestroyed(target);
 			}
 		}

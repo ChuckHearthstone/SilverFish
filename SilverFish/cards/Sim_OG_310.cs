@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onMinionWasSummoned(Playfield p, Minion m, Minion summonedMinion)
         {
-            if (summonedMinion.Hp == 1 && m.own == summonedMinion.own && m.entityID != summonedMinion.entityID)
+            if (summonedMinion.Hp == 1 && m.own == summonedMinion.own && m.entitiyID != summonedMinion.entitiyID)
             {
                 summonedMinion.divineshild = true;
             }

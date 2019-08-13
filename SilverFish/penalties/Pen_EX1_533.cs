@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_533 : PenTemplate //misdirection
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    geheimnis:/ wenn ein charakter euren helden angreift, greift er stattdessen einen zufälligen anderen charakter an.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

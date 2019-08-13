@@ -4,16 +4,19 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_178a : SimTemplate //rooted
+    class Sim_EX1_178a : SimTemplate //* Rooted
 	{
+        //+5 Health and Taunt.
 
-//    +5 leben und spott/.
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-		{
-            p.minionGetBuffed(own, 0, 5);
-            own.taunt = true;
-		}
-
-
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
+            p.minionGetBuffed(target, 0, 5);
+            if (!target.taunt)
+            {
+                target.taunt = true;
+                if (target.own) p.anzOwnTaunt++;
+                else p.anzEnemyTaunt++;
+            }
+        }
 	}
 }

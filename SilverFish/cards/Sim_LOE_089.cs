@@ -4,18 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_089 : SimTemplate //wobbling runts
+	class Sim_LOE_089 : SimTemplate //* Wobbling Runts
 	{
-
-        //    Dr: summon three 2/2 runts
-        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_089t);//hyena
+		//Deathrattle: Summon three 2/2 Runts.
         
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.callKid(c, m.zonepos-1, m.own);
-            p.callKid(c, m.zonepos-1, m.own);
-            p.callKid(c, m.zonepos - 1, m.own);
+            p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_089t), m.zonepos - 1, m.own); //Rascally Runt
+            p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_089t2), m.zonepos, m.own); //Wily Runt
+            p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_089t3), m.zonepos + 1, m.own); //Grumbly Runt
         }
-
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_001 : PenTemplate //lightwarden
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    erhält jedes mal +2 angriff, wenn ein charakter geheilt wird.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

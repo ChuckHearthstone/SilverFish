@@ -12,8 +12,15 @@ namespace HREngine.Bots
 				
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            int pos = (m.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, pos, m.own, true);
+            List<Minion> list = (m.own) ? p.ownMinions : p.enemyMinions;
+            int anz = list.Count;
+            p.callKid(kid, m.zonepos, m.own);
+            if (anz < 7 && !list[m.zonepos].taunt)
+            {
+                list[m.zonepos].taunt = true;
+                if (m.own) p.anzOwnTaunt++;
+                else p.anzEnemyTaunt++;
+            }
         }
 	}
 }

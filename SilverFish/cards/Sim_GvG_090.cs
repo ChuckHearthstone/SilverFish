@@ -28,11 +28,15 @@ namespace HREngine.Bots
 
                 foreach (Minion m in temp)
                 {
+                    if (m.entitiyID == own.entitiyID) continue;
                     p.minionGetDamageOrHeal(m, 1);
                     break;
                 }
                 p.minionGetDamageOrHeal(p.enemyHero, 1);
             }
         }
+
+
     }
+
 }

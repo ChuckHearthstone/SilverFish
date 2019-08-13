@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.allCharsGetDamage(3);
+            p.allCharsGetDamage(3, own.entitiyID);
         }
     }
 }

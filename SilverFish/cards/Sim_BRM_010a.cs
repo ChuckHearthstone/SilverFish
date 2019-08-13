@@ -4,15 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_BRM_010a : SimTemplate //catform
+	class Sim_BRM_010a : SimTemplate //* Firecat Form
 	{
-
-        //   choose 5/2 minion
+		// Transform into a 5/2 minion.
+		
         CardDB.Card cat = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_010t);
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            p.minionTransform(own, cat);
-        }
 
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        {
+            p.minionTransform(target, cat);
+        }
 	}
 }

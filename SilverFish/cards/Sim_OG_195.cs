@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 for (int i = 0; i < 7; i++)
                 {
@@ -20,13 +20,9 @@ namespace HREngine.Bots
                     p.callKid(kid, pos, ownplay);
                 }
             }
-            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
-                foreach (Minion m in temp)
-                {
-                    p.minionGetBuffed(m, 2, 2);
-                }
+                p.allMinionOfASideGetBuffed(ownplay, 2, 2);
             }
         }
     }

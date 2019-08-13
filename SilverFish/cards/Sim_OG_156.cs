@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.callKid(kid, own.zonepos, own.own, true);
+            p.callKid(kid, own.zonepos, own.own);
 		}
 	}
 }

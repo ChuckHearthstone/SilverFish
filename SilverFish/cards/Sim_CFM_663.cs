@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                p.drawACard(CardDB.cardName.unknown, turnEndOfOwner, true);
+                p.drawACard(CardDB.cardName.malchezaarsimp, turnEndOfOwner, true);
             }
         }
     }

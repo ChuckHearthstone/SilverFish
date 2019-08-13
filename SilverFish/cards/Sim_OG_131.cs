@@ -11,8 +11,12 @@ namespace HREngine.Bots
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_319);
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-		{
-            if (own.own && (p.anzOgOwnCThunAngrBonus + 6) > 9) p.callKid(kid, p.ownMinions.Count, own.own);
+        {
+            if (own.own)
+            {
+                if (p.anzOgOwnCThunAngrBonus + 6 > 9) p.callKid(kid, own.zonepos, own.own);
+                else p.evaluatePenality += 5;
+            }
 		}
 	}
 }

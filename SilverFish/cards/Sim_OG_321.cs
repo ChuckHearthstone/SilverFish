@@ -8,12 +8,13 @@ namespace HREngine.Bots
 	{
 		//Taunt. Whenever this minion takes damage, give your C'Thun +1/+1 (wherever it is).
 
-		public override void onMinionGotDmgTrigger(Playfield p, Minion m, bool ownDmgdmin)
+        public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {
             if (m.anzGotDmg > 0)
             {
-				p.anzOgOwnCThunHpBonus += m.anzGotDmg;
-				p.anzOgOwnCThunAngrBonus += m.anzGotDmg;
+                int tmp = m.anzGotDmg;
+                m.anzGotDmg = 0;
+                p.cthunGetBuffed(tmp, tmp, 0);
             }
         }
 	}

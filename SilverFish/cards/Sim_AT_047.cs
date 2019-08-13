@@ -4,23 +4,19 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_047 : SimTemplate //Draenei Totemcarver
-    {
+	class Sim_AT_047 : SimTemplate //* Draenei Totemcarver
+	{
+		//Battlecry: Gain +1/+1 for each friendly Totem.
 
-        //   btlcry: Gain +1/+1 for each friendly Totem
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_050);//searing
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            int totems = 0;
-            foreach (Minion m in (own.own) ? p.ownMinions : p.enemyMinions)
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+            int gain = 0;
+            List<Minion> temp  = (own.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion m in temp)
             {
-                if (m.handcard.card.race == TAG_RACE.TOTEM) totems++;
+                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.TOTEM) gain++;
             }
-            if (totems >= 1) p.minionGetBuffed(own, totems, totems);
-        }
-
-
-    }
-
-
+            if(gain >= 1) p.minionGetBuffed(own, gain, gain);
+		}
+	}
 }

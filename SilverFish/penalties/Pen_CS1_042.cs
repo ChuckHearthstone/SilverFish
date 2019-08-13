@@ -6,9 +6,13 @@ namespace HREngine.Bots
 {
 	class Pen_CS1_042 : PenTemplate //goldshirefootman
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
-		{
-			return 0;
-		}
+
+//    spott/
+        public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
+        {
+
+            return 0;
+        }
+
 	}
 }

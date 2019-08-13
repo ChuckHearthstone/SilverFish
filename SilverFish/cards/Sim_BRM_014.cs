@@ -1,26 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_BRM_014 : SimTemplate //Core Rager
+    class Sim_BRM_014 : SimTemplate //* Core Rager
     {
+        // Battlecry: If your hand is empty, gain +3/+3.
 
-
-        //    Battlecry: If your hand is empty, gain +3/+3
-
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            if (own.own && p.owncards.Count==0)
+            int cardsCount = (m.own) ? p.owncards.Count : p.enemyAnzCards;
+            if (cardsCount <= 0)
             {
-                p.minionGetBuffed(own, 3, 3);
-            }
-            if (!own.own && p.enemyAnzCards == 0)
-            {
-                p.minionGetBuffed(own, 3, 3);
+                p.minionGetBuffed(m, 3, 3);
             }
         }
-
     }
 }

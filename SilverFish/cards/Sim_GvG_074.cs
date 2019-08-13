@@ -15,11 +15,11 @@ namespace HREngine.Bots
             {
                 if (p.enemySecretList.Count >= 1)
                 {
-                    if(p.enemyHeroName == HeroEnum.hunter) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_610);
-                    if (p.enemyHeroName == HeroEnum.mage) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_594);
-                    if (p.enemyHeroName == HeroEnum.pala) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
+                    if (p.enemyHeroStartClass == TAG_CLASS.HUNTER) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_610);
+                    if (p.enemyHeroStartClass == TAG_CLASS.MAGE) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_594);
+                    if (p.enemyHeroStartClass == TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
 
-                    if (p.enemyHeroName != HeroEnum.hunter && p.enemyHeroName != HeroEnum.mage && p.enemyHeroName != HeroEnum.pala) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
+                    if (p.enemyHeroStartClass != TAG_CLASS.HUNTER && p.enemyHeroStartClass != TAG_CLASS.MAGE && p.enemyHeroStartClass != TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
                     
                     p.enemySecretList.RemoveAt(0);
                 }
@@ -29,31 +29,38 @@ namespace HREngine.Bots
                 if (p.ownSecretsIDList.Count >= 1)
                 {
                     p.ownSecretsIDList.RemoveAt(0);
-                    SecretItem s = new SecretItem
-                    {
-                        canBe_avenge = false,
-                        canBe_counterspell = false,
-                        canBe_duplicate = false,
-                        canBe_explosive = true,
-                        canBe_eyeforaneye = false,
-                        canBe_freezing = false,
-                        canBe_icebarrier = false,
-                        canBe_iceblock = false,
-                        canBe_mirrorentity = false,
-                        canBe_missdirection = false,
-                        canBe_noblesacrifice = false,
-                        canBe_redemption = false,
-                        canBe_repentance = false,
-                        canBe_snaketrap = false,
-                        canBe_snipe = false,
-                        canBe_spellbender = false,
-                        canBe_vaporize = false,
-                        entityId = 1050
-                    };
+                    SecretItem s = new SecretItem();
+                    s.canBe_avenge = false;
+                    s.canBe_sacredtrial = false;
+                    s.canBe_counterspell = false;
+                    s.canBe_cattrick = false;
+                    s.canBe_duplicate = false;
+                    s.canBe_explosive = false;
+                    s.canBe_beartrap = false;
+                    s.canBe_eyeforaneye = false;
+                    s.canBe_freezing = false;
+                    s.canBe_icebarrier = false;
+                    s.canBe_iceblock = false;
+                    s.canBe_mirrorentity = false;
+                    s.canBe_missdirection = false;
+                    s.canBe_darttrap = false;
+                    s.canBe_noblesacrifice = false;
+                    s.canBe_redemption = false;
+                    s.canBe_repentance = false;
+                    s.canBe_snaketrap = false;
+                    s.canBe_snipe = false;
+                    s.canBe_spellbender = false;
+                    s.canBe_vaporize = false;
+
+                    s.entityId = 1050;
+                    s.canBe_explosive=true;
 
                     p.enemySecretList.Add(s);
                 }
             }
         }
+
+
     }
+
 }

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_005a : SimTemplate //3/2 Big Bad Wolf
-    {
-
-    }
+	class Sim_KAR_005a : SimTemplate //* Big Bad Wolf
+	{
+		//-
+	}
 }

@@ -4,24 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_020 : SimTemplate //desert camel
+	class Sim_LOE_020 : SimTemplate //* Desert Camel
 	{
-        //bc: put a 1-cost minion from each deck into the battlefield
+        //Battlecry: Put a 1-Cost minion from each deck into the battlefield.
+		
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_004); //Twilight Whelp
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_168);//murloc raider
-
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            if (Probabilitymaker.Instance.hasDeck)
-            {
-                //todo: summon a minion from your deck!
-                p.callKid(kid, p.ownMinions.Count, true);   
-            }
-            else
-            {
-                p.callKid(kid, p.ownMinions.Count, true);   
-            }
-            p.callKid(kid, p.enemyMinions.Count, false);
-        }
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+            p.callKid(kid, p.ownMinions.Count, true);
+			p.callKid(kid, p.enemyMinions.Count, false);
+		}
 	}
 }

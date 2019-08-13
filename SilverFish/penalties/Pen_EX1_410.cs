@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_410 : PenTemplate //shieldslam
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt einem diener für jeden eurer rüstungspunkte 1 schaden zu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

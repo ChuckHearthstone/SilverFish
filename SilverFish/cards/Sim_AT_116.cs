@@ -1,37 +1,42 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_116 : SimTemplate //Wyrmrest Agent
-    {
+	class Sim_AT_116 : SimTemplate //* Wyrmrest Agent
+	{
+		//Battlecry: If you're holding a Dragon, gain +1 Attack and Taunt.
 
-        //Battlecry: If you're holding a Dragon, gain +1 Attack and Taunt
-
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            bool hasdragon = false;
-            if (own.own)
-            {
-                foreach (Handmanager.Handcard hc in p.owncards)
-                {
-                    if (hc.card.race == TAG_RACE.DRAGON) hasdragon = true;
+			if(m.own)
+			{
+				bool dragonInHand = false;
+				foreach (Handmanager.Handcard hc in p.owncards)
+				{
+					if ((TAG_RACE)hc.card.race == TAG_RACE.DRAGON)
+					{
+						dragonInHand = true;
+						break;
+					}
+				}
+				if(dragonInHand)
+				{
+					p.minionGetBuffed(m, 1, 0);
+					m.taunt = true;
+                    p.anzOwnTaunt++;
                 }
-            }
-            else
-            {
-                hasdragon = true;
-            }
-            if (hasdragon)
-            {
-                p.minionGetBuffed(own, 1, 0);
-                own.taunt = true;
-            }
-
+			}
+			else
+			{
+				if (p.enemyAnzCards >= 2)
+				{
+					p.minionGetBuffed(m, 1, 0);
+					m.taunt = true;
+                    p.anzEnemyTaunt++;
+                }					
+			}
         }
-
-       
-
     }
 }

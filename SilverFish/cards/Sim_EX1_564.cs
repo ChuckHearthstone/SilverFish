@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 //p.copyMinion(own, target);
                 bool source = own.own;
-                own.setMinionTominion(target);
+                own.setMinionToMinion(target);
                 own.own = source;
                 own.handcard.card.sim_card.onAuraStarts(p, own);
             }

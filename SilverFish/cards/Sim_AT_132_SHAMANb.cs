@@ -4,11 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_SHAMANb : SimTemplate //searingtotem
+	class Sim_AT_132_SHAMANb : SimTemplate //* Searing Totem
 	{
-
-// fire totem of shaman ability
-		
-
+		//1/1
 	}
 }

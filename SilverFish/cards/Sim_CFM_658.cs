@@ -15,7 +15,10 @@ namespace HREngine.Bots
                 int diedMinions = m.own ? p.tempTrigger.ownMinionsDied : p.tempTrigger.enemyMinionsDied;
                 if (diedMinions != 0)
                 {
-                    p.minionGetBuffed(m, diedMinions, 0);
+                    int residual = (p.pID == m.pID) ? diedMinions - m.extraParam2 : diedMinions;
+                    m.pID = p.pID;
+                    m.extraParam2 = diedMinions;
+                    p.minionGetBuffed(m, residual, 0);
                 }
             }
         }

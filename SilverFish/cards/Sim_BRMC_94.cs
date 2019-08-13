@@ -17,17 +17,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			CardDB.Card hewHeroPower = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_027p); //DIE, INSECT!
-            if (m.own)
-            {
-                p.ownHeroAblility.card = hewHeroPower;
-                p.ownAbilityReady = true;
-            }
-            else
-            {
-                p.enemyHeroAblility.card = hewHeroPower;
-                p.enemyAbilityReady = true;
-            }
+            p.setNewHeroPower(CardDB.cardIDEnum.BRM_027p, m.own); // DIE, INSECT!
         }
     }
 }

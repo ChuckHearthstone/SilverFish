@@ -4,13 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_099t : SimTemplate //War Kodo.
-    {
-
-       
-
-
-    }
-
-
+	class Sim_AT_099t : SimTemplate //* War Kodo
+	{
+		//-
+	}
 }

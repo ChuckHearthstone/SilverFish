@@ -15,7 +15,7 @@ namespace HREngine.Bots
                 p.anzOwnSouthseacaptain++;
                 foreach (Minion m in p.ownMinions)
                 {
-                    if((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entityID != m.entityID) p.minionGetBuffed(m, 1, 1);
+                    if((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, 1, 1);
                 }
             }
             else
@@ -23,7 +23,7 @@ namespace HREngine.Bots
                 p.anzEnemySouthseacaptain++;
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entityID != m.entityID) p.minionGetBuffed(m, 1, 1);
+                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, 1, 1);
                 }
             }
 
@@ -36,7 +36,7 @@ namespace HREngine.Bots
                 p.anzOwnSouthseacaptain--;
                 foreach (Minion m in p.ownMinions)
                 {
-                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entityID != m.entityID) p.minionGetBuffed(m, -1, -1);
+                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, -1, -1);
                 }
             }
             else
@@ -44,7 +44,7 @@ namespace HREngine.Bots
                 p.anzEnemySouthseacaptain--;
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entityID != m.entityID) p.minionGetBuffed(m, -1, -1);
+                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE && own.entitiyID != m.entitiyID) p.minionGetBuffed(m, -1, -1);
                 }
             }
         }

@@ -4,11 +4,10 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_DRUID : SimTemplate //shapeshift
+	class Sim_AT_132_DRUID : SimTemplate //* Dire Shapeshift
 	{
-
-        //    Gain 2 Armor and +2 Attack this turn.
-
+		//Hero Power. Gain 2 Armor and +2 Attack this turn.
+		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             if (ownplay)
@@ -22,6 +21,5 @@ namespace HREngine.Bots
                 p.minionGetArmor(p.enemyHero,2);
             }
         }
-
 	}
 }

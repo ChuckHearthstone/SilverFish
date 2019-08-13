@@ -8,12 +8,9 @@ namespace HREngine.Bots
     {
         //Battlecry: The next spell you cast this turn costs Health instead of Mana.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            if (ownplay)
-            {
-                p.nextSpellThisTurnCostHealth = true;
-            }
+            if (m.own) p.nextSpellThisTurnCostHealth = true;
         }
     }
 }

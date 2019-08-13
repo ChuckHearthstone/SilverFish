@@ -11,7 +11,6 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             target.Hp = 15;
-            if (target.maxHp < 15) target.maxHp = 15;
 		}
 
 

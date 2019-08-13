@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_FP1_003 : SimTemplate //echoingooze
+    class Sim_FP1_003 : SimTemplate //* Echoing Ooze
 	{
+        //Battlecry: Summon an exact copy of this minion at the end of the turn.
 
-//    kampfschrei:/ beschwört am ende des zuges eine exakte kopie dieses dieners.
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
             if (triggerEffectMinion.playedThisTurn && triggerEffectMinion.own == turnEndOfOwner)
@@ -16,9 +16,9 @@ namespace HREngine.Bots
                 List<Minion> temp = (turnEndOfOwner) ? p.ownMinions : p.enemyMinions;
                 foreach (Minion mnn in temp)
                 {
-                    if (mnn.name == CardDB.cardName.echoingooze && triggerEffectMinion.entityID != mnn.entityID)
+                    if (mnn.name == CardDB.cardName.echoingooze && triggerEffectMinion.entitiyID != mnn.entitiyID)
                     {
-                        mnn.setMinionTominion(triggerEffectMinion);
+                        mnn.setMinionToMinion(triggerEffectMinion);
                         break;
                     }
                 }

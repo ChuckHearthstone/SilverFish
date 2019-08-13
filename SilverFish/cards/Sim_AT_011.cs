@@ -4,19 +4,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_011 : SimTemplate //Holy Champion
+	class Sim_AT_011 : SimTemplate //* Holy Champion
 	{
-
-        //   Whenever a character is healed, gain +2 Attack.
-        public override void onAHeroGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
+		// Whenever a character is healed, gain +2 attack.
+        
+        public override void onACharGotHealed(Playfield p, Minion triggerEffectMinion, int charsGotHealed)
         {
-            p.minionGetBuffed(triggerEffectMinion, 2, 0);
+            p.minionGetBuffed(triggerEffectMinion, 2 * charsGotHealed, 0);
         }
-
-        public override void onAMinionGotHealedTrigger(Playfield p, Minion triggerEffectMinion)
-        {
-            p.minionGetBuffed(triggerEffectMinion, 2, 0);
-        }
-
 	}
 }

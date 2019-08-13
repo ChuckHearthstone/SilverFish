@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_012 : PenTemplate //swipe
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt einem feind $4 schaden und allen anderen feinden $1 schaden zu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

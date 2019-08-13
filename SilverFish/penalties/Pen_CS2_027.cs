@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_027 : PenTemplate //mirrorimage
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    ruft zwei diener (0/2) mit spott/ herbei.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

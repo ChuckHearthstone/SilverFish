@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_CS2_103 : PenTemplate //charge
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verleiht einem befreundeten diener +2 angriff und ansturm/.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

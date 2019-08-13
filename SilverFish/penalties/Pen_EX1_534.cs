@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_534 : PenTemplate //savannahhighmane
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    todesröcheln:/ ruft zwei hyänen (2/2) herbei.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

@@ -4,10 +4,9 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_SHAMANa : SimTemplate //healingtotem
+	class Sim_AT_132_SHAMANa : SimTemplate //* Healing Totem
 	{
-
-//    stellt am ende eures zuges bei allen befreundeten dienern 1 leben wieder her.
+		//At the end of your turn, restore 1 Health to all friendly minions.
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
@@ -17,6 +16,5 @@ namespace HREngine.Bots
                 p.allMinionOfASideGetDamage(turnEndOfOwner, -heal);
             }
         }
-
 	}
 }

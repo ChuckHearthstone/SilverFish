@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_507 : PenTemplate //murlocwarleader
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    alle anderen murlocs haben +2/+1.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

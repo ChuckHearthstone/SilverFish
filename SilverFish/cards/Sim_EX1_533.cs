@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if (target.entityID != m.entityID && attacker.entityID != m.entityID)
+                    if (target.entitiyID != m.entitiyID && attacker.entitiyID != m.entitiyID)
                     {
                         newTarget = m;
                     }
@@ -24,7 +24,7 @@ namespace HREngine.Bots
                 {
                     foreach (Minion m in p.ownMinions)
                     {
-                        if (target.entityID != m.entityID && attacker.entityID != m.entityID)
+                        if (target.entitiyID != m.entitiyID && attacker.entitiyID != m.entitiyID)
                         {
                             newTarget = m;
                         }
@@ -41,7 +41,7 @@ namespace HREngine.Bots
             {
                 foreach (Minion m in p.ownMinions)
                 {
-                    if (target.entityID != m.entityID && attacker.entityID != m.entityID)
+                    if (target.entitiyID != m.entitiyID && attacker.entitiyID != m.entitiyID)
                     {
                         newTarget = m;
                     }
@@ -51,7 +51,7 @@ namespace HREngine.Bots
                 {
                     foreach (Minion m in p.enemyMinions)
                     {
-                        if (target.entityID != m.entityID && attacker.entityID != m.entityID)
+                        if (target.entitiyID != m.entitiyID && attacker.entitiyID != m.entitiyID)
                         {
                             newTarget = m;
                         }
@@ -67,7 +67,7 @@ namespace HREngine.Bots
 
             if (newTarget != null)
             {
-                number = newTarget.entityID;
+                number = newTarget.entitiyID;
             }
         }
 

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_FP1_012 : PenTemplate //sludgebelcher
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    spott.\ntodesröcheln:/ ruft einen schleim (1/2) mit spott/ herbei.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

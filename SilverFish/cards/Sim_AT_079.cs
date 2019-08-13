@@ -1,55 +1,38 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_079 : SimTemplate//Mysterious Challenger
-    {
-        //Battlecry: Put one of each Secret from your deck into the battlefield
+	class Sim_AT_079 : SimTemplate //* Mysterious Challenger
+	{
+		//Battlecry: Put one of each Secret from your deck into the battlefield.
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            //if(p.isServer) 
-            //TODO
-
             if (own.own)
             {
-                if (p.ownHeroName == HeroEnum.mage)
+                List<CardDB.cardIDEnum> secrets = new List<CardDB.cardIDEnum>();
+                CardDB.Card c;
+                foreach (KeyValuePair<CardDB.cardIDEnum, int> cid in p.prozis.turnDeck)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_289);
+                    c = CardDB.Instance.getCardDataFromID(cid.Key);
+                    if (c.Secret) secrets.Add(cid.Key);
                 }
-                if (p.ownHeroName == HeroEnum.hunter)
+
+                foreach (CardDB.cardIDEnum cId in secrets)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_554);
-                }
-                if (p.ownHeroName == HeroEnum.pala)
-                {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130); //noble sac
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.FP1_020); //avenge
+                    if (p.ownSecretsIDList.Count < 5 && !p.ownSecretsIDList.Contains(cId)) p.ownSecretsIDList.Add(cId);
                 }
             }
             else
             {
-                if (p.enemyHeroName == HeroEnum.mage || p.enemyHeroName == HeroEnum.hunter || p.enemyHeroName == HeroEnum.pala)
+                for (int i = p.enemySecretCount; i < 5; i++)
                 {
-                    if (p.enemySecretCount <= 4)
-                    {
-                        p.enemySecretCount++;
-                        SecretItem si = Probabilitymaker.Instance.getNewSecretGuessedItem(p.getNextEntity(), p.enemyHeroName);
-                        if (p.enemyHeroName == HeroEnum.pala)
-                        {
-                            si.canBe_redemption = false;
-                        }
-                        if (Settings.Instance.useSecretsPlayArround)
-                        {
-                            p.enemySecretList.Add(si);
-                        }
-                    }
+                    p.enemySecretCount++;
+                    p.enemySecretList.Add(Probabilitymaker.Instance.getNewSecretGuessedItem(p.getNextEntity(), p.enemyHeroStartClass));
                 }
             }
-            
         }
-    }
-
+	}
 }

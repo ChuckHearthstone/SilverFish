@@ -10,9 +10,18 @@ namespace HREngine.Bots
 		
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			Minion target = (m.own)? p.searchRandomMinion(p.enemyMinions, Playfield.searchmode.searchHighestHP) : p.searchRandomMinion(p.ownMinions, Playfield.searchmode.searchHighestHP);
-			if (target == null) target = (m.own) ? p.enemyHero : p.ownHero;
-			p.minionGetDamageOrHeal(target, 1);
+            Minion target = null;
+
+            if (m.own)
+            {
+                target = p.getEnemyCharTargetForRandomSingleDamage(1);
+            }
+            else
+            {
+                target = p.searchRandomMinion(p.ownMinions, searchmode.searchLowestHP); //(pessimistic)
+                if (target == null) target = p.ownHero;
+            }
+            p.minionGetDamageOrHeal(target, 1);
         }
     }
 }

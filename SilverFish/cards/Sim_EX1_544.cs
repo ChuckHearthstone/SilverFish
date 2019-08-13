@@ -28,7 +28,7 @@ namespace HREngine.Bots
             {
                 p.ownSecretsIDList.Clear();
             }
-            p.drawACard(CardDB.cardIDEnum.None, ownplay);
+            p.drawACard(CardDB.cardName.unknown, ownplay);
         }
 
     }

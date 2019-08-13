@@ -4,28 +4,35 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_033 : SimTemplate //Book Wyrm
-    {
-        // Battlecry: If you're holding a Dragon, destroy an enemy minion with 3 or less Attack.
+	class Sim_KAR_033 : SimTemplate //* Book Wyrm
+	{
+		//Battlecry: If you're holding a Dragon, destroy an enemy minion with 3 Attack or less.
 
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            bool hasdragon = false;
-            if (own.own)
-            {
-                foreach (Handmanager.Handcard hc in p.owncards)
-                {
-                    if (hc.card.race == TAG_RACE.DRAGON) hasdragon = true;
+			if(m.own)
+			{
+				bool dragonInHand = false;
+				foreach (Handmanager.Handcard hc in p.owncards)
+				{
+					if ((TAG_RACE)hc.card.race == TAG_RACE.DRAGON)
+					{
+						dragonInHand = true;
+						break;
+					}
+				}
+				if(dragonInHand)
+				{
+					if (target!= null) p.minionGetDestroyed(target);
                 }
-            }
-            else
-            {
-                hasdragon = true;
-            }
-            if (target != null && (hasdragon && target.Angr <= 3))
-            {
-                p.minionGetDestroyed(target);
-            }
+			}
+			else
+			{
+				if (p.enemyAnzCards >= 2)
+				{
+					if (target!= null) p.minionGetDestroyed(target);
+                }					
+			}
         }
     }
 }

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_014 : SimTemplate //Vol'jin
+    class Sim_GVG_014 : SimTemplate //* Vol'jin
     {
-        //todo: what happens if the target is damaged?
        //Battlecry: Swap Health with another minion.
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)

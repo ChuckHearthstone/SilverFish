@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (m.own)
             {
-                if (Hrtprozis.Instance.noDuplicates)
+                if (p.prozis.noDuplicates)
                 {
 				    if (p.ownMinions.Count < 7)
 				    {
@@ -39,6 +39,14 @@ namespace HREngine.Bots
                     p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_306), pos, false); //Succubus
                     p.enemyAnzCards--;
                     p.triggerCardsChanged(false);
+                    if (p.ownHeroHasDirectLethal())
+                    {
+                        p.enemyMinions[pos].Angr = 2;
+                        if (p.ownHeroHasDirectLethal())
+                        {
+                            p.enemyMinions[pos].Angr = 0;
+                        }
+                    }
                 }
             }
         }

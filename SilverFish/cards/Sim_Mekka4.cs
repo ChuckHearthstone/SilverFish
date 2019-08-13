@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_Mekka4 : SimTemplate //poultryizer
+	class Sim_Mekka4 : SimTemplate //* poultryizer
 	{
         CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.Mekka4t);
                                 
@@ -35,8 +35,13 @@ namespace HREngine.Bots
                 if (ges <= 999)
                 {
                     p.minionTransform(tm, c);
+                    tm.playedThisTurn = false;
+                    tm.Ready = true;
                 }
             }
         }
+
+      
+
 	}
 }

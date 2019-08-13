@@ -10,15 +10,15 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            p.callKid(m.handcard.card, m.zonepos, m.own, true);
-            p.callKid(m.handcard.card, m.zonepos, m.own, true);
+            p.callKid(m.handcard.card, m.zonepos, m.own);
+            p.callKid(m.handcard.card, m.zonepos, m.own);
             List<Minion> temp = (m.own) ? p.ownMinions : p.enemyMinions;
             int count = 0;
             foreach (Minion mnn in temp)
             {
-                if (mnn.name == CardDB.cardName.doppelgangster && m.entityID != mnn.entityID && mnn.playedThisTurn)
+                if (mnn.name == CardDB.cardName.doppelgangster && m.entitiyID != mnn.entitiyID && mnn.playedThisTurn)
                 {
-                    mnn.setMinionTominion(m);
+                    mnn.setMinionToMinion(m);
                     count++;
                     if (count >= 2) break;
                 }

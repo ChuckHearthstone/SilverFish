@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_055 : PenTemplate //manaaddict
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    erhält jedes mal +2 angriff in diesem zug, wenn ihr einen zauber wirkt.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

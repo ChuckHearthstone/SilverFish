@@ -9,11 +9,11 @@ namespace HREngine.Bots
 
 //    wenn ein spieler einen zauber wirkt, erhält der andere spieler eine kopie desselben auf seine hand.
 
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (c.type == CardDB.cardtype.SPELL)
+            if (hc.card.type == CardDB.cardtype.SPELL)
             {
-                p.drawACard(c.cardIDenum, !wasOwnCard, true);
+                p.drawACard(hc.card.name, !wasOwnCard, true);
             }
         }
 

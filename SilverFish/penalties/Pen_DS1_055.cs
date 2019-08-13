@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_DS1_055 : PenTemplate //darkscalehealer
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    kampfschrei:/ stellt bei allen befreundeten charakteren 2 leben wieder her.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

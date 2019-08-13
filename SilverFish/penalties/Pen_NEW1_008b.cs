@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_008b : PenTemplate //ancientsecrets
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    stellt 5 leben wieder her.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

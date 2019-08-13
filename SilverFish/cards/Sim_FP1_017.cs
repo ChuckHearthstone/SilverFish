@@ -10,12 +10,12 @@ namespace HREngine.Bots
 //    diener mit kampfschrei/ kosten (2) mehr.
         public override void onAuraStarts(Playfield p, Minion own)
 		{
-            p.anzNerubarWeblord++;
+            p.nerubarweblord++;
 		}
 
         public override void onAuraEnds(Playfield p, Minion m)
         {
-            p.anzNerubarWeblord--;
+            p.nerubarweblord--;
         }
 
 

@@ -13,23 +13,24 @@ namespace HREngine.Bots
             List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
+                if (m.entitiyID == own.entitiyID) continue;
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PIRATE)
                 {
                     if (own.own)
                     {
-                        if (p.ownWeaponDurability > 0)
+                        if (p.ownWeapon.Durability > 0)
                         {
-                            p.ownWeaponDurability++;
-                            p.ownWeaponAttack++;
+                            p.ownWeapon.Durability++;
+                            p.ownWeapon.Angr++;
                             p.minionGetBuffed(p.ownHero, 1, 0);
                         }
                     }
                     else
                     {
-                        if (p.enemyWeaponDurability > 0)
+                        if (p.enemyWeapon.Durability > 0)
                         {
-                            p.enemyWeaponDurability++;
-                            p.enemyWeaponAttack++;
+                            p.enemyWeapon.Durability++;
+                            p.enemyWeapon.Angr++;
                             p.minionGetBuffed(p.enemyHero, 1, 0);
                         }
                     }

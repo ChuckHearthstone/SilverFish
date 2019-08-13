@@ -1,0 +1,2 @@
+//If ownHeroClass = DRUID and on the 1st turn bot played Innervate and at end of turn we have unused mana (available mana) then give negative bonus
+ohero=DRUID&t=1&p=EX1_169&am>0,bonus=-6

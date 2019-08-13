@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_004 : PenTemplate //youngpriestess
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    verleiht am ende eures zuges einem anderen zufälligen befreundeten diener +1 leben.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

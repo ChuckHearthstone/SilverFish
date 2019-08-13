@@ -11,20 +11,20 @@ namespace HREngine.Bots
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (choice == 1 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                if (ownplay)
-                {
-                    p.mana = Math.Min(10, p.mana + 2);
-                    p.ownMaxMana = Math.Min(10, p.ownMaxMana + 2);
-                }
-                else
-                {
-                    p.mana = Math.Min(10, p.mana + 2);
-                    p.enemyMaxMana = Math.Min(10, p.enemyMaxMana + 2);
-                }
+				if (ownplay)
+				{
+					p.mana = Math.Min(10, p.mana+2);
+					p.ownMaxMana = Math.Min(10, p.ownMaxMana+2);
+				}
+				else
+				{
+					p.mana = Math.Min(10, p.mana+2);
+					p.enemyMaxMana = Math.Min(10, p.enemyMaxMana+2);
+				}
             }
-            if (choice == 2 || (p.anzOwnFandralStaghelm > 0 && ownplay))
+            if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 //this.owncarddraw+=3;
                 p.drawACard(CardDB.cardName.unknown, ownplay);
@@ -32,5 +32,8 @@ namespace HREngine.Bots
                 p.drawACard(CardDB.cardName.unknown, ownplay);
             }
         }
+
     }
+
+
 }

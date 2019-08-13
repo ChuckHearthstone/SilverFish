@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    windzorn/, überladung:/ (2)
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.changeRecall(own.own, 2);
+            if (own.own) p.ueberladung += 2;
 		}
 
 	}

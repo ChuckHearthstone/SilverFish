@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    spott/, überladung:/ (3)
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.changeRecall(own.own, 3);
+            if (own.own) p.ueberladung += 3;
 		}
 
 

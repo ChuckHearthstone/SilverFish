@@ -4,14 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_132_WARRIOR : SimTemplate //armorup
+	class Sim_AT_132_WARRIOR : SimTemplate //* Tank Up!
 	{
-
-        //    heldenfähigkeit Gain 4 Armor.
-
+		//Hero Power. Gain 4 Armor.
+		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-		    p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 4);
+            if (ownplay)
+            {
+                p.minionGetArmor(p.ownHero, 4);
+            }
+            else
+            {
+                p.minionGetArmor(p.enemyHero, 4);
+            }
 		}
 	}
 }

@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_NEW1_007a : PenTemplate //starfall
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt allen feindlichen dienern $2 schaden zu.
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }

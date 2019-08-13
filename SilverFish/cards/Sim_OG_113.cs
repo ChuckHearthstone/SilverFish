@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onMinionWasSummoned(Playfield p, Minion m, Minion summonedMinion)
         {
-            if (m.entityID != summonedMinion.entityID && m.own == summonedMinion.own)
+            if (m.entitiyID != summonedMinion.entitiyID && m.own == summonedMinion.own)
             {
 				p.minionGetBuffed(m, 1, 0);
             }

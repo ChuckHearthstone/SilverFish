@@ -10,7 +10,11 @@ namespace HREngine.Bots
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (own.own && (p.anzOgOwnCThunAngrBonus + 6) > 9) p.minionGetBuffed(own, 0, 5);
+            if (own.own)
+            {
+                if (p.anzOgOwnCThunAngrBonus + 6 > 9) p.minionGetBuffed(own, 0, 5);
+                else p.evaluatePenality += 5;
+            }
 		}
 	}
 }

@@ -6,17 +6,17 @@ namespace HREngine.Bots
 {
 	class Sim_OG_085 : SimTemplate //* Demented Frostcaller
 	{
-        //After you cast a spell, Freeze a random enemy character.
-
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+		//After you cast a spell, Freeze a random enemy character.
+		
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
             {
-                Minion target2 = null;
-                List<Minion> temp = (wasOwnCard) ? p.enemyMinions : p.ownMinions;
-                if (temp.Count > 0) target2 = p.searchRandomMinion(temp, Playfield.searchmode.searchLowestHP);
-                if (target2 == null) target2 = (wasOwnCard) ? p.enemyHero : p.ownHero;
-                target2.frozen = true;
+                Minion target = null;
+                List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;
+                if (temp.Count > 0) target = p.searchRandomMinion(temp, searchmode.searchLowestHP);
+                if (target == null) target = (ownplay) ? p.enemyHero : p.ownHero;
+                p.minionGetFrozen(target);
             }
         }
     }

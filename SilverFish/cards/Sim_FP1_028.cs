@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_FP1_028 : SimTemplate //undertaker
 	{
 
-//    erhält jedes mal +1 attack, wenn ihr einen diener mit todesröcheln/ herbeiruft.
+//    Whenever you summon a minion with Deathrattle, gain +1 Attack.
 
         public override void onMinionIsSummoned(Playfield p, Minion triggerEffectMinion, Minion summonedMinion)
         {

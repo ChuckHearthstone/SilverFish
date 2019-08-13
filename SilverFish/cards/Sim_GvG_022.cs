@@ -13,28 +13,41 @@ namespace HREngine.Bots
         {
             if (ownplay)
             {
-                if (p.ownWeaponDurability >= 1)
+                if (p.ownWeapon.Durability >= 1)
                 {
-                    p.ownWeaponAttack += 3;
+                    p.ownWeapon.Angr += 3;
                     p.minionGetBuffed(p.ownHero, 3, 0);
                 }
                 if (p.cardsPlayedThisTurn >= 1 && p.ownMinions.Count >= 1)
                 {
-                    p.minionGetBuffed(p.searchRandomMinion(p.ownMinions, Playfield.searchmode.searchLowestHP), 3, 0);
+                    // Drew: Null check for searchRandomMinion.
+                    var found = p.searchRandomMinion(p.ownMinions, searchmode.searchLowestAttack);
+                    if (found != null)
+                    {
+                        p.minionGetBuffed(found, 3, 0);
+                    }
                 }
             }
             else
             {
-                if (p.enemyWeaponDurability >= 1)
+                if (p.enemyWeapon.Durability >= 1)
                 {
-                    p.enemyWeaponAttack += 3;
+                    p.enemyWeapon.Angr += 3;
                     p.minionGetBuffed(p.enemyHero, 3, 0);
                 }
                 if (p.cardsPlayedThisTurn >= 1 && p.enemyMinions.Count >= 1)
                 {
-                    p.minionGetBuffed(p.searchRandomMinion(p.enemyMinions, Playfield.searchmode.searchHighestHP), 3, 0);
+                    // Drew: Null check for searchRandomMinion.
+                    var found = p.searchRandomMinion(p.enemyMinions, searchmode.searchLowestAttack);
+                    if (found != null)
+                    {
+                        p.minionGetBuffed(found, 3, 0);
+                    }
                 }
             }
         }
+
+
     }
+
 }

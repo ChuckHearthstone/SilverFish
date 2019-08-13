@@ -8,18 +8,18 @@ namespace HREngine.Bots
 	{
 		// After you cast a spell, refresh your Hero Power.
 
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
             {
-                if (triggerEffectMinion.own)
+                if (m.own)
                 {
-                    p.ownHeroPowerAllowedQuantity++;
+                    p.anzUsedOwnHeroPower = 0;
                     p.ownAbilityReady = true;
                 }
                 else
                 {
-                    p.enemyHeroPowerAllowedQuantity++;
+                    p.anzUsedEnemyHeroPower = 0;
                     p.enemyAbilityReady = true;
                 }
             }

@@ -4,29 +4,25 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_GVG_033 : SimTemplate //Tree of Life
+    class Sim_GVG_033 : SimTemplate //* Tree of Life
     {
 
         //    Restore all characters to full Health.
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
+			int heal = 1000;
             foreach (Minion m in p.ownMinions)
             {
-                int heal = (ownplay) ? p.getSpellHeal(m.maxHp) : p.getEnemySpellHeal(m.maxHp);
                 p.minionGetDamageOrHeal(m, -heal);
             }
             foreach (Minion m in p.enemyMinions)
             {
-                int heal = (ownplay) ? p.getSpellHeal(m.maxHp) : p.getEnemySpellHeal(m.maxHp);
                 p.minionGetDamageOrHeal(m, -heal);
             }
 
-            int heal2 = (ownplay) ? p.getSpellHeal(p.enemyHero.maxHp) : p.getEnemySpellHeal(p.enemyHero.maxHp);
-            p.minionGetDamageOrHeal(p.enemyHero, -heal2);
-
-            heal2 = (ownplay) ? p.getSpellHeal(p.ownHero.maxHp) : p.getEnemySpellHeal(p.ownHero.maxHp);
-            p.minionGetDamageOrHeal(p.ownHero, -heal2);
+            p.minionGetDamageOrHeal(p.enemyHero, -heal);
+            p.minionGetDamageOrHeal(p.ownHero, -heal);
         }
 
 

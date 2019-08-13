@@ -4,9 +4,8 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_KAR_096 : SimTemplate //Prince Malchezaar
-    {
-        // When the game starts, add 5 extra Legendary minions to your deck.
-
-    }
+	class Sim_KAR_096 : SimTemplate //* Prince Malchezaar
+	{
+		//At the start of the game, shuffle 5 extra Legendary minions into your deck.
+	}
 }

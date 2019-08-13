@@ -4,15 +4,15 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_NEW1_012 : SimTemplate //manawyrm
+	class Sim_NEW1_012 : SimTemplate //* Mana Wyrm
 	{
+		//Whenever you cast a spell, gain +1 Attack.
 
-//    erhält jedes mal +1 angriff, wenn ihr einen zauber wirkt.
-        public override void onCardIsGoingToBePlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion, Minion target, int choice)
+        public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && c.type == CardDB.cardtype.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.cardtype.SPELL)
             {
-                triggerEffectMinion.Angr++;
+				p.minionGetBuffed(triggerEffectMinion, 1, 0);
             }
         }
 	}

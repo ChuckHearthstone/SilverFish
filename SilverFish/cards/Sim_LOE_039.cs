@@ -4,32 +4,22 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_LOE_039 : SimTemplate //gorillabot a-3
+	class Sim_LOE_039 : SimTemplate //* Gorillabot A-3
 	{
-        //Battlecry: if you control a mech, discover a mech
-
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
-        {
-            if (own.own)
+		//Battlecry: If you control another Mech, Discover a Mech.
+		
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+            List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
+            foreach (Minion m in temp)
             {
-                bool hasmech = false;
-                foreach (Minion m in p.ownMinions)
-                {
-                    if (m.handcard.card.race == TAG_RACE.MECHANICAL) hasmech = true;
-                }
-                if(hasmech) p.drawACard(CardDB.cardIDEnum.None, own.own, true);
+                if (m.entitiyID == own.entitiyID) continue;
+                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL)
+				{
+					p.drawACard(CardDB.cardName.spidertank, own.own, true);
+					break;
+				}
             }
-            else
-            {
-                bool hasmech = false;
-                foreach (Minion m in p.enemyMinions)
-                {
-                    if (m.handcard.card.race == TAG_RACE.MECHANICAL) hasmech = true;
-                }
-                if (hasmech) p.drawACard(CardDB.cardIDEnum.None, own.own, true);
-            }
-        }
-
+		}
 	}
-
 }

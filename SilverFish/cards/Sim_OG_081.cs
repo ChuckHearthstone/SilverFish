@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-			if (target.frozen) p.minionGetDestroyed(target);
+			if (target != null) p.minionGetDestroyed(target);
         }
     }
 }

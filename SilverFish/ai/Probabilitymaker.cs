@@ -19,21 +19,22 @@
 
     public class SecretItem
     {
-        public bool triggered;
+        public bool triggered = false;
 
+        /*not in use temporarily 1
         public bool canbeTriggeredWithAttackingHero = true;
         public bool canbeTriggeredWithAttackingMinion = true;
         public bool canbeTriggeredWithPlayingMinion = true;
-        public bool canbeTriggeredWithKillingMinion = true;
-        public bool canbeTriggeredWithHeroPower = true;
-
-
+        public bool canbeTriggeredWithPlayingHeroPower = true;*/
 
         public bool canBe_snaketrap = true;
         public bool canBe_snipe = true;
         public bool canBe_explosive = true;
+        public bool canBe_beartrap = true;
         public bool canBe_freezing = true;
         public bool canBe_missdirection = true;
+        public bool canBe_darttrap = true;
+        public bool canBe_cattrick = true;
 
         public bool canBe_counterspell = true;
         public bool canBe_icebarrier = true;
@@ -42,27 +43,16 @@
         public bool canBe_spellbender = true;
         public bool canBe_vaporize = true;
         public bool canBe_duplicate = true;
+        public bool canBe_effigy = true;
 
         public bool canBe_eyeforaneye = true;
         public bool canBe_noblesacrifice = true;
         public bool canBe_redemption = true;
         public bool canBe_repentance = true;
         public bool canBe_avenge = true;
-        
+        public bool canBe_sacredtrial = true;
 
-        //new TGT---
-        public bool canBe_effigy = true;
-        public bool canBe_beartrap = true;
-        public bool canBe_competivespirit = true;
-
-        // LOE
-        public bool canBe_Trial = true;
-        public bool canBe_Dart = true;//hunter
-
-        // Kara
-        public bool canBe_cattrick = true;
-
-        public int entityId;
+        public int entityId = 0;
 
         public SecretItem()
         {
@@ -71,22 +61,26 @@
         public SecretItem(SecretItem sec)
         {
             this.triggered = sec.triggered;
+            /*not in use temporarily 1
             this.canbeTriggeredWithAttackingHero = sec.canbeTriggeredWithAttackingHero;
             this.canbeTriggeredWithAttackingMinion = sec.canbeTriggeredWithAttackingMinion;
             this.canbeTriggeredWithPlayingMinion = sec.canbeTriggeredWithPlayingMinion;
-            this.canbeTriggeredWithKillingMinion = sec.canbeTriggeredWithKillingMinion;
-            this.canbeTriggeredWithHeroPower = sec.canbeTriggeredWithHeroPower;
+            this.canbeTriggeredWithPlayingHeroPower = sec.canbeTriggeredWithPlayingHeroPower;*/
 
             this.canBe_avenge = sec.canBe_avenge;
             this.canBe_counterspell = sec.canBe_counterspell;
             this.canBe_duplicate = sec.canBe_duplicate;
+            this.canBe_effigy = sec.canBe_effigy;
             this.canBe_explosive = sec.canBe_explosive;
+            this.canBe_beartrap = sec.canBe_beartrap;
             this.canBe_eyeforaneye = sec.canBe_eyeforaneye;
             this.canBe_freezing = sec.canBe_freezing;
             this.canBe_icebarrier = sec.canBe_icebarrier;
             this.canBe_iceblock = sec.canBe_iceblock;
+            this.canBe_cattrick = sec.canBe_cattrick;
             this.canBe_mirrorentity = sec.canBe_mirrorentity;
             this.canBe_missdirection = sec.canBe_missdirection;
+            this.canBe_darttrap = sec.canBe_darttrap;
             this.canBe_noblesacrifice = sec.canBe_noblesacrifice;
             this.canBe_redemption = sec.canBe_redemption;
             this.canBe_repentance = sec.canBe_repentance;
@@ -94,16 +88,7 @@
             this.canBe_snipe = sec.canBe_snipe;
             this.canBe_spellbender = sec.canBe_spellbender;
             this.canBe_vaporize = sec.canBe_vaporize;
-
-            this.canBe_effigy = sec.canBe_effigy;
-            this.canBe_beartrap = sec.canBe_beartrap;
-            this.canBe_competivespirit = sec.canBe_competivespirit;
-
-            this.canBe_Trial = sec.canBe_Trial;
-            this.canBe_Dart = sec.canBe_Dart;
-
-            this.canBe_cattrick = sec.canBe_cattrick;
-
+            this.canBe_sacredtrial = sec.canBe_sacredtrial;
 
             this.entityId = sec.entityId;
 
@@ -119,58 +104,108 @@
                 Helpfunctions.Instance.ErrorLog("cant read secret " + secdata + " " + canbe.Length);
             }
 
-            this.canBe_snaketrap = (canbe[0] == '1');
-            this.canBe_snipe = (canbe[1] == '1');
-            this.canBe_explosive = (canbe[2] == '1');
-            this.canBe_freezing = (canbe[3] == '1');
-            this.canBe_missdirection = (canbe[4] == '1');
+            this.canBe_snaketrap = false;
+            this.canBe_snipe = false;
+            this.canBe_explosive = false;
+            this.canBe_beartrap = false;
+            this.canBe_freezing = false;
+            this.canBe_missdirection = false;
+            this.canBe_darttrap = false;
+            this.canBe_cattrick = false;
 
-            this.canBe_counterspell = (canbe[5] == '1');
-            this.canBe_icebarrier = (canbe[6] == '1');
-            this.canBe_iceblock = (canbe[7] == '1');
-            this.canBe_mirrorentity = (canbe[8] == '1');
-            this.canBe_spellbender = (canbe[9] == '1');
-            this.canBe_vaporize = (canbe[10] == '1');
-            this.canBe_duplicate = (canbe[11] == '1');
+            this.canBe_counterspell = false;
+            this.canBe_icebarrier = false;
+            this.canBe_iceblock = false;
+            this.canBe_mirrorentity = false;
+            this.canBe_spellbender = false;
+            this.canBe_vaporize = false;
+            this.canBe_duplicate = false;
+            this.canBe_effigy = false;
 
-            this.canBe_eyeforaneye = (canbe[12] == '1');
-            this.canBe_noblesacrifice = (canbe[13] == '1');
-            this.canBe_redemption = (canbe[14] == '1');
-            this.canBe_repentance = (canbe[15] == '1');
-            this.canBe_avenge = (canbe[16] == '1');
+            this.canBe_eyeforaneye = false;
+            this.canBe_noblesacrifice = false;
+            this.canBe_redemption = false;
+            this.canBe_repentance = false;
+            this.canBe_avenge = false;
+            this.canBe_sacredtrial = false;
 
-            //update TGT
-            try
+            if (canbe.Length == 22) //new
             {
-                this.canBe_effigy = (canbe[17] == '1');
-                this.canBe_beartrap = (canbe[18] == '1');
-                this.canBe_competivespirit = (canbe[19] == '1');
-            }
-            catch
-            {
-                this.canBe_effigy = false;
-                this.canBe_beartrap = false;
-                this.canBe_competivespirit = false;
-            }
+                this.canBe_snaketrap = (canbe[0] == '1');
+                this.canBe_snipe = (canbe[1] == '1');
+                this.canBe_explosive = (canbe[2] == '1');
+                this.canBe_beartrap = (canbe[3] == '1');
+                this.canBe_freezing = (canbe[4] == '1');
+                this.canBe_missdirection = (canbe[5] == '1');
+                this.canBe_darttrap = (canbe[6] == '1');
+                this.canBe_cattrick = (canbe[7] == '1');
 
-            try
-            {
-                this.canBe_Trial = (canbe[20] == '1');
-                this.canBe_Dart = (canbe[21] == '1');
-            }
-            catch
-            {
-                this.canBe_Trial = false;
-                this.canBe_Dart = false;
-            }
+                this.canBe_counterspell = (canbe[8] == '1');
+                this.canBe_icebarrier = (canbe[9] == '1');
+                this.canBe_iceblock = (canbe[10] == '1');
+                this.canBe_mirrorentity = (canbe[11] == '1');
+                this.canBe_spellbender = (canbe[12] == '1');
+                this.canBe_vaporize = (canbe[13] == '1');
+                this.canBe_duplicate = (canbe[14] == '1');
+                this.canBe_effigy = (canbe[15] == '1');
 
-            try
-            {
-                this.canBe_cattrick = (canbe[22] == '1');
+                this.canBe_eyeforaneye = (canbe[16] == '1');
+                this.canBe_noblesacrifice = (canbe[17] == '1');
+                this.canBe_redemption = (canbe[18] == '1');
+                this.canBe_repentance = (canbe[19] == '1');
+                this.canBe_avenge = (canbe[20] == '1');
+                this.canBe_sacredtrial = (canbe[21] == '1');
             }
-            catch
+            else if (canbe.Length == 21)
             {
-                this.canBe_cattrick = false;
+                this.canBe_snaketrap = (canbe[0] == '1');
+                this.canBe_snipe = (canbe[1] == '1');
+                this.canBe_explosive = (canbe[2] == '1');
+                this.canBe_beartrap = (canbe[3] == '1');
+                this.canBe_freezing = (canbe[4] == '1');
+                this.canBe_missdirection = (canbe[5] == '1');
+                this.canBe_darttrap = (canbe[6] == '1');
+
+                this.canBe_counterspell = (canbe[7] == '1');
+                this.canBe_icebarrier = (canbe[8] == '1');
+                this.canBe_iceblock = (canbe[9] == '1');
+                this.canBe_mirrorentity = (canbe[10] == '1');
+                this.canBe_spellbender = (canbe[11] == '1');
+                this.canBe_vaporize = (canbe[12] == '1');
+                this.canBe_duplicate = (canbe[13] == '1');
+                this.canBe_effigy = (canbe[14] == '1');
+
+                this.canBe_eyeforaneye = (canbe[15] == '1');
+                this.canBe_noblesacrifice = (canbe[16] == '1');
+                this.canBe_redemption = (canbe[17] == '1');
+                this.canBe_repentance = (canbe[18] == '1');
+                this.canBe_avenge = (canbe[19] == '1');
+                this.canBe_sacredtrial = (canbe[20] == '1');
+            }
+            else if (canbe.Length == 20) //old
+            {
+                this.canBe_snaketrap = (canbe[0] == '1');
+                this.canBe_snipe = (canbe[1] == '1');
+                this.canBe_explosive = (canbe[2] == '1');
+                this.canBe_beartrap = (canbe[3] == '1');
+                this.canBe_freezing = (canbe[4] == '1');
+                this.canBe_missdirection = (canbe[5] == '1');
+                this.canBe_darttrap = (canbe[6] == '1');
+
+                this.canBe_counterspell = (canbe[7] == '1');
+                this.canBe_icebarrier = (canbe[8] == '1');
+                this.canBe_iceblock = (canbe[9] == '1');
+                this.canBe_mirrorentity = (canbe[10] == '1');
+                this.canBe_spellbender = (canbe[11] == '1');
+                this.canBe_vaporize = (canbe[12] == '1');
+                this.canBe_duplicate = (canbe[13] == '1');
+
+                this.canBe_eyeforaneye = (canbe[14] == '1');
+                this.canBe_noblesacrifice = (canbe[15] == '1');
+                this.canBe_redemption = (canbe[16] == '1');
+                this.canBe_repentance = (canbe[17] == '1');
+                this.canBe_avenge = (canbe[18] == '1');
+                this.canBe_sacredtrial = (canbe[19] == '1');
             }
 
             this.updateCanBeTriggered();
@@ -178,24 +213,20 @@
 
         public void updateCanBeTriggered()
         {
+            /*not in use temporarily 1
             this.canbeTriggeredWithAttackingHero = false;
             this.canbeTriggeredWithAttackingMinion = false;
             this.canbeTriggeredWithPlayingMinion = false;
-            this.canbeTriggeredWithKillingMinion = false;
-            this.canbeTriggeredWithHeroPower = false;
-            
+            this.canbeTriggeredWithPlayingHeroPower = false;
 
-            if (this.canBe_snipe || this.canBe_mirrorentity || this.canBe_repentance) this.canbeTriggeredWithPlayingMinion = true;
+            if (this.canBe_snipe || this.canBe_mirrorentity || this.canBe_repentance || this.canBe_sacredtrial) this.canbeTriggeredWithPlayingMinion = true;
 
-            if (this.canBe_explosive || this.canBe_missdirection || this.canBe_freezing || this.canBe_icebarrier || this.canBe_vaporize || this.canBe_noblesacrifice || this.canBe_beartrap) this.canbeTriggeredWithAttackingHero = true;
+            if (this.canBe_explosive || this.canBe_beartrap || this.canBe_missdirection || this.canBe_freezing || this.canBe_icebarrier || this.canBe_vaporize || this.canBe_noblesacrifice) this.canbeTriggeredWithAttackingHero = true;
 
-            if (this.canBe_snaketrap || this.canBe_freezing || this.canBe_noblesacrifice || this.canBe_Trial) this.canbeTriggeredWithAttackingMinion = true;
+            if (this.canBe_snaketrap || this.canBe_freezing || this.canBe_noblesacrifice) this.canbeTriggeredWithAttackingMinion = true;
 
-            if (this.canBe_avenge || this.canBe_redemption || this.canBe_duplicate || this.canBe_effigy) this.canbeTriggeredWithKillingMinion = true;
-
-            if (this.canBe_Dart) this.canbeTriggeredWithHeroPower = true;
-
-
+            if (this.canBe_darttrap) this.canbeTriggeredWithPlayingHeroPower = true;
+            */
         }
 
         public void usedTrigger_CharIsAttacked(bool DefenderIsHero, bool AttackerIsHero)
@@ -203,12 +234,11 @@
             if (DefenderIsHero)
             {
                 this.canBe_explosive = false;
+                this.canBe_beartrap = false;
                 this.canBe_missdirection = false;
 
                 this.canBe_icebarrier = false;
                 this.canBe_vaporize = false;
-
-                this.canBe_beartrap = false;
 
             }
             else
@@ -223,12 +253,12 @@
             updateCanBeTriggered();
         }
 
-        public void usedTrigger_MinionIsPlayed(int numberMinionsOnBoard)
+        public void usedTrigger_MinionIsPlayed(int i)
         {
             this.canBe_snipe = false;
             this.canBe_mirrorentity = false;
             this.canBe_repentance = false;
-            if (numberMinionsOnBoard >= 3) this.canBe_Trial = false;
+            if (i == 1) this.canBe_sacredtrial = false;
             updateCanBeTriggered();
         }
 
@@ -246,7 +276,6 @@
             this.canBe_redemption = false;
             this.canBe_duplicate = false;
             this.canBe_effigy = false;
-
             updateCanBeTriggered();
         }
 
@@ -256,20 +285,12 @@
             if (deadly) this.canBe_iceblock = false;
             updateCanBeTriggered();
         }
-
-        public void usedTrigger_EndTurn()
+        public void usedTrigger_HeroPowerUsed()
         {
-
-            this.canBe_competivespirit = false;
+            this.canBe_darttrap = false;
             updateCanBeTriggered();
         }
 
-        public void usedTrigger_HeroPower()
-        {
-
-            this.canBe_Dart = false;
-            updateCanBeTriggered();
-        }
 
         public string returnAString()
         {
@@ -277,8 +298,11 @@
             retval += "" + ((canBe_snaketrap) ? "1" : "0");
             retval += "" + ((canBe_snipe) ? "1" : "0");
             retval += "" + ((canBe_explosive) ? "1" : "0");
+            retval += "" + ((canBe_beartrap) ? "1" : "0");
             retval += "" + ((canBe_freezing) ? "1" : "0");
             retval += "" + ((canBe_missdirection) ? "1" : "0");
+            retval += "" + ((canBe_darttrap) ? "1" : "0");
+            retval += "" + ((canBe_cattrick) ? "1" : "0");
 
             retval += "" + ((canBe_counterspell) ? "1" : "0");
             retval += "" + ((canBe_icebarrier) ? "1" : "0");
@@ -287,69 +311,48 @@
             retval += "" + ((canBe_spellbender) ? "1" : "0");
             retval += "" + ((canBe_vaporize) ? "1" : "0");
             retval += "" + ((canBe_duplicate) ? "1" : "0");
+            retval += "" + ((canBe_effigy) ? "1" : "0");
 
             retval += "" + ((canBe_eyeforaneye) ? "1" : "0");
             retval += "" + ((canBe_noblesacrifice) ? "1" : "0");
             retval += "" + ((canBe_redemption) ? "1" : "0");
             retval += "" + ((canBe_repentance) ? "1" : "0");
             retval += "" + ((canBe_avenge) ? "1" : "0");
-
-            retval += "" + ((canBe_effigy) ? "1" : "0");
-            retval += "" + ((canBe_beartrap) ? "1" : "0");
-            retval += "" + ((canBe_competivespirit) ? "1" : "0");
-
-            retval += "" + ((canBe_Trial) ? "1" : "0");
-            retval += "" + ((canBe_Dart) ? "1" : "0");
-            
-            retval += "" + ((canBe_cattrick) ? "1" : "0");
-
+            retval += "" + ((canBe_sacredtrial) ? "1" : "0");
             return retval + ",";
         }
 
         public bool isEqual(SecretItem s)
         {
             bool result = this.entityId == s.entityId;
-            result = result && this.canBe_avenge == s.canBe_avenge && this.canBe_counterspell == s.canBe_counterspell && this.canBe_duplicate == s.canBe_duplicate && this.canBe_explosive == s.canBe_explosive;
-            result = result && this.canBe_eyeforaneye == s.canBe_eyeforaneye && this.canBe_freezing == s.canBe_freezing && this.canBe_icebarrier == s.canBe_icebarrier && this.canBe_iceblock == s.canBe_iceblock;
-            result = result && this.canBe_mirrorentity == s.canBe_mirrorentity && this.canBe_missdirection == s.canBe_missdirection && this.canBe_noblesacrifice == s.canBe_noblesacrifice && this.canBe_redemption == s.canBe_redemption;
-            result = result && this.canBe_repentance == s.canBe_repentance && this.canBe_snaketrap == s.canBe_snaketrap && this.canBe_snipe == s.canBe_snipe && this.canBe_spellbender == s.canBe_spellbender && this.canBe_vaporize == s.canBe_vaporize;
-            result = result && this.canBe_effigy == s.canBe_effigy && this.canBe_beartrap == s.canBe_beartrap && this.canBe_competivespirit == s.canBe_competivespirit;
-            result = result && this.canBe_Trial == s.canBe_Trial && this.canBe_Dart == s.canBe_Dart;
-            result = result && this.canBe_cattrick == s.canBe_cattrick;
-
+            if (!result)
+            {
+                result = result && this.canBe_avenge == s.canBe_avenge && this.canBe_counterspell == s.canBe_counterspell && this.canBe_duplicate == s.canBe_duplicate && this.canBe_effigy == s.canBe_effigy && this.canBe_explosive == s.canBe_explosive;
+                result = result && this.canBe_eyeforaneye == s.canBe_eyeforaneye && this.canBe_freezing == s.canBe_freezing && this.canBe_icebarrier == s.canBe_icebarrier && this.canBe_iceblock == s.canBe_iceblock;
+                result = result && this.canBe_mirrorentity == s.canBe_mirrorentity && this.canBe_missdirection == s.canBe_missdirection && this.canBe_noblesacrifice == s.canBe_noblesacrifice && this.canBe_redemption == s.canBe_redemption;
+                result = result && this.canBe_repentance == s.canBe_repentance && this.canBe_snaketrap == s.canBe_snaketrap && this.canBe_snipe == s.canBe_snipe && this.canBe_spellbender == s.canBe_spellbender && this.canBe_vaporize == s.canBe_vaporize;
+                result = result && this.canBe_sacredtrial == s.canBe_sacredtrial && this.canBe_darttrap == s.canBe_darttrap && this.canBe_beartrap == s.canBe_beartrap && this.canBe_cattrick == s.canBe_cattrick;
+            }
             return result;
         }
 
     }
 
-    public sealed class Probabilitymaker
+    public class Probabilitymaker
     {
-        public bool hasDeck = false;
-
-        public Dictionary<CardDB.cardIDEnum, int> ownGraveyard = new Dictionary<CardDB.cardIDEnum, int>();
-        public Dictionary<CardDB.cardIDEnum, int> enemyGraveyard = new Dictionary<CardDB.cardIDEnum, int>();
-        List<CardDB.Card> enemyDeckGuessed = new List<CardDB.Card>(); //what the enemy has played already
+        public Dictionary<CardDB.cardIDEnum, int> ownCardsOut = new Dictionary<CardDB.cardIDEnum, int>();
+        public Dictionary<CardDB.cardIDEnum, int> enemyCardsOut = new Dictionary<CardDB.cardIDEnum, int>();
+        List<GraveYardItem> graveyard = new List<GraveYardItem>();
         public List<GraveYardItem> turngraveyard = new List<GraveYardItem>();//MOBS only
-        List<GraveYardItem> graveyardTillTurnStart = new List<GraveYardItem>();
+        public List<GraveYardItem> turngraveyardAll = new List<GraveYardItem>();//All
+        List<GraveYardItem> graveyartTillTurnStart = new List<GraveYardItem>();
 
         public List<SecretItem> enemySecrets = new List<SecretItem>();
 
-        public int ownGraveYardCommonAttack;
-        public int ownGraveYardCommonHP = 0;
-        public int ownGraveYardCommonTaunt;
-
-        public int enemyGraveYardCommonAttack;
-        public int enemyGraveYardCommonHP;
-        public int enemyGraveYardCommonTaunt;
-
-        public int anzMinionSinGrave;
-
-        public bool feugenDead;
-        public bool stalaggDead;
-
+        public bool feugenDead = false;
+        public bool stalaggDead = false;
 
         private static Probabilitymaker instance;
-
         public static Probabilitymaker Instance
         {
             get
@@ -358,43 +361,35 @@
             }
         }
 
-        private Probabilitymaker() { }
+        private Probabilitymaker()
+        {
+
+        }
+
+        public void setOwnCardsOut(Dictionary<CardDB.cardIDEnum, int> og)
+        {
+            ownCardsOut.Clear();
+            this.stalaggDead = false;
+            this.feugenDead = false;
+            foreach (var tmp in og)
+            {
+                ownCardsOut.Add(tmp.Key, tmp.Value);
+                if (tmp.Key == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
+                if (tmp.Key == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
+            }
+        }
+        public void setEnemyCardsOut(Dictionary<CardDB.cardIDEnum, int> eg)
+        {
+            enemyCardsOut.Clear();
+            foreach (var tmp in eg)
+            {
+                enemyCardsOut.Add(tmp.Key, tmp.Value);
+                if (tmp.Key == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
+                if (tmp.Key == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
+            }
+        }
         
-
-        public void setOwnCards(List<CardDB.cardIDEnum> newGraveyardCards)
-        {
-            updateGraveyard(newGraveyardCards, ownGraveyard);
-        }
-
-        public void setEnemyCards(List<CardDB.cardIDEnum> newGraveyardCards)
-        {
-            updateGraveyard(newGraveyardCards, enemyGraveyard);
-            enemyDeckGuessed.Clear();
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in enemyGraveyard)
-            {
-                if (kvp.Value == 1) enemyDeckGuessed.Add(CardDB.Instance.getCardDataFromID(kvp.Key));
-            }
-        }
-
-        private void updateGraveyard(List<CardDB.cardIDEnum> newGraveyardCards, Dictionary<CardDB.cardIDEnum, int> knownGraveyardCards)
-        {
-            knownGraveyardCards.Clear();
-            foreach (CardDB.cardIDEnum crdidnm in newGraveyardCards)
-            {
-                if (crdidnm == CardDB.cardIDEnum.GAME_005) continue; //(im sure, he has no coins in his deck :D)
-                if (knownGraveyardCards.ContainsKey(crdidnm))
-                {
-                    if (CardDB.Instance.getCardDataFromID(crdidnm).rarity != 5) knownGraveyardCards[crdidnm]++; //you cant include legendaries more than once!
-                }
-                else
-                {
-                    knownGraveyardCards.Add(crdidnm, 1);
-                    //Helpfunctions.Instance.logg("updateGraveyard gy: " + crdidnm);
-                }
-            }
-        }
-
-        public string printTurnGraveYard(bool writetobuffer = false, bool dontwrite=false)
+        public void printTurnGraveYard()
         {
             /*string g = "";
             if (Probabilitymaker.Instance.feugenDead) g += " fgn";
@@ -402,85 +397,69 @@
             Helpfunctions.Instance.logg("GraveYard:" + g);
             if (writetobuffer) Helpfunctions.Instance.writeToBuffer("GraveYard:" + g);*/
 
-            string data = "";
             string s = "ownDiedMinions: ";
             foreach (GraveYardItem gyi in this.turngraveyard)
             {
                 if (gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-
-            if (!dontwrite)
-            {
-                Helpfunctions.Instance.logg(s);
-                if (writetobuffer) Helpfunctions.Instance.writeToBuffer(s);
-            }
-
-            data += s + "\r\n";
+            Helpfunctions.Instance.logg(s);
 
             s = "enemyDiedMinions: ";
             foreach (GraveYardItem gyi in this.turngraveyard)
             {
                 if (!gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
+            Helpfunctions.Instance.logg(s);
 
-            if (!dontwrite)
+
+            s = "otg: ";
+            foreach (GraveYardItem gyi in this.turngraveyardAll)
             {
-                Helpfunctions.Instance.logg(s);
-                if (writetobuffer) Helpfunctions.Instance.writeToBuffer(s);
+                if (gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
+            Helpfunctions.Instance.logg(s);
 
-            data += s + "\r\n";
-            return data;
-        }
-
-        public void readTurnGraveYard(string own, string enemy)
-        {
-            this.turngraveyard.Clear();
-            string temp = "";
-            temp = own.Replace("ownDiedMinions: ", "");
-
-            foreach (string s in temp.Split(';'))
+            s = "etg: ";
+            foreach (GraveYardItem gyi in this.turngraveyardAll)
             {
-                if (s == "" || s == " ") continue;
-                string id = s.Split(',')[0];
-                string ent = s.Split(',')[1];
-                GraveYardItem gyi = new GraveYardItem(CardDB.Instance.cardIdstringToEnum(id), Convert.ToInt32(ent), true);
+                if (!gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-
-            temp = enemy.Replace("enemyDiedMinions: ", "");
-
-            foreach (string s in temp.Split(';'))
-            {
-                if (s == "" || s == " ") continue;
-                string id = s.Split(',')[0];
-                string ent = s.Split(',')[1];
-                GraveYardItem gyi = new GraveYardItem(CardDB.Instance.cardIdstringToEnum(id), Convert.ToInt32(ent), false);
-            }
-
+            Helpfunctions.Instance.logg(s);
         }
 
         public void setGraveYard(List<GraveYardItem> list, bool turnStart)
         {
+            graveyard.Clear();
+            graveyard.AddRange(list);
             if (turnStart)
             {
-                this.graveyardTillTurnStart.Clear();
-                this.graveyardTillTurnStart.AddRange(list);
+                this.graveyartTillTurnStart.Clear();
+                this.graveyartTillTurnStart.AddRange(list);
             }
 
             this.stalaggDead = false;
             this.feugenDead = false;
             this.turngraveyard.Clear();
+            this.turngraveyardAll.Clear();
 
-            foreach (GraveYardItem en in list)
+            GraveYardItem OwnLastDiedMinion = new GraveYardItem(CardDB.cardIDEnum.None, -1, true);
+            foreach (GraveYardItem ent in list)
             {
-                if (en.cardid == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
-                if (en.cardid == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
+                if (ent.cardid == CardDB.cardIDEnum.FP1_015)
+                {
+                    this.feugenDead = true;
+                }
+
+                if (ent.cardid == CardDB.cardIDEnum.FP1_014)
+                {
+                    this.stalaggDead = true;
+                }
 
                 bool found = false;
 
-                foreach (GraveYardItem gyi in this.graveyardTillTurnStart)
+                foreach (GraveYardItem gyi in this.graveyartTillTurnStart)
                 {
-                    if (en.entity == gyi.entity)
+                    if (ent.entity == gyi.entity)
                     {
                         found = true;
                         break;
@@ -489,25 +468,33 @@
 
                 if (!found)
                 {
-                    if (CardDB.Instance.getCardDataFromID(en.cardid).type == CardDB.cardtype.MOB)
+                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.cardtype.MOB)
                     {
-                        this.turngraveyard.Add(en);
+                        this.turngraveyard.Add(ent);
                     }
+                    this.turngraveyardAll.Add(ent);
+                }
+                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.cardtype.MOB)
+                {
+                    OwnLastDiedMinion = ent;
                 }
             }
+            Hrtprozis.Instance.updateOwnLastDiedMinion(OwnLastDiedMinion.cardid);
         }
 
-        public void setTurnGraveYard(List<GraveYardItem> list)
+        public void setTurnGraveYard(List<GraveYardItem> listMobs, List<GraveYardItem> listAll)
         {
             this.turngraveyard.Clear();
-            this.turngraveyard.AddRange(list);
+            this.turngraveyardAll.Clear();
+            this.turngraveyard.AddRange(listMobs);
+            this.turngraveyardAll.AddRange(listAll);
         }
 
         public bool hasEnemyThisCardInDeck(CardDB.cardIDEnum cardid)
         {
-            if (this.enemyGraveyard.ContainsKey(cardid))
+            if (this.enemyCardsOut.ContainsKey(cardid))
             {
-                if (this.enemyGraveyard[cardid] == 1)
+                if (this.enemyCardsOut[cardid] == 1)
                 {
 
                     return true;
@@ -523,9 +510,9 @@
             CardDB.Card c = CardDB.Instance.getCardDataFromID(cardid);
             if (c.rarity == 5) ret = 1;//you can have only one rare;
 
-            if (this.enemyGraveyard.ContainsKey(cardid))
+            if (this.enemyCardsOut.ContainsKey(cardid))
             {
-                if (this.enemyGraveyard[cardid] == 1)
+                if (this.enemyCardsOut[cardid] == 1)
                 {
 
                     return 1;
@@ -536,152 +523,20 @@
 
         }
 
-        public string printGraveyards(bool writetobuffer = false, bool dontwrite = false)
+        public void printGraveyards()
         {
             string og = "og: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.ownGraveyard)
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.ownCardsOut)
             {
-                og += (int)e.Key + "," + e.Value + ";";
+                og += e.Key + "," + e.Value + ";";
             }
             string eg = "eg: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.enemyGraveyard)
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.enemyCardsOut)
             {
-                eg += (int)e.Key + "," + e.Value + ";";
+                eg += e.Key + "," + e.Value + ";";
             }
-            if (!dontwrite)
-            {
-                Helpfunctions.Instance.logg(og);
-                Helpfunctions.Instance.logg(eg);
-                if (writetobuffer)
-                {
-                    Helpfunctions.Instance.writeToBuffer(og);
-                    Helpfunctions.Instance.writeToBuffer(eg);
-                }
-            }
-            return og + "\r\n" + eg + "\r\n";
-        }
-
-        public void readGraveyards(string owngrave, string enemygrave)
-        {
-            this.ownGraveyard.Clear();
-            this.enemyGraveyard.Clear();
-            string temp = owngrave.Replace("og: ", "");
-            this.stalaggDead = false;
-            this.feugenDead = false;
-
-            double tempattack = 0;
-            double temphp = 0;
-            int tempamount = 0;
-            int temptaunt = 0;
-            foreach (string s in temp.Split(';'))
-            {
-                string ss = s.Replace(" ", "");
-                if (ss == "" || ss == " ") continue;
-                string id = ss.Split(',')[0];
-                int anz = Convert.ToInt32(ss.Split(',')[1]);
-                CardDB.cardIDEnum cdbe = CardDB.cardIDEnum.None;
-                try
-                {
-                    cdbe = (CardDB.cardIDEnum)Convert.ToInt32(id);
-                }
-                catch
-                {
-                    
-                }
-                if (cdbe == CardDB.cardIDEnum.None)
-                {
-                    try
-                    {
-                        cdbe = CardDB.Instance.cardIdstringToEnum(id);
-                    }
-                    catch
-                    {
-
-                    }
-                }
-                this.ownGraveyard.Add(cdbe, anz);
-                if (cdbe == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
-                if (cdbe == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
-
-                CardDB.Card tempcard = CardDB.Instance.getCardDataFromID(cdbe);
-                if (tempcard.type == CardDB.cardtype.MOB)
-                {
-                    this.anzMinionSinGrave++;
-                    tempamount++;
-                    tempattack += tempcard.Attack * anz;
-                    temphp += tempcard.Health * anz;
-                    if (tempcard.tank) temptaunt += anz;
-                }
-            }
-            this.ownGraveYardCommonAttack = 0;
-            this.ownGraveYardCommonAttack = 0;
-            this.ownGraveYardCommonTaunt = 0;
-            if(tempamount>=1)
-            {
-            this.ownGraveYardCommonAttack =  (int)(tempattack / tempamount);
-            this.ownGraveYardCommonHP = (int)(temphp / tempamount);
-            if (2 * temptaunt >= tempamount) this.ownGraveYardCommonTaunt = 1;
-            }
-
-            tempamount = 0;
-            tempattack = 0;
-            temphp = 0;
-            temptaunt = 0;
-
-            temp = enemygrave.Replace("eg: ", "");
-            foreach (string s in temp.Split(';'))
-            {
-                string ss = s.Replace(" ", "");
-                if (ss == "" || ss == " ") continue;
-                string id = ss.Split(',')[0];
-                int anz = Convert.ToInt32(ss.Split(',')[1]);
-                CardDB.cardIDEnum cdbe = CardDB.cardIDEnum.None;
-                try
-                {
-                    cdbe = (CardDB.cardIDEnum)Convert.ToInt32(id);
-                }
-                catch
-                {
- 
-                }
-
-                if (cdbe == CardDB.cardIDEnum.None)
-                {
-                    try
-                    {
-                        cdbe = CardDB.Instance.cardIdstringToEnum(id);
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-                this.enemyGraveyard.Add(cdbe, anz);
-                if (cdbe == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
-                if (cdbe == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
-
-                CardDB.Card tempcard = CardDB.Instance.getCardDataFromID(cdbe);
-                if (tempcard.type == CardDB.cardtype.MOB)
-                {
-                    tempamount++;
-                    tempattack += tempcard.Attack * anz;
-                    temphp += tempcard.Health * anz;
-                    if (tempcard.tank) temptaunt += anz;
-                }
-
-            }
-
-            this.enemyGraveYardCommonAttack = 0;
-            this.enemyGraveYardCommonHP = 0;
-            this.enemyGraveYardCommonTaunt = 0;
-            if (tempamount >= 1)
-            {
-                this.enemyGraveYardCommonAttack = (int)(tempattack / tempamount);
-                this.enemyGraveYardCommonHP = (int)(temphp / tempamount);
-                if (2 * temptaunt >= tempamount) this.enemyGraveYardCommonTaunt = 1;
-            }
-
+            Helpfunctions.Instance.logg(og);
+            Helpfunctions.Instance.logg(eg);
         }
 
         public int getProbOfEnemyHavingCardInHand(CardDB.cardIDEnum cardid, int handsize, int decksize)
@@ -691,14 +546,6 @@
 
             int cardsremaining = this.anzCardsInDeck(cardid);
             if (cardsremaining == 0) return 0;
-
-            foreach (CardDB.cardIDEnum playedcard in this.enemyGraveyard.Keys)
-            {
-                handsize += this.enemyGraveyard[playedcard];
-                if (CardDB.Instance.getCardDataFromID(playedcard).rarity == 5)
-                    handsize -= 1;  // don't doublecount legendaries like the dictionary does
-            }
-
             double retval = 0.0;
             //http://de.wikipedia.org/wiki/Hypergeometrische_Verteilung (we calculte 1-p(x=0))
 
@@ -716,15 +563,24 @@
             return (int)(100.0 * retval);
         }
 
-        public void getEnemySecretGuesses(List<int> enemySecretIds, HeroEnum enemyHeroName)
+        public bool hasCardinGraveyard(CardDB.cardIDEnum cardid)
+        {
+            foreach (GraveYardItem gyi in this.graveyard)
+            {
+                if (gyi.cardid == cardid) return true;
+            }
+            return false;
+        }
+
+        public void setEnemySecretGuesses(Dictionary<int, TAG_CLASS> enemySecretList)
         {
             List<SecretItem> newlist = new List<SecretItem>();
 
-            foreach (int i in enemySecretIds)
+            foreach (KeyValuePair<int, TAG_CLASS> eSec in enemySecretList)
             {
-                if (i >= 1000) continue;
-                Helpfunctions.Instance.logg("detect secret with id" + i);
-                SecretItem sec = getNewSecretGuessedItem(i, enemyHeroName);
+                if (eSec.Key >= 1000) continue;
+                Helpfunctions.Instance.logg("detect secret with id" + eSec.Key);
+                SecretItem sec = getNewSecretGuessedItem(eSec.Key, eSec.Value);
 
                 newlist.Add(new SecretItem(sec));
             }
@@ -733,15 +589,34 @@
             this.enemySecrets.AddRange(newlist);
         }
 
-        public SecretItem getNewSecretGuessedItem(int entityid, HeroEnum enemyHeroName)
+        public SecretItem getNewSecretGuessedItem(int entityid, TAG_CLASS SecClass)
         {
             foreach (SecretItem si in this.enemySecrets)
             {
                 if (si.entityId == entityid && entityid < 1000) return si;
             }
 
+            switch (SecClass)
+            {
+                case TAG_CLASS.WARRIOR: break;
+                case TAG_CLASS.WARLOCK: break;
+                case TAG_CLASS.ROGUE: break;
+                case TAG_CLASS.SHAMAN: break;
+                case TAG_CLASS.PRIEST: break;
+                case TAG_CLASS.PALADIN: break;
+                case TAG_CLASS.MAGE: break;
+                case TAG_CLASS.HUNTER: break;
+                case TAG_CLASS.DRUID: break;
+                default:
+                    Helpfunctions.Instance.ErrorLog("Problem is detected: undefined Secret class " + SecClass);
+                    SecClass = Hrtprozis.Instance.heroEnumtoTagClass(Hrtprozis.Instance.enemyHeroname);
+                    Helpfunctions.Instance.ErrorLog("attempt to restore... " + SecClass);
+                    break;
+            }
+
+
             SecretItem sec = new SecretItem { entityId = entityid };
-            if (enemyHeroName == HeroEnum.hunter)
+            if (SecClass == TAG_CLASS.HUNTER)
             {
 
                 sec.canBe_counterspell = false;
@@ -751,131 +626,126 @@
                 sec.canBe_spellbender = false;
                 sec.canBe_vaporize = false;
                 sec.canBe_duplicate = false;
+                sec.canBe_effigy = false;
 
                 sec.canBe_eyeforaneye = false;
                 sec.canBe_noblesacrifice = false;
                 sec.canBe_redemption = false;
                 sec.canBe_repentance = false;
                 sec.canBe_avenge = false;
+                sec.canBe_sacredtrial = false;
 
-                sec.canBe_competivespirit = false;
-                sec.canBe_effigy = false;
-
-                sec.canBe_Trial = false;
-                
-
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_554) && enemyGraveyard[CardDB.cardIDEnum.EX1_554] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_554) && enemyCardsOut[CardDB.cardIDEnum.EX1_554] >= 2)
                 {
                     sec.canBe_snaketrap = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_609) && enemyGraveyard[CardDB.cardIDEnum.EX1_609] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_609) && enemyCardsOut[CardDB.cardIDEnum.EX1_609] >= 2)
                 {
                     sec.canBe_snipe = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_610) && enemyGraveyard[CardDB.cardIDEnum.EX1_610] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_610) && enemyCardsOut[CardDB.cardIDEnum.EX1_610] >= 2)
                 {
                     sec.canBe_explosive = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_611) && enemyGraveyard[CardDB.cardIDEnum.EX1_611] >= 2)
-                {
-                    sec.canBe_freezing = false;
-                }
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_533) && enemyGraveyard[CardDB.cardIDEnum.EX1_533] >= 2)
-                {
-                    sec.canBe_missdirection = false;
-                }
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_060) && enemyGraveyard[CardDB.cardIDEnum.AT_060] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.AT_060) && enemyCardsOut[CardDB.cardIDEnum.AT_060] >= 2)
                 {
                     sec.canBe_beartrap = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.LOE_021) && enemyGraveyard[CardDB.cardIDEnum.LOE_021] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_611) && enemyCardsOut[CardDB.cardIDEnum.EX1_611] >= 2)
                 {
-                    sec.canBe_Dart = false;
+                    sec.canBe_freezing = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.KAR_004) && enemyGraveyard[CardDB.cardIDEnum.KAR_004] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_533) && enemyCardsOut[CardDB.cardIDEnum.EX1_533] >= 2)
+                {
+                    sec.canBe_missdirection = false;
+                }
+
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.LOE_021) && enemyCardsOut[CardDB.cardIDEnum.LOE_021] >= 2)
+                {
+                    sec.canBe_darttrap = false;
+                }
+
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.KAR_004) && enemyCardsOut[CardDB.cardIDEnum.KAR_004] >= 2)
                 {
                     sec.canBe_cattrick = false;
                 }
+
             }
 
-            if (enemyHeroName == HeroEnum.mage)
+            if (SecClass == TAG_CLASS.MAGE)
             {
                 sec.canBe_snaketrap = false;
                 sec.canBe_snipe = false;
                 sec.canBe_explosive = false;
+                sec.canBe_beartrap = false;
                 sec.canBe_freezing = false;
                 sec.canBe_missdirection = false;
+                sec.canBe_darttrap = false;
+                sec.canBe_cattrick = false;
 
                 sec.canBe_eyeforaneye = false;
                 sec.canBe_noblesacrifice = false;
                 sec.canBe_redemption = false;
                 sec.canBe_repentance = false;
                 sec.canBe_avenge = false;
+                sec.canBe_sacredtrial = false;
 
-                sec.canBe_competivespirit = false;
-                sec.canBe_beartrap = false;
-
-                sec.canBe_Trial = false;
-                sec.canBe_Dart = false;
-
-                sec.canBe_cattrick = false;
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_287) && enemyGraveyard[CardDB.cardIDEnum.EX1_287] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_287) && enemyCardsOut[CardDB.cardIDEnum.EX1_287] >= 2)
                 {
                     sec.canBe_counterspell = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_289) && enemyGraveyard[CardDB.cardIDEnum.EX1_289] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_289) && enemyCardsOut[CardDB.cardIDEnum.EX1_289] >= 2)
                 {
                     sec.canBe_icebarrier = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_295) && enemyGraveyard[CardDB.cardIDEnum.EX1_295] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_295) && enemyCardsOut[CardDB.cardIDEnum.EX1_295] >= 2)
                 {
                     sec.canBe_iceblock = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_294) && enemyGraveyard[CardDB.cardIDEnum.EX1_294] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_294) && enemyCardsOut[CardDB.cardIDEnum.EX1_294] >= 2)
                 {
                     sec.canBe_mirrorentity = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.tt_010) && enemyGraveyard[CardDB.cardIDEnum.tt_010] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.tt_010) && enemyCardsOut[CardDB.cardIDEnum.tt_010] >= 2)
                 {
                     sec.canBe_spellbender = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_594) && enemyGraveyard[CardDB.cardIDEnum.EX1_594] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_594) && enemyCardsOut[CardDB.cardIDEnum.EX1_594] >= 2)
                 {
                     sec.canBe_vaporize = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.FP1_018) && enemyGraveyard[CardDB.cardIDEnum.FP1_018] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.FP1_018) && enemyCardsOut[CardDB.cardIDEnum.FP1_018] >= 2)
                 {
                     sec.canBe_duplicate = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_002) && enemyGraveyard[CardDB.cardIDEnum.AT_002] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.AT_002) && enemyCardsOut[CardDB.cardIDEnum.AT_002] >= 2)
                 {
                     sec.canBe_effigy = false;
                 }
             }
 
-            if (enemyHeroName == HeroEnum.pala)
+            if (SecClass == TAG_CLASS.PALADIN)
             {
                 sec.canBe_snaketrap = false;
                 sec.canBe_snipe = false;
                 sec.canBe_explosive = false;
+                sec.canBe_beartrap = false;
                 sec.canBe_freezing = false;
                 sec.canBe_missdirection = false;
+                sec.canBe_darttrap = false;
+                sec.canBe_cattrick = false;
 
                 sec.canBe_counterspell = false;
                 sec.canBe_icebarrier = false;
@@ -884,53 +754,49 @@
                 sec.canBe_spellbender = false;
                 sec.canBe_vaporize = false;
                 sec.canBe_duplicate = false;
-
                 sec.canBe_effigy = false;
-                sec.canBe_beartrap = false;
-                sec.canBe_Dart = false;
 
-                sec.canBe_cattrick = false;
-
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_132) && enemyGraveyard[CardDB.cardIDEnum.EX1_132] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_132) && enemyCardsOut[CardDB.cardIDEnum.EX1_132] >= 2)
                 {
                     sec.canBe_eyeforaneye = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_130) && enemyGraveyard[CardDB.cardIDEnum.EX1_130] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_130) && enemyCardsOut[CardDB.cardIDEnum.EX1_130] >= 2)
                 {
                     sec.canBe_noblesacrifice = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_136) && enemyGraveyard[CardDB.cardIDEnum.EX1_136] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_136) && enemyCardsOut[CardDB.cardIDEnum.EX1_136] >= 2)
                 {
                     sec.canBe_redemption = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.EX1_379) && enemyGraveyard[CardDB.cardIDEnum.EX1_379] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_379) && enemyCardsOut[CardDB.cardIDEnum.EX1_379] >= 2)
                 {
                     sec.canBe_repentance = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.FP1_020) && enemyGraveyard[CardDB.cardIDEnum.FP1_020] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.FP1_020) && enemyCardsOut[CardDB.cardIDEnum.FP1_020] >= 2)
                 {
                     sec.canBe_avenge = false;
                 }
 
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.AT_073) && enemyGraveyard[CardDB.cardIDEnum.AT_073] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.LOE_027) && enemyCardsOut[CardDB.cardIDEnum.LOE_027] >= 2)
                 {
-                    sec.canBe_competivespirit = false;
+                    sec.canBe_sacredtrial = false;
                 }
-
-                if (enemyGraveyard.ContainsKey(CardDB.cardIDEnum.LOE_027) && enemyGraveyard[CardDB.cardIDEnum.LOE_027] >= 2)
-                {
-                    sec.canBe_Trial = false;
-                }
-
             }
 
             return sec;
         }
+
+
+        public bool isAllowedSecret(CardDB.cardIDEnum cardID)
+        {
+            if (ownCardsOut.ContainsKey(cardID) && ownCardsOut[cardID] >= 2) return false;
+            return true;
+        }
+
 
         public string getEnemySecretData()
         {
@@ -990,149 +856,252 @@
 
         }
 
+
         public void updateSecretList(Playfield p, Playfield old)
         {
-            if (p.enemySecretCount == 0) return;
+            if (p.enemySecretCount == 0 || p.optionsPlayedThisTurn == 0) return;
+            Action doneMove = Ai.Instance.bestmove;
+            if (doneMove == null) return;
 
-            bool usedspell = false;
-            int lastEffectedIsMinion = 0; //2 = minion, 1 = hero
-            bool playedMob = false;
-            bool enemyMinionDied = false;
-            bool attackedWithMob = false;
-            bool attackedWithHero = false;
-            int attackTargetIsMinion = 0;
-            bool enemyHeroGotDmg = false;
-            int minionsOnBoard = old.enemyMinions.Count;
-            bool endedTurn = false;
-            bool usedHeropower = false;
-
-            Handmanager.Handcard hcard = null;
-            if (p.cardsPlayedThisTurn > old.cardsPlayedThisTurn)
+            List<CardDB.cardIDEnum> enemySecretsOpenedStep = new List<CardDB.cardIDEnum>();
+            List<CardDB.Card> enemyMinionsDiedStep = new List<CardDB.Card>();
+            foreach (KeyValuePair<CardDB.cardIDEnum, int> tmp in p.enemyCardsOut)
             {
-                for (int i = 0; i < old.owncards.Count - 1; i++)
+                if (!old.enemyCardsOut.ContainsKey(tmp.Key) || old.enemyCardsOut[tmp.Key] != tmp.Value)
                 {
-                    if (p.owncards.Count - 1 >= i)
+                    CardDB.Card c = CardDB.Instance.getCardDataFromID(tmp.Key);
+                    if (c.Secret) enemySecretsOpenedStep.Add(tmp.Key);
+                    else if (c.type == CardDB.cardtype.MOB) enemyMinionsDiedStep.Add(c);
+                }
+            }
+
+            bool beartrap = false;
+            bool explosive = false;
+            bool snaketrap = false;
+            bool missdirection = false;
+            bool freezing = false;
+            bool snipe = false;
+            bool darttrap = false;
+            bool cattrick = false;
+
+            bool mirrorentity = false;
+            bool counterspell = false;
+            bool spellbender = false;
+            bool iceblock = false;
+            bool icebarrier = false;
+            bool vaporize = false;
+            bool duplicate = false;
+            bool effigy = false;
+
+            bool eyeforaneye = false;
+            bool noblesacrifice = false;
+            bool redemption = false;
+            bool repentance = false;
+            bool avenge = false;
+            bool sacredtrial = false;
+
+            if (enemyMinionsDiedStep.Count > 0)
+            {
+                duplicate = true;
+                
+                if (old.enemyMinions.Count > 1) avenge = true;
+                if (old.enemyMinions.Count < 7)
+                {
+                    effigy = true;
+                    redemption = true;
+                }
+                else if (!enemyMinionsDiedStep[0].deathrattle) { redemption = true; effigy = true; }
+                else
+                {
+                    switch (enemyMinionsDiedStep[0].cardIDenum)
                     {
-                        if (old.owncards[i].entity != p.owncards[i].entity)
-                        {
-                            hcard = old.owncards[i];
-                            break;
-                        }
+                        case CardDB.cardIDEnum.AT_019: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.AT_036: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.BRMC_87: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.EX1_110: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.EX1_534: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.EX1_556: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.FP1_002: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.FP1_007: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.FP1_012: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.GVG_096: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.GVG_105: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.GVG_114: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.LOE_050: redemption = false; effigy = false; break;
+                        case CardDB.cardIDEnum.LOE_089: redemption = false; effigy = false; break;
+                        default: redemption = true; effigy = true; break;
+                    }
+                }
+            }
+
+
+            bool targetWasHero = (doneMove.target != null && doneMove.target.entitiyID == p.enemyHero.entitiyID);
+
+            if (doneMove.actionType == actionEnum.attackWithHero || doneMove.actionType == actionEnum.attackWithMinion)
+            {
+                bool attackerIsHero = doneMove.own.isHero;
+
+                if (enemySecretsOpenedStep.Count == 0)
+                {
+                    if (old.enemyMinions.Count < 7) noblesacrifice = true;
+                    if (doneMove.actionType == actionEnum.attackWithMinion) freezing = true;
+                    if (targetWasHero)
+                    {
+                        explosive = true;
+                        if (old.enemyMinions.Count < 7) beartrap = true;
+                        missdirection = true;
+                        if (attackerIsHero && old.ownMinions.Count == 0 && old.enemyMinions.Count == 0) missdirection = false;
+                        icebarrier = true;
+                        if (!attackerIsHero) vaporize = true;
                     }
                     else
                     {
-                        hcard = old.owncards[i];
-                        break;
+                        snaketrap = true;
                     }
                 }
-
-                if (hcard != null && hcard.card.type == CardDB.cardtype.SPELL)
+                else
                 {
-                    if (hcard.card.type == CardDB.cardtype.SPELL) usedspell = true;
-                    int entityOfLastAffected = Silverfish.getCardTarget(hcard.entity);
-                    if (entityOfLastAffected >= 1) lastEffectedIsMinion = 2;
-                    if (entityOfLastAffected == p.enemyHero.entityID) lastEffectedIsMinion = 1;
-                }
-
-                if (hcard != null && hcard.card.type == CardDB.cardtype.MOB)
-                {
-                    int entityOfLastAffected = Silverfish.getLastAffected(hcard.entity);
-                    if (entityOfLastAffected >= 1) lastEffectedIsMinion = 2;
-                    if (entityOfLastAffected == p.enemyHero.entityID && (p.enemyHero.Hp < old.enemyHero.Hp || p.enemyHero.immune)) lastEffectedIsMinion = 1;
-
-                    entityOfLastAffected = Silverfish.getCardTarget(hcard.entity);
-                    if (entityOfLastAffected >= 1)
+                    if (targetWasHero)
                     {
-                        lastEffectedIsMinion = 2;
-                        if (entityOfLastAffected == p.enemyHero.entityID) lastEffectedIsMinion = 1;
+                        explosive = true;
+                        icebarrier = true;
+                        if (!attackerIsHero) vaporize = true; //?
+                    }
+                    else snaketrap = true;
+                    if (!attackerIsHero) freezing = true;
+                    if (old.enemyMinions.Count < 7) noblesacrifice = true;
+
+                    foreach (CardDB.cardIDEnum id in enemySecretsOpenedStep)
+                    {
+                        switch (id)
+                        {
+                            case CardDB.cardIDEnum.AT_060:  //beartrap
+                                beartrap = true;
+                                missdirection = true;
+                                continue;
+                            case CardDB.cardIDEnum.EX1_610:  //explosivetrap
+                                if (enemySecretsOpenedStep.Count == 1)
+                                {
+                                    missdirection = true;
+                                    if (!attackerIsHero && p.ownMinions.Find(x => x.entitiyID == doneMove.own.entitiyID) == null)
+                                    {
+                                        missdirection = false;
+                                        freezing = false;
+                                    }
+                                }
+                                continue;
+                            case CardDB.cardIDEnum.EX1_533:  //misdirection
+                                missdirection = true;
+                                vaporize = false;
+                                if (enemySecretsOpenedStep.Contains(CardDB.cardIDEnum.EX1_554)) continue;
+                                int hpBalance = 0; //we need to know who has become the new target
+                                foreach (Minion m in p.enemyMinions) hpBalance += m.Hp;
+                                foreach (Minion m in old.enemyMinions) hpBalance -= m.Hp;
+                                if (hpBalance < 0) snaketrap = true;
+                                continue;
+                            case CardDB.cardIDEnum.EX1_611:  //freezingtrap
+                                freezing = true;
+                                vaporize = false;
+                                continue;
+                            case CardDB.cardIDEnum.EX1_594:   //vaporize
+                                vaporize = true;
+                                freezing = false;
+                                continue;
+                            case CardDB.cardIDEnum.EX1_130:   //noblesacrifice
+                                noblesacrifice = true;
+                                snaketrap = true;
+                                vaporize = false;
+                                icebarrier = false;
+                                continue;
+                        }
                     }
                 }
             }
-
-            if (p.mobsPlayedThisTurn > old.mobsPlayedThisTurn)
+            else if (doneMove.actionType == actionEnum.playcard)
             {
-                playedMob = true;
-            }
-            if (p.diedMinions != null && old.diedMinions != null)
-            {
-                int pcount = 0;
-                int ocount = 0;
-                foreach (GraveYardItem gyi in p.diedMinions)
+                if (doneMove.card.card.type == CardDB.cardtype.SPELL)
                 {
-                    if (!gyi.own) pcount++;
+                    cattrick = true;
+                    counterspell = true;
+                    if (!targetWasHero) spellbender = true;
                 }
-                foreach (GraveYardItem gyi in old.diedMinions)
+                /* else if (doneMove.card.card.type == CardDB.cardtype.MOB) //we need the response from the core
+                 {
+                     mirrorentity = true;
+                     snipe = true;
+                     repentance = true;
+                     if (p.ownMinions.Count > 3) sacredtrial = true;
+                 }*/
+            }
+            if (p.mobsplayedThisTurn > old.mobsplayedThisTurn) //if we have a response from the core - remove
+            {
+                mirrorentity = true;
+                snipe = true;
+                repentance = true;
+                if (p.ownMinions.Count > 3) sacredtrial = true;
+            }
+
+            if (p.enemyHero.Hp + p.enemyHero.armor < old.enemyHero.Hp + old.enemyHero.armor) eyeforaneye = true;
+            if (doneMove.actionType == actionEnum.useHeroPower) darttrap = true;
+
+            foreach (CardDB.cardIDEnum id in enemySecretsOpenedStep)
+            {
+                switch (id)
                 {
-                    if (!gyi.own) ocount++;
+                    case CardDB.cardIDEnum.AT_002: effigy = true; continue;
+                    case CardDB.cardIDEnum.AT_060: beartrap = true; continue;
+                    case CardDB.cardIDEnum.EX1_130: noblesacrifice = true; continue;
+                    case CardDB.cardIDEnum.EX1_132: eyeforaneye = true; continue;
+                    case CardDB.cardIDEnum.EX1_136: redemption = true; continue;
+                    case CardDB.cardIDEnum.EX1_287: counterspell = true; continue;
+                    case CardDB.cardIDEnum.EX1_289: icebarrier = true; continue;
+                    case CardDB.cardIDEnum.EX1_294: mirrorentity = true; continue;
+                    case CardDB.cardIDEnum.EX1_295: iceblock = true; continue;
+                    case CardDB.cardIDEnum.EX1_379: repentance = true; continue;
+                    case CardDB.cardIDEnum.EX1_533: missdirection = true; continue;
+                    case CardDB.cardIDEnum.EX1_554: snaketrap = true; continue;
+                    case CardDB.cardIDEnum.EX1_594: vaporize = true; continue;
+                    case CardDB.cardIDEnum.EX1_609: snipe = true; continue;
+                    case CardDB.cardIDEnum.EX1_610: explosive = true; continue;
+                    case CardDB.cardIDEnum.EX1_611: freezing = true; continue;
+                    case CardDB.cardIDEnum.FP1_018: duplicate = true; continue;
+                    case CardDB.cardIDEnum.FP1_020: avenge = true; continue;
+                    case CardDB.cardIDEnum.LOE_021: darttrap = true; continue;
+                    case CardDB.cardIDEnum.LOE_027: sacredtrial = true; continue;
+                    case CardDB.cardIDEnum.tt_010: spellbender = true; continue;
+                    case CardDB.cardIDEnum.KAR_004: cattrick = true; continue;
                 }
-                if (pcount > ocount) enemyMinionDied = true;
             }
-
-            //used heropower?
-            if (old.ownHeroPowerUses < p.ownHeroPowerUses)
-            {
-                usedHeropower = true;
-            }
-
-            //attacked with mob?
-
-            int newAttackers = 0;
-            int oldAttackers = 0;
-            foreach (Minion m in p.ownMinions)
-            {
-                newAttackers += m.numAttacksThisTurn;
-            }
-            foreach (Minion m in old.ownMinions)
-            {
-                oldAttackers += m.numAttacksThisTurn;
-            }
-
-            if (newAttackers > oldAttackers) attackedWithMob = true;
-
-            if (p.ownHero.numAttacksThisTurn > old.ownHero.numAttacksThisTurn) attackedWithHero = true;
-
-            if (p.enemyHero.Hp < old.enemyHero.Hp) enemyHeroGotDmg = true;
-
-            if (attackedWithHero || attackedWithMob)
-            {
-                //check hero first, so we can exclude deathrattles!
-                if (p.enemyHero.Hp < old.enemyHero.Hp) attackTargetIsMinion = 1;
-
-                int newDefenders = 0; int oldDefenders = 0;
-
-                foreach (Minion m in p.ownMinions)
-                {
-                    newDefenders += m.Hp;
-                }
-                foreach (Minion m in old.ownMinions)
-                {
-                    oldDefenders += m.Hp;
-                }
-
-                if (newDefenders < oldDefenders) attackTargetIsMinion = 2;
-            }
-
-            if (old.optionsPlayedThisTurn >= 0 && p.optionsPlayedThisTurn == 0) endedTurn = true;
 
             foreach (SecretItem si in this.enemySecrets)
             {
+                if (beartrap) si.canBe_beartrap = false;
+                if (explosive) si.canBe_explosive = false;
+                if (snaketrap) si.canBe_snaketrap = false;
+                if (missdirection) si.canBe_missdirection = false;
+                if (freezing) si.canBe_freezing = false;
+                if (snipe) si.canBe_snipe = false;
+                if (darttrap) si.canBe_darttrap = false;
+                if (cattrick) si.canBe_cattrick = false;
 
-                if (attackedWithHero || attackedWithMob) si.usedTrigger_CharIsAttacked(attackTargetIsMinion == 1, attackedWithHero);
+                if (counterspell) si.canBe_counterspell = false;
+                if (icebarrier) si.canBe_icebarrier = false;
+                if (iceblock) si.canBe_iceblock = false;
+                if (mirrorentity) si.canBe_mirrorentity = false;
+                if (spellbender) si.canBe_spellbender = false;
+                if (vaporize) si.canBe_vaporize = false;
+                if (duplicate) si.canBe_duplicate = false;
+                if (effigy) si.canBe_effigy = false;
 
-                if (enemyHeroGotDmg) si.usedTrigger_HeroGotDmg();
-
-                if (enemyMinionDied) si.usedTrigger_MinionDied();
-
-                if (playedMob) si.usedTrigger_MinionIsPlayed(minionsOnBoard);
-
-                if (usedspell) si.usedTrigger_SpellIsPlayed(lastEffectedIsMinion == 2);
-
-                if (endedTurn) si.usedTrigger_EndTurn();
-
-                if (usedHeropower) si.usedTrigger_HeroPower();
-
+                if (eyeforaneye) si.canBe_eyeforaneye = false;
+                if (noblesacrifice) si.canBe_noblesacrifice = false;
+                if (redemption) si.canBe_redemption = false;
+                if (repentance) si.canBe_repentance = false;
+                if (avenge) si.canBe_avenge = false;
+                if (sacredtrial) si.canBe_sacredtrial = false;
             }
         }
+
 
     }
 

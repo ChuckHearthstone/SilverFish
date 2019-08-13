@@ -6,6 +6,6 @@ namespace HREngine.Bots
 {
 	class Sim_OG_241a : SimTemplate //* Shadowbeast
 	{
-		
+		// -
 	}
 }

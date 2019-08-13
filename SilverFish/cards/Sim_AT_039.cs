@@ -4,18 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_AT_039 : SimTemplate //Dalaran Aspirant
-    {
+	class Sim_AT_039 : SimTemplate //* Savage Combatant
+	{
+		//Inspire: Give your hero +2 Attack this turn.
 
-        //insprire: gain Spell Damage +1
-
-        public override void onInspire(Playfield p, Minion m)
+		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            p.minionGetTempBuff((m.own) ? p.ownHero : p.enemyHero, 2, 0);
+			if (m.own == own)
+			{
+				p.minionGetTempBuff(own ? p.ownHero : p.enemyHero, 2, 0);
+			}
         }
-
-
-
-    }
-
+	}
 }

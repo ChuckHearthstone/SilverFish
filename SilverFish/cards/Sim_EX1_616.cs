@@ -10,12 +10,12 @@ namespace HREngine.Bots
 //    alle diener kosten (1) mehr.
         public override void onAuraStarts(Playfield p, Minion own)
 		{
-            p.anzManaWraith ++;
+            p.managespenst ++;
 		}
 
         public override void onAuraEnds(Playfield p, Minion m)
         {
-            p.anzManaWraith--;
+            p.managespenst--;
         }
 
 	}

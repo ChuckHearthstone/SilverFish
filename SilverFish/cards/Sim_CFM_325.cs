@@ -12,11 +12,11 @@ namespace HREngine.Bots
         {
             if (m.own)
             {
-                if (p.ownWeaponDurability > 0) p.minionGetBuffed(m, 2, 0);
+                if (p.ownWeapon.Durability > 0) p.minionGetBuffed(m, 2, 0);
             }
             else
             {
-                if (p.enemyWeaponDurability > 0) p.minionGetBuffed(m, 2, 0);
+                if (p.enemyWeapon.Durability > 0) p.minionGetBuffed(m, 2, 0);
             }
         }
     }

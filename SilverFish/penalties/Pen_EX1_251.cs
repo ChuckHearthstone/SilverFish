@@ -6,9 +6,12 @@ namespace HREngine.Bots
 {
 	class Pen_EX1_251 : PenTemplate //forkedlightning
 	{
-		public override float getPlayPenalty(Playfield p, Handmanager.Handcard hc, Minion target, int choice, bool isLethal)
+
+//    fügt zwei zufälligen feindlichen dienern $2 schaden zu. überladung:/ (2)
+		public override int getPlayPenalty(Playfield p, Minion m, Minion target, int choice, bool isLethal)
 		{
-			return 0;
+		return 0;
 		}
+
 	}
 }
