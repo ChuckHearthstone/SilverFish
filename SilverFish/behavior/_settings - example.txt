@@ -1,0 +1,35 @@
+// If you want to set your own settings, rename this file to _settings.txt and place it in the target folder.
+
+enfacehp = 15;  // hp of enemy when your hero is allowed to attack the enemy face with his weapon without penalty
+// weaponOnlyAttackMobsUntilEnfacehp - If your opponent has more HP than enfacehp, then weapons are allowed only attack mobs
+// 0 - don't attack face until enfacehp (except weapons with 1 Attack)
+// 1 - don't attack face until enfacehp if weapon's durability = 1 (if durability > 1 then it's allowed)(except weapons with 1 Attack)
+// 2 - don't attack face until enfacehp (any weapon)
+// 3 - don't attack face until enfacehp if weapon's durability = 1 (if durability > 1 then it's allowed)(any weapon)
+// 4 - don't attack face until enfacehp (except: you have any* weapon generating card in hand)(* except Upgrade!)
+// 5 - don't attack face until enfacehp (except: you have any* weapon generating card in hand with attack > 1 (or if they both have attack = 1))(* except Upgrade!)
+weaponOnlyAttackMobsUntilEnfacehp = 5;
+
+maxwide = 3000;   // number of boards which are taken to the next deep-lvl
+playaround = false;  // play around some enemys aoe-spells
+// these two parameters are value between 0 and 100 (0 <= Your_Value <= 100)
+playaroundprob = 50;    // probability where the enemy NOT plays the aoe-spell: 100 - enemy never plays aoe-spell, 0 - always uses
+playaroundprob2 = 80;   // probability where the enemy plays the aoe-spell, and your minions will survive: 100 - always survive, 0 - never(survival depends on their real HP)
+            
+twotsamount = 0; // number of boards where the second AI step is simulated
+enemyTurnMaxWide = 40; // max number of enemy boards calculated in enemys-first-turn first AI step (lower than enemyTurnMaxWideSecondStep)
+enemyTurnMaxWideSecondStep = 200; // max number of enemy boards calculated in enemys-first-turn second AI step(higher than enemyTurnMaxWide)
+            
+nextTurnDeep = 10; //maximum actions in your second turn
+nextTurnMaxWide = 20; //maximum best boards for calculation at each step in the second round
+nextTurnTotalBoards = 200;//maximum boards calculated in second turn simulation
+berserkIfCanFinishNextTour = 0; // 0 - off, 1 - if there is any chance to kill the enemy through the round, all attacks will be in the face
+
+alpha = 50; // weight of the second turn in calculation (0<= alpha <= 100)
+useSecretsPlayAround = true; // playing arround enemys secrets
+placement = 0;  // 0 - minions are interleaved by value (..low value - hi value..), 1 - hi val minions along the edges, low val in the center
+
+ImprovedCalculations = 1;   // 0 - disabled(for old PCs), 1 - enabled
+adjustActions = 0; // test!! - reorder actions after calculations: 0 - as calculated (by Default), 1 - AoE first
+printRules = 0; //0 - off, 1 - on
+concedeMode = 0; //0 - concede if direct defeat, 1 - concede if Playfield has a value <= -10000

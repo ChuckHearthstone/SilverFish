@@ -4,3 +4,6 @@ obj
 *.user
 *.suo
 *.zip
+*.7z
+UltimateLogs
+packages
