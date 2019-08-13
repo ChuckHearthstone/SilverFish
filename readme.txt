@@ -1,5 +1,6 @@
-How to install:
+Make sure you have the following four files under package folder
+GreyMagic.dll
+Hearthbuddy.exe
+IronPython.Modules.dll
+Microsoft.Scripting.dll
 
-(- make a copy of the original defaultroutine-folder (but don save it in routines folder))
-
-- delete the DefaultRoutine folder in Hearthbuddy/Routines
