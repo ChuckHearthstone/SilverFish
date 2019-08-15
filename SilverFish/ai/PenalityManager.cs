@@ -2857,6 +2857,10 @@
 
             if ((p.ownHeroAblility.card.name == CardDB.cardName.totemiccall || p.ownHeroAblility.card.name == CardDB.cardName.totemicslam) && p.ownAbilityReady == false)
             {
+                foreach (Action a in p.playactions)
+                {
+                    if (a.actionType == actionEnum.playcard && a.card.card.name == CardDB.cardName.draeneitotemcarver) return -1;
+                }
                 if (p.owncards.Count > 1)
                 {
                     if (card.type == CardDB.cardtype.SPELL)
@@ -2865,7 +2869,7 @@
                             || DamageAllDatabase.ContainsKey(card.name) || DamageRandomDatabase.ContainsKey(card.name) 
                             || DamageTargetSpecialDatabase.ContainsKey(card.name) || DamageHeroDatabase.ContainsKey(card.name))) pen += 10;
                     }
-                    else if (card.name == CardDB.cardName.frostwolfwarlord || card.name == CardDB.cardName.thingfrombelow) return -1;
+                    else if (card.name == CardDB.cardName.frostwolfwarlord || card.name == CardDB.cardName.thingfrombelow || card.name == CardDB.cardName.draeneitotemcarver) return -1;
                     else pen += 10;
                 }
             }

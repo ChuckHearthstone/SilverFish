@@ -1,4 +1,4 @@
-<CardDefs>
+﻿<CardDefs>
   <Entity version="2" CardID="HERO_01">
     <Tag enumID="185" type="String">Garrosh Hellscream</Tag>
     <Tag enumID="183" value="2" />
@@ -56373,5 +56373,2565 @@
   <Tag enumID="183" value="1129" />
   <Tag enumID="199" value="12" />
   <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_007">
+  <Tag enumID="185" type="String">拉法姆的阴谋</Tag>
+  <Tag enumID="184" type="String">召唤1个1/1的小鬼。<i>（每回合都会升级！）</i></Tag>
+  <Tag enumID="2" value="1" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_008">
+  <Tag enumID="185" type="String">砰砰博士的阴谋</Tag>
+  <Tag enumID="184" type="String">获得1点护甲值。<i>（每回合都会升级！）</i></Tag>
+  <Tag enumID="2" value="1" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_009">
+  <Tag enumID="185" type="String">哈加莎的阴谋</Tag>
+  <Tag enumID="184" type="String">对所有随从造成1点伤害。<i>（每回合都会升级！）</i></Tag>
+  <Tag enumID="2" value="1" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_010">
+  <Tag enumID="185" type="String">托瓦格尔的阴谋</Tag>
+  <Tag enumID="184" type="String">选择一个随从。将它的1张复制洗入你的牌库。<i>（每回合都会升级！）</i></Tag>
+  <Tag enumID="2" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_011">
+  <Tag enumID="185" type="String">拉祖尔的阴谋</Tag>
+  <Tag enumID="184" type="String">直到你的下个回合，使一个敌方随从的攻击力降低1点。<i>（每回合都会升级！）</i></Tag>
+  <Tag enumID="2" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="3" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_011e">
+  <Tag enumID="185" type="String">拉祖尔的诅咒</Tag>
+  <Tag enumID="184" type="String">攻击力降低。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_030">
+  <Tag enumID="185" type="String">阴暗的人影</Tag>
+  <Tag enumID="184" type="String">战吼：变形成为一个友方亡语随从的2/2复制。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="217" value="1" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+    <PlayRequirement reqID="58" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_030e">
+  <Tag enumID="185" type="String">暗藏身形</Tag>
+  <Tag enumID="184" type="String">2/2。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_039">
+  <Tag enumID="185" type="String">无面渗透者</Tag>
+  <Tag enumID="184" type="String">嘲讽,亡语：随机消灭一个敌方随从。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_040">
+  <Tag enumID="185" type="String">荆棘帮箭猪</Tag>
+  <Tag enumID="184" type="String">亡语：为敌方英雄恢复5点生命值。</Tag>
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1118" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_047">
+  <Tag enumID="185" type="String">活动喷泉</Tag>
+  <Tag enumID="184" type="String">吸血，突袭，风怒</Tag>
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="189" value="1" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="685" value="1" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_049">
+  <Tag enumID="185" type="String">下水道渔人</Tag>
+  <Tag enumID="184" type="String">在你使用一张鱼人牌后，随机将一张鱼人牌置入你的手牌。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="200" value="14" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_052">
+  <Tag enumID="185" type="String">泥沼变形怪</Tag>
+  <Tag enumID="184" type="String">战吼：变形成为你的牌库中一个其他随从的4/4复制。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_052e">
+  <Tag enumID="185" type="String">泥沼变形</Tag>
+  <Tag enumID="184" type="String">4/4。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_058">
+  <Tag enumID="185" type="String">机械拷问者</Tag>
+  <Tag enumID="184" type="String">嘲讽，战吼：使你的对手从牌库中召唤一个随从。</Tag>
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_059">
+  <Tag enumID="185" type="String">空间撕裂器</Tag>
+  <Tag enumID="184" type="String">召唤你的牌库中一个随从的两个复制。</Tag>
+  <Tag enumID="48" value="10" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_060">
+  <Tag enumID="185" type="String">发条地精</Tag>
+  <Tag enumID="184" type="String">战吼：将一张“炸弹” 牌洗入你的对手的牌库。当玩家抽到炸弹时，便会受到5点伤害。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_062">
+  <Tag enumID="185" type="String">扫荡打击</Tag>
+  <Tag enumID="184" type="String">使一个随从获得“同时对其攻击目标相邻的随从造成伤害。”</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_062e">
+  <Tag enumID="185" type="String">扫荡打击</Tag>
+  <Tag enumID="184" type="String">同时对攻击目标相邻的随从造成伤害。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_063">
+  <Tag enumID="185" type="String">圣剑扳手</Tag>
+  <Tag enumID="184" type="String">在你的英雄攻击后，将一张“炸弹”牌洗入你的对手的牌库。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="187" value="2" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="7" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_064">
+  <Tag enumID="185" type="String">爆破之王砰砰</Tag>
+  <Tag enumID="184" type="String">战吼：你的对手的牌库中每有一张“炸弹”牌，便召唤两个1/1的砰砰机器人。</Tag>
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="7" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_065">
+  <Tag enumID="185" type="String">不眠之魂</Tag>
+  <Tag enumID="184" type="String">沉默一个友方随从，然后召唤它的一个复制。</Tag>
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="339" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_070">
+  <Tag enumID="185" type="String">砰砰机甲</Tag>
+  <Tag enumID="184" type="String">战吼：召唤一个你牌库中的随从的复制，并使其获得突袭。</Tag>
+  <Tag enumID="45" value="9" />
+  <Tag enumID="47" value="7" />
+  <Tag enumID="48" value="10" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_070e">
+  <Tag enumID="185" type="String">劫掠</Tag>
+  <Tag enumID="184" type="String">获得突袭。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_071">
+  <Tag enumID="185" type="String">突变</Tag>
+  <Tag enumID="184" type="String">将一个友方随从随机变形成为一个法力值消耗增加（1）点的随从。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="2" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_077">
+  <Tag enumID="185" type="String">毒鳍鱼人</Tag>
+  <Tag enumID="184" type="String">战吼：使一个友方鱼人获得剧毒。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="14" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="363" value="1" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+    <PlayRequirement reqID="10" param="14" />
+</Entity>
+<Entity version="2" CardID="DAL_077e">
+  <Tag enumID="185" type="String">剧毒之鳍</Tag>
+  <Tag enumID="184" type="String">剧毒</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_078">
+  <Tag enumID="185" type="String">旅行医者</Tag>
+  <Tag enumID="184" type="String">圣盾，战吼：恢复3点生命值。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="194" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="22" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_081">
+  <Tag enumID="185" type="String">破咒珠宝师</Tag>
+  <Tag enumID="184" type="String">战吼：直到你的下个回合，你的英雄无法成为法术或英雄技能的目标。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_081e">
+  <Tag enumID="185" type="String">光彩照人</Tag>
+  <Tag enumID="184" type="String">无法成为法术或英雄技能的目标。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="311" value="1" />
+  <Tag enumID="332" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_085">
+  <Tag enumID="185" type="String">达拉然圣剑士</Tag>
+  <Tag enumID="184" type="String">圣盾</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="194" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_086">
+  <Tag enumID="185" type="String">夺日者间谍</Tag>
+  <Tag enumID="184" type="String">战吼：如果你控制一个奥秘，便获得+1+1.</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="219" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_086e">
+  <Tag enumID="185" type="String">窃取机密</Tag>
+  <Tag enumID="184" type="String">+1/+1</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_087">
+  <Tag enumID="185" type="String">荆棘帮巫婆</Tag>
+  <Tag enumID="184" type="String">战吼：召唤两个具有全部随从种类的1/1的融合怪。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_087t">
+  <Tag enumID="185" type="String">融合怪</Tag>
+  <Tag enumID="184" type="String"><i>这张牌是元素，机械，恶魔，鱼人，龙，野兽，海盗和图腾。</i></Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="26" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_088">
+  <Tag enumID="185" type="String">机械保险箱</Tag>
+  <Tag enumID="184" type="String">嘲讽，亡语：召唤一个0/5并具有嘲讽的保险柜。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_088t2">
+  <Tag enumID="185" type="String">保险柜</Tag>
+  <Tag enumID="184" type="String">嘲讽</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="330" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_089">
+  <Tag enumID="185" type="String">魔法订书匠</Tag>
+  <Tag enumID="184" type="String">战吼：如果你拥有法术伤害，抽一张牌。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="192" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_090">
+  <Tag enumID="185" type="String">荆棘帮小偷</Tag>
+  <Tag enumID="184" type="String">潜行</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="191" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_092">
+  <Tag enumID="185" type="String">奥术仆从</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_095">
+  <Tag enumID="185" type="String">紫罗兰魔剑士</Tag>
+  <Tag enumID="184" type="String">战吼：你手牌中每有一张法术牌，便获得+1攻击力。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_095e">
+  <Tag enumID="185" type="String">魔法光辉</Tag>
+  <Tag enumID="184" type="String">攻击力提高。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_096">
+  <Tag enumID="185" type="String">紫罗兰典狱官</Tag>
+  <Tag enumID="184" type="String">嘲讽,法术伤害+1</Tag>
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="192" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_141">
+  <Tag enumID="185" type="String">孤注一掷</Tag>
+  <Tag enumID="184" type="String">双生法术随机施放一个圣骑士奥秘。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54129" />
+  <Tag enumID="1193" value="1" />
+  <ReferencedTag enumID="219" value="1" />
+    <PlayRequirement reqID="60" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_141ts">
+  <Tag enumID="185" type="String">孤注一掷</Tag>
+  <Tag enumID="184" type="String">随机施放一个圣骑士奥秘。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <ReferencedTag enumID="219" value="1" />
+    <PlayRequirement reqID="60" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_146">
+  <Tag enumID="185" type="String">青铜传令官</Tag>
+  <Tag enumID="184" type="String">亡语：将两张4/4的“青铜龙”置入你的手牌。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="200" value="24" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_146t">
+  <Tag enumID="185" type="String">青铜龙</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="200" value="24" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_147">
+  <Tag enumID="185" type="String">龙语者</Tag>
+  <Tag enumID="184" type="String">战吼：使你手牌中的所有龙牌获得+3/+3。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_147e">
+  <Tag enumID="185" type="String">巨龙之吼</Tag>
+  <Tag enumID="184" type="String">+3/+3。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_163">
+  <Tag enumID="185" type="String">渡鸦信使</Tag>
+  <Tag enumID="184" type="String">战吼：,发现一张法师随从牌。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_173">
+  <Tag enumID="185" type="String">至暗时刻</Tag>
+  <Tag enumID="184" type="String">消灭所有友方随从。每消灭一个随从，便随机从你的牌库中召唤一个随从。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_177">
+  <Tag enumID="185" type="String">咒术师的召唤</Tag>
+  <Tag enumID="184" type="String">双生法术消灭一个随从。召唤两个法力值消耗相同的随从来替换它。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="52637" />
+  <Tag enumID="1193" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_177ts">
+  <Tag enumID="185" type="String">咒术师的召唤</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。召唤两个法力值消耗相同的随从来替换它。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_182">
+  <Tag enumID="185" type="String">魔法蓝蛙</Tag>
+  <Tag enumID="184" type="String">在你施放一个法术后，随机对一个敌方随从造成1点伤害。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_185">
+  <Tag enumID="185" type="String">阿兰纳丝蛛后</Tag>
+  <Tag enumID="184" type="String">嘲讽当你抽到该牌时，为你的英雄恢复4点生命值。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="251" value="1" />
+  <Tag enumID="268" value="2" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="377" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_256">
+  <Tag enumID="185" type="String">森林的援助</Tag>
+  <Tag enumID="184" type="String">双生法术召唤五个2/2的树人。</Tag>
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="52821" />
+  <Tag enumID="1193" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_256t2">
+  <Tag enumID="185" type="String">树人</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_256ts">
+  <Tag enumID="185" type="String">森林的援助</Tag>
+  <Tag enumID="184" type="String">召唤五个2/2的树人。</Tag>
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+</Entity>
+<Entity version="2" CardID="DAL_350">
+  <Tag enumID="185" type="String">水晶之力</Tag>
+  <Tag enumID="184" type="String">抉择：对一个随从造成2点伤害；或者恢复5点生命值。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="443" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_350a">
+  <Tag enumID="185" type="String">利刺荆棘</Tag>
+  <Tag enumID="184" type="String">对一个随从造成2点伤害。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_350b">
+  <Tag enumID="185" type="String">愈合之花</Tag>
+  <Tag enumID="184" type="String">恢复5点生命值。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_351">
+  <Tag enumID="185" type="String">远古祝福</Tag>
+  <Tag enumID="184" type="String">双生法术使你的所有随从获得+1/+1。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54128" />
+  <Tag enumID="1193" value="1" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_351e">
+  <Tag enumID="185" type="String">远古的祝福</Tag>
+  <Tag enumID="184" type="String">+1/+1。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_351ts">
+  <Tag enumID="185" type="String">远古祝福</Tag>
+  <Tag enumID="184" type="String">使你的所有随从获得+1/+1。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_352">
+  <Tag enumID="185" type="String">晶歌传送门</Tag>
+  <Tag enumID="184" type="String">发现一张德鲁伊随从牌。如果你的手牌中没有随从牌，则保留全部三张牌。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_354">
+  <Tag enumID="185" type="String">橡果人</Tag>
+  <Tag enumID="184" type="String">亡语：将两张1/1的“松鼠”置入你的手牌。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_354t">
+  <Tag enumID="185" type="String">松鼠</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_355">
+  <Tag enumID="185" type="String">织命者</Tag>
+  <Tag enumID="184" type="String">每当有角色获得你的治疗时，随机将一张德鲁伊法术牌置入你的手牌。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_357">
+  <Tag enumID="185" type="String">卢森巴克</Tag>
+  <Tag enumID="184" type="String">嘲讽，亡语：进入休眠状态。累计恢复5点生命值可唤醒该随从。</Tag>
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_357t">
+  <Tag enumID="185" type="String">卢森巴克之魂</Tag>
+  <Tag enumID="184" type="String">当你累计恢复了5点生命值时，唤醒该随从。</Tag>
+  <Tag enumID="2" value="5" />
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="1" />
+  <Tag enumID="48" value="11" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="402" value="1" />
+  <Tag enumID="448" value="1" />
+  <Tag enumID="451" value="5" />
+</Entity>
+<Entity version="2" CardID="DAL_366">
+  <Tag enumID="185" type="String">未鉴定的合约</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。在你手牌中时获得额外效果。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_366t1">
+  <Tag enumID="185" type="String">刺客合约</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。召唤一个1/1的耐心的刺客。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_366t2">
+  <Tag enumID="185" type="String">招募合约</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。将它的复制置入你的手牌。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_366t3">
+  <Tag enumID="185" type="String">赏金合约</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。将两个幸运币置入你的手牌。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_366t4">
+  <Tag enumID="185" type="String">叛变合约</Tag>
+  <Tag enumID="184" type="String">消灭一个随从。对其相邻的随从造成等同于其攻击力的伤害。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_371">
+  <Tag enumID="185" type="String">标记射击</Tag>
+  <Tag enumID="184" type="String">对一个随从造成4点伤害。发现一张法术牌。</Tag>
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_372">
+  <Tag enumID="185" type="String">奥术弓箭手</Tag>
+  <Tag enumID="184" type="String">每当你使用一张法力值消耗为（1）点的随从牌，从你的牌库中抽一张法术牌。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_373">
+  <Tag enumID="185" type="String">急速射击</Tag>
+  <Tag enumID="184" type="String">双生法术造成1点伤害。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54143" />
+  <Tag enumID="1193" value="1" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_373ts">
+  <Tag enumID="185" type="String">急速射击</Tag>
+  <Tag enumID="184" type="String">造成1点伤害。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_376">
+  <Tag enumID="185" type="String">湮灭战车</Tag>
+  <Tag enumID="184" type="String">亡语：从你的手牌中召唤一个机械，并触发其亡语。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_377">
+  <Tag enumID="185" type="String">九命兽魂</Tag>
+  <Tag enumID="184" type="String">发现一个在本局对战中死亡的友方亡语随从，并触发其亡语。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="217" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+    <PlayRequirement reqID="86" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_378">
+  <Tag enumID="185" type="String">猛兽出笼</Tag>
+  <Tag enumID="184" type="String">双生法术召唤一个5/5并具有突袭的双足飞龙。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54145" />
+  <Tag enumID="1193" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+    <PlayRequirement reqID="12" param="1" />
+</Entity>
+<Entity version="2" CardID="DAL_378t1">
+  <Tag enumID="185" type="String">双足飞龙</Tag>
+  <Tag enumID="184" type="String">突袭</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_378ts">
+  <Tag enumID="185" type="String">猛兽出笼</Tag>
+  <Tag enumID="184" type="String">召唤一个5/5并具有突袭的双足飞龙。</Tag>
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="683" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+    <PlayRequirement reqID="12" param="1" />
+</Entity>
+<Entity version="2" CardID="DAL_379">
+  <Tag enumID="185" type="String">温蕾萨风行者</Tag>
+  <Tag enumID="184" type="String">战吼：装备索利达尔，群星之怒。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_379e">
+  <Tag enumID="185" type="String">群星之怒</Tag>
+  <Tag enumID="184" type="String">在本回合中，你具有法术伤害+2。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="338" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_379t">
+  <Tag enumID="185" type="String">索利达尔群星之怒</Tag>
+  <Tag enumID="184" type="String">在你的英雄攻击后，在本回合中获得法术伤害+2。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="187" value="3" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="7" />
+  <ReferencedTag enumID="192" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_400">
+  <Tag enumID="185" type="String">怪盗布缆鼠</Tag>
+  <Tag enumID="184" type="String">战吼：将一张跟班牌置入你的手牌。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_413">
+  <Tag enumID="185" type="String">怪盗征募员</Tag>
+  <Tag enumID="184" type="String">亡语：将一张跟班牌置入你的手牌。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_415">
+  <Tag enumID="185" type="String">怪盗恶霸</Tag>
+  <Tag enumID="184" type="String">连击：随机将两张跟班牌置入你的手牌。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="220" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_416">
+  <Tag enumID="185" type="String">荆棘帮蟊贼</Tag>
+  <Tag enumID="184" type="String">战吼：,发现一张其他职业的法术牌。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="200" value="23" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_417">
+  <Tag enumID="185" type="String">劫匪之王托瓦格尔</Tag>
+  <Tag enumID="184" type="String">战吼：如果你控制一个跟班，就可以选择一份惊人的战利品。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="375" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_422">
+  <Tag enumID="185" type="String">至尊盗王拉法姆</Tag>
+  <Tag enumID="184" type="String">嘲讽,战吼：将你的手牌和牌库里的卡牌替换为传说随从。</Tag>
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="7" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_431">
+  <Tag enumID="185" type="String">沼泽女王哈加莎</Tag>
+  <Tag enumID="184" type="String">战吼：将一个5/5的恐魔置入你的手牌，并教会它两个萨满祭司法术。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_431t">
+  <Tag enumID="185" type="String">德鲁斯瓦恐魔</Tag>
+  <Tag enumID="184" type="String">战吼：施放{0}和{1}。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_432">
+  <Tag enumID="185" type="String">女巫杂酿</Tag>
+  <Tag enumID="184" type="String">恢复4点生命值。在本回合可以重复使用。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1114" value="1" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_433">
+  <Tag enumID="185" type="String">淤泥吞食者</Tag>
+  <Tag enumID="184" type="String">战吼：将一张跟班牌置入你的手牌。过载：（1）</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="200" value="14" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="215" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_434">
+  <Tag enumID="185" type="String">奥术守望者</Tag>
+  <Tag enumID="184" type="String">除非你拥有法术伤害，否则无法进行攻击。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="192" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_538">
+  <Tag enumID="185" type="String">隐秘破坏者</Tag>
+  <Tag enumID="184" type="String">战吼：随机使你的对手从手牌中施放一个法术<i>（目标随机而定）</i>。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_539">
+  <Tag enumID="185" type="String">夺日者战斗法师</Tag>
+  <Tag enumID="184" type="String">战吼：如果你的手牌中有法力值消耗大于或等于（5）的法术牌，则造成4点伤害。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="83" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_544">
+  <Tag enumID="185" type="String">药水商人</Tag>
+  <Tag enumID="184" type="String">战吼：为所有友方角色恢复2点生命值。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_546">
+  <Tag enumID="185" type="String">咖啡师林彻</Tag>
+  <Tag enumID="184" type="String">战吼：将你的所有其他战吼随从的复制置入你的手牌。</Tag>
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_548">
+  <Tag enumID="185" type="String">艾泽里特元素</Tag>
+  <Tag enumID="184" type="String">在你的回合开始时，获得法术伤害+2。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="192" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_548e">
+  <Tag enumID="185" type="String">奥术扩张</Tag>
+  <Tag enumID="184" type="String">法术伤害提高。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_550">
+  <Tag enumID="185" type="String">下水道软泥怪</Tag>
+  <Tag enumID="184" type="String">在该随从受到伤害并没有死亡后，召唤一个它的复制。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_551">
+  <Tag enumID="185" type="String">骄傲的防御者</Tag>
+  <Tag enumID="184" type="String">嘲讽如果你没有其他随从，则具有+2攻击力。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_553">
+  <Tag enumID="185" type="String">恶狼大法师</Tag>
+  <Tag enumID="184" type="String">在你的回合结束时，随机召唤一个法力值消耗为（6）点的随从。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="10" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_554">
+  <Tag enumID="185" type="String">大厨诺米</Tag>
+  <Tag enumID="184" type="String">战吼：如果你的牌库里没有牌，则召唤六个6/6的猛火元素。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_554t">
+  <Tag enumID="185" type="String">猛火元素</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="251" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_558">
+  <Tag enumID="185" type="String">大法师瓦格斯</Tag>
+  <Tag enumID="184" type="String">在你的回合结束时，施放你在本回合中施放过的一个法术<i>（目标随机而定）</i>。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_560">
+  <Tag enumID="185" type="String">霸气的旅店老板娘</Tag>
+  <Tag enumID="184" type="String">嘲讽，战吼：每有一个其他友方随从，便获得+2/+2。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_560e2">
+  <Tag enumID="185" type="String">保护窖藏</Tag>
+  <Tag enumID="184" type="String">属性值提高。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_561">
+  <Tag enumID="185" type="String">巨型小鬼</Tag>
+  <Tag enumID="184" type="String">如果该牌在你的手牌中，每当一个友方恶魔死亡，法力值消耗就减少（1）点。</Tag>
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="8" />
+  <Tag enumID="48" value="10" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_561e">
+  <Tag enumID="185" type="String">小鬼当家</Tag>
+  <Tag enumID="184" type="String">法力值消耗减少（1）点。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_563">
+  <Tag enumID="185" type="String">性急的杂兵</Tag>
+  <Tag enumID="184" type="String">亡语：随机使两个友方随从获得+2/+2。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_563e">
+  <Tag enumID="185" type="String">邪恶之力</Tag>
+  <Tag enumID="184" type="String">+2/+2。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_565">
+  <Tag enumID="185" type="String">传送门大恶魔</Tag>
+  <Tag enumID="184" type="String">战吼：将三张传送门洗入你的牌库。当抽到传送门时，召唤一个2/2并具有突袭的恶魔。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_566">
+  <Tag enumID="185" type="String">古怪的铭文师</Tag>
+  <Tag enumID="184" type="String">亡语：召唤四个1/1的复仇卷轴。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_566t">
+  <Tag enumID="185" type="String">复仇卷轴</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_568">
+  <Tag enumID="185" type="String">光铸祝福</Tag>
+  <Tag enumID="184" type="String">双生法术使一个友方随从获得吸血。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54189" />
+  <Tag enumID="1193" value="1" />
+  <ReferencedTag enumID="685" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_568e">
+  <Tag enumID="185" type="String">光铸祝福</Tag>
+  <Tag enumID="184" type="String">吸血</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_568ts">
+  <Tag enumID="185" type="String">光铸祝福</Tag>
+  <Tag enumID="184" type="String">使一个友方随从获得吸血。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <ReferencedTag enumID="685" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_570">
+  <Tag enumID="185" type="String">永不屈服</Tag>
+  <Tag enumID="184" type="String">奥秘：当你的对手施放一个法术时，使你的所有随从获得+2生命值。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="219" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_570e">
+  <Tag enumID="185" type="String">永不屈服</Tag>
+  <Tag enumID="184" type="String">+2生命值。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_571">
+  <Tag enumID="185" type="String">神秘之刃</Tag>
+  <Tag enumID="184" type="String">战吼：如果你控制一个奥秘，便获得+1攻击力。</Tag>
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="187" value="2" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="7" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="219" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_571e">
+  <Tag enumID="185" type="String">神秘力量</Tag>
+  <Tag enumID="184" type="String">+1攻击力。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_573">
+  <Tag enumID="185" type="String">指挥官蕾撒</Tag>
+  <Tag enumID="184" type="String">你的奥秘会触发两次。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="362" value="1" />
+  <ReferencedTag enumID="219" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_575">
+  <Tag enumID="185" type="String">卡德加</Tag>
+  <Tag enumID="184" type="String">你的召唤随从的卡牌召唤数量翻倍。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_576">
+  <Tag enumID="185" type="String">肯瑞托三修法师</Tag>
+  <Tag enumID="184" type="String">法术伤害+3你的法术牌法力值消耗增加（1）点。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="192" value="3" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="362" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_576e">
+  <Tag enumID="185" type="String">肯瑞托的诅咒</Tag>
+  <Tag enumID="184" type="String">法力值消耗增加（1）点。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_577">
+  <Tag enumID="185" type="String">霜冻射线</Tag>
+  <Tag enumID="184" type="String">双生法术,冻结一个随从。如果该随从已被冻结，则对其造成2点伤害。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1186" value="54193" />
+  <Tag enumID="1193" value="1" />
+  <ReferencedTag enumID="208" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_577ts">
+  <Tag enumID="185" type="String">霜冻射线</Tag>
+  <Tag enumID="184" type="String">冻结一个随从。如果该随从已被冻结，则对其造成2点伤害。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <ReferencedTag enumID="208" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_578">
+  <Tag enumID="185" type="String">创世之力</Tag>
+  <Tag enumID="184" type="String">发现一张法力值消耗为（6）的随从牌。召唤它的两个复制。</Tag>
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+    <PlayRequirement reqID="12" param="1" />
+</Entity>
+<Entity version="2" CardID="DAL_581">
+  <Tag enumID="185" type="String">诺萨莉</Tag>
+  <Tag enumID="184" type="String">战吼：为双方英雄恢复所有生命值。</Tag>
+  <Tag enumID="45" value="12" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="10" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="200" value="24" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="1118" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_582">
+  <Tag enumID="185" type="String">传送门守护者</Tag>
+  <Tag enumID="184" type="String">战吼：将三张传送门洗入你的牌库。当抽到传送门时，召唤一个2/2并具有突袭的恶魔。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_582t">
+  <Tag enumID="185" type="String">地狱犬传送门</Tag>
+  <Tag enumID="184" type="String">抽到时施放召唤一个2/2并具有突袭的地狱犬。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="377" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+  <ReferencedTag enumID="1077" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_582t2">
+  <Tag enumID="185" type="String">地狱犬</Tag>
+  <Tag enumID="184" type="String">突袭</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_587">
+  <Tag enumID="185" type="String">闪光蝴蝶</Tag>
+  <Tag enumID="184" type="String">亡语：随机将一张猎人法术牌置入你的手牌。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_589">
+  <Tag enumID="185" type="String">狩猎盛宴</Tag>
+  <Tag enumID="184" type="String">复制你手牌中的所有野兽牌。</Tag>
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_589e">
+  <Tag enumID="185" type="String">狩猎小队</Tag>
+  <Tag enumID="184" type="String">+3/+3。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_592">
+  <Tag enumID="185" type="String">莽头食人魔</Tag>
+  <Tag enumID="184" type="String">突袭在该随从攻击并消灭一个随从后，可再次攻击。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="12" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_602">
+  <Tag enumID="185" type="String">情势反转</Tag>
+  <Tag enumID="184" type="String">将你的手牌洗入牌库。抽取同样数量的牌。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_603">
+  <Tag enumID="185" type="String">法力飓风</Tag>
+  <Tag enumID="184" type="String">战吼：你在本回合中每施放过一个法术，便随机将一张法师法术牌置入你的手牌。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_604">
+  <Tag enumID="185" type="String">机械巨熊</Tag>
+  <Tag enumID="184" type="String">亡语：从你的牌库中抽一张机械牌。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="3" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_605">
+  <Tag enumID="185" type="String">小鬼狱火</Tag>
+  <Tag enumID="184" type="String">使你的恶魔获得+1攻击力。对所有敌方随从造成1点伤害。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="10" param="15" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="10" param="15" />
+</Entity>
+<Entity version="2" CardID="DAL_605e">
+  <Tag enumID="185" type="String">小鬼真棒</Tag>
+  <Tag enumID="184" type="String">+1攻击力。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="203" value="3" />
+</Entity>
+<Entity version="2" CardID="DAL_606">
+  <Tag enumID="185" type="String">怪盗天才</Tag>
+  <Tag enumID="184" type="String">战吼：消灭一个友方随从，随机将两张跟班牌置入你的手牌。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="2" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="2" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_607">
+  <Tag enumID="185" type="String">邪能领主贝图格</Tag>
+  <Tag enumID="184" type="String">每当你抽到一张随从牌，召唤一个它的复制。该复制具有突袭，并会在回合结束时死亡。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="9" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_607e">
+  <Tag enumID="185" type="String">滚滚邪能</Tag>
+  <Tag enumID="184" type="String">突袭。在回合结束时死亡。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_608">
+  <Tag enumID="185" type="String">魔术戏法</Tag>
+  <Tag enumID="184" type="String">发现一张法力值消耗小于或等于（3）的法术牌。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_609">
+  <Tag enumID="185" type="String">卡雷苟斯</Tag>
+  <Tag enumID="184" type="String">你每个回合使用的第一张法术牌的法力值消耗为（0）点。战吼：,发现一张法术牌。</Tag>
+  <Tag enumID="45" value="12" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="10" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="4" />
+  <Tag enumID="200" value="24" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="362" value="1" />
+  <Tag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_613">
+  <Tag enumID="185" type="String">无面跟班</Tag>
+  <Tag enumID="184" type="String">战吼：随机召唤一个法力值消耗为（2）点的随从。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="994" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_614">
+  <Tag enumID="185" type="String">狗头人跟班</Tag>
+  <Tag enumID="184" type="String">战吼：造成2点伤害。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="994" value="1" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_615">
+  <Tag enumID="185" type="String">女巫跟班</Tag>
+  <Tag enumID="184" type="String">战吼：将一个友方随从变形成为一个法力值消耗增加（1）点的随从。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="994" value="1" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_710">
+  <Tag enumID="185" type="String">鱼人之魂</Tag>
+  <Tag enumID="184" type="String">使你的所有随从获得“亡语：召唤一个1/1的鱼人。”</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="268" value="2" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="217" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_710e">
+  <Tag enumID="185" type="String">鱼人之魂</Tag>
+  <Tag enumID="184" type="String">亡语：召唤一个1/1的鱼人。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_714">
+  <Tag enumID="185" type="String">下水道销赃人</Tag>
+  <Tag enumID="184" type="String">战吼：如果你手牌中有其他职业的卡牌，则获得+1/+1和突袭。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_714e">
+  <Tag enumID="185" type="String">街头智慧</Tag>
+  <Tag enumID="184" type="String">+1/+1。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_716">
+  <Tag enumID="185" type="String">宿敌</Tag>
+  <Tag enumID="184" type="String">对一个随从造成4点伤害。如果你的手牌中有其他职业的卡牌，则法力值消耗为（0）点。</Tag>
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_719">
+  <Tag enumID="185" type="String">塔克诺兹维克</Tag>
+  <Tag enumID="184" type="String">每当你将一张牌洗入你的牌库时，将该牌的一张复制置入你的手牌。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_720">
+  <Tag enumID="185" type="String">摇摆矿锄</Tag>
+  <Tag enumID="184" type="String">亡语：随机将一个友方随从移回你的手牌。它的法力值消耗减少（2）点。</Tag>
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="187" value="2" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="7" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_721">
+  <Tag enumID="185" type="String">亡者卡特琳娜</Tag>
+  <Tag enumID="184" type="String">在你的回合结束时，召唤一个在本局对战中死亡的友方随从。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_723">
+  <Tag enumID="185" type="String">禁忌咒文</Tag>
+  <Tag enumID="184" type="String">消耗你所有的法力值。消灭一个攻击力小于或等于所消耗法力值的随从。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="85" param="" />
+    <PlayRequirement reqID="11" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_724">
+  <Tag enumID="185" type="String">群体复活</Tag>
+  <Tag enumID="184" type="String">召唤三个在本局对战中死亡的友方随从。</Tag>
+  <Tag enumID="48" value="9" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="12" param="1" />
+    <PlayRequirement reqID="54" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_726">
+  <Tag enumID="185" type="String">斯卡基尔</Tag>
+  <Tag enumID="184" type="String">你的鱼人法力值消耗为（1）点。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="8" />
+  <Tag enumID="200" value="14" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="362" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_726e">
+  <Tag enumID="185" type="String">斯卡基尔的祝福</Tag>
+  <Tag enumID="184" type="String">法力值消耗为（1）点。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_727">
+  <Tag enumID="185" type="String">冒险号角</Tag>
+  <Tag enumID="184" type="String">从你的牌库中抽取法力值消耗最低的随从牌，使其获得+2/+2。</Tag>
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_727e">
+  <Tag enumID="185" type="String">雄姿英发</Tag>
+  <Tag enumID="184" type="String">+2/+2。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_728">
+  <Tag enumID="185" type="String">战略转移</Tag>
+  <Tag enumID="184" type="String">将所有友方随从移回你的手牌。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="7" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_729">
+  <Tag enumID="185" type="String">拉祖尔女士</Tag>
+  <Tag enumID="184" type="String">战吼：,发现一张你的对手手牌的复制。</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="6" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_731">
+  <Tag enumID="185" type="String">决斗</Tag>
+  <Tag enumID="184" type="String">从双方玩家的牌库中各召唤一个随从，并使其互相攻击！</Tag>
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="5" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_732">
+  <Tag enumID="185" type="String">守护者斯塔拉蒂斯</Tag>
+  <Tag enumID="184" type="String">在你施放了一个抉择法术后，将每个选项的复制置入你的手牌。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_733">
+  <Tag enumID="185" type="String">守卫梦境之路</Tag>
+  <Tag enumID="184" type="String">召唤两个1/2并具有吸血的树妖。</Tag>
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="251" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="685" value="1" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_733t">
+  <Tag enumID="185" type="String">水晶树妖</Tag>
+  <Tag enumID="184" type="String">吸血</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+  <Tag enumID="685" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_735">
+  <Tag enumID="185" type="String">达拉然图书管理员</Tag>
+  <Tag enumID="184" type="String">战吼：,沉默相邻的随从。</Tag>
+  <Tag enumID="45" value="3" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="339" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_736">
+  <Tag enumID="185" type="String">档案员艾丽西娜</Tag>
+  <Tag enumID="184" type="String">战吼：,发现五张卡牌，将你牌库里的所有卡牌替换成每张卡牌的两张复制。</Tag>
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="7" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_739">
+  <Tag enumID="185" type="String">地精跟班</Tag>
+  <Tag enumID="184" type="String">战吼：使一个友方随从获得+1攻击力和突袭。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="994" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_739e">
+  <Tag enumID="185" type="String">超短引线</Tag>
+  <Tag enumID="184" type="String">+1攻击力和突袭。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_741">
+  <Tag enumID="185" type="String">虚灵跟班</Tag>
+  <Tag enumID="184" type="String">战吼：,发现一张法术牌。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="994" value="1" />
+  <ReferencedTag enumID="415" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_742">
+  <Tag enumID="185" type="String">暴走旋风</Tag>
+  <Tag enumID="184" type="String">使你具有风怒的随从获得超级风怒。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="251" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="362" value="1" />
+  <ReferencedTag enumID="189" value="1" />
+  <ReferencedTag enumID="1207" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_742e">
+  <Tag enumID="185" type="String">旋风冲锋</Tag>
+  <Tag enumID="184" type="String">超级风怒</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_743">
+  <Tag enumID="185" type="String">荆棘帮斗猪</Tag>
+  <Tag enumID="184" type="String">突袭，亡语：召唤一个1/1的鱼人。</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_743t">
+  <Tag enumID="185" type="String">荆棘帮马仔</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="14" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_744">
+  <Tag enumID="185" type="String">无面暴怒者</Tag>
+  <Tag enumID="184" type="String">战吼：复制一个友方随从的生命值。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="22" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="2" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_744e">
+  <Tag enumID="185" type="String">熟谙脉络</Tag>
+  <Tag enumID="184" type="String">复制了生命值。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_747">
+  <Tag enumID="185" type="String">飞行管理员</Tag>
+  <Tag enumID="184" type="String">战吼：为每个玩家召唤一个2/2的狮鹫。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="201" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="251" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_747t">
+  <Tag enumID="185" type="String">狮鹫</Tag>
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="201" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="251" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_748">
+  <Tag enumID="185" type="String">法力之池</Tag>
+  <Tag enumID="184" type="String">法术伤害+1</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="192" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_749">
+  <Tag enumID="185" type="String">复生大盗</Tag>
+  <Tag enumID="184" type="String">亡语：如果该随从的攻击力大于或等于4，则再次召唤该随从。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_751">
+  <Tag enumID="185" type="String">疯狂召唤师</Tag>
+  <Tag enumID="184" type="String">战吼：为双方玩家召唤数个1/1的小鬼，直到随从数量达到上限。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="6" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="201" value="2" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="251" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_751t">
+  <Tag enumID="185" type="String">小鬼</Tag>
+  <Tag enumID="45" value="1" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="15" />
+  <Tag enumID="201" value="3" />
+  <Tag enumID="202" value="4" />
+</Entity>
+<Entity version="2" CardID="DAL_752">
+  <Tag enumID="185" type="String">耶比托乔巴斯</Tag>
+  <Tag enumID="184" type="String">战吼：从你的牌库中抽两张随从牌。将其攻击力，生命值和法力值消耗变为1。</Tag>
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="6" />
+  <Tag enumID="48" value="8" />
+  <Tag enumID="114" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="5" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_752e">
+  <Tag enumID="185" type="String">玩具模型</Tag>
+  <Tag enumID="184" type="String">耶比托·乔巴斯把它变成了1/1。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_752e2">
+  <Tag enumID="185" type="String">大甩卖</Tag>
+  <Tag enumID="184" type="String">法力值消耗为（1）点。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+</Entity>
+<Entity version="2" CardID="DAL_759">
+  <Tag enumID="185" type="String">凶恶的废钢猎犬</Tag>
+  <Tag enumID="184" type="String">每当该随从造成伤害时，获得等量的护甲值。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="2" />
+  <Tag enumID="47" value="2" />
+  <Tag enumID="48" value="2" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_760">
+  <Tag enumID="185" type="String">推土壮汉</Tag>
+  <Tag enumID="184" type="String">突袭</Tag>
+  <Tag enumID="45" value="9" />
+  <Tag enumID="47" value="9" />
+  <Tag enumID="48" value="9" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_769">
+  <Tag enumID="185" type="String">提振士气</Tag>
+  <Tag enumID="184" type="String">对一个随从造成1点伤害。如果它依然存活，则将一张跟班牌置入你的手牌。</Tag>
+  <Tag enumID="48" value="1" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="202" value="5" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="994" value="1" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="11" param="" />
+    <PlayRequirement reqID="1" param="" />
+</Entity>
+<Entity version="2" CardID="DAL_770">
+  <Tag enumID="185" type="String">欧米茄毁灭者</Tag>
+  <Tag enumID="184" type="String">战吼：如果你有十个法力水晶，对一个随从造成10点伤害。</Tag>
+  <Tag enumID="325" value="" />
+  <Tag enumID="45" value="5" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="10" />
+  <Tag enumID="200" value="17" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+    <PlayRequirement reqID="1" param="" />
+    <PlayRequirement reqID="84" param="10" />
+</Entity>
+<Entity version="2" CardID="DAL_771">
+  <Tag enumID="185" type="String">散财军士</Tag>
+  <Tag enumID="184" type="String">每当该随从进行攻击，使你的对手获得一个幸运币。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="4" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="200" value="18" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_773">
+  <Tag enumID="185" type="String">魔法飞毯</Tag>
+  <Tag enumID="184" type="String">在你使用一张法力值消耗为（1）点的随从牌后，使其获得+1攻击力和突袭。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="6" />
+  <Tag enumID="47" value="1" />
+  <Tag enumID="48" value="3" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="321" value="1" />
+  <ReferencedTag enumID="791" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_773e">
+  <Tag enumID="185" type="String">飞得更高</Tag>
+  <Tag enumID="184" type="String">+1攻击力和突袭。</Tag>
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="6" />
+  <Tag enumID="330" value="1" />
+  <Tag enumID="331" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_774">
+  <Tag enumID="185" type="String">特殊坐骑商人</Tag>
+  <Tag enumID="184" type="String">每当你施放一个法术，随机召唤一个法力值消耗为（3）的野兽。</Tag>
+  <Tag enumID="32" value="1" />
+  <Tag enumID="45" value="8" />
+  <Tag enumID="47" value="5" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_775">
+  <Tag enumID="185" type="String">坑道爆破师</Tag>
+  <Tag enumID="184" type="String">嘲讽，亡语：对所有随从造成3点伤害。</Tag>
+  <Tag enumID="45" value="7" />
+  <Tag enumID="47" value="3" />
+  <Tag enumID="48" value="7" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="190" value="1" />
+  <Tag enumID="199" value="12" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="3" />
+  <Tag enumID="217" value="1" />
+  <Tag enumID="321" value="1" />
+</Entity>
+<Entity version="2" CardID="DAL_799">
+  <Tag enumID="185" type="String">晶角雄鹿</Tag>
+  <Tag enumID="184" type="String">突袭，战吼：在本局对战中，如果你累计恢复了5点生命值，则召唤一个该随从的复制。</Tag>
+  <Tag enumID="45" value="4" />
+  <Tag enumID="47" value="4" />
+  <Tag enumID="48" value="5" />
+  <Tag enumID="183" value="1130" />
+  <Tag enumID="199" value="2" />
+  <Tag enumID="200" value="20" />
+  <Tag enumID="202" value="4" />
+  <Tag enumID="203" value="4" />
+  <Tag enumID="218" value="1" />
+  <Tag enumID="321" value="1" />
+  <Tag enumID="791" value="1" />
+  <Tag enumID="1115" value="958" />
+  <Tag enumID="1116" value="5" />
 </Entity>
 </CardDefs>

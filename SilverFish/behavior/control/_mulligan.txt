@@ -1,0 +1,16 @@
+CFM_696;shaman;None;Discard:2;/
+GVG_038;shaman;None;Discard:2;/
+CFM_717;shaman;None;Hold:1;/
+OG_028;shaman;None;Hold:1;GAME_005
+EX1_162;shaman;None;Hold:1;/
+AT_053;shaman;None;Discard:2;/
+KAR_073;shaman;pala;Hold:1;/
+KAR_073;shaman;mage;Discard:2;/
+KAR_073;shaman;priest;Discard:2;/
+KAR_073;shaman;hunter;Hold:1;/
+KAR_073;shaman;warrior;Discard:2;/
+KAR_073;shaman;warlock;Discard:2;/
+KAR_073;shaman;shaman;Discard:2;/
+KAR_073;shaman;druid;Discard:2;/
+KAR_073;shaman;thief;Discard:2;/
+EX1_247;shaman;None;Hold:1;/
