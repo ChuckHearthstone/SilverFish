@@ -868,12 +868,12 @@ namespace HREngine.Bots
                     return;
                 }
 
-                if (!Silverfish.Instance.BehaviorPath.ContainsKey(behavName))
+                if (!SilverFishBot.Instance.BehaviorPath.ContainsKey(behavName))
                 {
                     Helpfunctions.Instance.ErrorLog(behavName + ": no special rules.");
                     return;
                 }
-                pathToRules = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_rules.txt");
+                pathToRules = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_rules.txt");
             }
 
             if (!System.IO.File.Exists(pathToRules))

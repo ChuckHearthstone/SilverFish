@@ -1000,7 +1000,7 @@
 
 
             //set Simulation stuff
-            Ai.Instance.botBase = Silverfish.Instance.getBehaviorByName(this.botBehavior);
+            Ai.Instance.botBase = SilverFishBot.Instance.getBehaviorByName(this.botBehavior);
             RulesEngine.Instance.setCardIdRulesGame(heroNametoClass(this.ownheroname), heroNametoClass(this.enemyheroname));
             RulesEngine.Instance.setRulesTurn((gTurn + 1) / 2);
             Ai.Instance.setMaxWide(this.maxwide);

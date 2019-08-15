@@ -48,7 +48,7 @@ namespace HREngine.Bots
         public bool learnmode = false;
         public bool printlearnmode = true;
 
-        Silverfish sf = Silverfish.Instance;
+        SilverFishBot sf = SilverFishBot.Instance;
 
         //uncomment the desired option, or leave it as is to select via the interface
         Behavior behave = new BehaviorControl();
@@ -78,7 +78,7 @@ namespace HREngine.Bots
             bool printstuff = false; // if true, the best board of the tested file is printet stepp by stepp
 
             Helpfunctions.Instance.ErrorLog("----------------------------");
-            Helpfunctions.Instance.ErrorLog("you are running uai V" + Silverfish.Instance.versionnumber);
+            Helpfunctions.Instance.ErrorLog("you are running uai V" + SilverFishBot.Instance.versionnumber);
             Helpfunctions.Instance.ErrorLog("----------------------------");
 
             if (teststuff)
@@ -628,7 +628,7 @@ def Execute():
 
             dirtychoice = -1;
             await Coroutine.Sleep(555);
-            Silverfish.Instance.lastpf = null;
+            SilverFishBot.Instance.lastpf = null;
             return;
 		}
 
@@ -646,7 +646,7 @@ def Execute():
             if (this.behave.BehaviorName() != DefaultRoutineSettings.Instance.DefaultBehavior)
             {
                 behave = sf.getBehaviorByName(DefaultRoutineSettings.Instance.DefaultBehavior);
-                Silverfish.Instance.lastpf = null;
+                SilverFishBot.Instance.lastpf = null;
             }
 
             if (this.learnmode && (TritonHs.IsInTargetMode() || TritonHs.IsInChoiceMode()))
@@ -710,12 +710,12 @@ def Execute():
             }
 
             bool sleepRetry = false;
-            bool templearn = Silverfish.Instance.updateEverything(behave, 0, out sleepRetry);
+            bool templearn = SilverFishBot.Instance.updateEverything(behave, 0, out sleepRetry);
             if (sleepRetry)
             {
                 Log.Error("[AI] Readiness error. Attempting recover...");
                 await Coroutine.Sleep(500);
-                templearn = Silverfish.Instance.updateEverything(behave, 1, out sleepRetry);
+                templearn = SilverFishBot.Instance.updateEverything(behave, 1, out sleepRetry);
             }
 
             if (templearn == true) this.printlearnmode = true;
@@ -1370,7 +1370,7 @@ def Execute():
             Log.InfoFormat("[Set new log file:] Start");
             Hrtprozis prozis = Hrtprozis.Instance;
             prozis.clearAllNewGame();
-            Silverfish.Instance.setnewLoggFile();
+            SilverFishBot.Instance.setnewLoggFile();
             Log.InfoFormat("[Set new log file:] End");
         }
 

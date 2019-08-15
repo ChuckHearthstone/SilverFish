@@ -82,15 +82,15 @@ namespace HREngine.Bots
             string pathToSettings = behavName;
             if (!nameIsPath)
             {
-                if (!Silverfish.Instance.BehaviorPath.ContainsKey(behavName))
+                if (!SilverFishBot.Instance.BehaviorPath.ContainsKey(behavName))
                 {
                     Helpfunctions.Instance.ErrorLog(behavName + ": no files for this Behavior.");
                     endOfSetSettings();
                     return;
                 }
-                pathToSettings = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_settings_custom.txt");
+                pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings_custom.txt");
                 if (System.IO.File.Exists(pathToSettings)) Helpfunctions.Instance.ErrorLog(behavName + ": use custom settings.");
-                else pathToSettings = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_settings.txt");
+                else pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings.txt");
             }
 
             if (!System.IO.File.Exists(pathToSettings))

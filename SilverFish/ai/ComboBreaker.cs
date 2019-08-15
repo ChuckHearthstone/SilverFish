@@ -135,22 +135,22 @@
                         string crd = crdl.Split(',')[0];
                         if (t1)
                         {
-                            manat1 += CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(crd)).cost;
+                            manat1 += cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd)).cost;
                         }
                         else
                         {
-                            manat0 += CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(crd)).cost;
+                            manat0 += cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd)).cost;
                         }
                         this.combolength++;
 
-                        if (combocards.ContainsKey(CardDB.Instance.cardIdstringToEnum(crd)))
+                        if (combocards.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                         {
-                            combocards[CardDB.Instance.cardIdstringToEnum(crd)]++;
+                            combocards[cb.cdb.cardIdstringToEnum(crd)]++;
                         }
                         else
                         {
-                            combocards.Add(CardDB.Instance.cardIdstringToEnum(crd), 1);
-                            cardspen.Add(CardDB.Instance.cardIdstringToEnum(crd), Convert.ToInt32(crdl.Split(',')[1]));
+                            combocards.Add(cb.cdb.cardIdstringToEnum(crd), 1);
+                            cardspen.Add(cb.cdb.cardIdstringToEnum(crd), Convert.ToInt32(crdl.Split(',')[1]));
                         }
 
                         if (this.twoTurnCombo)
@@ -158,28 +158,28 @@
 
                             if (t1)
                             {
-                                if (this.combocardsTurn1.ContainsKey(CardDB.Instance.cardIdstringToEnum(crd)))
+                                if (this.combocardsTurn1.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                 {
-                                    combocardsTurn1[CardDB.Instance.cardIdstringToEnum(crd)]++;
+                                    combocardsTurn1[cb.cdb.cardIdstringToEnum(crd)]++;
                                 }
                                 else
                                 {
-                                    combocardsTurn1.Add(CardDB.Instance.cardIdstringToEnum(crd), 1);
+                                    combocardsTurn1.Add(cb.cdb.cardIdstringToEnum(crd), 1);
                                 }
                                 this.combot1len++;
                             }
                             else
                             {
-                                CardDB.Card lolcrd = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(crd));
+                                CardDB.Card lolcrd = cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd));
                                 if (lolcrd.type == CardDB.cardtype.MOB)
                                 {
-                                    if (this.combocardsTurn0Mobs.ContainsKey(CardDB.Instance.cardIdstringToEnum(crd)))
+                                    if (this.combocardsTurn0Mobs.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                     {
-                                        combocardsTurn0Mobs[CardDB.Instance.cardIdstringToEnum(crd)]++;
+                                        combocardsTurn0Mobs[cb.cdb.cardIdstringToEnum(crd)]++;
                                     }
                                     else
                                     {
-                                        combocardsTurn0Mobs.Add(CardDB.Instance.cardIdstringToEnum(crd), 1);
+                                        combocardsTurn0Mobs.Add(cb.cdb.cardIdstringToEnum(crd), 1);
                                     }
                                     this.combot0len++;
                                 }
@@ -187,13 +187,13 @@
                                 {
                                     this.requiredWeapon = lolcrd.name;
                                 }
-                                if (this.combocardsTurn0All.ContainsKey(CardDB.Instance.cardIdstringToEnum(crd)))
+                                if (this.combocardsTurn0All.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                 {
-                                    combocardsTurn0All[CardDB.Instance.cardIdstringToEnum(crd)]++;
+                                    combocardsTurn0All[cb.cdb.cardIdstringToEnum(crd)]++;
                                 }
                                 else
                                 {
-                                    combocardsTurn0All.Add(CardDB.Instance.cardIdstringToEnum(crd), 1);
+                                    combocardsTurn0All.Add(cb.cdb.cardIdstringToEnum(crd), 1);
                                 }
                                 this.combot0lenAll++;
                             }
@@ -390,12 +390,12 @@
             string pathToCombo = behavName;
             if (!nameIsPath)
             {
-                if (!Silverfish.Instance.BehaviorPath.ContainsKey(behavName))
+                if (!SilverFishBot.Instance.BehaviorPath.ContainsKey(behavName))
                 {
                     help.ErrorLog(behavName + ": no special combos.");
                     return;
                 }
-                pathToCombo = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_combo.txt");
+                pathToCombo = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_combo.txt");
             }
 
             if (!System.IO.File.Exists(pathToCombo))

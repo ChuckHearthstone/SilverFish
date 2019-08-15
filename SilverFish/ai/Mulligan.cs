@@ -83,13 +83,13 @@ as well as
                 return;
             }
 			
-            if (!Silverfish.Instance.BehaviorPath.ContainsKey(behavName))
+            if (!SilverFishBot.Instance.BehaviorPath.ContainsKey(behavName))
             {
                 Helpfunctions.Instance.ErrorLog(behavName + ": no special mulligan.");
                 return;
             }
 
-            pathToMulligan = Path.Combine(Silverfish.Instance.BehaviorPath[behavName], "_mulligan.txt");
+            pathToMulligan = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_mulligan.txt");
 
             if (!System.IO.File.Exists(pathToMulligan))
             {

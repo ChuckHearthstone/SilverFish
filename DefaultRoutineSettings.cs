@@ -173,7 +173,7 @@ namespace HREngine.Bots
         {
             get
             {
-                return _allBehav ?? (_allBehav = new ObservableCollection<string>(Silverfish.Instance.BehaviorDB.Keys));
+                return _allBehav ?? (_allBehav = new ObservableCollection<string>(SilverFishBot.Instance.BehaviorDB.Keys));
             }
         }
 		

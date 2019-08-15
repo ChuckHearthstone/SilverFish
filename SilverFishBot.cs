@@ -17,7 +17,7 @@ using Triton.Game.Mapping;
 
 namespace HREngine.Bots
 {
-    public class Silverfish
+    public class SilverFishBot
     {
         public string versionnumber = "117.178";
         private bool singleLog = false;
@@ -104,14 +104,14 @@ namespace HREngine.Bots
 
         }
         
-        private static Silverfish instance;
+        private static SilverFishBot instance;
 
-        public static Silverfish Instance
+        public static SilverFishBot Instance
         {
-            get { return instance ?? (instance = new Silverfish()); }
+            get { return instance ?? (instance = new SilverFishBot()); }
         }
 
-        private Silverfish()
+        private SilverFishBot()
         {
             this.singleLog = Settings.Instance.writeToSingleFile;
             Helpfunctions.Instance.ErrorLog("init Silverfish");
