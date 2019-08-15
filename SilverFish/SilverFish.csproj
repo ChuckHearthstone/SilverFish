@@ -30,6 +30,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GreyMagic">
       <HintPath>..\packages\GreyMagic.dll</HintPath>
@@ -66,8 +84,8 @@
     <Compile Include="..\DefaultRoutineSettings.cs">
       <Link>DefaultRoutineSettings.cs</Link>
     </Compile>
-    <Compile Include="..\silverfish_HB.cs">
-      <Link>silverfish_HB.cs</Link>
+    <Compile Include="..\SilverFishBot.cs">
+      <Link>SilverFishBot.cs</Link>
     </Compile>
     <Compile Include="ai\action.cs" />
     <Compile Include="ai\ActionNormalizer.cs" />
@@ -78,6 +96,11 @@
     <Compile Include="ai\BehaviourMana.cs" />
     <Compile Include="ai\BoardTester.cs" />
     <Compile Include="ai\CardDB.cs" />
+    <Compile Include="ai\CardDB_Card.cs" />
+    <Compile Include="ai\CardDB_cardIDEnum.cs" />
+    <Compile Include="ai\CardDB_cardName.cs" />
+    <Compile Include="ai\CardDB_getSimCard.cs" />
+    <Compile Include="ai\CardDB_SpecialName.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
     <Compile Include="ai\Deckmanager.cs" />
     <Compile Include="ai\EnemyTurnSimulator.cs" />
@@ -98,9 +121,11 @@
     <Compile Include="ai\Settings.cs" />
     <Compile Include="ai\SimTemplate.cs" />
     <Compile Include="ai\TAGGS.cs" />
+    <Compile Include="ai\TrimHelper.cs" />
     <Compile Include="ai\Weapon.cs" />
     <Compile Include="behavior\control\BehaviorControl.cs" />
     <Compile Include="behavior\rush\BehaviorRush.cs" />
+    <Compile Include="cards\QuestBase.cs" />
     <Compile Include="cards\Sim_AT_001.cs" />
     <Compile Include="cards\Sim_AT_003.cs" />
     <Compile Include="cards\Sim_AT_004.cs" />
@@ -975,6 +1000,7 @@
     <Compile Include="cards\Sim_GAME_002.cs" />
     <Compile Include="cards\Sim_GAME_005.cs" />
     <Compile Include="cards\Sim_GAME_006.cs" />
+    <Compile Include="cards\Sim_GIL_530.cs" />
     <Compile Include="cards\Sim_GvG_001.cs" />
     <Compile Include="cards\Sim_GvG_002.cs" />
     <Compile Include="cards\Sim_GvG_003.cs" />
