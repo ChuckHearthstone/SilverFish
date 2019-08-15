@@ -277,7 +277,16 @@
 
                     //if (m.name == CardDB.cardName.manawraith) return true;
                     //buffing minions (attack with them last)
-                    if (m.name == CardDB.cardName.raidleader || m.name == CardDB.cardName.stormwindchampion || m.name == CardDB.cardName.timberwolf || m.name == CardDB.cardName.southseacaptain || m.name == CardDB.cardName.murlocwarleader || m.name == CardDB.cardName.grimscaleoracle || m.name == CardDB.cardName.leokk || m.name == CardDB.cardName.fallenhero || m.name == CardDB.cardName.warhorsetrainer) return true;
+                    if (m.name == CardDB.cardName.raidleader 
+                        || m.name == CardDB.cardName.stormwindchampion 
+                        || m.name == CardDB.cardName.timberwolf 
+                        || m.name == CardDB.cardName.southseacaptain 
+                        || m.name == CardDB.cardName.murlocwarleader 
+                        || m.name == CardDB.cardName.grimscaleoracle 
+                        || m.name == CardDB.cardName.leokk 
+                        || m.name == CardDB.cardName.fallenhero 
+                        || m.name == CardDB.cardName.warhorsetrainer)
+                        return true;
 
 
                     if (m.name == CardDB.cardName.scavenginghyena) hashyena = true;

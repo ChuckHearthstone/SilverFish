@@ -3871,6 +3871,7 @@
             priorityDatabase.Add(CardDB.cardName.mechwarper, 1);
             priorityDatabase.Add(CardDB.cardName.muklaschampion, 5);
             priorityDatabase.Add(CardDB.cardName.murlocknight, 5);
+            priorityDatabase.Add(CardDB.cardName.underbellyangler, 5);
             priorityDatabase.Add(CardDB.cardName.murlocwarleader, 5);
             priorityDatabase.Add(CardDB.cardName.nexuschampionsaraad, 6);
             priorityDatabase.Add(CardDB.cardName.northshirecleric, 4);
@@ -4262,6 +4263,7 @@
             UsefulNeedKeepDatabase.Add(CardDB.cardName.moroes, 13);
             UsefulNeedKeepDatabase.Add(CardDB.cardName.muklaschampion, 14);
             UsefulNeedKeepDatabase.Add(CardDB.cardName.murlocknight, 16);
+            UsefulNeedKeepDatabase.Add(CardDB.cardName.underbellyangler, 17);
             UsefulNeedKeepDatabase.Add(CardDB.cardName.murloctidecaller, 10);
             UsefulNeedKeepDatabase.Add(CardDB.cardName.murlocwarleader, 11);
             UsefulNeedKeepDatabase.Add(CardDB.cardName.natpagle, 2);
@@ -4580,6 +4582,7 @@
             specialMinions.Add(CardDB.cardName.moroes, 0);
             specialMinions.Add(CardDB.cardName.muklaschampion, 0);
             specialMinions.Add(CardDB.cardName.murlocknight, 0);
+            specialMinions.Add(CardDB.cardName.underbellyangler, 0);
             specialMinions.Add(CardDB.cardName.murloctidecaller, 0);
             specialMinions.Add(CardDB.cardName.murlocwarleader, 0);
             specialMinions.Add(CardDB.cardName.natpagle, 0);
@@ -4940,6 +4943,7 @@
             priorityTargets.Add(CardDB.cardName.mogortheogre, 10);
             priorityTargets.Add(CardDB.cardName.moroes, 10);
             priorityTargets.Add(CardDB.cardName.muklaschampion, 10);
+            priorityTargets.Add(CardDB.cardName.underbellyangler, 10);
             priorityTargets.Add(CardDB.cardName.murlocknight, 10);
             priorityTargets.Add(CardDB.cardName.natpagle, 10);
             priorityTargets.Add(CardDB.cardName.nerubarweblord, 10);
@@ -5237,6 +5241,7 @@
             silenceTargets.Add(CardDB.cardName.mogortheogre, 0);
             silenceTargets.Add(CardDB.cardName.muklaschampion, 0);
             silenceTargets.Add(CardDB.cardName.murlocknight, 0);
+            silenceTargets.Add(CardDB.cardName.underbellyangler, 0);
             silenceTargets.Add(CardDB.cardName.murloctidecaller, 0);
             silenceTargets.Add(CardDB.cardName.murlocwarleader, 0);
             silenceTargets.Add(CardDB.cardName.natpagle, 0);
@@ -5757,6 +5762,7 @@
             GangUpDatabase.Add(CardDB.cardName.moatlurker, 4);
             GangUpDatabase.Add(CardDB.cardName.moirabronzebeard, 5);
             GangUpDatabase.Add(CardDB.cardName.murlocknight, 5);
+            GangUpDatabase.Add(CardDB.cardName.underbellyangler, 5);
             GangUpDatabase.Add(CardDB.cardName.murloctidecaller, 1);
             GangUpDatabase.Add(CardDB.cardName.murlocwarleader, 1);
             GangUpDatabase.Add(CardDB.cardName.nefarian, 5);

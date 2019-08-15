@@ -4,7 +4,10 @@
     {
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            if (p.playactions.Count < 2) p.evaluatePenality -= 30;
+            if (p.playactions.Count < 2)
+            {
+                p.evaluatePenality -= 30;
+            }
         }
     }
 
