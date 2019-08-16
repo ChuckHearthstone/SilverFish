@@ -68,7 +68,7 @@ namespace HREngine.Bots
             if (!writelogg) return;
             try
             {
-                string filePath = Path.Combine(Settings.Instance.logpath, Settings.Instance.logfile);
+                string filePath = Path.Combine(Settings.Instance.LogFolderPath, Settings.Instance.LogFileName);
                 using (StreamWriter sw = File.AppendText(filePath))
                 {
                     sw.WriteLine(s);
