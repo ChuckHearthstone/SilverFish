@@ -1,4 +1,5 @@
 ﻿using log4net;
+using SilverFish.ai;
 using Triton.Common.LogUtilities;
 
 namespace HREngine.Bots
@@ -58,7 +59,14 @@ namespace HREngine.Bots
 
         public void createNewLoggfile()
         {
-            //System.IO.File.WriteAllText(Settings.Instance.logpath + Settings.Instance.logfile, "");
+            var logFolderPath = Settings.Instance.LogFolderPath;
+            if (!Directory.Exists(logFolderPath))
+            {
+                Directory.CreateDirectory(logFolderPath);
+            }
+
+            var fileName = Path.Combine(logFolderPath, Settings.Instance.LogFileName);
+            FileHelper.CreateEmptyFile(fileName);
         }
 
         public void logg(string s)
@@ -91,8 +99,6 @@ namespace HREngine.Bots
 
         public void ErrorLog(string s)
         {
-            //HREngine.API.Utilities.HRLog.Write(s);
-            //Console.WriteLine(s);
             Log.Info(s);
         }
 
