@@ -1370,7 +1370,7 @@ def Execute():
             Log.InfoFormat("[Set new log file:] Start");
             Hrtprozis prozis = Hrtprozis.Instance;
             prozis.clearAllNewGame();
-            SilverFishBot.Instance.setnewLoggFile();
+            SilverFishBot.Instance.SetNewLogFile();
             Log.InfoFormat("[Set new log file:] End");
         }
 
