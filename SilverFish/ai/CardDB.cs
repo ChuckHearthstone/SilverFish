@@ -231,7 +231,7 @@ namespace HREngine.Bots
             string[] lines = new string[0] { };
             try
             {
-                string path = Settings.Instance.path;
+                string path = Settings.Instance.DataFolderPath;
                 lines = System.IO.File.ReadAllLines(path + "_carddb.txt");
                 Helpfunctions.Instance.ErrorLog("read carddb.txt " + lines.Length + " lines");
             }
@@ -242,7 +242,7 @@ namespace HREngine.Bots
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("cant find _carddb.txt in " + Settings.Instance.path);
+                Helpfunctions.Instance.ErrorLog("cant find _carddb.txt in " + Settings.Instance.DataFolderPath);
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");
                 Helpfunctions.Instance.ErrorLog("ERROR#################################################");

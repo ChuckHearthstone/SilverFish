@@ -51,9 +51,9 @@ namespace HREngine.Bots
         public int numberOfThreads = 32;
         public bool simulateEnemysTurn = true;
         public int secondTurnAmount = 256;
-        public string path = "";
-        public string logpath = "";
-        public string logfile = "Logg.txt";
+        public string DataFolderPath { get; set; } = string.Empty;
+        public string LogFolderPath { get; set; } = string.Empty;
+        public string LogFileName { get; set; } = "Logg.txt";
         public bool concede = false;
         public bool enemyConcede = false;
         public bool writeToSingleFile = false;
@@ -192,20 +192,6 @@ namespace HREngine.Bots
             this.firstweight = 1f - a;
             this.secondweight = a;
             Helpfunctions.Instance.ErrorLog("current alpha is " + this.secondweight);
-        }
-
-        public void setFilePath(string path)
-        {
-            this.path = path;
-        }
-        public void setLoggPath(string path)
-        {
-            this.logpath = path;
-        }
-
-        public void setLoggFile(string path)
-        {
-            this.logfile = path;
         }
     }
 }

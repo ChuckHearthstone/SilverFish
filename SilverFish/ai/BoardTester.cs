@@ -137,8 +137,9 @@
                 this.datareaded = false;
                 try
                 {
-                    string path = Settings.Instance.path;
-                    lines = System.IO.File.ReadAllLines(path + "test.txt");
+                    string path = Settings.Instance.DataFolderPath;
+                    string filePath = Path.Combine(path, "test.txt");
+                    lines = System.IO.File.ReadAllLines(filePath);
                     this.datareaded = true;
                 }
                 catch
@@ -164,8 +165,10 @@
 
             Minion tempminion = new Minion();
             int j = 0;
-            foreach (string sss in lines)
+            int i;
+            for(i = 0; i < lines.Length; i++)
             {
+                string sss = lines[i];
                 string s = sss + " ";
                 Helpfunctions.Instance.logg(s);
                 
@@ -970,6 +973,8 @@
                 counter++;
                 j++;
             }
+
+            Console.WriteLine($"i = {i}");
             Helpfunctions.Instance.logg("rdy");
 
             //Set default settings for behaviour
@@ -1154,9 +1159,9 @@
         public void printSettings()
         {
             Helpfunctions.Instance.logg("#################### Settings #########################################");
-            Helpfunctions.Instance.logg("path = " + Settings.Instance.path);
-            Helpfunctions.Instance.logg("logpath = " + Settings.Instance.logpath);
-            Helpfunctions.Instance.logg("logfile = " + Settings.Instance.logfile);
+            Helpfunctions.Instance.logg("path = " + Settings.Instance.DataFolderPath);
+            Helpfunctions.Instance.logg("logpath = " + Settings.Instance.LogFolderPath);
+            Helpfunctions.Instance.logg("logfile = " + Settings.Instance.LogFileName);
             Helpfunctions.Instance.logg("twotsamount = " + Settings.Instance.twotsamount);
             Helpfunctions.Instance.logg("secondTurnAmount = " + Settings.Instance.secondTurnAmount);
             Helpfunctions.Instance.logg("playaroundprob2 = " + Settings.Instance.playaroundprob2);

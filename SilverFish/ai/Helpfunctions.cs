@@ -68,13 +68,15 @@ namespace HREngine.Bots
             if (!writelogg) return;
             try
             {
-                using (StreamWriter sw = File.AppendText(Settings.Instance.logpath + Settings.Instance.logfile))
+                string filePath = Path.Combine(Settings.Instance.LogFolderPath, Settings.Instance.LogFileName);
+                using (StreamWriter sw = File.AppendText(filePath))
                 {
                     sw.WriteLine(s);
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex);
             }
             //Console.WriteLine(s);
         }
@@ -114,7 +116,7 @@ namespace HREngine.Bots
             {
                 try
                 {
-                    System.IO.File.WriteAllText(Settings.Instance.path + "crrntbrd.txt", this.sendbuffer);
+                    System.IO.File.WriteAllText(Settings.Instance.DataFolderPath + "crrntbrd.txt", this.sendbuffer);
                     writed = false;
                 }
                 catch
@@ -134,7 +136,7 @@ namespace HREngine.Bots
             {
                 try
                 {
-                    System.IO.File.WriteAllText(Settings.Instance.path + "actionstodo.txt", this.sendbuffer);
+                    System.IO.File.WriteAllText(Settings.Instance.DataFolderPath + "actionstodo.txt", this.sendbuffer);
                     writed = false;
                 }
                 catch

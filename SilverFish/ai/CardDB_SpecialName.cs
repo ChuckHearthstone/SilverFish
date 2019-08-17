@@ -11,8 +11,9 @@ namespace HREngine.Bots
         public void InitSpecialNames()
         {
             SpecialNames = new Dictionary<cardIDEnum, cardName>();
-            string path = Settings.Instance.path;
-            string[] lines = File.ReadAllLines(path + "special_card_name.txt");
+            string path = Settings.Instance.DataFolderPath;
+			string specialCardNamePath = Path.Combine(path, "special_card_name.txt");
+			string[] lines = File.ReadAllLines(specialCardNamePath);
             Helpfunctions.Instance.ErrorLog("read special_card_name.txt " + lines.Length + " lines");
             foreach (var item in lines)
             {

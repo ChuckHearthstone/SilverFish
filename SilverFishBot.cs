@@ -25,7 +25,7 @@ namespace HREngine.Bots
         private bool needSleep = false;
 
         public Playfield lastpf;
-        private Settings sttngs = Settings.Instance;
+        private Settings _settings = Settings.Instance;
 
         private List<Minion> ownMinions = new List<Minion>();
         private List<Minion> enemyMinions = new List<Minion>();
@@ -115,20 +115,28 @@ namespace HREngine.Bots
         {
             this.singleLog = Settings.Instance.writeToSingleFile;
             Helpfunctions.Instance.ErrorLog("init Silverfish");
-            string p = "." + System.IO.Path.DirectorySeparatorChar + "Routines" + System.IO.Path.DirectorySeparatorChar + "DefaultRoutine" +
-                       System.IO.Path.DirectorySeparatorChar + "Silverfish" + System.IO.Path.DirectorySeparatorChar;
-            string path = p + "UltimateLogs" + Path.DirectorySeparatorChar;
-            Directory.CreateDirectory(path);
-            sttngs.setFilePath(p + "Data" + Path.DirectorySeparatorChar);
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            string silverFishLogFolderPath = "Logs/Silverfish/";
+            string logFolderPath = Path.Combine(baseDirectory, silverFishLogFolderPath);
+            if (!Directory.Exists(logFolderPath))
+            {
+                Directory.CreateDirectory(logFolderPath);
+            }
+
+            string dataFolderPath = Path.Combine(baseDirectory, "Routines/DefaultRoutine/Silverfish/data");
+            _settings.DataFolderPath = dataFolderPath;
 
             if (!singleLog)
             {
-                sttngs.setLoggPath(path);
+                string combatLogFolderPath = "CombatLogs";
+                _settings.LogFolderPath = Path.Combine(logFolderPath, combatLogFolderPath);
             }
             else
             {
-                sttngs.setLoggPath(p);
-                sttngs.setLoggFile("UILogg.txt");
+                //single log file mode
+                _settings.LogFolderPath = logFolderPath;
+                _settings.LogFileName = "UILogg.txt";
                 Helpfunctions.Instance.createNewLoggfile();
             }
             setBehavior();
@@ -189,7 +197,7 @@ namespace HREngine.Bots
         {
             if (BehaviorDB.ContainsKey(bName))
             {
-                sttngs.setSettings(bName);
+                _settings.setSettings(bName);
                 ComboBreaker.Instance.readCombos(bName);
                 RulesEngine.Instance.readRules(bName);
                 return BehaviorDB[bName];
@@ -223,15 +231,15 @@ namespace HREngine.Bots
             Questmanager.Instance.Reset();
             if (!singleLog)
             {
-                sttngs.setLoggFile("UILogg" + DateTime.Now.ToString("_yyyy-MM-dd_HH-mm-ss") + ".txt");
+                _settings.LogFileName = DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
                 Helpfunctions.Instance.createNewLoggfile();
                 Helpfunctions.Instance.ErrorLog("#######################################################");
-                Helpfunctions.Instance.ErrorLog("fight is logged in: " + sttngs.logpath + sttngs.logfile);
+                Helpfunctions.Instance.ErrorLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
                 Helpfunctions.Instance.ErrorLog("#######################################################");
             }
             else
             {
-                sttngs.setLoggFile("UILogg.txt");
+                _settings.LogFileName = "UILogg.txt";
             }
 
             startDeck.Clear();
@@ -378,7 +386,7 @@ namespace HREngine.Bots
             }
 
             Helpfunctions.Instance.ErrorLog("calculating ended! " + DateTime.Now.ToString("HH:mm:ss.ffff"));
-            if (sttngs.printRules > 0)
+            if (_settings.printRules > 0)
             {
                 String[] rulesStr = Ai.Instance.bestplay.rulesUsed.Split('@');
                 if (rulesStr.Count() > 0 && rulesStr[0] != "")
