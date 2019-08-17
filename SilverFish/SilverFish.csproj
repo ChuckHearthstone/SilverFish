@@ -103,6 +103,7 @@
     <Compile Include="ai\ComboBreaker.cs" />
     <Compile Include="ai\Deckmanager.cs" />
     <Compile Include="ai\EnemyTurnSimulator.cs" />
+    <Compile Include="ai\CustomEventManager.cs" />
     <Compile Include="ai\FileHelper.cs" />
     <Compile Include="ai\Handmanager.cs" />
     <Compile Include="ai\Helpfunctions.cs" />

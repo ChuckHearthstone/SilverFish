@@ -13,6 +13,7 @@ using HREngine.Bots;
 using IronPython.Modules;
 using log4net;
 using Microsoft.Scripting.Hosting;
+using SilverFish.ai;
 using Triton.Bot;
 using Triton.Common;
 using Triton.Game;
@@ -502,6 +503,8 @@ def Execute():
         /// <returns></returns>
         public async Task MulliganLogic(MulliganData mulliganData)
         {
+            CustomEventManager.Instance.OnMulliganStarted();
+
             Log.InfoFormat("[Mulligan] {0} vs {1}.", mulliganData.UserClass, mulliganData.OpponentClass);
             var count = mulliganData.Cards.Count;
 
