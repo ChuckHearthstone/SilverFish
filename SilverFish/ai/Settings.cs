@@ -53,7 +53,7 @@ namespace HREngine.Bots
         public int secondTurnAmount = 256;
         public string DataFolderPath { get; set; } = string.Empty;
         public string LogFolderPath { get; set; } = string.Empty;
-        public string LogFileName { get; set; } = "Logg.txt";
+        public string LogFileName { get; set; } = "SilverFish.log";
 
         public string LogFilePath => Path.Combine(LogFolderPath, LogFileName);
 

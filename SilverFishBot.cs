@@ -117,14 +117,14 @@ namespace HREngine.Bots
             Helpfunctions.Instance.ErrorLog("init Silverfish");
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            string silverFishLogFolderPath = "Logs/Silverfish/";
+            string silverFishLogFolderPath = @"Logs\Silverfish";
             string logFolderPath = Path.Combine(baseDirectory, silverFishLogFolderPath);
             if (!Directory.Exists(logFolderPath))
             {
                 Directory.CreateDirectory(logFolderPath);
             }
 
-            string dataFolderPath = Path.Combine(baseDirectory, "Routines/DefaultRoutine/Silverfish/data");
+            string dataFolderPath = Path.Combine(baseDirectory, @"Routines\DefaultRoutine\Silverfish\data");
             _settings.DataFolderPath = dataFolderPath;
 
             if (!singleLog)
@@ -136,7 +136,6 @@ namespace HREngine.Bots
             {
                 //single log file mode
                 _settings.LogFolderPath = logFolderPath;
-                _settings.LogFileName = "UILogg.txt";
                 Helpfunctions.Instance.createNewLoggfile();
             }
             setBehavior();
@@ -237,11 +236,6 @@ namespace HREngine.Bots
                 Helpfunctions.Instance.ErrorLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
                 Helpfunctions.Instance.ErrorLog("#######################################################");
             }
-            else
-            {
-                _settings.LogFileName = "UILogg.txt";
-            }
-
             startDeck.Clear();
             extraDeck.Clear();
             long DeckId = Triton.Bot.Logic.Bots.DefaultBot.DefaultBotSettings.Instance.LastDeckId;
