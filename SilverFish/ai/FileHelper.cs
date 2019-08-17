@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SilverFish.ai
 {
     public class FileHelper
     {
-        public static void CreateEmptyFile(string filename)
+        public static void CreateEmptyFile(string filePath)
         {
-            File.Create(filename).Dispose();
+            var folder = Path.GetDirectoryName(filePath);
+            if (string.IsNullOrEmpty(folder))
+            {
+                throw new Exception($"Can not get folder from {filePath}");
+            }
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            File.Create(filePath).Dispose();
         }
     }
 }

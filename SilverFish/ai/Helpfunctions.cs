@@ -59,11 +59,6 @@ namespace HREngine.Bots
 
         public void createNewLoggfile()
         {
-            var logFolderPath = Settings.Instance.LogFolderPath;
-            if (!Directory.Exists(logFolderPath))
-            {
-                Directory.CreateDirectory(logFolderPath);
-            }
             FileHelper.CreateEmptyFile(Settings.Instance.LogFilePath);
         }
 
