@@ -54,6 +54,9 @@ namespace HREngine.Bots
         public string DataFolderPath { get; set; } = string.Empty;
         public string LogFolderPath { get; set; } = string.Empty;
         public string LogFileName { get; set; } = "Logg.txt";
+
+        public string LogFilePath => Path.Combine(LogFolderPath, LogFileName);
+
         public bool concede = false;
         public bool enemyConcede = false;
         public bool writeToSingleFile = false;

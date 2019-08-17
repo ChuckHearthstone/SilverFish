@@ -64,29 +64,16 @@ namespace HREngine.Bots
             {
                 Directory.CreateDirectory(logFolderPath);
             }
-
-            var fileName = Path.Combine(logFolderPath, Settings.Instance.LogFileName);
-            FileHelper.CreateEmptyFile(fileName);
+            FileHelper.CreateEmptyFile(Settings.Instance.LogFilePath);
         }
 
         public void logg(string s)
         {
-
-
             if (!writelogg) return;
-            try
+            using (StreamWriter sw = File.AppendText(Settings.Instance.LogFilePath))
             {
-                string filePath = Path.Combine(Settings.Instance.LogFolderPath, Settings.Instance.LogFileName);
-                using (StreamWriter sw = File.AppendText(filePath))
-                {
-                    sw.WriteLine(s);
-                }
+                sw.WriteLine(s);
             }
-            catch(Exception ex)
-            {
-                Logger.GetLoggerInstanceForType().Error(ex);
-            }
-            //Console.WriteLine(s);
         }
 
         public DateTime UnixTimeStampToDateTime(int unixTimeStamp)
