@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System;
 using System.Collections.Generic;
+using Triton.Common.LogUtilities;
 
 namespace HREngine.Bots
 {
@@ -907,7 +908,7 @@ namespace HREngine.Bots
         {
             SimTemplate result = new SimTemplate();
 
-            var className = $"Sim_{tempCardIdEnum}";
+            var className = $"HREngine.Bots.Sim_{tempCardIdEnum}";
             Type type = Type.GetType(className);
             if (type == null)
             {
@@ -925,7 +926,10 @@ namespace HREngine.Bots
                     throw new Exception($"class {className} should inherit from {typeof(SimTemplate)}");
                 }
             }
-
+            if (tempCardIdEnum == cardIDEnum.GIL_530)
+            {
+                Logger.GetLoggerInstanceForType().InfoFormat($"className = {className}, type of result is {type}");
+            }
             return result;
         }
 
