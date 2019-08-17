@@ -76,7 +76,7 @@ namespace HREngine.Bots
             }
             catch(Exception ex)
             {
-                Logger.GetLoggerInstanceForType().Info(ex);
+                Logger.GetLoggerInstanceForType().Error(ex);
             }
             //Console.WriteLine(s);
         }
