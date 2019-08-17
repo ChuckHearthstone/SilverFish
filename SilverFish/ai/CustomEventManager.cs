@@ -11,7 +11,7 @@ namespace SilverFish.ai
 
         public static CustomEventManager Instance { get; } = new CustomEventManager();
 
-        public EventHandler MulliganStarted { get; set; }
+        public event EventHandler MulliganStarted;
 
         public void OnMulliganStarted()
         {
