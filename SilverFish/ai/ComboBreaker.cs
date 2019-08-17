@@ -415,7 +415,7 @@
             catch
             {
                 help.logg("cant find _combo.txt");
-                help.ErrorLog("cant find _combo.txt (if you dont created your own combos, ignore this message)");
+                help.ErrorLog("cant find _combo.txt (if you don't created your own combos, ignore this message)");
                 return;
             }
             help.logg("read _combo.txt...");

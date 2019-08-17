@@ -69,8 +69,18 @@ namespace HREngine.Bots
 
         public void logg(string s)
         {
-            if (!writelogg) return;
-            using (StreamWriter sw = File.AppendText(Settings.Instance.LogFilePath))
+            if (!writelogg)
+            {
+                return;
+            }
+
+            var filePath = Settings.Instance.LogFilePath;
+            if (!File.Exists(filePath))
+            {
+                FileHelper.CreateEmptyFile(filePath);
+            }
+
+            using (StreamWriter sw = File.AppendText(filePath))
             {
                 sw.WriteLine(s);
             }
