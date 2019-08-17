@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace HREngine.Bots
 {
@@ -232,7 +233,8 @@ namespace HREngine.Bots
             try
             {
                 string path = Settings.Instance.DataFolderPath;
-                lines = System.IO.File.ReadAllLines(path + "_carddb.txt");
+                string cardDbPath = Path.Combine(path, "_carddb.txt");
+                lines = System.IO.File.ReadAllLines(cardDbPath);
                 Helpfunctions.Instance.ErrorLog("read carddb.txt " + lines.Length + " lines");
             }
             catch
