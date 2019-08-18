@@ -68,7 +68,9 @@ namespace HREngine.Bots
         public TAG_CLASS enemyHeroStartClass = TAG_CLASS.INVALID;
         public CardDB.Card heroAbility;
         public bool ownAbilityisReady = false;
-        public int ownHeroPowerCost = 2;
+
+        public int OwnHeroPowerCost = ChuckHelper.GetOwnHeroPowerCost();
+
         public CardDB.Card enemyAbility;
         public int enemyHeroPowerCost = 2;
         public int numOptionsPlayedThisTurn = 0;
@@ -454,7 +456,7 @@ namespace HREngine.Bots
                 if (this.ownWeapon.name == CardDB.cardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
                 
                 this.heroAbility = ability;
-                this.ownHeroPowerCost = abCost;
+                this.OwnHeroPowerCost = abCost;
                 this.ownAbilityisReady = abrdy;
             }
             else

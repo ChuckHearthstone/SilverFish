@@ -466,7 +466,7 @@
             this.enemyAnzCards = Handmanager.Instance.enemyAnzCards;
 
             this.ownAbilityReady = prozis.ownAbilityisReady;
-            this.ownHeroAblility = new Handmanager.Handcard { card = prozis.heroAbility, manacost = prozis.ownHeroPowerCost };
+            this.ownHeroAblility = new Handmanager.Handcard { card = prozis.heroAbility, manacost = prozis.OwnHeroPowerCost };
             this.enemyHeroAblility = new Handmanager.Handcard { card = prozis.enemyAbility, manacost = prozis.enemyHeroPowerCost };
             this.enemyAbilityReady = false;
             this.bestEnemyPlay = null;

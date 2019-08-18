@@ -70,18 +70,7 @@ namespace HREngine.Bots
         bool heroImmune = false;
         bool enemyHeroImmune = false;
 
-        public int OwnHeroPowerCost
-        {
-            get
-            {
-                if (ChuckHelper.EvenShamanChecked & ChuckHelper.IsEvenShaman)
-                {
-                    return 1;
-                }
-
-                return 2;
-            }
-        }
+        public int OwnHeroPowerCost => ChuckHelper.GetOwnHeroPowerCost();
 
         int enemyHeroPowerCost = 2;
 

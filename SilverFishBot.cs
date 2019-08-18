@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using Buddy.Coroutines;
+using HREngine.Bots.SilverFish.AI;
 using Triton.Bot;
 using Triton.Common;
 using Triton.Game;
@@ -56,7 +57,7 @@ namespace HREngine.Bots
         private string enemyHeroname = "";
 
         private CardDB.Card heroAbility = new CardDB.Card();
-        private int ownHeroPowerCost = 2;
+        private int ownHeroPowerCost = ChuckHelper.GetOwnHeroPowerCost();
         private bool ownAbilityisReady = false;
         private CardDB.Card enemyAbility = new CardDB.Card();
         private int enemyHeroPowerCost = 2;

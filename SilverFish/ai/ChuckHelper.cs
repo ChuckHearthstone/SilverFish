@@ -43,5 +43,15 @@ namespace HREngine.Bots.SilverFish.AI
 
             EvenShamanChecked = true;
         }
+
+        public static int GetOwnHeroPowerCost()
+        {
+            if (EvenShamanChecked && IsEvenShaman)
+            {
+                return 1;
+            }
+
+            return 2;
+        }
     }
 }
