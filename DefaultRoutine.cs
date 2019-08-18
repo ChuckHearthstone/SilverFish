@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Markup;
 using Buddy.Coroutines;
 using HREngine.Bots;
+using HREngine.Bots.SilverFish.AI;
 using IronPython.Modules;
 using log4net;
 using Microsoft.Scripting.Hosting;
@@ -1373,6 +1374,7 @@ def Execute():
             Log.InfoFormat("[Set new log file:] Start");
             Hrtprozis prozis = Hrtprozis.Instance;
             prozis.clearAllNewGame();
+            ChuckHelper.Reset();
             SilverFishBot.Instance.SetNewLogFile();
             Log.InfoFormat("[Set new log file:] End");
         }

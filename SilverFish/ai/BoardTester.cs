@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using HREngine.Bots.SilverFish.AI;
+
+namespace HREngine.Bots
 {
     using System;
     using System.Collections.Generic;
@@ -68,7 +70,19 @@
         bool heroImmune = false;
         bool enemyHeroImmune = false;
 
-        int ownHeroPowerCost = 2;
+        public int OwnHeroPowerCost
+        {
+            get
+            {
+                if (ChuckHelper.EvenShamanChecked & ChuckHelper.IsEvenShaman)
+                {
+                    return 1;
+                }
+
+                return 2;
+            }
+        }
+
         int enemyHeroPowerCost = 2;
 
         int enemySecretAmount = 0;
@@ -1073,7 +1087,7 @@
 
 
             //save data
-            Hrtprozis.Instance.updateHero(this.ownWeapon, this.ownheroname, heroability, abilityReady, this.ownHeroPowerCost, this.ownHero);
+            Hrtprozis.Instance.updateHero(this.ownWeapon, this.ownheroname, heroability, abilityReady, this.OwnHeroPowerCost, this.ownHero);
             Hrtprozis.Instance.updateHero(this.enemyWeapon, this.enemyheroname, enemyability, false, this.enemyHeroPowerCost, this.enemyHero, enemmaxman);
             Hrtprozis.Instance.updateHeroStartClass(heroNametoClass(this.ownheroname), heroNametoClass(this.enemyheroname));
 

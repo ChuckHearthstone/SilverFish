@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using HREngine.Bots.SilverFish.AI;
+
+namespace HREngine.Bots
 {
     using System;
     using System.Collections.Generic;
@@ -712,6 +714,8 @@
 
         public void printOwnDeck()
         {
+            ChuckHelper.EvenShamanCheck(turnDeck);
+
             string od = "od: ";
             foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.turnDeck)
             {
