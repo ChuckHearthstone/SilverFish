@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace HREngine.Bots.SilverFish.AI
 {
@@ -21,20 +22,23 @@ namespace HREngine.Bots.SilverFish.AI
                 return;
             }
 
-            bool isEvenShaman = true;
-            foreach (var item in dictionary.Keys)
+            if (dictionary.Keys.Contains(CardDB.cardIDEnum.GIL_692))
             {
-                var card = CardDB.Instance.getCardDataFromID(item);
-                if (card.cost % 2 != 0)
+                bool isEvenShaman = true;
+                foreach (var item in dictionary.Keys)
                 {
-                    isEvenShaman = false;
-                    break;
+                    var card = CardDB.Instance.getCardDataFromID(item);
+                    if (card.cost % 2 != 0)
+                    {
+                        isEvenShaman = false;
+                        break;
+                    }
                 }
-            }
 
-            if (isEvenShaman)
-            {
-                IsEvenShaman = true;
+                if (isEvenShaman)
+                {
+                    IsEvenShaman = true;
+                }
             }
 
             EvenShamanChecked = true;
