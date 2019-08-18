@@ -52,7 +52,8 @@
     <Reference Include="GreyMagic">
       <HintPath>..\packages\GreyMagic.dll</HintPath>
     </Reference>
-    <Reference Include="Hearthbuddy">
+    <Reference Include="Hearthbuddy, Version=2019.8.18.5, Culture=neutral, PublicKeyToken=f74ebfe26ced5825, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Hearthbuddy.exe</HintPath>
     </Reference>
     <Reference Include="IronPython.Modules">
@@ -100,6 +101,7 @@
     <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="ai\ChuckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
     <Compile Include="ai\Deckmanager.cs" />
     <Compile Include="ai\EnemyTurnSimulator.cs" />

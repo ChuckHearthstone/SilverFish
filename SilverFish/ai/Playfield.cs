@@ -7308,6 +7308,8 @@
 
         public void printBoard()
         {
+            Helpfunctions.Instance.logg("+++++++ printBoard start +++++++++");
+
             Helpfunctions.Instance.logg("board/hash/turn: " + value + "  /  " + this.hashcode + "  /  " + this.turnCounter + " ++++++++++++++++++++++");
             Helpfunctions.Instance.logg("pen " + this.evaluatePenality);
             Helpfunctions.Instance.logg("mana " + this.mana + "/" + this.ownMaxMana);
