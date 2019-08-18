@@ -231,38 +231,16 @@ namespace HREngine.Bots
         {
             InitSpecialNames();
             string[] lines = new string[0] { };
-            try
-            {
-                string path = Settings.Instance.DataFolderPath;
-                string cardDbPath = Path.Combine(path, "_carddb.txt");
-                lines = System.IO.File.ReadAllLines(cardDbPath);
-                Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
-            }
-            catch
-            {
-                Helpfunctions.Instance.logg("cant find _carddb.txt");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("cant find _carddb.txt in " + Settings.Instance.DataFolderPath);
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("you installed it wrong");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                Helpfunctions.Instance.ErrorLog("ERROR#################################################");
-                this.installedWrong = true;
-            }
+            string path = Settings.Instance.DataFolderPath;
+            string cardDbPath = Path.Combine(path, "_carddb.txt");
+            lines = System.IO.File.ReadAllLines(cardDbPath);
+            Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
             cardlist.Clear();
             this.cardidToCardList.Clear();
             Card c = new Card();
             int de = 0;
             //placeholdercard
-            Card plchldr = new Card { name = cardName.unknown, cost = 1000 };
+            Card plchldr = new Card {name = cardName.unknown, cost = 1000};
             this.namelist.Add("unknown");
             this.cardlist.Add(plchldr);
             this.unknownCard = cardlist[0];
@@ -278,10 +256,12 @@ namespace HREngine.Bots
                         //Helpfunctions.Instance.logg(c.description);
                         continue;
                     }
+
                     if (name != "")
                     {
                         this.namelist.Add(name);
                     }
+
                     name = "";
                     if (c.name != CardDB.cardName.unknown)
                     {
@@ -292,20 +272,22 @@ namespace HREngine.Bots
                         {
                             this.cardidToCardList.Add(c.cardIDenum, c);
                         }
-						else
-						{
-                  Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType().ErrorFormat("[c.cardIDenum:" + c.cardIDenum + "] already exists in cardidToCardList");
-						}
+                        else
+                        {
+                            Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
+                                .ErrorFormat("[c.cardIDenum:" + c.cardIDenum + "] already exists in cardidToCardList");
+                        }
                     }
 
                 }
+
                 if (s.Contains("<Entity CardID=\"") && s.Contains(" version=\""))
                 {
                     c = new Card();
                     de = 0;
-                    string temp = s.Split(new string[] { "CardID=\"" }, StringSplitOptions.None)[1];
+                    string temp = s.Split(new string[] {"CardID=\""}, StringSplitOptions.None)[1];
                     temp = temp.Replace("\">", "");
-					temp = temp.Split(new string[] { "\"" }, StringSplitOptions.None)[0];
+                    temp = temp.Split(new string[] {"\""}, StringSplitOptions.None)[0];
                     allCardIDS.Add(temp);
                     c.cardIDenum = this.cardIdstringToEnum(temp);
 
@@ -314,6 +296,7 @@ namespace HREngine.Bots
                     {
                         c.isToken = true;
                     }
+
                     if (temp.Equals("ds1_whelptoken")) c.isToken = true;
                     if (temp.Equals("CS2_mirror")) c.isToken = true;
                     if (temp.Equals("CS2_050")) c.isToken = true;
@@ -337,7 +320,7 @@ namespace HREngine.Bots
                 //health
                 if (s.Contains("<Tag enumID=\"45\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.Health = Convert.ToInt32(temp);
                     continue;
@@ -346,7 +329,7 @@ namespace HREngine.Bots
                 //Class
                 if (s.Contains("Tag enumID=\"199\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.Class = Convert.ToInt32(temp);
                     continue;
@@ -355,39 +338,43 @@ namespace HREngine.Bots
                 //attack
                 if (s.Contains("<Tag enumID=\"47\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.Attack = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //race
                 if (s.Contains("<Tag enumID=\"200\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.race = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //rarity
                 if (s.Contains("<Tag enumID=\"203\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.rarity = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //manacost
                 if (s.Contains("<Tag enumID=\"48\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.cost = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //cardtype
                 if (s.Contains("<Tag enumID=\"202\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     if (c.name != CardDB.cardName.unknown)
                     {
@@ -399,41 +386,51 @@ namespace HREngine.Bots
                     {
                         c.type = CardDB.cardtype.HEROPWR;
                     }
+
                     if (crdtype == 3)
                     {
                         c.type = CardDB.cardtype.HERO;
                     }
+
                     if (crdtype == 4)
                     {
                         c.type = CardDB.cardtype.MOB;
                     }
+
                     if (crdtype == 5)
                     {
                         c.type = CardDB.cardtype.SPELL;
                     }
+
                     if (crdtype == 6)
                     {
                         c.type = CardDB.cardtype.ENCHANTMENT;
                     }
+
                     if (crdtype == 7)
                     {
                         c.type = CardDB.cardtype.WEAPON;
                     }
+
                     continue;
                 }
 
                 //cardname
                 if (s.Contains("<Tag enumID=\"185\""))
                 {
-					string temp = string.Empty;
-					try{
-                    temp = s.Split(new string[] { "value=\"0\">" }, StringSplitOptions.RemoveEmptyEntries)[1];
-					}
-					catch{
-						Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType().ErrorFormat("[Unidentified Tag enumID 185 :" + s + "]");
-						continue;
-					}
-                    temp = temp.Split(new string[] { "</Tag>" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string temp = string.Empty;
+                    try
+                    {
+                        temp = s.Split(new string[] {"value=\"0\">"}, StringSplitOptions.RemoveEmptyEntries)[1];
+                    }
+                    catch
+                    {
+                        Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
+                            .ErrorFormat("[Unidentified Tag enumID 185 :" + s + "]");
+                        continue;
+                    }
+
+                    temp = temp.Split(new string[] {"</Tag>"}, StringSplitOptions.RemoveEmptyEntries)[0];
                     temp = TrimHelper.TrimEnglishName(temp);
                     c.name = this.cardNameStringToEnum(temp, c.cardIDenum);
                     name = temp;
@@ -445,8 +442,8 @@ namespace HREngine.Bots
                 //cardtextinhand
                 if (s.Contains("<Tag enumID=\"184\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"0\">" }, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split(new string[] { "</Tag>" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string temp = s.Split(new string[] {"value=\"0\">"}, StringSplitOptions.RemoveEmptyEntries)[1];
+                    temp = temp.Split(new string[] {"</Tag>"}, StringSplitOptions.RemoveEmptyEntries)[0];
                     temp = temp.Replace("&lt;", "");
                     temp = temp.Replace("b&gt;", "");
                     temp = temp.Replace("/b&gt;", "");
@@ -457,40 +454,44 @@ namespace HREngine.Bots
                         c.choice = true;
                         //Helpfunctions.Instance.logg(c.name + " is choice");
                     }
+
                     continue;
                 }
 
                 //poisonous
                 if (s.Contains("<Tag enumID=\"363\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.poisonous = true;
                     continue;
                 }
+
                 //enrage
                 if (s.Contains("<Tag enumID=\"212\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Enrage = true;
                     continue;
                 }
+
                 //OneTurnEffect
                 if (s.Contains("<Tag enumID=\"338\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.oneTurnEffect = true;
                     continue;
                 }
+
                 //aura
                 if (s.Contains("<Tag enumID=\"362\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Aura = true;
@@ -500,195 +501,215 @@ namespace HREngine.Bots
                 //taunt
                 if (s.Contains("<Tag enumID=\"190\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.tank = true;
                     continue;
                 }
+
                 //battlecry
                 if (s.Contains("<Tag enumID=\"218\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.battlecry = true;
                     continue;
                 }
+
                 //discover
                 if (s.Contains("<Tag enumID=\"415\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.discover = true;
                     continue;
                 }
+
                 //windfury
                 if (s.Contains("<Tag enumID=\"189\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.windfury = true;
                     continue;
                 }
+
                 //deathrattle
                 if (s.Contains("<Tag enumID=\"217\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.deathrattle = true;
                     continue;
                 }
+
                 //Inspire
                 if (s.Contains("<Tag enumID=\"403\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Inspire = true;
                     continue;
                 }
+
                 //durability
                 if (s.Contains("<Tag enumID=\"187\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.Durability = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //elite
                 if (s.Contains("<Tag enumID=\"114\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Elite = true;
                     continue;
                 }
+
                 //combo
                 if (s.Contains("<Tag enumID=\"220\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Combo = true;
                     continue;
                 }
+
                 //overload
                 if (s.Contains("<Tag enumID=\"296\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     c.overload = Convert.ToInt32(temp);
                     continue;
                 }
+
                 //lifesteal
                 if (s.Contains("<Tag enumID=\"685\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.lifesteal = true;
                     continue;
                 }
-                
+
                 //untouchable
                 if (s.Contains("<Tag enumID=\"448\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.untouchable = true;
                     continue;
                 }
+
                 //stealh
                 if (s.Contains("<Tag enumID=\"191\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Stealth = true;
                     continue;
                 }
+
                 //secret
                 if (s.Contains("<Tag enumID=\"219\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Secret = true;
                     continue;
                 }
+
                 //quest
                 if (s.Contains("<Tag enumID=\"462\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Quest = true;
                     continue;
-                }                
+                }
+
                 //freeze
                 if (s.Contains("<Tag enumID=\"208\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Freeze = true;
                     continue;
                 }
+
                 //adjacentbuff
                 if (s.Contains("<Tag enumID=\"350\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.AdjacentBuff = true;
                     continue;
                 }
+
                 //divineshield
                 if (s.Contains("<Tag enumID=\"194\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Shield = true;
                     continue;
                 }
+
                 //charge
                 if (s.Contains("<Tag enumID=\"197\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Charge = true;
                     continue;
                 }
+
                 //silence
                 if (s.Contains("<Tag enumID=\"339\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Silence = true;
                     continue;
                 }
+
                 //morph
                 if (s.Contains("<Tag enumID=\"293\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Morph = true;
                     continue;
                 }
+
                 //spellpower
                 if (s.Contains("<Tag enumID=\"192\""))
                 {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Spellpower = true;
@@ -701,13 +722,13 @@ namespace HREngine.Bots
 
                 if (s.Contains("<PlayRequirement"))
                 {
-                    string temp = s.Split(new string[] { "reqID=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"reqID=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int reqID = Convert.ToInt32(temp);
-                    c.playrequires.Add((ErrorType2)reqID);
+                    c.playrequires.Add((ErrorType2) reqID);
 
                     int param = 0;
-                    temp = s.Split(new string[] { "param=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    temp = s.Split(new string[] {"param=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     try
                     {
                         if (Char.IsDigit(temp, 0))
@@ -720,6 +741,7 @@ namespace HREngine.Bots
                     {
                         param = 0;
                     }
+
                     if (param > 0)
                     {
                         switch (reqID)
@@ -757,7 +779,7 @@ namespace HREngine.Bots
 
                 if (s.Contains("<Tag name="))
                 {
-                    string temp = s.Split(new string[] { "<Tag name=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    string temp = s.Split(new string[] {"<Tag name=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
 
                 }
