@@ -78,9 +78,9 @@ namespace HREngine.Bots
             // set to true, to run a testfile (requires test.txt file in folder where _cardDB.txt file is located)
             bool printstuff = false; // if true, the best board of the tested file is printet stepp by stepp
 
-            Helpfunctions.Instance.ErrorLog("----------------------------");
-            Helpfunctions.Instance.ErrorLog("you are running uai V" + SilverFishBot.Instance.versionnumber);
-            Helpfunctions.Instance.ErrorLog("----------------------------");
+            Helpfunctions.Instance.InfoLog("----------------------------");
+            Helpfunctions.Instance.InfoLog("you are running SilverFish AI V" + SilverFishBot.Instance.versionnumber);
+            Helpfunctions.Instance.InfoLog("----------------------------");
 
             if (teststuff)
             {

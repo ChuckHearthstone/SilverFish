@@ -14,7 +14,7 @@ namespace HREngine.Bots
             string path = Settings.Instance.DataFolderPath;
 			string specialCardNamePath = Path.Combine(path, "special_card_name.txt");
 			string[] lines = File.ReadAllLines(specialCardNamePath);
-            Helpfunctions.Instance.ErrorLog("read special_card_name.txt " + lines.Length + " lines");
+            Helpfunctions.Instance.InfoLog("read special_card_name.txt " + lines.Length + " lines");
             foreach (var item in lines)
             {
                 var array = item.Split('-');

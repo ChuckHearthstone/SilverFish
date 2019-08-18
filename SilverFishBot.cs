@@ -114,7 +114,7 @@ namespace HREngine.Bots
         private SilverFishBot()
         {
             this.singleLog = Settings.Instance.writeToSingleFile;
-            Helpfunctions.Instance.ErrorLog("init Silverfish");
+            Helpfunctions.Instance.InfoLog("init Silverfish");
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             string silverFishLogFolderPath = @"Logs\Silverfish";

@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using Hearthbuddy.Windows;
+using log4net;
 using SilverFish.ai;
 using Triton.Common.LogUtilities;
 
@@ -15,7 +16,7 @@ namespace HREngine.Bots
     public class Helpfunctions
     {
         /// <summary>The logger for this type.</summary>
-        private static readonly ILog Log = Logger.GetLoggerInstanceForType();
+        private static readonly ILog Log = MainWindow.ChuckLog;
         public List<Playfield> storedBoards = new List<Playfield>();
 
 
@@ -91,7 +92,12 @@ namespace HREngine.Bots
 
         public void ErrorLog(string s)
         {
-            Log.Info(s);
+            Log.ErrorFormat(s);
+        }
+
+        public void InfoLog(string log)
+        {
+            Log.InfoFormat(log);
         }
 
         private string sendbuffer = "";

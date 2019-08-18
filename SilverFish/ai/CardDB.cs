@@ -236,7 +236,7 @@ namespace HREngine.Bots
                 string path = Settings.Instance.DataFolderPath;
                 string cardDbPath = Path.Combine(path, "_carddb.txt");
                 lines = System.IO.File.ReadAllLines(cardDbPath);
-                Helpfunctions.Instance.ErrorLog("read carddb.txt " + lines.Length + " lines");
+                Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
             }
             catch
             {
@@ -770,7 +770,7 @@ namespace HREngine.Bots
             this.lepergnome = this.getCardDataFromID(CardDB.cardIDEnum.EX1_029);
             this.burlyrockjaw = this.getCardDataFromID(CardDB.cardIDEnum.GVG_068);
 
-            Helpfunctions.Instance.ErrorLog("CardList:" + cardidToCardList.Count);
+            Helpfunctions.Instance.InfoLog("CardList:" + cardidToCardList.Count);
 
         }
 
