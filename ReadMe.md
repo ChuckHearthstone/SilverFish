@@ -1,7 +1,7 @@
 # For User
 1. Search keyword `HearthBuddy site:www.jiligame.com` on [Bing](https://www.bing.com). Download the program from the search result, then unzip it
 2. Unzip the [DotNetCompilerPlatform.zip](https://github.com/ChuckHearthBuddy/SilverFish/releases/download/2019.8.11.10/DotNetCompilerPlatform.zip) to root folder of above program
-3. Replace [HearthBuddy.exe](https://github.com/ChuckHearthBuddy/SilverFish/releases/download/2019.8.11.10/Hearthbuddy.exe) (SHA-256: 0b563c927452f1c2f65beb709c0f5db5c86ea52affdc1ded56ff21562cbe84ef)
+3. Replace [HearthBuddy.exe](https://github.com/ChuckHearthBuddy/SilverFish/releases/download/2019.8.18.5/Hearthbuddy.exe) (SHA-256: 25e0dc0d6d101c2064ad08101bf63079d7e7655d9db20b19ef75365cf50392eb)
 4. Delete all files under DefaultRoutine folder, then put the files in this repository under DefaultRoutine folder.
 
 ## Plugins
