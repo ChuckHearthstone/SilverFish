@@ -1880,6 +1880,7 @@
     <Compile Include="cards\Sim_UNG_999t6.cs" />
     <Compile Include="cards\Sim_UNG_999t7.cs" />
     <Compile Include="cards\Sim_UNG_999t8.cs" />
+    <Compile Include="cards\ULD\Sim_ULD_171.cs" />
     <Compile Include="penalties\Pen_CS1h_001.cs" />
     <Compile Include="penalties\Pen_CS1_042.cs" />
     <Compile Include="penalties\Pen_CS1_069.cs" />
