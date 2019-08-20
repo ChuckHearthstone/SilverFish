@@ -666,6 +666,7 @@
     <Compile Include="cards\CS1\Sim_CS2_boar.cs" />
     <Compile Include="cards\CS1\Sim_CS2_mirror.cs" />
     <Compile Include="cards\CS1\Sim_CS2_tk1.cs" />
+    <Compile Include="cards\DAL\Sim_DAL_049.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_01.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_02.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_03.cs" />
