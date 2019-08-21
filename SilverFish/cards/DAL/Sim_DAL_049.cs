@@ -10,8 +10,12 @@
         {
             if (wasOwnCard == triggerEffectMinion.own)
             {
-                //Bluegill Warrior 蓝腮战士
-                p.drawACard(CardDB.cardIDEnum.CS2_173, wasOwnCard, true);
+                int murlocEnumValue = (int) TAG_RACE.MURLOC;
+                if (triggerEffectMinion.handcard.card.race == murlocEnumValue)
+                {
+                    //Bluegill Warrior 蓝腮战士
+                    p.drawACard(CardDB.cardIDEnum.CS2_173, wasOwnCard, true);
+                }
             }
         }
     }
