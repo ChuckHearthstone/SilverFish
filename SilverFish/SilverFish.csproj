@@ -1708,6 +1708,7 @@
     <Compile Include="cards\Sim_TU4f_004.cs" />
     <Compile Include="cards\Sim_TU4f_007.cs" />
     <Compile Include="cards\ULD\Sim_ULD_171.cs" />
+    <Compile Include="cards\ULD\Sim_ULD_720.cs" />
     <Compile Include="cards\UNG\Sim_UNG_001.cs" />
     <Compile Include="cards\UNG\Sim_UNG_002.cs" />
     <Compile Include="cards\UNG\Sim_UNG_004.cs" />
