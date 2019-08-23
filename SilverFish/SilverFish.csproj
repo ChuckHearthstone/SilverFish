@@ -283,6 +283,7 @@
     <Compile Include="cards\AT\Sim_AT_132_WARLOCK.cs" />
     <Compile Include="cards\AT\Sim_AT_132_WARRIOR.cs" />
     <Compile Include="cards\AT\Sim_AT_133.cs" />
+    <Compile Include="cards\BOT\Sim_BOT_038.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2H.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2H_2_TB.cs" />
