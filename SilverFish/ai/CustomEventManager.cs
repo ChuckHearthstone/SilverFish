@@ -2,6 +2,11 @@
 
 namespace SilverFish.ai
 {
+    public class MulliganStartedEventArgs
+    {
+        public bool ConcedeSuccessfully { get; set; }
+    }
+
     public class CustomEventManager
     {
         private CustomEventManager()
@@ -11,11 +16,13 @@ namespace SilverFish.ai
 
         public static CustomEventManager Instance { get; } = new CustomEventManager();
 
-        public event EventHandler MulliganStarted;
+        public event EventHandler<MulliganStartedEventArgs> MulliganStarted;
 
-        public void OnMulliganStarted()
+        public bool OnMulliganStarted()
         {
-            MulliganStarted?.Invoke(this, EventArgs.Empty);
+            MulliganStartedEventArgs eventArgs = new MulliganStartedEventArgs();
+            MulliganStarted?.Invoke(this, eventArgs);
+            return eventArgs.ConcedeSuccessfully;
         }
     }
 }

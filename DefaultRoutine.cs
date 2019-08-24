@@ -504,7 +504,12 @@ def Execute():
         /// <returns></returns>
         public async Task MulliganLogic(MulliganData mulliganData)
         {
-            CustomEventManager.Instance.OnMulliganStarted();
+            bool concedeSuccessfully = CustomEventManager.Instance.OnMulliganStarted();
+            if (concedeSuccessfully)
+            {
+                Log.InfoFormat("[Mulligan] Concede successfully at mulligan.");
+                return;
+            }
 
             Log.InfoFormat("[Mulligan] {0} vs {1}.", mulliganData.UserClass, mulliganData.OpponentClass);
             var count = mulliganData.Cards.Count;
