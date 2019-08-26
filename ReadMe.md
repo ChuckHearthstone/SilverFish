@@ -7,6 +7,9 @@
 ## Plugins
 [AutoConcede](https://github.com/ChuckHearthBuddy/Plugins/tree/master/AutoConcede) is used to reduce the win rate, and you can modify the [win rate threshold](https://github.com/ChuckHearthBuddy/Plugins/blob/master/AutoConcede/AutoConcede.cs#L20).
 
+## Tools
+[CardQuery](https://github.com/ChuckHearthBuddy/CardQuery) is used to get the card id with Chinese name or English name.
+
 # For Developer
 Make sure you have the following four files under packages folder  
 GreyMagic.dll  
