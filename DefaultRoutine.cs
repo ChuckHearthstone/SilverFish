@@ -787,22 +787,22 @@ def Execute():
                 }
                 if (doEndTurn)
                 {
-                    Helpfunctions.Instance.ErrorLog("end turn");
+                    Helpfunctions.Instance.InfoLog("end turn");
                     await TritonHs.EndTurn();
                     return;
                 }
                 else if (doConcede)
                 {
-                    Helpfunctions.Instance.ErrorLog("Lethal detected. Concede...");
+                    Helpfunctions.Instance.InfoLog("Lethal detected. Concede...");
                     Helpfunctions.Instance.logg("Concede... Lethal detected###############################################");
                     TritonHs.Concede(true);
                     return;
                 }
             }
-            Helpfunctions.Instance.ErrorLog("play action");
+            Helpfunctions.Instance.InfoLog("play action");
             if (moveTodo == null)
             {
-                Helpfunctions.Instance.ErrorLog("moveTodo == null. EndTurn");
+                Helpfunctions.Instance.InfoLog("moveTodo == null. EndTurn");
                 await TritonHs.EndTurn();
                 return;
             }
@@ -827,7 +827,7 @@ def Execute():
                         HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
                         if (target != null)
                         {
-                            Helpfunctions.Instance.ErrorLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ")");
+                            Helpfunctions.Instance.InfoLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ")");
                             Helpfunctions.Instance.logg("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ") choice: " + moveTodo.druidchoice);
 						    if (moveTodo.druidchoice >= 1)
                             {
@@ -869,7 +869,7 @@ def Execute():
                         return;
                     }
 
-                    Helpfunctions.Instance.ErrorLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target nothing");
+                    Helpfunctions.Instance.InfoLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target nothing");
                     Helpfunctions.Instance.logg("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") choice: " + moveTodo.druidchoice);
                     if (moveTodo.druidchoice >= 1)
                     {
@@ -904,7 +904,7 @@ def Execute():
                     {
                         if (target != null)
                         {
-                            Helpfunctions.Instance.ErrorLog("minion attack: " + attacker.Name + " target: " + target.Name);
+                            Helpfunctions.Instance.InfoLog("minion attack: " + attacker.Name + " target: " + target.Name);
                             Helpfunctions.Instance.logg("minion attack: " + attacker.Name + " target: " + target.Name);
 
                             
@@ -935,7 +935,7 @@ def Execute():
                         if (target != null)
                         {
                             dirtytarget = moveTodo.target.entitiyID;
-                            Helpfunctions.Instance.ErrorLog("heroattack: " + attacker.Name + " target: " + target.Name);
+                            Helpfunctions.Instance.InfoLog("heroattack: " + attacker.Name + " target: " + target.Name);
                             Helpfunctions.Instance.logg("heroattack: " + attacker.Name + " target: " + target.Name);
 
                             //safe targeting stuff for hsbuddy
@@ -968,7 +968,7 @@ def Execute():
                         HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
                         if (target != null)
                         {
-                            Helpfunctions.Instance.ErrorLog("use ablitiy: " + cardtoplay.Name + " target " + target.Name);
+                            Helpfunctions.Instance.InfoLog("use ablitiy: " + cardtoplay.Name + " target " + target.Name);
                             Helpfunctions.Instance.logg("use ablitiy: " + cardtoplay.Name + " target " + target.Name + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
                             if (moveTodo.druidchoice > 0)
                             {
@@ -992,7 +992,7 @@ def Execute():
                     }
                     else
                     {
-                        Helpfunctions.Instance.ErrorLog("use ablitiy: " + cardtoplay.Name + " target nothing");
+                        Helpfunctions.Instance.InfoLog("use ablitiy: " + cardtoplay.Name + " target nothing");
                         Helpfunctions.Instance.logg("use ablitiy: " + cardtoplay.Name + " target nothing" + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
                         
                         if (moveTodo.druidchoice >= 1)
