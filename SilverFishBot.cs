@@ -233,9 +233,9 @@ namespace HREngine.Bots
             {
                 _settings.LogFileName = $"{DateTime.Now:yyyyMMdd-HHmmss}.log";
                 Helpfunctions.Instance.createNewLoggfile();
-                Helpfunctions.Instance.ErrorLog("#######################################################");
-                Helpfunctions.Instance.ErrorLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
-                Helpfunctions.Instance.ErrorLog("#######################################################");
+                Helpfunctions.Instance.InfoLog("#######################################################");
+                Helpfunctions.Instance.InfoLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
+                Helpfunctions.Instance.InfoLog("#######################################################");
             }
             startDeck.Clear();
             extraDeck.Clear();
@@ -371,7 +371,7 @@ namespace HREngine.Bots
 
             p = new Playfield(); 
             
-            Helpfunctions.Instance.ErrorLog("calculating stuff... " + DateTime.Now.ToString("HH:mm:ss.ffff"));
+            Helpfunctions.Instance.InfoLog("calculating stuff... " + DateTime.Now.ToString("HH:mm:ss.ffff"));
             
             
             using (TritonHs.Memory.ReleaseFrame(true))
@@ -380,17 +380,17 @@ namespace HREngine.Bots
                 Ai.Instance.dosomethingclever(botbase);    
             }
 
-            Helpfunctions.Instance.ErrorLog("calculating ended! " + DateTime.Now.ToString("HH:mm:ss.ffff"));
+            Helpfunctions.Instance.InfoLog("calculating ended! " + DateTime.Now.ToString("HH:mm:ss.ffff"));
             if (_settings.printRules > 0)
             {
                 String[] rulesStr = Ai.Instance.bestplay.rulesUsed.Split('@');
                 if (rulesStr.Count() > 0 && rulesStr[0] != "")
                 {
-                    Helpfunctions.Instance.ErrorLog("ruleWeight " + Ai.Instance.bestplay.ruleWeight * -1);
+                    Helpfunctions.Instance.InfoLog("ruleWeight " + Ai.Instance.bestplay.ruleWeight * -1);
                     foreach (string rs in rulesStr)
                     {
                         if (rs == "") continue;
-                        Helpfunctions.Instance.ErrorLog("rule: " + rs);
+                        Helpfunctions.Instance.InfoLog("rule: " + rs);
                     }
                 }
             }
