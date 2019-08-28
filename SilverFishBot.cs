@@ -21,7 +21,7 @@ namespace HREngine.Bots
     public class SilverFishBot
     {
         public string versionnumber = "117.178";
-        private bool singleLog = false;
+        private bool singleLog = Settings.Instance.SingleLogFile;
         private string botbehave = "noname";
         private bool needSleep = false;
 
@@ -116,7 +116,7 @@ namespace HREngine.Bots
         {
             this.singleLog = Settings.Instance.writeToSingleFile;
             Helpfunctions.Instance.InfoLog("init Silverfish");
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string baseDirectory = Settings.Instance.BaseDirectory;
 
             string silverFishLogFolderPath = @"Logs\Silverfish";
             string logFolderPath = Path.Combine(baseDirectory, silverFishLogFolderPath);
@@ -156,7 +156,8 @@ namespace HREngine.Bots
                 }
             }
 
-            string p = Path.Combine("Routines", "DefaultRoutine", "Silverfish", "behavior");
+            var baseDir = Settings.Instance.BaseDirectory;
+            string p = Path.Combine(baseDir, @"Routines\DefaultRoutine\Silverfish\behavior");
             string[] files = Directory.GetFiles(p, "Behavior*.cs", SearchOption.AllDirectories);
             int bCount = 0;
             foreach (string file in files)
