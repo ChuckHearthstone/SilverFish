@@ -115,12 +115,13 @@ as well as
                     else MulliganRules.Add(MullRuleKey, MullRuleValue);
                 }
             }
-            catch (Exception ee)
+            catch (Exception ex)
             {
                 Helpfunctions.Instance.ErrorLog("[Mulligan] _mulligan.txt - read error. We continue without user-defined rules. Only the default rules.");
+                Helpfunctions.Instance.ErrorLog(ex.ToString());
                 return;
             }
-            Helpfunctions.Instance.ErrorLog("[Mulligan] Load rules for " + behavName);
+            Helpfunctions.Instance.InfoLog("[Mulligan] Load rules for " + behavName);
             validateRule(behavName);
         }
 
@@ -204,15 +205,15 @@ as well as
 
             if (rejectedRule.Count > 0)
             {
-                Helpfunctions.Instance.ErrorLog("[Mulligan] List of rejected Rules:");
+                Helpfunctions.Instance.InfoLog("[Mulligan] List of rejected Rules:");
                 foreach (string tmp in rejectedRule)
                 {
-                    Helpfunctions.Instance.ErrorLog(tmp);
+                    Helpfunctions.Instance.InfoLog(tmp);
                 }
-                Helpfunctions.Instance.ErrorLog("[Mulligan] End list of rejected Rules.");
+                Helpfunctions.Instance.InfoLog("[Mulligan] End list of rejected Rules.");
             }
 
-            if (repairedRules > 0) Helpfunctions.Instance.ErrorLog(repairedRules.ToString() + " repaired rules");
+            if (repairedRules > 0) Helpfunctions.Instance.InfoLog(repairedRules.ToString() + " repaired rules");
             MulliganRules.Clear();
 
             foreach (KeyValuePair<string, string> oneRule in MulliganRulesTmp)
@@ -220,7 +221,7 @@ as well as
                 MulliganRules.Add(oneRule.Key, oneRule.Value);
             }
 
-            Helpfunctions.Instance.ErrorLog("[Mulligan] " + (MulliganRules.Count > 0 ? (MulliganRules.Count + " rules loaded successfully") : "No special rules."));
+            Helpfunctions.Instance.InfoLog("[Mulligan] " + (MulliganRules.Count > 0 ? (MulliganRules.Count + " rules loaded successfully") : "No special rules."));
             mulliganRulesLoaded = true;
             if (behavName == "") //oldCompatibility
             {
