@@ -105,6 +105,7 @@
 
         private void doallmoves(bool test, bool isLethalCheck)
         {
+            help.logg("### do all moves in Ai start ###");
             //set maxwide to the value for the first-turn-sim.
             foreach (EnemyTurnSimulator ets in enemyTurnSim)
             {
@@ -141,9 +142,13 @@
             ActionNormalizer an = new ActionNormalizer();
             //an.checkLostActions(bestplay, isLethalCheck);
             if (settings.adjustActions > 0) an.adjustActions(bestplay, isLethalCheck);
+            help.logg("Best actions as following:");
+            int i = 0;
             foreach (Action a in bestplay.playactions)
             {
+                i++;
                 this.bestActions.Add(new Action(a));
+                help.logg($"Action{i}:");
                 a.print();
             }
 
@@ -170,6 +175,7 @@
                 this.lethalMissing = bestplay.enemyHero.armor + bestplay.enemyHero.Hp;//RR
                 help.logg("missing dmg to lethal " + this.lethalMissing);
             }
+            help.logg("### do all moves in Ai end ###");
         }
         
         public void doNextCalcedMove()
@@ -291,10 +297,14 @@
             Playfield pMain = new Playfield();
             pMain.print = printstuff;
             posmoves.Add(pMain);
+
+            help.logg("### Print current board state start ###");
             foreach (Playfield p in this.posmoves)
             {
                 p.printBoard();
             }
+            help.logg("### Print current board state end ###");
+
             help.logg("ownminionscount " + posmoves[0].ownMinions.Count);
             help.logg("owncardscount " + posmoves[0].owncards.Count);
 
@@ -302,7 +312,9 @@
             {
                 help.logg("card " + item.card.name + " is playable :" + item.canplayCard(posmoves[0], true) + " cost/mana: " + item.manacost + "/" + posmoves[0].mana);
             }
-            help.logg("ability " + posmoves[0].ownHeroAblility.card.name + " is playable :" + posmoves[0].ownHeroAblility.card.canplayCard(posmoves[0], 2, true) + " cost/mana: " + posmoves[0].ownHeroAblility.card.getManaCost(posmoves[0], 2) + "/" + posmoves[0].mana);
+            var heroAbilityCard = posmoves[0].ownHeroAblility.card;
+            help.logg("ability " + heroAbilityCard.name + " is playable :" + heroAbilityCard.canplayCard(posmoves[0], 2, true) + " cost/mana: "
+                      + heroAbilityCard.getManaCost(posmoves[0], 2) + "/" + posmoves[0].mana);
 
             DateTime strt = DateTime.Now;
             // lethalcheck
@@ -347,9 +359,7 @@
 
         public void simmulateWholeTurn()
         {
-            help.ErrorLog("########################################################################################################");
-            help.ErrorLog("simulate best board");
-            help.ErrorLog("########################################################################################################");
+            help.logg("### simulate best board start ###");
             //this.bestboard.printActions();
 
             Playfield tempbestboard = new Playfield();
@@ -392,7 +402,7 @@
             }
 
             //help.logg("AFTER ENEMY TURN:" );
-
+            help.logg("### simulate best board end ###");
         }
 
         public void simmulateWholeTurnandPrint()

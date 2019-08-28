@@ -57,6 +57,10 @@ namespace HREngine.Bots
 
         public string LogFilePath => Path.Combine(LogFolderPath, LogFileName);
 
+        public string BaseDirectory { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
+
+        public bool SingleLogFile { get; set; }
+
         public bool concede = false;
         public bool enemyConcede = false;
         public bool writeToSingleFile = false;
