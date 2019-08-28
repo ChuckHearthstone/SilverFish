@@ -1,4 +1,7 @@
-﻿namespace HREngine.Bots.Silverfish.Cards
+﻿using System;
+using NUnit.Framework;
+
+namespace HREngine.Bots.Silverfish.Cards
 {
     public class QuestBase : SimTemplate
     {
@@ -19,5 +22,17 @@
     {
         //<b>Quest:</b> Play 5 <b>Reborn</b>\nminions.\n<b>Reward:</b> Emperor Wraps.
         //<b>任务：</b>使用5张<b>复生</b>牌。<b>奖励：</b>帝王裹布。
+    }
+
+    [TestFixture]
+    public class MainTest
+    {
+        [Test]
+        public void Test1()
+        {
+            Sim_ULD_431 sim = new Sim_ULD_431();
+            bool flag = sim.GetType().IsSubclassOf(typeof(SimTemplate));
+            Console.WriteLine(flag);
+        }
     }
 }
