@@ -109,14 +109,28 @@ namespace HREngine.Bots
                             continue;
                         }
 
-                        int cardplayPenality = 0;
-                        int bestplace = p.getBestPlace(c.type == CardDB.cardtype.MOB ? c : hc.card, p.isLethalCheck);
+                        int cardPlayPenalty = 0;
+                        CardDB.Card card;
+                        if (c.type == CardDB.cardtype.MOB)
+                        {
+                            card = c;
+                        }
+                        else
+                        {
+                            card = hc.card;
+                        }
+
+                        int bestPlace = p.getBestPlace(card, p.isLethalCheck);
+
                         foreach (Minion targetMinion in targetMinions)
                         {
-                            if (usePenalityManager) cardplayPenality = pen.getPlayCardPenality(c, targetMinion, p);
-                            if (cardplayPenality <= 499)
+                            if (usePenalityManager)
                             {
-                                Action a = new Action(actionEnum.playcard, hc, null, bestplace, targetMinion, cardplayPenality,
+                                cardPlayPenalty = pen.getPlayCardPenality(c, targetMinion, p);
+                            }
+                            if (cardPlayPenalty <= 499)
+                            {
+                                Action a = new Action(actionEnum.playcard, hc, null, bestPlace, targetMinion, cardPlayPenalty,
                                     choice);
                                 ret.Add(a);
                             }
@@ -135,23 +149,37 @@ namespace HREngine.Bots
 
             // attack with minions
             List<Minion> attackingMinions = new List<Minion>(8);
-            foreach (Minion m in (own ? p.ownMinions : p.enemyMinions))
+            var minions = own ? p.ownMinions : p.enemyMinions;
+            foreach (Minion minion in minions)
             {
-                if (m.Ready && m.Attack >= 1 && !m.frozen) attackingMinions.Add(m); //* add non-attacing minions
+                if (minion.Ready && minion.Attack >= 1 && !minion.frozen)
+                {
+                    //add non-attacking minions
+                    attackingMinions.Add(minion);
+                }
             }
 
-            attackingMinions = this.cutAttackList(attackingMinions);
+            attackingMinions = cutAttackList(attackingMinions);
 
             foreach (Minion m in attackingMinions)
             {
-                int attackPenality = 0;
-                foreach (Minion trgt in targetMinions)
+                int attackPenalty = 0;
+                foreach (Minion targetMinion in targetMinions)
                 {
-                    if (m.cantAttackHeroes && trgt.isHero) continue;
-                    if (usePenalityManager) attackPenality = pen.getAttackWithMininonPenality(m, p, trgt);
-                    if (attackPenality <= 499)
+                    //can not attack hero
+                    if (m.cantAttackHeroes && targetMinion.isHero)
                     {
-                        Action a = new Action(actionEnum.attackWithMinion, null, m, 0, trgt, attackPenality, 0);
+                        continue;
+                    }
+
+                    if (usePenalityManager)
+                    {
+                        attackPenalty = pen.getAttackWithMininonPenality(m, p, targetMinion);
+                    }
+
+                    if (attackPenalty <= 499)
+                    {
+                        Action a = new Action(actionEnum.attackWithMinion, null, m, 0, targetMinion, attackPenalty, 0);
                         ret.Add(a);
                     }
                 }
@@ -163,8 +191,16 @@ namespace HREngine.Bots
                 int heroAttackPen = 0;
                 foreach (Minion targetMinion in targetMinions)
                 {
-                    if ((own ? p.ownWeapon.cantAttackHeroes : p.enemyWeapon.cantAttackHeroes) && targetMinion.isHero) continue;
-                    if (usePenalityManager) heroAttackPen = pen.getAttackWithHeroPenality(targetMinion, p);
+                    if ((own ? p.ownWeapon.cantAttackHeroes : p.enemyWeapon.cantAttackHeroes) && targetMinion.isHero)
+                    {
+                        continue;
+                    }
+
+                    if (usePenalityManager)
+                    {
+                        heroAttackPen = pen.getAttackWithHeroPenality(targetMinion, p);
+                    }
+
                     if (heroAttackPen <= 499)
                     {
                         Action a = new Action(actionEnum.attackWithHero, null, (own ? p.ownHero : p.enemyHero), 0, targetMinion,
@@ -191,17 +227,20 @@ namespace HREngine.Bots
                             c = pen.getChooseCard(p.ownHeroAblility.card, choice); // do all choice
                         }
 
-                        int cardplayPenality = 0;
-                        int bestplace = p.ownMinions.Count + 1; //we can not manage it
+                        int cardPlayPenalty = 0;
+                        int bestPlace = p.ownMinions.Count + 1; //we can not manage it
                         targetMinions = p.ownHeroAblility.card.getTargetsForHeroPower(p, true);
                         foreach (Minion targetMinion in targetMinions)
                         {
                             if (usePenalityManager)
-                                cardplayPenality = pen.getPlayCardPenality(p.ownHeroAblility.card, targetMinion, p);
-                            if (cardplayPenality <= 499)
                             {
-                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestplace, targetMinion,
-                                    cardplayPenality, choice);
+                                cardPlayPenalty = pen.getPlayCardPenality(p.ownHeroAblility.card, targetMinion, p);
+                            }
+
+                            if (cardPlayPenalty <= 499)
+                            {
+                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestPlace, targetMinion,
+                                    cardPlayPenalty, choice);
                                 ret.Add(a);
                             }
                         }
