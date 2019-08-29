@@ -70,7 +70,7 @@ namespace HREngine.Bots
         bool heroImmune = false;
         bool enemyHeroImmune = false;
 
-        public int OwnHeroPowerCost => ChuckHelper.GetOwnHeroPowerCost();
+        public int OwnHeroPowerCost = 2;
 
         int enemyHeroPowerCost = 2;
 
@@ -145,11 +145,13 @@ namespace HREngine.Bots
                     lines = System.IO.File.ReadAllLines(filePath);
                     this.datareaded = true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     this.datareaded = false;
-                    Helpfunctions.Instance.logg("cant find test.txt");
-                    Helpfunctions.Instance.ErrorLog("cant find test.txt");
+                    string str = ex.ToString();
+                    Helpfunctions.Instance.logg(str);
+                    Console.WriteLine(str);
+                    Helpfunctions.Instance.ErrorLog(str);
                     return;
                 }
             }

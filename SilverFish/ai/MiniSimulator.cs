@@ -117,7 +117,10 @@
             bestoldval = -20000000;
             while (havedonesomething)
             {
-                if (this.printNormalstuff) Helpfunctions.Instance.logg("ailoop");
+                if (this.printNormalstuff)
+                {
+                    Helpfunctions.Instance.logg("ailoop");
+                }
                 GC.Collect();
                 temp.Clear();
                 temp.AddRange(this.posmoves);
@@ -125,7 +128,10 @@
                 havedonesomething = false;
                 threadnumberGlobal = 0;
 
-                if (print) startEnemyTurnSimThread(temp, 0, temp.Count);
+                if (print)
+                {
+                    startEnemyTurnSimThread(temp, 0, temp.Count);
+                }
                 else
                 {
                     Parallel.ForEach(Partitioner.Create(0, temp.Count),
@@ -154,15 +160,26 @@
                     }
                     else if (pVal == bestoldval) bestoldDuplicates.Add(p);
                 }
-                if (isLethalCheck && bestoldval >= 10000) this.posmoves.Clear();
-                if (this.posmoves.Count > 0) havedonesomething = true;
+
+                if (isLethalCheck && bestoldval >= 10000)
+                {
+                    this.posmoves.Clear();
+                }
+
+                if (this.posmoves.Count > 0)
+                {
+                    havedonesomething = true;
+                }
                 
                 if (this.printNormalstuff)
                 {
                     int donec = 0;
                     foreach (Playfield p in posmoves)
                     {
-                        if (p.complete) donec++;
+                        if (p.complete)
+                        {
+                            donec++;
+                        }
                     }
                     Helpfunctions.Instance.logg("deep " + deep + " len " + this.posmoves.Count + " dones " + donec);
                 }
@@ -176,18 +193,31 @@
                 deep++;
                 temp.Clear();
 
-                if (this.calculated > this.totalboards) enoughCalculations = true;
-                if (deep >= this.maxdeep) enoughCalculations = true;
+                if (this.calculated > this.totalboards)
+                {
+                    enoughCalculations = true;
+                }
+
+                if (deep >= this.maxdeep)
+                {
+                    enoughCalculations = true;
+                }
             }
-            
-            if (this.dirtyTwoTurnSim > 0 && !twoturnfields.Contains(bestold)) twoturnfields.Add(bestold);
+
+            if (this.dirtyTwoTurnSim > 0 && !twoturnfields.Contains(bestold))
+            {
+                twoturnfields.Add(bestold);
+            }
             this.posmoves.Clear();
             this.posmoves.Add(bestold);
             this.posmoves.AddRange(bestoldDuplicates);
 
             // search the best play...........................................................
             //do dirtytwoturnsim first :D
-            if (!isLethalCheck && bestoldval < 10000) doDirtyTwoTurnsim();
+            if (!isLethalCheck && bestoldval < 10000)
+            {
+                doDirtyTwoTurnsim();
+            }
 
             if (posmoves.Count >= 1)
             {
@@ -254,7 +284,10 @@
                     //gernerate actions and play them!
                     List<Action> actions = movegen.GetMoveList(p, usePenalityManager, useCutingTargets, true);
 
-                    if (printRules > 0) p.endTurnState = new Playfield(p);
+                    if (printRules > 0)
+                    {
+                        p.endTurnState = new Playfield(p);
+                    }
                     foreach (Action a in actions)
                     {
                         Playfield pf = new Playfield(p);
@@ -298,10 +331,17 @@
                             {
                                 if (a.actionType == actionEnum.playcard)
                                 {
-                                    if (pen.cardDrawBattleCryDatabase.ContainsKey(a.card.card.name)) secondChance = true;
+                                    if (pen.cardDrawBattleCryDatabase.ContainsKey(a.card.card.name))
+                                    {
+                                        secondChance = true;
+                                    }
                                 }
                             }
-                            if (secondChance) p.value += 1500;
+
+                            if (secondChance)
+                            {
+                                p.value += 1500;
+                            }
                         }
                     }
                     p.complete = true;

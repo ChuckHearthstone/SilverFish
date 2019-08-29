@@ -59,11 +59,11 @@ namespace HREngine.Bots
 
         public string BaseDirectory { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
 
-        public bool SingleLogFile { get; set; }
-
         public bool concede = false;
         public bool enemyConcede = false;
-        public bool writeToSingleFile = false;
+
+        public bool writeToSingleFile { get; set; }
+
         public bool learnmode = true;
         public bool printlearnmode = true;
         public bool test = false;
@@ -209,7 +209,7 @@ namespace HREngine.Bots
             }
             Helpfunctions.Instance.InfoLog($"activated playAround AOE Spells is {playaround}");
 
-            Helpfunctions.Instance.ErrorLog($"write log to single file is {writeToSingleFile}");
+            Helpfunctions.Instance.InfoLog($"write log to single file is {writeToSingleFile}");
         }
 
         public void setWeights(int alpha)

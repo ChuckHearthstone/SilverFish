@@ -20,8 +20,8 @@ namespace HREngine.Bots
 {
     public class SilverFishBot
     {
-        public string versionnumber = "117.178";
-        private bool singleLog = Settings.Instance.SingleLogFile;
+        public string versionnumber = "2019.08.29.001";
+        private bool singleLog = Settings.Instance.writeToSingleFile;
         private string botbehave = "noname";
         private bool needSleep = false;
 
@@ -57,7 +57,7 @@ namespace HREngine.Bots
         private string enemyHeroname = "";
 
         private CardDB.Card heroAbility = new CardDB.Card();
-        private int ownHeroPowerCost = ChuckHelper.GetOwnHeroPowerCost();
+        private int ownHeroPowerCost = 2;
         private bool ownAbilityisReady = false;
         private CardDB.Card enemyAbility = new CardDB.Card();
         private int enemyHeroPowerCost = 2;

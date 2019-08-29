@@ -3809,7 +3809,7 @@
 
             this.evaluatePenality += penality;
             this.mana = this.mana - this.ownHeroAblility.manacost + this.ownHeroPowerCostLessOnce;
-            this.ownHeroPowerCostLessOnce = 0;
+            this.ownHeroPowerCostLessOnce = -1;
 
             if (logging) Helpfunctions.Instance.logg("play crd " + c.name + " trgt " + target);
 

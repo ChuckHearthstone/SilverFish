@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using HREngine.Bots.SilverFish.AI;
+
+namespace HREngine.Bots
 {
     using System;
     using System.Collections.Generic;
@@ -123,9 +125,11 @@
             bestplay = this.mainTurnSimulator.bestboard;
             float bestval = this.mainTurnSimulator.bestmoveValue;
 
-            help.loggonoff(true);
             help.logg("-------------------------------------");
-            if (bestplay.ruleWeight != 0) help.logg("ruleWeight " + bestplay.ruleWeight * -1);
+            if (bestplay.ruleWeight != 0)
+            {
+                help.logg("ruleWeight " + bestplay.ruleWeight * -1);
+            }
             if (settings.printRules > 0)
             {
                 String[] rulesStr = bestplay.rulesUsed.Split('@');
@@ -141,7 +145,10 @@
             this.bestmove = null;
             ActionNormalizer an = new ActionNormalizer();
             //an.checkLostActions(bestplay, isLethalCheck);
-            if (settings.adjustActions > 0) an.adjustActions(bestplay, isLethalCheck);
+            if (settings.adjustActions > 0)
+            {
+                an.adjustActions(bestplay, isLethalCheck);
+            }
             help.logg("Best actions as following:");
             int i = 0;
             foreach (Action a in bestplay.playactions)
@@ -287,7 +294,10 @@
             help.logg("simulating board ");
 
             BoardTester bt = new BoardTester(data);
-            if (!bt.datareaded) return retval;
+            if (!bt.datareaded)
+            {
+                return retval;
+            }
             hp.printHero();
             hp.printOwnMinions();
             hp.printEnemyMinions();
@@ -295,6 +305,8 @@
             //calculate the stuff
             posmoves.Clear();
             Playfield pMain = new Playfield();
+            //pMain.ownHeroPowerCostLessOnce -= ChuckHelper.GetOwnHeroPowerCost();
+            //pMain.ownHeroPowerCostLessOnce = -1;
             pMain.print = printstuff;
             posmoves.Add(pMain);
 
@@ -303,8 +315,6 @@
             {
                 p.printBoard();
             }
-            help.logg("### Print current board state end ###");
-
             help.logg("ownminionscount " + posmoves[0].ownMinions.Count);
             help.logg("owncardscount " + posmoves[0].owncards.Count);
 
@@ -315,6 +325,7 @@
             var heroAbilityCard = posmoves[0].ownHeroAblility.card;
             help.logg("ability " + heroAbilityCard.name + " is playable :" + heroAbilityCard.canplayCard(posmoves[0], 2, true) + " cost/mana: "
                       + heroAbilityCard.getManaCost(posmoves[0], 2) + "/" + posmoves[0].mana);
+            help.logg($"### Print current board state end ###{Environment.NewLine}{Environment.NewLine}");
 
             DateTime strt = DateTime.Now;
             // lethalcheck
@@ -338,6 +349,7 @@
                     posmoves.Clear();
                     pMain = new Playfield();
                     pMain.print = printstuff;
+                    //pMain.ownHeroPowerCostLessOnce = -1;
                     posmoves.Add(pMain);
                     strt = DateTime.Now;
                     doallmoves(false, false);
