@@ -85,7 +85,11 @@ namespace HREngine.Bots
 
         public void setSettings(string behavName, bool nameIsPath = false)
         {
-            if (test) return;
+            if (test)
+            {
+                return;
+            }
+
             string pathToSettings = behavName;
             if (!nameIsPath)
             {
@@ -96,11 +100,17 @@ namespace HREngine.Bots
                     return;
                 }
                 pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings_custom.txt");
-                if (System.IO.File.Exists(pathToSettings)) Helpfunctions.Instance.ErrorLog(behavName + ": use custom settings.");
-                else pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings.txt");
+                if (File.Exists(pathToSettings))
+                {
+                    Helpfunctions.Instance.InfoLog(behavName + ": use custom settings.");
+                }
+                else
+                {
+                    pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings.txt");
+                }
             }
 
-            if (!System.IO.File.Exists(pathToSettings))
+            if (!File.Exists(pathToSettings))
             {
                 Helpfunctions.Instance.ErrorLog(behavName + ": no settings.");
                 endOfSetSettings();
@@ -108,19 +118,22 @@ namespace HREngine.Bots
             }
             try
             {
-                Helpfunctions.Instance.ErrorLog("Load settings for " + behavName);
+                Helpfunctions.Instance.InfoLog($"Load settings for Behavior {behavName}");
                 string[] lines = System.IO.File.ReadAllLines(pathToSettings);
                 String[] tmp;
                 int valueInt;
                 bool valueBool = false;
                 foreach (string s in lines)
                 {
-                    if (s == "" || s == null) continue;
+                    if (string.IsNullOrWhiteSpace(s))
+                    {
+                        continue;
+                    }
                     if (s.StartsWith("//")) continue;
                     tmp = s.Split(';')[0].Split(' ');
                     if (tmp.Length != 3) continue;
 
-                    if (!Int32.TryParse(tmp[2], out valueInt))
+                    if (!int.TryParse(tmp[2], out valueInt))
                     {
                         switch (tmp[2])
                         {
@@ -161,36 +174,40 @@ namespace HREngine.Bots
                 }
                 endOfSetSettings();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 Helpfunctions.Instance.ErrorLog(behavName + " _settings.txt - read error. We continue with the default settings.");
+                Helpfunctions.Instance.ErrorLog(ex.ToString());
                 endOfSetSettings();
                 return;
             }
-            Helpfunctions.Instance.ErrorLog(behavName + " settings are loaded.");
+            Helpfunctions.Instance.InfoLog($"Behavior {behavName} settings are loaded.");
         }
 
         private void endOfSetSettings()
         {
             setWeights(this.alpha);
 
-            Helpfunctions.Instance.ErrorLog("set enemy-face-hp to: " + this.enfacehp);
-            Helpfunctions.Instance.ErrorLog("set weaponOnlyAttackMobsUntilEnfacehp to: " + this.weaponOnlyAttackMobsUntilEnfacehp);
+            Helpfunctions.Instance.InfoLog($"set enemy-face-hp to: {enfacehp}");
+            Helpfunctions.Instance.InfoLog($"set weaponOnlyAttackMobsUntilEnemyFaceHp to: {weaponOnlyAttackMobsUntilEnfacehp}");
             ComboBreaker.Instance.attackFaceHP = this.enfacehp;
 
             Ai.Instance.setMaxWide(this.maxwide);
-            Helpfunctions.Instance.ErrorLog("set maxwide to: " + this.maxwide);
+            Helpfunctions.Instance.InfoLog($"set maxWide to: {maxwide}");
+
             Ai.Instance.setTwoTurnSimulation(false, this.twotsamount);
-            Helpfunctions.Instance.ErrorLog("calculate the second turn of the " + this.twotsamount + " best boards");
-            if (this.twotsamount > 0) Helpfunctions.Instance.ErrorLog("simulates the enemy turn on your second turn");
-            if (this.useSecretsPlayAround) Helpfunctions.Instance.ErrorLog("playing arround secrets is true");
+            Helpfunctions.Instance.InfoLog($"calculate the second turn of the {twotsamount} best boards");
+            Helpfunctions.Instance.InfoLog($"simulates the enemy turn on your second turn is {twotsamount > 0}");
+
+            Helpfunctions.Instance.InfoLog($"playing around secrets is {useSecretsPlayAround}");
+
             if (this.playaround)
             {
                 Ai.Instance.setPlayAround();
-                Helpfunctions.Instance.ErrorLog("activated playaround AOE Spells");
             }
-            if (this.writeToSingleFile) Helpfunctions.Instance.ErrorLog("write log to single file");
+            Helpfunctions.Instance.InfoLog($"activated playAround AOE Spells is {playaround}");
 
+            Helpfunctions.Instance.ErrorLog($"write log to single file is {writeToSingleFile}");
         }
 
         public void setWeights(int alpha)
@@ -198,7 +215,7 @@ namespace HREngine.Bots
             float a = ((float)alpha) / 100f;
             this.firstweight = 1f - a;
             this.secondweight = a;
-            Helpfunctions.Instance.ErrorLog("current alpha is " + this.secondweight);
+            Helpfunctions.Instance.InfoLog($"current alpha is {secondweight}");
         }
     }
 }
