@@ -981,7 +981,7 @@ namespace HREngine.Bots
             Helpfunctions.Instance.logg("rdy");
 
             //Set default settings for behaviour
-            Settings.Instance.setSettings(this.botBehavior);
+            Settings.Instance.SetSettings(this.botBehavior);
             Settings.Instance.test = true;
 
             //Apply settings from this UILogg

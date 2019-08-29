@@ -83,7 +83,7 @@ namespace HREngine.Bots
             this.writeToSingleFile = false;
         }
 
-        public void setSettings(string behavName, bool nameIsPath = false)
+        public void SetSettings(string behavName, bool nameIsPath = false)
         {
             if (test)
             {
