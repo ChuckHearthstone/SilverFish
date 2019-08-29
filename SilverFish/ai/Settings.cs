@@ -96,7 +96,7 @@ namespace HREngine.Bots
                 if (!SilverFishBot.Instance.BehaviorPath.ContainsKey(behavName))
                 {
                     Helpfunctions.Instance.ErrorLog(behavName + ": no files for this Behavior.");
-                    endOfSetSettings();
+                    EndOfSetSettings();
                     return;
                 }
                 pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings_custom.txt");
@@ -106,21 +106,23 @@ namespace HREngine.Bots
                 }
                 else
                 {
+                    var customSettingFilePath = pathToSettings;
                     pathToSettings = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_settings.txt");
+                    Helpfunctions.Instance.WarnLog($"Can not find custom setting file {customSettingFilePath}, so use default setting file {pathToSettings}");
                 }
             }
 
             if (!File.Exists(pathToSettings))
             {
                 Helpfunctions.Instance.ErrorLog(behavName + ": no settings.");
-                endOfSetSettings();
+                EndOfSetSettings();
                 return;
             }
             try
             {
                 Helpfunctions.Instance.InfoLog($"Load settings for Behavior {behavName}");
-                string[] lines = System.IO.File.ReadAllLines(pathToSettings);
-                String[] tmp;
+                string[] lines = File.ReadAllLines(pathToSettings);
+                string[] tmp;
                 int valueInt;
                 bool valueBool = false;
                 foreach (string s in lines)
@@ -172,19 +174,19 @@ namespace HREngine.Bots
                             break;
                     }
                 }
-                endOfSetSettings();
+                EndOfSetSettings();
             }
             catch (Exception ex)
             {
                 Helpfunctions.Instance.ErrorLog(behavName + " _settings.txt - read error. We continue with the default settings.");
                 Helpfunctions.Instance.ErrorLog(ex.ToString());
-                endOfSetSettings();
+                EndOfSetSettings();
                 return;
             }
             Helpfunctions.Instance.InfoLog($"Behavior {behavName} settings are loaded.");
         }
 
-        private void endOfSetSettings()
+        private void EndOfSetSettings()
         {
             setWeights(this.alpha);
 

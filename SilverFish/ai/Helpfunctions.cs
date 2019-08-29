@@ -100,6 +100,11 @@ namespace HREngine.Bots
             Log.InfoFormat(log);
         }
 
+        public void WarnLog(object obj)
+        {
+            Log.WarnFormat(obj.ToString());
+        }
+
         private string sendbuffer = "";
 
         public void resetBuffer()
