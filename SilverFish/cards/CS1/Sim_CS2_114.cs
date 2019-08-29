@@ -14,7 +14,7 @@ namespace HREngine.Bots
             //TODO delete new list
             int damage = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             List<Minion> temp2 = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions) ;
-            temp2.Sort((a, b) => a.Hp.CompareTo(b.Hp));
+            temp2.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints));
             int i = 0;
             foreach (Minion enemy in temp2)
             {

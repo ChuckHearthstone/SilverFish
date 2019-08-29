@@ -21,9 +21,9 @@ namespace HREngine.Bots
                 Minion summonedMinion = tmp[pos];
                 if (summonedMinion.handcard.card.cardIDenum == kid.cardIDenum)
                 {
-                    summonedMinion.Hp = 1;
+                    summonedMinion.HealthPoints = 1;
                     summonedMinion.wounded = false;
-                    if (summonedMinion.Hp < summonedMinion.maxHp) summonedMinion.wounded = true;
+                    if (summonedMinion.HealthPoints < summonedMinion.maxHp) summonedMinion.wounded = true;
                 }
             }
         }

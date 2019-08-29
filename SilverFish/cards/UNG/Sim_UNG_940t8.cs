@@ -10,8 +10,8 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			if (own.own) p.ownHero.Hp = 40;
-			else p.enemyHero.Hp = 40;
+			if (own.own) p.ownHero.HealthPoints = 40;
+			else p.enemyHero.HealthPoints = 40;
 		}
 	}
 }

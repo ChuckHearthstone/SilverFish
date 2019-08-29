@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             List<Minion> temp = new List<Minion>(p.enemyMinions);
             temp.AddRange(p.ownMinions);
-            temp.Sort((a, b) => a.Hp.CompareTo(b.Hp)); //destroys the weakest first
+            temp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints)); //destroys the weakest first
             int times = (ownplay) ? p.getSpellDamageDamage(9) : p.getEnemySpellDamageDamage(9);
 
             for (int i = 0; i < times; i++)

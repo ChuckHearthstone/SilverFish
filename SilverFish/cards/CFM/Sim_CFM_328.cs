@@ -13,7 +13,7 @@ namespace HREngine.Bots
             List<Minion> temp = (m.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion mnn in temp)
             {
-                if (mnn.Hp >= 6)
+                if (mnn.HealthPoints >= 6)
                 {
                     p.drawACard(CardDB.cardName.unknown, m.own);
                     p.drawACard(CardDB.cardName.unknown, m.own);

@@ -15,11 +15,11 @@ namespace HREngine.Bots
 
             if (ownplay)
             {
-                dmg = (p.ownHero.Hp <= 12) ? p.getSpellDamageDamage(6) : p.getSpellDamageDamage(4);
+                dmg = (p.ownHero.HealthPoints <= 12) ? p.getSpellDamageDamage(6) : p.getSpellDamageDamage(4);
             }
             else
             {
-                dmg = (p.enemyHero.Hp <= 12) ? p.getEnemySpellDamageDamage(6) : p.getEnemySpellDamageDamage(4);
+                dmg = (p.enemyHero.HealthPoints <= 12) ? p.getEnemySpellDamageDamage(6) : p.getEnemySpellDamageDamage(4);
             }
             p.minionGetDamageOrHeal(target, dmg);
 		}

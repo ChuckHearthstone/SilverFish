@@ -15,7 +15,7 @@ namespace HREngine.Bots
         {
             int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3);
             p.minionGetDamageOrHeal(target, -heal);
-            if (target.Hp < target.maxHp)
+            if (target.HealthPoints < target.maxHp)
             {
                 int posi = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
                 p.callKid(kid, posi, ownplay);

@@ -16,11 +16,11 @@ namespace HREngine.Bots
             int minHp = 100000;
             foreach (Minion m in p.ownMinions)
             {
-                if (m.Hp < minHp) minHp = m.Hp;
+                if (m.HealthPoints < minHp) minHp = m.HealthPoints;
             }
             foreach (Minion m in p.enemyMinions)
             {
-                if (m.Hp < minHp) minHp = m.Hp;
+                if (m.HealthPoints < minHp) minHp = m.HealthPoints;
             }
 
             int dmgdone = (int)Math.Ceiling((double)minHp / (double)dmg) * dmg;

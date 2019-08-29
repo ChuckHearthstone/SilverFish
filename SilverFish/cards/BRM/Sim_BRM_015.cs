@@ -11,7 +11,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
 			int dmg = 1;
-			int heroHealth = (ownplay) ? p.ownHero.Hp : p.enemyHero.Hp;
+			int heroHealth = (ownplay) ? p.ownHero.HealthPoints : p.enemyHero.HealthPoints;
 			if(heroHealth <= 12) dmg = 3;
 			
             dmg = (ownplay) ? p.getSpellDamageDamage(dmg) : p.getEnemySpellDamageDamage(dmg);

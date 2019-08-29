@@ -23,14 +23,14 @@ namespace HREngine.Bots
                     bool found = false;
                     foreach (Minion m in temp)
                     {
-                        if (m.name == CardDB.cardName.nerubianegg && m.Hp >= 2) continue; //dont attack nerubianegg!
-                        if (m.handcard.card.isToken && m.Hp == 1) continue;
+                        if (m.name == CardDB.cardName.nerubianegg && m.HealthPoints >= 2) continue; //dont attack nerubianegg!
+                        if (m.handcard.card.isToken && m.HealthPoints == 1) continue;
                         if (m.name == CardDB.cardName.defender) continue;
                         if (m.name == CardDB.cardName.spellbender) continue;
-                        if (m.Hp >= 2 && minhp > m.Hp)
+                        if (m.HealthPoints >= 2 && minhp > m.HealthPoints)
                         {
                             enemy = m;
-                            minhp = m.Hp;
+                            minhp = m.HealthPoints;
                             found = true;
                         }
                     }

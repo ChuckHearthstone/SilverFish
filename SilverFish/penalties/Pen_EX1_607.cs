@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
             if (target.own)
             {
-                if (m.Hp == 1) return 500;
+                if (m.HealthPoints == 1) return 500;
                 if (!m.Ready)
                 {
                     return 50;
@@ -27,12 +27,12 @@ namespace HREngine.Bots
                     if (hc.card.name == CardDB.cardName.biggamehunter || hc.card.name == CardDB.cardName.shadowworddeath) return 0;
                 }
 
-                if (m.Hp == 1)
+                if (m.HealthPoints == 1)
                 {
                     return 0;
                 }
 
-                if (!m.wounded && (m.Angr >= 4 || m.Hp >= 5))
+                if (!m.wounded && (m.Angr >= 4 || m.HealthPoints >= 5))
                 {
                     foreach (Handmanager.Handcard hc in p.owncards)
                     {

@@ -17,7 +17,7 @@ namespace HREngine.Bots
             int anz =0;
             foreach (Minion m in temp)
             {
-                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL && m.Hp >=1 )
+                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL && m.HealthPoints >=1 )
                 {
                     anz++;
                 }

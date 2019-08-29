@@ -12,9 +12,9 @@ namespace HREngine.Bots
         {
             int dmg = (ownplay) ? p.getHeroPowerDamage(3) : p.getEnemyHeroPowerDamage(3);
 
-            int oldHp = target.Hp;
+            int oldHp = target.HealthPoints;
             p.minionGetDamageOrHeal(target, dmg);
-            if (oldHp > target.Hp) p.applySpellLifesteal(oldHp - target.Hp, ownplay);
+            if (oldHp > target.HealthPoints) p.applySpellLifesteal(oldHp - target.HealthPoints, ownplay);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace HREngine.Bots
 				bool hasmechanics = false;
                 foreach (Minion mTmp in temp) //check if we have more mechanics, or debuff him
                 {
-                    if (mTmp.Hp >=1 && (TAG_RACE)mTmp.handcard.card.race == TAG_RACE.MECHANICAL) hasmechanics = true;
+                    if (mTmp.HealthPoints >=1 && (TAG_RACE)mTmp.handcard.card.race == TAG_RACE.MECHANICAL) hasmechanics = true;
                 }
 				
                 if (!hasmechanics)

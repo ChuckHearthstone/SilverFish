@@ -27,7 +27,7 @@ namespace HREngine.Bots
             List<Action> ret = new List<Action>();
             List<Minion> targetMinions;
 
-            if (p.complete || p.ownHero.Hp <= 0)
+            if (p.complete || p.ownHero.HealthPoints <= 0)
             {
                 return ret;
             }
@@ -44,7 +44,7 @@ namespace HREngine.Bots
                     if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL) ||
                         (p.nextMurlocThisTurnCostHealth && (TAG_RACE) hc.card.race == TAG_RACE.MURLOC))
                     {
-                        if (p.ownHero.Hp > cardCost || p.ownHero.immune)
+                        if (p.ownHero.HealthPoints > cardCost || p.ownHero.immune)
                         {
                         }
                         else
@@ -236,7 +236,7 @@ namespace HREngine.Bots
 			        bool onlyNotSpecial =(!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced));
 			
 			        if(onlySpecial && (m.name != mnn.name)) continue; // different name -> take it
-                    if ((onlySpecial || onlyNotSpecial) && (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race))
+                    if ((onlySpecial || onlyNotSpecial) && (mnn.Angr == m.Angr && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race))
                     {
 				        goingtoadd = false;
 				        break;

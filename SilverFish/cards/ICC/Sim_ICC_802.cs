@@ -13,9 +13,9 @@ namespace HREngine.Bots
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             int heal = 0;
             List<Minion> tmp = ownplay ? p.enemyMinions : p.ownMinions;
-            foreach (Minion m in tmp) heal += m.Hp;
+            foreach (Minion m in tmp) heal += m.HealthPoints;
             p.allMinionOfASideGetDamage(!ownplay, dmg);
-            foreach (Minion m in tmp) heal -= m.Hp;
+            foreach (Minion m in tmp) heal -= m.HealthPoints;
             p.applySpellLifesteal(heal, ownplay);
         }
     }

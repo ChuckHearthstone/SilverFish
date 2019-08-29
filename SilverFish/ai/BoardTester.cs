@@ -707,7 +707,7 @@ namespace HREngine.Bots
                         tempminion.entitiyID = ent;
                         tempminion.handcard.entity = ent;
                         tempminion.Angr = attack;
-                        tempminion.Hp = hp;
+                        tempminion.HealthPoints = hp;
                         tempminion.maxHp = maxhp;
                         tempminion.Ready = ready;
                         tempminion.numAttacksThisTurn = natt;
@@ -862,7 +862,7 @@ namespace HREngine.Bots
                         tempminion.entitiyID = ent;
                         tempminion.handcard.entity = ent;
                         tempminion.Angr = attack;
-                        tempminion.Hp = hp;
+                        tempminion.HealthPoints = hp;
                         tempminion.maxHp = maxhp;
                         tempminion.Ready = ready;
                         tempminion.numAttacksThisTurn = natt;
@@ -1055,7 +1055,7 @@ namespace HREngine.Bots
             this.enemyHero.cardClass = heroNametoClass(this.enemyheroname);
             
             this.ownHero.Angr = ownHeroAttack;
-            this.ownHero.Hp = ownherohp;
+            this.ownHero.HealthPoints = ownherohp;
             this.ownHero.armor = ownherodefence;
             this.ownHero.frozen = ownHeroFrozen;
             this.ownHero.immuneWhileAttacking = ownHeroimmunewhileattacking;
@@ -1065,7 +1065,7 @@ namespace HREngine.Bots
             this.ownHero.stealth = ownHeroStealth;
 
             this.enemyHero.Angr = enemyWeapon.Angr;
-            this.enemyHero.Hp = enemyherohp;
+            this.enemyHero.HealthPoints = enemyherohp;
             this.enemyHero.frozen = enemyFrozen;
             this.enemyHero.armor = enemyherodefence;
             this.enemyHero.immune = enemyHeroImmune;
@@ -1107,7 +1107,7 @@ namespace HREngine.Bots
                 zonepos = zonepos,
                 entitiyID = hc.entity,
                 Angr = hc.card.Attack,
-                Hp = hc.card.Health,
+                HealthPoints = hc.card.Health,
                 maxHp = hc.card.Health,
                 name = hc.card.name,
                 playedThisTurn = true,
@@ -1135,7 +1135,7 @@ namespace HREngine.Bots
 
             if (m.name == CardDB.cardName.lightspawn)
             {
-                m.Angr = m.Hp;
+                m.Angr = m.HealthPoints;
             }
             return m;
         }

@@ -278,7 +278,7 @@ namespace HREngine.Bots
             this.numOptionPlayedThisTurn += this.cardsPlayedThisTurn + this.ownHero.numAttacksThisTurn;
             foreach (Minion m in this.ownMinions)
             {
-                if (m.Hp >= 1) this.numOptionPlayedThisTurn += m.numAttacksThisTurn;
+                if (m.HealthPoints >= 1) this.numOptionPlayedThisTurn += m.numAttacksThisTurn;
             }
             
             List<HSCard> list = TritonHs.GetCards(CardZone.Graveyard, true);
@@ -525,7 +525,7 @@ namespace HREngine.Bots
             this.heroname = Hrtprozis.Instance.heroIDtoName(TritonHs.OurHero.Id);
 
             this.ownHero.Angr = ownHeroCard.GetTag(GAME_TAG.ATK);
-            this.ownHero.Hp = ownHeroCard.GetTag(GAME_TAG.HEALTH) - ownHeroCard.GetTag(GAME_TAG.DAMAGE);
+            this.ownHero.HealthPoints = ownHeroCard.GetTag(GAME_TAG.HEALTH) - ownHeroCard.GetTag(GAME_TAG.DAMAGE);
             this.ownHero.armor = ownHeroCard.GetTag(GAME_TAG.ARMOR);            
             this.ownHero.frozen = (ownHeroCard.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
             this.ownHero.stealth = (ownHeroCard.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
@@ -550,7 +550,7 @@ namespace HREngine.Bots
             this.enemyHeroname = Hrtprozis.Instance.heroIDtoName(TritonHs.EnemyHero.Id);
 
             this.enemyHero.Angr = enemHeroCard.GetTag(GAME_TAG.ATK);
-            this.enemyHero.Hp = enemHeroCard.GetTag(GAME_TAG.HEALTH) - enemHeroCard.GetTag(GAME_TAG.DAMAGE);
+            this.enemyHero.HealthPoints = enemHeroCard.GetTag(GAME_TAG.HEALTH) - enemHeroCard.GetTag(GAME_TAG.DAMAGE);
             this.enemyHero.armor = enemHeroCard.GetTag(GAME_TAG.ARMOR);
             this.enemyHero.frozen = (enemHeroCard.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
             this.enemyHero.stealth = (enemHeroCard.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
@@ -688,10 +688,10 @@ namespace HREngine.Bots
 
                     m.Angr = entitiy.GetTag(GAME_TAG.ATK);
                     m.maxHp = entitiy.GetTag(GAME_TAG.HEALTH);
-                    m.Hp = entitiy.GetTag(GAME_TAG.HEALTH) - entitiy.GetTag(GAME_TAG.DAMAGE);
-                    if (m.Hp <= 0) continue;
+                    m.HealthPoints = entitiy.GetTag(GAME_TAG.HEALTH) - entitiy.GetTag(GAME_TAG.DAMAGE);
+                    if (m.HealthPoints <= 0) continue;
                     m.wounded = false;
-                    if (m.maxHp > m.Hp) m.wounded = true;
+                    if (m.maxHp > m.HealthPoints) m.wounded = true;
 
                     int ctarget = entitiy.GetTag(GAME_TAG.CARD_TARGET);
                     if (ctarget > 0)
@@ -1133,7 +1133,7 @@ namespace HREngine.Bots
                     if (m.name == CardDB.cardName.cthun)
                     {
                         if (this.anzOgOwnCThunAngrBonus < m.Angr - 6) this.anzOgOwnCThunAngrBonus = m.Angr - 6;
-                        if (this.anzOgOwnCThunHpBonus < m.Hp - 6) this.anzOgOwnCThunHpBonus = m.Angr - 6;
+                        if (this.anzOgOwnCThunHpBonus < m.HealthPoints - 6) this.anzOgOwnCThunHpBonus = m.Angr - 6;
                         if (m.taunt && this.anzOgOwnCThunTaunt < 1) this.anzOgOwnCThunTaunt++;
                         found = true;
                         break;

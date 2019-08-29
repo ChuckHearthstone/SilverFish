@@ -22,8 +22,8 @@ namespace HREngine.Bots
             if (!m.silenced)
             {
                 int minionsOnBoard = 0;
-                foreach (Minion mnn in p.ownMinions) if (mnn.Hp > 0) minionsOnBoard++;
-                foreach (Minion mnn in p.enemyMinions) if (mnn.Hp > 0) minionsOnBoard++;
+                foreach (Minion mnn in p.ownMinions) if (mnn.HealthPoints > 0) minionsOnBoard++;
+                foreach (Minion mnn in p.enemyMinions) if (mnn.HealthPoints > 0) minionsOnBoard++;
                 m.cantAttack = (minionsOnBoard > 0) ? true : false;
                 m.updateReadyness();
             }

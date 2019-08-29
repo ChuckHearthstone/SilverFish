@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (target != null)
             {
-                int heal = (m.own) ? p.getMinionHeal(target.maxHp - target.Hp) : p.getEnemyMinionHeal(target.maxHp - target.Hp);
+                int heal = (m.own) ? p.getMinionHeal(target.maxHp - target.HealthPoints) : p.getEnemyMinionHeal(target.maxHp - target.HealthPoints);
                 p.minionGetDamageOrHeal(target, -heal, true);
             }
         }

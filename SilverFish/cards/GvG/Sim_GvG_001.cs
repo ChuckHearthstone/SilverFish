@@ -23,10 +23,10 @@ namespace HREngine.Bots
                 int minhp = 10000;
                 foreach (Minion m in temp)
                 {
-                    if (m.Hp >= times + 1 && minhp > m.Hp)
+                    if (m.HealthPoints >= times + 1 && minhp > m.HealthPoints)
                     {
                         enemy = m;
-                        minhp = m.Hp;
+                        minhp = m.HealthPoints;
                     }
                 }
 

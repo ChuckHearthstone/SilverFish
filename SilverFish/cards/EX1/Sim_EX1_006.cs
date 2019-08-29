@@ -34,7 +34,7 @@ namespace HREngine.Bots
             if (!turnStartOfOwner && triggerEffectMinion.own == turnStartOfOwner)
             {
                 p.minionGetBuffed(triggerEffectMinion, 4, 4);
-                triggerEffectMinion.Hp = triggerEffectMinion.maxHp;
+                triggerEffectMinion.HealthPoints = triggerEffectMinion.maxHp;
             }
         }
 	}

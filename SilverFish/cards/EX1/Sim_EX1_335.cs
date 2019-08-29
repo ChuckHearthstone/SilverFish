@@ -11,7 +11,7 @@ namespace HREngine.Bots
         //todo dont buff this!
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            own.Angr = own.Hp;
+            own.Angr = own.HealthPoints;
 		}
 
 	}

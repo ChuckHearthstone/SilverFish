@@ -15,8 +15,8 @@
             retval += p.owncards.Count * 3;
             retval += p.ownQuest.questProgress * 10;
 
-            retval += p.ownHero.Hp + p.ownHero.armor;
-            retval += -(p.enemyHero.Hp + p.enemyHero.armor);
+            retval += p.ownHero.HealthPoints + p.ownHero.armor;
+            retval += -(p.enemyHero.HealthPoints + p.enemyHero.armor);
 
             retval += p.ownMaxMana * 15 - p.enemyMaxMana * 15;
 
@@ -65,7 +65,7 @@
             int usecoin = 0;
             foreach (Action a in p.playactions)
             {
-                if (a.actionType == actionEnum.attackWithHero && p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                if (a.actionType == actionEnum.attackWithHero && p.enemyHero.HealthPoints <= p.attackFaceHP) retval++;
                 if (a.actionType == actionEnum.useHeroPower) useAbili = true;
                 if (p.ownHeroName == HeroEnum.warrior && a.actionType == actionEnum.attackWithHero && useAbili) retval -= 1;
                 //if (a.actionType == actionEnum.useHeroPower && a.card.card.name == CardDB.cardName.lesserheal && (!a.target.own)) retval -= 5;
@@ -85,7 +85,7 @@
                     case CardDB.cardName.heal: goto case CardDB.cardName.lesserheal;
                     case CardDB.cardName.lesserheal:
                         bool wereTarget = false;
-                        if (p.ownHero.Hp < p.ownHero.maxHp) wereTarget = true;
+                        if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
                         if (!wereTarget)
                         {
                             foreach (Minion m in p.ownMinions)
@@ -129,13 +129,13 @@
 
             foreach (Minion m in p.ownMinions)
             {
-                retval += m.Hp * 1;
+                retval += m.HealthPoints * 1;
                 retval += m.Angr * 2;
                 retval += m.handcard.card.rarity;
                 if (m.windfury) retval += m.Angr;
                 if (m.taunt) retval += 1;
                 if (!m.taunt && m.stealth && m.handcard.card.isSpecialMinion && !m.silenced) retval += 20;
-                if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Angr == 1 && m.Hp == 1) retval -= 5;
+                if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Angr == 1 && m.HealthPoints == 1) retval -= 5;
                 if (p.ownMinions.Count > 1 && (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader || m.handcard.card.name == CardDB.cardName.fallenhero)) retval += 10;
                 if (m.handcard.card.name == CardDB.cardName.nerubianegg)
                 {
@@ -166,7 +166,7 @@
             retval -= p.lostWeaponDamage;
             if (p.ownMinions.Count == 0) retval -= 20;
             if (p.enemyMinions.Count >= 4) retval -= 20;
-            if (p.enemyHero.Hp <= 0) retval = 10000;
+            if (p.enemyHero.HealthPoints <= 0) retval = 10000;
             
             retval += p.anzOwnExtraAngrHp - p.anzEnemyExtraAngrHp / 2;
             //soulfire etc
@@ -177,12 +177,12 @@
                 if (a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus) deletecardsAtLast = 1;
                 if (deletecardsAtLast == 1 && !(a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus)) retval -= 20;
             }
-            if (p.enemyHero.Hp >= 1 && p.guessingHeroHP <= 0)
+            if (p.enemyHero.HealthPoints >= 1 && p.guessingHeroHP <= 0)
             {
                 if (p.turnCounter < 2) retval += p.owncarddraw * 500;
                 retval -= 1000;
             }
-            if (p.ownHero.Hp <= 0) retval -= 10000;
+            if (p.ownHero.HealthPoints <= 0) retval -= 10000;
 
             p.value = retval;
             return retval;
@@ -193,7 +193,7 @@
             int retval = 0;
             if (p.enemyMinions.Count >= 4 || m.taunt || (m.handcard.card.targetPriority >= 1 && !m.silenced) || m.Angr >= 5)
             {
-                retval += m.Hp;
+                retval += m.HealthPoints;
                 if (!m.frozen && !(m.cantAttack && m.name != CardDB.cardName.argentwatchman))
                 {
                     retval += m.Angr * 2;

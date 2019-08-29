@@ -16,7 +16,7 @@ namespace HREngine.Bots
                 else p.evaluatePenality -= 5;
                 foreach (Minion m in p.ownMinions) m.Ready = false;
                 foreach (Minion m in p.enemyMinions) m.frozen = true;
-                p.ownHero.Hp += 7;
+                p.ownHero.HealthPoints += 7;
             }
         }
     }

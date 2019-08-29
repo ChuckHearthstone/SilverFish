@@ -172,7 +172,7 @@
 
             if (isLethalCheck)
             {
-                this.lethalMissing = bestplay.enemyHero.armor + bestplay.enemyHero.Hp;//RR
+                this.lethalMissing = bestplay.enemyHero.armor + bestplay.enemyHero.HealthPoints;//RR
                 help.logg("missing dmg to lethal " + this.lethalMissing);
             }
             help.logg("### do all moves in Ai end ###");

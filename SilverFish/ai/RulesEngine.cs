@@ -2702,28 +2702,28 @@ namespace HREngine.Bots
                     if (p.owncarddraw < cond.num) return true;
                     return false;
                 case param.ohhp_equal: 
-                    if (p.ownHero.Hp == cond.num) return true;
+                    if (p.ownHero.HealthPoints == cond.num) return true;
                     return false;
                 case param.ohhp_notequal:
-                    if (p.ownHero.Hp != cond.num) return true;
+                    if (p.ownHero.HealthPoints != cond.num) return true;
                     return false;
                 case param.ohhp_greater:
-                    if (p.ownHero.Hp > cond.num) return true;
+                    if (p.ownHero.HealthPoints > cond.num) return true;
                     return false;
                 case param.ohhp_less:
-                    if (p.ownHero.Hp < cond.num) return true;
+                    if (p.ownHero.HealthPoints < cond.num) return true;
                     return false;
                 case param.ehhp_equal: 
-                    if (p.enemyHero.Hp == cond.num) return true;
+                    if (p.enemyHero.HealthPoints == cond.num) return true;
                     return false;
                 case param.ehhp_notequal:
-                    if (p.enemyHero.Hp != cond.num) return true;
+                    if (p.enemyHero.HealthPoints != cond.num) return true;
                     return false;
                 case param.ehhp_greater:
-                    if (p.enemyHero.Hp > cond.num) return true;
+                    if (p.enemyHero.HealthPoints > cond.num) return true;
                     return false;
                 case param.ehhp_less:
-                    if (p.enemyHero.Hp < cond.num) return true;
+                    if (p.enemyHero.HealthPoints < cond.num) return true;
                     return false;
 
                 case param.ownboard_contain: 

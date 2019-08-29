@@ -12,11 +12,11 @@ namespace HREngine.Bots
         {
             if (target == null) return;
 
-            own.maxHp = target.Hp;
-            target.maxHp = own.Hp;
+            own.maxHp = target.HealthPoints;
+            target.maxHp = own.HealthPoints;
 
-            own.Hp = own.maxHp;
-            target.Hp = target.maxHp;
+            own.HealthPoints = own.maxHp;
+            target.HealthPoints = target.maxHp;
             if (target.wounded)
             {
                 target.wounded = false;

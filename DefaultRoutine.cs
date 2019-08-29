@@ -776,8 +776,8 @@ def Execute():
                                     case CardDB.cardName.nzoththecorruptor: lastChance = true; break;
                                     case CardDB.cardName.yoggsaronhopesend: lastChance = true; break;
                                     case CardDB.cardName.sirfinleymrrgglton: lastChance = true; break;
-                                    case CardDB.cardName.ragnarosthefirelord: if (lastChancePl.enemyHero.Hp < 9) lastChance = true; break;
-                                    case CardDB.cardName.barongeddon: if (lastChancePl.enemyHero.Hp < 3) lastChance = true; break;
+                                    case CardDB.cardName.ragnarosthefirelord: if (lastChancePl.enemyHero.HealthPoints < 9) lastChance = true; break;
+                                    case CardDB.cardName.barongeddon: if (lastChancePl.enemyHero.HealthPoints < 3) lastChance = true; break;
                                 }
                             }
                         }

@@ -19,7 +19,7 @@ namespace HREngine.Bots
                 if (m.zonepos == own.zonepos - 1 || m.zonepos == own.zonepos + 1)
                 {
                     angr += m.Angr;
-                    hp += m.Hp;
+                    hp += m.HealthPoints;
                     p.minionGetDestroyed(m);
                 }
             }

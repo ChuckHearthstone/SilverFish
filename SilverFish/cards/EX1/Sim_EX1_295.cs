@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    geheimnis:/ wenn euer held tödlichen schaden erleidet, wird dieser verhindert und der held wird immun/ in diesem zug.
         public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
-            target.Hp += number;
+            target.HealthPoints += number;
             target.immune = true;
         }
 

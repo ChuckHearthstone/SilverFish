@@ -35,23 +35,23 @@ namespace HREngine.Bots
 
             if (p.enemyHeroName == HeroEnum.mage || p.enemyHeroName == HeroEnum.druid) retval -= 2 * p.enemyspellpower;
 
-            if (p.ownHero.Hp + p.ownHero.armor > hpboarder)
+            if (p.ownHero.HealthPoints + p.ownHero.armor > hpboarder)
             {
-                retval += p.ownHero.Hp + p.ownHero.armor;
+                retval += p.ownHero.HealthPoints + p.ownHero.armor;
             }
             else
             {
-                if (p.nextTurnWin()) retval -= (hpboarder + 1 - p.ownHero.Hp - p.ownHero.armor);
-                else retval -= 2 * (hpboarder + 1 - p.ownHero.Hp - p.ownHero.armor) * (hpboarder + 1 - p.ownHero.Hp - p.ownHero.armor);
+                if (p.nextTurnWin()) retval -= (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
+                else retval -= 2 * (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor) * (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
             }
 
-            if (p.enemyHero.Hp + p.enemyHero.armor > aggroboarder)
+            if (p.enemyHero.HealthPoints + p.enemyHero.armor > aggroboarder)
             {
-                retval += -p.enemyHero.Hp - p.enemyHero.armor;
+                retval += -p.enemyHero.HealthPoints - p.enemyHero.armor;
             }
             else
             {
-                retval += 4 * (aggroboarder + 1 - p.enemyHero.Hp - p.enemyHero.armor);
+                retval += 4 * (aggroboarder + 1 - p.enemyHero.HealthPoints - p.enemyHero.armor);
             }
 
             if (p.ownWeapon.Angr > 0)
@@ -96,7 +96,7 @@ namespace HREngine.Bots
             foreach (Minion m in p.ownMinions)
             {
                 retval += 5;
-                retval += m.Hp * 2;
+                retval += m.HealthPoints * 2;
                 retval += m.Angr * 2;
                 retval += m.handcard.card.rarity;
                 if (!m.playedThisTurn && m.windfury) retval += m.Angr;
@@ -109,7 +109,7 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    if (m.Angr <= 2 && m.Hp <= 2 && !m.divineshild) retval -= 5;
+                    if (m.Angr <= 2 && m.HealthPoints <= 2 && !m.divineshild) retval -= 5;
                 }
                 //if (!m.taunt && m.stealth && penman.specialMinions.ContainsKey(m.name)) retval += 20;
                 //if (m.poisonous) retval += 1;
@@ -126,7 +126,7 @@ namespace HREngine.Bots
                     if ((!m.taunt && m.Angr == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
                 }
                 if (m.Ready) readycount++;
-                if (m.Hp <= 4 && (m.Angr > 2 || m.Hp > 3)) ownMinionsCount++;
+                if (m.HealthPoints <= 4 && (m.Angr > 2 || m.HealthPoints > 3)) ownMinionsCount++;
                 retval += m.synergy;
             }
             retval += p.anzOgOwnCThunAngrBonus;
@@ -155,7 +155,7 @@ namespace HREngine.Bots
                 switch (a.actionType)
                 {
                     case actionEnum.attackWithHero:
-                        if (p.enemyHero.Hp <= p.attackFaceHP) retval++;
+                        if (p.enemyHero.HealthPoints <= p.attackFaceHP) retval++;
                         if (p.ownHeroName == HeroEnum.warrior && useAbili) retval -= 1;
                         continue;
                     case actionEnum.useHeroPower:
@@ -208,7 +208,7 @@ namespace HREngine.Bots
                     case CardDB.cardName.heal: goto case CardDB.cardName.lesserheal;
                     case CardDB.cardName.lesserheal:
                         bool wereTarget = false;
-                        if (p.ownHero.Hp < p.ownHero.maxHp) wereTarget = true;
+                        if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
                         if (!wereTarget)
                         {
                             foreach (Minion m in p.ownMinions)
@@ -298,18 +298,18 @@ namespace HREngine.Bots
             //if (p.ownMinions.Count == 0) retval -= 20;
             //if (p.enemyMinions.Count == 0) retval += 20;
 
-            if (p.enemyHero.Hp <= 0)
+            if (p.enemyHero.HealthPoints <= 0)
             {
                 retval += 10000;
                 if (retval < 10000) retval = 10000;
             }
 
-            if (p.enemyHero.Hp >= 1 && p.guessingHeroHP <= 0)
+            if (p.enemyHero.HealthPoints >= 1 && p.guessingHeroHP <= 0)
             {
                 if (p.turnCounter < 2) retval += p.owncarddraw * 100;
                 retval -= 1000;
             }
-            if (p.ownHero.Hp <= 0) retval -= 10000;
+            if (p.ownHero.HealthPoints <= 0) retval -= 10000;
 
             p.value = retval;
             return retval;
@@ -320,7 +320,7 @@ namespace HREngine.Bots
         public override int getEnemyMinionValue(Minion m, Playfield p)
         {
             int retval = 5;
-            retval += m.Hp * 2;
+            retval += m.HealthPoints * 2;
             if (!m.frozen && !(m.cantAttack && m.name != CardDB.cardName.argentwatchman))
             {
                 retval += m.Angr * 2;
@@ -332,7 +332,7 @@ namespace HREngine.Bots
             if (!m.handcard.card.isSpecialMinion)
             {
                 if (m.Angr == 0) retval -= 7;
-                else if (m.Angr <= 2 && m.Hp <= 2 && !m.divineshild) retval -= 5;
+                else if (m.Angr <= 2 && m.HealthPoints <= 2 && !m.divineshild) retval -= 5;
             }
             else retval += m.handcard.card.rarity;
 			

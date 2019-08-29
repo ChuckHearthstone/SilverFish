@@ -23,7 +23,7 @@ namespace HREngine.Bots
                     for (int i = 1; i < count; i++)
                     {
                         if (triggerEffectMinion.entitiyID == tmp[i].entitiyID) continue;
-                        if (tmp[i].Hp < mnn.Hp) mnn = tmp[i]; //take the weakest
+                        if (tmp[i].HealthPoints < mnn.HealthPoints) mnn = tmp[i]; //take the weakest
                     }
                     if (mnn != null) p.minionGetBuffed(mnn, 2, 2);
                 }

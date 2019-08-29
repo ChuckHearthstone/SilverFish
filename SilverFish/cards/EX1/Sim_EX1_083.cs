@@ -19,7 +19,7 @@ namespace HREngine.Bots
             {
                 List<Minion> temp = new List<Minion>(p.ownMinions);
                 temp.AddRange(p.enemyMinions);
-                temp.Sort((a, b) => a.Hp.CompareTo(b.Hp));//transform the weakest
+                temp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints));//transform the weakest
                 foreach (Minion m in temp)
                 {
                     p.minionTransform(m, card1);
@@ -30,7 +30,7 @@ namespace HREngine.Bots
             {
                 List<Minion> temp = new List<Minion>(p.ownMinions);
                 temp.AddRange(p.enemyMinions);
-                temp.Sort((a, b) => -a.Hp.CompareTo(b.Hp));//transform the strongest
+                temp.Sort((a, b) => -a.HealthPoints.CompareTo(b.HealthPoints));//transform the strongest
                 foreach (Minion m in temp)
                 {
                     p.minionTransform(m, card2);

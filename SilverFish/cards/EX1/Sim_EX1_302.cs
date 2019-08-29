@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
-            if (dmg >= target.Hp && !target.divineshild && !target.immune)
+            if (dmg >= target.HealthPoints && !target.divineshild && !target.immune)
             {
                 //this.owncarddraw++;
                 p.drawACard(CardDB.cardName.unknown, ownplay);

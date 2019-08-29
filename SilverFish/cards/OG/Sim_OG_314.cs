@@ -13,7 +13,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
-            if (target.Hp > dmg || target.immune || target.divineshild)
+            if (target.HealthPoints > dmg || target.immune || target.divineshild)
             {
 				int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 				p.callKid(kid, pos, ownplay);

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
             if (target != null)
 			{
-				own.Hp = target.Hp;
+				own.HealthPoints = target.HealthPoints;
 				own.Angr = target.Angr;
 			}
 		}

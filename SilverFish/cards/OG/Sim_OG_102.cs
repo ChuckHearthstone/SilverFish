@@ -12,15 +12,15 @@ namespace HREngine.Bots
         {
             if (target == null) return;
 
-            int tmpHp = target.Hp;
+            int tmpHp = target.HealthPoints;
             int tmpMHp = target.maxHp;
             int tmpAngr = target.Angr;
 
-            target.Hp = own.Hp;
+            target.HealthPoints = own.HealthPoints;
             target.maxHp = own.maxHp;
             target.Angr = own.Angr;
 
-            own.Hp = tmpHp;
+            own.HealthPoints = tmpHp;
             own.maxHp= tmpMHp;
             own.Angr = tmpAngr;
         }

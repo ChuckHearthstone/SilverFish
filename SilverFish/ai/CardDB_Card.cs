@@ -649,7 +649,7 @@ namespace HREngine.Bots
                             switch (minions[i].name)
                             {
                                 case Bots.CardDB.cardName.shadowboxer:
-                                    if (own && p.enemyHero.Hp == 1 && p.enemyMinions.Count > 0) needCut = false;
+                                    if (own && p.enemyHero.HealthPoints == 1 && p.enemyMinions.Count > 0) needCut = false;
                                     break;
                                 case Bots.CardDB.cardName.holychampion: needCut = false; break;
                                 case Bots.CardDB.cardName.lightwarden: needCut = false; break;
@@ -668,7 +668,7 @@ namespace HREngine.Bots
                                 for (int i = 0; i < tCount; i++)
                                 {
                                     Minion m = trgts[i];
-                                    if (m.Hp < m.maxHp)
+                                    if (m.HealthPoints < m.maxHp)
                                     {
                                         if (needCut)
                                         {
@@ -765,7 +765,7 @@ namespace HREngine.Bots
                         retval = retval + offset - p.enemyAnzCards;
                         break;
                     case CardDB.cardName.moltengiant:
-                        retval = retval + offset - p.ownHero.maxHp + p.ownHero.Hp;
+                        retval = retval + offset - p.ownHero.maxHp + p.ownHero.HealthPoints;
                         break;
                     case CardDB.cardName.frostgiant:
                         retval = retval + offset - p.anzUsedOwnHeroPower;
@@ -783,7 +783,7 @@ namespace HREngine.Bots
                         retval = retval + offset - ((p.enemyMinions.Count < 3) ? 0 : 2);
                         break;
                     case CardDB.cardName.golemagg:
-                        retval = retval + offset - p.ownHero.maxHp + p.ownHero.Hp;
+                        retval = retval + offset - p.ownHero.maxHp + p.ownHero.HealthPoints;
                         break;
                     case CardDB.cardName.volcaniclumberer:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
@@ -965,7 +965,7 @@ namespace HREngine.Bots
                         retval = retval + offset - p.enemyAnzCards + p.enemyCardsCountStarted;
                         break;
                     case CardDB.cardName.moltengiant:
-                        retval = retval + offset - p.ownHeroHpStarted + p.ownHero.Hp;
+                        retval = retval + offset - p.ownHeroHpStarted + p.ownHero.HealthPoints;
                         break;
                     case CardDB.cardName.frostgiant:
                         retval = retval + offset - p.anzUsedOwnHeroPower;
@@ -983,7 +983,7 @@ namespace HREngine.Bots
                         retval = retval + offset - ((p.enemyMinions.Count < 3) ? 0 : 2) + ((p.enemyMobsCountStarted < 3) ? 0 : 2);
                         break;
                     case CardDB.cardName.golemagg:
-                        retval = retval + offset - p.ownHeroHpStarted + p.ownHero.Hp;
+                        retval = retval + offset - p.ownHeroHpStarted + p.ownHero.HealthPoints;
                         break;
                     case CardDB.cardName.skycapnkragg:
                         int costBonus = 0;

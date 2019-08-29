@@ -13,7 +13,7 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                int heal = (triggerEffectMinion.own) ? p.getMinionHeal(triggerEffectMinion.maxHp - triggerEffectMinion.Hp) : p.getEnemyMinionHeal(triggerEffectMinion.maxHp - triggerEffectMinion.Hp);
+                int heal = (triggerEffectMinion.own) ? p.getMinionHeal(triggerEffectMinion.maxHp - triggerEffectMinion.HealthPoints) : p.getEnemyMinionHeal(triggerEffectMinion.maxHp - triggerEffectMinion.HealthPoints);
                 p.minionGetDamageOrHeal(triggerEffectMinion, -heal);
             }
         }

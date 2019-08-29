@@ -13,7 +13,7 @@ namespace HREngine.Bots
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
                 List<Minion> tmp = new List<Minion>(turnEndOfOwner ? p.ownMinions : p.enemyMinions);
-                tmp.Sort((a, b) => a.Hp.CompareTo(b.Hp)); //buff the weakest
+                tmp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints)); //buff the weakest
                 foreach (Minion m in tmp)
                 {
                     if (triggerEffectMinion.entitiyID == m.entitiyID) continue;

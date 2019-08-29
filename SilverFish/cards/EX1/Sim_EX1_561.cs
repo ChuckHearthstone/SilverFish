@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    kampfschrei:/ setzt das verbleibende leben eines helden auf 15.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            target.Hp = 15;
+            target.HealthPoints = 15;
 		}
 
 

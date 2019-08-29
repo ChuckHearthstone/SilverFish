@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
-            target.Hp = 1;
+            target.HealthPoints = 1;
             target.maxHp = 1;
             target.wounded = false;
 

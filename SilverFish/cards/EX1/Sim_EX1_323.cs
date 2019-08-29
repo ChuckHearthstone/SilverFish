@@ -18,13 +18,13 @@ namespace HREngine.Bots
             if (own.own)
             {
                 p.ownHeroName = HeroEnum.lordjaraxxus;
-                p.ownHero.Hp = own.Hp;
+                p.ownHero.HealthPoints = own.HealthPoints;
                 p.ownHero.maxHp = own.maxHp;
             }
             else 
             {
                 p.enemyHeroName = HeroEnum.lordjaraxxus;
-                p.enemyHero.Hp = own.Hp;
+                p.enemyHero.HealthPoints = own.HealthPoints;
                 p.enemyHero.maxHp = own.maxHp;
             }
 		}

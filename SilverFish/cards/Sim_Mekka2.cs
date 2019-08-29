@@ -19,18 +19,18 @@ namespace HREngine.Bots
                 int heal = 0;
                 foreach (Minion m in p.ownMinions)
                 {
-                    if (m.maxHp - m.Hp > heal)
+                    if (m.maxHp - m.HealthPoints > heal)
                     {
                         tm = m;
-                        heal = m.maxHp - m.Hp;
+                        heal = m.maxHp - m.HealthPoints;
                     }
                 }
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if (m.maxHp - m.Hp > heal)
+                    if (m.maxHp - m.HealthPoints > heal)
                     {
                         tm = m;
-                        heal = m.maxHp - m.Hp;
+                        heal = m.maxHp - m.HealthPoints;
                     }
                 }
                 if (heal >= 1)
@@ -39,7 +39,7 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    p.minionGetDamageOrHeal(p.ownHero.Hp < 30 ? p.ownHero : p.enemyHero, -hl);
+                    p.minionGetDamageOrHeal(p.ownHero.HealthPoints < 30 ? p.ownHero : p.enemyHero, -hl);
                 }
 
             }

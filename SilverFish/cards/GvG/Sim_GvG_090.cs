@@ -14,7 +14,7 @@ namespace HREngine.Bots
             int anz = 6;
             for (int i = 0; i < anz; i++)
             {
-                if (p.ownHero.Hp <= anz)
+                if (p.ownHero.HealthPoints <= anz)
                 {
                     p.minionGetDamageOrHeal(p.ownHero, 1);
                     continue;
@@ -24,7 +24,7 @@ namespace HREngine.Bots
                 {
                     temp.AddRange(p.ownMinions);
                 }
-                temp.Sort((a, b) => a.Hp.CompareTo(b.Hp));//destroys the weakest
+                temp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints));//destroys the weakest
 
                 foreach (Minion m in temp)
                 {

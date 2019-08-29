@@ -13,7 +13,7 @@ namespace HREngine.Bots
 		{
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
-            if (target.Hp > dmg || target.immune || target.divineshild)
+            if (target.HealthPoints > dmg || target.immune || target.divineshild)
             {
                 //this.owncarddraw++;
                 p.drawACard(CardDB.cardName.unknown, ownplay);

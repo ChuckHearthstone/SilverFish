@@ -14,7 +14,7 @@ namespace HREngine.Bots
 			Minion target = null;
 						
 			if (temp.Count > 0) target = p.searchRandomMinion(temp, searchmode.searchHighAttackLowHP);
-			if (target == null || ((ownplay) ? p.enemyHero : p.ownHero).Hp < 6) target = (ownplay) ? p.enemyHero : p.ownHero;
+			if (target == null || ((ownplay) ? p.enemyHero : p.ownHero).HealthPoints < 6) target = (ownplay) ? p.enemyHero : p.ownHero;
 			p.minionGetDamageOrHeal(target, 5);
         }
     }

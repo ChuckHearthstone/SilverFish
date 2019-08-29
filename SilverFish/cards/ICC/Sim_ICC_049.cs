@@ -13,7 +13,7 @@ namespace HREngine.Bots
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
 
             p.minionGetDamageOrHeal(target, dmg);
-            if (target.Hp > 0) target.poisonous = true;
+            if (target.HealthPoints > 0) target.poisonous = true;
         }
     }
 }

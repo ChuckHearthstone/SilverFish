@@ -995,8 +995,8 @@
                                 vaporize = false;
                                 if (enemySecretsOpenedStep.Contains(CardDB.cardIDEnum.EX1_554)) continue;
                                 int hpBalance = 0; //we need to know who has become the new target
-                                foreach (Minion m in p.enemyMinions) hpBalance += m.Hp;
-                                foreach (Minion m in old.enemyMinions) hpBalance -= m.Hp;
+                                foreach (Minion m in p.enemyMinions) hpBalance += m.HealthPoints;
+                                foreach (Minion m in old.enemyMinions) hpBalance -= m.HealthPoints;
                                 if (hpBalance < 0) snaketrap = true;
                                 continue;
                             case CardDB.cardIDEnum.EX1_611:  //freezingtrap
@@ -1041,7 +1041,7 @@
                 if (p.ownMinions.Count > 3) sacredtrial = true;
             }
 
-            if (p.enemyHero.Hp + p.enemyHero.armor < old.enemyHero.Hp + old.enemyHero.armor) eyeforaneye = true;
+            if (p.enemyHero.HealthPoints + p.enemyHero.armor < old.enemyHero.HealthPoints + old.enemyHero.armor) eyeforaneye = true;
             if (doneMove.actionType == actionEnum.useHeroPower) darttrap = true;
 
             foreach (CardDB.cardIDEnum id in enemySecretsOpenedStep)

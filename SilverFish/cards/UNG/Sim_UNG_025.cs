@@ -20,7 +20,7 @@ namespace HREngine.Bots
                 int surviving = 0;
                 foreach (Minion m in temp.ToArray())
                 {
-                    if (m.Hp < 1) continue;
+                    if (m.HealthPoints < 1) continue;
                     p.minionGetDamageOrHeal(m, 1);
                     i++;
                     surviving++;

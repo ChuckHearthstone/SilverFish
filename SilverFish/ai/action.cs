@@ -46,8 +46,8 @@ namespace HREngine.Bots
             this.target = targetM;
             this.penalty = pen;
             this.druidchoice = choice;
-            if (ownM != null) prevHpOwn = ownM.Hp;
-            if (targetM != null) prevHpTarget = targetM.Hp;
+            if (ownM != null) prevHpOwn = ownM.HealthPoints;
+            if (targetM != null) prevHpTarget = targetM.HealthPoints;
         }
         
         public Action(Action a)

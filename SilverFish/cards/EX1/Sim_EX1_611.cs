@@ -12,7 +12,7 @@ namespace HREngine.Bots
         public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
             p.minionReturnToHand(target, !ownplay, 2);
-            target.Hp = -100;
+            target.HealthPoints = -100;
         }
 
     }

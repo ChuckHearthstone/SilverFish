@@ -241,7 +241,7 @@
         {
             if (p.enemyHeroName == HeroEnum.mage)
             {
-                if (Probabilitymaker.Instance.enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_561)) p.ownHero.Hp = Math.Max(5, p.ownHero.Hp - 7);
+                if (Probabilitymaker.Instance.enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_561)) p.ownHero.HealthPoints = Math.Max(5, p.ownHero.HealthPoints - 7);
             }
 
             //play some cards (to not overdraw)
@@ -361,7 +361,7 @@
                             Minion target = new Minion();
                             foreach (Minion mnn in p.ownMinions)
                             {
-                                if (mnn.Hp <= 6 && (mnn.Hp + mnn.Angr) > (target.Hp + target.Angr)) target = mnn;
+                                if (mnn.HealthPoints <= 6 && (mnn.HealthPoints + mnn.Angr) > (target.HealthPoints + target.Angr)) target = mnn;
                             }
                             p.minionGetDamageOrHeal(target, 6);
                         }
@@ -466,10 +466,10 @@
                         //****************************************
                     //****************************************damage
                     case CardDB.cardName.frothingberserker:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 1, 0);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 1, 0);
                         continue;
                     case CardDB.cardName.gurubashiberserker:
-                        if (m.Hp >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 3, 0);
+                        if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 3, 0);
                         continue;
                     case CardDB.cardName.floatingwatcher:
                         if (p.enemyMaxMana >= p.enemyAnzCards * 2) p.minionGetBuffed(m, 2, 2);
@@ -478,25 +478,25 @@
                         if (p.enemyMinions.Count >= 3) p.minionGetArmor(p.enemyHero, 1);
                         continue;
                     case CardDB.cardName.gahzrilla:
-                        if (m.Hp >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, m.Angr * 2, 0);
+                        if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, m.Angr * 2, 0);
                         continue;
                     case CardDB.cardName.acolyteofpain:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
                         continue;
                     case CardDB.cardName.mechbearcat:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
                         continue;
                     case CardDB.cardName.grimpatron:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3)  p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_019), p.enemyMinions.Count, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3)  p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_019), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.dragonegg:
                         if (p.enemyAnzCards >= 3) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_022t), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.impgangboss:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_006t), p.enemyMinions.Count, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_006t), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.axeflinger:
-                        if (m.Hp >= 3 && p.enemyAnzCards >= 3) p.minionGetDamageOrHeal(p.ownHero, 2);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.minionGetDamageOrHeal(p.ownHero, 2);
                         continue;
                     case CardDB.cardName.brannbronzebeard:
                         p.minionGetBuffed(m, 0, 6);

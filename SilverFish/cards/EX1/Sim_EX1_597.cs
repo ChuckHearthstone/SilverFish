@@ -16,7 +16,7 @@ namespace HREngine.Bots
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
                 int posi = triggerEffectMinion.zonepos;
-                if (triggerEffectMinion.Hp == 1) posi--;
+                if (triggerEffectMinion.HealthPoints == 1) posi--;
                 p.minionGetDamageOrHeal(triggerEffectMinion, 1);
                 p.callKid(kid, posi, triggerEffectMinion.own);
                 triggerEffectMinion.stealth = false;

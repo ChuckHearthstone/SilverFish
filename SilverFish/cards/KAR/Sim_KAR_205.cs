@@ -21,7 +21,7 @@ namespace HREngine.Bots
             {
                 m.entitiyID = hc.entity;
                 m.Angr += hc.addattack;
-                m.Hp += hc.addHp;
+                m.HealthPoints += hc.addHp;
             }
             return true;
         }

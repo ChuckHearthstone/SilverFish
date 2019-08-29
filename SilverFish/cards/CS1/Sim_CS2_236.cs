@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.minionGetBuffed(target, 0, target.Hp);
+            p.minionGetBuffed(target, 0, target.HealthPoints);
 		}
 
 	}

@@ -18,7 +18,7 @@ namespace HREngine.Bots
                     if (m.playedThisTurn || m.playedPrevTurn)
                     {
                         if (PenalityManager.Instance.ownSummonFromDeathrattle.ContainsKey(m.name)) continue;
-                        p.evaluatePenality += (m.Hp * 2 + m.Angr * 2) * 2;
+                        p.evaluatePenality += (m.HealthPoints * 2 + m.Angr * 2) * 2;
                     }
                 }
                 p.allMinionsGetDestroyed();

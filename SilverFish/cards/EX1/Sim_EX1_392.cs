@@ -19,8 +19,8 @@ namespace HREngine.Bots
                     p.drawACard(CardDB.cardName.unknown, ownplay);
                 }
             }
-            if (ownplay && p.ownHero.Hp < 30) p.drawACard(CardDB.cardName.unknown, true);
-            if (!ownplay && p.enemyHero.Hp < 30) p.drawACard(CardDB.cardName.unknown, false);
+            if (ownplay && p.ownHero.HealthPoints < 30) p.drawACard(CardDB.cardName.unknown, true);
+            if (!ownplay && p.enemyHero.HealthPoints < 30) p.drawACard(CardDB.cardName.unknown, false);
 
 		}
 

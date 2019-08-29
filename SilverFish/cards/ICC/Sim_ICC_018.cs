@@ -14,13 +14,13 @@ namespace HREngine.Bots
             if (own.own)
             {
                 own.Angr += p.ownWeapon.Angr;
-                own.Hp += p.ownWeapon.Durability;
+                own.HealthPoints += p.ownWeapon.Durability;
                 own.maxHp += p.ownWeapon.Durability;
             }
             else
             {
                 own.Angr += p.enemyWeapon.Angr;
-                own.Hp += p.enemyWeapon.Durability;
+                own.HealthPoints += p.enemyWeapon.Durability;
                 own.maxHp += p.enemyWeapon.Durability;
             }
         }

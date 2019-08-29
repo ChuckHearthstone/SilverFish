@@ -77,7 +77,7 @@
                 havedonesomething = false;
                 foreach (Playfield p in temp)
                 {
-                    if (p.complete || p.ownHero.Hp <= 0)
+                    if (p.complete || p.ownHero.HealthPoints <= 0)
                     {
                         continue;
                     }
@@ -88,7 +88,7 @@
                         havedonesomething = true;
                         Playfield pf = new Playfield(p);
                         pf.doAction(a);
-                        if (pf.ownHero.Hp > 0) this.posmoves.Add(pf);
+                        if (pf.ownHero.HealthPoints > 0) this.posmoves.Add(pf);
                         if (totalboards > 0) this.calculated++;
                     }
 
@@ -231,7 +231,7 @@
 
                         if ((!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced))) // both are not special, if they are the same, dont add
                         {
-                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
+                            if (mnn.Angr == m.Angr && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 
@@ -242,7 +242,7 @@
                                 continue;
                             }
                             // same name -> test whether they are equal
-                            if (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
+                            if (mnn.Angr == m.Angr && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 
