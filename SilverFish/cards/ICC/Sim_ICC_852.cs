@@ -17,7 +17,7 @@ namespace HREngine.Bots
                     bool source = own.own;
                     own.setMinionToMinion(target);
                     own.own = source;
-                    own.Angr = 3;
+                    own.Attack = 3;
                     own.HealthPoints = 3;
                     own.maxHp = 3;
                     own.handcard.card.sim_card.onAuraStarts(p, own);

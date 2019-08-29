@@ -14,8 +14,8 @@ namespace HREngine.Bots
 			
 			if (temp.Count > 0)
 			{
-				if (ownplay) temp.Sort((a, b) => b.Angr.CompareTo(a.Angr));
-				else temp.Sort((a, b) => a.Angr.CompareTo(b.Angr));
+				if (ownplay) temp.Sort((a, b) => b.Attack.CompareTo(a.Attack));
+				else temp.Sort((a, b) => a.Attack.CompareTo(b.Attack));
 				
                 target = temp[0];
 				if (temp.Count > 1)

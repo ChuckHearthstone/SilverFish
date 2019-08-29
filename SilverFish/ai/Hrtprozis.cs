@@ -543,7 +543,7 @@ namespace HREngine.Bots
                 handcard = new Handmanager.Handcard(hc),
                 zonepos = id + 1,
                 entitiyID = hc.entity,
-                Angr = hc.card.Attack,
+                Attack = hc.card.Attack,
                 HealthPoints = hc.card.Health,
                 maxHp = hc.card.Health,
                 name = hc.card.name,
@@ -567,7 +567,7 @@ namespace HREngine.Bots
 
             if (m.name == CardDB.cardName.lightspawn && !m.silenced)
             {
-                m.Angr = m.HealthPoints;
+                m.Attack = m.HealthPoints;
             }
 
 
@@ -580,7 +580,7 @@ namespace HREngine.Bots
             help.logg(this.numMinionsPlayedThisTurn + " " + this.cardsPlayedThisTurn + " " + this.ueberladung + " " + this.lockedMana + " " + this.ownPlayerController);
 
             help.logg("ownhero:");
-            help.logg((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) + " " + this.ownHero.HealthPoints + " " + this.ownHero.maxHp + " " + this.ownHero.armor + " " + this.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + this.ownHero.entitiyID + " " + this.ownHero.Ready + " " + this.ownHero.numAttacksThisTurn + " " + this.ownHero.frozen + " " + this.ownHero.Angr + " " + this.ownHero.tempAttack + " " + this.enemyHero.stealth);
+            help.logg((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) + " " + this.ownHero.HealthPoints + " " + this.ownHero.maxHp + " " + this.ownHero.armor + " " + this.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + this.ownHero.entitiyID + " " + this.ownHero.Ready + " " + this.ownHero.numAttacksThisTurn + " " + this.ownHero.frozen + " " + this.ownHero.Attack + " " + this.ownHero.tempAttack + " " + this.enemyHero.stealth);
             help.logg("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             help.logg("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
             string secs = "";
@@ -607,7 +607,7 @@ namespace HREngine.Bots
             help.logg("OwnMinions:");
             foreach (Minion m in this.ownMinions)
             {
-                string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Angr + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready + " natt:" + m.numAttacksThisTurn;
+                string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Attack + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready + " natt:" + m.numAttacksThisTurn;
                 if (m.exhausted) mini += " ex";
                 if (m.taunt) mini += " tnt";
                 if (m.frozen) mini += " frz";
@@ -631,7 +631,7 @@ namespace HREngine.Bots
 
                 if (m.charge >= 1) mini += " chrg(" + m.charge + ")";
                 if (m.hChoice >= 1) mini += " hChoice(" + m.hChoice + ")";
-                if (m.AdjacentAngr >= 1) mini += " adjaattk(" + m.AdjacentAngr + ")";
+                if (m.AdjacentAttack >= 1) mini += " adjaattk(" + m.AdjacentAttack + ")";
                 if (m.tempAttack != 0) mini += " tmpattck(" + m.tempAttack + ")";
                 if (m.spellpower != 0) mini += " spllpwr(" + m.spellpower + ")";
 
@@ -663,7 +663,7 @@ namespace HREngine.Bots
             help.logg("EnemyMinions:");
             foreach (Minion m in this.enemyMinions)
             {
-                string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Angr + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready;// +" natt:" + m.numAttacksThisTurn;
+                string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Attack + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready;// +" natt:" + m.numAttacksThisTurn;
                 if (m.exhausted) mini += " ex";
                 if (m.taunt) mini += " tnt";
                 if (m.frozen) mini += " frz";
@@ -687,7 +687,7 @@ namespace HREngine.Bots
 
                 if (m.charge >= 1) mini += " chrg(" + m.charge + ")";
                 if (m.hChoice >= 1) mini += " hChoice(" + m.hChoice + ")";
-                if (m.AdjacentAngr >= 1) mini += " adjaattk(" + m.AdjacentAngr + ")";
+                if (m.AdjacentAttack >= 1) mini += " adjaattk(" + m.AdjacentAttack + ")";
                 if (m.tempAttack != 0) mini += " tmpattck(" + m.tempAttack + ")";
                 if (m.spellpower != 0) mini += " spllpwr(" + m.spellpower + ")";
 

@@ -22,7 +22,7 @@ namespace HREngine.Bots
                     p.callKid(m.handcard.card, pos, own.own);
                     temp = (own.own) ? p.ownMinions : p.enemyMinions;
                     temp[pos].HealthPoints = 1;
-                    temp[pos].Angr = 1;
+                    temp[pos].Attack = 1;
                 }
             }
         }

@@ -17,18 +17,18 @@ namespace HREngine.Bots
                 int ges = 1000;
                 foreach (Minion m in p.ownMinions)
                 {
-                    if (m.Angr + m.HealthPoints < ges)
+                    if (m.Attack + m.HealthPoints < ges)
                     {
                         tm = m;
-                        ges = m.Angr + m.HealthPoints;
+                        ges = m.Attack + m.HealthPoints;
                     }
                 }
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if (m.Angr + m.HealthPoints < ges)
+                    if (m.Attack + m.HealthPoints < ges)
                     {
                         tm = m;
-                        ges = m.Angr + m.HealthPoints;
+                        ges = m.Attack + m.HealthPoints;
                     }
                 }
                 if (ges <= 999)

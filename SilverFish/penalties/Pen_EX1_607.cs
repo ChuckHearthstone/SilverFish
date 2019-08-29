@@ -32,7 +32,7 @@ namespace HREngine.Bots
                     return 0;
                 }
 
-                if (!m.wounded && (m.Angr >= 4 || m.HealthPoints >= 5))
+                if (!m.wounded && (m.Attack >= 4 || m.HealthPoints >= 5))
                 {
                     foreach (Handmanager.Handcard hc in p.owncards)
                     {

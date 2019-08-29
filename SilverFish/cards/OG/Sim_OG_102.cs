@@ -14,15 +14,15 @@ namespace HREngine.Bots
 
             int tmpHp = target.HealthPoints;
             int tmpMHp = target.maxHp;
-            int tmpAngr = target.Angr;
+            int tmpAngr = target.Attack;
 
             target.HealthPoints = own.HealthPoints;
             target.maxHp = own.maxHp;
-            target.Angr = own.Angr;
+            target.Attack = own.Attack;
 
             own.HealthPoints = tmpHp;
             own.maxHp= tmpMHp;
-            own.Angr = tmpAngr;
+            own.Attack = tmpAngr;
         }
     }
 }

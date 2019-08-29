@@ -130,17 +130,17 @@
             foreach (Minion m in p.ownMinions)
             {
                 retval += m.HealthPoints * 1;
-                retval += m.Angr * 2;
+                retval += m.Attack * 2;
                 retval += m.handcard.card.rarity;
-                if (m.windfury) retval += m.Angr;
+                if (m.windfury) retval += m.Attack;
                 if (m.taunt) retval += 1;
                 if (!m.taunt && m.stealth && m.handcard.card.isSpecialMinion && !m.silenced) retval += 20;
-                if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Angr == 1 && m.HealthPoints == 1) retval -= 5;
+                if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Attack == 1 && m.HealthPoints == 1) retval -= 5;
                 if (p.ownMinions.Count > 1 && (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader || m.handcard.card.name == CardDB.cardName.fallenhero)) retval += 10;
                 if (m.handcard.card.name == CardDB.cardName.nerubianegg)
                 {
-                    if (m.Angr >= 1) retval += 2;
-                    if ((!m.taunt && m.Angr == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
+                    if (m.Attack >= 1) retval += 2;
+                    if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
                 }
                 retval += m.synergy;
             }
@@ -191,31 +191,31 @@
         public override int getEnemyMinionValue(Minion m, Playfield p)
         {
             int retval = 0;
-            if (p.enemyMinions.Count >= 4 || m.taunt || (m.handcard.card.targetPriority >= 1 && !m.silenced) || m.Angr >= 5)
+            if (p.enemyMinions.Count >= 4 || m.taunt || (m.handcard.card.targetPriority >= 1 && !m.silenced) || m.Attack >= 5)
             {
                 retval += m.HealthPoints;
                 if (!m.frozen && !(m.cantAttack && m.name != CardDB.cardName.argentwatchman))
                 {
-                    retval += m.Angr * 2;
-                    if (m.windfury) retval += 2 * m.Angr;
+                    retval += m.Attack * 2;
+                    if (m.windfury) retval += 2 * m.Attack;
                 }
                 if (m.taunt) retval += 5;
-                if (m.divineshild) retval += m.Angr;
+                if (m.divineshild) retval += m.Attack;
                 if (m.frozen) retval -= 1; // because its bad for enemy :D
                 if (m.poisonous)
                 {
                     retval += 4;
                     if (p.ownMinions.Count < p.enemyMinions.Count) retval += 10;
                 }
-                if (m.lifesteal) retval += m.Angr;
+                if (m.lifesteal) retval += m.Attack;
                 if (m.handcard.card.isSpecialMinion) retval += m.handcard.card.rarity;
             }
 
             retval += m.synergy;
             if (m.handcard.card.targetPriority >= 1 && !m.silenced) retval += m.handcard.card.targetPriority;
-            if (m.Angr >= 4) retval += 20;
-            if (m.Angr >= 7) retval += 50;
-            if (m.name == CardDB.cardName.nerubianegg && m.Angr <= 3 && !m.taunt) retval = 0;
+            if (m.Attack >= 4) retval += 20;
+            if (m.Attack >= 7) retval += 50;
+            if (m.name == CardDB.cardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
             return retval;
         }
 

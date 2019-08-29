@@ -2097,16 +2097,16 @@ namespace HREngine.Bots
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.aAt_equal: 
-                    if (a.own != null && a.own.Angr == cond.num) return true;
+                    if (a.own != null && a.own.Attack == cond.num) return true;
                     return false;
                 case param.aAt_notequal:
-                    if (a.own != null && a.own.Angr != cond.num) return true;
+                    if (a.own != null && a.own.Attack != cond.num) return true;
                     return false;
                 case param.aAt_greater:
-                    if (a.own != null && a.own.Angr > cond.num) return true;
+                    if (a.own != null && a.own.Attack > cond.num) return true;
                     return false;
                 case param.aAt_less:
-                    if (a.own != null && a.own.Angr < cond.num) return true;
+                    if (a.own != null && a.own.Attack < cond.num) return true;
                     return false;
                 case param.aHp_equal: 
                     if (a.own != null && a.prevHpOwn == cond.num) return true;
@@ -2121,16 +2121,16 @@ namespace HREngine.Bots
                     if (a.own != null && a.prevHpOwn < cond.num) return true;
                     return false;
                 case param.tAt_equal: 
-                    if (a.target != null && a.target.Angr == cond.num) return true;
+                    if (a.target != null && a.target.Attack == cond.num) return true;
                     return false;
                 case param.tAt_notequal:
-                    if (a.target != null && a.target.Angr != cond.num) return true;
+                    if (a.target != null && a.target.Attack != cond.num) return true;
                     return false;
                 case param.tAt_greater:
-                    if (a.target != null && a.target.Angr > cond.num) return true;
+                    if (a.target != null && a.target.Attack > cond.num) return true;
                     return false;
                 case param.tAt_less:
-                    if (a.target != null && a.target.Angr < cond.num) return true;
+                    if (a.target != null && a.target.Attack < cond.num) return true;
                     return false;
                 case param.tHp_equal: 
                     if (a.target != null && a.prevHpTarget == cond.num) return true;

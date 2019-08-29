@@ -13,13 +13,13 @@ namespace HREngine.Bots
             p.minionGetBuffed(own, 1, 1);
             if (own.own)
             {
-                own.Angr += p.ownWeapon.Angr;
+                own.Attack += p.ownWeapon.Angr;
                 own.HealthPoints += p.ownWeapon.Durability;
                 own.maxHp += p.ownWeapon.Durability;
             }
             else
             {
-                own.Angr += p.enemyWeapon.Angr;
+                own.Attack += p.enemyWeapon.Angr;
                 own.HealthPoints += p.enemyWeapon.Durability;
                 own.maxHp += p.enemyWeapon.Durability;
             }

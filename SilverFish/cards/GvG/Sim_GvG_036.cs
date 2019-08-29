@@ -27,7 +27,7 @@ namespace HREngine.Bots
                 {
                     if ((TAG_RACE)mnn.handcard.card.race == TAG_RACE.MECHANICAL)
                     {
-                        int s = mnn.maxHp + mnn.Angr;
+                        int s = mnn.maxHp + mnn.Attack;
                         if (s < sum)
                         {
                             t = mnn;

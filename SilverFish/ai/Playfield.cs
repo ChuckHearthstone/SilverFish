@@ -1185,9 +1185,9 @@
                 return false;
             }
 
-            if (this.ownHero.HealthPoints != p.ownHero.HealthPoints || this.ownHero.Angr != p.ownHero.Angr || this.ownHero.armor != p.ownHero.armor || this.ownHero.frozen != p.ownHero.frozen || this.ownHero.immuneWhileAttacking != p.ownHero.immuneWhileAttacking || this.ownHero.immune != p.ownHero.immune)
+            if (this.ownHero.HealthPoints != p.ownHero.HealthPoints || this.ownHero.Attack != p.ownHero.Attack || this.ownHero.armor != p.ownHero.armor || this.ownHero.frozen != p.ownHero.frozen || this.ownHero.immuneWhileAttacking != p.ownHero.immuneWhileAttacking || this.ownHero.immune != p.ownHero.immune)
             {
-                if (logg) Helpfunctions.Instance.logg("ownhero changed " + this.ownHero.HealthPoints + " " + p.ownHero.HealthPoints + " " + this.ownHero.Angr + " " + p.ownHero.Angr + " " + this.ownHero.armor + " " + p.ownHero.armor + " " + this.ownHero.frozen + " " + p.ownHero.frozen + " " + this.ownHero.immuneWhileAttacking + " " + p.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + p.ownHero.immune);
+                if (logg) Helpfunctions.Instance.logg("ownhero changed " + this.ownHero.HealthPoints + " " + p.ownHero.HealthPoints + " " + this.ownHero.Attack + " " + p.ownHero.Attack + " " + this.ownHero.armor + " " + p.ownHero.armor + " " + this.ownHero.frozen + " " + p.ownHero.frozen + " " + this.ownHero.immuneWhileAttacking + " " + p.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + p.ownHero.immune);
                 return false;
             }
             if (this.ownHero.Ready != p.ownHero.Ready || !this.ownWeapon.isEqual(p.ownWeapon) || this.ownHero.numAttacksThisTurn != p.ownHero.numAttacksThisTurn || this.ownHero.windfury != p.ownHero.windfury)
@@ -1227,7 +1227,7 @@
                 Minion dis = this.ownMinions[i]; Minion pis = p.ownMinions[i];
 
                 if (dis.name != pis.name) minionbool = false;
-                if (dis.Angr != pis.Angr || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
+                if (dis.Attack != pis.Attack || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
@@ -1250,7 +1250,7 @@
                 Minion dis = this.enemyMinions[i]; Minion pis = p.enemyMinions[i];
 
                 if (dis.name != pis.name) minionbool = false;
-                if (dis.Angr != pis.Angr || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
+                if (dis.Attack != pis.Attack || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
@@ -1319,7 +1319,7 @@
 
             if (this.ownHeroName != p.ownHeroName || this.enemyHeroName != p.enemyHeroName || this.enemySecretCount != p.enemySecretCount) return false;
 
-            if (this.ownHero.HealthPoints != p.ownHero.HealthPoints || this.ownHero.Angr != p.ownHero.Angr || this.ownHero.armor != p.ownHero.armor || this.ownHero.frozen != p.ownHero.frozen || this.ownHero.immuneWhileAttacking != p.ownHero.immuneWhileAttacking || this.ownHero.immune != p.ownHero.immune) return false;
+            if (this.ownHero.HealthPoints != p.ownHero.HealthPoints || this.ownHero.Attack != p.ownHero.Attack || this.ownHero.armor != p.ownHero.armor || this.ownHero.frozen != p.ownHero.frozen || this.ownHero.immuneWhileAttacking != p.ownHero.immuneWhileAttacking || this.ownHero.immune != p.ownHero.immune) return false;
 
             if (this.ownHero.Ready != p.ownHero.Ready || !this.ownWeapon.isEqual(p.ownWeapon) || this.ownHero.numAttacksThisTurn != p.ownHero.numAttacksThisTurn || this.ownHero.windfury != p.ownHero.windfury) return false;
 
@@ -1338,7 +1338,7 @@
                 //if (dis.entitiyID == 0) dis.entitiyID = pis.entitiyID;
                 //if (pis.entitiyID == 0) pis.entitiyID = dis.entitiyID;
                 if (dis.entitiyID != pis.entitiyID) minionbool = false;
-                if (dis.Angr != pis.Angr || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
+                if (dis.Attack != pis.Attack || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
@@ -1363,7 +1363,7 @@
                 //if (dis.entitiyID == 0) dis.entitiyID = pis.entitiyID;
                 //if (pis.entitiyID == 0) pis.entitiyID = dis.entitiyID;
                 if (dis.entitiyID != pis.entitiyID) minionbool = false;
-                if (dis.Angr != pis.Angr || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
+                if (dis.Attack != pis.Attack || dis.HealthPoints != pis.HealthPoints || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
@@ -1466,12 +1466,12 @@
 
                 foreach (Minion m in this.ownMinions)
                 {
-                    retval += m.entitiyID + m.Angr + m.HealthPoints + (m.taunt ? 1 : 0) + (m.divineshild ? 1 : 0) + (m.wounded ? 0 : 1);
+                    retval += m.entitiyID + m.Attack + m.HealthPoints + (m.taunt ? 1 : 0) + (m.divineshild ? 1 : 0) + (m.wounded ? 0 : 1);
                 }
                 retval *= 10000000;
             }
 
-            retval += 10000 * this.ownMinions.Count + 100 * this.enemyMinions.Count + 1000 * this.mana + 100000 * (this.ownHero.HealthPoints + this.enemyHero.HealthPoints) + this.owncards.Count + this.enemycarddraw + this.cardsPlayedThisTurn + this.mobsplayedThisTurn + this.ownHero.Angr + this.ownHero.armor + this.ownWeapon.Angr + this.enemyWeapon.Durability + this.spellpower + this.enemyspellpower + this.ownQuest.questProgress;
+            retval += 10000 * this.ownMinions.Count + 100 * this.enemyMinions.Count + 1000 * this.mana + 100000 * (this.ownHero.HealthPoints + this.enemyHero.HealthPoints) + this.owncards.Count + this.enemycarddraw + this.cardsPlayedThisTurn + this.mobsplayedThisTurn + this.ownHero.Attack + this.ownHero.armor + this.ownWeapon.Angr + this.enemyWeapon.Durability + this.spellpower + this.enemyspellpower + this.ownQuest.questProgress;
             return retval;
         }
 
@@ -1503,7 +1503,7 @@
             int mobscount = 0;
             foreach (Minion min in this.ownMinions)
             {
-                if (min.maxHp >= 2 && min.Angr >= 2) mobscount++;
+                if (min.maxHp >= 2 && min.Attack >= 2) mobscount++;
             }
 
             if (mobscount >= 3) useAOE = true;
@@ -1883,8 +1883,8 @@
                         tempval = 0;
                         if (m.Ready)
                         {
-                            tempval -= m.Angr - 1;
-                            if (m.windfury) tempval -= m.Angr - 1;
+                            tempval -= m.Attack - 1;
+                            if (m.windfury) tempval -= m.Attack - 1;
                         }
                         else tempval = 1000;
                         places[i] = tempval;
@@ -2012,10 +2012,10 @@
 
                     if (m.Ready)
                     {
-                        tempval = m.Angr;
+                        tempval = m.Attack;
                         if (m.windfury && m.numAttacksThisTurn == 0)
                         {
-                            tempval += m.Angr;
+                            tempval += m.Attack;
                             whirlwindplaces[i] = 2;
                         }
                     }
@@ -2126,7 +2126,7 @@
                 foreach (Minion m in this.ownMinions)
                 {
                     places[i] = 0;
-                    tempval = m.maxHp * 2 + m.Angr;
+                    tempval = m.maxHp * 2 + m.Attack;
                     if (m.divineshild) tempval = tempval * 3 / 2;
                     if (!m.silenced) tempval += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
                     places[i] = tempval;
@@ -2181,7 +2181,7 @@
                 foreach (Minion m in this.ownMinions)
                 {
                     places[i] = 0;
-                    tempval = m.Angr * 2 + m.maxHp;
+                    tempval = m.Attack * 2 + m.maxHp;
                     if (m.taunt)
                     {
                         tempval += 6;
@@ -2274,8 +2274,8 @@
                 {
                     if (m.Ready)
                     {
-                        lethalMissing -= m.Angr;
-                        if (m.windfury && m.numAttacksThisTurn == 0) lethalMissing -= m.Angr;
+                        lethalMissing -= m.Attack;
+                        if (m.windfury && m.numAttacksThisTurn == 0) lethalMissing -= m.Attack;
                     }
                 }
             }
@@ -2340,8 +2340,8 @@
                     case CardDB.cardName.whiteknight: if (!m.silenced) continue; break;
                     case CardDB.cardName.humongousrazorleaf: if (!m.silenced) continue; break;
                 }
-                ghd += m.Angr;
-                if (m.windfury) ghd += m.Angr;
+                ghd += m.Attack;
+                if (m.windfury) ghd += m.Attack;
             }
 
             if (this.enemyWeapon.Durability > 0 && !this.enemyHero.frozen)
@@ -2373,7 +2373,7 @@
                                 int mAngr = 1000;
                                 foreach (Minion m in this.enemyMinions)
                                 {
-                                    if (!m.frozen && m.Angr < mAngr && m.Angr > 0) mAngr = m.Angr; //take the weakest
+                                    if (!m.frozen && m.Attack < mAngr && m.Attack > 0) mAngr = m.Attack; //take the weakest
                                 }
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
@@ -2384,7 +2384,7 @@
                                 int mAngr = 1000;
                                 foreach (Minion m in this.enemyMinions)
                                 {
-                                    if (!m.frozen && m.Angr < mAngr && m.Angr > 0) mAngr = m.Angr; //take the weakest
+                                    if (!m.frozen && m.Attack < mAngr && m.Attack > 0) mAngr = m.Attack; //take the weakest
                                 }
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
@@ -2399,9 +2399,9 @@
                                 int mCharge = 0;
                                 foreach (Minion m in this.enemyMinions)
                                 {
-                                    if (!m.frozen && m.Angr < mAngr && m.Angr > 0)
+                                    if (!m.frozen && m.Attack < mAngr && m.Attack > 0)
                                     {
-                                        mAngr = m.Angr; //take the weakest
+                                        mAngr = m.Attack; //take the weakest
                                         mCharge = m.charge;
                                     }
                                 }
@@ -2420,7 +2420,7 @@
                                 int mAngr = 1000;
                                 foreach (Minion m in this.enemyMinions)
                                 {
-                                    if (!m.frozen && m.Angr < mAngr && m.Angr > 0) mAngr = m.Angr; //take the weakest
+                                    if (!m.frozen && m.Attack < mAngr && m.Attack > 0) mAngr = m.Attack; //take the weakest
                                 }
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
@@ -2441,8 +2441,8 @@
                                     }
                                     if (m.HealthPoints < 3)
                                     {
-                                        losshd += m.Angr;
-                                        if (m.windfury) losshd += m.Angr;
+                                        losshd += m.Attack;
+                                        if (m.windfury) losshd += m.Attack;
                                     }
                                 }
                                 this.guessingHeroHP += losshd;
@@ -2471,8 +2471,8 @@
                     {
                         case CardDB.cardName.icehowl: if (!m.silenced) continue; break;
                     }
-                    totalEnemyDamage += m.Angr;
-                    if (m.windfury) totalEnemyDamage += m.Angr;
+                    totalEnemyDamage += m.Attack;
+                    if (m.windfury) totalEnemyDamage += m.Attack;
                 }
             }
 
@@ -2601,7 +2601,7 @@
                             Minion mnn = this.enemyMinions[0];
                             for (int i = 1; i < count; i++ )
                             {
-                                if (this.enemyMinions[i].Angr < mnn.Angr) mnn = this.enemyMinions[i]; //take the weakest
+                                if (this.enemyMinions[i].Attack < mnn.Attack) mnn = this.enemyMinions[i]; //take the weakest
                             }
                             minionReturnToHand(mnn, false, 0);
                             continue;
@@ -2625,9 +2625,9 @@
                             Minion mnn = this.enemyMinions[0];
                             for (int i = 1; i < count; i++ )
                             {
-                                if (this.enemyMinions[i].Angr > mnn.Angr) mnn = this.enemyMinions[i]; //take the strongest
+                                if (this.enemyMinions[i].Attack > mnn.Attack) mnn = this.enemyMinions[i]; //take the strongest
                             }
-                            mnn.Angr = 0;
+                            mnn.Attack = 0;
                             this.evaluatePenality -= this.enemyMinions.Count;// the more the enemy minions has on board, the more the posibility to destroy something other :D
                             continue;
                         }
@@ -2679,7 +2679,7 @@
                             Minion mnn = this.enemyMinions[0];
                             for (int i = 1; i < count; i++)
                             {
-                                if (this.enemyMinions[i].Angr < mnn.Angr) mnn = this.enemyMinions[i]; //take the weakest
+                                if (this.enemyMinions[i].Attack < mnn.Attack) mnn = this.enemyMinions[i]; //take the weakest
                             }
                             minionGetDestroyed(mnn);
                             continue;
@@ -2692,7 +2692,7 @@
                             Minion mnn = this.ownMinions[0];
                             for (int i = 1; i < count; i++)
                             {
-                                if (this.ownMinions[i].Angr < mnn.Angr) mnn = this.ownMinions[i]; //take the weakest
+                                if (this.ownMinions[i].Attack < mnn.Attack) mnn = this.ownMinions[i]; //take the weakest
                             }
                             drawACard(mnn.name, true);
                             drawACard(mnn.name, true);
@@ -2716,9 +2716,9 @@
                                 Minion mnn = this.enemyMinions[0];
                                 for (int i = 1; i < count; i++)
                                 {
-                                    if (this.enemyMinions[i].Angr < mnn.Angr) mnn = this.enemyMinions[i]; //take the weakest
+                                    if (this.enemyMinions[i].Attack < mnn.Attack) mnn = this.enemyMinions[i]; //take the weakest
                                 }
-                                dmg = mnn.Angr;
+                                dmg = mnn.Attack;
                             }
                             if (this.enemyWeapon.Angr != 0) dmgW = this.enemyWeapon.Angr;
                             else if (prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) dmgW = prozis.penman.HeroPowerEquipWeapon[this.enemyHeroAblility.card.name];
@@ -3248,7 +3248,7 @@
             {
                 if (defender.isHero)
                 {
-                    int dmg = attacker.Angr;
+                    int dmg = attacker.Attack;
                     switch ((attacker.own ? this.ownWeapon.name : this.enemyWeapon.name))
                     {
                         case CardDB.cardName.massiveruneblade:
@@ -3266,7 +3266,7 @@
                 }
                 else
                 {
-                    defender.getDamageOrHeal(attacker.Angr, this, true, false);
+                    defender.getDamageOrHeal(attacker.Attack, this, true, false);
                     if (oldHp > defender.HealthPoints)
                     {
                         if (attacker.poisonous) minionGetDestroyed(defender);
@@ -3284,7 +3284,7 @@
                         }
                     }
 
-                    int enem_attack = defender.Angr;
+                    int enem_attack = defender.Attack;
                     if (!this.ownHero.immuneWhileAttacking)
                     {
                         oldHp = attacker.HealthPoints;
@@ -3318,10 +3318,10 @@
             }
 
 
-            if (logging) Helpfunctions.Instance.logg(".attck with" + attacker.name + " A " + attacker.Angr + " H " + attacker.HealthPoints);
+            if (logging) Helpfunctions.Instance.logg(".attck with" + attacker.name + " A " + attacker.Attack + " H " + attacker.HealthPoints);
 
-            int attackerAngr = attacker.Angr;
-            int defAngr = defender.Angr;
+            int attackerAngr = attacker.Attack;
+            int defAngr = defender.Attack;
 
             //trigger attack ---------------------------
             this.triggerAMinionIsGoingToAttack(attacker, defender);
@@ -3554,7 +3554,7 @@
                 if (this.ownWeapon.name == CardDB.cardName.gorehowl && !target.isHero)
                 {
                     this.ownWeapon.Angr--;
-                    hero.Angr--;
+                    hero.Attack--;
                 }
                 else
                 {
@@ -3566,7 +3566,7 @@
                 if (enemyWeapon.card.name == CardDB.cardName.gorehowl && !target.isHero)
                 {
                     this.enemyWeapon.Angr--;
-                    hero.Angr--;
+                    hero.Attack--;
                 }
                 else
                 {
@@ -3705,7 +3705,7 @@
                     {
                         this.ownWeapon.Angr += hc.addattack;
                         this.ownWeapon.Durability += hc.addHp;
-                        this.ownHero.Angr += hc.addattack;
+                        this.ownHero.Attack += hc.addattack;
                     }
                     this.doDmgTriggers();
                     
@@ -3836,7 +3836,7 @@
                         ownWeapon.card.sim_card.onDeathrattle(this, m);
                     }
 
-                    this.ownHero.Angr = Math.Max(0, this.ownHero.Angr - this.ownWeapon.Angr);
+                    this.ownHero.Attack = Math.Max(0, this.ownHero.Attack - this.ownWeapon.Angr);
                     this.ownWeapon = new Weapon();
                     this.ownHero.windfury = false;
 
@@ -3874,7 +3874,7 @@
                         enemyWeapon.card.sim_card.onDeathrattle(this, m);
                     }
 
-                    this.enemyHero.Angr = Math.Max(0, this.enemyHero.Angr - this.enemyWeapon.Angr);
+                    this.enemyHero.Attack = Math.Max(0, this.enemyHero.Attack - this.enemyWeapon.Angr);
                     this.enemyWeapon = new Weapon();
                     this.enemyHero.windfury = false;
 
@@ -4210,7 +4210,7 @@
             switch (m.name)
             {
                 case CardDB.cardName.alleyarmorsmith:
-                    if (!m.silenced) this.minionGetArmor(m.own ? this.ownHero : this.enemyHero, m.Angr);
+                    if (!m.silenced) this.minionGetArmor(m.own ? this.ownHero : this.enemyHero, m.Attack);
                     break;
             }
             if (m.lifesteal && isAttacker && dmgDone > 0)
@@ -4548,7 +4548,7 @@
                 this.ueberladung = 0;
 
                 this.enemyHero.frozen = false;
-                this.ownHero.Angr = this.ownWeapon.Angr;
+                this.ownHero.Attack = this.ownWeapon.Angr;
                 this.ownHero.numAttacksThisTurn = 0;
                 this.ownAbilityReady = true;
                 this.ownHero.updateReadyness();
@@ -4559,7 +4559,7 @@
                 this.enemyMaxMana = Math.Min(10, this.enemyMaxMana + 1);
                 this.mana = this.enemyMaxMana; 
                 this.ownHero.frozen = false;
-                this.enemyHero.Angr = this.enemyWeapon.Angr;
+                this.enemyHero.Attack = this.enemyWeapon.Angr;
                 this.enemyHero.numAttacksThisTurn = 0;
                 this.enemyAbilityReady = true;
                 this.enemyHero.updateReadyness();
@@ -5364,7 +5364,7 @@
                 foreach (Minion m in this.ownMinions)
                 {
                     //delete adjacent buffs
-                    this.minionGetAdjacentBuff(m, -m.AdjacentAngr, 0);
+                    this.minionGetAdjacentBuff(m, -m.AdjacentAttack, 0);
                     m.cantBeTargetedBySpellsOrHeroPowers = false;
 
                     //kill it!
@@ -5405,7 +5405,7 @@
                 foreach (Minion m in this.enemyMinions)
                 {
                     //delete adjacent buffs
-                    this.minionGetAdjacentBuff(m, -m.AdjacentAngr, 0);
+                    this.minionGetAdjacentBuff(m, -m.AdjacentAttack, 0);
                     m.cantBeTargetedBySpellsOrHeroPowers = false;
 
                     //kill it!
@@ -5649,13 +5649,13 @@
             m.entitiyID = hc.entity;
             if (this.ownCrystalCore > 0)
             {
-                m.Angr = ownCrystalCore;
+                m.Attack = ownCrystalCore;
                 m.HealthPoints = ownCrystalCore;
                 m.maxHp = ownCrystalCore;
             }
             else
             {
-                m.Angr = hc.card.Attack + hc.addattack;
+                m.Attack = hc.card.Attack + hc.addattack;
                 m.HealthPoints = hc.card.Health + hc.addHp;
                 m.maxHp = hc.card.Health;
             }
@@ -5680,14 +5680,14 @@
             switch (m.name)
             {
                 case CardDB.cardName.lightspawn:
-                    m.Angr = m.HealthPoints;
+                    m.Attack = m.HealthPoints;
                     break;
             }
             m.updateReadyness();
 
             if (m.name == CardDB.cardName.lightspawn)
             {
-                m.Angr = m.HealthPoints;
+                m.Attack = m.HealthPoints;
             }
 
             if (own) m.synergy = prozis.penman.getClassRacePriorityPenality(this.ownHeroStartClass, (TAG_RACE)m.handcard.card.race);
@@ -5788,7 +5788,7 @@
                 this.enemyWeapon.equip(c);
             }
 
-            hero.Angr += c.Attack;
+            hero.Attack += c.Attack;
             hero.windfury = c.windfury;
             hero.updateReadyness();
             hero.immuneWhileAttacking = (c.name == CardDB.cardName.gladiatorslongbow);
@@ -6187,7 +6187,7 @@
         {
             if (m.own)
             {
-                if (m.playedThisTurn && m.charge == 0) this.lostDamage += m.HealthPoints * 2 + m.Angr * 2 + (m.windfury ? m.Angr : 0) + ((m.handcard.card.isSpecialMinion && !m.taunt) ? 20 : 0);
+                if (m.playedThisTurn && m.charge == 0) this.lostDamage += m.HealthPoints * 2 + m.Attack * 2 + (m.windfury ? m.Attack : 0) + ((m.handcard.card.isSpecialMinion && !m.taunt) ? 20 : 0);
             }
 
             if (m.HealthPoints > 0)
@@ -6287,7 +6287,7 @@
                 this.tempTrigger.enemyMininsChanged = true;
             }
 
-            if (logging) Helpfunctions.Instance.logg("minion got sheep" + m.name + " " + m.Angr);
+            if (logging) Helpfunctions.Instance.logg("minion got sheep" + m.name + " " + m.Attack);
         }
 
         public CardDB.Card getRandomCardForManaMinion(int manaCost)
@@ -6413,19 +6413,19 @@
         public void minionGetTempBuff(Minion m, int tempAttack, int tempHp)
         {
             if (!m.silenced && m.name == CardDB.cardName.lightspawn) return;
-            if (tempAttack < 0 && -tempAttack > m.Angr)
+            if (tempAttack < 0 && -tempAttack > m.Attack)
             {
-                tempAttack = -m.Angr;
+                tempAttack = -m.Attack;
             }
             m.tempAttack += tempAttack;
-            m.Angr += tempAttack;
+            m.Attack += tempAttack;
         }
 
         public void minionGetAdjacentBuff(Minion m, int angr, int vert)
         {
             if (!m.silenced && m.name == CardDB.cardName.lightspawn) return;
-            m.Angr += angr;
-            m.AdjacentAngr += angr;
+            m.Attack += angr;
+            m.AdjacentAttack += angr;
         }
 
         public void allMinionOfASideGetBuffed(bool own, int attackbuff, int hpbuff)
@@ -6439,7 +6439,7 @@
 
         public void minionGetBuffed(Minion m, int attackbuff, int hpbuff)
         {
-            if (attackbuff != 0) m.Angr = Math.Max(0, m.Angr + attackbuff);
+            if (attackbuff != 0) m.Attack = Math.Max(0, m.Attack + attackbuff);
 
             if (hpbuff != 0)
             {
@@ -6462,7 +6462,7 @@
 
             if (m.name == CardDB.cardName.lightspawn && !m.silenced)
             {
-                m.Angr = m.HealthPoints;
+                m.Attack = m.HealthPoints;
             }
         }
         
@@ -6660,8 +6660,8 @@
                 foreach (Minion m in this.ownMinions)
                 {
                     if (!m.Ready || m.frozen) continue;
-                    dmg += m.Angr;
-                    if (m.windfury) dmg += m.Angr;
+                    dmg += m.Attack;
+                    if (m.windfury) dmg += m.Attack;
                 }
             }
             else
@@ -6677,7 +6677,7 @@
                     foreach (Minion m in om)
                     {
                         if (!m.Ready || m.frozen) continue;
-                        if (m.Angr < d.HealthPoints)
+                        if (m.Attack < d.HealthPoints)
                         {
                             omn.Add(m);
                             continue;
@@ -6691,7 +6691,7 @@
                             }
                             else
                             {
-                                if (m.Angr < bm.Angr)
+                                if (m.Attack < bm.Attack)
                                 {
                                     omn.Add(bm);
                                     bm = m;
@@ -6720,8 +6720,8 @@
                 {
                     foreach (Minion m in om)
                     {
-                        dmg += m.Angr;
-                        if (m.windfury) dmg += m.Angr;
+                        dmg += m.Attack;
+                        if (m.windfury) dmg += m.Attack;
                     }
                 }
             }
@@ -6737,8 +6737,8 @@
             foreach (Minion m in this.ownMinions)
             {
                 if (m.frozen) continue;
-                dmg += m.Angr;
-                if (m.windfury) dmg += m.Angr;
+                dmg += m.Attack;
+                if (m.windfury) dmg += m.Attack;
             }
             if (this.enemyHero.HealthPoints > dmg) return false;
             else return true;
@@ -6747,7 +6747,7 @@
         public void minionSetAngrToX(Minion m, int newAngr)
         {
             if (!m.silenced && m.name == CardDB.cardName.lightspawn) return;
-            m.Angr = newAngr;
+            m.Attack = newAngr;
             m.tempAttack = 0;
             this.minionGetOrEraseAllAreaBuffs(m, true);
         }
@@ -6764,7 +6764,7 @@
 
         public void minionSetAngrToHP(Minion m)
         {
-            m.Angr = m.HealthPoints;
+            m.Attack = m.HealthPoints;
             m.tempAttack = 0;
             this.minionGetOrEraseAllAreaBuffs(m, true);
 
@@ -6774,8 +6774,8 @@
         {
             
             bool woundedbef = m.wounded;
-            int temp = m.Angr;
-            m.Angr = m.HealthPoints;
+            int temp = m.Attack;
+            m.Attack = m.HealthPoints;
             m.HealthPoints = temp;
             m.maxHp = temp;
             m.wounded = false;
@@ -6848,7 +6848,7 @@
             }
 
             List<Minion> temp = (ownSide) ? new List<Minion>(this.ownMinions) : new List<Minion>(this.enemyMinions);
-            temp.Sort((a, b) => { int tmp = a.HealthPoints.CompareTo(b.HealthPoints); return tmp == 0 ? a.Angr - b.Angr : tmp; }); 
+            temp.Sort((a, b) => { int tmp = a.HealthPoints.CompareTo(b.HealthPoints); return tmp == 0 ? a.Attack - b.Attack : tmp; }); 
 
             int border = 1;
             for (int pos = 0; pos < temp.Count; pos++)
@@ -7108,36 +7108,36 @@
                         }
                         continue;
                     case searchmode.searchLowestAttack:
-                        if (m.Angr < value)
+                        if (m.Attack < value)
                         {
                             ret = m;
-                            value = m.Angr;
+                            value = m.Attack;
                         }
                         continue;
                     case searchmode.searchHighestAttack:
-                        if (m.Angr > value)
+                        if (m.Attack > value)
                         {
                             ret = m;
-                            value = m.Angr;
+                            value = m.Attack;
                         }
                         continue;
                     case searchmode.searchHighAttackLowHP:
-                        if (m.Angr / m.HealthPoints > value)
+                        if (m.Attack / m.HealthPoints > value)
                         {
                             ret = m;
-                            value = m.Angr / m.HealthPoints;
+                            value = m.Attack / m.HealthPoints;
                         }
                         continue;
                     case searchmode.searchHighHPLowAttack:
-                        if (m.Angr == 0)
+                        if (m.Attack == 0)
                         {
                             if (ret == null) ret = m;
                             continue;
                         }
-                        if (m.HealthPoints / m.Angr > value)
+                        if (m.HealthPoints / m.Attack > value)
                         {
                             ret = m;
-                            value = m.HealthPoints / m.Angr;
+                            value = m.HealthPoints / m.Attack;
                         }
                         continue;
                     case searchmode.searchLowestCost:
@@ -7181,59 +7181,59 @@
                         {
                             ret = m;
                             value = m.HealthPoints;
-                            retVal = m.Angr;
+                            retVal = m.Attack;
                         }
-                        else if (m.HealthPoints == value && retVal < m.Angr) ret = m;
+                        else if (m.HealthPoints == value && retVal < m.Attack) ret = m;
                         continue;
                     case searchmode.searchLowestAttack:
-                        if (m.Angr < value)
+                        if (m.Attack < value)
                         {
                             ret = m;
-                            value = m.Angr;
+                            value = m.Attack;
                             retVal = m.HealthPoints;
                         }
-                        else if (m.Angr == value && retVal < m.HealthPoints) ret = m;
+                        else if (m.Attack == value && retVal < m.HealthPoints) ret = m;
                         continue;
                     case searchmode.searchHighestAttack:
-                        if (m.Angr > value)
+                        if (m.Attack > value)
                         {
                             ret = m;
-                            value = m.Angr;
+                            value = m.Attack;
                             retVal = m.HealthPoints;
                         }
-                        else if (m.Angr == value && retVal < m.HealthPoints) ret = m;
+                        else if (m.Attack == value && retVal < m.HealthPoints) ret = m;
                         continue;
                     case searchmode.searchHighAttackLowHP:
-                        if (m.Angr / m.HealthPoints > value)
+                        if (m.Attack / m.HealthPoints > value)
                         {
                             ret = m;
-                            value = m.Angr / m.HealthPoints;
+                            value = m.Attack / m.HealthPoints;
                             retVal = m.HealthPoints;
                         }
-                        else if (m.Angr / m.HealthPoints == value && retVal < m.HealthPoints) ret = m;
+                        else if (m.Attack / m.HealthPoints == value && retVal < m.HealthPoints) ret = m;
                         continue;
                     case searchmode.searchHighHPLowAttack:
-                        if (m.Angr == 0)
+                        if (m.Attack == 0)
                         {
                             if (ret == null) ret = m;
                             continue;
                         }
-                        if (m.HealthPoints / m.Angr > value)
+                        if (m.HealthPoints / m.Attack > value)
                         {
                             ret = m;
-                            value = m.HealthPoints / m.Angr;
+                            value = m.HealthPoints / m.Attack;
                             retVal = m.HealthPoints;
                         }
-                        else if (m.Angr / m.HealthPoints == value && retVal < m.HealthPoints) ret = m;
+                        else if (m.Attack / m.HealthPoints == value && retVal < m.HealthPoints) ret = m;
                         continue;
                     default: //==searchHighestHP
                         if (m.HealthPoints > value)
                         {
                             ret = m;
                             value = m.HealthPoints;
-                            retVal = m.Angr;
+                            retVal = m.Attack;
                         }
-                        else if (m.HealthPoints == value && retVal < m.Angr) ret = m;
+                        else if (m.HealthPoints == value && retVal < m.Attack) ret = m;
                         continue;
                 }
             }
@@ -7296,13 +7296,13 @@
 
             foreach (Minion m in this.ownMinions)
             {
-                Helpfunctions.Instance.logg("name,ang, hp, maxhp: " + m.name + ", " + m.Angr + ", " + m.HealthPoints + ", " + m.maxHp);
+                Helpfunctions.Instance.logg("name,ang, hp, maxhp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints + ", " + m.maxHp);
             }
 
             Helpfunctions.Instance.logg("ENEMY MINIONS############");
             foreach (Minion m in this.enemyMinions)
             {
-                Helpfunctions.Instance.logg("name,ang, hp: " + m.name + ", " + m.Angr + ", " + m.HealthPoints);
+                Helpfunctions.Instance.logg("name,ang, hp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints);
             }
         }
 
@@ -7317,7 +7317,7 @@
 
             Helpfunctions.Instance.logg("ownhero: ");
             Helpfunctions.Instance.logg("ownherohp: " + this.ownHero.HealthPoints + " + " + this.ownHero.armor);
-            Helpfunctions.Instance.logg("ownheroattac: " + this.ownHero.Angr);
+            Helpfunctions.Instance.logg("ownheroattac: " + this.ownHero.Attack);
             Helpfunctions.Instance.logg("ownheroweapon: " + this.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             Helpfunctions.Instance.logg("ownherostatus: frozen" + this.ownHero.frozen + " ");
             Helpfunctions.Instance.logg("enemyherohp: " + this.enemyHero.HealthPoints + " + " + this.enemyHero.armor + ((this.enemyHero.immune) ? " immune" : ""));
@@ -7331,7 +7331,7 @@
 
             foreach (Minion m in this.ownMinions)
             {
-                Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Angr + ", " + m.HealthPoints + " " + m.entitiyID);
+                Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
             }
 
             if (this.enemyMinions.Count > 0)
@@ -7339,7 +7339,7 @@
                 Helpfunctions.Instance.logg("ENEMY MINIONS############ " + this.enemyMinions.Count);
                 foreach (Minion m in this.enemyMinions)
                 {
-                    Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Angr + ", " + m.HealthPoints + " " + m.entitiyID);
+                    Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
                 }
             }
 
@@ -7371,7 +7371,7 @@
             retval += "\r\n" + ("pen\t" + this.evaluatePenality);
             retval += "\r\n" + ("mana\t" + this.mana + "/" + this.ownMaxMana);
             retval += "\r\n" + ("cardsplayed : handsize : enemyhand\t" + this.cardsPlayedThisTurn + ":" + this.owncards.Count + ":" + this.enemyAnzCards);
-            retval += "\r\n" + ("Hp : armor : Atk ownhero\t" + this.ownHero.HealthPoints + ":" + this.ownHero.armor + ":" + this.ownHero.Angr + ((this.ownHero.immune) ? ":immune" : ""));
+            retval += "\r\n" + ("Hp : armor : Atk ownhero\t" + this.ownHero.HealthPoints + ":" + this.ownHero.armor + ":" + this.ownHero.Attack + ((this.ownHero.immune) ? ":immune" : ""));
             retval += "\r\n" + ("Atk : Dur : Name : IDe : poison ownWeapon\t" + this.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             retval += "\r\n" + ("ownHero.frozen\t" + this.ownHero.frozen);
             retval += "\r\n" + ("Hp : armor enemyhero\t" + this.enemyHero.HealthPoints + ":" + this.enemyHero.armor + ((this.enemyHero.immune) ? ":immune" : ""));
@@ -7394,7 +7394,7 @@
             for (int i = 0; i < this.ownMinions.Count; i++)
             {
                 Minion m = this.ownMinions[i];
-                retval += "\r\n" + (i + 1) + " OWN MINION\t" + m.zonepos + " " + m.entitiyID + ":" + m.name + " " + m.Angr + " " + m.HealthPoints;
+                retval += "\r\n" + (i + 1) + " OWN MINION\t" + m.zonepos + " " + m.entitiyID + ":" + m.name + " " + m.Attack + " " + m.HealthPoints;
             }
 
             if (this.enemyMinions.Count > 0)
@@ -7403,7 +7403,7 @@
                 for (int i = 0; i < this.enemyMinions.Count; i++)
                 {
                     Minion m = this.enemyMinions[i];
-                    retval += "\r\n" + (i + 1) + " ENEMY MINION\t" + m.zonepos + " " + m.entitiyID + ":" + m.name + " " + m.Angr + " " + m.HealthPoints;
+                    retval += "\r\n" + (i + 1) + " ENEMY MINION\t" + m.zonepos + " " + m.entitiyID + ":" + m.name + " " + m.Attack + " " + m.HealthPoints;
                 }
             }
 

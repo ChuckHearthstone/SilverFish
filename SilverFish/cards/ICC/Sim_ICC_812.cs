@@ -11,7 +11,7 @@ namespace HREngine.Bots
         public override void onDeathrattle(Playfield p, Minion m)
         {
             CardDB.cardIDEnum cId = CardDB.cardIDEnum.None;
-            for (int i = m.Angr - 1; i >= 0; i--)
+            for (int i = m.Attack - 1; i >= 0; i--)
             {
                 cId = p.prozis.getDeckCardsForCost(i);
                 if (cId != CardDB.cardIDEnum.None) break;

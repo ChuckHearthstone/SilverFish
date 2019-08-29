@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 int tmp = m.anzGotDmg;
                 m.anzGotDmg = 0;
-                p.minionGetBuffed(m, m.Angr * (2 ^ tmp) - m.Angr, 0);
+                p.minionGetBuffed(m, m.Attack * (2 ^ tmp) - m.Attack, 0);
             }
         }
     }

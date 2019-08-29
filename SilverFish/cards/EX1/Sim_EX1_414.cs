@@ -10,12 +10,12 @@ namespace HREngine.Bots
 //    ansturm/, wutanfall:/ +6 angriff
         public override void onEnrageStart(Playfield p, Minion m)
         {
-            m.Angr+=6;
+            m.Attack+=6;
         }
 
         public override void onEnrageStop(Playfield p, Minion m)
         {
-            m.Angr-=6;
+            m.Attack-=6;
         }
 
 	}

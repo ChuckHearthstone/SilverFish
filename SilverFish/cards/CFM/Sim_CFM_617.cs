@@ -13,7 +13,7 @@ namespace HREngine.Bots
             List<Minion> temp = (m.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion mnn in temp)
             {
-                if (mnn.Angr > 4)
+                if (mnn.Attack > 4)
                 {
                     p.minionGetBuffed(m, 2, 2);
                     break;

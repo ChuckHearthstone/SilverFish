@@ -10,12 +10,12 @@ namespace HREngine.Bots
 		
         public override void onEnrageStart(Playfield p, Minion m)
         {
-            m.Angr += 3;
+            m.Attack += 3;
         }
 
         public override void onEnrageStop(Playfield p, Minion m)
         {
-            m.Angr -= 3;
+            m.Attack -= 3;
         }
 	}
 }

@@ -10,13 +10,13 @@ namespace HREngine.Bots
 //    wutanfall:/ windzorn/ und +1 angriff
         public override void onEnrageStart(Playfield p, Minion m)
         {
-            m.Angr++;
+            m.Attack++;
             p.minionGetWindfurry(m);
         }
 
         public override void onEnrageStop(Playfield p, Minion m)
         {
-            m.Angr--;
+            m.Attack--;
             m.windfury = false;
             if (m.numAttacksThisTurn == 1) m.Ready = false;
         }

@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                if (triggerEffectMinion.Angr != 7) triggerEffectMinion.Angr = 7;
+                if (triggerEffectMinion.Attack != 7) triggerEffectMinion.Attack = 7;
             }
         }
     }

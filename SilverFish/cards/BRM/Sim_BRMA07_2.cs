@@ -11,7 +11,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
 			List<Minion> temp = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
-            temp.Sort((a, b) => a.Angr.CompareTo(b.Angr));
+            temp.Sort((a, b) => a.Attack.CompareTo(b.Attack));
             foreach (Minion m in temp)
             {
 				if(m.wounded)

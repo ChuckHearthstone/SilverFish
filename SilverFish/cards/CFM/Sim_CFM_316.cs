@@ -12,7 +12,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            int anz = m.Angr;
+            int anz = m.Attack;
             if (anz > 0)
             {
                 p.callKid(kid, m.zonepos - 1, m.own, false);

@@ -16,11 +16,11 @@ namespace HREngine.Bots
 
             foreach (Minion m in p.enemyMinions)
             {
-                if (m.Angr >= 5) p.minionGetDestroyed(m);
+                if (m.Attack >= 5) p.minionGetDestroyed(m);
             }
             foreach (Minion m in p.ownMinions)
             {
-                if (m.Angr >= 5) p.minionGetDestroyed(m);
+                if (m.Attack >= 5) p.minionGetDestroyed(m);
             }
         }
     }

@@ -18,7 +18,7 @@ namespace HREngine.Bots
                 {
                     p.ownWeapon.Durability++;
                     p.ownWeapon.Angr++;
-                    p.ownHero.Angr++;
+                    p.ownHero.Attack++;
                 }
             }
             else
@@ -27,7 +27,7 @@ namespace HREngine.Bots
                 {
                     p.enemyWeapon.Durability++;
                     p.enemyWeapon.Angr++;
-                    p.enemyHero.Angr++;
+                    p.enemyHero.Attack++;
                 }
             }
 		}

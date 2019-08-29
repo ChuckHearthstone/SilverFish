@@ -137,7 +137,7 @@ namespace HREngine.Bots
             List<Minion> attackingMinions = new List<Minion>(8);
             foreach (Minion m in (own ? p.ownMinions : p.enemyMinions))
             {
-                if (m.Ready && m.Angr >= 1 && !m.frozen) attackingMinions.Add(m); //* add non-attacing minions
+                if (m.Ready && m.Attack >= 1 && !m.frozen) attackingMinions.Add(m); //* add non-attacing minions
             }
 
             attackingMinions = this.cutAttackList(attackingMinions);
@@ -158,7 +158,7 @@ namespace HREngine.Bots
             }
 
             // attack with hero (weapon)
-            if ((own && p.ownHero.Ready && p.ownHero.Angr >= 1) || (!own && p.enemyHero.Ready && p.enemyHero.Angr >= 1))
+            if ((own && p.ownHero.Ready && p.ownHero.Attack >= 1) || (!own && p.enemyHero.Ready && p.enemyHero.Attack >= 1))
             {
                 int heroAttackPen = 0;
                 foreach (Minion targetMinion in targetMinions)
@@ -236,7 +236,7 @@ namespace HREngine.Bots
 			        bool onlyNotSpecial =(!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced));
 			
 			        if(onlySpecial && (m.name != mnn.name)) continue; // different name -> take it
-                    if ((onlySpecial || onlyNotSpecial) && (mnn.Angr == m.Angr && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race))
+                    if ((onlySpecial || onlyNotSpecial) && (mnn.Attack == m.Attack && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race))
                     {
 				        goingtoadd = false;
 				        break;
@@ -280,7 +280,7 @@ namespace HREngine.Bots
             int strongestAttack = 0;
             foreach (Minion m in enemym)
             {
-                if (m.Angr > strongestAttack) strongestAttack = m.Angr;
+                if (m.Attack > strongestAttack) strongestAttack = m.Attack;
                 if (m.taunt) return true;
                 if (m.name == CardDB.cardName.dancingswords || m.name == CardDB.cardName.deathlord) return true;
             }
@@ -293,9 +293,9 @@ namespace HREngine.Bots
             {
                 if (m.name == CardDB.cardName.cultmaster) return true;
                 if (m.name == CardDB.cardName.knifejuggler) hasJuggler = true;
-                if (m.Ready && m.Angr >= 1)
+                if (m.Ready && m.Attack >= 1)
                 {
-                    if (m.AdjacentAngr >= 1) return true;//wolphalfa or flametongue is in play
+                    if (m.AdjacentAttack >= 1) return true;//wolphalfa or flametongue is in play
                     if (m.name == CardDB.cardName.northshirecleric) return true;
                     if (m.name == CardDB.cardName.armorsmith) return true;
                     if (m.name == CardDB.cardName.loothoarder) return true;

@@ -41,10 +41,10 @@ namespace HREngine.Bots
                     p.triggerCardsChanged(false);
                     if (p.ownHeroHasDirectLethal())
                     {
-                        p.enemyMinions[pos].Angr = 2;
+                        p.enemyMinions[pos].Attack = 2;
                         if (p.ownHeroHasDirectLethal())
                         {
-                            p.enemyMinions[pos].Angr = 0;
+                            p.enemyMinions[pos].Attack = 0;
                         }
                     }
                 }

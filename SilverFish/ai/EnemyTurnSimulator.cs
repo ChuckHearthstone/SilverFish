@@ -361,7 +361,7 @@
                             Minion target = new Minion();
                             foreach (Minion mnn in p.ownMinions)
                             {
-                                if (mnn.HealthPoints <= 6 && (mnn.HealthPoints + mnn.Angr) > (target.HealthPoints + target.Angr)) target = mnn;
+                                if (mnn.HealthPoints <= 6 && (mnn.HealthPoints + mnn.Attack) > (target.HealthPoints + target.Attack)) target = mnn;
                             }
                             p.minionGetDamageOrHeal(target, 6);
                         }
@@ -478,7 +478,7 @@
                         if (p.enemyMinions.Count >= 3) p.minionGetArmor(p.enemyHero, 1);
                         continue;
                     case CardDB.cardName.gahzrilla:
-                        if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, m.Angr * 2, 0);
+                        if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, m.Attack * 2, 0);
                         continue;
                     case CardDB.cardName.acolyteofpain:
                         if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);

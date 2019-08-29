@@ -12,16 +12,16 @@ namespace HREngine.Bots
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            triggerEffectMinion.Angr++;
+            triggerEffectMinion.Attack++;
             triggerEffectMinion.cantAttack = true;
-            if (triggerEffectMinion.Angr > 3) p.minionTransform(triggerEffectMinion, kid);
+            if (triggerEffectMinion.Attack > 3) p.minionTransform(triggerEffectMinion, kid);
         }
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                triggerEffectMinion.Angr = 0;
+                triggerEffectMinion.Attack = 0;
             }
         }
     }

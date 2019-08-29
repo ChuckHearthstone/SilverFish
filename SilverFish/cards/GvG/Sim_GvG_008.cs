@@ -13,12 +13,12 @@ namespace HREngine.Bots
         {
             foreach (Minion m in p.ownMinions)
             {
-                p.minionGetDamageOrHeal(m, m.Angr, true);
+                p.minionGetDamageOrHeal(m, m.Attack, true);
             }
 
             foreach (Minion m in p.enemyMinions)
             {
-                p.minionGetDamageOrHeal(m, m.Angr, true);
+                p.minionGetDamageOrHeal(m, m.Attack, true);
             }
         }
 

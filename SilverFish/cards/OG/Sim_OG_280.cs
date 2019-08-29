@@ -10,9 +10,9 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            int times = p.anzOgOwnCThunAngrBonus + 6 - own.Angr;
-            if (times < 1) times = own.Angr;
-            else times += own.Angr;
+            int times = p.anzOgOwnCThunAngrBonus + 6 - own.Attack;
+            if (times < 1) times = own.Attack;
+            else times += own.Attack;
             p.allCharsOfASideGetRandomDamage(!own.own, times);
             p.allMinionOfASideGetDamage(!own.own, 1);
         }

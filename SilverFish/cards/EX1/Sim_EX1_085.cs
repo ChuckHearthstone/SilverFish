@@ -15,7 +15,7 @@ namespace HREngine.Bots
                 if (p.enemyMinions.Count >= 4)
                 {
                     List<Minion> temp = new List<Minion>(p.enemyMinions);
-                    temp.Sort((a, b) => a.Angr.CompareTo(b.Angr));//we take the weekest
+                    temp.Sort((a, b) => a.Attack.CompareTo(b.Attack));//we take the weekest
                     Minion targett;
                     targett = temp[0];
                     if (targett.taunt && temp.Count >= 2 && !temp[1].taunt) targett = temp[1];
@@ -28,7 +28,7 @@ namespace HREngine.Bots
                 if (p.ownMinions.Count >= 4)
                 {
                     List<Minion> temp = new List<Minion>(p.ownMinions);
-                    temp.Sort((a, b) => a.Angr.CompareTo(b.Angr));//we take the weekest
+                    temp.Sort((a, b) => a.Attack.CompareTo(b.Attack));//we take the weekest
                     Minion targett;
                     targett = temp[0];
                     if (targett.taunt && temp.Count >= 2 && !temp[1].taunt) targett = temp[1];

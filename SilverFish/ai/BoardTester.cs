@@ -706,7 +706,7 @@ namespace HREngine.Bots
                         tempminion.own = true;
                         tempminion.entitiyID = ent;
                         tempminion.handcard.entity = ent;
-                        tempminion.Angr = attack;
+                        tempminion.Attack = attack;
                         tempminion.HealthPoints = hp;
                         tempminion.maxHp = maxhp;
                         tempminion.Ready = ready;
@@ -734,7 +734,7 @@ namespace HREngine.Bots
 
                         tempminion.charge = chrg;
                         tempminion.hChoice = hChoice;
-                        tempminion.AdjacentAngr = adjadmg;
+                        tempminion.AdjacentAttack = adjadmg;
                         tempminion.tempAttack = tmpdmg;
                         tempminion.spellpower = spllpwr;
 
@@ -861,7 +861,7 @@ namespace HREngine.Bots
                         tempminion.own = false;
                         tempminion.entitiyID = ent;
                         tempminion.handcard.entity = ent;
-                        tempminion.Angr = attack;
+                        tempminion.Attack = attack;
                         tempminion.HealthPoints = hp;
                         tempminion.maxHp = maxhp;
                         tempminion.Ready = ready;
@@ -889,7 +889,7 @@ namespace HREngine.Bots
 
                         tempminion.charge = chrg;
                         tempminion.hChoice = hChoice;
-                        tempminion.AdjacentAngr = adjadmg;
+                        tempminion.AdjacentAttack = adjadmg;
                         tempminion.tempAttack = tmpdmg;
                         tempminion.spellpower = spllpwr;
 
@@ -1054,7 +1054,7 @@ namespace HREngine.Bots
             this.ownHero.cardClass = heroNametoClass(this.ownheroname);
             this.enemyHero.cardClass = heroNametoClass(this.enemyheroname);
             
-            this.ownHero.Angr = ownHeroAttack;
+            this.ownHero.Attack = ownHeroAttack;
             this.ownHero.HealthPoints = ownherohp;
             this.ownHero.armor = ownherodefence;
             this.ownHero.frozen = ownHeroFrozen;
@@ -1064,7 +1064,7 @@ namespace HREngine.Bots
             this.ownHero.windfury = herowindfury;
             this.ownHero.stealth = ownHeroStealth;
 
-            this.enemyHero.Angr = enemyWeapon.Angr;
+            this.enemyHero.Attack = enemyWeapon.Angr;
             this.enemyHero.HealthPoints = enemyherohp;
             this.enemyHero.frozen = enemyFrozen;
             this.enemyHero.armor = enemyherodefence;
@@ -1106,7 +1106,7 @@ namespace HREngine.Bots
                 handcard = new Handmanager.Handcard(hc),
                 zonepos = zonepos,
                 entitiyID = hc.entity,
-                Angr = hc.card.Attack,
+                Attack = hc.card.Attack,
                 HealthPoints = hc.card.Health,
                 maxHp = hc.card.Health,
                 name = hc.card.name,
@@ -1135,7 +1135,7 @@ namespace HREngine.Bots
 
             if (m.name == CardDB.cardName.lightspawn)
             {
-                m.Angr = m.HealthPoints;
+                m.Attack = m.HealthPoints;
             }
             return m;
         }

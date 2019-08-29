@@ -20,7 +20,7 @@ namespace HREngine.Bots
             if (m.name == hc.card.name && m.playedThisTurn)
             {
                 m.entitiyID = hc.entity;
-                m.Angr += hc.addattack;
+                m.Attack += hc.addattack;
                 m.HealthPoints += hc.addHp;
             }
             return true;

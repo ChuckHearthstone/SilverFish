@@ -13,7 +13,7 @@ namespace HREngine.Bots
             List<Minion> temp = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions);
 			if (temp.Count >= 2)
 			{
-				temp.Sort((a, b) => a.Angr.CompareTo(b.Angr));
+				temp.Sort((a, b) => a.Attack.CompareTo(b.Attack));
 				bool enough = false;
 				foreach (Minion enemy in temp)
 				{

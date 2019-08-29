@@ -524,7 +524,7 @@ namespace HREngine.Bots
 
             this.heroname = Hrtprozis.Instance.heroIDtoName(TritonHs.OurHero.Id);
 
-            this.ownHero.Angr = ownHeroCard.GetTag(GAME_TAG.ATK);
+            this.ownHero.Attack = ownHeroCard.GetTag(GAME_TAG.ATK);
             this.ownHero.HealthPoints = ownHeroCard.GetTag(GAME_TAG.HEALTH) - ownHeroCard.GetTag(GAME_TAG.DAMAGE);
             this.ownHero.armor = ownHeroCard.GetTag(GAME_TAG.ARMOR);            
             this.ownHero.frozen = (ownHeroCard.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
@@ -549,7 +549,7 @@ namespace HREngine.Bots
                         
             this.enemyHeroname = Hrtprozis.Instance.heroIDtoName(TritonHs.EnemyHero.Id);
 
-            this.enemyHero.Angr = enemHeroCard.GetTag(GAME_TAG.ATK);
+            this.enemyHero.Attack = enemHeroCard.GetTag(GAME_TAG.ATK);
             this.enemyHero.HealthPoints = enemHeroCard.GetTag(GAME_TAG.HEALTH) - enemHeroCard.GetTag(GAME_TAG.DAMAGE);
             this.enemyHero.armor = enemHeroCard.GetTag(GAME_TAG.ARMOR);
             this.enemyHero.frozen = (enemHeroCard.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
@@ -640,8 +640,8 @@ namespace HREngine.Bots
 
             this.enemyHero.loadEnchantments(miniEnchlist, enemHeroCard.GetTag(GAME_TAG.CONTROLLER));
 
-            if (this.ownHero.Angr < this.ownWeapon.Angr) this.ownHero.Angr = this.ownWeapon.Angr;
-            if (this.enemyHero.Angr < this.enemyWeapon.Angr) this.enemyHero.Angr = this.enemyWeapon.Angr;
+            if (this.ownHero.Attack < this.ownWeapon.Angr) this.ownHero.Attack = this.ownWeapon.Angr;
+            if (this.enemyHero.Attack < this.enemyWeapon.Angr) this.enemyHero.Attack = this.enemyWeapon.Angr;
         }
 
 
@@ -686,7 +686,7 @@ namespace HREngine.Bots
                     m.name = c.name;
                     m.handcard.card = c;
 
-                    m.Angr = entitiy.GetTag(GAME_TAG.ATK);
+                    m.Attack = entitiy.GetTag(GAME_TAG.ATK);
                     m.maxHp = entitiy.GetTag(GAME_TAG.HEALTH);
                     m.HealthPoints = entitiy.GetTag(GAME_TAG.HEALTH) - entitiy.GetTag(GAME_TAG.DAMAGE);
                     if (m.HealthPoints <= 0) continue;
@@ -1132,8 +1132,8 @@ namespace HREngine.Bots
                 {
                     if (m.name == CardDB.cardName.cthun)
                     {
-                        if (this.anzOgOwnCThunAngrBonus < m.Angr - 6) this.anzOgOwnCThunAngrBonus = m.Angr - 6;
-                        if (this.anzOgOwnCThunHpBonus < m.HealthPoints - 6) this.anzOgOwnCThunHpBonus = m.Angr - 6;
+                        if (this.anzOgOwnCThunAngrBonus < m.Attack - 6) this.anzOgOwnCThunAngrBonus = m.Attack - 6;
+                        if (this.anzOgOwnCThunHpBonus < m.HealthPoints - 6) this.anzOgOwnCThunHpBonus = m.Attack - 6;
                         if (m.taunt && this.anzOgOwnCThunTaunt < 1) this.anzOgOwnCThunTaunt++;
                         found = true;
                         break;

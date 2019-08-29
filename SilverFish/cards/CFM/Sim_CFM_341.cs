@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.allMinionOfASideGetDamage(!m.own, m.Angr);
+            p.allMinionOfASideGetDamage(!m.own, m.Attack);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            if (m.Angr >= 2) p.drawACard(CardDB.cardName.unknown, m.own);
+            if (m.Attack >= 2) p.drawACard(CardDB.cardName.unknown, m.own);
         }
     }
 }

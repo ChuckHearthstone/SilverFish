@@ -396,7 +396,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (m.Angr > this.needWithMaxAttackValueOf)
+                            if (m.Attack > this.needWithMaxAttackValueOf)
                             {
                                 m.extraParam = true;
                             }
@@ -408,7 +408,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (m.Angr < this.needWithMinAttackValueOf)
+                            if (m.Attack < this.needWithMinAttackValueOf)
                             {
                                 m.extraParam = true;
                             }

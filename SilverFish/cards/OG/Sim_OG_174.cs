@@ -13,7 +13,7 @@ namespace HREngine.Bots
             if (target != null)
 			{
 				own.HealthPoints = target.HealthPoints;
-				own.Angr = target.Angr;
+				own.Attack = target.Attack;
 			}
 		}
 	}

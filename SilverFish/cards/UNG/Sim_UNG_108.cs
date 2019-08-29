@@ -11,7 +11,7 @@ namespace HREngine.Bots
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.minionGetBuffed(target, 1, 1);
-            p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, target.Angr);
+            p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, target.Attack);
         }
     }
 }

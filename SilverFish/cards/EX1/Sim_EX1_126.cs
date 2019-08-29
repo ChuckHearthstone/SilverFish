@@ -12,9 +12,9 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             //attack right neightbor
-            if (target.Angr>0)
+            if (target.Attack>0)
             {
-                int dmg = target.Angr;
+                int dmg = target.Attack;
                 List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;
                 foreach (Minion m in p.enemyMinions)
                 {

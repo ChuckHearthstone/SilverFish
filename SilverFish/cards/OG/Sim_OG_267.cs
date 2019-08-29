@@ -15,7 +15,7 @@ namespace HREngine.Bots
                 if (p.ownWeapon.Durability >= 1)
                 {
                     p.ownWeapon.Angr += 2;
-                    p.ownHero.Angr += 2;
+                    p.ownHero.Attack += 2;
                 }
             }
             else
@@ -23,7 +23,7 @@ namespace HREngine.Bots
                 if (p.enemyWeapon.Durability >= 1)
                 {
                     p.enemyWeapon.Angr += 2;
-                    p.enemyHero.Angr += 2;
+                    p.enemyHero.Attack += 2;
                 }
             }
         }

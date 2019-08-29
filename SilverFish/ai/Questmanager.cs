@@ -65,7 +65,7 @@
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_116: if (m.Angr >= 5) questProgress++; break;
+                    case CardDB.cardIDEnum.UNG_116: if (m.Attack >= 5) questProgress++; break;
                     case CardDB.cardIDEnum.UNG_940: if (m.handcard.card.deathrattle) questProgress++; break;
                     case CardDB.cardIDEnum.UNG_942: if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC) questProgress++; break;
                 }
