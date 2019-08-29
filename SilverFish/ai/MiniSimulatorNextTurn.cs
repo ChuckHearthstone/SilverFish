@@ -82,7 +82,7 @@
                         continue;
                     }
 
-                    List<Action> actions = movegen.getMoveList(p, usePenalityManager, useCutingTargets, true);
+                    List<Action> actions = movegen.GetMoveList(p, usePenalityManager, useCutingTargets, true);
                     foreach (Action a in actions)
                     {
                         havedonesomething = true;

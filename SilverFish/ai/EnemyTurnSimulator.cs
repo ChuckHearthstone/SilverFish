@@ -110,7 +110,7 @@
                         {
                             continue;
                         }
-                        List<Action> actions = movegen.getMoveList(p, false, true, false); 
+                        List<Action> actions = movegen.GetMoveList(p, false, true, false); 
 
                         foreach (Action a in actions)
                         {

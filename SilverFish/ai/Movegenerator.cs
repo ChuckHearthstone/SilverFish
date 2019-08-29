@@ -1,7 +1,7 @@
-﻿namespace HREngine.Bots
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace HREngine.Bots
+{
     public class Movegenerator
     {
         PenalityManager pen = PenalityManager.Instance;
@@ -19,8 +19,8 @@
         private Movegenerator()
         {
         }
-        
-        public List<Action> getMoveList(Playfield p, bool usePenalityManager, bool useCutingTargets, bool own)
+
+        public List<Action> GetMoveList(Playfield p, bool usePenalityManager, bool useCutingTargets, bool own)
         {
             //generates only own moves
             List<Action> ret = new List<Action>();
@@ -31,7 +31,7 @@
                 return ret;
             }
 
-          //play cards:
+            //play cards:
             if (own)
             {
                 List<string> playedcards = new List<string>();
@@ -40,9 +40,12 @@
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
                     int cardCost = hc.card.getManaCost(p, hc.manacost);
-                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL) || (p.nextMurlocThisTurnCostHealth && (TAG_RACE)hc.card.race == TAG_RACE.MURLOC))
+                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL) ||
+                        (p.nextMurlocThisTurnCostHealth && (TAG_RACE) hc.card.race == TAG_RACE.MURLOC))
                     {
-                        if (p.ownHero.Hp > cardCost || p.ownHero.immune) { }
+                        if (p.ownHero.Hp > cardCost || p.ownHero.immune)
+                        {
+                        }
                         else continue; // if not enough Hp
                     }
                     else if (p.mana < cardCost) continue; // if not enough manna
@@ -66,18 +69,23 @@
                                 for (int i = 1; i < 3; i++)
                                 {
                                     CardDB.Card cTmp = pen.getChooseCard(hc.card, i); // do all choice
-                                    if (pen.DamageTargetDatabase.ContainsKey(cTmp.name) || (p.anzOwnAuchenaiSoulpriest > 0 && pen.HealTargetDatabase.ContainsKey(cTmp.name)))
+                                    if (pen.DamageTargetDatabase.ContainsKey(cTmp.name) ||
+                                        (p.anzOwnAuchenaiSoulpriest > 0 &&
+                                         pen.HealTargetDatabase.ContainsKey(cTmp.name)))
                                     {
                                         choice = i;
                                         choiceDamageFound = true;
                                         c = cTmp;
                                         break;
                                     }
+
                                     //- Draw a card must be at end in the Sim_xxx - then it will selected!
                                 }
                             }
                         }
-                        if (p.ownMinions.Count > 6 && (c.type == CardDB.cardtype.MOB || hc.card.type == CardDB.cardtype.MOB)) continue;
+
+                        if (p.ownMinions.Count > 6 &&
+                            (c.type == CardDB.cardtype.MOB || hc.card.type == CardDB.cardtype.MOB)) continue;
                         trgts = c.getTargetsForCard(p, p.isLethalCheck, true);
                         if (trgts.Count == 0) continue;
 
@@ -88,7 +96,8 @@
                             if (usePenalityManager) cardplayPenality = pen.getPlayCardPenality(c, trgt, p);
                             if (cardplayPenality <= 499)
                             {
-                                Action a = new Action(actionEnum.playcard, hc, null, bestplace, trgt, cardplayPenality, choice);
+                                Action a = new Action(actionEnum.playcard, hc, null, bestplace, trgt, cardplayPenality,
+                                    choice);
                                 ret.Add(a);
                             }
                         }
@@ -96,17 +105,18 @@
                 }
             }
 
-          //get targets for Hero weapon and Minions  ###################################################################################
+            //get targets for Hero weapon and Minions  ###################################################################################
 
             trgts = p.getAttackTargets(own, p.isLethalCheck);
             if (!p.isLethalCheck) trgts = this.cutAttackList(trgts);
 
-          // attack with minions
+            // attack with minions
             List<Minion> attackingMinions = new List<Minion>(8);
             foreach (Minion m in (own ? p.ownMinions : p.enemyMinions))
             {
                 if (m.Ready && m.Angr >= 1 && !m.frozen) attackingMinions.Add(m); //* add non-attacing minions
             }
+
             attackingMinions = this.cutAttackList(attackingMinions);
 
             foreach (Minion m in attackingMinions)
@@ -124,7 +134,7 @@
                 }
             }
 
-          // attack with hero (weapon)
+            // attack with hero (weapon)
             if ((own && p.ownHero.Ready && p.ownHero.Angr >= 1) || (!own && p.enemyHero.Ready && p.enemyHero.Angr >= 1))
             {
                 int heroAttackPen = 0;
@@ -134,7 +144,8 @@
                     if (usePenalityManager) heroAttackPen = pen.getAttackWithHeroPenality(trgt, p);
                     if (heroAttackPen <= 499)
                     {
-                        Action a = new Action(actionEnum.attackWithHero, null, (own ? p.ownHero : p.enemyHero), 0, trgt, heroAttackPen, 0);
+                        Action a = new Action(actionEnum.attackWithHero, null, (own ? p.ownHero : p.enemyHero), 0, trgt,
+                            heroAttackPen, 0);
                         ret.Add(a);
                     }
                 }
@@ -145,7 +156,8 @@
             // use own ability
             if (own)
             {
-                if (p.ownAbilityReady && p.mana >= p.ownHeroAblility.card.getManaCost(p, p.ownHeroAblility.manacost)) // if ready and enough manna
+                if (p.ownAbilityReady && p.mana >= p.ownHeroAblility.card.getManaCost(p, p.ownHeroAblility.manacost)
+                ) // if ready and enough manna
                 {
                     CardDB.Card c = p.ownHeroAblility.card;
                     int isChoice = (c.choice) ? 1 : 0;
@@ -155,15 +167,18 @@
                         {
                             c = pen.getChooseCard(p.ownHeroAblility.card, choice); // do all choice
                         }
+
                         int cardplayPenality = 0;
                         int bestplace = p.ownMinions.Count + 1; //we can not manage it
                         trgts = p.ownHeroAblility.card.getTargetsForHeroPower(p, true);
                         foreach (Minion trgt in trgts)
                         {
-                            if (usePenalityManager) cardplayPenality = pen.getPlayCardPenality(p.ownHeroAblility.card, trgt, p);
+                            if (usePenalityManager)
+                                cardplayPenality = pen.getPlayCardPenality(p.ownHeroAblility.card, trgt, p);
                             if (cardplayPenality <= 499)
                             {
-                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestplace, trgt, cardplayPenality, choice);
+                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestplace, trgt,
+                                    cardplayPenality, choice);
                                 ret.Add(a);
                             }
                         }
