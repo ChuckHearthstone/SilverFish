@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace HREngine.Bots
 {
@@ -24,7 +25,7 @@ namespace HREngine.Bots
         {
             //generates only own moves
             List<Action> ret = new List<Action>();
-            List<Minion> trgts = new List<Minion>();
+            List<Minion> targetMinions;
 
             if (p.complete || p.ownHero.Hp <= 0)
             {
@@ -34,8 +35,8 @@ namespace HREngine.Bots
             //play cards:
             if (own)
             {
-                List<string> playedcards = new List<string>();
-                System.Text.StringBuilder cardNcost = new System.Text.StringBuilder();
+                List<string> playedCards = new List<string>();
+                StringBuilder cardNcost = new StringBuilder();
 
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
@@ -46,15 +47,28 @@ namespace HREngine.Bots
                         if (p.ownHero.Hp > cardCost || p.ownHero.immune)
                         {
                         }
-                        else continue; // if not enough Hp
+                        else
+                        {
+                            // if not enough Hp
+                            continue; 
+                        }
                     }
-                    else if (p.mana < cardCost) continue; // if not enough manna
+                    else if (p.mana < cardCost)
+                    {  
+                        // if not enough manna
+                        continue; 
+                    }
 
                     CardDB.Card c = hc.card;
                     cardNcost.Clear();
                     cardNcost.Append(c.name).Append(hc.manacost);
-                    if (playedcards.Contains(cardNcost.ToString())) continue; // dont play the same card in one loop
-                    playedcards.Add(cardNcost.ToString());
+                    if (playedCards.Contains(cardNcost.ToString()))
+                    {
+                        // don't play the same card in one loop
+                        continue; 
+                    }
+
+                    playedCards.Add(cardNcost.ToString());
 
                     int isChoice = (c.choice) ? 1 : 0;
                     bool choiceDamageFound = false;
@@ -85,18 +99,24 @@ namespace HREngine.Bots
                         }
 
                         if (p.ownMinions.Count > 6 &&
-                            (c.type == CardDB.cardtype.MOB || hc.card.type == CardDB.cardtype.MOB)) continue;
-                        trgts = c.getTargetsForCard(p, p.isLethalCheck, true);
-                        if (trgts.Count == 0) continue;
+                            (c.type == CardDB.cardtype.MOB || hc.card.type == CardDB.cardtype.MOB))
+                        {
+                            continue;
+                        }
+                        targetMinions = c.getTargetsForCard(p, p.isLethalCheck, true);
+                        if (targetMinions.Count == 0)
+                        {
+                            continue;
+                        }
 
                         int cardplayPenality = 0;
                         int bestplace = p.getBestPlace(c.type == CardDB.cardtype.MOB ? c : hc.card, p.isLethalCheck);
-                        foreach (Minion trgt in trgts)
+                        foreach (Minion targetMinion in targetMinions)
                         {
-                            if (usePenalityManager) cardplayPenality = pen.getPlayCardPenality(c, trgt, p);
+                            if (usePenalityManager) cardplayPenality = pen.getPlayCardPenality(c, targetMinion, p);
                             if (cardplayPenality <= 499)
                             {
-                                Action a = new Action(actionEnum.playcard, hc, null, bestplace, trgt, cardplayPenality,
+                                Action a = new Action(actionEnum.playcard, hc, null, bestplace, targetMinion, cardplayPenality,
                                     choice);
                                 ret.Add(a);
                             }
@@ -107,8 +127,11 @@ namespace HREngine.Bots
 
             //get targets for Hero weapon and Minions  ###################################################################################
 
-            trgts = p.getAttackTargets(own, p.isLethalCheck);
-            if (!p.isLethalCheck) trgts = this.cutAttackList(trgts);
+            targetMinions = p.getAttackTargets(own, p.isLethalCheck);
+            if (!p.isLethalCheck)
+            {
+                targetMinions = this.cutAttackList(targetMinions);
+            }
 
             // attack with minions
             List<Minion> attackingMinions = new List<Minion>(8);
@@ -122,7 +145,7 @@ namespace HREngine.Bots
             foreach (Minion m in attackingMinions)
             {
                 int attackPenality = 0;
-                foreach (Minion trgt in trgts)
+                foreach (Minion trgt in targetMinions)
                 {
                     if (m.cantAttackHeroes && trgt.isHero) continue;
                     if (usePenalityManager) attackPenality = pen.getAttackWithMininonPenality(m, p, trgt);
@@ -138,13 +161,13 @@ namespace HREngine.Bots
             if ((own && p.ownHero.Ready && p.ownHero.Angr >= 1) || (!own && p.enemyHero.Ready && p.enemyHero.Angr >= 1))
             {
                 int heroAttackPen = 0;
-                foreach (Minion trgt in trgts)
+                foreach (Minion targetMinion in targetMinions)
                 {
-                    if ((own ? p.ownWeapon.cantAttackHeroes : p.enemyWeapon.cantAttackHeroes) && trgt.isHero) continue;
-                    if (usePenalityManager) heroAttackPen = pen.getAttackWithHeroPenality(trgt, p);
+                    if ((own ? p.ownWeapon.cantAttackHeroes : p.enemyWeapon.cantAttackHeroes) && targetMinion.isHero) continue;
+                    if (usePenalityManager) heroAttackPen = pen.getAttackWithHeroPenality(targetMinion, p);
                     if (heroAttackPen <= 499)
                     {
-                        Action a = new Action(actionEnum.attackWithHero, null, (own ? p.ownHero : p.enemyHero), 0, trgt,
+                        Action a = new Action(actionEnum.attackWithHero, null, (own ? p.ownHero : p.enemyHero), 0, targetMinion,
                             heroAttackPen, 0);
                         ret.Add(a);
                     }
@@ -156,8 +179,8 @@ namespace HREngine.Bots
             // use own ability
             if (own)
             {
-                if (p.ownAbilityReady && p.mana >= p.ownHeroAblility.card.getManaCost(p, p.ownHeroAblility.manacost)
-                ) // if ready and enough manna
+                if (p.ownAbilityReady 
+                    && p.mana >= p.ownHeroAblility.card.getManaCost(p, p.ownHeroAblility.manacost)) // if ready and enough manna
                 {
                     CardDB.Card c = p.ownHeroAblility.card;
                     int isChoice = (c.choice) ? 1 : 0;
@@ -170,14 +193,14 @@ namespace HREngine.Bots
 
                         int cardplayPenality = 0;
                         int bestplace = p.ownMinions.Count + 1; //we can not manage it
-                        trgts = p.ownHeroAblility.card.getTargetsForHeroPower(p, true);
-                        foreach (Minion trgt in trgts)
+                        targetMinions = p.ownHeroAblility.card.getTargetsForHeroPower(p, true);
+                        foreach (Minion targetMinion in targetMinions)
                         {
                             if (usePenalityManager)
-                                cardplayPenality = pen.getPlayCardPenality(p.ownHeroAblility.card, trgt, p);
+                                cardplayPenality = pen.getPlayCardPenality(p.ownHeroAblility.card, targetMinion, p);
                             if (cardplayPenality <= 499)
                             {
-                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestplace, trgt,
+                                Action a = new Action(actionEnum.useHeroPower, p.ownHeroAblility, null, bestplace, targetMinion,
                                     cardplayPenality, choice);
                                 ret.Add(a);
                             }
