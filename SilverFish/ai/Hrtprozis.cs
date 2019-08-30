@@ -69,7 +69,20 @@ namespace HREngine.Bots
         public CardDB.Card heroAbility;
         public bool ownAbilityisReady = false;
 
-        public int OwnHeroPowerCost = 2;
+        public int OwnHeroPowerCost
+        {
+            get
+            {
+                if (_ownHeroPowerCost < 0)
+                {
+                    _ownHeroPowerCost = ChuckHelper.GetOwnHeroPowerCost();
+                }
+                return _ownHeroPowerCost;
+            }
+            set => _ownHeroPowerCost = value;
+        }
+
+        private int _ownHeroPowerCost = -1;
 
         public CardDB.Card enemyAbility;
         public int enemyHeroPowerCost = 2;
