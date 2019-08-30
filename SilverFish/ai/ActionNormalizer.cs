@@ -316,7 +316,7 @@ namespace HREngine.Bots
             tmpPf.checkLostAct = true;
             tmpPf.isLethalCheck = p.isLethalCheck;
 
-            float bestval = mainTurnSimulator.doallmoves(tmpPf);
+            float bestval = mainTurnSimulator.DoAllMoves(tmpPf);
             if (bestval > p.value)
             {
                 p.playactions.Clear();

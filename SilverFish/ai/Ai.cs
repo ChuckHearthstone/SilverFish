@@ -120,7 +120,7 @@ namespace HREngine.Bots
 
             //if (isLethalCheck) this.posmoves[0].enemySecretList.Clear();
             this.posmoves[0].isLethalCheck = isLethalCheck;
-            this.mainTurnSimulator.doallmoves(this.posmoves[0]);
+            this.mainTurnSimulator.DoAllMoves(this.posmoves[0]);
 
             bestplay = this.mainTurnSimulator.bestboard;
             float bestval = this.mainTurnSimulator.bestmoveValue;

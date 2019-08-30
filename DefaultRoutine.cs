@@ -1101,7 +1101,7 @@ def Execute():
                                             tmpPlf.owncards[tmpPlf.owncards.Count - 1] = discoverCards[i];
                                             break;
                                     }
-                                    bestval = ai.mainTurnSimulator.doallmoves(tmpPlf);
+                                    bestval = ai.mainTurnSimulator.DoAllMoves(tmpPlf);
                                     if (discoverCards[i].card.name == CardDB.cardName.bloodimp) bestval -= 20;
                                     break;
                                 case GAME_TAG.ADAPT:
@@ -1124,7 +1124,7 @@ def Execute():
                                             else
                                             {
                                                 discoverCards[i].card.sim_card.onCardPlay(tmpPlf, true, m, 0);
-                                                bestval = ai.mainTurnSimulator.doallmoves(tmpPlf);
+                                                bestval = ai.mainTurnSimulator.DoAllMoves(tmpPlf);
                                             }
                                             found = true;
                                             break;

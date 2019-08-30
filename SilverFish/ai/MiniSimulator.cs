@@ -100,7 +100,7 @@
             }
         }
         
-        public float doallmoves(Playfield playf)
+        public float DoAllMoves(Playfield playf)
         {
             print = playf.print;
             this.isLethalCheck = playf.isLethalCheck;
