@@ -1,15 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HREngine.Bots
 {
-	class Sim_CFM_717 : SimTemplate //* Jade Claws
+    /// <summary>
+    /// Jade Claws
+    /// 青玉之爪
+    /// </summary>
+	public class Sim_CFM_717 : SimTemplate
 	{
-		// Battlecry: Summon a Jade Golem. Overload: (1)
-
+        
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_717);
 
+        /// <summary>
+        /// "LocStringEnUs": "<b>Battlecry:</b> Summon a{1} {0} <b>Jade Golem</b>.\n<b><b>Overload</b>:</b> (1)@<b>Battlecry:</b> Summon a <b>Jade Golem</b>.
+        /// "LocStringZhCn": "<b>战吼：</b>召唤一个{0}的<b>青玉魔像</b>。\n<b>过载：</b>（1）@<b>战吼：</b>召唤一个<b>青玉魔像</b>。\n<b>过载：</b>（1）",
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ownplay"></param>
+        /// <param name="target"></param>
+        /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.equipWeapon(weapon, ownplay);
