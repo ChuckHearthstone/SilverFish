@@ -63,7 +63,7 @@ namespace HREngine.Bots
             FileHelper.CreateEmptyFile(Settings.Instance.LogFilePath);
         }
 
-        public void logg(string s)
+        public void logg(object obj)
         {
             if (!writelogg)
             {
@@ -78,7 +78,7 @@ namespace HREngine.Bots
 
             using (StreamWriter sw = File.AppendText(filePath))
             {
-                sw.WriteLine(s);
+                sw.WriteLine(obj?.ToString());
             }
         }
 
@@ -90,19 +90,19 @@ namespace HREngine.Bots
             return dtDateTime;
         }
 
-        public void ErrorLog(string s)
+        public void ErrorLog(object obj)
         {
-            Log.ErrorFormat(s);
+            Log.ErrorFormat(obj?.ToString());
         }
 
-        public void InfoLog(string log)
+        public void InfoLog(object obj)
         {
-            Log.InfoFormat(log);
+            Log.InfoFormat(obj?.ToString());
         }
 
         public void WarnLog(object obj)
         {
-            Log.WarnFormat(obj.ToString());
+            Log.WarnFormat(obj?.ToString());
         }
 
         private string sendbuffer = "";
