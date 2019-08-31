@@ -891,7 +891,7 @@ namespace HREngine.Bots
                 foreach (string s in lines)
                 {
                     getNextRule = false;
-                    if (s == "" || s == null) continue;
+                    if (string.IsNullOrEmpty(s)) continue;
                     if (s.StartsWith("//")) continue;
                     string[] preRule = s.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                     Rule oneRule = new Rule();
@@ -1114,13 +1114,14 @@ namespace HREngine.Bots
                     }
                 }
             }
-            catch (Exception ee)
+            catch (Exception ex)
             {
+                Helpfunctions.Instance.ErrorLog(ex);
                 Helpfunctions.Instance.ErrorLog("[RulesEngine] _rules.txt - read error. We continue without user-defined rules. Only the default rules.");
                 return;
             }
 
-            Helpfunctions.Instance.ErrorLog("[RulesEngine] " + heapOfRules.Count + " rules for " + behavName + " loaded successfully");
+            Helpfunctions.Instance.InfoLog("[RulesEngine] " + heapOfRules.Count + " rules for " + behavName + " loaded successfully");
             setRuleCardIds();
         }
 
