@@ -53,4 +53,19 @@ namespace HREngine.Bots
         }
     }
 
+    public class Sim_CS2_049_H1 : Sim_CS2_049
+    {
+
+    }
+
+    public class Sim_CS2_049_H2 : Sim_CS2_049
+    {
+
+    }
+
+    public class Sim_CS2_049_H3 : Sim_CS2_049
+    {
+
+    }
+
 }
