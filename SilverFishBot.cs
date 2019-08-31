@@ -199,7 +199,7 @@ namespace HREngine.Bots
             if (BehaviorDB.ContainsKey(bName))
             {
                 _settings.SetSettings(bName);
-                ComboBreaker.Instance.readCombos(bName);
+                ComboBreaker.Instance.ReadCombos(bName);
                 RulesEngine.Instance.readRules(bName);
                 return BehaviorDB[bName];
             }

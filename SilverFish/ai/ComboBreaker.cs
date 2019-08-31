@@ -385,7 +385,7 @@
             }
         }
 
-        public void readCombos(string behavName, bool nameIsPath = false)
+        public void ReadCombos(string behavName, bool nameIsPath = false)
         {
             string pathToCombo = behavName;
             if (!nameIsPath)
@@ -398,31 +398,32 @@
                 pathToCombo = Path.Combine(SilverFishBot.Instance.BehaviorPath[behavName], "_combo.txt");
             }
 
-            if (!System.IO.File.Exists(pathToCombo))
+            if (!File.Exists(pathToCombo))
             {
-                help.ErrorLog(behavName + ": no special combos.");
+                help.InfoLog(behavName + ": no special combos.");
                 return;
             }
             
-            help.ErrorLog("[Combo] Load combos for " + behavName);
+            help.InfoLog($"[Combo] Load combos for {behavName}");
             string[] lines = new string[0] { };
             combos.Clear();
             playByValue.Clear();
             try
             {
-                lines = System.IO.File.ReadAllLines(pathToCombo);
+                lines = File.ReadAllLines(pathToCombo);
             }
-            catch
+            catch(Exception ex)
             {
+                
                 help.logg("cant find _combo.txt");
+                help.ErrorLog(ex);
                 help.ErrorLog("cant find _combo.txt (if you don't created your own combos, ignore this message)");
                 return;
             }
-            help.logg("read _combo.txt...");
-            help.ErrorLog("read _combo.txt...");
+            help.InfoLog("read _combo.txt...");
             foreach (string line in lines)
             {
-                if (line == "" || line == null) continue;
+                if (string.IsNullOrEmpty(line)) continue;
                 if (line.StartsWith("//")) continue;
                 if (line.Contains("weapon:"))
                 {
@@ -430,9 +431,10 @@
                     {
                         this.attackFaceHP = Convert.ToInt32(line.Replace("weapon:", ""));
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         help.logg("combomaker cant read: " + line);
+                        help.ErrorLog(ex);
                         help.ErrorLog("combomaker cant read: " + line);
                     }
                 }
@@ -449,9 +451,10 @@
                             this.playByValue.Add(ce, val);
                             //help.ErrorLog("adding: " + line);
                         }
-                        catch
+                        catch(Exception ex) 
                         {
                             help.logg("combomaker cant read: " + line);
+                            help.ErrorLog(ex);
                             help.ErrorLog("combomaker cant read: " + line);
                         }
                     }
@@ -462,16 +465,17 @@
                             combo c = new combo(line);
                             this.combos.Add(c);
                         }
-                        catch
+                        catch(Exception ex)
                         {
                             help.logg("combomaker cant read: " + line);
+                            help.ErrorLog(ex);
                             help.ErrorLog("combomaker cant read: " + line);
                         }
                     }
                 }
 
             }
-            help.ErrorLog("[Combo] " + combos.Count + " combos loaded successfully, " + playByValue.Count + " values loaded successfully");
+            help.InfoLog("[Combo] " + combos.Count + " combos loaded successfully, " + playByValue.Count + " values loaded successfully");
         }
 
         public int getPenalityForDestroyingCombo(CardDB.Card crd, Playfield p)
