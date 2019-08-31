@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace HREngine.Bots
 {
-    class Sim_CS2_049 : SimTemplate // totemiccall
+    /// <summary>
+    /// Totemic Call
+    /// Í¼ÌÚÕÙ»½
+    /// </summary>
+    public class Sim_CS2_049 : SimTemplate
     {
         //Hero Power: Summon a random Totem.
 
@@ -13,6 +13,14 @@ namespace HREngine.Bots
         CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_052);
         CardDB.Card stoneclaw = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_051);
 
+        /// <summary>
+        /// "LocStringEnUs": "<b>Hero Power</b>\nSummon a random Totem.",
+        /// "LocStringZhCn": "<b>Ó¢ÐÛ¼¼ÄÜ</b>\nËæ»úÕÙ»½Ò»¸ö\nÍ¼ÌÚ¡£",
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ownplay"></param>
+        /// <param name="target"></param>
+        /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
@@ -41,7 +49,7 @@ namespace HREngine.Bots
 
                 if (p.ownHeroHasDirectLethal()) kid = stoneclaw;
             }
-            p.CallKid(kid, pos, ownplay, false);
+            p.callKid(kid, pos, ownplay, false);
         }
     }
 
