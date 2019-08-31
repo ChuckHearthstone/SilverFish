@@ -17,7 +17,7 @@ namespace HREngine.Bots
                 for (int i = 0; i < 7; i++)
                 {
                     int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                    p.callKid(kid, pos, ownplay);
+                    p.CallKid(kid, pos, ownplay);
                 }
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))

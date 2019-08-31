@@ -15,7 +15,7 @@ namespace HREngine.Bots
             {
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PET)
                 {
-                    p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_120), temp.Count, own.own);//river crocolisk
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_120), temp.Count, own.own);//river crocolisk
                     break;
                 }
             }

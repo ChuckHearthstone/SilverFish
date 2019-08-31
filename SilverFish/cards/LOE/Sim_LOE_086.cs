@@ -13,7 +13,7 @@ namespace HREngine.Bots
             if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.cardtype.SPELL)
             {
                 int pos = (wasOwnCard) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(p.getRandomCardForManaMinion(hc.manacost), pos, wasOwnCard);
+                p.CallKid(p.getRandomCardForManaMinion(hc.manacost), pos, wasOwnCard);
             }
         }
 	}

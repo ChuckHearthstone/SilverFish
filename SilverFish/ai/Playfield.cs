@@ -1626,7 +1626,7 @@
                             CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_538t);//hound
                             for (int i = 0; i < anz; i++)
                             {
-                                callKid(kid, posi, false);
+                                CallKid(kid, posi, false);
                             }
                         }
                         else wehaveCounterspell++;
@@ -2583,9 +2583,9 @@
                         pos = this.ownMinions.Count;
                         if (pos == 0) continue;
                         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_554t);//snake
-                        callKid(kid, pos, true, false);
-                        callKid(kid, pos, true);
-                        callKid(kid, pos, true);
+                        CallKid(kid, pos, true, false);
+                        CallKid(kid, pos, true);
+                        CallKid(kid, pos, true);
                         continue;
                     case CardDB.cardIDEnum.EX1_610: //explosive trap
                         
@@ -2614,7 +2614,7 @@
                         
                         if (this.enemyMinions.Count == 0 && ((this.enemyWeapon.Angr == 0 && !prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) || this.enemyHero.frozen)) continue;
                         pos = this.ownMinions.Count;
-                        callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125), pos, true, false);
+                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125), pos, true, false);
                         continue;
                     case CardDB.cardIDEnum.LOE_021: //Dart Trap
                         
@@ -2638,7 +2638,7 @@
                     case CardDB.cardIDEnum.KAR_004: //cattrick
                         
                         pos = this.ownMinions.Count;
-                        callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_017), pos, true, false);
+                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_017), pos, true, false);
                         continue;
 
                     
@@ -2661,7 +2661,7 @@
                         if (this.ownMinions.Count < 7)
                         {
                             pos = this.ownMinions.Count - 1;
-                            callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TU4f_007), pos, true, false); 
+                            CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TU4f_007), pos, true, false); 
                         }
                         else goto default;
                         continue;
@@ -2669,7 +2669,7 @@
                         
                         if (this.ownMinions.Count == 0) continue;
                         pos = this.ownMinions.Count - 1;
-                        callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TU4f_007), pos, true); 
+                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TU4f_007), pos, true); 
                         continue;
                     case CardDB.cardIDEnum.tt_010: //spellbender
                         
@@ -2743,7 +2743,7 @@
                         if (this.enemyMinions.Count == 0 && ((this.enemyWeapon.Angr == 0 && !prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) || this.enemyHero.frozen)) continue;
                         if (this.ownMinions.Count == 7) continue;
                         pos = this.ownMinions.Count - 1;
-                        callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_097), pos, true, false); 
+                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_097), pos, true, false); 
                         continue;
                     case CardDB.cardIDEnum.EX1_136: // redemption
                         
@@ -3424,7 +3424,7 @@
                                     {
                                         for (int i = 0; i < cid.Value; i++)
                                         {
-                                            this.callKid(c, this.ownMinions.Count, true);
+                                            this.CallKid(c, this.ownMinions.Count, true);
                                             count--;
                                             if (count < 1) break;
                                         }
@@ -3435,8 +3435,8 @@
                         }
                         else
                         {
-                            this.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_168), this.enemyMinions.Count, false);
-                            this.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_168), this.enemyMinions.Count, false);
+                            this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_168), this.enemyMinions.Count, false);
+                            this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_168), this.enemyMinions.Count, false);
                         }
                     }
                     break;
@@ -3490,12 +3490,12 @@
                     break;
                 case CardDB.cardName.piranhalauncher:
                     int pos = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    this.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_337t), pos, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_337t), pos, own); 
                     break;
                 case CardDB.cardName.vinecleaver:
                     int pos2 = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    this.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t), pos2, own); 
-                    this.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t), pos2, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t), pos2, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t), pos2, own); 
                     break;
                 case CardDB.cardName.foolsbane:
                     if (!hero.frozen) hero.Ready = true;
@@ -4130,7 +4130,7 @@
                     CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.ownHeroAblility.card.cardIDenum == CardDB.cardIDEnum.NAX4_04H) ? CardDB.cardIDEnum.NAX4_03H : CardDB.cardIDEnum.NAX4_03);
                     for (int i = 0; i < this.tempTrigger.enemyMinionsDied; i++)
                     {
-                        this.callKid(kid, this.ownMinions.Count, true);
+                        this.CallKid(kid, this.ownMinions.Count, true);
                     }
                 }
             }
@@ -4141,7 +4141,7 @@
                     CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.enemyHeroAblility.card.cardIDenum == CardDB.cardIDEnum.NAX4_04H) ? CardDB.cardIDEnum.NAX4_03H : CardDB.cardIDEnum.NAX4_03);
                     for (int i = 0; i < this.tempTrigger.ownMinionsDied; i++)
                     {
-                        this.callKid(kid, this.enemyMinions.Count, false);
+                        this.CallKid(kid, this.enemyMinions.Count, false);
                     }
                 }
             }
@@ -4273,14 +4273,14 @@
 
                 if (this.ownWeapon.name == CardDB.cardName.atiesh)
                 {
-                    this.callKid(this.getRandomCardForManaMinion(hc.manacost), this.ownMinions.Count, own);
+                    this.CallKid(this.getRandomCardForManaMinion(hc.manacost), this.ownMinions.Count, own);
                     this.lowerWeaponDurability(1, own);
                 }
 
                 for (int i = 0; i < burly; i++)//summon for enemy !
                 {
                     int pos = this.enemyMinions.Count;
-                    this.callKid(CardDB.Instance.burlyrockjaw, pos, !own);
+                    this.CallKid(CardDB.Instance.burlyrockjaw, pos, !own);
                 }
             }
             else
@@ -4307,14 +4307,14 @@
 
                 if (this.enemyWeapon.name == CardDB.cardName.atiesh)
                 {
-                    this.callKid(this.getRandomCardForManaMinion(hc.manacost), this.enemyMinions.Count, own);
+                    this.CallKid(this.getRandomCardForManaMinion(hc.manacost), this.enemyMinions.Count, own);
                     this.lowerWeaponDurability(1, own);
                 }
 
                 for (int i = 0; i < burly; i++)//summon for us
                 {
                     int pos = this.ownMinions.Count;
-                    this.callKid(CardDB.Instance.burlyrockjaw, pos, own);
+                    this.CallKid(CardDB.Instance.burlyrockjaw, pos, own);
                 }
             }
 
@@ -5212,7 +5212,7 @@
                     {
                         CardDB.Card kid = m.handcard.card;
                         int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                        callKid(kid, pos, m.own, false, true);
+                        CallKid(kid, pos, m.own, false, true);
                     }
                 }
 
@@ -5223,7 +5223,7 @@
                         CardDB.Card kid = m.handcard.card;
                         List<Minion> tmp = (m.own) ? this.ownMinions : this.enemyMinions;
                         int pos = tmp.Count;
-                        callKid(kid, pos, m.own, false, true);
+                        CallKid(kid, pos, m.own, false, true);
 
                         if (tmp.Count >= 1)
                         {
@@ -5242,22 +5242,22 @@
                 {
                     CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_158t);//Treant
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    callKid(kid, pos, m.own, false, true);
+                    CallKid(kid, pos, m.own, false, true);
                 }
                 
                 for (int i = 0; i < m.stegodon; i++)
                 {
                     CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_810);//Stegodon
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    callKid(kid, pos, m.own, false, true);
+                    CallKid(kid, pos, m.own, false, true);
                 }
 
                 for (int i = 0; i < m.livingspores; i++)
                 {
                     CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_999t2t1);//Plant
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    callKid(kid, pos, m.own, false, true);
-                    callKid(kid, pos, m.own, false, true);
+                    CallKid(kid, pos, m.own, false, true);
+                    CallKid(kid, pos, m.own, false, true);
                 }
 
                 if (m.deathrattle2 != null) m.deathrattle2.sim_card.onDeathrattle(this, m);
@@ -5297,7 +5297,7 @@
                             {
                                 CardDB.Card kid = m.handcard.card;
                                 int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                                callKid(kid, pos, m.own); //because baron rivendare
+                                CallKid(kid, pos, m.own); //because baron rivendare
                             }
                         }
                         
@@ -5308,7 +5308,7 @@
                                 CardDB.Card kid = m.handcard.card;
                                 List<Minion> tmp = (m.own) ? this.ownMinions : this.enemyMinions;
                                 int pos = tmp.Count;
-                                callKid(kid, pos, m.own, false, true);
+                                CallKid(kid, pos, m.own, false, true);
 
                                 if (tmp.Count >= 1)
                                 {
@@ -5327,22 +5327,22 @@
                         {
                             CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_158t);//Treant
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                            callKid(kid, pos, m.own); //because baron rivendare
+                            CallKid(kid, pos, m.own); //because baron rivendare
                         }
 
                         for (int i = 0; i < m.stegodon; i++)
                         {
                             CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_810);//Stegodon
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                            callKid(kid, pos, m.own);  //because baron rivendare
+                            CallKid(kid, pos, m.own);  //because baron rivendare
                         }
 
                         for (int i = 0; i < m.livingspores; i++)
                         {
                             CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_999t2t1);//Plant
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                            callKid(kid, pos, m.own);
-                            callKid(kid, pos, m.own);  //because baron rivendare
+                            CallKid(kid, pos, m.own);
+                            CallKid(kid, pos, m.own);  //because baron rivendare
                         }
 
                         if (m.deathrattle2 != null) m.deathrattle2.sim_card.onDeathrattle(this, m);
@@ -5821,12 +5821,12 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="c"></param>
-        /// <param name="zonepos"></param>
+        /// <param name="card"></param>
+        /// <param name="zonePosition"></param>
         /// <param name="own"></param>
         /// <param name="spawnKid">call kid triggered by another minion</param>
         /// <param name="oneMoreIsAllowed">for deathrattle minion to call kid(such as Voidlord)</param>
-        public void callKid(CardDB.Card c, int zonepos, bool own, bool spawnKid = true, bool oneMoreIsAllowed = false)
+        public void CallKid(CardDB.Card card, int zonePosition, bool own, bool spawnKid = true, bool oneMoreIsAllowed = false)
         {
             
             int allowed = 7;
@@ -5850,10 +5850,13 @@
                     return;
                 }
             }
-            int mobplace = zonepos + 1;
+            int mobplace = zonePosition + 1;
 
             //create minion (+triggers)
-            Handmanager.Handcard hc = new Handmanager.Handcard(c) { entity = this.getNextEntity() };
+            Handmanager.Handcard hc = new Handmanager.Handcard(card)
+            {
+                entity = this.getNextEntity()
+            };
             Minion m = createNewMinion(hc, mobplace, own);
             //put it on battle field (+triggers)
             addMinionToBattlefield(m);

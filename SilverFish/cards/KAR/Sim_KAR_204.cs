@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 if (p.OwnLastDiedMinion != CardDB.cardIDEnum.None)
                 {
-                    p.callKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), own.zonepos, own.own);
+                    p.CallKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), own.zonepos, own.own);
                 }
             }
 		}

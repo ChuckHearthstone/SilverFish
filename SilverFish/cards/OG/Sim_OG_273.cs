@@ -14,8 +14,8 @@ namespace HREngine.Bots
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
-            p.callKid(kid, pos, ownplay, false);
-            for (int i = 0; i < 4; i++) p.callKid(kid, pos, ownplay);
+            p.CallKid(kid, pos, ownplay, false);
+            for (int i = 0; i < 4; i++) p.CallKid(kid, pos, ownplay);
         }
     }
 }

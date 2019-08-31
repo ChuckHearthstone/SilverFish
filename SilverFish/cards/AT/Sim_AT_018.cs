@@ -14,7 +14,7 @@ namespace HREngine.Bots
         {
 			if (m.own == own)
 			{				
-				p.callKid(kid, m.zonepos, m.own);
+				p.CallKid(kid, m.zonepos, m.own);
 			}
         }
 	}

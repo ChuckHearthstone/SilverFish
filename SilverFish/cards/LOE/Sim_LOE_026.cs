@@ -20,12 +20,12 @@ namespace HREngine.Bots
                 c = CardDB.Instance.getCardDataFromID(gi.Key);
                 if ((TAG_RACE)c.race == TAG_RACE.MURLOC)
                 {
-                    p.callKid(c, place, ownplay, false);
+                    p.CallKid(c, place, ownplay, false);
                     place++;
                     if (place > 6) break;
                     if (gi.Value > 1)
                     {
-                        p.callKid(c, place, ownplay, false);
+                        p.CallKid(c, place, ownplay, false);
                         place++;
                         if (place > 6) break;
                     }
@@ -39,7 +39,7 @@ namespace HREngine.Bots
                     c = CardDB.Instance.getCardDataFromID(gi.cardid);
                     if ((TAG_RACE)c.race == TAG_RACE.MURLOC)
                     {
-                        p.callKid(c, place, ownplay, false);
+                        p.CallKid(c, place, ownplay, false);
                         place++;
                         if (place > 6) break;
                     }

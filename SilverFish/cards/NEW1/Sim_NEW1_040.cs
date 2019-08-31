@@ -15,7 +15,7 @@ namespace HREngine.Bots
             {
                 int posi = triggerEffectMinion.zonepos;
 
-                p.callKid(kid, posi, triggerEffectMinion.own);
+                p.CallKid(kid, posi, triggerEffectMinion.own);
             }
         }
 

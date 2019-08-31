@@ -16,13 +16,13 @@ namespace HREngine.Bots
                 {
 					if (hc.card.Attack + hc.addattack >= 5)
                     {
-                        p.callKid(hc.card, p.owncards.Count, m.own);
+                        p.CallKid(hc.card, p.owncards.Count, m.own);
 						p.removeCard(hc);
                         break;
                     }
                 }
             }
-            else p.callKid(CardDB.Instance.getCardData(CardDB.cardName.seagiant), p.enemyMinions.Count, m.own);
+            else p.CallKid(CardDB.Instance.getCardData(CardDB.cardName.seagiant), p.enemyMinions.Count, m.own);
         }
 	}
 }

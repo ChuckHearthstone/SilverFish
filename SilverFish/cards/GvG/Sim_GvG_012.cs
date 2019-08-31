@@ -18,7 +18,7 @@ namespace HREngine.Bots
             if (target.HealthPoints < target.maxHp)
             {
                 int posi = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kid, posi, ownplay);
+                p.CallKid(kid, posi, ownplay);
             }
         }
 

@@ -16,7 +16,7 @@ namespace HREngine.Bots
             {
                 do
                 {
-                    p.callKid(kid, p.ownMinions.Count, ownplay);
+                    p.CallKid(kid, p.ownMinions.Count, ownplay);
                 }
                 while (p.enemyMinions.Count > p.ownMinions.Count);
             }

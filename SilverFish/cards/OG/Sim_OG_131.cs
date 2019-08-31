@@ -14,7 +14,7 @@ namespace HREngine.Bots
         {
             if (own.own)
             {
-                if (p.anzOgOwnCThunAngrBonus + 6 > 9) p.callKid(kid, own.zonepos, own.own);
+                if (p.anzOgOwnCThunAngrBonus + 6 > 9) p.CallKid(kid, own.zonepos, own.own);
                 else p.evaluatePenality += 5;
             }
 		}

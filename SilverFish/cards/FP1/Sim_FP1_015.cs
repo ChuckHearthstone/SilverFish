@@ -14,7 +14,7 @@ namespace HREngine.Bots
         {
             if (p.stalaggDead)
             {
-                p.callKid(thaddius, m.zonepos - 1, m.own);
+                p.CallKid(thaddius, m.zonepos - 1, m.own);
             }
         }
 	}

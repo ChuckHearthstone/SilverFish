@@ -20,14 +20,14 @@ namespace HREngine.Bots
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kidSpider, pos, ownplay);
-                p.callKid(kidSpider, pos, ownplay);
+                p.CallKid(kidSpider, pos, ownplay);
+                p.CallKid(kidSpider, pos, ownplay);
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kidScarab, pos, ownplay);
-                p.callKid(kidScarab, pos, ownplay);
+                p.CallKid(kidScarab, pos, ownplay);
+                p.CallKid(kidScarab, pos, ownplay);
             }
         }
     }

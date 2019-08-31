@@ -17,9 +17,9 @@ namespace HREngine.Bots
             p.minionGetDamageOrHeal(target, dmg);
 
             int posi = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, posi, ownplay);
+            p.CallKid(kid, posi, ownplay);
             posi++;
-            p.callKid(kid, posi, ownplay);
+            p.CallKid(kid, posi, ownplay);
         }
 
 

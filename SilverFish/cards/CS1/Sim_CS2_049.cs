@@ -41,7 +41,7 @@ namespace HREngine.Bots
 
                 if (p.ownHeroHasDirectLethal()) kid = stoneclaw;
             }
-            p.callKid(kid, pos, ownplay, false);
+            p.CallKid(kid, pos, ownplay, false);
         }
     }
 

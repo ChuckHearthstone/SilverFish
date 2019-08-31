@@ -15,9 +15,9 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int pos = (ownplay)?  p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(c1, pos, ownplay, false);
-            p.callKid(c2, pos, ownplay);
-            p.callKid(c3, pos, ownplay);
+            p.CallKid(c1, pos, ownplay, false);
+            p.CallKid(c2, pos, ownplay);
+            p.CallKid(c3, pos, ownplay);
 		}
 	}
 }

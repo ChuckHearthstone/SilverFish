@@ -11,7 +11,7 @@ namespace HREngine.Bots
         public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(target.handcard.card, pos, ownplay);
+            p.CallKid(target.handcard.card, pos, ownplay);
             if (ownplay)
             {
                 if (p.ownMinions.Count >= 1 && p.ownMinions[p.ownMinions.Count - 1].name == target.handcard.card.name)

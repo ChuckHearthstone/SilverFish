@@ -165,8 +165,8 @@
                 {
                     if (bestplay.enemyAnzCards > 0)
                     {
-                        if (bestplay.enemyMaxMana > 5) bestplay.callKid(this.spellbreaker43, bestplay.enemyMinions.Count, false, false);
-                        else bestplay.callKid(this.flame, bestplay.enemyMinions.Count, false, false);
+                        if (bestplay.enemyMaxMana > 5) bestplay.CallKid(this.spellbreaker43, bestplay.enemyMinions.Count, false, false);
+                        else bestplay.CallKid(this.flame, bestplay.enemyMinions.Count, false, false);
                         int tmp = bestplay.enemyMinions.Count;
                         bestplay.simulateTrapsEndEnemyTurn();
 
@@ -340,12 +340,12 @@
                     case CardDB.cardName.violetteacher:
                         if (p.enemyAnzCards >= 1)
                         {
-                            p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
-                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
+                            p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
+                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
                         }
                         continue;
                     case CardDB.cardName.warsongcommander:
-                        p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1), p.enemyMinions.Count, false, false);
+                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1), p.enemyMinions.Count, false, false);
                         continue;
                     case CardDB.cardName.gadgetzanauctioneer:
                         if (p.enemyAnzCards >= 1)
@@ -401,7 +401,7 @@
                         //****************************************
                     //****************************************play
                     case CardDB.cardName.illidanstormrage:
-                        if (p.enemyAnzCards >= 1) p.callKid(flame, p.enemyMinions.Count, false);
+                        if (p.enemyAnzCards >= 1) p.CallKid(flame, p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.questingadventurer:
                         if (p.enemyAnzCards >= 1)
@@ -461,7 +461,7 @@
                         }
                         continue;
                     case CardDB.cardName.tundrarhino:
-                        p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125), p.enemyMinions.Count, false, true, true);
+                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125), p.enemyMinions.Count, false, true, true);
                         continue;
                         //****************************************
                     //****************************************damage
@@ -487,13 +487,13 @@
                         if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
                         continue;
                     case CardDB.cardName.grimpatron:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3)  p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_019), p.enemyMinions.Count, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3)  p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_019), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.dragonegg:
-                        if (p.enemyAnzCards >= 3) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_022t), p.enemyMinions.Count, false);
+                        if (p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_022t), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.impgangboss:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_006t), p.enemyMinions.Count, false);
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_006t), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.axeflinger:
                         if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.minionGetDamageOrHeal(p.ownHero, 2);
@@ -502,13 +502,13 @@
                         p.minionGetBuffed(m, 0, 6);
                         continue;
                     case CardDB.cardName.obsidiandestroyer:
-                        if (p.enemyMinions.Count < 6) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_009t), p.enemyMinions.Count, false);
+                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_009t), p.enemyMinions.Count, false);
                         continue;
                     case CardDB.cardName.tunneltrogg:                        
                         p.minionGetBuffed(m, 1, 0);
                         continue;
                     case CardDB.cardName.summoningstone:
-                        if (p.enemyMinions.Count < 6) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_017), p.enemyMinions.Count, false);
+                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_017), p.enemyMinions.Count, false);
                         continue;
                         //****************************************
                     //****************************************dies (rough approximation)

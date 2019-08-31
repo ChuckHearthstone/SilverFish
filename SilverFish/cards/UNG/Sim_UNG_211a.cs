@@ -14,11 +14,11 @@ namespace HREngine.Bots
 		{
 			int MinionsCount = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
-            p.callKid(kid, MinionsCount, ownplay, false);
+            p.CallKid(kid, MinionsCount, ownplay, false);
             int kids = 6 - MinionsCount;
             for (int i = 0; i < kids; i++)
             {
-                p.callKid(kid, MinionsCount, ownplay);
+                p.CallKid(kid, MinionsCount, ownplay);
             }			
 		}
 	}

@@ -36,7 +36,7 @@ namespace HREngine.Bots
                 }
 
                 int pos = (triggerEffectMinion.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kid, pos, triggerEffectMinion.own, false, true); // we allow to summon one minion more (because 3 are destroyed)
+                p.CallKid(kid, pos, triggerEffectMinion.own, false, true); // we allow to summon one minion more (because 3 are destroyed)
             }
         }
     }

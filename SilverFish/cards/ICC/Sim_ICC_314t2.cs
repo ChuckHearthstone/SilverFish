@@ -16,9 +16,9 @@ namespace HREngine.Bots
             if (ownplay) p.ownDeckSize -= anz;
             else p.enemyDeckSize -= anz;
 
-            if (anz > 0) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_120), pos, ownplay, false);//river crocolisk
-            if (anz > 2) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS1_042), pos, ownplay, false);//goldshire footman
-            if (anz > 4) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_048), pos, ownplay, false);//spellbreaker
+            if (anz > 0) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_120), pos, ownplay, false);//river crocolisk
+            if (anz > 2) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS1_042), pos, ownplay, false);//goldshire footman
+            if (anz > 4) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_048), pos, ownplay, false);//spellbreaker
         }
     }
 }

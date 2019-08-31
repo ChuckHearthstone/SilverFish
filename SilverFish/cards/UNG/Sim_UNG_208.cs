@@ -14,8 +14,8 @@ namespace HREngine.Bots
         {
 			if (p.anzOwnElementalsLastTurn > 0 && own.own)
 			{
-                p.callKid(kid, own.zonepos - 1, own.own); //1st left
-                p.callKid(kid, own.zonepos, own.own);
+                p.CallKid(kid, own.zonepos - 1, own.own); //1st left
+                p.CallKid(kid, own.zonepos, own.own);
 			}
         }
     }

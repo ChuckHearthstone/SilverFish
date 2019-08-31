@@ -22,7 +22,7 @@ namespace HREngine.Bots
             int kids = 7 - pos;
             if (kids > 0)
             {
-                p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_301), pos, ownplay); //Felguard Taunt
+                p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_301), pos, ownplay); //Felguard Taunt
                 kids--;
 
                 if (kids > 0)
@@ -34,7 +34,7 @@ namespace HREngine.Bots
                         {
                             for (int i = 0; i < e.Value; i++)
                             {
-                                p.callKid(kid, pos, ownplay);
+                                p.CallKid(kid, pos, ownplay);
                                 kids--;
                                 if (kids < 1) break;
                             }

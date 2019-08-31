@@ -16,11 +16,11 @@ namespace HREngine.Bots
             p.allMinionsGetDestroyed();
             for (int i = 0; i < ownanz; i++)
             {
-                p.callKid(d, 1, true);
+                p.CallKid(d, 1, true);
             }
             for (int i = 0; i < enemanz; i++)
             {
-                p.callKid(d, 1, false);
+                p.CallKid(d, 1, false);
             }
 		}
 

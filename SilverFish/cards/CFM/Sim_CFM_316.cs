@@ -15,11 +15,11 @@ namespace HREngine.Bots
             int anz = m.Attack;
             if (anz > 0)
             {
-                p.callKid(kid, m.zonepos - 1, m.own, false);
+                p.CallKid(kid, m.zonepos - 1, m.own, false);
                 anz--;                
                 for (int i = 0; i < anz; i++)
                 {
-                    p.callKid(kid, m.zonepos - 1, m.own);
+                    p.CallKid(kid, m.zonepos - 1, m.own);
                 }
             }
         }

@@ -16,7 +16,7 @@ namespace HREngine.Bots
                 {
                     CardDB.Card card = CardDB.Instance.getCardDataFromID(gyi.cardid);
                     int pos = triggerEffectMinion.own ? p.ownMinions.Count : p.enemyMinions.Count;
-                    p.callKid(card, p.ownMinions.Count, gyi.own);
+                    p.CallKid(card, p.ownMinions.Count, gyi.own);
                 }
             }
         }

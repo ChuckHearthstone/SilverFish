@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    kampfschrei:/ konstruiert eine fantastische erfindung.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.callKid(kid, own.zonepos, own.own);
+            p.CallKid(kid, own.zonepos, own.own);
 		}
 
 

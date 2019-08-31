@@ -19,7 +19,7 @@ namespace HREngine.Bots
             m.extraParam2 = diedMinions;
             for (int i = 0; i < residual; i++)
             {
-                p.callKid(kid, m.zonepos, m.own);
+                p.CallKid(kid, m.zonepos, m.own);
             }
         }
     }

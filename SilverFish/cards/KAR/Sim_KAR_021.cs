@@ -39,7 +39,7 @@ namespace HREngine.Bots
 					if (!wrath) kid = wrathofair;
 					else kid = searing;
 				}
-                p.callKid(kid, triggerEffectMinion.zonepos, wasOwnCard);
+                p.CallKid(kid, triggerEffectMinion.zonepos, wasOwnCard);
             }
         }
 	}

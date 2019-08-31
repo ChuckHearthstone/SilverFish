@@ -17,7 +17,7 @@ namespace HREngine.Bots
             
             for (int i = 0; i < anz; i++)
             {
-                p.callKid(kid, pos, ownplay);
+                p.CallKid(kid, pos, ownplay);
             }
 		}
 	}

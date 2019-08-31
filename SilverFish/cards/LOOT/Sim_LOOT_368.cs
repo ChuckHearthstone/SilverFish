@@ -15,9 +15,9 @@
         public override void onDeathrattle(Playfield p, Minion m)
         {
             var card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_065);
-            p.callKid(card, m.zonepos - 1, m.own, true, true);
-            p.callKid(card, m.zonepos, m.own, true, true);
-            p.callKid(card, m.zonepos + 1, m.own, true, true);
+            p.CallKid(card, m.zonepos - 1, m.own, true, true);
+            p.CallKid(card, m.zonepos, m.own, true, true);
+            p.CallKid(card, m.zonepos + 1, m.own, true, true);
         }
     }
 }

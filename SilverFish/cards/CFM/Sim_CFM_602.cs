@@ -13,7 +13,7 @@ namespace HREngine.Bots
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(p.getNextJadeGolem(ownplay), pos, ownplay);
+                p.CallKid(p.getNextJadeGolem(ownplay), pos, ownplay);
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {

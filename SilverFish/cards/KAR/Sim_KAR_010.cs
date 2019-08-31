@@ -25,16 +25,16 @@ namespace HREngine.Bots
 				}
 				if(dragonInHand)
 				{
-					p.callKid(kid, own.zonepos, own.own);
-					p.callKid(kid, own.zonepos, own.own);
+					p.CallKid(kid, own.zonepos, own.own);
+					p.CallKid(kid, own.zonepos, own.own);
 				}
 			}
 			else
 			{
                 if (p.enemyAnzCards > 1)
 				{
-					p.callKid(kid, own.zonepos, own.own);
-					p.callKid(kid, own.zonepos, own.own);
+					p.CallKid(kid, own.zonepos, own.own);
+					p.CallKid(kid, own.zonepos, own.own);
 				}
 			}
         }

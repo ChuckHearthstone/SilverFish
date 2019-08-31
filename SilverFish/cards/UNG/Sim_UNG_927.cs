@@ -19,7 +19,7 @@ namespace HREngine.Bots
                 foreach (Minion m in temp.ToArray())
                 {
 					if (!m.wounded) continue;
-                    p.callKid(m.handcard.card, pos, ownplay, spawnKid);
+                    p.CallKid(m.handcard.card, pos, ownplay, spawnKid);
 					spawnKid = true;
                     temp2 = (ownplay) ? p.ownMinions : p.enemyMinions;
                     temp2[pos].setMinionToMinion(m);

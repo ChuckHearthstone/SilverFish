@@ -18,7 +18,7 @@ namespace HREngine.Bots
                 triggerEffectMinion.anzGotHealed = 0;
                 for (int i = 0; i < tmp; i++)
                 {
-                    p.callKid(kid, triggerEffectMinion.zonepos, triggerEffectMinion.own);
+                    p.CallKid(kid, triggerEffectMinion.zonepos, triggerEffectMinion.own);
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace HREngine.Bots
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, place, ownplay, false);
+            p.CallKid(kid, place, ownplay, false);
         }
 	}
 }

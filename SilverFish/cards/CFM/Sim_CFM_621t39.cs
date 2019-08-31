@@ -13,9 +13,9 @@ namespace HREngine.Bots
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 			if (p.OwnLastDiedMinion != CardDB.cardIDEnum.None)
 			{
-				p.callKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay, false); //presurmise - OwnLastDiedMinion also for enemy
-				p.callKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay);
-				p.callKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay);
+				p.CallKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay, false); //presurmise - OwnLastDiedMinion also for enemy
+				p.CallKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay);
+				p.CallKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), pos, ownplay);
 			}
         }
     }

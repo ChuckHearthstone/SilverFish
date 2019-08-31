@@ -24,7 +24,7 @@ namespace HREngine.Bots
             
             if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.callKid(kid, own.zonepos, own.own);
+                p.CallKid(kid, own.zonepos, own.own);
             }
         }
     }

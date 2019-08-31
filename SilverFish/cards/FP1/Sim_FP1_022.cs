@@ -26,7 +26,7 @@ namespace HREngine.Bots
 
                 foreach (Handmanager.Handcard mnn in temp)
                 {
-                    p.callKid(mnn.card, p.ownMinions.Count, true, false);
+                    p.CallKid(mnn.card, p.ownMinions.Count, true, false);
                     p.removeCard(mnn);
                     break;
                 }
@@ -35,7 +35,7 @@ namespace HREngine.Bots
             {
                 if (p.enemyAnzCards >= 1)
                 {
-                    p.callKid(c, p.enemyMinions.Count, false, false);
+                    p.CallKid(c, p.enemyMinions.Count, false, false);
                 }
             }
         }

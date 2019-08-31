@@ -16,7 +16,7 @@ namespace HREngine.Bots
             if (target.HealthPoints > dmg || target.immune || target.divineshild)
             {
 				int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-				p.callKid(kid, pos, ownplay);
+				p.CallKid(kid, pos, ownplay);
             }
             p.minionGetDamageOrHeal(target, dmg);
 		}

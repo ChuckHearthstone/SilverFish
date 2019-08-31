@@ -15,7 +15,7 @@ namespace HREngine.Bots
             int place = target.zonepos;
             CardDB.Card d = target.handcard.card;
             p.minionGetDestroyed(target);
-            p.callKid(d, place, own);
+            p.CallKid(d, place, own);
 		}
 
 	}

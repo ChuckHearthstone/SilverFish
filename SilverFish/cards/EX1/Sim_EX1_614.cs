@@ -13,7 +13,7 @@ namespace HREngine.Bots
         {
             if (wasOwnCard == triggerEffectMinion.own)
             {
-                    p.callKid(d, triggerEffectMinion.zonepos, triggerEffectMinion.own);
+                    p.CallKid(d, triggerEffectMinion.zonepos, triggerEffectMinion.own);
 
             }
         }

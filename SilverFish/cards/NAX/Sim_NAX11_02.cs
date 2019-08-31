@@ -18,11 +18,11 @@ namespace HREngine.Bots
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             foreach (Minion m in p.ownMinions)
             {
-				if (m.HealthPoints <= 0) p.callKid(kid, place, ownplay);
+				if (m.HealthPoints <= 0) p.CallKid(kid, place, ownplay);
 			}
             foreach (Minion m in p.enemyMinions)
             {
-				if (m.HealthPoints <= 0) p.callKid(kid, place, ownplay);
+				if (m.HealthPoints <= 0) p.CallKid(kid, place, ownplay);
 			}
 		}
 	}

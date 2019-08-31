@@ -14,7 +14,7 @@ namespace HREngine.Bots
             p.minionGetDamageOrHeal(target, -heal);
 			
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;			
-            p.callKid(p.getRandomCardForManaMinion(6), pos, ownplay, false);
+            p.CallKid(p.getRandomCardForManaMinion(6), pos, ownplay, false);
 		}
 	}
 }

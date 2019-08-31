@@ -14,7 +14,7 @@ namespace HREngine.Bots
             int pos = temp.Count;
             if (pos < 7)
             {
-                p.callKid(target.handcard.card, pos, ownplay);
+                p.CallKid(target.handcard.card, pos, ownplay);
                 temp[pos].setMinionToMinion(target);
             }
         }

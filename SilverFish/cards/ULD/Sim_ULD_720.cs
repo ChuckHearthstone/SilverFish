@@ -19,7 +19,7 @@
             if (target != null && target.own && target.wounded)
             {
                 int position = p.ownMinions.Count;
-                p.callKid(own.handcard.card, position, true);
+                p.CallKid(own.handcard.card, position, true);
                 p.ownMinions[position].setMinionToMinion(target);
             }
         }

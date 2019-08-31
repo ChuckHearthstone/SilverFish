@@ -14,7 +14,7 @@ namespace HREngine.Bots
         {
             List<Minion> list = (m.own) ? p.ownMinions : p.enemyMinions;
             int anz = list.Count;
-            p.callKid(kid, m.zonepos, m.own);
+            p.CallKid(kid, m.zonepos, m.own);
             if (anz < 7 && !list[m.zonepos].taunt)
             {
                 list[m.zonepos].taunt = true;

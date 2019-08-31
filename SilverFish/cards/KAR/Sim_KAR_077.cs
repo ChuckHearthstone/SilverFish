@@ -13,7 +13,7 @@ namespace HREngine.Bots
             p.minionGetBuffed(target, 2, 2);
 			
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(p.getRandomCardForManaMinion(2), pos, ownplay);
+            p.CallKid(p.getRandomCardForManaMinion(2), pos, ownplay);
 		}
 	}
 }

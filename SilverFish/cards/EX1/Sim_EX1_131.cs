@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
             if (p.cardsPlayedThisTurn >= 1)
             {
-                p.callKid(card, own.zonepos, own.own);
+                p.CallKid(card, own.zonepos, own.own);
             }
 		}
 

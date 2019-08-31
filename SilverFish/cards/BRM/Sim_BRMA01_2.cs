@@ -14,13 +14,13 @@ namespace HREngine.Bots
 		{
 			if (p.ownDeckSize > 0)
             {
-				p.callKid(kid, p.ownMinions.Count, true, false);
+				p.CallKid(kid, p.ownMinions.Count, true, false);
                 p.ownDeckSize--;
             }
 			
             if (p.enemyDeckSize > 0)
             {
-				p.callKid(kid, p.enemyMinions.Count, false, false);
+				p.CallKid(kid, p.enemyMinions.Count, false, false);
                 p.enemyDeckSize--;
             }
 		}

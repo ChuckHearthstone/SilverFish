@@ -13,7 +13,7 @@ namespace HREngine.Bots
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, pos, ownplay, false);
+            p.CallKid(kid, pos, ownplay, false);
         }
     }
 }

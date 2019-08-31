@@ -18,7 +18,7 @@ namespace HREngine.Bots
                 m.anzGotDmg = 0;
                 for (int i = 0; i < tmp; i++)
                 {
-					p.callKid(kid, m.zonepos, m.own);
+					p.CallKid(kid, m.zonepos, m.own);
                 }
             }
         }

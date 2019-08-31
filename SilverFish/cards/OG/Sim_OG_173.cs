@@ -34,7 +34,7 @@ namespace HREngine.Bots
 					}
 
 					int pos = (triggerEffectMinion.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-					p.callKid(kid, pos, triggerEffectMinion.own, false, true); 
+					p.CallKid(kid, pos, triggerEffectMinion.own, false, true); 
 				}
             }
         }

@@ -14,7 +14,7 @@ namespace HREngine.Bots
         {
             if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.cardtype.SPELL)
             {
-                p.callKid(card, triggerEffectMinion.zonepos, wasOwnCard);
+                p.CallKid(card, triggerEffectMinion.zonepos, wasOwnCard);
             }
         }
     }

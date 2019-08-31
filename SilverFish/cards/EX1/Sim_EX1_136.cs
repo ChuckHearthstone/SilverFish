@@ -14,7 +14,7 @@ namespace HREngine.Bots
             List<Minion> tmp = ownplay ? p.ownMinions : p.enemyMinions;
             int pos = tmp.Count;
 
-            p.callKid(kid, pos, ownplay, true, true);
+            p.CallKid(kid, pos, ownplay, true, true);
             
             if (tmp.Count >= 1)
             {

@@ -15,7 +15,7 @@ namespace HREngine.Bots
 			
             bool ownplay = true;
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
-            p.callKid(hc.card, temp.Count, ownplay, false);
+            p.CallKid(hc.card, temp.Count, ownplay, false);
             Minion m = temp[temp.Count - 1];
             if (m.name == hc.card.name && m.playedThisTurn)
             {

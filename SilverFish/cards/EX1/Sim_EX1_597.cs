@@ -18,7 +18,7 @@ namespace HREngine.Bots
                 int posi = triggerEffectMinion.zonepos;
                 if (triggerEffectMinion.HealthPoints == 1) posi--;
                 p.minionGetDamageOrHeal(triggerEffectMinion, 1);
-                p.callKid(kid, posi, triggerEffectMinion.own);
+                p.CallKid(kid, posi, triggerEffectMinion.own);
                 triggerEffectMinion.stealth = false;
             }
         }

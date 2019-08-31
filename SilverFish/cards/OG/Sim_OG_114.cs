@@ -18,11 +18,11 @@ namespace HREngine.Bots
                 {
 				    int pos = p.ownMinions.Count;
                     int anz = Math.Min(7 - pos, p.mana);
-					p.callKid(kid, pos, ownplay, false);
+					p.CallKid(kid, pos, ownplay, false);
                     anz--;
                     for (int i = 0; i < anz; i++)
 					{
-						p.callKid(kid, pos, ownplay);
+						p.CallKid(kid, pos, ownplay);
 					}
 					p.mana = 0;
 				}				

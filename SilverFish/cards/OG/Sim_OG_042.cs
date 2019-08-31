@@ -15,7 +15,7 @@ namespace HREngine.Bots
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
 				int pos = (triggerEffectMinion.own) ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(kid, pos, triggerEffectMinion.own, false);
+                p.CallKid(kid, pos, triggerEffectMinion.own, false);
 				if (triggerEffectMinion.own)p.ownDeckSize--;
                 else p.enemyDeckSize--;
             }

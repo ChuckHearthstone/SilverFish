@@ -17,7 +17,7 @@ namespace HREngine.Bots
             }
 
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(p.getNextJadeGolem(ownplay), pos, ownplay);
+            p.CallKid(p.getNextJadeGolem(ownplay), pos, ownplay);
         }
     }
 }

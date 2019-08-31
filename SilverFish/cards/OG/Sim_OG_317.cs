@@ -19,7 +19,7 @@ namespace HREngine.Bots
 					{
 						if ((TAG_RACE)hc.card.race == TAG_RACE.DRAGON)
 						{
-							p.callKid(hc.card, p.ownMinions.Count, true);
+							p.CallKid(hc.card, p.ownMinions.Count, true);
 							p.removeCard(hc);
 							needTrigger = true;
 							if (p.ownMinions.Count > 6) break;
@@ -33,7 +33,7 @@ namespace HREngine.Bots
 				if (p.enemyAnzCards > 1)
                 {
                     int pos = p.enemyMinions.Count;
-                    p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_561), pos, false); //Alexstrasza
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_561), pos, false); //Alexstrasza
 					p.enemyAnzCards--;
                     p.triggerCardsChanged(false);
                     if (p.ownHeroHasDirectLethal())

@@ -19,7 +19,7 @@ namespace HREngine.Bots
                 for (int i = 0; i < tmp; i++)
                 {
 					int pos = m.zonepos;
-					p.callKid(kid, pos, m.own);
+					p.CallKid(kid, pos, m.own);
                 }
             }
         }

@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.callKid(p.getNextJadeGolem(m.own), m.zonepos - 1, m.own);
+            p.CallKid(p.getNextJadeGolem(m.own), m.zonepos - 1, m.own);
         }
     }
 }

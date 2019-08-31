@@ -12,7 +12,7 @@ namespace HREngine.Bots
         {
             if (target != null && p.ownMinions.Count < 7)
             {
-                p.callKid(own.handcard.card, own.zonepos, own.own);
+                p.CallKid(own.handcard.card, own.zonepos, own.own);
                 p.ownMinions[own.zonepos].setMinionToMinion(target);
                 p.ownMinions[own.zonepos].Attack = 1;
                 p.ownMinions[own.zonepos].HealthPoints = 1;

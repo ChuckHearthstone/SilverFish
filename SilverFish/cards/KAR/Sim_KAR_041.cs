@@ -23,7 +23,7 @@ namespace HREngine.Bots
             {
                 bool own = p.LurkersDB[m.entitiyID].own;
                 int pos = own ? p.ownMinions.Count : p.enemyMinions.Count;
-                p.callKid(CardDB.Instance.getCardDataFromID(p.LurkersDB[m.entitiyID].IDEnum), pos, own);
+                p.CallKid(CardDB.Instance.getCardDataFromID(p.LurkersDB[m.entitiyID].IDEnum), pos, own);
             }
         }
 	}

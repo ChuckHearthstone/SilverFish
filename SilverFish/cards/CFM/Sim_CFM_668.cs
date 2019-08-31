@@ -10,8 +10,8 @@ namespace HREngine.Bots
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            p.callKid(m.handcard.card, m.zonepos, m.own);
-            p.callKid(m.handcard.card, m.zonepos, m.own);
+            p.CallKid(m.handcard.card, m.zonepos, m.own);
+            p.CallKid(m.handcard.card, m.zonepos, m.own);
             List<Minion> temp = (m.own) ? p.ownMinions : p.enemyMinions;
             int count = 0;
             foreach (Minion mnn in temp)

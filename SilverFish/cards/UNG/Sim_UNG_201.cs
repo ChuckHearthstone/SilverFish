@@ -15,7 +15,7 @@ namespace HREngine.Bots
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
                 int pos = triggerEffectMinion.zonepos;
-                p.callKid(kid, pos, triggerEffectMinion.own);
+                p.CallKid(kid, pos, triggerEffectMinion.own);
             }
         }
 	}

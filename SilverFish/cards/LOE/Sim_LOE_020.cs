@@ -12,8 +12,8 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.callKid(kid, p.ownMinions.Count, true);
-			p.callKid(kid, p.enemyMinions.Count, false);
+            p.CallKid(kid, p.ownMinions.Count, true);
+			p.CallKid(kid, p.enemyMinions.Count, false);
 		}
 	}
 }

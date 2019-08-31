@@ -24,7 +24,7 @@ namespace HREngine.Bots
                     {
                         for (int i = 0; i < e.Value; i++)
                         {
-                            p.callKid(kid, own.zonepos, own.own);
+                            p.CallKid(kid, own.zonepos, own.own);
                             kids--;
                             if (kids < 1) break;
                         }

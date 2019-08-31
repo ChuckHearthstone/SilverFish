@@ -24,7 +24,7 @@ namespace HREngine.Bots
             p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 5);
 
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(kid, pos, ownplay);
+            p.CallKid(kid, pos, ownplay);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace HREngine.Bots
             p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 4);	
 			
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(p.getRandomCardForManaMinion(4), pos, ownplay);
+            p.CallKid(p.getRandomCardForManaMinion(4), pos, ownplay);
 		}
 	}
 }

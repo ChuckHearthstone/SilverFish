@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		
 		public override void onInspire(Playfield p, Minion m, bool own)
         {
-            if (m.own == own) p.callKid(kid, m.zonepos, own);
+            if (m.own == own) p.CallKid(kid, m.zonepos, own);
         }
 	}
 }

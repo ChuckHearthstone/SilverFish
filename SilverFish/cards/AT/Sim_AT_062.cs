@@ -14,9 +14,9 @@ namespace HREngine.Bots
 		{
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
-            p.callKid(kid, place, ownplay, false);
-            p.callKid(kid, place, ownplay);
-            p.callKid(kid, place, ownplay);
+            p.CallKid(kid, place, ownplay, false);
+            p.CallKid(kid, place, ownplay);
+            p.CallKid(kid, place, ownplay);
 		}
 	}
 }

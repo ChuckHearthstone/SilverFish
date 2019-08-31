@@ -16,7 +16,7 @@ namespace HREngine.Bots
             p.minionGetDamageOrHeal(target, dmg);
 
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            if (target.HealthPoints <= 0) p.callKid(kid, place, ownplay);
+            if (target.HealthPoints <= 0) p.CallKid(kid, place, ownplay);
 		}
 	}
 }

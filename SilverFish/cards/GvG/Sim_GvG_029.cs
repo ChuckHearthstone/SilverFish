@@ -27,14 +27,14 @@ namespace HREngine.Bots
             }
             if (sum < 9999)
             {
-                p.callKid(c.card, p.ownMinions.Count, true, false);
+                p.CallKid(c.card, p.ownMinions.Count, true, false);
                 p.removeCard(c);
                 p.triggerCardsChanged(true);
             }
 
             if (p.enemyAnzCards >= 2)
             {
-                p.callKid(c.card, p.enemyMinions.Count, false, false);
+                p.CallKid(c.card, p.enemyMinions.Count, false, false);
                 p.enemyAnzCards--;
                 p.triggerCardsChanged(false);
             }

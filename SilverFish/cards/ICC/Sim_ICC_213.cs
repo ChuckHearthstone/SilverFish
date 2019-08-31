@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
                 CardDB.Card kid = CardDB.Instance.getCardDataFromID((p.OwnLastDiedMinion == CardDB.cardIDEnum.None) ? CardDB.cardIDEnum.EX1_345t : p.OwnLastDiedMinion); // Shadow of Nothing 0:1 or ownMinion
-                p.callKid(kid, pos, ownplay, false);
+                p.CallKid(kid, pos, ownplay, false);
             }
         }
     }

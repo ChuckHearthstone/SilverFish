@@ -19,7 +19,7 @@ namespace HREngine.Bots
                     if (m.entitiyID == own.entitiyID) continue;
                     pos = (own.own) ? p.ownMinions.Count : p.enemyMinions.Count;
                     if (pos > 6) break;
-                    p.callKid(m.handcard.card, pos, own.own);
+                    p.CallKid(m.handcard.card, pos, own.own);
                     temp = (own.own) ? p.ownMinions : p.enemyMinions;
                     temp[pos].HealthPoints = 1;
                     temp[pos].Attack = 1;

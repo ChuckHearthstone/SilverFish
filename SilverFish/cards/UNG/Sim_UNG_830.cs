@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_205), m.zonepos-1, m.own); //Silverware Golem.
+			p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_205), m.zonepos-1, m.own); //Silverware Golem.
         }
 	}
 }

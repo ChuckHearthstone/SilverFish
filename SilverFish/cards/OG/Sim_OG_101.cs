@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
             int anz = (ownplay) ? p.mana : p.enemyMaxMana;
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(p.getRandomCardForManaMinion(anz), pos, ownplay, false);
+            p.CallKid(p.getRandomCardForManaMinion(anz), pos, ownplay, false);
 			if (ownplay) p.mana = 0;
 		}
 	}

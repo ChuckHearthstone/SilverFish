@@ -18,7 +18,7 @@ namespace HREngine.Bots
             {
                 int posi = p.ownMinions.Count;
                 if (posi > 6) return;
-                p.callKid(kid, posi, true);
+                p.CallKid(kid, posi, true);
                 if (p.ownMinions.Count >= 1)
                 {
                     if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.cardName.spellbender)
@@ -31,7 +31,7 @@ namespace HREngine.Bots
             {
                 int posi = p.enemyMinions.Count;
                 if (posi > 6) return;
-                p.callKid(kid, posi, false);
+                p.CallKid(kid, posi, false);
 
                 if (p.enemyMinions.Count >= 1)
                 {

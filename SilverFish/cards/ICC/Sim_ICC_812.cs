@@ -19,7 +19,7 @@ namespace HREngine.Bots
             if (cId != CardDB.cardIDEnum.None)
             {
                 CardDB.Card kid = CardDB.Instance.getCardDataFromID(cId);
-                p.callKid(kid, m.zonepos - 1, m.own);
+                p.CallKid(kid, m.zonepos - 1, m.own);
             }
         }
     }

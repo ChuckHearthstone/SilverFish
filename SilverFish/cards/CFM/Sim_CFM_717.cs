@@ -15,7 +15,7 @@ namespace HREngine.Bots
             p.equipWeapon(weapon, ownplay);
 
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.callKid(p.getNextJadeGolem(ownplay), place, ownplay);
+            p.CallKid(p.getNextJadeGolem(ownplay), place, ownplay);
         }
     }
 }

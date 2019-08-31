@@ -22,8 +22,8 @@ namespace HREngine.Bots
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.callKid(kid, own.zonepos, own.own, false);
-                p.callKid(kid, own.zonepos - 1, own.own);
+                p.CallKid(kid, own.zonepos, own.own, false);
+                p.CallKid(kid, own.zonepos - 1, own.own);
             }
 		}
 	}

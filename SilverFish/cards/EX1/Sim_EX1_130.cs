@@ -16,7 +16,7 @@ namespace HREngine.Bots
             if (ownplay)
             {
                 int pos = p.ownMinions.Count;
-                p.callKid(kid, pos, true, true, true);
+                p.CallKid(kid, pos, true, true, true);
                 if (p.ownMinions.Count >= 1)
                 {
                     if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.cardName.defender)
@@ -28,7 +28,7 @@ namespace HREngine.Bots
             else
             {
                 int pos = p.enemyMinions.Count;
-                p.callKid(kid, pos, false, true, true);
+                p.CallKid(kid, pos, false, true, true);
 
                 if (p.enemyMinions.Count >= 1)
                 {

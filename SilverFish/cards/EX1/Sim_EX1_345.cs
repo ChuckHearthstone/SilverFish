@@ -13,7 +13,7 @@ namespace HREngine.Bots
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             if (p.enemyDeckSize < 1) copymin = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_345t); // Shadow of Nothing
-            p.callKid(copymin, p.ownMinions.Count, ownplay, false);
+            p.CallKid(copymin, p.ownMinions.Count, ownplay, false);
 		}
 	}
 }
