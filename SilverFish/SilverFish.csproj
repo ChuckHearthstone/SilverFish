@@ -1382,6 +1382,7 @@
     <Compile Include="cards\LOE\Sim_LOE_119.cs" />
     <Compile Include="cards\LOOT\Sim_LOOT_357.cs" />
     <Compile Include="cards\LOOT\Sim_LOOT_357l.cs" />
+    <Compile Include="cards\LOOT\Sim_LOOT_368.cs" />
     <Compile Include="cards\LOOT\Sim_LOOT_998h.cs" />
     <Compile Include="cards\LOOT\Sim_LOOT_998j.cs" />
     <Compile Include="cards\LOOT\Sim_LOOT_998k.cs" />

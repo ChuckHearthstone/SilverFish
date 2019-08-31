@@ -5818,7 +5818,14 @@
         }
 
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="zonepos"></param>
+        /// <param name="own"></param>
+        /// <param name="spawnKid">call kid triggered by another minion</param>
+        /// <param name="oneMoreIsAllowed">for deathrattle minion to call kid(such as Voidlord)</param>
         public void callKid(CardDB.Card c, int zonepos, bool own, bool spawnKid = true, bool oneMoreIsAllowed = false)
         {
             
