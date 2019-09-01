@@ -18,10 +18,12 @@
         {
             if (target != null)
             {
-                int dmg = 2;
-                p.minionGetDamageOrHeal(target, dmg);
-                if (p.enemyMinions.Count == 0 && !p.isLethalCheck) p.evaluatePenality += 20;
-                if (target.own == own.own) p.evaluatePenality += 500;
+                int damage = 2;
+                p.minionGetDamageOrHeal(target, damage);
+                if (p.enemyMinions.Count == 0 && !p.isLethalCheck)
+                {
+                    p.evaluatePenality += 20;
+                }
             }
         }
     }
