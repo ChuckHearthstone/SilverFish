@@ -14,7 +14,7 @@ namespace SilverFish.Helpers
         public int Counter { get; set; }
     }
 
-    public class NotImplementedSimHelper
+    public class CardNotImplementedHelper
     {
         private static readonly ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo> NotImplementedCards =
             new ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo>();

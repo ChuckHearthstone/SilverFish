@@ -127,7 +127,7 @@
     <Compile Include="ai\Movegenerator.cs" />
     <Compile Include="ai\Mulligan.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
-    <Compile Include="Helpers\NotImplementedSimHelper.cs" />
+    <Compile Include="Helpers\CardNotImplementedHelper.cs" />
     <Compile Include="ai\PenalityManager.cs" />
     <Compile Include="ai\PenTemplate.cs" />
     <Compile Include="ai\Playfield.cs" />

@@ -243,7 +243,7 @@ def Execute():
             GameEventManager.GameOver -= GameEventManagerOnGameOver;
             GameEventManager.QuestUpdate -= GameEventManagerOnQuestUpdate;
             GameEventManager.ArenaRewards -= GameEventManagerOnArenaRewards;
-            NotImplementedSimHelper.Save();
+            CardNotImplementedHelper.Save();
         }
 
         #endregion
@@ -1377,7 +1377,7 @@ def Execute():
         {
             Log.InfoFormat("[GameEventManagerOnGameOver] {0}{2} => {1}.", gameOverEventArgs.Result,
                 GameEventManager.Instance.LastGamePresenceStatus, gameOverEventArgs.Conceded ? " [conceded]" : "");
-            ThreadPool.QueueUserWorkItem(NotImplementedSimHelper.GameOver);
+            ThreadPool.QueueUserWorkItem(CardNotImplementedHelper.GameOver);
         }
 
         private void GameEventManagerOnNewGame(object sender, NewGameEventArgs newGameEventArgs)

@@ -1178,7 +1178,7 @@ namespace HREngine.Bots
             var notImplementedEnemyMinions = enemyMinionsCard.Where(x => !x.CardSimulationImplemented);
             foreach (var card in notImplementedEnemyMinions)
             {
-                NotImplementedSimHelper.Add(card);
+                CardNotImplementedHelper.Add(card);
             }
 
             var enemyCardsOut =
@@ -1186,7 +1186,7 @@ namespace HREngine.Bots
             var notImplementedEnemyCardsOut = enemyCardsOut.Where(x => !x.CardSimulationImplemented);
             foreach (var card in notImplementedEnemyCardsOut)
             {
-               NotImplementedSimHelper.Add(card);
+               CardNotImplementedHelper.Add(card);
             }
         }
 
