@@ -75,7 +75,7 @@ namespace HREngine.Bots
             {
                 if (_ownHeroPowerCost < 0)
                 {
-                    _ownHeroPowerCost = ChuckHelper.GetOwnHeroPowerCost();
+                    _ownHeroPowerCost = EvenDeckHelper.GetOwnHeroPowerCost();
                 }
                 return _ownHeroPowerCost;
             }
@@ -729,7 +729,7 @@ namespace HREngine.Bots
 
         public void printOwnDeck()
         {
-            ChuckHelper.EvenShamanCheck(turnDeck);
+            EvenDeckHelper.EvenShamanCheck(turnDeck);
 
             string od = "od: ";
             foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.turnDeck)

@@ -4,21 +4,21 @@ using HREngine.Bots;
 
 namespace SilverFish.Helpers
 {
-    public class ChuckHelper
+    public class EvenDeckHelper
     {
-        public static bool EvenShamanChecked { get; set; }
+        public static bool EvenDeckChecked { get; set; }
 
-        public static bool IsEvenShaman { get; set; }
+        public static bool IsEvenDeck { get; set; }
 
         public static void Reset()
         {
-            EvenShamanChecked = false;
-            IsEvenShaman = false;
+            EvenDeckChecked = false;
+            IsEvenDeck = false;
         }
 
         public static void EvenShamanCheck(Dictionary<CardDB.cardIDEnum, int> dictionary)
         {
-            if (EvenShamanChecked)
+            if (EvenDeckChecked)
             {
                 return;
             }
@@ -38,16 +38,16 @@ namespace SilverFish.Helpers
 
                 if (isEvenShaman)
                 {
-                    IsEvenShaman = true;
+                    IsEvenDeck = true;
                 }
             }
 
-            EvenShamanChecked = true;
+            EvenDeckChecked = true;
         }
 
         public static int GetOwnHeroPowerCost()
         {
-            if (EvenShamanChecked && IsEvenShaman)
+            if (EvenDeckChecked && IsEvenDeck)
             {
                 return 1;
             }
