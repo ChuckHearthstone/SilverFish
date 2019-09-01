@@ -208,7 +208,7 @@ namespace HREngine.Bots
             {
                 LogHelper.CombatLogFileName = $"Combat-{DateTime.Now:yyyyMMdd-HHmmss}.log";
                 Helpfunctions.Instance.InfoLog("#######################################################");
-                Helpfunctions.Instance.InfoLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
+                Helpfunctions.Instance.InfoLog($"fight is logged in: {LogHelper.GetCombatLogFilePath()}");
                 Helpfunctions.Instance.InfoLog("#######################################################");
             }
             startDeck.Clear();

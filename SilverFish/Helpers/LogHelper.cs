@@ -6,13 +6,15 @@ namespace SilverFish.Helpers
 {
     public class LogHelper
     {
-        private static string LogFolder = @"Logs\ChuckSilverFishAi";
+        private static string MainLogFolder = @"Logs\ChuckSilverFishAi";
+
+        private static string CombatLogFolder = "CombatLogs";
 
         private static string MainLogFileName { get; set; }
 
         private static void AppendText(object obj, string fileName, string subfolder = "")
         {
-            var folder = Path.Combine(Settings.Instance.BaseDirectory, LogFolder);
+            var folder = Path.Combine(Settings.Instance.BaseDirectory, MainLogFolder);
             if (!string.IsNullOrWhiteSpace(subfolder))
             {
                 folder = Path.Combine(folder, subfolder);
@@ -42,7 +44,7 @@ namespace SilverFish.Helpers
 
         private static void WriteAllText(object obj, string fileName, string subfolder)
         {
-            var folder = Path.Combine(Settings.Instance.BaseDirectory, LogFolder);
+            var folder = Path.Combine(Settings.Instance.BaseDirectory, MainLogFolder);
             if (!string.IsNullOrWhiteSpace(subfolder))
             {
                 folder = Path.Combine(folder, subfolder);
@@ -66,13 +68,19 @@ namespace SilverFish.Helpers
 
         public static void WriteCombatLog(object obj)
         {
-            AppendText(obj, CombatLogFileName, "CombatLogs");
+            AppendText(obj, CombatLogFileName, CombatLogFolder);
         }
 
         public static void WriteMainLog(object obj)
         {
             MainLogFileName = $"ChuckSilverFishAi{DateTime.Now:yyyyMMdd}.log";
             AppendText(obj, MainLogFileName);
+        }
+
+        public static string GetCombatLogFilePath()
+        {
+            var combatLogFilePath = Path.Combine(Settings.Instance.BaseDirectory, CombatLogFolder);
+            return combatLogFilePath;
         }
     }
 }
