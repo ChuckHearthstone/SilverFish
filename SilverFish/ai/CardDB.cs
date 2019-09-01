@@ -220,7 +220,7 @@ namespace HREngine.Bots
                     // have to do it 2 times (or the kids inside the simcards will not have a simcard :D
                     foreach (Card c in instance.cardlist)
                     {
-                        c.CardSimulation = instance.GetCardSimulation(c.cardIDenum);
+                        c.CardSimulation = CardHelper.GetCardSimulation(c.cardIDenum);
                     }
 
                     var totalCardSimCount = instance.cardlist.Count;
@@ -936,36 +936,6 @@ namespace HREngine.Bots
                 if (c.trigers.Count > 10) c.trigers.Clear();
             }
         }
-
-        public SimTemplate GetCardSimulation(cardIDEnum tempCardIdEnum)
-        {
-            SimTemplate result = new SimTemplate();
-
-            var className = $"HREngine.Bots.Sim_{tempCardIdEnum}";
-            Type type = Type.GetType(className);
-            if (type == null)
-            {
-                //write a log here
-            }
-            else
-            {
-                var simTemplateInstance = Activator.CreateInstance(type);
-                if (simTemplateInstance is SimTemplate temp)
-                {
-                    result = temp;
-                }
-                else
-                {
-                    throw new Exception($"class {className} should inherit from {typeof(SimTemplate)}");
-                }
-            }
-            if (tempCardIdEnum == cardIDEnum.GIL_530)
-            {
-                Logger.GetLoggerInstanceForType().InfoFormat($"className = {className}, type of result is {type}");
-            }
-            return result;
-        }
-
     }
 
 }

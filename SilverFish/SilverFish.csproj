@@ -99,6 +99,7 @@
     <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
     <Compile Include="ai\Deckmanager.cs" />
