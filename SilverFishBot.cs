@@ -21,7 +21,7 @@ namespace HREngine.Bots
 {
     public class SilverFishBot
     {
-        public string versionnumber = "2019.08.29.001";
+        public string versionnumber = "Chuck.2019.09.01.001";
         private bool singleLog = Settings.Instance.writeToSingleFile;
         private string botbehave = "noname";
         private bool needSleep = false;
