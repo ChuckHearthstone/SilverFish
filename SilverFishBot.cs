@@ -1174,14 +1174,18 @@ namespace HREngine.Bots
 
         private void CheckNotImplementedCardSimulation(object state)
         {
-            foreach (var minion in enemyMinions)
+            var enemyMinionsCard = enemyMinions.Select(x => x.handcard.card);
+            var notImplementedEnemyMinions = enemyMinionsCard.Where(x => !x.CardSimulationImplemented);
+            foreach (var card in notImplementedEnemyMinions)
             {
-                NotImplementedSimHelper.Add(minion.handcard.card);
+                NotImplementedSimHelper.Add(card);
             }
 
-            foreach (var item in Probabilitymaker.Instance.enemyCardsOut)
+            var enemyCardsOut =
+                Probabilitymaker.Instance.enemyCardsOut.Select(x => CardDB.Instance.getCardDataFromID(x.Key));
+            var notImplementedEnemyCardsOut = enemyCardsOut.Where(x => !x.CardSimulationImplemented);
+            foreach (var card in notImplementedEnemyCardsOut)
             {
-               var card = CardDB.Instance.getCardDataFromID(item.Key);
                NotImplementedSimHelper.Add(card);
             }
         }
