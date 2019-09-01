@@ -106,31 +106,13 @@ namespace HREngine.Bots
 
         private SilverFishBot()
         {
-            this.singleLog = Settings.Instance.writeToSingleFile;
             Helpfunctions.Instance.InfoLog("init Silverfish");
+            this.singleLog = Settings.Instance.writeToSingleFile;
+
             string baseDirectory = Settings.Instance.BaseDirectory;
-
-            string silverFishLogFolderPath = @"Logs\Silverfish";
-            string logFolderPath = Path.Combine(baseDirectory, silverFishLogFolderPath);
-            if (!Directory.Exists(logFolderPath))
-            {
-                Directory.CreateDirectory(logFolderPath);
-            }
-
             string dataFolderPath = Path.Combine(baseDirectory, @"Routines\DefaultRoutine\Silverfish\data");
             _settings.DataFolderPath = dataFolderPath;
 
-            if (!singleLog)
-            {
-                string combatLogFolderPath = "CombatLogs";
-                _settings.LogFolderPath = Path.Combine(logFolderPath, combatLogFolderPath);
-            }
-            else
-            {
-                //single log file mode
-                _settings.LogFolderPath = logFolderPath;
-                Helpfunctions.Instance.createNewLoggfile();
-            }
             setBehavior();
         }
 
@@ -225,7 +207,6 @@ namespace HREngine.Bots
             if (!singleLog)
             {
                 LogHelper.CombatLogFileName = $"Combat-{DateTime.Now:yyyyMMdd-HHmmss}.log";
-                Helpfunctions.Instance.createNewLoggfile();
                 Helpfunctions.Instance.InfoLog("#######################################################");
                 Helpfunctions.Instance.InfoLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
                 Helpfunctions.Instance.InfoLog("#######################################################");

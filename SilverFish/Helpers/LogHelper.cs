@@ -6,7 +6,7 @@ namespace SilverFish.Helpers
 {
     public class LogHelper
     {
-        private static string LogFolder = "Logs";
+        private static string LogFolder = @"Logs\ChuckSilverFishAi";
 
         private static string MainLogFileName { get; set; }
 
@@ -71,7 +71,7 @@ namespace SilverFish.Helpers
 
         public static void WriteMainLog(object obj)
         {
-            MainLogFileName = $"SilverFish{DateTime.Now:yyyyMMdd}.log";
+            MainLogFileName = $"ChuckSilverFishAi{DateTime.Now:yyyyMMdd}.log";
             AppendText(obj, MainLogFileName);
         }
     }

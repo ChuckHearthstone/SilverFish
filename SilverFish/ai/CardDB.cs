@@ -826,25 +826,25 @@ namespace HREngine.Bots
         private void enumCreator()
         {
             //call this, if carddb.txt was changed, to get latest public enum cardIDEnum
-            LogHelper.WriteCombatLog("public enum cardIDEnum");
-            LogHelper.WriteCombatLog("{");
-            LogHelper.WriteCombatLog("None,");
+            LogHelper.WriteMainLog("public enum cardIDEnum");
+            LogHelper.WriteMainLog("{");
+            LogHelper.WriteMainLog("None,");
             foreach (string cardid in this.allCardIDS)
             {
-                LogHelper.WriteCombatLog(cardid + ",");
+                LogHelper.WriteMainLog(cardid + ",");
             }
-            LogHelper.WriteCombatLog("}");
+            LogHelper.WriteMainLog("}");
 
 
 
-            LogHelper.WriteCombatLog("public cardIDEnum cardIdstringToEnum(string s)");
-            LogHelper.WriteCombatLog("{");
+            LogHelper.WriteMainLog("public cardIDEnum cardIdstringToEnum(string s)");
+            LogHelper.WriteMainLog("{");
             foreach (string cardid in this.allCardIDS)
             {
-                LogHelper.WriteCombatLog("if(s==\"" + cardid + "\") return CardDB.cardIDEnum." + cardid + ";");
+                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardDB.cardIDEnum." + cardid + ";");
             }
-            LogHelper.WriteCombatLog("return CardDB.cardIDEnum.None;");
-            LogHelper.WriteCombatLog("}");
+            LogHelper.WriteMainLog("return CardDB.cardIDEnum.None;");
+            LogHelper.WriteMainLog("}");
 
             List<string> namelist = new List<string>();
 
@@ -855,33 +855,33 @@ namespace HREngine.Bots
             }
 
 
-            LogHelper.WriteCombatLog("public enum cardName");
-            LogHelper.WriteCombatLog("{");
+            LogHelper.WriteMainLog("public enum cardName");
+            LogHelper.WriteMainLog("{");
             foreach (string cardid in namelist)
             {
-                LogHelper.WriteCombatLog(cardid + ",");
+                LogHelper.WriteMainLog(cardid + ",");
             }
-            LogHelper.WriteCombatLog("}");
+            LogHelper.WriteMainLog("}");
 
-            LogHelper.WriteCombatLog("public cardName cardNamestringToEnum(string s)");
-            LogHelper.WriteCombatLog("{");
+            LogHelper.WriteMainLog("public cardName cardNamestringToEnum(string s)");
+            LogHelper.WriteMainLog("{");
             foreach (string cardid in namelist)
             {
-                LogHelper.WriteCombatLog("if(s==\"" + cardid + "\") return CardDB.cardName." + cardid + ";");
+                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardDB.cardName." + cardid + ";");
             }
-            LogHelper.WriteCombatLog("return CardDB.cardName.unknown;");
-            LogHelper.WriteCombatLog("}");
+            LogHelper.WriteMainLog("return CardDB.cardName.unknown;");
+            LogHelper.WriteMainLog("}");
 
             // simcard creator:
 
-            LogHelper.WriteCombatLog("public SimTemplate getSimCard(cardIDEnum id)");
-            LogHelper.WriteCombatLog("{");
+            LogHelper.WriteMainLog("public SimTemplate getSimCard(cardIDEnum id)");
+            LogHelper.WriteMainLog("{");
             foreach (string cardid in this.allCardIDS)
             {
-                LogHelper.WriteCombatLog("if(id == CardDB.cardIDEnum." + cardid + ") return new Sim_" + cardid + "();");
+                LogHelper.WriteMainLog("if(id == CardDB.cardIDEnum." + cardid + ") return new Sim_" + cardid + "();");
             }
-            LogHelper.WriteCombatLog("return new SimTemplate();");
-            LogHelper.WriteCombatLog("}");
+            LogHelper.WriteMainLog("return new SimTemplate();");
+            LogHelper.WriteMainLog("}");
 
         }
 
