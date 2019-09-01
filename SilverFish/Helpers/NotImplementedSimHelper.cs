@@ -30,7 +30,7 @@ namespace SilverFish.Helpers
             }
         }
 
-        public static void GameOver()
+        public static void GameOver(object state)
         {
             var list = SingleGameCards.ToList();
             SingleGameCards.Clear();

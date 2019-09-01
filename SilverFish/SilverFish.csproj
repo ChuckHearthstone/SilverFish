@@ -79,6 +79,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\HearthBuddy\Plugins\AutoConcede\AutoConcede.cs">
+      <Link>AutoConcede.cs</Link>
+    </Compile>
     <Compile Include="..\DefaultRoutine.cs">
       <Link>DefaultRoutine.cs</Link>
     </Compile>

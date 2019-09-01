@@ -1169,7 +1169,7 @@ namespace HREngine.Bots
             Probabilitymaker.Instance.printGraveyards();
             Hrtprozis.Instance.printOwnDeck();
 
-            ThreadPool.QueueUserWorkItem(CheckNotImplementedCardSimulation, null);
+            ThreadPool.QueueUserWorkItem(CheckNotImplementedCardSimulation);
         }
 
         private void CheckNotImplementedCardSimulation(object state)

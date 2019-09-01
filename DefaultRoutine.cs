@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -509,6 +510,10 @@ def Execute():
             {
                 Log.InfoFormat("[Mulligan] Concede successfully at mulligan.");
                 return;
+            }
+            else
+            {
+                Log.ErrorFormat("[Mulligan] Concede failed at mulligan.");
             }
 
             Log.InfoFormat("[Mulligan] {0} vs {1}.", mulliganData.UserClass, mulliganData.OpponentClass);
@@ -1372,7 +1377,7 @@ def Execute():
         {
             Log.InfoFormat("[GameEventManagerOnGameOver] {0}{2} => {1}.", gameOverEventArgs.Result,
                 GameEventManager.Instance.LastGamePresenceStatus, gameOverEventArgs.Conceded ? " [conceded]" : "");
-            NotImplementedSimHelper.GameOver();
+            ThreadPool.QueueUserWorkItem(NotImplementedSimHelper.GameOver);
         }
 
         private void GameEventManagerOnNewGame(object sender, NewGameEventArgs newGameEventArgs)
