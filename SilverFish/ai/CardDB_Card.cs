@@ -77,10 +77,6 @@ namespace HREngine.Bots
             {
                 get
                 {
-                    if (!CardSimulationImplemented)
-                    {
-                        NotImplementedSimHelper.Add(this);
-                    }
                     return _cardSimulation;
                 }
                 set

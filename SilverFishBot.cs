@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.Threading;
 using Buddy.Coroutines;
 using SilverFish.Helpers;
 using Triton.Bot;
@@ -1195,6 +1196,22 @@ namespace HREngine.Bots
             Probabilitymaker.Instance.printTurnGraveYard();
             Probabilitymaker.Instance.printGraveyards();
             Hrtprozis.Instance.printOwnDeck();
+
+            ThreadPool.QueueUserWorkItem(CheckNotImplementedCardSimulation, null);
+        }
+
+        private void CheckNotImplementedCardSimulation(object state)
+        {
+            foreach (var minion in enemyMinions)
+            {
+                NotImplementedSimHelper.Add(minion.handcard.card);
+            }
+
+            foreach (var item in Probabilitymaker.Instance.enemyCardsOut)
+            {
+               var card = CardDB.Instance.getCardDataFromID(item.Key);
+               NotImplementedSimHelper.Add(card);
+            }
         }
 
     }
