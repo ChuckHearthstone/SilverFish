@@ -120,12 +120,12 @@ namespace HREngine.Bots
         
         public void printcards()
         {
-            help.logg("Own Handcards: ");
+            LogHelper.WriteCombatLog("Own Handcards: ");
             foreach (Handmanager.Handcard hc in this.handCards)
             {
-                help.logg("pos " + hc.position + " " + hc.card.name + " " + hc.manacost + " entity " + hc.entity + " " + hc.card.cardIDenum + " " + hc.addattack + " " + hc.addHp + " " + hc.elemPoweredUp);
+                LogHelper.WriteCombatLog("pos " + hc.position + " " + hc.card.name + " " + hc.manacost + " entity " + hc.entity + " " + hc.card.cardIDenum + " " + hc.addattack + " " + hc.addHp + " " + hc.elemPoweredUp);
             }
-            help.logg("Enemy cards: " + this.enemyAnzCards);
+            LogHelper.WriteCombatLog("Enemy cards: " + this.enemyAnzCards);
         }
 
 

@@ -232,7 +232,7 @@ namespace HREngine.Bots
             Questmanager.Instance.Reset();
             if (!singleLog)
             {
-                _settings.LogFileName = $"{DateTime.Now:yyyyMMdd-HHmmss}.log";
+                LogHelper.CombatLogFileName = $"Combat-{DateTime.Now:yyyyMMdd-HHmmss}.log";
                 Helpfunctions.Instance.createNewLoggfile();
                 Helpfunctions.Instance.InfoLog("#######################################################");
                 Helpfunctions.Instance.InfoLog($"fight is logged in: {Path.Combine(_settings.LogFolderPath,_settings.LogFileName)}");
@@ -1175,16 +1175,16 @@ namespace HREngine.Bots
             string dtimes = DateTime.Now.ToString("HH:mm:ss:ffff");
             string enemysecretIds = "";
             enemysecretIds = Probabilitymaker.Instance.getEnemySecretData();
-            Helpfunctions.Instance.logg("#######################################################################");
-            Helpfunctions.Instance.logg("#######################################################################");
-            Helpfunctions.Instance.logg("start calculations, current time: " + DateTime.Now.ToString("HH:mm:ss") + " V" +
+            LogHelper.WriteCombatLog("#######################################################################");
+            LogHelper.WriteCombatLog("#######################################################################");
+            LogHelper.WriteCombatLog("start calculations, current time: " + DateTime.Now.ToString("HH:mm:ss") + " V" +
                                         this.versionnumber + " " + this.botbehave);
-            Helpfunctions.Instance.logg("#######################################################################");
-            Helpfunctions.Instance.logg("turn " + gTurn + "/" + gTurnStep);
-            Helpfunctions.Instance.logg("mana " + currentMana + "/" + ownMaxMana);
-            Helpfunctions.Instance.logg("emana " + enemyMaxMana);
-            Helpfunctions.Instance.logg("own secretsCount: " + ownSecretList.Count);
-            Helpfunctions.Instance.logg("enemy secretsCount: " + enemySecretList.Count + " ;" + enemysecretIds);
+            LogHelper.WriteCombatLog("#######################################################################");
+            LogHelper.WriteCombatLog("turn " + gTurn + "/" + gTurnStep);
+            LogHelper.WriteCombatLog("mana " + currentMana + "/" + ownMaxMana);
+            LogHelper.WriteCombatLog("emana " + enemyMaxMana);
+            LogHelper.WriteCombatLog("own secretsCount: " + ownSecretList.Count);
+            LogHelper.WriteCombatLog("enemy secretsCount: " + enemySecretList.Count + " ;" + enemysecretIds);
 
             Ai.Instance.currentCalculatedBoard = dtimes;
 

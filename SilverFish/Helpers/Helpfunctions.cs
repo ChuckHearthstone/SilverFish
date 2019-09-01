@@ -51,33 +51,9 @@ namespace SilverFish.Helpers
 
         private bool writelogg = true;
 
-        public void loggonoff(bool onoff)
-        {
-            //writelogg = onoff;
-        }
-
         public void createNewLoggfile()
         {
             FileHelper.CreateEmptyFile(Settings.Instance.LogFilePath);
-        }
-
-        public void logg(object obj)
-        {
-            if (!writelogg)
-            {
-                return;
-            }
-
-            var filePath = Settings.Instance.LogFilePath;
-            if (!File.Exists(filePath))
-            {
-                FileHelper.CreateEmptyFile(filePath);
-            }
-
-            using (StreamWriter sw = File.AppendText(filePath))
-            {
-                sw.WriteLine(obj?.ToString());
-            }
         }
 
         public DateTime UnixTimeStampToDateTime(int unixTimeStamp)

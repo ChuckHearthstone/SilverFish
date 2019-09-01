@@ -396,7 +396,7 @@ namespace HREngine.Bots
             /*string g = "";
             if (Probabilitymaker.Instance.feugenDead) g += " fgn";
             if (Probabilitymaker.Instance.stalaggDead) g += " stlgg";
-            Helpfunctions.Instance.logg("GraveYard:" + g);
+            LogHelper.WriteCombatLog("GraveYard:" + g);
             if (writetobuffer) Helpfunctions.Instance.writeToBuffer("GraveYard:" + g);*/
 
             string s = "ownDiedMinions: ";
@@ -404,14 +404,14 @@ namespace HREngine.Bots
             {
                 if (gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-            Helpfunctions.Instance.logg(s);
+            LogHelper.WriteCombatLog(s);
 
             s = "enemyDiedMinions: ";
             foreach (GraveYardItem gyi in this.turngraveyard)
             {
                 if (!gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-            Helpfunctions.Instance.logg(s);
+            LogHelper.WriteCombatLog(s);
 
 
             s = "otg: ";
@@ -419,14 +419,14 @@ namespace HREngine.Bots
             {
                 if (gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-            Helpfunctions.Instance.logg(s);
+            LogHelper.WriteCombatLog(s);
 
             s = "etg: ";
             foreach (GraveYardItem gyi in this.turngraveyardAll)
             {
                 if (!gyi.own) s += gyi.cardid + "," + gyi.entity + ";";
             }
-            Helpfunctions.Instance.logg(s);
+            LogHelper.WriteCombatLog(s);
         }
 
         public void setGraveYard(List<GraveYardItem> list, bool turnStart)
@@ -537,8 +537,8 @@ namespace HREngine.Bots
             {
                 eg += e.Key + "," + e.Value + ";";
             }
-            Helpfunctions.Instance.logg(og);
-            Helpfunctions.Instance.logg(eg);
+            LogHelper.WriteCombatLog(og);
+            LogHelper.WriteCombatLog(eg);
         }
 
         public int getProbOfEnemyHavingCardInHand(CardDB.cardIDEnum cardid, int handsize, int decksize)
@@ -581,7 +581,7 @@ namespace HREngine.Bots
             foreach (KeyValuePair<int, TAG_CLASS> eSec in enemySecretList)
             {
                 if (eSec.Key >= 1000) continue;
-                Helpfunctions.Instance.logg("detect secret with id" + eSec.Key);
+                LogHelper.WriteCombatLog("detect secret with id" + eSec.Key);
                 SecretItem sec = getNewSecretGuessedItem(eSec.Key, eSec.Value);
 
                 newlist.Add(new SecretItem(sec));

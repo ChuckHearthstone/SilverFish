@@ -417,7 +417,7 @@ namespace HREngine.Bots
             catch(Exception ex)
             {
                 
-                help.logg("cant find _combo.txt");
+                LogHelper.WriteCombatLog("cant find _combo.txt");
                 help.ErrorLog(ex);
                 help.ErrorLog("cant find _combo.txt (if you don't created your own combos, ignore this message)");
                 return;
@@ -435,7 +435,7 @@ namespace HREngine.Bots
                     }
                     catch(Exception ex)
                     {
-                        help.logg("combomaker cant read: " + line);
+                        LogHelper.WriteCombatLog("combomaker cant read: " + line);
                         help.ErrorLog(ex);
                         help.ErrorLog("combomaker cant read: " + line);
                     }
@@ -455,7 +455,7 @@ namespace HREngine.Bots
                         }
                         catch(Exception ex) 
                         {
-                            help.logg("combomaker cant read: " + line);
+                            LogHelper.WriteCombatLog("combomaker cant read: " + line);
                             help.ErrorLog(ex);
                             help.ErrorLog("combomaker cant read: " + line);
                         }
@@ -469,7 +469,7 @@ namespace HREngine.Bots
                         }
                         catch(Exception ex)
                         {
-                            help.logg("combomaker cant read: " + line);
+                            LogHelper.WriteCombatLog("combomaker cant read: " + line);
                             help.ErrorLog(ex);
                             help.ErrorLog("combomaker cant read: " + line);
                         }

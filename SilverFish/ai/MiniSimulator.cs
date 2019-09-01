@@ -121,7 +121,7 @@ namespace HREngine.Bots
             {
                 if (this.printNormalstuff)
                 {
-                    Helpfunctions.Instance.logg("ailoop");
+                    LogHelper.WriteCombatLog("ailoop");
                 }
                 GC.Collect();
                 temp.Clear();
@@ -183,14 +183,14 @@ namespace HREngine.Bots
                             donec++;
                         }
                     }
-                    Helpfunctions.Instance.logg("deep " + deep + " len " + this.posmoves.Count + " dones " + donec);
+                    LogHelper.WriteCombatLog("deep " + deep + " len " + this.posmoves.Count + " dones " + donec);
                 }
 
                 cuttingposibilities(isLethalCheck);
 
                 if (this.printNormalstuff)
                 {
-                    Helpfunctions.Instance.logg("cut to len " + this.posmoves.Count);
+                    LogHelper.WriteCombatLog("cut to len " + this.posmoves.Count);
                 }
                 deep++;
                 temp.Clear();
@@ -484,7 +484,7 @@ namespace HREngine.Bots
                     foreach (Minion mnn in temp)
                     {
                         // special minions are allowed to attack in silended and unsilenced state!
-                        //help.logg(mnn.silenced + " " + m.silenced + " " + mnn.name + " " + m.name + " " + penman.specialMinions.ContainsKey(m.name));
+                        //LogHelper.WriteCombatLog(mnn.silenced + " " + m.silenced + " " + mnn.name + " " + m.name + " " + penman.specialMinions.ContainsKey(m.name));
 
                         bool otherisSpecial = mnn.handcard.card.isSpecialMinion;
 
@@ -511,17 +511,17 @@ namespace HREngine.Bots
                     {
                         addedmins.Add(m);
                         retvalues.Add(t);
-                        //help.logg(m.name + " " + m.id +" is added to targetlist");
+                        //LogHelper.WriteCombatLog(m.name + " " + m.id +" is added to targetlist");
                     }
                     else
                     {
-                        //help.logg(m.name + " is not needed to attack");
+                        //LogHelper.WriteCombatLog(m.name + " is not needed to attack");
                         continue;
                     }
 
                 }
             }
-            //help.logg("end targetcutting");
+            //LogHelper.WriteCombatLog("end targetcutting");
             if (priomins) return retvaluesPrio;
 
             return retvalues;

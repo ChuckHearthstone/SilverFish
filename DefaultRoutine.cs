@@ -794,7 +794,7 @@ def Execute():
                 else if (doConcede)
                 {
                     Helpfunctions.Instance.InfoLog("Lethal detected. Concede...");
-                    Helpfunctions.Instance.logg("Concede... Lethal detected###############################################");
+                    LogHelper.WriteCombatLog("Concede... Lethal detected###############################################");
                     TritonHs.Concede(true);
                     return;
                 }
@@ -828,7 +828,7 @@ def Execute():
                         if (target != null)
                         {
                             Helpfunctions.Instance.InfoLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ")");
-                            Helpfunctions.Instance.logg("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ") choice: " + moveTodo.druidchoice);
+                            LogHelper.WriteCombatLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target: " + target.Name + " (" + target.EntityId + ") choice: " + moveTodo.druidchoice);
 						    if (moveTodo.druidchoice >= 1)
                             {
                                 dirtytarget = moveTodo.target.entitiyID;
@@ -862,7 +862,7 @@ def Execute():
                         else
                         {
                             Helpfunctions.Instance.ErrorLog("[AI] Target is missing. Attempting recover...");
-                            Helpfunctions.Instance.logg("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
+                            LogHelper.WriteCombatLog("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
                         }
                         await Coroutine.Sleep(500);
 
@@ -870,7 +870,7 @@ def Execute():
                     }
 
                     Helpfunctions.Instance.InfoLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") target nothing");
-                    Helpfunctions.Instance.logg("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") choice: " + moveTodo.druidchoice);
+                    LogHelper.WriteCombatLog("play: " + cardtoplay.Name + " (" + cardtoplay.EntityId + ") choice: " + moveTodo.druidchoice);
                     if (moveTodo.druidchoice >= 1)
                     {
                         dirtychoice = moveTodo.druidchoice; //1=leftcard, 2= rightcard
@@ -905,7 +905,7 @@ def Execute():
                         if (target != null)
                         {
                             Helpfunctions.Instance.InfoLog("minion attack: " + attacker.Name + " target: " + target.Name);
-                            Helpfunctions.Instance.logg("minion attack: " + attacker.Name + " target: " + target.Name);
+                            LogHelper.WriteCombatLog("minion attack: " + attacker.Name + " target: " + target.Name);
 
                             
                             await attacker.DoAttack(target);
@@ -914,13 +914,13 @@ def Execute():
                         else
                         {
                             Helpfunctions.Instance.ErrorLog("[AI] Target is missing. Attempting recover...");
-                            Helpfunctions.Instance.logg("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
+                            LogHelper.WriteCombatLog("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
                         }
                     }
                     else
                     {
                         Helpfunctions.Instance.ErrorLog("[AI] Attacker is missing. Attempting recover...");
-                        Helpfunctions.Instance.logg("[AI] Attacker " + moveTodo.own.entitiyID + " is missing. Attempting recover...");
+                        LogHelper.WriteCombatLog("[AI] Attacker " + moveTodo.own.entitiyID + " is missing. Attempting recover...");
                     }
                     await Coroutine.Sleep(250);
                     return;
@@ -936,7 +936,7 @@ def Execute():
                         {
                             dirtytarget = moveTodo.target.entitiyID;
                             Helpfunctions.Instance.InfoLog("heroattack: " + attacker.Name + " target: " + target.Name);
-                            Helpfunctions.Instance.logg("heroattack: " + attacker.Name + " target: " + target.Name);
+                            LogHelper.WriteCombatLog("heroattack: " + attacker.Name + " target: " + target.Name);
 
                             //safe targeting stuff for hsbuddy
                             dirtyTargetSource = moveTodo.own.entitiyID;
@@ -946,13 +946,13 @@ def Execute():
                         else
                         {
                             Helpfunctions.Instance.ErrorLog("[AI] Target is missing. Attempting recover...");
-                            Helpfunctions.Instance.logg("[AI] Target " + moveTodo.target.entitiyID + "is missing (H). Attempting recover...");
+                            LogHelper.WriteCombatLog("[AI] Target " + moveTodo.target.entitiyID + "is missing (H). Attempting recover...");
                         }
                     }
                     else
                     {
                         Helpfunctions.Instance.ErrorLog("[AI] Attacker is missing. Attempting recover...");
-                        Helpfunctions.Instance.logg("[AI] Attacker " + moveTodo.own.entitiyID + " is missing (H). Attempting recover...");
+                        LogHelper.WriteCombatLog("[AI] Attacker " + moveTodo.own.entitiyID + " is missing (H). Attempting recover...");
                     }
 				    await Coroutine.Sleep(250);
                     return;
@@ -969,7 +969,7 @@ def Execute():
                         if (target != null)
                         {
                             Helpfunctions.Instance.InfoLog("use ablitiy: " + cardtoplay.Name + " target " + target.Name);
-                            Helpfunctions.Instance.logg("use ablitiy: " + cardtoplay.Name + " target " + target.Name + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
+                            LogHelper.WriteCombatLog("use ablitiy: " + cardtoplay.Name + " target " + target.Name + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
                             if (moveTodo.druidchoice > 0)
                             {
                                 dirtytarget = moveTodo.target.entitiyID;
@@ -986,14 +986,14 @@ def Execute():
                         else
                         {
                             Helpfunctions.Instance.ErrorLog("[AI] Target is missing. Attempting recover...");
-                            Helpfunctions.Instance.logg("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
+                            LogHelper.WriteCombatLog("[AI] Target " + moveTodo.target.entitiyID + "is missing. Attempting recover...");
                         }
                         await Coroutine.Sleep(500);
                     }
                     else
                     {
                         Helpfunctions.Instance.InfoLog("use ablitiy: " + cardtoplay.Name + " target nothing");
-                        Helpfunctions.Instance.logg("use ablitiy: " + cardtoplay.Name + " target nothing" + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
+                        LogHelper.WriteCombatLog("use ablitiy: " + cardtoplay.Name + " target nothing" + (moveTodo.druidchoice > 0 ? (" choice: " + moveTodo.druidchoice) : ""));
                         
                         if (moveTodo.druidchoice >= 1)
                         {
@@ -1146,12 +1146,12 @@ def Execute():
                 if (dirtychoice == 0) dirtychoice = 1;
                 else if (dirtychoice == 1) dirtychoice = 0;
                 int ttf = (int)(DateTime.Now - tmp).TotalMilliseconds;
-                Helpfunctions.Instance.logg("discover card: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.cardIDenum : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.cardIDenum : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.cardIDenum : ""));
+                LogHelper.WriteCombatLog("discover card: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.cardIDenum : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.cardIDenum : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.cardIDenum : ""));
                 if (ttf < 3000) return (new Random().Next(ttf < 1300 ? 1300 - ttf : 0, 3100 - ttf));
             }
             else
             {
-                Helpfunctions.Instance.logg("chooses the card: " + dirtychoice);
+                LogHelper.WriteCombatLog("chooses the card: " + dirtychoice);
                 return (new Random().Next(1100, 3200));
             }
             return 0;

@@ -1152,7 +1152,7 @@ namespace HREngine.Bots
             if (this.enemySecretCount != p.enemySecretCount)
             {
 
-                if (logg) Helpfunctions.Instance.logg("enemy secrets changed ");
+                if (logg) LogHelper.WriteCombatLog("enemy secrets changed ");
                 return false;
             }
 
@@ -1162,7 +1162,7 @@ namespace HREngine.Bots
                 {
                     if (!this.enemySecretList[i].isEqual(p.enemySecretList[i]))
                     {
-                        if (logg) Helpfunctions.Instance.logg("enemy secrets changed! ");
+                        if (logg) LogHelper.WriteCombatLog("enemy secrets changed! ");
                         return false;
                     }
                 }
@@ -1170,40 +1170,40 @@ namespace HREngine.Bots
 
             if (this.mana != p.mana || this.enemyMaxMana != p.enemyMaxMana || this.ownMaxMana != p.ownMaxMana)
             {
-                if (logg) Helpfunctions.Instance.logg("mana changed " + this.mana + " " + p.mana + " " + this.enemyMaxMana + " " + p.enemyMaxMana + " " + this.ownMaxMana + " " + p.ownMaxMana);
+                if (logg) LogHelper.WriteCombatLog("mana changed " + this.mana + " " + p.mana + " " + this.enemyMaxMana + " " + p.enemyMaxMana + " " + this.ownMaxMana + " " + p.ownMaxMana);
                 return false;
             }
 
             if (this.ownDeckSize != p.ownDeckSize || this.enemyDeckSize != p.enemyDeckSize || this.ownHeroFatigue != p.ownHeroFatigue || this.enemyHeroFatigue != p.enemyHeroFatigue)
             {
-                if (logg) Helpfunctions.Instance.logg("deck/fatigue changed " + this.ownDeckSize + " " + p.ownDeckSize + " " + this.enemyDeckSize + " " + p.enemyDeckSize + " " + this.ownHeroFatigue + " " + p.ownHeroFatigue + " " + this.enemyHeroFatigue + " " + p.enemyHeroFatigue);
+                if (logg) LogHelper.WriteCombatLog("deck/fatigue changed " + this.ownDeckSize + " " + p.ownDeckSize + " " + this.enemyDeckSize + " " + p.enemyDeckSize + " " + this.ownHeroFatigue + " " + p.ownHeroFatigue + " " + this.enemyHeroFatigue + " " + p.enemyHeroFatigue);
             }
 
             if (this.cardsPlayedThisTurn != p.cardsPlayedThisTurn || this.mobsplayedThisTurn != p.mobsplayedThisTurn || this.ueberladung != p.ueberladung || this.lockedMana != p.lockedMana || this.ownAbilityReady != p.ownAbilityReady || this.ownQuest.questProgress != p.ownQuest.questProgress)
             {
-                if (logg) Helpfunctions.Instance.logg("stuff changed " + this.cardsPlayedThisTurn + " " + p.cardsPlayedThisTurn + " " + this.mobsplayedThisTurn + " " + p.mobsplayedThisTurn + " " + this.ueberladung + " " + p.ueberladung + " " + this.lockedMana + " " + p.lockedMana + " " + this.ownAbilityReady + " " + p.ownAbilityReady + " " + this.ownQuest.questProgress + " " + p.ownQuest.questProgress);
+                if (logg) LogHelper.WriteCombatLog("stuff changed " + this.cardsPlayedThisTurn + " " + p.cardsPlayedThisTurn + " " + this.mobsplayedThisTurn + " " + p.mobsplayedThisTurn + " " + this.ueberladung + " " + p.ueberladung + " " + this.lockedMana + " " + p.lockedMana + " " + this.ownAbilityReady + " " + p.ownAbilityReady + " " + this.ownQuest.questProgress + " " + p.ownQuest.questProgress);
                 return false;
             }
 
             if (this.ownHeroName != p.ownHeroName || this.enemyHeroName != p.enemyHeroName)
             {
-                if (logg) Helpfunctions.Instance.logg("hero name changed ");
+                if (logg) LogHelper.WriteCombatLog("hero name changed ");
                 return false;
             }
 
             if (this.ownHero.HealthPoints != p.ownHero.HealthPoints || this.ownHero.Attack != p.ownHero.Attack || this.ownHero.armor != p.ownHero.armor || this.ownHero.frozen != p.ownHero.frozen || this.ownHero.immuneWhileAttacking != p.ownHero.immuneWhileAttacking || this.ownHero.immune != p.ownHero.immune)
             {
-                if (logg) Helpfunctions.Instance.logg("ownhero changed " + this.ownHero.HealthPoints + " " + p.ownHero.HealthPoints + " " + this.ownHero.Attack + " " + p.ownHero.Attack + " " + this.ownHero.armor + " " + p.ownHero.armor + " " + this.ownHero.frozen + " " + p.ownHero.frozen + " " + this.ownHero.immuneWhileAttacking + " " + p.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + p.ownHero.immune);
+                if (logg) LogHelper.WriteCombatLog("ownhero changed " + this.ownHero.HealthPoints + " " + p.ownHero.HealthPoints + " " + this.ownHero.Attack + " " + p.ownHero.Attack + " " + this.ownHero.armor + " " + p.ownHero.armor + " " + this.ownHero.frozen + " " + p.ownHero.frozen + " " + this.ownHero.immuneWhileAttacking + " " + p.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + p.ownHero.immune);
                 return false;
             }
             if (this.ownHero.Ready != p.ownHero.Ready || !this.ownWeapon.isEqual(p.ownWeapon) || this.ownHero.numAttacksThisTurn != p.ownHero.numAttacksThisTurn || this.ownHero.windfury != p.ownHero.windfury)
             {
-                if (logg) Helpfunctions.Instance.logg("weapon changed " + this.ownHero.Ready + " " + p.ownHero.Ready + " " + this.ownWeapon.Angr + " " + p.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + p.ownWeapon.Durability + " " + this.ownHero.numAttacksThisTurn + " " + p.ownHero.numAttacksThisTurn + " " + this.ownHero.windfury + " " + p.ownHero.windfury + " " + this.ownWeapon.poisonous + " " + p.ownWeapon.poisonous + " " + this.ownWeapon.lifesteal + " " + p.ownWeapon.lifesteal);
+                if (logg) LogHelper.WriteCombatLog("weapon changed " + this.ownHero.Ready + " " + p.ownHero.Ready + " " + this.ownWeapon.Angr + " " + p.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + p.ownWeapon.Durability + " " + this.ownHero.numAttacksThisTurn + " " + p.ownHero.numAttacksThisTurn + " " + this.ownHero.windfury + " " + p.ownHero.windfury + " " + this.ownWeapon.poisonous + " " + p.ownWeapon.poisonous + " " + this.ownWeapon.lifesteal + " " + p.ownWeapon.lifesteal);
                 return false;
             }
             if (this.enemyHero.HealthPoints != p.enemyHero.HealthPoints || !this.enemyWeapon.isEqual(p.enemyWeapon) || this.enemyHero.armor != p.enemyHero.armor || this.enemyHero.frozen != p.enemyHero.frozen || this.enemyHero.immune != p.enemyHero.immune)
             {
-                if (logg) Helpfunctions.Instance.logg("enemyhero changed " + this.enemyHero.HealthPoints + " " + p.enemyHero.HealthPoints + " " + this.enemyWeapon.Angr + " " + p.enemyWeapon.Angr + " " + this.enemyHero.armor + " " + p.enemyHero.armor + " " + this.enemyWeapon.Durability + " " + p.enemyWeapon.Durability + " " + this.enemyHero.frozen + " " + p.enemyHero.frozen + " " + this.enemyHero.immune + " " + p.enemyHero.immune + " " + this.enemyWeapon.poisonous + " " + p.enemyWeapon.poisonous + " " + this.enemyWeapon.lifesteal + " " + p.enemyWeapon.lifesteal);
+                if (logg) LogHelper.WriteCombatLog("enemyhero changed " + this.enemyHero.HealthPoints + " " + p.enemyHero.HealthPoints + " " + this.enemyWeapon.Angr + " " + p.enemyWeapon.Angr + " " + this.enemyHero.armor + " " + p.enemyHero.armor + " " + this.enemyWeapon.Durability + " " + p.enemyWeapon.Durability + " " + this.enemyHero.frozen + " " + p.enemyHero.frozen + " " + this.enemyHero.immune + " " + p.enemyHero.immune + " " + this.enemyWeapon.poisonous + " " + p.enemyWeapon.poisonous + " " + this.enemyWeapon.lifesteal + " " + p.enemyWeapon.lifesteal);
                 return false;
             }
 
@@ -1211,19 +1211,19 @@ namespace HREngine.Bots
 
             if (this.ownHeroAblility.card.name != p.ownHeroAblility.card.name)
             {
-                if (logg) Helpfunctions.Instance.logg("hero ability changed ");
+                if (logg) LogHelper.WriteCombatLog("hero ability changed ");
                 return false;
             }
 
             if (this.spellpower != p.spellpower)
             {
-                if (logg) Helpfunctions.Instance.logg("spellpower changed");
+                if (logg) LogHelper.WriteCombatLog("spellpower changed");
                 return false;
             }
 
             if (this.ownMinions.Count != p.ownMinions.Count || this.enemyMinions.Count != p.enemyMinions.Count || this.owncards.Count != p.owncards.Count)
             {
-                if (logg) Helpfunctions.Instance.logg("minions count or hand changed");
+                if (logg) LogHelper.WriteCombatLog("minions count or hand changed");
                 return false;
             }
 
@@ -1247,7 +1247,7 @@ namespace HREngine.Bots
             }
             if (minionbool == false)
             {
-                if (logg) Helpfunctions.Instance.logg("ownminions changed");
+                if (logg) LogHelper.WriteCombatLog("ownminions changed");
                 return false;
             }
 
@@ -1270,7 +1270,7 @@ namespace HREngine.Bots
             }
             if (minionbool == false)
             {
-                if (logg) Helpfunctions.Instance.logg("enemyminions changed");
+                if (logg) LogHelper.WriteCombatLog("enemyminions changed");
                 return false;
             }
 
@@ -1279,7 +1279,7 @@ namespace HREngine.Bots
                 Handmanager.Handcard dishc = this.owncards[i]; Handmanager.Handcard pishc = p.owncards[i];
                 if (dishc.position != pishc.position || dishc.entity != pishc.entity || dishc.getManaCost(this) != pishc.getManaCost(p))
                 {
-                    if (logg) Helpfunctions.Instance.logg("handcard changed: " + dishc.card.name);
+                    if (logg) LogHelper.WriteCombatLog("handcard changed: " + dishc.card.name);
                     return false;
                 }
             }
@@ -1299,14 +1299,14 @@ namespace HREngine.Bots
             }
             if (this.ownSecretsIDList.Count != p.ownSecretsIDList.Count)
             {
-                if (logg) Helpfunctions.Instance.logg("secretsCount changed");
+                if (logg) LogHelper.WriteCombatLog("secretsCount changed");
                 return false;
             }
             for (int i = 0; i < this.ownSecretsIDList.Count; i++)
             {
                 if (this.ownSecretsIDList[i] != p.ownSecretsIDList[i])
                 {
-                    if (logg) Helpfunctions.Instance.logg("secrets changed");
+                    if (logg) LogHelper.WriteCombatLog("secrets changed");
                     return false;
                 }
             }
@@ -3324,7 +3324,7 @@ namespace HREngine.Bots
             }
 
 
-            if (logging) Helpfunctions.Instance.logg(".attck with" + attacker.name + " A " + attacker.Attack + " H " + attacker.HealthPoints);
+            if (logging) LogHelper.WriteCombatLog(".attck with" + attacker.name + " A " + attacker.Attack + " H " + attacker.HealthPoints);
 
             int attackerAngr = attacker.Attack;
             int defAngr = defender.Attack;
@@ -3520,7 +3520,7 @@ namespace HREngine.Bots
                     break;
             }
 
-            if (logging) Helpfunctions.Instance.logg("attck with weapon trgt: " + target.entitiyID);
+            if (logging) LogHelper.WriteCombatLog("attck with weapon trgt: " + target.entitiyID);
 
             // hero attacks enemy----------------------------------------------------------------------------------
 
@@ -3649,7 +3649,7 @@ namespace HREngine.Bots
                 }
             }
 
-            if (logging) Helpfunctions.Instance.logg("play crd " + c.name + " entitiy# " + hc.entity + " mana " + hc.getManaCost(this) + " trgt " + target);
+            if (logging) LogHelper.WriteCombatLog("play crd " + c.name + " entitiy# " + hc.entity + " mana " + hc.getManaCost(this) + " trgt " + target);
 
             hc.target = target;
             this.triggerACardWillBePlayed(hc, true);
@@ -3745,7 +3745,7 @@ namespace HREngine.Bots
 
             Handmanager.Handcard hc = new Handmanager.Handcard(c);
             hc.entity = this.getNextEntity();
-            if (logging) Helpfunctions.Instance.logg("enemy play crd " + c.name + " trgt " + target);
+            if (logging) LogHelper.WriteCombatLog("enemy play crd " + c.name + " trgt " + target);
 
             this.enemyAnzCards--;//might be deleted if he got a real hand
 
@@ -3817,7 +3817,7 @@ namespace HREngine.Bots
             this.mana = this.mana - this.ownHeroAblility.manacost + this.ownHeroPowerCostLessOnce;
             this.ownHeroPowerCostLessOnce = -1;
 
-            if (logging) Helpfunctions.Instance.logg("play crd " + c.name + " trgt " + target);
+            if (logging) LogHelper.WriteCombatLog("play crd " + c.name + " trgt " + target);
 
             c.CardSimulation.onCardPlay(this, ownturn, target, choice);
             if (target != null && (ownturn ? this.ownAbilityFreezesTarget > 0 : this.enemyAbilityFreezesTarget > 0)) minionGetFrozen(target);
@@ -5734,7 +5734,7 @@ namespace HREngine.Bots
             secretTrigger_MinionIsPlayed(m);
             if (this.ownQuest.Id != CardDB.cardIDEnum.None) ownQuest.trigger_MinionWasPlayed(m);
 
-            if (logging) Helpfunctions.Instance.logg("added " + m.handcard.card.name);
+            if (logging) LogHelper.WriteCombatLog("added " + m.handcard.card.name);
         }
 
         public void addMinionToBattlefield(Minion m, bool isSummon = true)
@@ -6303,7 +6303,7 @@ namespace HREngine.Bots
                 this.tempTrigger.enemyMininsChanged = true;
             }
 
-            if (logging) Helpfunctions.Instance.logg("minion got sheep" + m.name + " " + m.Attack);
+            if (logging) LogHelper.WriteCombatLog("minion got sheep" + m.name + " " + m.Attack);
         }
 
         public CardDB.Card getRandomCardForManaMinion(int manaCost)
@@ -7308,74 +7308,74 @@ namespace HREngine.Bots
 
         public void debugMinions()
         {
-            Helpfunctions.Instance.logg("OWN MINIONS################");
+            LogHelper.WriteCombatLog("OWN MINIONS################");
 
             foreach (Minion m in this.ownMinions)
             {
-                Helpfunctions.Instance.logg("name,ang, hp, maxhp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints + ", " + m.maxHp);
+                LogHelper.WriteCombatLog("name,ang, hp, maxhp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints + ", " + m.maxHp);
             }
 
-            Helpfunctions.Instance.logg("ENEMY MINIONS############");
+            LogHelper.WriteCombatLog("ENEMY MINIONS############");
             foreach (Minion m in this.enemyMinions)
             {
-                Helpfunctions.Instance.logg("name,ang, hp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints);
+                LogHelper.WriteCombatLog("name,ang, hp: " + m.name + ", " + m.Attack + ", " + m.HealthPoints);
             }
         }
 
         public void printBoard()
         {
-            Helpfunctions.Instance.logg("+++++++ printBoard start +++++++++");
+            LogHelper.WriteCombatLog("+++++++ printBoard start +++++++++");
 
-            Helpfunctions.Instance.logg("board/hash/turn: " + value + "  /  " + this.hashcode + "  /  " + this.turnCounter + " ++++++++++++++++++++++");
-            Helpfunctions.Instance.logg("pen " + this.evaluatePenality);
-            Helpfunctions.Instance.logg("mana " + this.mana + "/" + this.ownMaxMana);
-            Helpfunctions.Instance.logg("cardsplayed: " + this.cardsPlayedThisTurn + " handsize: " + this.owncards.Count + " enemyhand: " + this.enemyAnzCards);
+            LogHelper.WriteCombatLog("board/hash/turn: " + value + "  /  " + this.hashcode + "  /  " + this.turnCounter + " ++++++++++++++++++++++");
+            LogHelper.WriteCombatLog("pen " + this.evaluatePenality);
+            LogHelper.WriteCombatLog("mana " + this.mana + "/" + this.ownMaxMana);
+            LogHelper.WriteCombatLog("cardsplayed: " + this.cardsPlayedThisTurn + " handsize: " + this.owncards.Count + " enemyhand: " + this.enemyAnzCards);
 
-            Helpfunctions.Instance.logg("ownhero: ");
-            Helpfunctions.Instance.logg("ownherohp: " + this.ownHero.HealthPoints + " + " + this.ownHero.armor);
-            Helpfunctions.Instance.logg("ownheroattac: " + this.ownHero.Attack);
-            Helpfunctions.Instance.logg("ownheroweapon: " + this.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
-            Helpfunctions.Instance.logg("ownherostatus: frozen" + this.ownHero.frozen + " ");
-            Helpfunctions.Instance.logg("enemyherohp: " + this.enemyHero.HealthPoints + " + " + this.enemyHero.armor + ((this.enemyHero.immune) ? " immune" : ""));
+            LogHelper.WriteCombatLog("ownhero: ");
+            LogHelper.WriteCombatLog("ownherohp: " + this.ownHero.HealthPoints + " + " + this.ownHero.armor);
+            LogHelper.WriteCombatLog("ownheroattac: " + this.ownHero.Attack);
+            LogHelper.WriteCombatLog("ownheroweapon: " + this.ownWeapon.Angr + " " + this.ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
+            LogHelper.WriteCombatLog("ownherostatus: frozen" + this.ownHero.frozen + " ");
+            LogHelper.WriteCombatLog("enemyherohp: " + this.enemyHero.HealthPoints + " + " + this.enemyHero.armor + ((this.enemyHero.immune) ? " immune" : ""));
 
-            if (this.enemySecretCount >= 1) Helpfunctions.Instance.logg("enemySecrets: " + Probabilitymaker.Instance.getEnemySecretData(this.enemySecretList));
+            if (this.enemySecretCount >= 1) LogHelper.WriteCombatLog("enemySecrets: " + Probabilitymaker.Instance.getEnemySecretData(this.enemySecretList));
             foreach (Action a in this.playactions)
             {
                 a.print();
             }
-            Helpfunctions.Instance.logg("OWN MINIONS################ " + this.ownMinions.Count);
+            LogHelper.WriteCombatLog("OWN MINIONS################ " + this.ownMinions.Count);
 
             foreach (Minion m in this.ownMinions)
             {
-                Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
+                LogHelper.WriteCombatLog("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
             }
 
             if (this.enemyMinions.Count > 0)
             {
-                Helpfunctions.Instance.logg("ENEMY MINIONS############ " + this.enemyMinions.Count);
+                LogHelper.WriteCombatLog("ENEMY MINIONS############ " + this.enemyMinions.Count);
                 foreach (Minion m in this.enemyMinions)
                 {
-                    Helpfunctions.Instance.logg("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
+                    LogHelper.WriteCombatLog("deckpos, name,ang, hp: " + m.zonepos + ", " + m.name + ", " + m.Attack + ", " + m.HealthPoints + " " + m.entitiyID);
                 }
             }
 
             if (this.diedMinions.Count > 0)
             {
-                Helpfunctions.Instance.logg("DIED MINIONS############");
+                LogHelper.WriteCombatLog("DIED MINIONS############");
                 foreach (GraveYardItem m in this.diedMinions)
                 {
-                    Helpfunctions.Instance.logg("own, entity, cardid: " + m.own + ", " + m.entity + ", " + m.cardid);
+                    LogHelper.WriteCombatLog("own, entity, cardid: " + m.own + ", " + m.entity + ", " + m.cardid);
                 }
             }
 
-            Helpfunctions.Instance.logg("Own Handcards: ");
+            LogHelper.WriteCombatLog("Own Handcards: ");
             foreach (Handmanager.Handcard hc in this.owncards)
             {
-                Helpfunctions.Instance.logg("pos " + hc.position + " " + hc.card.name + " " + hc.manacost + " entity " + hc.entity + " " + hc.card.cardIDenum + " " + hc.addattack + " " + hc.addHp + " " + hc.elemPoweredUp);
+                LogHelper.WriteCombatLog("pos " + hc.position + " " + hc.card.name + " " + hc.manacost + " entity " + hc.entity + " " + hc.card.cardIDenum + " " + hc.addattack + " " + hc.addHp + " " + hc.elemPoweredUp);
             }
-            Helpfunctions.Instance.logg("+++++++ printBoard end +++++++++");
+            LogHelper.WriteCombatLog("+++++++ printBoard end +++++++++");
 
-            Helpfunctions.Instance.logg("");
+            LogHelper.WriteCombatLog("");
         }
 
 
@@ -7446,21 +7446,21 @@ namespace HREngine.Bots
 
         public void printBoardDebug()
         {
-            Helpfunctions.Instance.logg("hero " + this.ownHero.HealthPoints + " " + this.ownHero.armor + " " + this.ownHero.entitiyID);
-            Helpfunctions.Instance.logg("ehero " + this.enemyHero.HealthPoints + " " + this.enemyHero.armor + " " + this.enemyHero.entitiyID);
+            LogHelper.WriteCombatLog("hero " + this.ownHero.HealthPoints + " " + this.ownHero.armor + " " + this.ownHero.entitiyID);
+            LogHelper.WriteCombatLog("ehero " + this.enemyHero.HealthPoints + " " + this.enemyHero.armor + " " + this.enemyHero.entitiyID);
             foreach (Minion m in ownMinions)
             {
-                Helpfunctions.Instance.logg(m.name + " " + m.entitiyID);
+                LogHelper.WriteCombatLog(m.name + " " + m.entitiyID);
             }
-            Helpfunctions.Instance.logg("-");
+            LogHelper.WriteCombatLog("-");
             foreach (Minion m in enemyMinions)
             {
-                Helpfunctions.Instance.logg(m.name + " " + m.entitiyID);
+                LogHelper.WriteCombatLog(m.name + " " + m.entitiyID);
             }
-            Helpfunctions.Instance.logg("-");
+            LogHelper.WriteCombatLog("-");
             foreach (Handmanager.Handcard hc in this.owncards)
             {
-                Helpfunctions.Instance.logg(hc.position + " " + hc.card.name + " " + hc.entity);
+                LogHelper.WriteCombatLog(hc.position + " " + hc.card.name + " " + hc.entity);
             }
         }
 
@@ -7475,7 +7475,7 @@ namespace HREngine.Bots
             foreach (Action a in this.playactions)
             {
                 a.print(toBuffer);
-                Helpfunctions.Instance.logg("");
+                LogHelper.WriteCombatLog("");
             }
         }
 

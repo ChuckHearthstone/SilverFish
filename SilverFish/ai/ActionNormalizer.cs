@@ -207,13 +207,13 @@ namespace HREngine.Bots
 
                 if (oldval > newval) return;
             }
-            help.logg("Old order of actions:");
+            LogHelper.WriteCombatLog("Old order of actions:");
             foreach (Action a in p.playactions) a.print();
 
             p.playactions.Clear();
             p.playactions.AddRange(reorderedActions);
 
-            help.logg("New order of actions:");
+            LogHelper.WriteCombatLog("New order of actions:");
 
         }
 
@@ -293,11 +293,11 @@ namespace HREngine.Bots
         private void printError(List<Action> mainActList, List<Action> newActList, Action aError)
         {
             help.ErrorLog("Reordering actions error!");
-            help.logg("Reordering actions error!\r\nError in action:");
+            LogHelper.WriteCombatLog("Reordering actions error!\r\nError in action:");
             aError.print();
-            help.logg("Main order of actions:");
+            LogHelper.WriteCombatLog("Main order of actions:");
             foreach (Action a in mainActList) a.print();
-            help.logg("New order of actions:");
+            LogHelper.WriteCombatLog("New order of actions:");
             foreach (Action a in newActList) a.print();
             return;
         }

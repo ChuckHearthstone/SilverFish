@@ -589,35 +589,35 @@ namespace HREngine.Bots
 
         public void printHero()
         {
-            help.logg("player:");
-            help.logg(this.numMinionsPlayedThisTurn + " " + this.cardsPlayedThisTurn + " " + this.ueberladung + " " + this.lockedMana + " " + this.ownPlayerController);
+            LogHelper.WriteCombatLog("player:");
+            LogHelper.WriteCombatLog(this.numMinionsPlayedThisTurn + " " + this.cardsPlayedThisTurn + " " + this.ueberladung + " " + this.lockedMana + " " + this.ownPlayerController);
 
-            help.logg("ownhero:");
-            help.logg((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) + " " + this.ownHero.HealthPoints + " " + this.ownHero.maxHp + " " + this.ownHero.armor + " " + this.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + this.ownHero.entitiyID + " " + this.ownHero.Ready + " " + this.ownHero.numAttacksThisTurn + " " + this.ownHero.frozen + " " + this.ownHero.Attack + " " + this.ownHero.tempAttack + " " + this.enemyHero.stealth);
-            help.logg("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
-            help.logg("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
+            LogHelper.WriteCombatLog("ownhero:");
+            LogHelper.WriteCombatLog((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) + " " + this.ownHero.HealthPoints + " " + this.ownHero.maxHp + " " + this.ownHero.armor + " " + this.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + this.ownHero.entitiyID + " " + this.ownHero.Ready + " " + this.ownHero.numAttacksThisTurn + " " + this.ownHero.frozen + " " + this.ownHero.Attack + " " + this.ownHero.tempAttack + " " + this.enemyHero.stealth);
+            LogHelper.WriteCombatLog("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
+            LogHelper.WriteCombatLog("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
             string secs = "";
             foreach (CardDB.cardIDEnum sec in this.ownSecretList)
             {
                 secs += sec + " ";
             }
-            help.logg("osecrets: " + secs);
-            help.logg("cthunbonus: " + this.anzOgOwnCThunAngrBonus + " " + this.anzOgOwnCThunHpBonus + " " + this.anzOgOwnCThunTaunt);
-            help.logg("jadegolems: " + this.anzOwnJadeGolem + " " + this.anzEnemyJadeGolem);
-            help.logg("elementals: " + this.anzOwnElementalsThisTurn + " " + this.anzOwnElementalsLastTurn + " " + this.ownElementalsHaveLifesteal);
-            help.logg(Questmanager.Instance.getQuestsString());
-            help.logg("advanced: " + this.ownCrystalCore + " " + (this.ownMinionsInDeckCost0 ? 1: 0));
-            help.logg("enemyhero:");
-            help.logg((this.enemyHeroname == HeroEnum.None ? this.enemyHeronameingame : this.enemyHeroname.ToString()) + " " + this.enemyHero.HealthPoints + " " + this.enemyHero.maxHp + " " + this.enemyHero.armor + " " + this.enemyHero.frozen + " " + this.enemyHero.immune + " " + this.enemyHero.entitiyID + " " + this.enemyHero.stealth);
-            help.logg("weapon: " + this.enemyWeapon.Angr + " " + this.enemyWeapon.Durability + " " + this.enemyWeapon.name + " " + this.enemyWeapon.card.cardIDenum + " " + (this.enemyWeapon.poisonous ? 1 : 0) + " " + (this.enemyWeapon.lifesteal ? 1 : 0));
-            help.logg("ability: " + "True" + " " + this.enemyAbility.cardIDenum);
-            help.logg("fatigue: " + this.ownDeckSize + " " + this.ownHeroFatigue + " " + this.enemyDeckSize + " " + this.enemyHeroFatigue);
+            LogHelper.WriteCombatLog("osecrets: " + secs);
+            LogHelper.WriteCombatLog("cthunbonus: " + this.anzOgOwnCThunAngrBonus + " " + this.anzOgOwnCThunHpBonus + " " + this.anzOgOwnCThunTaunt);
+            LogHelper.WriteCombatLog("jadegolems: " + this.anzOwnJadeGolem + " " + this.anzEnemyJadeGolem);
+            LogHelper.WriteCombatLog("elementals: " + this.anzOwnElementalsThisTurn + " " + this.anzOwnElementalsLastTurn + " " + this.ownElementalsHaveLifesteal);
+            LogHelper.WriteCombatLog(Questmanager.Instance.getQuestsString());
+            LogHelper.WriteCombatLog("advanced: " + this.ownCrystalCore + " " + (this.ownMinionsInDeckCost0 ? 1: 0));
+            LogHelper.WriteCombatLog("enemyhero:");
+            LogHelper.WriteCombatLog((this.enemyHeroname == HeroEnum.None ? this.enemyHeronameingame : this.enemyHeroname.ToString()) + " " + this.enemyHero.HealthPoints + " " + this.enemyHero.maxHp + " " + this.enemyHero.armor + " " + this.enemyHero.frozen + " " + this.enemyHero.immune + " " + this.enemyHero.entitiyID + " " + this.enemyHero.stealth);
+            LogHelper.WriteCombatLog("weapon: " + this.enemyWeapon.Angr + " " + this.enemyWeapon.Durability + " " + this.enemyWeapon.name + " " + this.enemyWeapon.card.cardIDenum + " " + (this.enemyWeapon.poisonous ? 1 : 0) + " " + (this.enemyWeapon.lifesteal ? 1 : 0));
+            LogHelper.WriteCombatLog("ability: " + "True" + " " + this.enemyAbility.cardIDenum);
+            LogHelper.WriteCombatLog("fatigue: " + this.ownDeckSize + " " + this.ownHeroFatigue + " " + this.enemyDeckSize + " " + this.enemyHeroFatigue);
         }
 
 
         public void printOwnMinions()
         {
-            help.logg("OwnMinions:");
+            LogHelper.WriteCombatLog("OwnMinions:");
             foreach (Minion m in this.ownMinions)
             {
                 string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Attack + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready + " natt:" + m.numAttacksThisTurn;
@@ -666,14 +666,14 @@ namespace HREngine.Bots
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }
 
-                help.logg(mini);
+                LogHelper.WriteCombatLog(mini);
             }
 
         }
 
         public void printEnemyMinions()
         {
-            help.logg("EnemyMinions:");
+            LogHelper.WriteCombatLog("EnemyMinions:");
             foreach (Minion m in this.enemyMinions)
             {
                 string mini = m.name + " " + m.handcard.card.cardIDenum + " zp:" + m.zonepos + " e:" + m.entitiyID + " A:" + m.Attack + " H:" + m.HealthPoints + " mH:" + m.maxHp + " rdy:" + m.Ready;// +" natt:" + m.numAttacksThisTurn;
@@ -722,7 +722,7 @@ namespace HREngine.Bots
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }
 
-                help.logg(mini);
+                LogHelper.WriteCombatLog(mini);
             }
 
         }
@@ -736,7 +736,7 @@ namespace HREngine.Bots
             {
                 od += e.Key + "," + e.Value + ";";
             }
-            Helpfunctions.Instance.logg(od);
+            LogHelper.WriteCombatLog(od);
         }
 
     }

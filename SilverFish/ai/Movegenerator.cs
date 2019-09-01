@@ -268,7 +268,7 @@ namespace HREngine.Bots
                 bool isSpecial = m.handcard.card.isSpecialMinion;
                 foreach (Minion mnn in addedmins)
                 {
-                    //help.logg(mnn.silenced + " " + m.silenced + " " + mnn.name + " " + m.name + " " + penman.specialMinions.ContainsKey(m.name));
+                    //LogHelper.WriteCombatLog(mnn.silenced + " " + m.silenced + " " + mnn.name + " " + m.name + " " + penman.specialMinions.ContainsKey(m.name));
 
                     bool otherisSpecial = mnn.handcard.card.isSpecialMinion;
 			        bool onlySpecial = isSpecial && otherisSpecial && !m.silenced && !mnn.silenced;
@@ -286,15 +286,15 @@ namespace HREngine.Bots
                 {
                     addedmins.Add(m);
                     retvalues.Add(m);
-                    //help.logg(m.name + " " + m.id +" is added to targetlist");
+                    //LogHelper.WriteCombatLog(m.name + " " + m.id +" is added to targetlist");
                 }
                 else
                 {
-                    //help.logg(m.name + " is not needed to attack");
+                    //LogHelper.WriteCombatLog(m.name + " is not needed to attack");
                     continue;
                 }
             }
-            //help.logg("end targetcutting");
+            //LogHelper.WriteCombatLog("end targetcutting");
 
             return retvalues;
         }

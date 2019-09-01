@@ -107,7 +107,7 @@ namespace HREngine.Bots
 
         private void doallmoves(bool test, bool isLethalCheck)
         {
-            help.logg("### do all moves in Ai start ###");
+            LogHelper.WriteCombatLog("### do all moves in Ai start ###");
             //set maxwide to the value for the first-turn-sim.
             foreach (EnemyTurnSimulator ets in enemyTurnSim)
             {
@@ -125,10 +125,10 @@ namespace HREngine.Bots
             bestplay = this.mainTurnSimulator.bestboard;
             float bestval = this.mainTurnSimulator.bestmoveValue;
 
-            help.logg("-------------------------------------");
+            LogHelper.WriteCombatLog("-------------------------------------");
             if (bestplay.ruleWeight != 0)
             {
-                help.logg("ruleWeight " + bestplay.ruleWeight * -1);
+                LogHelper.WriteCombatLog("ruleWeight " + bestplay.ruleWeight * -1);
             }
             if (settings.printRules > 0)
             {
@@ -136,10 +136,10 @@ namespace HREngine.Bots
                 foreach (string rs in rulesStr)
                 {
                     if (rs == "") continue;
-                    help.logg("rule: " + rs);
+                    LogHelper.WriteCombatLog("rule: " + rs);
                 }
             }
-            help.logg("value of best board " + bestval);
+            LogHelper.WriteCombatLog("value of best board " + bestval);
 
             this.bestActions.Clear();
             this.bestmove = null;
@@ -149,13 +149,13 @@ namespace HREngine.Bots
             {
                 an.adjustActions(bestplay, isLethalCheck);
             }
-            help.logg("Best actions as following:");
+            LogHelper.WriteCombatLog("Best actions as following:");
             int i = 0;
             foreach (Action a in bestplay.playactions)
             {
                 i++;
                 this.bestActions.Add(new Action(a));
-                help.logg($"Action{i}:");
+                LogHelper.WriteCombatLog($"Action{i}:");
                 a.print();
             }
 
@@ -180,14 +180,14 @@ namespace HREngine.Bots
             if (isLethalCheck)
             {
                 this.lethalMissing = bestplay.enemyHero.armor + bestplay.enemyHero.HealthPoints;//RR
-                help.logg("missing dmg to lethal " + this.lethalMissing);
+                LogHelper.WriteCombatLog("missing dmg to lethal " + this.lethalMissing);
             }
-            help.logg("### do all moves in Ai end ###");
+            LogHelper.WriteCombatLog("### do all moves in Ai end ###");
         }
         
         public void doNextCalcedMove()
         {
-            help.logg("noRecalcNeeded!!!-----------------------------------");
+            LogHelper.WriteCombatLog("noRecalcNeeded!!!-----------------------------------");
             //this.bestboard.printActions();
 
             this.bestmove = null;
@@ -202,7 +202,7 @@ namespace HREngine.Bots
             if (bestmove != null && bestmove.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
             {
                 //this.nextMoveGuess = new Playfield();
-                Helpfunctions.Instance.logg("nmgsim-");
+                LogHelper.WriteCombatLog("nmgsim-");
                 try
                 {
                     this.nextMoveGuess.doAction(bestmove);
@@ -210,19 +210,19 @@ namespace HREngine.Bots
                 }
                 catch (Exception ex)
                 {
-                    Helpfunctions.Instance.logg("Message ---");
-                    Helpfunctions.Instance.logg("Message ---" + ex.Message);
-                    Helpfunctions.Instance.logg("Source ---" + ex.Source);
-                    Helpfunctions.Instance.logg("StackTrace ---" + ex.StackTrace);
-                    Helpfunctions.Instance.logg("TargetSite ---\n{0}" + ex.TargetSite);
+                    LogHelper.WriteCombatLog("Message ---");
+                    LogHelper.WriteCombatLog("Message ---" + ex.Message);
+                    LogHelper.WriteCombatLog("Source ---" + ex.Source);
+                    LogHelper.WriteCombatLog("StackTrace ---" + ex.StackTrace);
+                    LogHelper.WriteCombatLog("TargetSite ---\n{0}" + ex.TargetSite);
 
                 }
-                Helpfunctions.Instance.logg("nmgsime-");
+                LogHelper.WriteCombatLog("nmgsime-");
 
             }
             else
             {
-                //Helpfunctions.Instance.logg("nd trn");
+                //LogHelper.WriteCombatLog("nd trn");
                 nextMoveGuess.mana = -100;
                 int twilightelderBonus = 0;
                 foreach (Minion m in this.nextMoveGuess.ownMinions)
@@ -249,39 +249,38 @@ namespace HREngine.Bots
             posmoves.Clear();
             posmoves.Add(new Playfield());
 
-            help.loggonoff(false);
             //do we need to recalc?
-            help.logg("recalc-check###########");
+            LogHelper.WriteCombatLog("recalc-check###########");
             if (this.dontRecalc && posmoves[0].isEqual(this.nextMoveGuess, true))
             {
                 doNextCalcedMove();
             }
             else
             {
-                help.logg("Leathal-check###########");
+                LogHelper.WriteCombatLog("Leathal-check###########");
                 bestmoveValue = -1000000;
                 DateTime strt = DateTime.Now;
                 if (useLethalCheck)
                 {
                     strt = DateTime.Now;
                     doallmoves(false, true);
-                    help.logg("calculated " + (DateTime.Now - strt).TotalSeconds);
+                    LogHelper.WriteCombatLog("calculated " + (DateTime.Now - strt).TotalSeconds);
                 }
 
                 if (bestmoveValue < 10000)
                 {
                     posmoves.Clear();
                     posmoves.Add(new Playfield());
-                    help.logg("no lethal, do something random######");
+                    LogHelper.WriteCombatLog("no lethal, do something random######");
                     strt = DateTime.Now;
                     doallmoves(false, false);
-                    help.logg("calculated " + (DateTime.Now - strt).TotalSeconds);
+                    LogHelper.WriteCombatLog("calculated " + (DateTime.Now - strt).TotalSeconds);
 
                 }
             }
 
 
-            //help.logging(true);
+            //LogHelper.WriteCombatLoging(true);
 
         }
         
@@ -291,7 +290,7 @@ namespace HREngine.Bots
         {
             List<double> retval = new List<double>();
             double calcTime = 0;
-            help.logg("simulating board ");
+            LogHelper.WriteCombatLog("simulating board ");
 
             BoardTester bt = new BoardTester(data);
             if (!bt.datareaded)
@@ -310,22 +309,22 @@ namespace HREngine.Bots
             pMain.print = printstuff;
             posmoves.Add(pMain);
 
-            help.logg("### Print current board state start ###");
+            LogHelper.WriteCombatLog("### Print current board state start ###");
             foreach (Playfield p in this.posmoves)
             {
                 p.printBoard();
             }
-            help.logg("ownminionscount " + posmoves[0].ownMinions.Count);
-            help.logg("owncardscount " + posmoves[0].owncards.Count);
+            LogHelper.WriteCombatLog("ownminionscount " + posmoves[0].ownMinions.Count);
+            LogHelper.WriteCombatLog("owncardscount " + posmoves[0].owncards.Count);
 
             foreach (var item in this.posmoves[0].owncards)
             {
-                help.logg("card " + item.card.name + " is playable :" + item.canplayCard(posmoves[0], true) + " cost/mana: " + item.manacost + "/" + posmoves[0].mana);
+                LogHelper.WriteCombatLog("card " + item.card.name + " is playable :" + item.canplayCard(posmoves[0], true) + " cost/mana: " + item.manacost + "/" + posmoves[0].mana);
             }
             var heroAbilityCard = posmoves[0].ownHeroAblility.card;
-            help.logg("ability " + heroAbilityCard.name + " is playable :" + heroAbilityCard.canplayCard(posmoves[0], 2, true) + " cost/mana: "
+            LogHelper.WriteCombatLog("ability " + heroAbilityCard.name + " is playable :" + heroAbilityCard.canplayCard(posmoves[0], 2, true) + " cost/mana: "
                       + heroAbilityCard.getManaCost(posmoves[0], 2) + "/" + posmoves[0].mana);
-            help.logg($"### Print current board state end ###{Environment.NewLine}{Environment.NewLine}");
+            LogHelper.WriteCombatLog($"### Print current board state end ###{Environment.NewLine}{Environment.NewLine}");
 
             DateTime strt = DateTime.Now;
             // lethalcheck
@@ -333,7 +332,7 @@ namespace HREngine.Bots
             {
                 doallmoves(false, true);
                 calcTime = (DateTime.Now - strt).TotalSeconds;
-                help.logg("calculated " + calcTime);
+                LogHelper.WriteCombatLog("calculated " + calcTime);
                 retval.Add(calcTime);
             }
 
@@ -354,7 +353,7 @@ namespace HREngine.Bots
                     strt = DateTime.Now;
                     doallmoves(false, false);
                     calcTime = (DateTime.Now - strt).TotalSeconds;
-                    help.logg("calculated " + calcTime);
+                    LogHelper.WriteCombatLog("calculated " + calcTime);
                     retval.Add(calcTime);
                 }
             }
@@ -363,7 +362,7 @@ namespace HREngine.Bots
             {
                 this.mainTurnSimulator.printPosmoves();
                 simmulateWholeTurn();
-                help.logg("calculated " + calcTime);
+                LogHelper.WriteCombatLog("calculated " + calcTime);
             }
 
             return retval;
@@ -371,7 +370,7 @@ namespace HREngine.Bots
 
         public void simmulateWholeTurn()
         {
-            help.logg("### simulate best board start ###");
+            LogHelper.WriteCombatLog("### simulate best board start ###");
             //this.bestboard.printActions();
 
             Playfield tempbestboard = new Playfield();
@@ -389,13 +388,13 @@ namespace HREngine.Bots
             {
                 tempbestboard.mana = -100;
             }
-            help.logg("-------------");
+            LogHelper.WriteCombatLog("-------------");
             tempbestboard.printBoard();
 
             foreach (Action bestmovee in this.bestActions)
             {
 
-                help.logg("stepp");
+                LogHelper.WriteCombatLog("stepp");
 
 
                 if (bestmovee != null && bestmove.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
@@ -409,12 +408,12 @@ namespace HREngine.Bots
                 {
                     tempbestboard.mana = -100;
                 }
-                help.logg("-------------");
+                LogHelper.WriteCombatLog("-------------");
                 tempbestboard.printBoard();
             }
 
-            //help.logg("AFTER ENEMY TURN:" );
-            help.logg("### simulate best board end ###");
+            //LogHelper.WriteCombatLog("AFTER ENEMY TURN:" );
+            LogHelper.WriteCombatLog("### simulate best board end ###");
         }
 
         public void simmulateWholeTurnandPrint()
@@ -465,7 +464,7 @@ namespace HREngine.Bots
 
         public void updateEntitiy(int old, int newone)
         {
-            Helpfunctions.Instance.logg("entityupdate! " + old + " to " + newone);
+            LogHelper.WriteCombatLog("entityupdate! " + old + " to " + newone);
             if (this.nextMoveGuess != null)
             {
                 foreach (Minion m in this.nextMoveGuess.ownMinions)
