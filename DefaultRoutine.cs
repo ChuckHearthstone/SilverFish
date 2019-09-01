@@ -79,7 +79,7 @@ namespace HREngine.Bots
             bool printstuff = false; // if true, the best board of the tested file is printet stepp by stepp
 
             Helpfunctions.Instance.InfoLog("----------------------------");
-            Helpfunctions.Instance.ErrorLog("you are running SilverFish AI V" + SilverFishBot.Instance.versionnumber);
+            Helpfunctions.Instance.ErrorLog("you are running SilverFish AI(https://github.com/ChuckHearthBuddy/SilverFish) written by ChuckLu Version:" + SilverFishBot.Instance.versionnumber);
             Helpfunctions.Instance.InfoLog("----------------------------");
 
             if (teststuff)

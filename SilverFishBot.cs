@@ -1,27 +1,18 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
 using System.Threading;
-using Buddy.Coroutines;
 using SilverFish.Helpers;
-using Triton.Bot;
-using Triton.Common;
 using Triton.Game;
 using Triton.Game.Mapping;
- 
-
-
-
-
 
 namespace HREngine.Bots
 {
     public class SilverFishBot
     {
-        public string versionnumber = "Chuck.2019.09.01.001";
+        public string versionnumber = "2019.09.01.002";
         private bool singleLog = Settings.Instance.writeToSingleFile;
         private string botbehave = "noname";
         private bool needSleep = false;
