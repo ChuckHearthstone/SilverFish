@@ -79,7 +79,7 @@ namespace SilverFish.Helpers
 
         public static string GetCombatLogFilePath()
         {
-            var combatLogFilePath = Path.Combine(Settings.Instance.BaseDirectory, CombatLogFolder);
+            var combatLogFilePath = Path.Combine(Settings.Instance.BaseDirectory, CombatLogFolder, CombatLogFileName);
             return combatLogFilePath;
         }
     }
