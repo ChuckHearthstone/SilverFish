@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SilverFish.Helpers;
 
 namespace HREngine.Bots
 {
@@ -75,10 +76,19 @@ namespace HREngine.Bots
             public SimTemplate CardSimulation
             {
                 get { return _cardSimulation; }
-                set { _cardSimulation = value; }
+                set
+                {
+                    if (CardHelper.IsCardSimulationImplemented(value))
+                    {
+                        CardSimulationImplemented = true;
+                    }
+                    _cardSimulation = value;
+                }
             }
 
             private SimTemplate _cardSimulation;
+
+            public bool CardSimulationImplemented { get; set; }
 
             public Card()
             {

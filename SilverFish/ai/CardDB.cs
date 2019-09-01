@@ -224,8 +224,7 @@ namespace HREngine.Bots
                     }
 
                     var totalCardSimCount = instance.cardlist.Count;
-                    var implementedCardSimCount =
-                        instance.cardlist.Count(x => x.CardSimulation.GetType().IsSubclassOf(typeof(SimTemplate)));
+                    var implementedCardSimCount = instance.cardlist.Count(x =>x.CardSimulationImplemented);
                     var percentage = implementedCardSimCount / (double)totalCardSimCount;
                     Helpfunctions.Instance.ErrorLog(
                         $"Card simulation implemented {percentage:P}, {implementedCardSimCount}/{totalCardSimCount}");

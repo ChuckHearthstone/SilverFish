@@ -35,5 +35,12 @@ namespace SilverFish.Helpers
             return result;
         }
 
+        public static bool IsCardSimulationImplemented(SimTemplate cardSimulation)
+        {
+            var type = cardSimulation.GetType();
+            var baseType = typeof(SimTemplate);
+            bool implemented = type.IsSubclassOf(baseType);
+            return implemented;
+        }
     }
 }
