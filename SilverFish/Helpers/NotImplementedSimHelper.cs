@@ -62,11 +62,23 @@ namespace SilverFish.Helpers
         {
             if (NotImplementedCards.Count == 0)
             {
-                Helpfunctions.Instance.ErrorLog($"Didn't find cards that not implemented when stop bot.");
+                if (SingleGameCards.Count == 0)
+                {
+                    Helpfunctions.Instance.ErrorLog($"Didn't find cards that not implemented when stop bot.");
+                }
+                else
+                {
+                    var array1 = SingleGameCards.Values.Select(x => $"cardId = {x.cardIDenum}, cardName = {x.name}");
+                    var result1 = string.Join(Environment.NewLine, array1);
+                    LogHelper.WriteNotImplementedCardSimulationLog(result1);
+                }
+
                 return;
             }
+
             var list = NotImplementedCards.Values.OrderByDescending(x => x.Counter);
-            var array = list.Select(x => $"count = {x.Counter}, cardId = {x.Card.cardIDenum}, cardName = {x.Card.name}");
+            var array = list.Select(x =>
+                $"count = {x.Counter}, cardId = {x.Card.cardIDenum}, cardName = {x.Card.name}");
             var result = string.Join(Environment.NewLine, array);
             LogHelper.WriteNotImplementedCardSimulationLog(result);
         }
