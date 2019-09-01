@@ -1,23 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using HREngine.Bots;
-using Triton.Common.LogUtilities;
 
 namespace SilverFish.Helpers
 {
     public class CardHelper
     {
+        private static readonly Type[] AssemblyTypes;
+
+        static CardHelper()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            AssemblyTypes = assembly.GetTypes();
+        }
+
         public static SimTemplate GetCardSimulation(CardDB.cardIDEnum tempCardIdEnum)
         {
             SimTemplate result = new SimTemplate();
 
-            var className = $"HREngine.Bots.Sim_{tempCardIdEnum}";
-            Type type = Type.GetType(className);
-            if (type == null)
+            var className = $"Sim_{tempCardIdEnum}";
+            var list = GetTypeByName(className);
+            if (list.Count != 1)
             {
-                //write a log here
+                if (list.Count >= 2)
+                {
+                    var content = string.Join(",", list.Select(x => x.FullName));
+                    throw new Exception($"Find multiple card simulation class for {tempCardIdEnum} : {content}");
+                }
             }
             else
             {
+                var type = list[0];
                 var simTemplateInstance = Activator.CreateInstance(type);
                 if (simTemplateInstance is SimTemplate temp)
                 {
@@ -28,11 +43,19 @@ namespace SilverFish.Helpers
                     throw new Exception($"class {className} should inherit from {typeof(SimTemplate)}");
                 }
             }
-            if (tempCardIdEnum == CardDB.cardIDEnum.GIL_530)
-            {
-                Logger.GetLoggerInstanceForType().InfoFormat($"className = {className}, type of result is {type}");
-            }
+
             return result;
+        }
+
+        /// <summary>
+        /// Gets a all Type instances matching the specified class name with just non-namespace qualified class name.
+        /// </summary>
+        /// <param name="className">Name of the class sought.</param>
+        /// <returns>Types that have the class name specified. They may not be in the same namespace.</returns>
+        public static List<Type> GetTypeByName(string className)
+        {
+            var collection = AssemblyTypes.Where(t => t.Name.Equals(className));
+            return collection.ToList();
         }
 
         public static bool IsCardSimulationImplemented(SimTemplate cardSimulation)

@@ -102,6 +102,10 @@
     <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="cards\GIL\Sim_GIL_147.cs" />
+    <Compile Include="cards\GIL\Sim_GIL_530.cs" />
+    <Compile Include="cards\GIL\SIm_GIL_531.cs" />
+    <Compile Include="cards\GIL\Sim_GIL_600.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
@@ -1673,7 +1677,6 @@
     <Compile Include="cards\Sim_GAME_002.cs" />
     <Compile Include="cards\Sim_GAME_005.cs" />
     <Compile Include="cards\Sim_GAME_006.cs" />
-    <Compile Include="cards\Sim_GIL_530.cs" />
     <Compile Include="cards\Sim_HERO_01.cs" />
     <Compile Include="cards\Sim_HERO_02.cs" />
     <Compile Include="cards\Sim_HERO_03.cs" />
@@ -2433,6 +2436,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="cards\01Basic\" />
+    <Folder Include="cards\02Classic\" />
+    <Folder Include="cards\03Adventure\" />
+    <Folder Include="cards\04Expansion\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
