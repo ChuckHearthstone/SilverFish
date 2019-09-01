@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using HREngine.Bots;
 
 namespace SilverFish.Helpers
@@ -15,10 +15,32 @@ namespace SilverFish.Helpers
 
     public class NotImplementedSimHelper
     {
-        private static ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo> NotImplementedCards =
+        private static readonly ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo> NotImplementedCards =
             new ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo>();
 
+        private static readonly Dictionary<CardDB.cardIDEnum, CardDB.Card> SingleGameCards =
+            new Dictionary<CardDB.cardIDEnum, CardDB.Card>();
+
         public static void Add(CardDB.Card card)
+        {
+            var key = card.cardIDenum;
+            if (!SingleGameCards.ContainsKey(key))
+            {
+                SingleGameCards.Add(key, card);
+            }
+        }
+
+        public static void GameOver()
+        {
+            var list = SingleGameCards.ToList();
+            SingleGameCards.Clear();
+            foreach (var item in list)
+            {
+                AddToSummary(item.Value);
+            }
+        }
+
+        private static void AddToSummary(CardDB.Card card)
         {
             var key = card.cardIDenum;
             NotImplementedInfo info;
@@ -29,7 +51,7 @@ namespace SilverFish.Helpers
             }
             else
             {
-                info = new NotImplementedInfo {Card = card};
+                info = new NotImplementedInfo { Card = card };
             }
             info.Counter++;
 
