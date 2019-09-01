@@ -7,5 +7,6 @@ namespace SilverFish.Helpers
     {
         public static ConcurrentDictionary<CardDB.cardIDEnum, int> Dictionary =
             new ConcurrentDictionary<CardDB.cardIDEnum, int>();
+
     }
 }

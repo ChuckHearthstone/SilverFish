@@ -220,7 +220,7 @@ namespace HREngine.Bots
                     // have to do it 2 times (or the kids inside the simcards will not have a simcard :D
                     foreach (Card c in instance.cardlist)
                     {
-                        c.sim_card = instance.GetSimCard(c.cardIDenum);
+                        c.sim_card = instance.GetCardSimulation(c.cardIDenum);
                     }
 
                     var totalCardSimCount = instance.cardlist.Count;
@@ -937,7 +937,7 @@ namespace HREngine.Bots
             }
         }
 
-        public SimTemplate GetSimCard(cardIDEnum tempCardIdEnum)
+        public SimTemplate GetCardSimulation(cardIDEnum tempCardIdEnum)
         {
             SimTemplate result = new SimTemplate();
 
