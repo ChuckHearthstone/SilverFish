@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using HREngine.Bots;
 
 namespace SilverFish.Helpers
@@ -60,27 +61,31 @@ namespace SilverFish.Helpers
 
         public static void Save()
         {
+            StringBuilder stringBuilder = new StringBuilder();
             if (NotImplementedCards.Count == 0)
             {
                 if (SingleGameCards.Count == 0)
                 {
-                    Helpfunctions.Instance.ErrorLog($"Didn't find cards that not implemented when stop bot.");
+                    Helpfunctions.Instance.ErrorLog("Didn't find cards that not implemented when stop bot.");
                 }
                 else
                 {
-                    var array1 = SingleGameCards.Values.Select(x => $"cardId = {x.cardIDenum}, cardName = {x.name}");
+                    stringBuilder.AppendLine("CardId,CardName");
+                    var array1 = SingleGameCards.Values.Select(x => $"{x.cardIDenum},{x.name}");
                     var result1 = string.Join(Environment.NewLine, array1);
-                    LogHelper.WriteNotImplementedCardSimulationLog(result1);
+                    stringBuilder.AppendLine(result1);
+                    LogHelper.WriteNotImplementedCardSimulationLog(stringBuilder.ToString());
                 }
 
                 return;
             }
 
+            stringBuilder.AppendLine("CardId,CardName,Count");
             var list = NotImplementedCards.Values.OrderByDescending(x => x.Counter);
-            var array = list.Select(x =>
-                $"count = {x.Counter}, cardId = {x.Card.cardIDenum}, cardName = {x.Card.name}");
+            var array = list.Select(x => $"{x.Card.cardIDenum},{x.Card.name},{x.Counter}");
             var result = string.Join(Environment.NewLine, array);
-            LogHelper.WriteNotImplementedCardSimulationLog(result);
+            stringBuilder.AppendLine(result);
+            LogHelper.WriteNotImplementedCardSimulationLog(stringBuilder.ToString());
         }
 
     }

@@ -61,7 +61,7 @@ namespace SilverFish.Helpers
 
         public static void WriteNotImplementedCardSimulationLog(string content)
         {
-            WriteAllText(content, "notImplementedCardSimulation.log", string.Empty);
+            WriteAllText(content, $"CardNotImplemented-{DateTime.Now:yyyyMMdd}.csv", string.Empty);
         }
 
         public static string CombatLogFileName { get; set; } = "Combat.log";
@@ -73,7 +73,7 @@ namespace SilverFish.Helpers
 
         public static void WriteMainLog(object obj)
         {
-            MainLogFileName = $"ChuckSilverFishAi{DateTime.Now:yyyyMMdd}.log";
+            MainLogFileName = $"ChuckSilverFishAi-{DateTime.Now:yyyyMMdd}.log";
             AppendText(obj, MainLogFileName);
         }
 
