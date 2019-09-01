@@ -220,12 +220,12 @@ namespace HREngine.Bots
                     // have to do it 2 times (or the kids inside the simcards will not have a simcard :D
                     foreach (Card c in instance.cardlist)
                     {
-                        c.sim_card = instance.GetCardSimulation(c.cardIDenum);
+                        c.CardSimulation = instance.GetCardSimulation(c.cardIDenum);
                     }
 
                     var totalCardSimCount = instance.cardlist.Count;
                     var implementedCardSimCount =
-                        instance.cardlist.Count(x => x.sim_card.GetType().IsSubclassOf(typeof(SimTemplate)));
+                        instance.cardlist.Count(x => x.CardSimulation.GetType().IsSubclassOf(typeof(SimTemplate)));
                     var percentage = implementedCardSimCount / (double)totalCardSimCount;
                     Helpfunctions.Instance.ErrorLog(
                         $"Card simulation implemented {percentage:P}, {implementedCardSimCount}/{totalCardSimCount}");
@@ -918,7 +918,7 @@ namespace HREngine.Bots
                 }
                 
                 c.trigers = new List<cardtrigers>();
-                Type trigerType = c.sim_card.GetType();
+                Type trigerType = c.CardSimulation.GetType();
                 foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
                 {
                     try

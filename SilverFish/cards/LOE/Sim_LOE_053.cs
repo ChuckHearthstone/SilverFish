@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 if (hc.target.own == triggerEffectMinion.own && hc.target.entitiyID != triggerEffectMinion.entitiyID)
                 {
-                    hc.card.sim_card.onCardPlay(p, wasOwnCard, triggerEffectMinion, hc.extraParam2);
+                    hc.card.CardSimulation.onCardPlay(p, wasOwnCard, triggerEffectMinion, hc.extraParam2);
                 }
             }
         }

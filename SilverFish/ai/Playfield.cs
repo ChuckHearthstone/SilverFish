@@ -3705,7 +3705,7 @@ namespace HREngine.Bots
                             this.drawACard(CardDB.cardName.unknown, true, true);
                         }
                     }
-                    c.sim_card.onCardPlay(this, true, target, choice);
+                    c.CardSimulation.onCardPlay(this, true, target, choice);
                     if (this.ownQuest.Id != CardDB.cardIDEnum.None && c.type == CardDB.cardtype.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
                     else if (c.type == CardDB.cardtype.WEAPON)
                     {
@@ -3786,7 +3786,7 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    c.sim_card.onCardPlay(this, false, target, choice);
+                    c.CardSimulation.onCardPlay(this, false, target, choice);
                     //lockandload
                     this.doDmgTriggers();
                     
@@ -3819,7 +3819,7 @@ namespace HREngine.Bots
 
             if (logging) Helpfunctions.Instance.logg("play crd " + c.name + " trgt " + target);
 
-            c.sim_card.onCardPlay(this, ownturn, target, choice);
+            c.CardSimulation.onCardPlay(this, ownturn, target, choice);
             if (target != null && (ownturn ? this.ownAbilityFreezesTarget > 0 : this.enemyAbilityFreezesTarget > 0)) minionGetFrozen(target);
             this.triggerInspire(ownturn);
             this.secretTrigger_HeroPowerUsed();
@@ -3839,7 +3839,7 @@ namespace HREngine.Bots
                     if (this.ownWeapon.card.deathrattle)
                     {
                         Minion m = new Minion { own = true };
-                        ownWeapon.card.sim_card.onDeathrattle(this, m);
+                        ownWeapon.card.CardSimulation.onDeathrattle(this, m);
                     }
 
                     this.ownHero.Attack = Math.Max(0, this.ownHero.Attack - this.ownWeapon.Angr);
@@ -3877,7 +3877,7 @@ namespace HREngine.Bots
                     if (this.enemyWeapon.card.deathrattle)
                     {
                         Minion m = new Minion { own = false };
-                        enemyWeapon.card.sim_card.onDeathrattle(this, m);
+                        enemyWeapon.card.CardSimulation.onDeathrattle(this, m);
                     }
 
                     this.enemyHero.Attack = Math.Max(0, this.enemyHero.Attack - this.enemyWeapon.Angr);
@@ -3965,10 +3965,10 @@ namespace HREngine.Bots
                     case CardDB.cardName.shadowboxer: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.hoodedacolyte: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.aiextra1:
-                        mnn.handcard.card.sim_card.onACharGotHealed(this, mnn, anz);
+                        mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, anz);
                         break;
                     case CardDB.cardName.blackguard:
-                        if (ownHero.GotHealedValue > 0) mnn.handcard.card.sim_card.onACharGotHealed(this, mnn, ownHero.GotHealedValue);
+                        if (ownHero.GotHealedValue > 0) mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, ownHero.GotHealedValue);
                         break;
                 }
             }
@@ -3982,10 +3982,10 @@ namespace HREngine.Bots
                     case CardDB.cardName.shadowboxer: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.hoodedacolyte: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.aiextra1:
-                        mnn.handcard.card.sim_card.onACharGotHealed(this, mnn, anz);
+                        mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, anz);
                         break;
                     case CardDB.cardName.blackguard:
-                        if (enemyHero.GotHealedValue > 0) mnn.handcard.card.sim_card.onACharGotHealed(this, mnn, enemyHero.GotHealedValue);
+                        if (enemyHero.GotHealedValue > 0) mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, enemyHero.GotHealedValue);
                         break;
                 }
             }
@@ -4005,7 +4005,7 @@ namespace HREngine.Bots
                     case CardDB.cardName.northshirecleric: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.manageode: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.aiextra1:
-                        mnn.handcard.card.sim_card.onAMinionGotHealedTrigger(this, mnn, anz);
+                        mnn.handcard.card.CardSimulation.onAMinionGotHealedTrigger(this, mnn, anz);
                         break;
                 }
             }
@@ -4018,7 +4018,7 @@ namespace HREngine.Bots
                     case CardDB.cardName.northshirecleric: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.manageode: goto case CardDB.cardName.aiextra1;
                     case CardDB.cardName.aiextra1:
-                        mnn.handcard.card.sim_card.onAMinionGotHealedTrigger(this, mnn, anz);
+                        mnn.handcard.card.CardSimulation.onAMinionGotHealedTrigger(this, mnn, anz);
                         break;
                 }
             }
@@ -4039,7 +4039,7 @@ namespace HREngine.Bots
             foreach (Minion m in this.ownMinions.ToArray())
             {
                 if (m.silenced) { m.anzGotDmg = 0; continue; }
-                m.handcard.card.sim_card.onMinionGotDmgTrigger(this, m, anzOwnMinionsGotDmg, anzEnemyMinionsGotDmg, anzOwnHeroGotDmg, anzEnemyHeroGotDmg);
+                m.handcard.card.CardSimulation.onMinionGotDmgTrigger(this, m, anzOwnMinionsGotDmg, anzEnemyMinionsGotDmg, anzOwnHeroGotDmg, anzEnemyHeroGotDmg);
                 m.anzGotDmg = 0;
                 m.GotDmgValue = 0;
             }
@@ -4047,7 +4047,7 @@ namespace HREngine.Bots
             foreach (Minion m in this.enemyMinions.ToArray())
             {
                 if (m.silenced) { m.anzGotDmg = 0; continue; }
-                m.handcard.card.sim_card.onMinionGotDmgTrigger(this, m, anzOwnMinionsGotDmg, anzEnemyMinionsGotDmg, anzOwnHeroGotDmg, anzEnemyHeroGotDmg);
+                m.handcard.card.CardSimulation.onMinionGotDmgTrigger(this, m, anzOwnMinionsGotDmg, anzEnemyMinionsGotDmg, anzOwnHeroGotDmg, anzEnemyHeroGotDmg);
                 m.anzGotDmg = 0;
                 m.GotDmgValue = 0;
             }
@@ -4067,7 +4067,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.ownMinions.ToArray())
                 {
                     if (m.silenced) continue;
-                    m.handcard.card.sim_card.onMinionLosesDivineShield(this, m, anzOwn);
+                    m.handcard.card.CardSimulation.onMinionLosesDivineShield(this, m, anzOwn);
                 }
                 
                 if (this.ownWeapon.name == CardDB.cardName.lightssorrow) this.ownWeapon.Angr += anzOwn;
@@ -4078,7 +4078,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.enemyMinions.ToArray())
                 {
                     if (m.silenced) continue;
-                    m.handcard.card.sim_card.onMinionLosesDivineShield(this, m, anzEnemy);
+                    m.handcard.card.CardSimulation.onMinionLosesDivineShield(this, m, anzEnemy);
                 }
                 
                 if (this.enemyWeapon.name == CardDB.cardName.lightssorrow) this.enemyWeapon.Angr += anzEnemy;
@@ -4094,13 +4094,13 @@ namespace HREngine.Bots
             {
                 if (m.silenced) continue;
                 if (m.HealthPoints <= 0) continue;
-                m.handcard.card.sim_card.onMinionDiedTrigger(this, m, m); 
+                m.handcard.card.CardSimulation.onMinionDiedTrigger(this, m, m); 
             }
             foreach (Minion m in this.enemyMinions.ToArray())
             {
                 if (m.silenced) continue;
                 if (m.HealthPoints <= 0) continue;
-                m.handcard.card.sim_card.onMinionDiedTrigger(this, m, m);
+                m.handcard.card.CardSimulation.onMinionDiedTrigger(this, m, m);
             }
 
             foreach (Handmanager.Handcard hc in this.owncards)
@@ -4243,7 +4243,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.ownMinions.ToArray())
                 {
                     if (m.silenced) continue;
-                    m.handcard.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, m);
+                    m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                 }
 
                 foreach (Minion m in this.enemyMinions)
@@ -4254,7 +4254,7 @@ namespace HREngine.Bots
                     }
                     if (m.name == CardDB.cardName.felreaver)
                     {
-                        m.handcard.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, m);
+                        m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                     }
                 }
 
@@ -4263,15 +4263,15 @@ namespace HREngine.Bots
                     switch (ohc.card.name)
                     {
                         case CardDB.cardName.shadowreflection:
-                            ohc.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, ohc);
+                            ohc.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, ohc);
                             break;
                         case CardDB.cardName.blubberbaron:
-                            ohc.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, ohc);
+                            ohc.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, ohc);
                             break;
                     }
                 }
 
-                if (this.ownHeroAblility.card.name == CardDB.cardName.voidform) this.ownHeroAblility.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, this.ownHeroAblility);
+                if (this.ownHeroAblility.card.name == CardDB.cardName.voidform) this.ownHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.ownHeroAblility);
 
                 if (this.ownWeapon.name == CardDB.cardName.atiesh)
                 {
@@ -4291,7 +4291,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.enemyMinions.ToArray())
                 {
                     if (m.silenced) continue;
-                    m.handcard.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, m);
+                    m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                 }
                 foreach (Minion m in this.ownMinions)
                 {
@@ -4301,11 +4301,11 @@ namespace HREngine.Bots
                     }
                     if (m.name == CardDB.cardName.felreaver)
                     {
-                        m.handcard.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, m);
+                        m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                     }
                 }
 
-                if (this.enemyHeroAblility.card.name == CardDB.cardName.voidform) this.enemyHeroAblility.card.sim_card.onCardIsGoingToBePlayed(this, hc, own, this.enemyHeroAblility);
+                if (this.enemyHeroAblility.card.name == CardDB.cardName.voidform) this.enemyHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.enemyHeroAblility);
 
                 if (this.enemyWeapon.name == CardDB.cardName.atiesh)
                 {
@@ -4331,7 +4331,7 @@ namespace HREngine.Bots
                 foreach (Minion mnn in this.ownMinions)
                 {
                     if (mnn.silenced) continue;
-                    mnn.handcard.card.sim_card.onMinionIsSummoned(this, mnn, m);
+                    mnn.handcard.card.CardSimulation.onMinionIsSummoned(this, mnn, m);
                 }
             }
             else
@@ -4339,7 +4339,7 @@ namespace HREngine.Bots
                 foreach (Minion mnn in this.enemyMinions)
                 {
                     if (mnn.silenced) continue;
-                    mnn.handcard.card.sim_card.onMinionIsSummoned(this, mnn, m);
+                    mnn.handcard.card.CardSimulation.onMinionIsSummoned(this, mnn, m);
                 }
             }
         }
@@ -4353,7 +4353,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.ownMinions.ToArray())
                 {
                     if (m.silenced || m.entitiyID == mnn.entitiyID) continue;
-                    m.handcard.card.sim_card.onMinionWasSummoned(this, m, mnn);
+                    m.handcard.card.CardSimulation.onMinionWasSummoned(this, m, mnn);
                 }
                 switch (this.ownWeapon.name)
                 {
@@ -4370,7 +4370,7 @@ namespace HREngine.Bots
                 foreach (Minion m in this.enemyMinions.ToArray())
                 {
                     if (m.silenced || m.entitiyID == mnn.entitiyID) continue;
-                    m.handcard.card.sim_card.onMinionWasSummoned(this, m, mnn);
+                    m.handcard.card.CardSimulation.onMinionWasSummoned(this, m, mnn);
                 }
                 switch (this.enemyWeapon.name)
                 {
@@ -4390,12 +4390,12 @@ namespace HREngine.Bots
                 m.cantAttackHeroes = false;
                 if (!m.silenced)
                 {
-                    m.handcard.card.sim_card.onTurnEndsTrigger(this, m, ownturn);
+                    m.handcard.card.CardSimulation.onTurnEndsTrigger(this, m, ownturn);
                     if (this.ownTurnEndEffectsTriggerTwice > 0 && ownturn)
                     {
                         for (int i = 0; i < ownTurnEndEffectsTriggerTwice; i++)
                         {
-                            m.handcard.card.sim_card.onTurnEndsTrigger(this, m, ownturn);
+                            m.handcard.card.CardSimulation.onTurnEndsTrigger(this, m, ownturn);
                         }
                     }
                 }
@@ -4405,12 +4405,12 @@ namespace HREngine.Bots
             {
                 if (!m.silenced)
                 {
-                    m.handcard.card.sim_card.onTurnEndsTrigger(this, m, ownturn);
+                    m.handcard.card.CardSimulation.onTurnEndsTrigger(this, m, ownturn);
                     if (this.enemyTurnEndEffectsTriggerTwice > 0 && !ownturn)
                     {
                         for (int i = 0; i < enemyTurnEndEffectsTriggerTwice; i++)
                         {
-                            m.handcard.card.sim_card.onTurnEndsTrigger(this, m, ownturn);
+                            m.handcard.card.CardSimulation.onTurnEndsTrigger(this, m, ownturn);
                         }
                     }
                 }
@@ -4491,7 +4491,7 @@ namespace HREngine.Bots
 
                 if (!m.silenced)
                 {
-                    m.handcard.card.sim_card.onTurnStartTrigger(this, m, ownturn);
+                    m.handcard.card.CardSimulation.onTurnStartTrigger(this, m, ownturn);
                 }
                 if (ownturn && m.destroyOnOwnTurnStart) this.minionGetDestroyed(m);
                 if (!ownturn && m.destroyOnEnemyTurnStart) this.minionGetDestroyed(m);
@@ -4504,7 +4504,7 @@ namespace HREngine.Bots
                 m.justBuffed = 0;
                 if (!m.silenced)
                 {
-                    if (m.name == CardDB.cardName.micromachine) m.handcard.card.sim_card.onTurnStartTrigger(this, m, ownturn);
+                    if (m.name == CardDB.cardName.micromachine) m.handcard.card.CardSimulation.onTurnStartTrigger(this, m, ownturn);
                 }
                 if (ownturn && m.destroyOnOwnTurnStart) this.minionGetDestroyed(m);
                 if (!ownturn && m.destroyOnEnemyTurnStart) this.minionGetDestroyed(m);
@@ -4528,7 +4528,7 @@ namespace HREngine.Bots
                 hero.conceal = false;
                 hero.stealth = false;
             }
-            if (ab.card.name == CardDB.cardName.deathsshadow) ab.card.sim_card.onTurnStartTrigger(this, null, ownturn);
+            if (ab.card.name == CardDB.cardName.deathsshadow) ab.card.CardSimulation.onTurnStartTrigger(this, null, ownturn);
 
             this.doDmgTriggers();
             this.drawACard(CardDB.cardName.unknown, ownturn);
@@ -4652,13 +4652,13 @@ namespace HREngine.Bots
             foreach (Minion m in this.ownMinions.ToArray())
             {
                 if (m.silenced) continue;
-                m.handcard.card.sim_card.onInspire(this, m, ownturn);
+                m.handcard.card.CardSimulation.onInspire(this, m, ownturn);
             }
 
             foreach (Minion m in this.enemyMinions.ToArray())
             {
                 if (m.silenced) continue;
-                m.handcard.card.sim_card.onInspire(this, m, ownturn);
+                m.handcard.card.CardSimulation.onInspire(this, m, ownturn);
             }
         }
 
@@ -4682,7 +4682,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_explosive = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_610).sim_card.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_610).CardSimulation.onSecretPlay(this, false, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4693,7 +4693,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_beartrap = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_060).sim_card.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_060).CardSimulation.onSecretPlay(this, false, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4704,7 +4704,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_vaporize = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_594).sim_card.onSecretPlay(this, false, attacker, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_594).CardSimulation.onSecretPlay(this, false, attacker, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4717,7 +4717,7 @@ namespace HREngine.Bots
                                 {
                                     sii.canBe_missdirection = false;
                                 }
-                                CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_533).sim_card.onSecretPlay(this, false, attacker, defender, out newTarget);
+                                CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_533).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
                                 //no needDamageTrigger
                             }
                         }
@@ -4729,7 +4729,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_icebarrier = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_289).sim_card.onSecretPlay(this, false, defender, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_289).CardSimulation.onSecretPlay(this, false, defender, 0);
                         }
 
                         if (needDamageTrigger) doDmgTriggers();
@@ -4747,7 +4747,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_snaketrap = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_554).sim_card.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_554).CardSimulation.onSecretPlay(this, false, 0);
                             doDmgTriggers();
                         }
                     }
@@ -4764,7 +4764,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_freezing = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_611).sim_card.onSecretPlay(this, false, attacker, 0);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_611).CardSimulation.onSecretPlay(this, false, attacker, 0);
                         }
                     }
                 }
@@ -4780,7 +4780,7 @@ namespace HREngine.Bots
                         }
                         bool ishero = defender.isHero;
                         si.usedTrigger_CharIsAttacked(ishero, attacker.isHero);
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_130).sim_card.onSecretPlay(this, false, attacker, defender, out newTarget);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_130).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
                         //no needDamageTrigger
                     }
                 }
@@ -4810,7 +4810,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_eyeforaneye = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_132).sim_card.onSecretPlay(this, false, dmg);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_132).CardSimulation.onSecretPlay(this, false, dmg);
                         }
 
                         if (si.canBe_iceblock && this.enemyHero.HealthPoints <= 0)
@@ -4820,7 +4820,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_iceblock = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_295).sim_card.onSecretPlay(this, false, this.enemyHero, dmg);
+                            CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_295).CardSimulation.onSecretPlay(this, false, this.enemyHero, dmg);
                         }
                     }
                 }
@@ -4849,7 +4849,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_mirrorentity = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_294).sim_card.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_294).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
 
@@ -4860,7 +4860,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_repentance = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_379).sim_card.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_379).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                     }
 
                     if (si.canBe_sacredtrial && this.ownMinions.Count > 3)
@@ -4871,7 +4871,7 @@ namespace HREngine.Bots
                             sii.canBe_sacredtrial = false;
                             sii.canBe_snipe = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_027).sim_card.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_027).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
                     else if (si.canBe_snipe)
@@ -4881,7 +4881,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_snipe = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_609).sim_card.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_609).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
 
@@ -4934,7 +4934,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_cattrick = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_004).sim_card.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_004).CardSimulation.onSecretPlay(this, false, 0);
                         doDmgTriggers();
                     }
 
@@ -4946,7 +4946,7 @@ namespace HREngine.Bots
                             sii.canBe_spellbender = false;
                         }
                         if (target.own && prozis.penman.maycauseharmDatabase.ContainsKey(c.name)) { }
-                        else CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.tt_010).sim_card.onSecretPlay(this, false, null, target, out retval);
+                        else CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.tt_010).CardSimulation.onSecretPlay(this, false, null, target, out retval);
                     }
                 }
 
@@ -4977,7 +4977,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_duplicate = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_018).sim_card.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_018).CardSimulation.onSecretPlay(this, false, 0);
                     }
 
                     if (si.canBe_redemption)
@@ -4987,7 +4987,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_redemption = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_136).sim_card.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_136).CardSimulation.onSecretPlay(this, false, 0);
                     }
 
                     if (si.canBe_avenge)
@@ -4997,7 +4997,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_avenge = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_020).sim_card.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_020).CardSimulation.onSecretPlay(this, false, 0);
                     }
                 }
             }
@@ -5023,7 +5023,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_darttrap = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_021).sim_card.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_021).CardSimulation.onSecretPlay(this, false, 0);
                         doDmgTriggers();
                     }
                 }
@@ -5185,7 +5185,7 @@ namespace HREngine.Bots
             //https://www.youtube.com/watch?v=2WrbqsOSbhc
             foreach (Minion m in deathrattleMinions)
             {
-                if (!m.silenced && m.handcard.card.deathrattle) m.handcard.card.sim_card.onDeathrattle(this, m);
+                if (!m.silenced && m.handcard.card.deathrattle) m.handcard.card.CardSimulation.onDeathrattle(this, m);
 
                 if (m.explorershat > 0)
                 {
@@ -5262,7 +5262,7 @@ namespace HREngine.Bots
                     CallKid(kid, pos, m.own, false, true);
                 }
 
-                if (m.deathrattle2 != null) m.deathrattle2.sim_card.onDeathrattle(this, m);
+                if (m.deathrattle2 != null) m.deathrattle2.CardSimulation.onDeathrattle(this, m);
 
                 //baron rivendare ??
                 if ((m.own && this.ownBaronRivendare >= 1) || (!m.own && this.enemyBaronRivendare >= 1))
@@ -5270,7 +5270,7 @@ namespace HREngine.Bots
                     int r = (m.own) ? this.ownBaronRivendare : this.enemyBaronRivendare;
                     for (int j = 0; j < r; j++)
                     {
-                        if (!m.silenced && m.handcard.card.deathrattle) m.handcard.card.sim_card.onDeathrattle(this, m);
+                        if (!m.silenced && m.handcard.card.deathrattle) m.handcard.card.CardSimulation.onDeathrattle(this, m);
 
                         if (m.explorershat > 0)
                         {
@@ -5347,7 +5347,7 @@ namespace HREngine.Bots
                             CallKid(kid, pos, m.own);  //because baron rivendare
                         }
 
-                        if (m.deathrattle2 != null) m.deathrattle2.sim_card.onDeathrattle(this, m);
+                        if (m.deathrattle2 != null) m.deathrattle2.CardSimulation.onDeathrattle(this, m);
                     }
                 }
             }
@@ -5389,7 +5389,7 @@ namespace HREngine.Bots
                         }
 
                         // end aura of minion m
-                        if (!m.silenced) m.handcard.card.sim_card.onAuraEnds(this, m);
+                        if (!m.silenced) m.handcard.card.CardSimulation.onAuraEnds(this, m);
                     }
                     else
                     {
@@ -5429,7 +5429,7 @@ namespace HREngine.Bots
                         }
 
                         // end aura of minion m
-                        if (!m.silenced) m.handcard.card.sim_card.onAuraEnds(this, m);
+                        if (!m.silenced) m.handcard.card.CardSimulation.onAuraEnds(this, m);
                     }
                     else
                     {
@@ -5703,7 +5703,7 @@ namespace HREngine.Bots
             //trigger on summon effect!
             this.triggerAMinionIsSummoned(m);
             //activate onAura effect
-            m.handcard.card.sim_card.onAuraStarts(this, m);
+            m.handcard.card.CardSimulation.onAuraStarts(this, m);
             //buffs minion
             this.minionGetOrEraseAllAreaBuffs(m, true);
             return m;
@@ -5721,12 +5721,12 @@ namespace HREngine.Bots
             addMinionToBattlefield(m);
 
             //trigger the battlecry!
-            m.handcard.card.sim_card.getBattlecryEffect(this, m, hc.target, choice);
+            m.handcard.card.CardSimulation.getBattlecryEffect(this, m, hc.target, choice);
             if (this.ownBrannBronzebeard > 0)
             {
                 for (int i = 0; i < this.ownBrannBronzebeard; i++)
                 {
-                    m.handcard.card.sim_card.getBattlecryEffect(this, m, hc.target, choice);
+                    m.handcard.card.CardSimulation.getBattlecryEffect(this, m, hc.target, choice);
                 }
             }
             doDmgTriggers();
@@ -6236,7 +6236,7 @@ namespace HREngine.Bots
         public void minionReturnToHand(Minion m, bool own, int manachange)
         {
             List<Minion> temp = (m.own) ? this.ownMinions : this.enemyMinions;
-            m.handcard.card.sim_card.onAuraEnds(this, m);
+            m.handcard.card.CardSimulation.onAuraEnds(this, m);
             temp.Remove(m);
 
             if (own)
@@ -6259,7 +6259,7 @@ namespace HREngine.Bots
         public void minionReturnToDeck(Minion m, bool own)
         {
             List<Minion> temp = (m.own) ? this.ownMinions : this.enemyMinions;
-            m.handcard.card.sim_card.onAuraEnds(this, m);
+            m.handcard.card.CardSimulation.onAuraEnds(this, m);
             temp.Remove(m);
 
             if (m.own) this.tempTrigger.ownMinionsChanged = true;
@@ -6271,7 +6271,7 @@ namespace HREngine.Bots
 
         public void minionTransform(Minion m, CardDB.Card c)
         {
-            m.handcard.card.sim_card.onAuraEnds(this, m);//end aura of the minion
+            m.handcard.card.CardSimulation.onAuraEnds(this, m);//end aura of the minion
 
             Handmanager.Handcard hc = new Handmanager.Handcard(c) { entity = m.entitiyID };
             if ((m.ancestralspirit >= 1 || m.desperatestand >= 1) && !m.own) 
@@ -6291,7 +6291,7 @@ namespace HREngine.Bots
                 else this.anzEnemyTaunt++;
             }
 
-            m.handcard.card.sim_card.onAuraStarts(this, m);
+            m.handcard.card.CardSimulation.onAuraStarts(this, m);
             this.minionGetOrEraseAllAreaBuffs(m, true);
 
             if (m.own)
@@ -6377,7 +6377,7 @@ namespace HREngine.Bots
             }
 
             //end buffs/aura
-            m.handcard.card.sim_card.onAuraEnds(this, m);
+            m.handcard.card.CardSimulation.onAuraEnds(this, m);
             this.minionGetOrEraseAllAreaBuffs(m, false);
 
             //remove minion from list
@@ -6391,7 +6391,7 @@ namespace HREngine.Bots
 
                 // add minion to new list + new buffs
                 newOwnerList.Add(m);
-                m.handcard.card.sim_card.onAuraStarts(this, m);
+                m.handcard.card.CardSimulation.onAuraStarts(this, m);
                 this.minionGetOrEraseAllAreaBuffs(m, true);
 
                 if (m.charge >= 1 || canAttack) // minion can attack if its shadowmadnessed (canAttack = true) or it has charge
@@ -6607,7 +6607,7 @@ namespace HREngine.Bots
                     this.owncards.RemoveAt(cPos);
                     anz--;
 
-                    if (removedhc.card.sim_card.onCardDicscard(this, removedhc, null, 0, true)) 
+                    if (removedhc.card.CardSimulation.onCardDicscard(this, removedhc, null, 0, true)) 
                     {
                         discardedCardsBonusList.Add(removedhc);
                         cVal = -6;
@@ -6623,7 +6623,7 @@ namespace HREngine.Bots
                     {
                         removedhc = this.owncards[i];
                         bestCardValue = cardsValDict[this.owncards[i].entity];
-                        if (removedhc.card.sim_card.onCardDicscard(this, removedhc, null, 0, true))
+                        if (removedhc.card.CardSimulation.onCardDicscard(this, removedhc, null, 0, true))
                         {
                             discardedCardsBonusList.Add(removedhc);
                             bestCardValue = 0;
@@ -6643,7 +6643,7 @@ namespace HREngine.Bots
                     if (m.HealthPoints > 0 && !m.silenced)
                     {
                         if (m.name == CardDB.cardName.malchezaarsimp) malchezaarsimpCount++;
-                        m.handcard.card.sim_card.onCardDicscard(this, m.handcard, m, numDiscardedCards); 
+                        m.handcard.card.CardSimulation.onCardDicscard(this, m.handcard, m, numDiscardedCards); 
                     }
                 }
                 if (malchezaarsimpCount > 0) summPen = summPen / 6;
@@ -6652,7 +6652,7 @@ namespace HREngine.Bots
                 
                 foreach (Handmanager.Handcard dc in discardedCardsBonusList)
                 {
-                    dc.card.sim_card.onCardDicscard(this, dc, null, 0); 
+                    dc.card.CardSimulation.onCardDicscard(this, dc, null, 0); 
                 }
             }
             else
@@ -6773,7 +6773,7 @@ namespace HREngine.Bots
             minionGetOrEraseAllAreaBuffs(m, false);
             m.HealthPoints = newHp;
             m.maxHp = newHp;
-            if (m.wounded && !m.silenced) m.handcard.card.sim_card.onEnrageStop(this, m);
+            if (m.wounded && !m.silenced) m.handcard.card.CardSimulation.onEnrageStop(this, m);
             m.wounded = false;
             minionGetOrEraseAllAreaBuffs(m, true);
         }
@@ -6795,7 +6795,7 @@ namespace HREngine.Bots
             m.HealthPoints = temp;
             m.maxHp = temp;
             m.wounded = false;
-            if (woundedbef) m.handcard.card.sim_card.onEnrageStop(this, m);
+            if (woundedbef) m.handcard.card.CardSimulation.onEnrageStop(this, m);
             if (m.HealthPoints <= 0)
             {
                 if (m.own) this.tempTrigger.ownMinionsDied++;

@@ -20,7 +20,7 @@ namespace HREngine.Bots
             if (target.wounded)
             {
                 target.wounded = false;
-                target.handcard.card.sim_card.onEnrageStop(p, target);
+                target.handcard.card.CardSimulation.onEnrageStop(p, target);
             }
         }
     }

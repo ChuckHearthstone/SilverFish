@@ -489,12 +489,12 @@ namespace HREngine.Bots
 
             if (woundedbefore && !this.wounded)
             {
-                this.handcard.card.sim_card.onEnrageStop(p, this);
+                this.handcard.card.CardSimulation.onEnrageStop(p, this);
             }
 
             if (!woundedbefore && this.wounded)
             {
-                this.handcard.card.sim_card.onEnrageStart(p, this);
+                this.handcard.card.CardSimulation.onEnrageStart(p, this);
             }
             
             if (this.HealthPoints <= 0)
@@ -635,7 +635,7 @@ namespace HREngine.Bots
             //delete enrage (if minion is silenced the first time)
             if (wounded && handcard.card.Enrage && !silenced)
             {
-                handcard.card.sim_card.onEnrageStop(p, this);
+                handcard.card.CardSimulation.onEnrageStop(p, this);
             }
 
             //reset attack
@@ -653,7 +653,7 @@ namespace HREngine.Bots
 
             if (!silenced)//minion WAS not silenced, deactivate his aura
             {
-                handcard.card.sim_card.onAuraEnds(p, this);
+                handcard.card.CardSimulation.onAuraEnds(p, this);
             }
 
             silenced = true;

@@ -1122,7 +1122,7 @@ def Execute():
                                             if (forbidden) bestval = -2000000;
                                             else
                                             {
-                                                discoverCards[i].card.sim_card.onCardPlay(tmpPlf, true, m, 0);
+                                                discoverCards[i].card.CardSimulation.onCardPlay(tmpPlf, true, m, 0);
                                                 bestval = ai.mainTurnSimulator.DoAllMoves(tmpPlf);
                                             }
                                             found = true;

@@ -20,7 +20,7 @@ namespace HREngine.Bots
                     own.Attack = 3;
                     own.HealthPoints = 3;
                     own.maxHp = 3;
-                    own.handcard.card.sim_card.onAuraStarts(p, own);
+                    own.handcard.card.CardSimulation.onAuraStarts(p, own);
                 }
             }
         }

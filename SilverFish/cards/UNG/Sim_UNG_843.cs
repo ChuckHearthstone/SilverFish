@@ -19,7 +19,7 @@ namespace HREngine.Bots
                 if (tmp.Count < 7)
                 {
                     p.CallKid(kid, triggerEffectMinion.zonepos, triggerEffectMinion.own);
-                    hc.card.sim_card.onCardPlay(p, wasOwnCard, tmp[triggerEffectMinion.zonepos], hc.extraParam2);
+                    hc.card.CardSimulation.onCardPlay(p, wasOwnCard, tmp[triggerEffectMinion.zonepos], hc.extraParam2);
                 }
             }
         }

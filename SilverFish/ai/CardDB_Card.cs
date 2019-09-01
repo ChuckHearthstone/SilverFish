@@ -72,7 +72,13 @@ namespace HREngine.Bots
             public List<Bots.CardDB.ErrorType2> playrequires;
             public List<Bots.CardDB.cardtrigers> trigers;
 
-            public SimTemplate sim_card;
+            public SimTemplate CardSimulation
+            {
+                get { return _cardSimulation; }
+                set { _cardSimulation = value; }
+            }
+
+            private SimTemplate _cardSimulation;
 
             public Card()
             {
@@ -131,7 +137,7 @@ namespace HREngine.Bots
                 this.type = c.type;
                 this.windfury = c.windfury;
                 this.cardIDenum = c.cardIDenum;
-                this.sim_card = c.sim_card;
+                this.CardSimulation = c.CardSimulation;
                 this.isToken = c.isToken;
             }
 
