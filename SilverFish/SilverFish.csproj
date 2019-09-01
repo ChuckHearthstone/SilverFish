@@ -114,6 +114,7 @@
     <Compile Include="ai\MiniSimulatorNextTurn.cs" />
     <Compile Include="ai\Movegenerator.cs" />
     <Compile Include="ai\Mulligan.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\NotImplementedSimHelper.cs" />
     <Compile Include="ai\PenalityManager.cs" />
     <Compile Include="ai\PenTemplate.cs" />

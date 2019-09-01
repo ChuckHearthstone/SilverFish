@@ -242,6 +242,7 @@ def Execute():
             GameEventManager.GameOver -= GameEventManagerOnGameOver;
             GameEventManager.QuestUpdate -= GameEventManagerOnQuestUpdate;
             GameEventManager.ArenaRewards -= GameEventManagerOnArenaRewards;
+            NotImplementedSimHelper.Save();
         }
 
         #endregion

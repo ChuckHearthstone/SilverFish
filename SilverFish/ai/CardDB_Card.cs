@@ -75,7 +75,14 @@ namespace HREngine.Bots
 
             public SimTemplate CardSimulation
             {
-                get { return _cardSimulation; }
+                get
+                {
+                    if (!CardSimulationImplemented)
+                    {
+                        NotImplementedSimHelper.Add(this);
+                    }
+                    return _cardSimulation;
+                }
                 set
                 {
                     if (CardHelper.IsCardSimulationImplemented(value))
