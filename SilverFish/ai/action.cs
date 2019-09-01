@@ -8,7 +8,10 @@
 //scharmuetzel kills all :D
 //todo deathlord-guessing
 //todo kelthuzad dont know which minion died this turn in rl
-namespace HREngine.Bots
+
+ using SilverFish.Helpers;
+
+ namespace HREngine.Bots
 {
     using System;
 

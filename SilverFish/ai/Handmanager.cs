@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using SilverFish.Helpers;
+
+namespace HREngine.Bots
 {
     using System.Collections.Generic;
 

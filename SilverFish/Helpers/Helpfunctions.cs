@@ -1,14 +1,12 @@
-﻿using Hearthbuddy.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Hearthbuddy.Windows;
+using HREngine.Bots;
 using log4net;
-using SilverFish.ai;
-using Triton.Common.LogUtilities;
 
-namespace HREngine.Bots
+namespace SilverFish.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     /// <summary>
     ///     The helpfunctions.
     /// </summary>

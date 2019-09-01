@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections.Generic;
 using Triton.Game.Data;
 using log4net;
+using SilverFish.Helpers;
 using Logger = Triton.Common.LogUtilities.Logger;
 
 namespace HREngine.Bots

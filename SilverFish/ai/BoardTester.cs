@@ -1,4 +1,4 @@
-﻿using HREngine.Bots.SilverFish.AI;
+﻿using SilverFish.Helpers;
 
 namespace HREngine.Bots
 {

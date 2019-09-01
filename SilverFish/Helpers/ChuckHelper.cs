@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HREngine.Bots;
 
-namespace HREngine.Bots.SilverFish.AI
+namespace SilverFish.Helpers
 {
     public class ChuckHelper
     {

@@ -1,4 +1,4 @@
-﻿namespace HREngine.Bots
+﻿namespace SilverFish.Helpers
 {
     public class TrimHelper
     {

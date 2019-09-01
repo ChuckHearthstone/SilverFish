@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using Buddy.Coroutines;
-using HREngine.Bots.SilverFish.AI;
+using SilverFish.Helpers;
 using Triton.Bot;
 using Triton.Common;
 using Triton.Game;

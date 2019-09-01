@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SilverFish.ai
+namespace SilverFish.Helpers
 {
     public class MulliganStartedEventArgs
     {
