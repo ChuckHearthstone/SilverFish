@@ -107,13 +107,10 @@
     <Compile Include="cards\04Expansion\008GIL\SIm_GIL_531.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_600.cs" />
     <Compile Include="cards\04Expansion\009BOT\Sim_BOT_038.cs" />
+    <Compile Include="cards\04Expansion\010TRL\Sim_TRL_509.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_049.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
-    <Compile Include="cards\GIL\Sim_GIL_147.cs" />
-    <Compile Include="cards\GIL\Sim_GIL_530.cs" />
-    <Compile Include="cards\GIL\SIm_GIL_531.cs" />
-    <Compile Include="cards\GIL\Sim_GIL_600.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
@@ -299,7 +296,6 @@
     <Compile Include="cards\04Expansion\002AT\Sim_AT_132_WARLOCK.cs" />
     <Compile Include="cards\04Expansion\002AT\Sim_AT_132_WARRIOR.cs" />
     <Compile Include="cards\04Expansion\002AT\Sim_AT_133.cs" />
-    <Compile Include="cards\BOT\Sim_BOT_038.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2H.cs" />
     <Compile Include="cards\BRM\Sim_BRMA01_2H_2_TB.cs" />
@@ -683,7 +679,6 @@
     <Compile Include="cards\CS1\Sim_CS2_boar.cs" />
     <Compile Include="cards\CS1\Sim_CS2_mirror.cs" />
     <Compile Include="cards\CS1\Sim_CS2_tk1.cs" />
-    <Compile Include="cards\DAL\Sim_DAL_049.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_01.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_02.cs" />
     <Compile Include="cards\EX1\Sim_DREAM_03.cs" />
@@ -1723,8 +1718,6 @@
     <Compile Include="cards\Sim_TU4d_003.cs" />
     <Compile Include="cards\Sim_TU4f_004.cs" />
     <Compile Include="cards\Sim_TU4f_007.cs" />
-    <Compile Include="cards\ULD\Sim_ULD_171.cs" />
-    <Compile Include="cards\ULD\Sim_ULD_720.cs" />
     <Compile Include="cards\UNG\Sim_UNG_001.cs" />
     <Compile Include="cards\UNG\Sim_UNG_002.cs" />
     <Compile Include="cards\UNG\Sim_UNG_004.cs" />
@@ -2445,7 +2438,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="cards\007LOOT\" />
     <Folder Include="cards\01Basic\" />
     <Folder Include="cards\02Classic\" />
     <Folder Include="cards\03Adventure\" />
