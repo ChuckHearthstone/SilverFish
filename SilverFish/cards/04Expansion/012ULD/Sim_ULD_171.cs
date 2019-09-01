@@ -1,6 +1,7 @@
 ﻿using System.Linq;
+using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._012ULD
 {
     /// <summary>
     /// Totemic Surge

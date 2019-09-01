@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._009BOT
 {
 
     /// <summary>

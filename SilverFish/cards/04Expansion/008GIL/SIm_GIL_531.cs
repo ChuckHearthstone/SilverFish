@@ -1,4 +1,6 @@
-namespace HREngine.Bots
+using HREngine.Bots;
+
+namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
     /// Witch's Apprentice

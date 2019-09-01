@@ -102,6 +102,14 @@
     <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_147.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_530.cs" />
+    <Compile Include="cards\04Expansion\008GIL\SIm_GIL_531.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_600.cs" />
+    <Compile Include="cards\04Expansion\009BOT\Sim_BOT_038.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Sim_DAL_049.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
     <Compile Include="cards\GIL\Sim_GIL_147.cs" />
     <Compile Include="cards\GIL\Sim_GIL_530.cs" />
     <Compile Include="cards\GIL\SIm_GIL_531.cs" />
@@ -1388,13 +1396,13 @@
     <Compile Include="cards\LOE\Sim_LOE_116.cs" />
     <Compile Include="cards\LOE\Sim_LOE_118.cs" />
     <Compile Include="cards\LOE\Sim_LOE_119.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_357.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_357l.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_368.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_998h.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_998j.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_998k.cs" />
-    <Compile Include="cards\LOOT\Sim_LOOT_998l.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357l.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_368.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_998h.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_998j.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_998k.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_998l.cs" />
     <Compile Include="cards\NAX\Sim_NAX10_02.cs" />
     <Compile Include="cards\NAX\Sim_NAX10_02H.cs" />
     <Compile Include="cards\NAX\Sim_NAX10_03.cs" />
@@ -2437,10 +2445,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="cards\007LOOT\" />
     <Folder Include="cards\01Basic\" />
     <Folder Include="cards\02Classic\" />
     <Folder Include="cards\03Adventure\" />
-    <Folder Include="cards\04Expansion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._007LOOT
 {
 	class Sim_LOOT_357 : SimTemplate //* Marin the Fox
 	{
