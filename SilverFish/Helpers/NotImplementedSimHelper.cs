@@ -29,7 +29,7 @@ namespace SilverFish.Helpers
             }
             else
             {
-                info = new NotImplementedInfo();
+                info = new NotImplementedInfo {Card = card};
             }
             info.Counter++;
 
@@ -43,7 +43,6 @@ namespace SilverFish.Helpers
                 Helpfunctions.Instance.ErrorLog($"Didn't find cards that not implemented when stop bot.");
                 return;
             }
-            StringBuilder stringBuilder = new StringBuilder();
             var list = NotImplementedCards.Values.OrderByDescending(x => x.Counter);
             var array = list.Select(x => $"count = {x.Counter}, cardId = {x.Card.cardIDenum}, cardName = {x.Card.name}");
             var result = string.Join(Environment.NewLine, array);
