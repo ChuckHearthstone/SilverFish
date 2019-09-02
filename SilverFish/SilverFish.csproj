@@ -111,6 +111,7 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_049.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
+    <Compile Include="cards\OG\Sim_OG_028.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
