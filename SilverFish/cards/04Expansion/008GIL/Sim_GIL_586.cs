@@ -1,6 +1,6 @@
 using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
     /// Earthen Might

@@ -103,9 +103,16 @@
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_147.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_155.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_513.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_530.cs" />
     <Compile Include="cards\04Expansion\008GIL\SIm_GIL_531.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_553.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_586.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_600.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_635.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_661.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_828.cs" />
     <Compile Include="cards\04Expansion\009BOT\Sim_BOT_038.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_509.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_049.cs" />

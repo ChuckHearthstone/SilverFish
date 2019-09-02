@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._008GIL
 {
     class Sim_GIL_553 : SimTemplate //精灵之森
     {

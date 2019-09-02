@@ -1,6 +1,6 @@
 using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
     /// Divine Hymn
@@ -18,8 +18,8 @@ namespace HREngine.Bots
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            int heal = (own.own) ? p.getMinionHeal(6) : p.getEnemyMinionHeal(6);
-            p.allCharsOfASideGetDamage(own.own, -heal);
+            int heal = (ownplay) ? p.getMinionHeal(6) : p.getEnemyMinionHeal(6);
+            p.allCharsOfASideGetDamage(ownplay, -heal);
         }
     }
 }
