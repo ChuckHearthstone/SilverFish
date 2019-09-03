@@ -12,7 +12,6 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// "LocStringEnUs": "Battlecry: Summon a 2/1 Poisonous Drakeslayer for your opponent.",
         /// "LocStringZhCn": "战吼：为你的对手召唤一个2/1并具有剧毒的飞龙猎手。",
         /// </summary>
-        /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>
         /// <param name="target"></param>

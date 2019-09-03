@@ -12,7 +12,6 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// "Battlecry: Refresh your Hero Power.",
         /// "战吼：复原你的英雄技能。",
         /// </summary>
-        /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
         /// <param name="target"></param>

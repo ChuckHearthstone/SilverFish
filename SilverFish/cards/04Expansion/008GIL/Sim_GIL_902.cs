@@ -12,7 +12,6 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// "LocStringEnUs": "Combo: Give your weapon +1 Attack.",
         /// "LocStringZhCn": "连击：使你的武器获得+1攻击力。",
         /// </summary>
-        /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
         /// <param name="target"></param>

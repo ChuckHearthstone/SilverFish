@@ -8,11 +8,9 @@ namespace SilverFish.cards._04Expansion._008GIL
     /// </summary>
     public class Sim_GIL_683t : SimTemplate
     {
-        /// <summary>
-        /// "LocStringEnUs": "Poisonous",
-        /// "LocStringZhCn": "剧毒",
-        /// </summary>
-        /// </summary>
+
+        //"LocStringEnUs": "Poisonous",
+        //"LocStringZhCn": "剧毒",
 
     }
 }

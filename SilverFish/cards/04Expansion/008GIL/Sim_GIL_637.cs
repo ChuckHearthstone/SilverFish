@@ -12,7 +12,6 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// "Draw a card. Gain 1 Armor for each card in your hand.",
         /// "抽一张牌。你每有一张手牌，便获得1点护甲值。",
         /// </summary>
-        /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>
         /// <param name="target"></param>
