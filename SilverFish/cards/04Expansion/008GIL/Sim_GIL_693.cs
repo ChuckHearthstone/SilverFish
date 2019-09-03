@@ -19,7 +19,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-                p.minionGetDamageOrHeal(own.own ? p.ownHero : p.enemyHero, 1);
+                p.minionGetDamageOrHeal(triggerEffectMinion.own ? p.ownHero : p.enemyHero, 1);
             }
         }
     }

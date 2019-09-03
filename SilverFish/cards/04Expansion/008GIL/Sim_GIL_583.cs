@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HREngine.Bots;
 
 namespace SilverFish.cards._04Expansion._008GIL
