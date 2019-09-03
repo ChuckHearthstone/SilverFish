@@ -18,14 +18,17 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (target != null)
+            int damage = 3;
+            int heal = -3;
+            if (own.own)
             {
-                int damageOrHeal = 3;
-                //var heroToDamage = own.own ? p.enemyHero : p.ownHero;
-                //var heroToHeal = !own.own ? p.ownHero : p.enemyHero;
-                //need do test here to check if the damage or heal can be auto recognized
-                p.minionGetDamageOrHeal(p.ownHero, damageOrHeal);
-                p.minionGetDamageOrHeal(p.enemyHero, damageOrHeal);
+                p.minionGetDamageOrHeal(p.ownHero, heal);
+                p.minionGetDamageOrHeal(p.enemyHero, damage);
+            }
+            else
+            {
+                p.minionGetDamageOrHeal(p.ownHero, damage);
+                p.minionGetDamageOrHeal(p.enemyHero, heal);
             }
         }
     }
