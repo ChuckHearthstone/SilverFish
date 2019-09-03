@@ -121,6 +121,7 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_683.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_683t.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_687.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_692.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_693.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_828.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_833.cs" />
