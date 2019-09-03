@@ -10,8 +10,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_583 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Taunt Battlecry: Destroy your Totems. Gain +2/+2 for each destroyed.",
-        /// "LocStringZhCn": "嘲讽，战吼：摧毁你的所有图腾。每摧毁一个图腾，便获得+2/+2。",
+        /// Taunt Battlecry: Destroy your Totems. Gain +2/+2 for each destroyed.
+        /// 嘲讽，战吼：摧毁你的所有图腾。每摧毁一个图腾，便获得+2/+2。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>

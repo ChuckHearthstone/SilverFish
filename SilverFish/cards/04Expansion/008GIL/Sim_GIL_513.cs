@@ -10,8 +10,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_513 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Deathrattle: Give your minions +1 Attack.",
-        /// "LocStringZhCn": "亡语：使你的所有随从获得+1攻击力。",
+        /// Deathrattle: Give your minions +1 Attack.
+        /// 亡语：使你的所有随从获得+1攻击力。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>

@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_902 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Combo: Give your weapon +1 Attack.",
-        /// "LocStringZhCn": "连击：使你的武器获得+1攻击力。",
+        /// Combo: Give your weapon +1 Attack.
+        /// 连击：使你的武器获得+1攻击力。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>

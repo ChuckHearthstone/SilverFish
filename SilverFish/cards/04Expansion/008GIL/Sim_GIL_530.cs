@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_530 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "<b>Battlecry:</b> If your deck has only even-Cost cards, deal 2 damage.",
-        /// "LocStringZhCn": "<b>战吼：</b>如果你的牌库中只有法力值消耗为偶数的牌，造成2点伤害。",
+        /// Battlecry: If your deck has only even-Cost cards, deal 2 damage.
+        /// 战吼： 如果你的牌库中只有法力值消耗为偶数的牌，造成2点伤害。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>

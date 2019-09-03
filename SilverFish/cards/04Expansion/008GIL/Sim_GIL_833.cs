@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_833 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "At the end of your turn, both players draw a card.",
-        /// "LocStringZhCn": "在你的回合结束时，双方玩家各抽 一张牌。",
+        /// At the end of your turn, both players draw a card.
+        /// 在你的回合结束时，双方玩家各抽 一张牌。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="triggerEffectMinion"></param>

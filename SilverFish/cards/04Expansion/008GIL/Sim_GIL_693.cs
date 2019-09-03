@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_693 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "At the start of your turn, deal 1 damage to your hero.",
-        /// "LocStringZhCn": "在你的回合开始时，对你的英雄造成 1点伤害。",
+        /// At the start of your turn, deal 1 damage to your hero.
+        /// 在你的回合开始时，对你的英雄造成 1点伤害。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="triggerEffectMinion"></param>

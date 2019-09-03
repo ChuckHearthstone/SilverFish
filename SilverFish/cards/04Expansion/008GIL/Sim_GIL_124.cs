@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_124 : SimTemplate
     {
         /// <summary>
-        /// attlecry: Destroy all other minions with 2 or less Attack.
+        /// Battlecry: Destroy all other minions with 2 or less Attack.
         /// 战吼：消灭所有其他攻击力小于或等于2的随从。
         /// </summary>
         /// <param name="p"></param>

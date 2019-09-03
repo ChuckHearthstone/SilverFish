@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_155 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Rush Has +3 Attack while damaged.",
-        /// "LocStringZhCn": "突袭 受伤时具有+3攻击力。",
+        /// Rush Has +3 Attack while damaged.
+        /// 突袭 受伤时具有+3攻击力。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>

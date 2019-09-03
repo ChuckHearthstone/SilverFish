@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_635 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Battlecry: If you're holding a Dragon, gain Taunt and Divine Shield.",
-        /// "LocStringZhCn": "战吼：如果你的手牌中有龙牌，则获得嘲讽和圣盾。",
+        /// Battlecry: If you're holding a Dragon, gain Taunt and Divine Shield.
+        /// 战吼：如果你的手牌中有龙牌，则获得嘲讽和圣盾。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>
