@@ -102,6 +102,7 @@
     <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="cards\04Expansion\004CFM\Sim_CFM_712.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_147.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_155.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_513.cs" />
