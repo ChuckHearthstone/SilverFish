@@ -173,9 +173,22 @@ namespace HREngine.Bots
 
         public bool needGraveyard = false;
 
-
+        /// <summary>
+        /// Prophet Velen
+        /// 先知维伦
+        /// Double the damage and healing of your spells and Hero Power.
+        /// 使你的法术牌和英雄技能的伤害和治疗效果翻倍。
+        /// </summary>
         public int doublepriest = 0;
+
+        /// <summary>
+        /// Prophet Velen
+        /// 先知维伦
+        /// Double the damage and healing of your spells and Hero Power.
+        /// 使你的法术牌和英雄技能的伤害和治疗效果翻倍。
+        /// </summary>
         public int enemydoublepriest = 0;
+
         public int ownMistcaller = 0;
 
         public int lockandload = 0;
@@ -2997,6 +3010,13 @@ namespace HREngine.Bots
             return retval;
         }
 
+        /// <summary>
+        /// https://hearthstone.gamepedia.com/Lifesteal
+        /// Lifesteal
+        /// 吸血
+        /// </summary>
+        /// <param name="heal"></param>
+        /// <param name="own"></param>
         public void applySpellLifesteal(int heal, bool own)
         {
             bool minus = own ? (this.anzOwnAuchenaiSoulpriest > 0 || this.embracetheshadow > 0) : (this.anzEnemyAuchenaiSoulpriest > 0);
