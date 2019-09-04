@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_147 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Deal $5 damage randomly split among all enemies.",
-        /// "LocStringZhCn": "造成$5点伤害，随机分配到所有敌人身上。",
+        /// Deal $5 damage randomly split among all enemies.
+        /// 造成$5点伤害，随机分配到所有敌人身上。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>

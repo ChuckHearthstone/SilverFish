@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_664 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Whenever you cast a spell, summon a random 2-Cost minion.",
-        /// "LocStringZhCn": "每当你施放一个法术，随机召唤一个法力值消耗为2的 随从。",
+        /// Whenever you cast a spell, summon a random 2-Cost minion.
+        /// 每当你施放一个法术，随机召唤一个法力值消耗为2的 随从。
         /// </summary>
         /// </summary>
         /// <param name="p"></param>

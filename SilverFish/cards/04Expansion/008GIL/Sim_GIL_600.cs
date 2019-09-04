@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_600 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Deal $2 damage to a minion. <b>Overload:</b> (1)",
-        /// "LocStringZhCn": "对一个随从造成$2点伤害。<b>过载：</b>（1）",
+        /// Deal $2 damage to a minion. Overload: 1
+        /// 对一个随从造成$2点伤害。过载：1
         /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>

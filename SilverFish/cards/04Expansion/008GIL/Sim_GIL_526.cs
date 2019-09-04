@@ -1,16 +1,17 @@
+using System.Collections.Generic;
 using HREngine.Bots;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// Cathedral Gargoyle
-    /// 教堂石像兽
+    /// Wyrmguard
+    /// 龙骨卫士
     /// </summary>
-    public class Sim_GIL_635 : SimTemplate
+    public class Sim_GIL_526 : SimTemplate
     {
         /// <summary>
-        /// Battlecry: If you're holding a Dragon, gain Taunt and Divine Shield.
-        /// 战吼：如果你的手牌中有龙牌，则获得嘲讽和圣盾。
+        /// Battlecry: If you're holding a Dragon, gain +1 Attack and Taunt.
+        /// 战吼：如果你的手牌中有龙牌，便获得+1攻击力和嘲讽。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>
@@ -31,8 +32,8 @@ namespace SilverFish.cards._04Expansion._008GIL
                 }
                 if (dragonInHand)
                 {
+                    p.minionGetBuffed(m, 1, 0);
                     m.taunt = true;
-                    m.divineshild = true;
                     p.anzOwnTaunt++;
                 }
             }
@@ -40,8 +41,8 @@ namespace SilverFish.cards._04Expansion._008GIL
             {
                 if (p.enemyAnzCards >= 2)
                 {
+                    p.minionGetBuffed(m, 1, 0);
                     m.taunt = true;
-                    m.divineshild = true;
                     p.anzEnemyTaunt++;
                 }
             }

@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._008GIL
     public class Sim_GIL_683 : SimTemplate
     {
         /// <summary>
-        /// "LocStringEnUs": "Battlecry: Summon a 2/1 Poisonous Drakeslayer for your opponent.",
-        /// "LocStringZhCn": "战吼：为你的对手召唤一个2/1并具有剧毒的飞龙猎手。",
+        /// Battlecry: Summon a 2/1 Poisonous Drakeslayer for your opponent.
+        /// 战吼：为你的对手召唤一个2/1并具有剧毒的飞龙猎手。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="m"></param>
