@@ -18,7 +18,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
+            int dmg = (own.own) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             int count = p.tempTrigger.ownMinionsDied + p.tempTrigger.enemyMinionsDied;
             int nextcount = 0;
             bool repeat;

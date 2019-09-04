@@ -16,19 +16,13 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="m"></param>
         public override void onEnrageStart(Playfield p, Minion m)
         {
-            if (m.own == own)
-            {
-                m.cantAttack = false;
-                m.updateReadyness();
-            }
+            m.cantAttack = false;
+            m.updateReadyness();
         }
         public override void onEnrageStop(Playfield p, Minion m)
         {
-            if (m.own == own)
-            {
-                m.cantAttack = true;
-                m.updateReadyness();
-            }
+			m.cantAttack = true;
+			m.updateReadyness();            
         }
     }
 }
