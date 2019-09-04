@@ -90,7 +90,14 @@ namespace HREngine.Bots
         /// </summary>
         public int anzOwnAuchenaiSoulpriest = 0;
 
+        /// <summary>
+        /// Embrace the Shadow
+        /// 暗影之握
+        /// This turn, your healing effects deal damage instead.
+        /// 在本回合中，你的治疗效果转而造成等量的伤害。
+        /// </summary>
         public int anzEnemyAuchenaiSoulpriest = 0;
+
         public int anzOwnSouthseacaptain = 0;
         public int anzEnemySouthseacaptain = 0;
         public int anzOwnMalGanis = 0;
@@ -3026,9 +3033,13 @@ namespace HREngine.Bots
             return retval;
         }
 
-        public int getEnemySpellHeal(int heal)
+        public int getEnemySpellHeal(int healValue)
         {
-            int retval = heal;
+            if (healValue < 0)
+            {
+                throw new Exception($"Heal value must bigger than zero.");
+            }
+            int retval = healValue;
             if (this.anzEnemyAuchenaiSoulpriest >= 1)
             {
                 retval *= -1;
@@ -3038,9 +3049,13 @@ namespace HREngine.Bots
             return retval;
         }
 
-        public int getEnemyMinionHeal(int heal)
+        public int getEnemyMinionHeal(int healValue)
         {
-            return (this.anzEnemyAuchenaiSoulpriest >= 1) ? -heal : heal;
+            if (healValue < 0)
+            {
+                throw new Exception($"Heal value must bigger than zero.");
+            }
+            return (this.anzEnemyAuchenaiSoulpriest >= 1) ? -healValue : healValue;
         }
 
 

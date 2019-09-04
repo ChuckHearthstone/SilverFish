@@ -16,16 +16,16 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            int healValue = -8;
+            int healValue = 8;
             if (m.own)
             {
                 healValue = p.getMinionHeal(healValue);
-                p.minionGetDamageOrHeal(p.ownHero, healValue, true);
+                p.minionGetDamageOrHeal(p.ownHero, -healValue, true);
             }
             else
             {
                 healValue = p.getEnemyMinionHeal(healValue);
-                p.minionGetDamageOrHeal(p.enemyHero, healValue, true);
+                p.minionGetDamageOrHeal(p.enemyHero, -healValue, true);
             }
         }
     }
