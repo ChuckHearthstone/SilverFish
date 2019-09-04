@@ -295,6 +295,13 @@ namespace HREngine.Bots
             return this.Attack;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dmg">bigger than zero means damage, smaller than zero means heal</param>
+        /// <param name="p"></param>
+        /// <param name="isMinionAttack"></param>
+        /// <param name="dontCalcLostDmg"></param>
         public void getDamageOrHeal(int dmg, Playfield p, bool isMinionAttack, bool dontCalcLostDmg)
         {
             if (this.HealthPoints <= 0) return;
@@ -303,7 +310,10 @@ namespace HREngine.Bots
             
             int damage = dmg;
             int heal = 0;
-            if (dmg < 0) heal = -dmg;
+            if (dmg < 0)
+            {
+                heal = -dmg;
+            }
 
             if (this.isHero)
             {

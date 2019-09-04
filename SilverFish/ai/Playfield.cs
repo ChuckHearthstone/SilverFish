@@ -81,7 +81,15 @@ namespace HREngine.Bots
         public int anzOwnGrimscaleOracle = 0;
         public int anzEnemyGrimscaleOracle = 0;
         public int anzOwnShadowfiend = 0;
+
+        /// <summary>
+        /// Auchenai Soulpriest
+        /// 奥金尼灵魂祭司
+        /// Your cards and powers that restore Health now deal damage instead.
+        /// 你的恢复生命值的牌和技能改为造成等量的伤害。
+        /// </summary>
         public int anzOwnAuchenaiSoulpriest = 0;
+
         public int anzEnemyAuchenaiSoulpriest = 0;
         public int anzOwnSouthseacaptain = 0;
         public int anzEnemySouthseacaptain = 0;
@@ -130,7 +138,15 @@ namespace HREngine.Bots
 
         public int blackwaterpirate = 0;
         public int blackwaterpirateStarted = 0;
+
+        /// <summary>
+        /// Embrace the Shadow
+        /// 暗影之握
+        /// This turn, your healing effects deal damage instead.
+        /// 在本回合中，你的治疗效果转而造成等量的伤害。
+        /// </summary>
         public int embracetheshadow = 0;
+
         public int ownCrystalCore = 0;
         public bool ownMinionsInDeckCost0 = false;
 
@@ -2980,9 +2996,26 @@ namespace HREngine.Bots
             this.minionGetDamageOrHeal(own ? ownHero : enemyHero, -heal * (minus ? -1 : 1));
         }
 
-        public int getMinionHeal(int heal)
+        /// <summary>
+        /// Get heal value according 奥金尼灵魂祭司(Auchenai Soulpriest) and 暗影之握(Embrace the Shadow)
+        /// </summary>
+        /// <param name="healValue">heal value, must smaller than zero</param>
+        /// <returns></returns>
+        public int getMinionHeal(int healValue)
         {
-            return (this.anzOwnAuchenaiSoulpriest > 0 || this.embracetheshadow > 0) ? -heal : heal;
+            if (healValue > 0)
+            {
+                throw new Exception($"Heal value must smaller than zero.");
+            }
+            if (anzOwnAuchenaiSoulpriest > 0
+                || embracetheshadow > 0)
+            {
+                return -healValue;
+            }
+            else
+            {
+                return healValue;
+            }
         }
 
         public int getEnemySpellDamageDamage(int dmg)
@@ -6805,9 +6838,18 @@ namespace HREngine.Bots
             this.minionGetOrEraseAllAreaBuffs(m, true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="dmgOrHeal">bigger than zero means damage, smaller than zero means heal</param>
+        /// <param name="dontDmgLoss"></param>
         public void minionGetDamageOrHeal(Minion m, int dmgOrHeal, bool dontDmgLoss = false)
         {
-            if (m.HealthPoints > 0) m.getDamageOrHeal(dmgOrHeal, this, false, dontDmgLoss);
+            if (m.HealthPoints > 0)
+            {
+                m.getDamageOrHeal(dmgOrHeal, this, false, dontDmgLoss);
+            }
         }
 
 
