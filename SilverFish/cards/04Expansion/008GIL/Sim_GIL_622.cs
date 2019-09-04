@@ -19,14 +19,14 @@ namespace SilverFish.cards._04Expansion._008GIL
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             int damageValue = 3;
-            int healValue = -3;
+            int healValue = 3;
 
             var heroToDamage = !own.own ? p.ownHero : p.enemyHero;
             p.minionGetDamageOrHeal(heroToDamage, damageValue);
 
             var heroToHeal = own.own ? p.ownHero : p.enemyHero;
             healValue = p.getMinionHeal(healValue);
-            p.minionGetDamageOrHeal(heroToHeal, healValue);
+            p.minionGetDamageOrHeal(heroToHeal, -healValue);
         }
     }
 }

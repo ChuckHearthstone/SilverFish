@@ -2999,13 +2999,13 @@ namespace HREngine.Bots
         /// <summary>
         /// Get heal value according 奥金尼灵魂祭司(Auchenai Soulpriest) and 暗影之握(Embrace the Shadow)
         /// </summary>
-        /// <param name="healValue">heal value, must smaller than zero</param>
+        /// <param name="healValue">heal value, must bigger than zero</param>
         /// <returns></returns>
         public int getMinionHeal(int healValue)
         {
-            if (healValue > 0)
+            if (healValue < 0)
             {
-                throw new Exception($"Heal value must smaller than zero.");
+                throw new Exception($"Heal value must bigger than zero.");
             }
             if (anzOwnAuchenaiSoulpriest > 0
                 || embracetheshadow > 0)
