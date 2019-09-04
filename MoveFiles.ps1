@@ -1,7 +1,6 @@
 #set the target folder path
 #the path must end with \
-$targetPath = "C:\HearthBuddy\SilverFish\"
-#$targetPath
+$targetPath = "C:\repository\GitHub\ChuckLu\HearthBuddy\Silverfish\"
 
 #create the target folder if not exists
 $flag = Test-Path $targetPath
@@ -21,9 +20,22 @@ Copy-Item -Path DefaultRoutineSettings.cs -Destination $targetPath
 Copy-Item -Path SilverFishBot.cs -Destination $targetPath
 Copy-Item -Path SettingsGui.xaml -Destination $targetPath
 
-Copy-Item -Path .\SilverFish\ai -Destination $targetPath -recurse -Force
-Copy-Item -Path .\SilverFish\behavior -Destination $targetPath -recurse -Force
-Copy-Item -Path .\SilverFish\cards -Destination $targetPath -recurse -Force
-Copy-Item -Path .\SilverFish\data -Destination $targetPath -recurse -Force
-Copy-Item -Path .\SilverFish\Helpers -Destination $targetPath -recurse -Force
-Copy-Item -Path .\SilverFish\penalties -Destination $targetPath -recurse -Force
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "ai"
+Copy-Item -Path .\SilverFish\ai -Destination $newTargetPath -recurse -Force
+
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "behavior"
+Copy-Item -Path .\SilverFish\behavior -Destination $newTargetPath -recurse -Force
+
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "cards"
+Copy-Item -Path .\SilverFish\cards -Destination $newTargetPath -recurse -Force
+
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "data"
+Copy-Item -Path .\SilverFish\data -Destination $newTargetPath -recurse -Force
+
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "Helpers"
+Copy-Item -Path .\SilverFish\Helpers -Destination $newTargetPath -recurse -Force
+
+$newTargetPath = Join-Path -Path $targetPath -ChildPath "penalties"
+Copy-Item -Path .\SilverFish\penalties -Destination $newTargetPath -recurse -Force
+
+Write-Host "Finished"
