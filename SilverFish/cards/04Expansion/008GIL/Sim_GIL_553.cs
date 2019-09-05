@@ -1,3 +1,4 @@
+using System;
 using HREngine.Bots;
 
 namespace SilverFish.cards._04Expansion._008GIL
@@ -20,8 +21,8 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231); //小精灵
             int posi = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            int wispNum = Math.min(7 - posi, (ownplay) ? p.owncards.Count : p.enemyAnzCards);
-            for (int i = 0; i < wiapNum; i++)
+            int wispNum = Math.Min(7 - posi, (ownplay) ? p.owncards.Count : p.enemyAnzCards);
+            for (int i = 0; i < wispNum; i++)
             {
                 p.CallKid(kid, posi, ownplay);
                 posi++;
