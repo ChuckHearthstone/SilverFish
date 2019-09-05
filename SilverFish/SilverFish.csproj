@@ -203,6 +203,7 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_239.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_293.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
