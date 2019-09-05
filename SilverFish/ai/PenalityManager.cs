@@ -3610,6 +3610,7 @@
             DamageTargetDatabase.Add(CardDB.cardName.lightningjolt, 2);
             DamageTargetDatabase.Add(CardDB.cardName.livingroots, 2);//choice 1
             DamageTargetDatabase.Add(CardDB.cardName.medivhsvalet, 3);
+            DamageTargetDatabase.Add(CardDB.cardName.cloudprince, 6);
             DamageTargetDatabase.Add(CardDB.cardName.meteor, 15);
             DamageTargetDatabase.Add(CardDB.cardName.mindshatter, 3);
             DamageTargetDatabase.Add(CardDB.cardName.mindspike, 2);

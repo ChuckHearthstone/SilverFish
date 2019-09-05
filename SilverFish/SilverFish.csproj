@@ -203,8 +203,10 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_239.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_240.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_293.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_726.cs" />
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
@@ -1486,6 +1488,7 @@
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_116.cs" />
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_118.cs" />
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_119.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_101.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357l.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_368.cs" />
