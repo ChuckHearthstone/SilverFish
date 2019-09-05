@@ -111,6 +111,7 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_191.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_507.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_513.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_515.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_526.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_530.cs" />
     <Compile Include="cards\04Expansion\008GIL\SIm_GIL_531.cs" />
@@ -121,10 +122,12 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_586.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_600.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_607.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_608.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_616.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_616t.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_622.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_623.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_624.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_635.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_637.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_645.cs" />
@@ -137,8 +140,10 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_687.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_692.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_693.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_801.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_803.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_807.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_813.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_825.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_828.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_833.cs" />
