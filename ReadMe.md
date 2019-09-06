@@ -14,10 +14,12 @@
 
 # For Developer
 Make sure you have the following four files under packages folder  
-GreyMagic.dll  
-Hearthbuddy.exe  
-IronPython.Modules.dll  
-Microsoft.Scripting.dll  
+1.GreyMagic.dll  
+2.Hearthbuddy.exe  
+3.IronPython.dll  
+4.IronPython.Modules.dll  
+5.Microsoft.Scripting.dll  
+Build the project under x86 platform.
 
 # Community
 [Chatroom](https://gitter.im/ChuckLu/Lobby)  
