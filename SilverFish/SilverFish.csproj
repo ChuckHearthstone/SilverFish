@@ -111,6 +111,7 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_191.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_507.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_513.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_515.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_526.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_530.cs" />
     <Compile Include="cards\04Expansion\008GIL\SIm_GIL_531.cs" />
@@ -121,10 +122,12 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_586.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_600.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_607.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_608.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_616.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_616t.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_622.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_623.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_624.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_635.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_637.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_645.cs" />
@@ -137,8 +140,10 @@
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_687.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_692.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_693.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_801.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_803.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_807.cs" />
+    <Compile Include="cards\04Expansion\008GIL\Sim_GIL_813.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_825.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_828.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_833.cs" />
@@ -203,8 +208,10 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_239.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_240.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_293.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_726.cs" />
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
@@ -1486,6 +1493,7 @@
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_116.cs" />
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_118.cs" />
     <Compile Include="cards\03Adventure\003LOE\Sim_LOE_119.cs" />
+    <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_101.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_357l.cs" />
     <Compile Include="cards\04Expansion\007LOOT\Sim_LOOT_368.cs" />
