@@ -1,13 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using HREngine.Bots;
 
-namespace HREngine.Bots
+namespace SilverFish.cards.EX1
 {
-	class Sim_EX1_295 : SimTemplate //iceblock
+    /// <summary>
+    /// Ice Block
+    /// 寒冰屏障
+    /// </summary>
+	public class Sim_EX1_295 : SimTemplate
 	{
-        //todo secret
-//    geheimnis:/ wenn euer held tödlichen schaden erleidet, wird dieser verhindert und der held wird immun/ in diesem zug.
+        /// <summary>
+        /// Secret: When your hero takes fatal damage, prevent it and become Immune this turn.
+        /// 奥秘：当你的英雄将要承受致命伤害时，防止这些伤害，并使其在本回合中获得免疫。
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ownplay"></param>
+        /// <param name="target"></param>
+        /// <param name="number"></param>
         public override void onSecretPlay(Playfield p, bool ownplay, Minion target, int number)
         {
             target.HealthPoints += number;
