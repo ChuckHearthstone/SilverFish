@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverFish", "SilverFish\SilverFish.csproj", "{6D57950B-011E-4D50-8D8A-9DBFF9D366BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverFish", "src\SilverFish.csproj", "{6D57950B-011E-4D50-8D8A-9DBFF9D366BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
