@@ -14,6 +14,7 @@
             retval -= p.evaluatePenality;
             retval += p.owncards.Count * 3;
             retval += p.ownQuest.questProgress * 10;
+            retval += p.ownSecretsIDList.Count * 5;
 
             retval += p.ownHero.HealthPoints + p.ownHero.armor;
             retval += -(p.enemyHero.HealthPoints + p.enemyHero.armor);
@@ -119,6 +120,10 @@
                             retval -= 10;
                             if (p.ownHero.immune) retval -= 5;
                         }
+                        break;
+                    case CardDB.cardName.fireblast:
+                        //maybe check the secrets count in deck to decide
+                        retval -= 1;
                         break;
                     default:
                         retval -= 10;
