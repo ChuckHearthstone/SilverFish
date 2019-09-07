@@ -1,4 +1,5 @@
-﻿using HREngine.Bots;
+﻿using System.IO;
+using HREngine.Bots;
 using NUnit.Framework;
 
 namespace SilverFish.Test
@@ -11,9 +12,10 @@ namespace SilverFish.Test
         {
             Settings.Instance.Test = true;
 
-            Settings.Instance.LogFolderPath = @"C:\repository\GitHub\ChuckLu\SilverFish\Logs";
-            Settings.Instance.DataFolderPath = @"C:\repository\GitHub\ChuckLu\SilverFish\src\data";
-            Settings.Instance.BaseDirectory = @"C:\repository\GitHub\ChuckLu\SilverFish";
+            var repositoryFolder = @"C:\repository\GitHub\ChuckLu\SilverFish";
+            Settings.Instance.LogFolderPath = Path.Combine(repositoryFolder, "Logs");
+            Settings.Instance.DataFolderPath = Path.Combine(repositoryFolder, @"src\data");
+            Settings.Instance.BaseDirectory = repositoryFolder;
             
             //C:\repository\GitHub\ChuckLu\SilverFish\Logs\ChuckSilverFishAi\CombatLogs
             Settings.Instance.writeToSingleFile = true;
