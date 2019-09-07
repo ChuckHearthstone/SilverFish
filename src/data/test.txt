@@ -1,0 +1,43 @@
+#######################################################################
+start calculations, current time: 12:16:19 V2019.08.29.001 Control 3000 face 15 berserk:1 ets 40 secret iC 1 aA 0
+#######################################################################
+turn 11/0
+mana 6/6
+emana 6
+own secretsCount: 0
+enemy secretsCount: 0 ;
+player:
+0 0 0 0 1
+ownhero:
+shaman 29 30 0 False False 64 False 0 False 0 0 False
+weapon: 0 0 unknown None 0 0
+ability: True CS2_049_H1
+osecrets:
+cthunbonus: 0 0 0
+jadegolems: 0 0
+elementals: 0 0 0
+quests: None 0 1000 None 3 5
+advanced: 0 0
+enemyhero:
+pala 10 30 0 False False 66 False
+weapon: 0 0 unknown None 0 0
+ability: True ULD_431p
+fatigue: 21 0 20 0
+OwnMinions:
+direwolfalpha EX1_162 zp:1 e:17 A:2 H:2 mH:2 rdy:True natt:0
+EnemyMinions:
+micromummy ULD_217 zp:1 e:63 A:1 H:2 mH:2 rdy:False ex
+micromummy ULD_217 zp:2 e:99 A:3 H:2 mH:2 rdy:False
+micromummy ULD_217 zp:3 e:46 A:3 H:2 mH:2 rdy:False ex
+murmy ULD_723 zp:4 e:57 A:1 H:1 mH:1 rdy:False ex
+Own Handcards:
+pos 1 seagiant 5 entity 13 EX1_586 0 0 0
+pos 2 jadeclaws 2 entity 8 CFM_717 0 0 0
+Enemy cards: 3
+ownDiedMinions:
+enemyDiedMinions:
+otg:
+etg:
+og: GIL_530,1;GVG_038,2;GVG_037,1;
+eg: ULD_275,1;ULD_185,1;ULD_431,1;ULD_157,1;GAME_005,1;
+od: AT_052,2;KAR_073,2;EX1_162,1;CFM_696,2;GIL_530,1;CFM_717,1;AT_047,2;OG_024,2;CFM_707,2;GIL_692,1;OG_028,2;CFM_902,1;ICC_314,1;EX1_586,1;
