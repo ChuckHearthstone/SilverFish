@@ -6511,9 +6511,27 @@ namespace HREngine.Bots
                 m.taunt = true;
                 if(m.own)
                 {
-                    if(m.Attack > 1)
-                    this.evaluatePenality -= (m.HealthPoints*2 +m.Attack)*(m.divineshild ? 1: 2/3)/2;
-                    else this.evaluatePenality -= (m.HealthPoints +m.Attack)*(m.divineshild ? 1: 2/3)/2;
+                    int tauntvalue = 0;
+                    int mttauntvalue =0;
+                    if(m.Attack > 1) tauntvalue = m.HealthPoints * 2 + m.Attack;
+                    else tauntvalue = m.HealthPoints  + m.Attack;
+                    tauntvalue -=prozis.penman.getValueOfUsefulNeedKeepPriority(m.name);
+                    if(m.divineshild) tauntvalue *= 3/2;
+
+                    foreach (Minion mt in this.ownMinions)
+                    {
+                        int mv =0;
+                        if(mt.Attack > 1) mv = mt.HealthPoints * 2 + mt.Attack;
+                        else mv = mt.HealthPoints  + mt.Attack;
+                        mv -= prozis.penman.getValueOfUsefulNeedKeepPriority(mt.name);
+                        if(mt.divineshild) mv *= 3/2;
+                        if(mttauntvalue<mv)mttauntvalue = mv;
+
+
+
+                    }
+                    this.evaluatePenality -= ( tauntvalue- mttauntvalue )/2;
+                    
                 }
 
             
