@@ -3550,6 +3550,36 @@ namespace HREngine.Bots
             hero.updateReadyness();
             if (weapon.name == CardDB.cardName.foolsbane && !hero.frozen) hero.Ready = true;
 
+            foreach (Minion m in (own ? this.ownMinions : this.enemyMinions))
+            {
+
+
+                if (m.silenced) continue;
+                switch(m.name)
+                {
+
+                    case CardDB.cardName.henchclanthug://荆棘帮暴徒
+
+                    
+                    this.minionGetBuffed(m, 1, 1);
+                    break;
+
+                    
+
+
+                    case CardDB.cardName.sharkfinfan://鲨鳍后援
+                    
+                //pos = this.ownMinions.Count;
+
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TRL_507t);//小海盗
+                    CallKid(kid, (own ? this.ownMinions.Count : this.enemyMinions.Count), own, false);
+                    break;
+                
+                    
+                } 
+
+              }
+
             //heal whether truesilverchampion equipped
             switch (weapon.name)
             {
