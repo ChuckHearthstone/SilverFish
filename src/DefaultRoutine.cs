@@ -791,6 +791,8 @@ def Execute():
                                     case CardDB.cardName.nzoththecorruptor:
                                     case CardDB.cardName.yoggsaronhopesend:
                                     case CardDB.cardName.sirfinleymrrgglton:
+                                    case CardDB.cardName.shudderwock:
+                                    case CardDB.cardName.stargazerluna:
                                         lastChance = true;
                                         break;
                                     case CardDB.cardName.ragnarosthefirelord:
