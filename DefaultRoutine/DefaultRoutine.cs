@@ -255,7 +255,7 @@ def Execute():
         {
             get
             {
-                using (var fs = new FileStream(@"Routines\DefaultRoutine\SettingsGui.xaml", FileMode.Open))
+                using (var fs = new FileStream(@"Routines\DefaultRoutine\DefaultRoutine.xaml", FileMode.Open))
                 {
                     var root = (UserControl) XamlReader.Load(fs);
 
