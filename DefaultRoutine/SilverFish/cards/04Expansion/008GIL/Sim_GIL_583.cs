@@ -29,7 +29,7 @@ namespace SilverFish.cards._04Expansion._008GIL
                     totemNum++;
                 }
             }
-            if (totemnum >= 1) p.minionGetBuffed(own, totemnum * 2, totemnum * 2);
+            if (totemNum >= 1) p.minionGetBuffed(own, totemNum * 2, totemNum * 2);
         }
     }
 }

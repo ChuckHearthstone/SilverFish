@@ -16,7 +16,6 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="own"></param>
         /// <param name="target"></param>
         /// <param name="choice"></param>
-
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             if (p.cardsPlayedThisTurn > 0)
