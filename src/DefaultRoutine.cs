@@ -791,6 +791,8 @@ def Execute():
                                     case CardDB.cardName.nzoththecorruptor:
                                     case CardDB.cardName.yoggsaronhopesend:
                                     case CardDB.cardName.sirfinleymrrgglton:
+                                    case CardDB.cardName.shudderwock:
+                                    case CardDB.cardName.stargazerluna:
                                         lastChance = true;
                                         break;
                                     case CardDB.cardName.ragnarosthefirelord:
@@ -804,6 +806,17 @@ def Execute():
                                         {
                                             lastChance = true;
                                         }
+                                        break;
+                                }
+                            }
+                            foreach (CardDB.cardIDEnum cardId in lastChancePl.ownSecretsIDList)
+                            {
+                                switch (cardId)
+                                {
+                                    case CardDB.cardIDEnum.EX1_295:
+                                    case CardDB.cardIDEnum.EX1_130:
+                                    case CardDB.cardIDEnum.ULD_239:
+                                        lastChance = true;
                                         break;
                                 }
                             }
@@ -1128,6 +1141,7 @@ def Execute():
                                     {
                                         case CardDB.cardName.eternalservitude:
                                         case CardDB.cardName.freefromamber:
+                                        case CardDB.cardName.anewchallenger:
                                             Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
                                             tmpPlf.ownMinions[tmpPlf.ownMinions.Count - 1] = m;
                                             break;

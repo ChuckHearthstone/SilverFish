@@ -6346,7 +6346,18 @@ namespace HREngine.Bots
             {
                 this.evaluatePenality -= Ai.Instance.botBase.getEnemyMinionValue(m, this) - 1;
             }
-            
+            else if (m.own)
+            {
+                int minionvalue = m.HealthPoints * 2 + m.Attack;
+                if (m.divineshild) minionvalue = minionvalue * 3 / 2;
+                minionvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
+
+                int cvalue = c.Health * 2 + c.Attack;
+                if (c.Shield) cvalue = cvalue * 3 / 2;
+                cvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(c.name);
+
+                this.evaluatePenality += (minionvalue - cvalue - 2);
+            }
             if (m.taunt)
             {
                 if (m.own) this.anzOwnTaunt--;
