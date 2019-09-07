@@ -14,7 +14,7 @@ namespace SilverFish.Test
 
             var repositoryFolder = @"C:\repository\GitHub\ChuckLu\SilverFish";
             Settings.Instance.LogFolderPath = Path.Combine(repositoryFolder, "Logs");
-            Settings.Instance.DataFolderPath = Path.Combine(repositoryFolder, @"src\data");
+            Settings.Instance.DataFolderPath = Path.Combine(repositoryFolder, @"DefaultRoutine\SilverFish\data");
             Settings.Instance.BaseDirectory = repositoryFolder;
             
             //C:\repository\GitHub\ChuckLu\SilverFish\Logs\ChuckSilverFishAi\CombatLogs

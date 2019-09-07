@@ -134,7 +134,7 @@ namespace HREngine.Bots
             string p;
             if (Settings.Instance.Test)
             {
-                p = Path.Combine(baseDir, @"src\behavior");
+                p = Path.Combine(baseDir, @"DefaultRoutine\SilverFish");
             }
             else
             {
