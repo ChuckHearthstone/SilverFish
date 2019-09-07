@@ -1141,6 +1141,7 @@ def Execute():
                                     {
                                         case CardDB.cardName.eternalservitude:
                                         case CardDB.cardName.freefromamber:
+                                        case CardDB.cardName.anewchallenger:
                                             Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
                                             tmpPlf.ownMinions[tmpPlf.ownMinions.Count - 1] = m;
                                             break;
