@@ -67,7 +67,8 @@ namespace HREngine.Bots
 
         public bool learnmode = true;
         public bool printlearnmode = true;
-        public bool test = false;
+
+        public bool Test { get; set; }
 
         private static Settings instance;
 
@@ -86,7 +87,7 @@ namespace HREngine.Bots
 
         public void SetSettings(string behavName, bool nameIsPath = false)
         {
-            if (test)
+            if (Test)
             {
                 return;
             }

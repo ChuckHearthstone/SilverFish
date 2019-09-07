@@ -984,7 +984,7 @@ namespace HREngine.Bots
 
             //Set default settings for behaviour
             Settings.Instance.SetSettings(this.botBehavior);
-            Settings.Instance.test = true;
+            Settings.Instance.Test = true;
 
             //Apply settings from this UILogg
             Hrtprozis.Instance.setAttackFaceHP(facehp);

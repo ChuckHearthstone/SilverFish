@@ -9,11 +9,15 @@ namespace SilverFish.Test
         [Test]
         public void Test()
         {
+            Settings.Instance.Test = true;
+
             Settings.Instance.LogFolderPath = @"C:\repository\GitHub\ChuckLu\SilverFish\Logs";
-            Settings.Instance.DataFolderPath =
-                @"C:\repository\GitHub\ChuckLu\SilverFish\src\data";
+            Settings.Instance.DataFolderPath = @"C:\repository\GitHub\ChuckLu\SilverFish\src\data";
             Settings.Instance.BaseDirectory = @"C:\repository\GitHub\ChuckLu\SilverFish";
+            
+            //C:\repository\GitHub\ChuckLu\SilverFish\Logs\ChuckSilverFishAi\CombatLogs
             Settings.Instance.writeToSingleFile = true;
+
             if (Hrtprozis.Instance.settings == null)
             {
                 Hrtprozis.Instance.setInstances();

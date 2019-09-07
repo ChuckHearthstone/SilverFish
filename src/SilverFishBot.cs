@@ -131,7 +131,15 @@ namespace HREngine.Bots
             }
 
             var baseDir = Settings.Instance.BaseDirectory;
-            string p = Path.Combine(baseDir, @"Routines\DefaultRoutine\Silverfish\behavior");
+            string p;
+            if (Settings.Instance.Test)
+            {
+                p = Path.Combine(baseDir, @"src\behavior");
+            }
+            else
+            {
+                p = Path.Combine(baseDir, @"Routines\DefaultRoutine\Silverfish\behavior");
+            }
             string[] files = Directory.GetFiles(p, "Behavior*.cs", SearchOption.AllDirectories);
             int bCount = 0;
             foreach (string file in files)
