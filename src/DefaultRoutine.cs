@@ -780,11 +780,27 @@ def Execute():
                                     case CardDB.cardName.cthun: lastChance = true; break;
                                     case CardDB.cardName.nzoththecorruptor: lastChance = true; break;
                                     case CardDB.cardName.yoggsaronhopesend: lastChance = true; break;
+                                    case CardDB.cardName.shudderwock: lastChance = true; break;
+                                    case CardDB.cardName.stargazerluna: lastChance = true; break;//观星者露娜
+
                                     case CardDB.cardName.sirfinleymrrgglton: lastChance = true; break;
                                     case CardDB.cardName.ragnarosthefirelord: if (lastChancePl.enemyHero.HealthPoints < 9) lastChance = true; break;
                                     case CardDB.cardName.barongeddon: if (lastChancePl.enemyHero.HealthPoints < 3) lastChance = true; break;
                                 }
                             }
+                            foreach (CardDB.cardIDEnum secretID in lastChancePl.ownSecretsIDList)
+                            {
+                                switch(secretID)
+                                {
+                                    case CardDB.cardIDEnum.EX1_295: lastChance = true; break;
+                                    case CardDB.cardIDEnum.EX1_130: lastChance = true; break;
+                                    case CardDB.cardIDEnum.ULD_239: lastChance = true; break;
+
+
+                                }
+                            }
+                            if (lastChancePl.ownHeroAblility.card.cardIDenum == CardDB.cardIDEnum.GIL_504h)lastChance = true;
+
                         }
                         if (lastChance) doConcede = false;
                     }
@@ -1097,6 +1113,8 @@ def Execute():
                                 case GAME_TAG.DISCOVER:
                                     switch (ai.bestmove.card.card.name)
                                     {
+                                    	case CardDB.cardName.anewchallenger://新人登场
+
                                         case CardDB.cardName.eternalservitude:
                                         case CardDB.cardName.freefromamber:
                                             Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);

@@ -6347,6 +6347,20 @@ namespace HREngine.Bots
                 this.evaluatePenality -= Ai.Instance.botBase.getEnemyMinionValue(m, this) - 1;
             }
             
+            else if(m.own)
+            {
+                int minionvalue = m.HealthPoints * 2 + m.Attack;
+                if (m.divineshild) minionvalue = minionvalue * 3 / 2;
+                minionvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
+
+                int cvalue = c.Health * 2 + c.Attack;
+                if (c.Shield) cvalue = cvalue * 3 / 2;
+                cvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(c.name);
+
+                this.evaluatePenality+= (minionvalue-cvalue-2);
+
+
+            }
             if (m.taunt)
             {
                 if (m.own) this.anzOwnTaunt--;
@@ -6472,7 +6486,6 @@ namespace HREngine.Bots
         }
 
 
-
         public void minionGetWindfurry(Minion m)
         {
             if (m.windfury) return;
@@ -6490,6 +6503,28 @@ namespace HREngine.Bots
         {
             m.charge--;
             m.updateReadyness();
+        }
+        public void minionGetTaunt(Minion m)
+        {
+            if (!m.taunt)
+            {
+                m.taunt = true;
+                if(m.own)
+                {
+                    if(m.Attack > 1)
+                    this.evaluatePenality -= (m.HealthPoints*2 +m.Attack)*(m.divineshild ? 1: 2/3)/2;
+                    else this.evaluatePenality -= (m.HealthPoints +m.Attack)*(m.divineshild ? 1: 2/3)/2;
+                }
+
+            
+            
+            if (m.own) this.anzOwnTaunt++;
+            else this.anzEnemyTaunt++;
+            }
+
+
+            m.updateReadyness();
+            //
         }
 
 
