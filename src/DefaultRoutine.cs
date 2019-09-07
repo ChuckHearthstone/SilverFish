@@ -752,8 +752,14 @@ def Execute():
             {
                 bool doEndTurn = false;
                 bool doConcede = false;
-                if (Ai.Instance.bestmoveValue > -10000) doEndTurn = true;
-                else if (HREngine.Bots.Settings.Instance.concedeMode != 0) doConcede = true;
+                if (Ai.Instance.bestmoveValue > -10000)
+                {
+                    doEndTurn = true;
+                }
+                else if (Bots.Settings.Instance.concedeMode != 0)
+                {
+                    doConcede = true;
+                }
                 else
                 {
                     if (new Playfield().ownHeroHasDirectLethal())
@@ -774,21 +780,44 @@ def Execute():
                         {
                             foreach (Minion m in lastChancePl.ownMinions)
                             {
-                                if (!m.playedThisTurn) continue;
+                                if (!m.playedThisTurn)
+                                {
+                                    continue;
+                                }
+
                                 switch (m.handcard.card.name)
                                 {
-                                    case CardDB.cardName.cthun: lastChance = true; break;
-                                    case CardDB.cardName.nzoththecorruptor: lastChance = true; break;
-                                    case CardDB.cardName.yoggsaronhopesend: lastChance = true; break;
-                                    case CardDB.cardName.sirfinleymrrgglton: lastChance = true; break;
-                                    case CardDB.cardName.ragnarosthefirelord: if (lastChancePl.enemyHero.HealthPoints < 9) lastChance = true; break;
-                                    case CardDB.cardName.barongeddon: if (lastChancePl.enemyHero.HealthPoints < 3) lastChance = true; break;
+                                    case CardDB.cardName.cthun:
+                                    case CardDB.cardName.nzoththecorruptor:
+                                    case CardDB.cardName.yoggsaronhopesend:
+                                    case CardDB.cardName.sirfinleymrrgglton:
+                                        lastChance = true;
+                                        break;
+                                    case CardDB.cardName.ragnarosthefirelord:
+                                        if (lastChancePl.enemyHero.HealthPoints < 9)
+                                        {
+                                            lastChance = true;
+                                        }
+                                        break;
+                                    case CardDB.cardName.barongeddon:
+                                        if (lastChancePl.enemyHero.HealthPoints < 3)
+                                        {
+                                            lastChance = true;
+                                        }
+                                        break;
                                 }
                             }
                         }
-                        if (lastChance) doConcede = false;
+
+                        if (lastChance)
+                        {
+                            doConcede = false;
+                        }
                     }
-                    else if (moveTodo == null || moveTodo.actionType == actionEnum.endturn) doEndTurn = true;
+                    else if (moveTodo == null || moveTodo.actionType == actionEnum.endturn)
+                    {
+                        doEndTurn = true;
+                    }
                 }
                 if (doEndTurn)
                 {
