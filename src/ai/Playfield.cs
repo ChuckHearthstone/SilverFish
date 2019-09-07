@@ -6301,7 +6301,7 @@ namespace HREngine.Bots
             this.triggerAHeroGotArmor(m.own);
         }
 
-        public void minionReturnToHand(Minion m, bool own, int manachange)
+        public void minionReturnToHand(Minion m, bool own, int manachange , int adatt=0, int adHp =0)
         {
             List<Minion> temp = (m.own) ? this.ownMinions : this.enemyMinions;
             m.handcard.card.CardSimulation.onAuraEnds(this, m);
