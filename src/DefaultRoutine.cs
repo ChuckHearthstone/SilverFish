@@ -809,6 +809,17 @@ def Execute():
                                         break;
                                 }
                             }
+                            foreach (CardDB.cardIDEnum cardId in lastChancePl.ownSecretsIDList)
+                            {
+                                switch (cardId)
+                                {
+                                    case CardDB.cardIDEnum.EX1_295:
+                                    case CardDB.cardIDEnum.EX1_130:
+                                    case CardDB.cardIDEnum.ULD_239:
+                                        lastChance = true;
+                                        break;
+                                }
+                            }
                         }
 
                         if (lastChance)
