@@ -21,5 +21,9 @@ Make sure you have the following four files under packages folder
 5.Microsoft.Scripting.dll  
 Build the project under x86 platform.
 
+## Ai Test  
+Please refer to the wiki documentation [Ai Test](https://github.com/ChuckHearthBuddy/SilverFish/wiki/Ai-Test)  
+
+
 # Community
 [Chatroom](https://gitter.im/ChuckLu/Lobby)  
