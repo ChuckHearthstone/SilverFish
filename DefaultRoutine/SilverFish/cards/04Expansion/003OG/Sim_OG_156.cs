@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Battlecry: Summon a 1/1 Ooze with Taunt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_156a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_156a);
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

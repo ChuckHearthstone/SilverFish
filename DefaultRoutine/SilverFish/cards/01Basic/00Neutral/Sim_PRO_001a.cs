@@ -5,7 +5,7 @@ namespace SilverFish.cards._01Basic._00Neutral
     class Sim_PRO_001a : SimTemplate//I Am Murloc
     {
         //Summon three, four, or five 1/1 Murlocs.
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.PRO_001at);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.PRO_001at);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

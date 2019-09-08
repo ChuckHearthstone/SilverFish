@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//When you play 4 cards in a turn, revive this minion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_065); //Sherazin, Corpse Flower
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_065); //Sherazin, Corpse Flower
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {

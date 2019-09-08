@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Hero Power: Summon three 1/1 Whelps. Get a new Hero Power.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRMA09_2t);//1/1Whelp
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRMA09_2t);//1/1Whelp
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

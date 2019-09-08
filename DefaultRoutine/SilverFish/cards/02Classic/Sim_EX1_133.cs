@@ -5,7 +5,7 @@ namespace SilverFish.cards._02Classic
 
     class Sim_EX1_133 : SimTemplate//pertitions blade
     {
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_133);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_133);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

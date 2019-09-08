@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 	{
         //Battlecry: Put a 1-Cost minion from each deck into the battlefield.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_004); //Twilight Whelp
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRM_004); //Twilight Whelp
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._002AT
             {
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.PET)
                 {
-                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_120), temp.Count, own.own);//river crocolisk
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_120), temp.Count, own.own);//river crocolisk
                     break;
                 }
             }

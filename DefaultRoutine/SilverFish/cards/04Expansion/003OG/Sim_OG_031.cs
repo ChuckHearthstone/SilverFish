@@ -6,8 +6,8 @@ namespace SilverFish.cards._04Expansion._003OG
     {
         //Deathrattle: Summon a 4/2 Elemental.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_031);
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_031a);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_031);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_031a);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Transform into a 2/5 minion.
 
-        CardDB.Card hawk = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_010t2);
+        CardDB.Card hawk = CardDB.Instance.getCardDataFromID(CardIdEnum.BRM_010t2);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

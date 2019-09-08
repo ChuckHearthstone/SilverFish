@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Summon five 1/1 Silver Hand Recruits.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

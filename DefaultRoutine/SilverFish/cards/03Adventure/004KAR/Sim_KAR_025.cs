@@ -6,9 +6,9 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Summon a 1/1 Candle, 2/2 Broom, and 3/3 Teapot.
 		
-        CardDB.Card c1 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_025a);//Candle
-        CardDB.Card c2 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_025b);//Broom
-        CardDB.Card c3 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_025c);//Teapot
+        CardDB.Card c1 = CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_025a);//Candle
+        CardDB.Card c2 = CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_025b);//Broom
+        CardDB.Card c3 = CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_025c);//Teapot
         
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

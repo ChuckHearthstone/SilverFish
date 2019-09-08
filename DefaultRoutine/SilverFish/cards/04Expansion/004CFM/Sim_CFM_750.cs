@@ -34,7 +34,7 @@ namespace SilverFish.cards._04Expansion._004CFM
                 if (p.enemyAnzCards > 1)
                 {
                     int pos = p.enemyMinions.Count;
-                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_306), pos, false); //Succubus
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_306), pos, false); //Succubus
                     p.enemyAnzCards--;
                     p.triggerCardsChanged(false);
                     if (p.ownHeroHasDirectLethal())

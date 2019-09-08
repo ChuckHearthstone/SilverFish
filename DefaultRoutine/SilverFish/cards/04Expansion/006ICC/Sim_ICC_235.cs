@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Summon a 5/5 copy of a random minion in your deck.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_014); //King Mukla 5/5
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_014); //King Mukla 5/5
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

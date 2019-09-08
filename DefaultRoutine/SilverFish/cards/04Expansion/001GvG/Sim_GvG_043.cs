@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         //   Battlecry: Give a random friendly minion +1 Attack.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_043);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardIdEnum.GVG_043);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.equipWeapon(w, ownplay);

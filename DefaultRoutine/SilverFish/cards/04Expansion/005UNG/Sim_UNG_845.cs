@@ -8,8 +8,8 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardIdEnum.UNG_809t1, m.own, true);
-            p.drawACard(CardDB.CardIdEnum.UNG_809t1, m.own, true);
+            p.drawACard(CardIdEnum.UNG_809t1, m.own, true);
+            p.drawACard(CardIdEnum.UNG_809t1, m.own, true);
         }
 	}
 }

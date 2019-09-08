@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Deathrattle: Summon a 3/3 Finkle Einhorn for your opponent.
 
-        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_finkle);//finkleeinhorn
+        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_finkle);//finkleeinhorn
         public override void onDeathrattle(Playfield p, Minion m)
         {
             int pos = (m.own) ? p.enemyMinions.Count : p.ownMinions.Count;

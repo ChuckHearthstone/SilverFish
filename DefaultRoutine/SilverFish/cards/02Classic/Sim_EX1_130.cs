@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
     {
         //Secret: When an enemy attacks, summon a 2/1 Defender as the new target.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_130a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_130a);
 
         public override void onSecretPlay(Playfield p, bool ownplay, Minion attacker, Minion target, out int number)
         {

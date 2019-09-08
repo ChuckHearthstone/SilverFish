@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
 
 //
-        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_383t);
+        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_383t);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.equipWeapon(wcard, ownplay);

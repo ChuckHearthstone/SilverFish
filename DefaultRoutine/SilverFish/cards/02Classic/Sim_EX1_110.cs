@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Deathrattle: Summon a 4/5 Baine Bloodhoof.
 
-        CardDB.Card blaine = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_110t);
+        CardDB.Card blaine = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_110t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

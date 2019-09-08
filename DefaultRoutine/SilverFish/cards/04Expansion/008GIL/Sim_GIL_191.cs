@@ -18,7 +18,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GIL_191t);
+            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.GIL_191t);
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.CallKid(kid, pos, ownplay, false);
             p.CallKid(kid, pos, ownplay);

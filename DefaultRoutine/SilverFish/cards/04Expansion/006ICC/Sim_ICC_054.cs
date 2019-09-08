@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Summon a 1/5 Scarab with Taunt. If your opponent has more minions, cast this again.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_832t4); //Scarab Beetle
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_832t4); //Scarab Beetle
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

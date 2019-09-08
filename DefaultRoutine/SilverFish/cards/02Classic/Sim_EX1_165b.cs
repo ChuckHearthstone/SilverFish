@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
 
 //    +2 leben und spott/.
-        CardDB.Card bear = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_165t2);
+        CardDB.Card bear = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_165t2);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 	{
 		//Has +6 Attack if the other Horsemen are dead.
 		//Handled in Horsemen
-		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX9_05H);
+		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.NAX9_05H);
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

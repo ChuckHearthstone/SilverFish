@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._006ICC
         // After a friendly minion loses Divine Shield, gain +1 Attack.
         // Handled in triggerAMinionLosesDivineShield()
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_071);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_071);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

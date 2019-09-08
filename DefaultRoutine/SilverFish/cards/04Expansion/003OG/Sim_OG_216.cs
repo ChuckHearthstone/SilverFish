@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Deathrattle: Summon two 1/1 Spiders.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_216a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_216a);
 		
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //召唤两个2/2的树人。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_573t); //special treant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_573t); //special treant
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

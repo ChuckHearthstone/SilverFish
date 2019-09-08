@@ -7,11 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Markup;
 using Buddy.Coroutines;
-using HREngine.Bots;
-using IronPython.Modules;
 using log4net;
 using Microsoft.Scripting.Hosting;
 using SilverFish.Helpers;
@@ -19,6 +16,7 @@ using Triton.Bot;
 using Triton.Common;
 using Triton.Game;
 using Triton.Game.Data;
+using SilverFish.Enums;
 
 //!CompilerOption|AddRef|IronPython.dll
 //!CompilerOption|AddRef|IronPython.Modules.dll
@@ -811,13 +809,13 @@ def Execute():
                                         break;
                                 }
                             }
-                            foreach (CardDB.CardIdEnum cardId in lastChancePl.ownSecretsIDList)
+                            foreach (CardIdEnum cardId in lastChancePl.ownSecretsIDList)
                             {
                                 switch (cardId)
                                 {
-                                    case CardDB.CardIdEnum.EX1_295:
-                                    case CardDB.CardIdEnum.EX1_130:
-                                    case CardDB.CardIdEnum.ULD_239:
+                                    case CardIdEnum.EX1_295:
+                                    case CardIdEnum.EX1_130:
+                                    case CardIdEnum.ULD_239:
                                         lastChance = true;
                                         break;
                                 }
@@ -1071,7 +1069,7 @@ def Execute():
                 var lscc = ccm.m_lastShownChoiceState;
                 GAME_TAG choiceMode = GAME_TAG.CHOOSE_ONE;
                 int sourceEntityId = -1;
-                CardDB.CardIdEnum sourceEntityCId = CardDB.CardIdEnum.None;
+                CardIdEnum sourceEntityCId = CardIdEnum.None;
                 if (lscc != null)
                 {
                     sourceEntityId = lscc.m_sourceEntityId;
@@ -1163,12 +1161,12 @@ def Execute():
                                             bool forbidden = false;
                                             switch (discoverCards[i].card.cardIDenum)
                                             {
-                                                case CardDB.CardIdEnum.UNG_999t5: if (m.cantBeTargetedBySpellsOrHeroPowers) forbidden = true; break;
-                                                case CardDB.CardIdEnum.UNG_999t6: if (m.taunt) forbidden = true; break;
-                                                case CardDB.CardIdEnum.UNG_999t7: if (m.windfury) forbidden = true; break;
-                                                case CardDB.CardIdEnum.UNG_999t8: if (m.divineshild) forbidden = true; break;
-                                                case CardDB.CardIdEnum.UNG_999t10: if (m.stealth) forbidden = true; break;
-                                                case CardDB.CardIdEnum.UNG_999t13: if (m.poisonous) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t5: if (m.cantBeTargetedBySpellsOrHeroPowers) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t6: if (m.taunt) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t7: if (m.windfury) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t8: if (m.divineshild) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t10: if (m.stealth) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t13: if (m.poisonous) forbidden = true; break;
                                             }
                                             if (forbidden) bestval = -2000000;
                                             else
@@ -1192,7 +1190,7 @@ def Execute():
                     }
                     ai.mainTurnSimulator.setSecondTurnSimu(true, dirtyTwoTurnSim);
                 }
-                if (sourceEntityCId == CardDB.CardIdEnum.UNG_035) dirtychoice = new Random().Next(0, 2);
+                if (sourceEntityCId == CardIdEnum.UNG_035) dirtychoice = new Random().Next(0, 2);
                 if (dirtychoice == 0) dirtychoice = 1;
                 else if (dirtychoice == 1) dirtychoice = 0;
                 int ttf = (int)(DateTime.Now - tmp).TotalMilliseconds;

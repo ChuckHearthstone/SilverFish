@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//After you cast a spell on this minion, summon a 1/1 Plant and cast another copy on it.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_999t2t1); //Plant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_999t2t1); //Plant
         
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {

@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         //    Restore #3 Health. If the target is still damaged, summon a Lightwarden.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_001);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_001);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

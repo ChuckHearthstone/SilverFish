@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Deathrattle: Summon a Dreadsteed.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_019);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_019);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

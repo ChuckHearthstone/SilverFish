@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Whenever this minion survives damage, summon another Grim Patron.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_019);//Grim Patron
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRM_019);//Grim Patron
 
         public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {

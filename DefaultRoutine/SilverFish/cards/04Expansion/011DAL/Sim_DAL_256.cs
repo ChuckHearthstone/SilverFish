@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //双生法术：召唤五个2/2的树人。
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);//树人
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_158t);//树人
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
@@ -19,7 +19,7 @@ namespace HREngine.Bots
 			p.CallKid(kid, pos, ownplay);
 			p.CallKid(kid, pos, ownplay);
 
-			p.drawACard(CardDB.CardIdEnum.DAL_256ts, ownplay);
+			p.drawACard(CardIdEnum.DAL_256ts, ownplay);
 		}
 	}
 }

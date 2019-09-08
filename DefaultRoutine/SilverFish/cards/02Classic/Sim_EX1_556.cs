@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Deathrattle: Summon a 2/1 Damaged Golem.
 
-        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.skele21);
+        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardIdEnum.skele21);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

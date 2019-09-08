@@ -1,6 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
+using SilverFish.Enums;
 
 
 namespace HREngine.Bots
@@ -11,15 +10,15 @@ class Sim_TRL_065: SimTemplate //* 祖尔金
 
 
 CardDB cdb = CardDB.Instance;
-CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOOT_077t);//Wolf
-CardDB.Card kid2 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_378t1);//双足飞龙
-CardDB.Card kid3 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_032);//misha
+CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.LOOT_077t);//Wolf
+CardDB.Card kid2 = CardDB.Instance.getCardDataFromID(CardIdEnum.DAL_378t1);//双足飞龙
+CardDB.Card kid3 = CardDB.Instance.getCardDataFromID(CardIdEnum.NEW1_032);//misha
 
 
 public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 {
 
-p.setNewHeroPower(CardDB.CardIdEnum.TRL_065h, ownplay); //
+p.setNewHeroPower(CardIdEnum.TRL_065h, ownplay); //
 if (ownplay) p.ownHero.armor += 5;
 else p.enemyHero.armor += 5;
 
@@ -29,7 +28,7 @@ if(ownplay)
 {
 
 
-foreach (KeyValuePair<CardDB.CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
+foreach (KeyValuePair<CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
 {
 kid = cdb.getCardDataFromID(e.Key);
 

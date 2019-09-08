@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Inspire: Summon a random Murloc.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_050);//Coldlight Oracle 2/2
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_050);//Coldlight Oracle 2/2
 
 		public override void onInspire(Playfield p, Minion m, bool own)
         {

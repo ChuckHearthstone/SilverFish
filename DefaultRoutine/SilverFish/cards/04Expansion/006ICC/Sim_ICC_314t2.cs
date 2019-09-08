@@ -14,9 +14,9 @@ namespace SilverFish.cards._04Expansion._006ICC
             if (ownplay) p.ownDeckSize -= anz;
             else p.enemyDeckSize -= anz;
 
-            if (anz > 0) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_120), pos, ownplay, false);//river crocolisk
-            if (anz > 2) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS1_042), pos, ownplay, false);//goldshire footman
-            if (anz > 4) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_048), pos, ownplay, false);//spellbreaker
+            if (anz > 0) p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_120), pos, ownplay, false);//river crocolisk
+            if (anz > 2) p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS1_042), pos, ownplay, false);//goldshire footman
+            if (anz > 4) p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_048), pos, ownplay, false);//spellbreaker
         }
     }
 }

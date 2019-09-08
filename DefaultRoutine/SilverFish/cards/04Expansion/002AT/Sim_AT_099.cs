@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Inspire: Summon a 3/5 War Kodo.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_099t); //War Kodo
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_099t); //War Kodo
 		
 		public override void onInspire(Playfield p, Minion m, bool own)
         {

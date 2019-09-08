@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
     {
         //Deathrattle: Return this to your hand.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_033);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_033);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Deathrattle: Summon a random friendly Beast that died this game.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_172); //3/2 Bloodfen Raptor
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_172); //3/2 Bloodfen Raptor
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

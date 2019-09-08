@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//亡语：召唤四个1/1的复仇卷轴。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_566t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.DAL_566t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -9,41 +9,41 @@ namespace SilverFish.cards._04Expansion._002AT
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
 		{
             TAG_CLASS HeroStartClass = (m.own) ? p.ownHeroStartClass : p.enemyHeroStartClass;
-			CardDB.CardIdEnum tmp = CardDB.CardIdEnum.None;
+			CardIdEnum tmp = CardIdEnum.None;
 
             switch (HeroStartClass)
             {
                 case TAG_CLASS.WARRIOR:
-					tmp = CardDB.CardIdEnum.AT_132_WARRIOR; //Tank Up!
+					tmp = CardIdEnum.AT_132_WARRIOR; //Tank Up!
 					break;
                 case TAG_CLASS.WARLOCK:
-					tmp = CardDB.CardIdEnum.AT_132_WARLOCK; //Soul Tap
+					tmp = CardIdEnum.AT_132_WARLOCK; //Soul Tap
                     break;
                 case TAG_CLASS.ROGUE:
-					tmp = CardDB.CardIdEnum.AT_132_ROGUE; //Poisoned Daggers
+					tmp = CardIdEnum.AT_132_ROGUE; //Poisoned Daggers
 					break;
                 case TAG_CLASS.SHAMAN:
-					tmp = CardDB.CardIdEnum.AT_132_SHAMAN; //Totemic Slam
+					tmp = CardIdEnum.AT_132_SHAMAN; //Totemic Slam
 					break;
                 case TAG_CLASS.PRIEST:
-					tmp = CardDB.CardIdEnum.AT_132_PRIEST; //Heal
+					tmp = CardIdEnum.AT_132_PRIEST; //Heal
 					break;
                 case TAG_CLASS.PALADIN:
-					tmp = CardDB.CardIdEnum.AT_132_PALADIN; //The Silver Hand
+					tmp = CardIdEnum.AT_132_PALADIN; //The Silver Hand
 					break;
                 case TAG_CLASS.MAGE:
-					tmp = CardDB.CardIdEnum.AT_132_MAGE; //Fireblast Rank 2
+					tmp = CardIdEnum.AT_132_MAGE; //Fireblast Rank 2
 					break;
                 case TAG_CLASS.HUNTER:
-					tmp = CardDB.CardIdEnum.AT_132_HUNTER; //Ballista Shot
+					tmp = CardIdEnum.AT_132_HUNTER; //Ballista Shot
 					break;
                 case TAG_CLASS.DRUID:
-					tmp = CardDB.CardIdEnum.AT_132_DRUID; //Dire Shapeshift
+					tmp = CardIdEnum.AT_132_DRUID; //Dire Shapeshift
                     break;
 				//default:
 			}
 
-            if (tmp != CardDB.CardIdEnum.None) p.setNewHeroPower(tmp, m.own);
+            if (tmp != CardIdEnum.None) p.setNewHeroPower(tmp, m.own);
 		}
 	}
 }

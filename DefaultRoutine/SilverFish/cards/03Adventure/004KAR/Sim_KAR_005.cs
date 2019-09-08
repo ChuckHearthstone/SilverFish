@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Deathrattle: Summon a 3/2 Big Bad Wolf.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_005a);//Big Bad Wolf
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_005a);//Big Bad Wolf
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

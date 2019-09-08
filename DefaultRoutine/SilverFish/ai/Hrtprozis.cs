@@ -1,4 +1,5 @@
 ﻿using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -48,11 +49,11 @@ namespace HREngine.Bots
         public bool herofrozen = false;
         public bool enemyfrozen = false;
 
-        public List<CardDB.CardIdEnum> ownSecretList = new List<CardDB.CardIdEnum>();
+        public List<CardIdEnum> ownSecretList = new List<CardIdEnum>();
         public int enemySecretCount = 0;
-        public Dictionary<int, CardDB.CardIdEnum> DiscoverCards = new Dictionary<int, CardDB.CardIdEnum>();
-        public Dictionary<CardDB.CardIdEnum, int> turnDeck = new Dictionary<CardDB.CardIdEnum, int>();
-        private Dictionary<int, CardDB.CardIdEnum> deckCardForCost = new Dictionary<int, CardDB.CardIdEnum>();
+        public Dictionary<int, CardIdEnum> DiscoverCards = new Dictionary<int, CardIdEnum>();
+        public Dictionary<CardIdEnum, int> turnDeck = new Dictionary<CardIdEnum, int>();
+        private Dictionary<int, CardIdEnum> deckCardForCost = new Dictionary<int, CardIdEnum>();
         public bool noDuplicates = false;
 
         private int numTauntCards = -1;
@@ -88,7 +89,7 @@ namespace HREngine.Bots
         public int enemyHeroPowerCost = 2;
         public int numOptionsPlayedThisTurn = 0;
         public int numMinionsPlayedThisTurn = 0;
-        public CardDB.CardIdEnum OwnLastDiedMinion = CardDB.CardIdEnum.None;
+        public CardIdEnum OwnLastDiedMinion = CardIdEnum.None;
 
         public int cardsPlayedThisTurn = 0;
         public int ueberladung = 0;
@@ -372,10 +373,10 @@ namespace HREngine.Bots
             this.enemySecretCount = numEnemSec;
         }
         
-        public void updateTurnDeck(Dictionary<CardDB.CardIdEnum, int> deck, bool noDupl)
+        public void updateTurnDeck(Dictionary<CardIdEnum, int> deck, bool noDupl)
         {
             this.turnDeck.Clear();
-            foreach (KeyValuePair<CardDB.CardIdEnum, int> c in deck)
+            foreach (KeyValuePair<CardIdEnum, int> c in deck)
             {
                 this.turnDeck.Add(c.Key, c.Value);
             }
@@ -383,19 +384,19 @@ namespace HREngine.Bots
             deckCardForCost.Clear();
         }
 
-        public CardDB.CardIdEnum getDeckCardsForCost(int cost)
+        public CardIdEnum getDeckCardsForCost(int cost)
         {
             if (deckCardForCost.Count == 0)
             {
                 CardDB.Card c;
-                foreach (KeyValuePair<CardDB.CardIdEnum, int> cn in turnDeck)
+                foreach (KeyValuePair<CardIdEnum, int> cn in turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cn.Key);
                     if (!deckCardForCost.ContainsKey(c.cost)) deckCardForCost.Add(c.cost, c.cardIDenum);
                 }
             }
             if (deckCardForCost.ContainsKey(cost)) return deckCardForCost[cost];
-            else return CardDB.CardIdEnum.None;
+            else return CardIdEnum.None;
         }
 
         public int numDeckCardsByTag(GAME_TAGs tag)
@@ -413,7 +414,7 @@ namespace HREngine.Bots
             numWindfuryCards = 0;
 
             CardDB.Card c;
-            foreach (KeyValuePair<CardDB.CardIdEnum, int> cn in turnDeck)
+            foreach (KeyValuePair<CardIdEnum, int> cn in turnDeck)
             {
                 c = CardDB.Instance.getCardDataFromID(cn.Key);
                 if (c.tank) numTauntCards += cn.Value;
@@ -544,7 +545,7 @@ namespace HREngine.Bots
             }
         }
 
-        public void updateOwnLastDiedMinion(CardDB.CardIdEnum cid)
+        public void updateOwnLastDiedMinion(CardIdEnum cid)
         {
             this.OwnLastDiedMinion = cid;
         }
@@ -597,7 +598,7 @@ namespace HREngine.Bots
             LogHelper.WriteCombatLog("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             LogHelper.WriteCombatLog("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
             string secs = "";
-            foreach (CardDB.CardIdEnum sec in this.ownSecretList)
+            foreach (CardIdEnum sec in this.ownSecretList)
             {
                 secs += sec + " ";
             }
@@ -732,7 +733,7 @@ namespace HREngine.Bots
             EvenDeckHelper.EvenShamanCheck(turnDeck);
 
             string od = "od: ";
-            foreach (KeyValuePair<CardDB.CardIdEnum, int> e in this.turnDeck)
+            foreach (KeyValuePair<CardIdEnum, int> e in this.turnDeck)
             {
                 od += e.Key + "," + e.Value + ";";
             }

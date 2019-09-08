@@ -6,7 +6,7 @@ namespace SilverFish.cards._01Basic._03Mage
 	{
         //Summon two 0/2 minions with Taunt.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_mirror);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_mirror);
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Inspire: Summon a 1/1 Silver Hand Recruit.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t);//silverhandrecruit
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t);//silverhandrecruit
 		
 		public override void onInspire(Playfield p, Minion m, bool own)
         {

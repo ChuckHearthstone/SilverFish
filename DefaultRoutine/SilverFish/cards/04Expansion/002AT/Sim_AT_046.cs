@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
     {
         //Battlecry: Summon a random basic Totem.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_050);//Searing Totem
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_050);//Searing Totem
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

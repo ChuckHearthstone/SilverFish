@@ -7,6 +7,7 @@ using System.Threading;
 using SilverFish.Helpers;
 using Triton.Game;
 using Triton.Game.Mapping;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -31,7 +32,7 @@ namespace HREngine.Bots
         public Dictionary<string, string> BehaviorPath = new Dictionary<string, string>();
         List<HSCard> ETallcards = new List<HSCard>();
         Dictionary<string, int> startDeck = new Dictionary<string, int>();
-        Dictionary<CardDB.CardIdEnum, int> turnDeck = new Dictionary<CardDB.CardIdEnum, int>();
+        Dictionary<CardIdEnum, int> turnDeck = new Dictionary<CardIdEnum, int>();
         Dictionary<int, extraCard> extraDeck = new Dictionary<int, extraCard>();
         bool noDuplicates = false;
 
@@ -311,7 +312,7 @@ namespace HREngine.Bots
             }
 
             Playfield p = new Playfield();
-            p.enemyCardsOut = new Dictionary<CardDB.CardIdEnum, int>(Probabilitymaker.Instance.enemyCardsOut);
+            p.enemyCardsOut = new Dictionary<CardIdEnum, int>(Probabilitymaker.Instance.enemyCardsOut);
 
             if (lastpf != null)
             {
@@ -592,7 +593,7 @@ namespace HREngine.Bots
             {
                 if (ent.GetTag(GAME_TAG.ATTACHED) == this.ownHero.entitiyID && ent.GetTag(GAME_TAG.ZONE) == 1) 
                 {
-                    CardDB.CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
+                    CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
                     int controler = ent.GetTag(GAME_TAG.CONTROLLER);
                     int creator = ent.GetTag(GAME_TAG.CREATOR);
                     int copyDeathrattle = ent.GetTag(GAME_TAG.COPY_DEATHRATTLE);
@@ -610,7 +611,7 @@ namespace HREngine.Bots
                 if (ent.GetTag(GAME_TAG.ATTACHED) == this.enemyHero.entitiyID && ent.GetTag(GAME_TAG.ZONE) == 1)
                     
                 {
-                    CardDB.CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
+                    CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
                     int controler = ent.GetTag(GAME_TAG.CONTROLLER);
                     int creator = ent.GetTag(GAME_TAG.CREATOR);
                     int copyDeathrattle = ent.GetTag(GAME_TAG.COPY_DEATHRATTLE);
@@ -741,7 +742,7 @@ namespace HREngine.Bots
                     {
                         if (ent.GetTag(GAME_TAG.ATTACHED) == m.entitiyID && ent.GetTag(GAME_TAG.ZONE) == 1) 
                         {
-                            CardDB.CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
+                            CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
                             int controler = ent.GetTag(GAME_TAG.CONTROLLER);
                             int creator = ent.GetTag(GAME_TAG.CREATOR);
                             int copyDeathrattle = ent.GetTag(GAME_TAG.COPY_DEATHRATTLE);
@@ -861,8 +862,8 @@ namespace HREngine.Bots
         {
             Dictionary<string, int> tmpDeck = new Dictionary<string, int>(startDeck);
             List<GraveYardItem> graveYard = new List<GraveYardItem>();
-            Dictionary<CardDB.CardIdEnum, int> og = new Dictionary<CardDB.CardIdEnum, int>();
-            Dictionary<CardDB.CardIdEnum, int> eg = new Dictionary<CardDB.CardIdEnum, int>();
+            Dictionary<CardIdEnum, int> og = new Dictionary<CardIdEnum, int>();
+            Dictionary<CardIdEnum, int> eg = new Dictionary<CardIdEnum, int>();
             int owncontroler = TritonHs.OurHero.GetTag(GAME_TAG.CONTROLLER);
             int enemycontroler = TritonHs.EnemyHero.GetTag(GAME_TAG.CONTROLLER);
             turnDeck.Clear();
@@ -876,11 +877,11 @@ namespace HREngine.Bots
                 HSCard entity = allcards[i];
                 if (entity.Id == null || entity.Id == "") continue;
 
-                if (CardDB.Instance.cardIdstringToEnum(entity.Id) == CardDB.CardIdEnum.UNG_116t) ownMinionsCost0 = true;
+                if (CardDB.Instance.cardIdstringToEnum(entity.Id) == CardIdEnum.UNG_116t) ownMinionsCost0 = true;
 
                 if (entity.GetZone() == Triton.Game.Mapping.TAG_ZONE.GRAVEYARD)
                 {
-                    CardDB.CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(entity.Id);
+                    CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(entity.Id);
                     GraveYardItem gyi = new GraveYardItem(cide, entity.EntityId, entity.GetTag(GAME_TAG.CONTROLLER) == owncontroler);
                     graveYard.Add(gyi);
 
@@ -894,7 +895,7 @@ namespace HREngine.Bots
                         if (eg.ContainsKey(cide)) eg[cide]++;
                         else eg.Add(cide, 1);
                     }
-                    if (cide == CardDB.CardIdEnum.UNG_067t1) ownCrystalCore = 5;
+                    if (cide == CardIdEnum.UNG_067t1) ownCrystalCore = 5;
                 }
 
                 string entityId = entity.Id;
@@ -925,7 +926,7 @@ namespace HREngine.Bots
             foreach (var c in extraDeck)
             {
                 if (c.Value.isindeck == false) continue;
-                CardDB.CardIdEnum ce;
+                CardIdEnum ce;
                 string entityId = c.Value.id;
                 if (entityId == "")
                 {
@@ -936,14 +937,14 @@ namespace HREngine.Bots
                             case actionEnum.playcard:
                                 switch (a.card.card.cardIDenum)
                                 {
-                                    case CardDB.CardIdEnum.LOE_104: goto case CardDB.CardIdEnum.BRM_007; 
-                                    case CardDB.CardIdEnum.BRM_007: 
+                                    case CardIdEnum.LOE_104: goto case CardIdEnum.BRM_007; 
+                                    case CardIdEnum.BRM_007: 
                                         if (a.target != null) entityId = a.target.handcard.card.cardIDenum.ToString();
                                         break;
-                                    case CardDB.CardIdEnum.LOE_002: entityId = "LOE_002t"; break; 
-                                    case CardDB.CardIdEnum.LOE_079: entityId = "LOE_019t"; break; 
-                                    case CardDB.CardIdEnum.LOE_019t: entityId = "LOE_019t2"; break;
-                                    case CardDB.CardIdEnum.LOE_110: entityId = "LOE_110t"; break; 
+                                    case CardIdEnum.LOE_002: entityId = "LOE_002t"; break; 
+                                    case CardIdEnum.LOE_079: entityId = "LOE_019t"; break; 
+                                    case CardIdEnum.LOE_019t: entityId = "LOE_019t2"; break;
+                                    case CardIdEnum.LOE_110: entityId = "LOE_110t"; break; 
                                 }
                                 break;
                         }
@@ -956,9 +957,9 @@ namespace HREngine.Bots
                             if (oldCardsOut.ContainsKey(tmp.Key) && tmp.Value == oldCardsOut[tmp.Key]) continue;
                             switch (tmp.Key)
                             {
-                                case CardDB.CardIdEnum.AT_035: entityId = "AT_035t"; break; 
-                                case CardDB.CardIdEnum.GVG_031: entityId = "aiextra1"; break; 
-                                case CardDB.CardIdEnum.LOE_111: entityId = "LOE_111"; break; 
+                                case CardIdEnum.AT_035: entityId = "AT_035t"; break; 
+                                case CardIdEnum.GVG_031: entityId = "aiextra1"; break; 
+                                case CardIdEnum.LOE_111: entityId = "LOE_111"; break; 
                             }
                         }
                         if (entityId == "" && lastpf != null)
@@ -966,13 +967,13 @@ namespace HREngine.Bots
                             int num = 0;
                             foreach (Minion m in this.enemyMinions)
                             {
-                                if (m.handcard.card.cardIDenum == CardDB.CardIdEnum.GVG_056) num++; 
+                                if (m.handcard.card.cardIDenum == CardIdEnum.GVG_056) num++; 
                             }
                             if (num > 0)
                             {
                                 foreach (Minion m in lastpf.enemyMinions)
                                 {
-                                    if (m.handcard.card.cardIDenum == CardDB.CardIdEnum.GVG_056) num--;
+                                    if (m.handcard.card.cardIDenum == CardIdEnum.GVG_056) num--;
                                 }
                             }
                             if (num > 0) entityId = "GVG_056t";
@@ -981,13 +982,13 @@ namespace HREngine.Bots
                                 num = 0;
                                 foreach (Minion m in lastpf.ownMinions)
                                 {
-                                    if (m.handcard.card.cardIDenum == CardDB.CardIdEnum.GVG_035) num++; 
+                                    if (m.handcard.card.cardIDenum == CardIdEnum.GVG_035) num++; 
                                 }
                                 if (num > 0)
                                 {
                                     foreach (Minion m in this.ownMinions)
                                     {
-                                        if (m.handcard.card.cardIDenum == CardDB.CardIdEnum.GVG_035) num--;
+                                        if (m.handcard.card.cardIDenum == CardIdEnum.GVG_035) num--;
                                     }
                                 }
                                 if (num > 0) entityId = "GVG_035";
@@ -1004,8 +1005,8 @@ namespace HREngine.Bots
             foreach (var c in tmpDeck)
             {
                 if (c.Value < 1) continue;
-                CardDB.CardIdEnum ce = CardDB.Instance.cardIdstringToEnum(c.Key);
-                if (ce == CardDB.CardIdEnum.None) continue;
+                CardIdEnum ce = CardDB.Instance.cardIdstringToEnum(c.Key);
+                if (ce == CardIdEnum.None) continue;
                 if (turnDeck.ContainsKey(ce)) turnDeck[ce] += c.Value;
                 else turnDeck.Add(ce, c.Value);
             }

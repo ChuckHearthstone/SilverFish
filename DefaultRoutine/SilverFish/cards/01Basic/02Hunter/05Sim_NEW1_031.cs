@@ -6,7 +6,7 @@ namespace SilverFish.cards._01Basic._02Hunter
 	{
         //Summon a random Beast Companion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_032);//misha
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.NEW1_032);//misha
         
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

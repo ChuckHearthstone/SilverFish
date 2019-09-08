@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 	{
         //Deathrattle: Summon a random 1-Cost minion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_004); //Twilight Whelp
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRM_004); //Twilight Whelp
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

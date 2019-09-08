@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         // If you have a weapon, give it +1/+1. Otherwise equip a 1/3 weapon.
 
-        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_409t);//Heavy Axe
+        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_409t);//Heavy Axe
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

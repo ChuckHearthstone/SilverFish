@@ -6,11 +6,11 @@ namespace SilverFish.cards._02Classic
 	{
         // Put a copy of a random minion from your opponent's deck into the battlefield.
 
-        CardDB.Card copymin = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_182); // we take a icewindjety :D
+        CardDB.Card copymin = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_182); // we take a icewindjety :D
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            if (p.enemyDeckSize < 1) copymin = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_345t); // Shadow of Nothing
+            if (p.enemyDeckSize < 1) copymin = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_345t); // Shadow of Nothing
             p.CallKid(copymin, p.ownMinions.Count, ownplay, false);
 		}
 	}

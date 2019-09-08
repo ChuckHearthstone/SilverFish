@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 		//Lifesteal
 		//Handled in minionAttacksMinion()
 
-		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_829t);
+		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_829t);
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
 
 //    fügt einem charakter $2 schaden zu. beschwört einen zufälligen dämon, wenn der schaden tödlich ist.
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_059);//bloodimp
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_059);//bloodimp
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
 

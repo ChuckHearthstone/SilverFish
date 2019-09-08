@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Secret: When one of your minions is attacked, summon three 1/1 Snakes.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_554t);//snake
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_554t);//snake
 
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {

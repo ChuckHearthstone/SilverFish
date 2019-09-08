@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.Helpers
 {
@@ -16,14 +17,14 @@ namespace SilverFish.Helpers
             IsEvenDeck = false;
         }
 
-        public static void EvenShamanCheck(Dictionary<CardDB.CardIdEnum, int> dictionary)
+        public static void EvenShamanCheck(Dictionary<CardIdEnum, int> dictionary)
         {
             if (EvenDeckChecked)
             {
                 return;
             }
 
-            if (dictionary.Keys.Contains(CardDB.CardIdEnum.GIL_692))
+            if (dictionary.Keys.Contains(CardIdEnum.GIL_692))
             {
                 bool isEvenShaman = true;
                 foreach (var item in dictionary.Keys)

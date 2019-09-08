@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Transform a minion into a 4/2 Boar with Charge.
 
-        CardDB.Card boar = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_005t);//Boar 4/2
+        CardDB.Card boar = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_005t);//Boar 4/2
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

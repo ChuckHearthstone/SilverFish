@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -69,8 +70,8 @@ namespace HREngine.Bots
             public bool isSpecialMinion = false;
 
             public int spellpowervalue = 0;
-            public Bots.CardDB.CardIdEnum cardIDenum = Bots.CardDB.CardIdEnum.None;
-            public List<Bots.CardDB.ErrorType2> playrequires;
+            public CardIdEnum cardIDenum = CardIdEnum.None;
+            public List<ErrorType2> playrequires;
 
             public List<Bots.CardDB.CardTrigger> Triggers { get; set; }
 

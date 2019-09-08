@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._006ICC
         
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.CardIdEnum.ICC_481p, ownplay); // Transmute Spirit
+            p.setNewHeroPower(CardIdEnum.ICC_481p, ownplay); // Transmute Spirit
             if (ownplay) p.ownHero.armor += 5;
             else p.enemyHero.armor += 5;
 

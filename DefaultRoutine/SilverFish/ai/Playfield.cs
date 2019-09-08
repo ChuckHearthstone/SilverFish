@@ -1,4 +1,5 @@
 ﻿using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -35,7 +36,7 @@ namespace HREngine.Bots
 
     public struct IDEnumOwner
     {
-        public CardDB.CardIdEnum IDEnum;
+        public CardIdEnum IDEnum;
         public bool own;
     }
 	
@@ -228,9 +229,9 @@ namespace HREngine.Bots
         public int mana = 0;
         public int manaTurnEnd = 0;
 
-        public List<CardDB.CardIdEnum> ownSecretsIDList = new List<CardDB.CardIdEnum>();
+        public List<CardIdEnum> ownSecretsIDList = new List<CardIdEnum>();
         public List<SecretItem> enemySecretList = new List<SecretItem>();
-        public Dictionary<CardDB.CardIdEnum, int> enemyCardsOut = null;
+        public Dictionary<CardIdEnum, int> enemyCardsOut = null;
 
         public List<Playfield> nextPlayfields = new List<Playfield>();
 
@@ -343,9 +344,9 @@ namespace HREngine.Bots
         public Playfield endTurnState = null;
 
         // just for saving which minion to revive with secrets (=the first one that died);
-        public CardDB.CardIdEnum revivingOwnMinion = CardDB.CardIdEnum.None;
-        public CardDB.CardIdEnum revivingEnemyMinion = CardDB.CardIdEnum.None;
-        public CardDB.CardIdEnum OwnLastDiedMinion = CardDB.CardIdEnum.None;
+        public CardIdEnum revivingOwnMinion = CardIdEnum.None;
+        public CardIdEnum revivingEnemyMinion = CardIdEnum.None;
+        public CardIdEnum OwnLastDiedMinion = CardIdEnum.None;
 
         public int shadowmadnessed = 0; //minions has switched controllers this turn.
         
@@ -1606,7 +1607,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.CS2_032, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.CS2_032, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1630,7 +1631,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.CS2_028, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.CS2_028, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1655,13 +1656,13 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.EX1_538, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.EX1_538, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
                             int anz = this.ownMinions.Count;
                             int posi = this.enemyMinions.Count - 1;
-                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_538t);//hound
+                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_538t);//hound
                             for (int i = 0; i < anz; i++)
                             {
                                 CallKid(kid, posi, false);
@@ -1678,7 +1679,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.CS1_112, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.CS1_112, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1710,7 +1711,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.EX1_259, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.EX1_259, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1734,7 +1735,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.KAR_073, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.KAR_073, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1758,7 +1759,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.EX1_400, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.EX1_400, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1787,7 +1788,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.CS2_093, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.CS2_093, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -1813,7 +1814,7 @@ namespace HREngine.Bots
                         if (wehaveCounterspell == 0)
                         {
                             bool dontkill = false;
-                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum.CS2_012, this.enemyAnzCards, this.enemyDeckSize);
+                            int prob = Probabilitymaker.Instance.getProbOfEnemyHavingCardInHand(CardIdEnum.CS2_012, this.enemyAnzCards, this.enemyDeckSize);
                             if (playAroundProb > prob) return currmana;
                             if (pap2 > prob) dontkill = true;
 
@@ -2331,44 +2332,44 @@ namespace HREngine.Bots
             switch (this.enemyHeroAblility.card.cardIDenum)
             {
                 //direct damage
-                case CardDB.CardIdEnum.DS1h_292: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.DS1h_292_H1: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.AT_132_HUNTER: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.DS1h_292_H1_AT_132: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.NAX15_02: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.NAX15_02H: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.NAX6_02: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.NAX6_02H: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.CS2_034: ablilityDmg += 1; break;
-                case CardDB.CardIdEnum.CS2_034_H1: ablilityDmg += 1; break;
-                case CardDB.CardIdEnum.CS2_034_H2: ablilityDmg += 1; break;
-                case CardDB.CardIdEnum.AT_050t: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.AT_132_MAGE: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.CS2_034_H1_AT_132: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.CS2_034_H2_AT_132: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.EX1_625t: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.EX1_625t2: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.TU4d_003: ablilityDmg += 1; break;
-                case CardDB.CardIdEnum.NAX7_03: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.NAX7_03H: ablilityDmg += 4; break;
-                case CardDB.CardIdEnum.ICC_830p: ablilityDmg += 2; break;
-                case CardDB.CardIdEnum.ICC_831p: ablilityDmg += 3; break;
-                case CardDB.CardIdEnum.ICC_833h: ablilityDmg += 1; break;
+                case CardIdEnum.DS1h_292: ablilityDmg += 2; break;
+                case CardIdEnum.DS1h_292_H1: ablilityDmg += 2; break;
+                case CardIdEnum.AT_132_HUNTER: ablilityDmg += 3; break;
+                case CardIdEnum.DS1h_292_H1_AT_132: ablilityDmg += 3; break;
+                case CardIdEnum.NAX15_02: ablilityDmg += 2; break;
+                case CardIdEnum.NAX15_02H: ablilityDmg += 2; break;
+                case CardIdEnum.NAX6_02: ablilityDmg += 3; break;
+                case CardIdEnum.NAX6_02H: ablilityDmg += 3; break;
+                case CardIdEnum.CS2_034: ablilityDmg += 1; break;
+                case CardIdEnum.CS2_034_H1: ablilityDmg += 1; break;
+                case CardIdEnum.CS2_034_H2: ablilityDmg += 1; break;
+                case CardIdEnum.AT_050t: ablilityDmg += 2; break;
+                case CardIdEnum.AT_132_MAGE: ablilityDmg += 2; break;
+                case CardIdEnum.CS2_034_H1_AT_132: ablilityDmg += 2; break;
+                case CardIdEnum.CS2_034_H2_AT_132: ablilityDmg += 2; break;
+                case CardIdEnum.EX1_625t: ablilityDmg += 2; break;
+                case CardIdEnum.EX1_625t2: ablilityDmg += 3; break;
+                case CardIdEnum.TU4d_003: ablilityDmg += 1; break;
+                case CardIdEnum.NAX7_03: ablilityDmg += 3; break;
+                case CardIdEnum.NAX7_03H: ablilityDmg += 4; break;
+                case CardIdEnum.ICC_830p: ablilityDmg += 2; break;
+                case CardIdEnum.ICC_831p: ablilityDmg += 3; break;
+                case CardIdEnum.ICC_833h: ablilityDmg += 1; break;
                 //condition
-                case CardDB.CardIdEnum.BRMA05_2H: if (this.mana > 0) ablilityDmg += 10; break;
-                case CardDB.CardIdEnum.BRMA05_2: if (this.mana > 0) ablilityDmg += 5; break;
-                case CardDB.CardIdEnum.BRM_027p: if (this.ownMinions.Count < 1) ablilityDmg += 8; break;
-                case CardDB.CardIdEnum.BRM_027pH: if (this.ownMinions.Count < 2) ablilityDmg += 8; break;
-                case CardDB.CardIdEnum.TB_MechWar_Boss2_HeroPower: if (this.ownMinions.Count < 2) ablilityDmg += 1; break;
+                case CardIdEnum.BRMA05_2H: if (this.mana > 0) ablilityDmg += 10; break;
+                case CardIdEnum.BRMA05_2: if (this.mana > 0) ablilityDmg += 5; break;
+                case CardIdEnum.BRM_027p: if (this.ownMinions.Count < 1) ablilityDmg += 8; break;
+                case CardIdEnum.BRM_027pH: if (this.ownMinions.Count < 2) ablilityDmg += 8; break;
+                case CardIdEnum.TB_MechWar_Boss2_HeroPower: if (this.ownMinions.Count < 2) ablilityDmg += 1; break;
                 //equip weapon
-                case CardDB.CardIdEnum.LOEA09_2: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 2; break;
-                case CardDB.CardIdEnum.LOEA09_2H: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 5; break;
-                case CardDB.CardIdEnum.CS2_083b: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 1; break;
-                case CardDB.CardIdEnum.CS2_083b_H1: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 1; break;
-                case CardDB.CardIdEnum.AT_132_ROGUE: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 2; break;
-                case CardDB.CardIdEnum.CS2_017: if (!this.enemyHero.frozen) ghd += 1; break;
-                case CardDB.CardIdEnum.AT_132_DRUID: if (!this.enemyHero.frozen) ghd += 2; break;
-                case CardDB.CardIdEnum.ICC_832p: if (!this.enemyHero.frozen) ghd += 3; break;
+                case CardIdEnum.LOEA09_2: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 2; break;
+                case CardIdEnum.LOEA09_2H: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 5; break;
+                case CardIdEnum.CS2_083b: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 1; break;
+                case CardIdEnum.CS2_083b_H1: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 1; break;
+                case CardIdEnum.AT_132_ROGUE: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) ghd += 2; break;
+                case CardIdEnum.CS2_017: if (!this.enemyHero.frozen) ghd += 1; break;
+                case CardIdEnum.AT_132_DRUID: if (!this.enemyHero.frozen) ghd += 2; break;
+                case CardIdEnum.ICC_832p: if (!this.enemyHero.frozen) ghd += 3; break;
             }
 
             ghd += ablilityDmg;
@@ -2405,11 +2406,11 @@ namespace HREngine.Bots
             bool haveImmune = false;
             if (this.guessingHeroHP < 1 && this.ownSecretsIDList.Count > 0)
             {
-                foreach (CardDB.CardIdEnum secretID in this.ownSecretsIDList)
+                foreach (CardIdEnum secretID in this.ownSecretsIDList)
                 {
                     switch (secretID)
                     {
-                        case CardDB.CardIdEnum.EX1_130: //Noble Sacrifice
+                        case CardIdEnum.EX1_130: //Noble Sacrifice
                             if (this.enemyMinions.Count > 0)
                             {
                                 int mAngr = 1000;
@@ -2420,7 +2421,7 @@ namespace HREngine.Bots
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
                             continue;
-                        case CardDB.CardIdEnum.EX1_533: //Misdirection
+                        case CardIdEnum.EX1_533: //Misdirection
                             if (this.enemyMinions.Count > 0)
                             {
                                 int mAngr = 1000;
@@ -2431,10 +2432,10 @@ namespace HREngine.Bots
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
                             continue;
-                        case CardDB.CardIdEnum.AT_060: //Bear Trap
+                        case CardIdEnum.AT_060: //Bear Trap
                             if (this.enemyMinions.Count > 1) this.guessingHeroHP += 3;
                             continue;
-                        case CardDB.CardIdEnum.EX1_611: //Freezing Trap
+                        case CardIdEnum.EX1_611: //Freezing Trap
                             if (this.enemyMinions.Count > 0)
                             {
                                 int mAngr = 1000;
@@ -2450,13 +2451,13 @@ namespace HREngine.Bots
                                 if (mAngr < 1000 && mCharge < 1) this.guessingHeroHP += mAngr;
                             }
                             continue;
-                        case CardDB.CardIdEnum.EX1_289: //Ice Barrier
+                        case CardIdEnum.EX1_289: //Ice Barrier
                             this.guessingHeroHP += 8;
                             continue;
-                        case CardDB.CardIdEnum.EX1_295: //Ice Block
+                        case CardIdEnum.EX1_295: //Ice Block
                             haveImmune = true;
                             break;
-                        case CardDB.CardIdEnum.EX1_594: //Vaporize
+                        case CardIdEnum.EX1_594: //Vaporize
                             if (this.enemyMinions.Count > 0)
                             {
                                 int mAngr = 1000;
@@ -2467,7 +2468,7 @@ namespace HREngine.Bots
                                 if (mAngr != 1000) this.guessingHeroHP += mAngr;
                             }
                             continue;
-                        case CardDB.CardIdEnum.EX1_610: //Explosive Trap
+                        case CardIdEnum.EX1_610: //Explosive Trap
                             if (this.enemyMinions.Count > 0)
                             {
                                 int losshd = 0;
@@ -2523,40 +2524,40 @@ namespace HREngine.Bots
                 switch (this.enemyHeroAblility.card.cardIDenum)
                 {
                     //direct damage
-                    case CardDB.CardIdEnum.DS1h_292: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.DS1h_292_H1: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.AT_132_HUNTER: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.DS1h_292_H1_AT_132: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.NAX15_02: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.NAX15_02H: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.NAX6_02: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.NAX6_02H: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.CS2_034: totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.CS2_034_H1: totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.CS2_034_H2: totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.AT_050t: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.AT_132_MAGE: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.CS2_034_H1_AT_132: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.CS2_034_H2_AT_132: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.EX1_625t: totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.EX1_625t2: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.TU4d_003: totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.NAX7_03: totalEnemyDamage += 3; break;
-                    case CardDB.CardIdEnum.NAX7_03H: totalEnemyDamage += 4; break;
+                    case CardIdEnum.DS1h_292: totalEnemyDamage += 2; break;
+                    case CardIdEnum.DS1h_292_H1: totalEnemyDamage += 2; break;
+                    case CardIdEnum.AT_132_HUNTER: totalEnemyDamage += 3; break;
+                    case CardIdEnum.DS1h_292_H1_AT_132: totalEnemyDamage += 3; break;
+                    case CardIdEnum.NAX15_02: totalEnemyDamage += 2; break;
+                    case CardIdEnum.NAX15_02H: totalEnemyDamage += 2; break;
+                    case CardIdEnum.NAX6_02: totalEnemyDamage += 3; break;
+                    case CardIdEnum.NAX6_02H: totalEnemyDamage += 3; break;
+                    case CardIdEnum.CS2_034: totalEnemyDamage += 1; break;
+                    case CardIdEnum.CS2_034_H1: totalEnemyDamage += 1; break;
+                    case CardIdEnum.CS2_034_H2: totalEnemyDamage += 1; break;
+                    case CardIdEnum.AT_050t: totalEnemyDamage += 2; break;
+                    case CardIdEnum.AT_132_MAGE: totalEnemyDamage += 2; break;
+                    case CardIdEnum.CS2_034_H1_AT_132: totalEnemyDamage += 2; break;
+                    case CardIdEnum.CS2_034_H2_AT_132: totalEnemyDamage += 2; break;
+                    case CardIdEnum.EX1_625t: totalEnemyDamage += 2; break;
+                    case CardIdEnum.EX1_625t2: totalEnemyDamage += 3; break;
+                    case CardIdEnum.TU4d_003: totalEnemyDamage += 1; break;
+                    case CardIdEnum.NAX7_03: totalEnemyDamage += 3; break;
+                    case CardIdEnum.NAX7_03H: totalEnemyDamage += 4; break;
                     //condition
-                    case CardDB.CardIdEnum.BRMA05_2H: if (this.mana > 0) totalEnemyDamage += 10; break;
-                    case CardDB.CardIdEnum.BRMA05_2: if (this.mana > 0) totalEnemyDamage += 5; break;
-                    case CardDB.CardIdEnum.BRM_027p: if (this.ownMinions.Count < 1) totalEnemyDamage += 8; break;
-                    case CardDB.CardIdEnum.BRM_027pH: if (this.ownMinions.Count < 2) totalEnemyDamage += 8; break;
-                    case CardDB.CardIdEnum.TB_MechWar_Boss2_HeroPower: if (this.ownMinions.Count < 2) totalEnemyDamage += 1; break;
+                    case CardIdEnum.BRMA05_2H: if (this.mana > 0) totalEnemyDamage += 10; break;
+                    case CardIdEnum.BRMA05_2: if (this.mana > 0) totalEnemyDamage += 5; break;
+                    case CardIdEnum.BRM_027p: if (this.ownMinions.Count < 1) totalEnemyDamage += 8; break;
+                    case CardIdEnum.BRM_027pH: if (this.ownMinions.Count < 2) totalEnemyDamage += 8; break;
+                    case CardIdEnum.TB_MechWar_Boss2_HeroPower: if (this.ownMinions.Count < 2) totalEnemyDamage += 1; break;
                     //equip weapon
-                    case CardDB.CardIdEnum.LOEA09_2: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.LOEA09_2H: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 5; break;
-                    case CardDB.CardIdEnum.CS2_017: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.CS2_083b: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.CS2_083b_H1: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
-                    case CardDB.CardIdEnum.AT_132_ROGUE: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
-                    case CardDB.CardIdEnum.AT_132_DRUID: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
+                    case CardIdEnum.LOEA09_2: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
+                    case CardIdEnum.LOEA09_2H: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 5; break;
+                    case CardIdEnum.CS2_017: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
+                    case CardIdEnum.CS2_083b: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
+                    case CardIdEnum.CS2_083b_H1: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 1; break;
+                    case CardIdEnum.AT_132_ROGUE: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
+                    case CardIdEnum.AT_132_DRUID: if (this.enemyWeapon.Durability < 1 && !this.enemyHero.frozen) totalEnemyDamage += 2; break;
                 }
             }
             if (this.enemyWeapon.Durability > 0 && this.enemyHero.Ready && !this.enemyHero.frozen)
@@ -2568,31 +2569,31 @@ namespace HREngine.Bots
             if (totalEnemyDamage < this.ownHero.HealthPoints + this.ownHero.armor) return false;
             if (this.ownSecretsIDList.Count > 0)
             {
-                foreach (CardDB.CardIdEnum secretID in this.ownSecretsIDList)
+                foreach (CardIdEnum secretID in this.ownSecretsIDList)
                 {
                     switch (secretID)
                     {
-                        case CardDB.CardIdEnum.EX1_289: //Ice Barrier
+                        case CardIdEnum.EX1_289: //Ice Barrier
                             totalEnemyDamage -= 8;
                             continue;
-                        case CardDB.CardIdEnum.EX1_295: //Ice Block
+                        case CardIdEnum.EX1_295: //Ice Block
                             return false;
-                        case CardDB.CardIdEnum.EX1_130: //Noble Sacrifice
+                        case CardIdEnum.EX1_130: //Noble Sacrifice
                             return false;
-                        case CardDB.CardIdEnum.EX1_533: //Misdirection
+                        case CardIdEnum.EX1_533: //Misdirection
                             return false;
-                        case CardDB.CardIdEnum.EX1_594: //Vaporize
+                        case CardIdEnum.EX1_594: //Vaporize
                             return false;
-                        case CardDB.CardIdEnum.EX1_611: //Freezing Trap
+                        case CardIdEnum.EX1_611: //Freezing Trap
                             return false;
-                        case CardDB.CardIdEnum.EX1_610: //Explosive Trap
+                        case CardIdEnum.EX1_610: //Explosive Trap
                             return false;
-                        case CardDB.CardIdEnum.AT_060: //Bear Trap
+                        case CardIdEnum.AT_060: //Bear Trap
                             return false;
-                        case CardDB.CardIdEnum.EX1_132: //Eye for an Eye
+                        case CardIdEnum.EX1_132: //Eye for an Eye
                             if ((this.enemyHero.HealthPoints + this.enemyHero.armor) <= (this.ownHero.HealthPoints + this.ownHero.armor) && !this.enemyHero.immune) return false;
                             continue;
-                        case CardDB.CardIdEnum.LOE_021: //Dart Trap
+                        case CardIdEnum.LOE_021: //Dart Trap
                             if ((this.enemyHero.HealthPoints + this.enemyHero.armor) < 6 && !this.enemyHero.immune) return false;
                             continue;
                     }
@@ -2606,26 +2607,26 @@ namespace HREngine.Bots
         {
             // DONT KILL ENEMY HERO (cause its only guessing)
 
-            List<CardDB.CardIdEnum> tmpSecretsIDList = new List<CardDB.CardIdEnum>();
+            List<CardIdEnum> tmpSecretsIDList = new List<CardIdEnum>();
             List<Minion> temp;
             int pos;
 
-            foreach (CardDB.CardIdEnum secretID in this.ownSecretsIDList)
+            foreach (CardIdEnum secretID in this.ownSecretsIDList)
             {
                 switch (secretID)
                 {
                     
                     
-                    case CardDB.CardIdEnum.EX1_554: //snaketrap
+                    case CardIdEnum.EX1_554: //snaketrap
                         
                         pos = this.ownMinions.Count;
                         if (pos == 0) continue;
-                        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_554t);//snake
+                        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_554t);//snake
                         CallKid(kid, pos, true, false);
                         CallKid(kid, pos, true);
                         CallKid(kid, pos, true);
                         continue;
-                    case CardDB.CardIdEnum.EX1_610: //explosive trap
+                    case CardIdEnum.EX1_610: //explosive trap
                         
                         temp = new List<Minion>(this.enemyMinions);
                         int damage = getSpellDamageDamage(2);
@@ -2635,7 +2636,7 @@ namespace HREngine.Bots
                         }
                         attackEnemyHeroWithoutKill(damage);
                         continue;
-                    case CardDB.CardIdEnum.EX1_611: //freezing trap
+                    case CardIdEnum.EX1_611: //freezing trap
                         {
                             
                             int count = this.enemyMinions.Count;
@@ -2648,17 +2649,17 @@ namespace HREngine.Bots
                             minionReturnToHand(mnn, false, 0);
                             continue;
                         }  
-                    case CardDB.CardIdEnum.AT_060: //beartrap
+                    case CardIdEnum.AT_060: //beartrap
                         
                         if (this.enemyMinions.Count == 0 && ((this.enemyWeapon.Angr == 0 && !prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) || this.enemyHero.frozen)) continue;
                         pos = this.ownMinions.Count;
-                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_125), pos, true, false);
+                        CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_125), pos, true, false);
                         continue;
-                    case CardDB.CardIdEnum.LOE_021: //Dart Trap
+                    case CardIdEnum.LOE_021: //Dart Trap
                         
                         minionGetDamageOrHeal(this.enemyHero, getSpellDamageDamage(5), true);
                         continue;
-                    case CardDB.CardIdEnum.EX1_533: // misdirection
+                    case CardIdEnum.EX1_533: // misdirection
                         {
                             
                             
@@ -2673,47 +2674,47 @@ namespace HREngine.Bots
                             this.evaluatePenality -= this.enemyMinions.Count;// the more the enemy minions has on board, the more the posibility to destroy something other :D
                             continue;
                         }
-                    case CardDB.CardIdEnum.KAR_004: //cattrick
+                    case CardIdEnum.KAR_004: //cattrick
                         
                         pos = this.ownMinions.Count;
-                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_017), pos, true, false);
+                        CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_017), pos, true, false);
                         continue;
 
                     
-                    case CardDB.CardIdEnum.EX1_287: //counterspell
+                    case CardIdEnum.EX1_287: //counterspell
                         
                         wehaveCounterspell++; 
                         continue;
-                    case CardDB.CardIdEnum.EX1_289: //ice barrier
+                    case CardIdEnum.EX1_289: //ice barrier
                         
                         if (this.enemyMinions.Count == 0 && ((this.enemyWeapon.Angr == 0 && !prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) || this.enemyHero.frozen)) continue;
                         this.ownHero.armor += 8;
                         continue;
-                    case CardDB.CardIdEnum.EX1_295: //ice block
+                    case CardIdEnum.EX1_295: //ice block
                         
                         guessHeroDamage();
                         if (guessingHeroHP < 11) this.ownHero.immune = true;
                         continue;
-                    case CardDB.CardIdEnum.EX1_294: //mirror entity
+                    case CardIdEnum.EX1_294: //mirror entity
                         
                         if (this.ownMinions.Count < 7)
                         {
                             pos = this.ownMinions.Count - 1;
-                            CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.TU4f_007), pos, true, false); 
+                            CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.TU4f_007), pos, true, false); 
                         }
                         else goto default;
                         continue;
-                    case CardDB.CardIdEnum.AT_002: //effigy
+                    case CardIdEnum.AT_002: //effigy
                         
                         if (this.ownMinions.Count == 0) continue;
                         pos = this.ownMinions.Count - 1;
-                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.TU4f_007), pos, true); 
+                        CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.TU4f_007), pos, true); 
                         continue;
-                    case CardDB.CardIdEnum.tt_010: //spellbender
+                    case CardIdEnum.tt_010: //spellbender
                         
                         this.evaluatePenality -= 4;
                         continue;
-                    case CardDB.CardIdEnum.EX1_594: // vaporize
+                    case CardIdEnum.EX1_594: // vaporize
                         {
                             
                             int count = this.enemyMinions.Count;
@@ -2726,7 +2727,7 @@ namespace HREngine.Bots
                             minionGetDestroyed(mnn);
                             continue;
                         }
-                    case CardDB.CardIdEnum.FP1_018: // duplicate
+                    case CardIdEnum.FP1_018: // duplicate
                         {
                             
                             int count = this.ownMinions.Count;
@@ -2744,7 +2745,7 @@ namespace HREngine.Bots
                     
                     
                     
-                    case CardDB.CardIdEnum.EX1_132: // eye for an eye
+                    case CardIdEnum.EX1_132: // eye for an eye
                         {
                             
                             // todo for mage and hunter
@@ -2776,14 +2777,14 @@ namespace HREngine.Bots
                             if (dmg != 0) attackEnemyHeroWithoutKill(dmg);
                             continue;
                         }
-                    case CardDB.CardIdEnum.EX1_130: // noble sacrifice
+                    case CardIdEnum.EX1_130: // noble sacrifice
                         
                         if (this.enemyMinions.Count == 0 && ((this.enemyWeapon.Angr == 0 && !prozis.penman.HeroPowerEquipWeapon.ContainsKey(this.enemyHeroAblility.card.name)) || this.enemyHero.frozen)) continue;
                         if (this.ownMinions.Count == 7) continue;
                         pos = this.ownMinions.Count - 1;
-                        CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_097), pos, true, false); 
+                        CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.AT_097), pos, true, false); 
                         continue;
-                    case CardDB.CardIdEnum.EX1_136: // redemption
+                    case CardIdEnum.EX1_136: // redemption
                         
                         
                         if (this.ownMinions.Count == 0) continue;
@@ -2796,10 +2797,10 @@ namespace HREngine.Bots
                             break;
                         }
                         continue;
-                    case CardDB.CardIdEnum.FP1_020: // avenge
+                    case CardIdEnum.FP1_020: // avenge
                         
                         
-                        if (this.ownMinions.Count < 2 || (this.ownMinions.Count == 1 && !this.ownSecretsIDList.Contains(CardDB.CardIdEnum.EX1_130))) continue;
+                        if (this.ownMinions.Count < 2 || (this.ownMinions.Count == 1 && !this.ownSecretsIDList.Contains(CardIdEnum.EX1_130))) continue;
                         temp = new List<Minion>(this.ownMinions);
                         temp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints));
                         minionGetBuffed(temp[0], 3, 2);
@@ -2819,11 +2820,11 @@ namespace HREngine.Bots
         {
             // DONT KILL ENEMY HERO (cause its only guessing)
 
-            List<CardDB.CardIdEnum> tmpSecretsIDList = new List<CardDB.CardIdEnum>();
+            List<CardIdEnum> tmpSecretsIDList = new List<CardIdEnum>();
             List<Minion> temp;
             
             bool activate = false;
-            foreach (CardDB.CardIdEnum secretID in this.ownSecretsIDList)
+            foreach (CardIdEnum secretID in this.ownSecretsIDList)
             {
                 switch (secretID)
                 {
@@ -2835,7 +2836,7 @@ namespace HREngine.Bots
                     
                     
                     
-                    case CardDB.CardIdEnum.EX1_609: //snipe
+                    case CardIdEnum.EX1_609: //snipe
                         
                         activate = false;
                         if (this.enemyMinions.Count > 0)
@@ -2870,7 +2871,7 @@ namespace HREngine.Bots
                     
                     
                     
-                    case CardDB.CardIdEnum.EX1_379: // repentance
+                    case CardIdEnum.EX1_379: // repentance
                         
                         activate = false;
                         if (this.enemyMinions.Count > 0)
@@ -2889,7 +2890,7 @@ namespace HREngine.Bots
                         }
                         if (!activate) tmpSecretsIDList.Add(secretID);
                         continue;
-                    case CardDB.CardIdEnum.LOE_027: // Sacred Trial
+                    case CardIdEnum.LOE_027: // Sacred Trial
                         
                         activate = false;
                         if (this.enemyMinions.Count > 3)
@@ -2907,7 +2908,7 @@ namespace HREngine.Bots
                         }
                         if (!activate) tmpSecretsIDList.Add(secretID);
                         continue;
-                    case CardDB.CardIdEnum.AT_073: // competitivespirit
+                    case CardIdEnum.AT_073: // competitivespirit
                         
                         if (this.enemyMinions.Count == 0) continue;
                         foreach (Minion m in this.ownMinions)
@@ -3279,7 +3280,7 @@ namespace HREngine.Bots
                         if (this.isOwnTurn)
                         {
                             playACard(a.card, a.target, a.place, a.druidchoice, a.penalty);
-                            if (ownQuest.questProgress == ownQuest.maxProgress && ownQuest.Id != CardDB.CardIdEnum.None)
+                            if (ownQuest.questProgress == ownQuest.maxProgress && ownQuest.Id != CardIdEnum.None)
                             {
                                 this.drawACard(ownQuest.Reward(), true);
                                 ownQuest.Reset();
@@ -3487,7 +3488,7 @@ namespace HREngine.Bots
                             if (count > 0)
                             {
                                 if (count > 2) count = 2;
-                                foreach (KeyValuePair<CardDB.CardIdEnum, int> cid in this.prozis.turnDeck)
+                                foreach (KeyValuePair<CardIdEnum, int> cid in this.prozis.turnDeck)
                                 {
                                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                                     if ((TAG_RACE)c.race == TAG_RACE.MURLOC)
@@ -3505,8 +3506,8 @@ namespace HREngine.Bots
                         }
                         else
                         {
-                            this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_168), this.enemyMinions.Count, false);
-                            this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_168), this.enemyMinions.Count, false);
+                            this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_168), this.enemyMinions.Count, false);
+                            this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_168), this.enemyMinions.Count, false);
                         }
                     }
                     break;
@@ -3560,12 +3561,12 @@ namespace HREngine.Bots
                     break;
                 case CardDB.CardName.piranhalauncher:
                     int pos = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_337t), pos, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_337t), pos, own); 
                     break;
                 case CardDB.CardName.vinecleaver:
                     int pos2 = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
-                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t), pos2, own); 
-                    this.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t), pos2, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t), pos2, own); 
+                    this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t), pos2, own); 
                     break;
                 case CardDB.CardName.foolsbane:
                     if (!hero.frozen) hero.Ready = true;
@@ -3743,7 +3744,7 @@ namespace HREngine.Bots
                 }
                 if (this.ownHero.entitiyID == newTarget) target = this.ownHero;
                 if (this.enemyHero.entitiyID == newTarget) target = this.enemyHero;
-                if (this.ownQuest.Id != CardDB.CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
+                if (this.ownQuest.Id != CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
                 hc.target = target;
             }
             if (newTarget != -2) // trigger spell-secrets!
@@ -3774,7 +3775,7 @@ namespace HREngine.Bots
                         }
                     }
                     c.CardSimulation.onCardPlay(this, true, target, choice);
-                    if (this.ownQuest.Id != CardDB.CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
+                    if (this.ownQuest.Id != CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
                     else if (c.type == CardDB.CardType.WEAPON)
                     {
                         this.ownWeapon.Angr += hc.addattack;
@@ -4197,7 +4198,7 @@ namespace HREngine.Bots
             {
                 if (this.tempTrigger.enemyMinionsDied > 0)
                 {
-                    CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.ownHeroAblility.card.cardIDenum == CardDB.CardIdEnum.NAX4_04H) ? CardDB.CardIdEnum.NAX4_03H : CardDB.CardIdEnum.NAX4_03);
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.ownHeroAblility.card.cardIDenum == CardIdEnum.NAX4_04H) ? CardIdEnum.NAX4_03H : CardIdEnum.NAX4_03);
                     for (int i = 0; i < this.tempTrigger.enemyMinionsDied; i++)
                     {
                         this.CallKid(kid, this.ownMinions.Count, true);
@@ -4208,7 +4209,7 @@ namespace HREngine.Bots
             {
                 if (this.tempTrigger.ownMinionsDied > 0)
                 {
-                    CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.enemyHeroAblility.card.cardIDenum == CardDB.CardIdEnum.NAX4_04H) ? CardDB.CardIdEnum.NAX4_03H : CardDB.CardIdEnum.NAX4_03);
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID((this.enemyHeroAblility.card.cardIDenum == CardIdEnum.NAX4_04H) ? CardIdEnum.NAX4_03H : CardIdEnum.NAX4_03);
                     for (int i = 0; i < this.tempTrigger.ownMinionsDied; i++)
                     {
                         this.CallKid(kid, this.enemyMinions.Count, false);
@@ -4416,7 +4417,7 @@ namespace HREngine.Bots
         {
             if (mnn.own)
             {
-                if (this.ownQuest.Id != CardDB.CardIdEnum.None) this.ownQuest.trigger_MinionWasSummoned(mnn);
+                if (this.ownQuest.Id != CardIdEnum.None) this.ownQuest.trigger_MinionWasSummoned(mnn);
                 if (mnn.taunt) anzOwnTaunt++;
                 foreach (Minion m in this.ownMinions.ToArray())
                 {
@@ -4433,7 +4434,7 @@ namespace HREngine.Bots
             }
             else
             {
-                if (this.enemyQuest.Id != CardDB.CardIdEnum.None) this.enemyQuest.trigger_MinionWasSummoned(mnn);
+                if (this.enemyQuest.Id != CardIdEnum.None) this.enemyQuest.trigger_MinionWasSummoned(mnn);
                 if (mnn.taunt) anzEnemyTaunt++;
                 foreach (Minion m in this.enemyMinions.ToArray())
                 {
@@ -4750,7 +4751,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_explosive = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_610).CardSimulation.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_610).CardSimulation.onSecretPlay(this, false, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4761,7 +4762,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_beartrap = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_060).CardSimulation.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.AT_060).CardSimulation.onSecretPlay(this, false, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4772,7 +4773,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_vaporize = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_594).CardSimulation.onSecretPlay(this, false, attacker, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_594).CardSimulation.onSecretPlay(this, false, attacker, 0);
                             needDamageTrigger = true;
                         }
 
@@ -4785,7 +4786,7 @@ namespace HREngine.Bots
                                 {
                                     sii.canBe_missdirection = false;
                                 }
-                                CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_533).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
+                                CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_533).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
                                 //no needDamageTrigger
                             }
                         }
@@ -4797,7 +4798,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_icebarrier = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_289).CardSimulation.onSecretPlay(this, false, defender, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_289).CardSimulation.onSecretPlay(this, false, defender, 0);
                         }
 
                         if (needDamageTrigger) doDmgTriggers();
@@ -4815,7 +4816,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_snaketrap = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_554).CardSimulation.onSecretPlay(this, false, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_554).CardSimulation.onSecretPlay(this, false, 0);
                             doDmgTriggers();
                         }
                     }
@@ -4832,7 +4833,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_freezing = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_611).CardSimulation.onSecretPlay(this, false, attacker, 0);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_611).CardSimulation.onSecretPlay(this, false, attacker, 0);
                         }
                     }
                 }
@@ -4848,7 +4849,7 @@ namespace HREngine.Bots
                         }
                         bool ishero = defender.isHero;
                         si.usedTrigger_CharIsAttacked(ishero, attacker.isHero);
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_130).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_130).CardSimulation.onSecretPlay(this, false, attacker, defender, out newTarget);
                         //no needDamageTrigger
                     }
                 }
@@ -4878,7 +4879,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_eyeforaneye = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_132).CardSimulation.onSecretPlay(this, false, dmg);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_132).CardSimulation.onSecretPlay(this, false, dmg);
                         }
 
                         if (si.canBe_iceblock && this.enemyHero.HealthPoints <= 0)
@@ -4888,7 +4889,7 @@ namespace HREngine.Bots
                             {
                                 sii.canBe_iceblock = false;
                             }
-                            CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_295).CardSimulation.onSecretPlay(this, false, this.enemyHero, dmg);
+                            CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_295).CardSimulation.onSecretPlay(this, false, this.enemyHero, dmg);
                         }
                     }
                 }
@@ -4917,7 +4918,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_mirrorentity = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_294).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_294).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
 
@@ -4928,7 +4929,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_repentance = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_379).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_379).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                     }
 
                     if (si.canBe_sacredtrial && this.ownMinions.Count > 3)
@@ -4939,7 +4940,7 @@ namespace HREngine.Bots
                             sii.canBe_sacredtrial = false;
                             sii.canBe_snipe = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOE_027).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.LOE_027).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
                     else if (si.canBe_snipe)
@@ -4949,7 +4950,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_snipe = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_609).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_609).CardSimulation.onSecretPlay(this, false, playedMinion, 0);
                         needDamageTrigger = true;
                     }
 
@@ -5002,7 +5003,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_cattrick = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_004).CardSimulation.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_004).CardSimulation.onSecretPlay(this, false, 0);
                         doDmgTriggers();
                     }
 
@@ -5014,7 +5015,7 @@ namespace HREngine.Bots
                             sii.canBe_spellbender = false;
                         }
                         if (target.own && prozis.penman.maycauseharmDatabase.ContainsKey(c.name)) { }
-                        else CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.tt_010).CardSimulation.onSecretPlay(this, false, null, target, out retval);
+                        else CardDB.Instance.getCardDataFromID(CardIdEnum.tt_010).CardSimulation.onSecretPlay(this, false, null, target, out retval);
                     }
                 }
 
@@ -5045,7 +5046,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_duplicate = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_018).CardSimulation.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.FP1_018).CardSimulation.onSecretPlay(this, false, 0);
                     }
 
                     if (si.canBe_redemption)
@@ -5055,7 +5056,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_redemption = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_136).CardSimulation.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_136).CardSimulation.onSecretPlay(this, false, 0);
                     }
 
                     if (si.canBe_avenge)
@@ -5065,7 +5066,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_avenge = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_020).CardSimulation.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.FP1_020).CardSimulation.onSecretPlay(this, false, 0);
                     }
                 }
             }
@@ -5091,7 +5092,7 @@ namespace HREngine.Bots
                         {
                             sii.canBe_darttrap = false;
                         }
-                        CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOE_021).CardSimulation.onSecretPlay(this, false, 0);
+                        CardDB.Instance.getCardDataFromID(CardIdEnum.LOE_021).CardSimulation.onSecretPlay(this, false, 0);
                         doDmgTriggers();
                     }
                 }
@@ -5310,21 +5311,21 @@ namespace HREngine.Bots
 
                 for (int i = 0; i < m.souloftheforest; i++)
                 {
-                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);//Treant
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_158t);//Treant
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                     CallKid(kid, pos, m.own, false, true);
                 }
                 
                 for (int i = 0; i < m.stegodon; i++)
                 {
-                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_810);//Stegodon
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_810);//Stegodon
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                     CallKid(kid, pos, m.own, false, true);
                 }
 
                 for (int i = 0; i < m.livingspores; i++)
                 {
-                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_999t2t1);//Plant
+                    CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_999t2t1);//Plant
                     int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                     CallKid(kid, pos, m.own, false, true);
                     CallKid(kid, pos, m.own, false, true);
@@ -5395,21 +5396,21 @@ namespace HREngine.Bots
 
                         for (int i = 0; i < m.souloftheforest; i++)
                         {
-                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);//Treant
+                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_158t);//Treant
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                             CallKid(kid, pos, m.own); //because baron rivendare
                         }
 
                         for (int i = 0; i < m.stegodon; i++)
                         {
-                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_810);//Stegodon
+                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_810);//Stegodon
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                             CallKid(kid, pos, m.own);  //because baron rivendare
                         }
 
                         for (int i = 0; i < m.livingspores; i++)
                         {
-                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_999t2t1);//Plant
+                            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_999t2t1);//Plant
                             int pos = (m.own) ? this.ownMinions.Count : this.enemyMinions.Count;
                             CallKid(kid, pos, m.own);
                             CallKid(kid, pos, m.own);  //because baron rivendare
@@ -5445,7 +5446,7 @@ namespace HREngine.Bots
                     if (m.HealthPoints <= 0)
                     {
                         this.OwnLastDiedMinion = m.handcard.card.cardIDenum;
-                        if (this.revivingOwnMinion == CardDB.CardIdEnum.None)
+                        if (this.revivingOwnMinion == CardIdEnum.None)
                         {
                             this.revivingOwnMinion = m.handcard.card.cardIDenum;
                             minionOwnReviving = true;
@@ -5485,7 +5486,7 @@ namespace HREngine.Bots
                     //kill it!
                     if (m.HealthPoints <= 0)
                     {
-                        if (this.revivingEnemyMinion == CardDB.CardIdEnum.None)
+                        if (this.revivingEnemyMinion == CardIdEnum.None)
                         {
                             this.revivingEnemyMinion = m.handcard.card.cardIDenum;
                             minionEnemyReviving = true;
@@ -5566,13 +5567,13 @@ namespace HREngine.Bots
             if (minionOwnReviving)
             {
                 this.secretTrigger_MinionDied(true);
-                this.revivingOwnMinion = CardDB.CardIdEnum.None;
+                this.revivingOwnMinion = CardIdEnum.None;
             }
 
             if (minionEnemyReviving)
             {
                 this.secretTrigger_MinionDied(false);
-                this.revivingEnemyMinion = CardDB.CardIdEnum.None;
+                this.revivingEnemyMinion = CardIdEnum.None;
             }
             //update buffs
         }
@@ -5800,7 +5801,7 @@ namespace HREngine.Bots
             doDmgTriggers();
 
             secretTrigger_MinionIsPlayed(m);
-            if (this.ownQuest.Id != CardDB.CardIdEnum.None) ownQuest.trigger_MinionWasPlayed(m);
+            if (this.ownQuest.Id != CardIdEnum.None) ownQuest.trigger_MinionWasPlayed(m);
 
             if (logging) LogHelper.WriteCombatLog("added " + m.handcard.card.name);
         }
@@ -6107,15 +6108,15 @@ namespace HREngine.Bots
 
         }
 
-        public void drawACard(CardDB.CardIdEnum ss, bool own, bool nopen = false)
+        public void drawACard(CardIdEnum ss, bool own, bool nopen = false)
         {
-            CardDB.CardIdEnum s = ss;
+            CardIdEnum s = ss;
 
             // cant hold more than 10 cards
 
             if (own)
             {
-                if (s == CardDB.CardIdEnum.None && !nopen) 
+                if (s == CardIdEnum.None && !nopen) 
                 {
                     if (ownDeckSize == 0)
                     {
@@ -6147,7 +6148,7 @@ namespace HREngine.Bots
             }
             else
             {
-                if (s == CardDB.CardIdEnum.None && !nopen) 
+                if (s == CardIdEnum.None && !nopen) 
                 {
                     if (enemyDeckSize == 0)
                     {
@@ -6180,7 +6181,7 @@ namespace HREngine.Bots
                 }
                 this.triggerCardsChanged(false);
 
-                if (anzEnemyChromaggus > 0 && s == CardDB.CardIdEnum.None && !nopen)
+                if (anzEnemyChromaggus > 0 && s == CardIdEnum.None && !nopen)
                 {
                     for (int i = 1; i <= anzEnemyChromaggus; i++)
                     {
@@ -6197,7 +6198,7 @@ namespace HREngine.Bots
                 return;
             }
 
-            if (s == CardDB.CardIdEnum.None)
+            if (s == CardIdEnum.None)
             {
                 CardDB.Card c = CardDB.Instance.getCardDataFromID(s);
                 Handmanager.Handcard hc = new Handmanager.Handcard { card = c, position = this.owncards.Count + 1, manacost = 1000, entity = this.getNextEntity() };
@@ -6212,7 +6213,7 @@ namespace HREngine.Bots
                 this.triggerCardsChanged(true);
             }
 
-            if (anzOwnChromaggus > 0 && s == CardDB.CardIdEnum.None && !nopen) 
+            if (anzOwnChromaggus > 0 && s == CardIdEnum.None && !nopen) 
             {
                 CardDB.Card c = CardDB.Instance.getCardDataFromID(s);
                 for (int i = 1; i <= anzOwnChromaggus; i++)
@@ -6387,22 +6388,22 @@ namespace HREngine.Bots
 
         public CardDB.Card getRandomCardForManaMinion(int manaCost)
         {
-            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_231); 
+            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_231); 
             if (manaCost > 0)
             {
                 if (manaCost > 10) manaCost = 10;
                 switch (manaCost)
                 {
-                    case 1: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_011); break; 
-                    case 2: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_131); break; 
-                    case 3: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_134); break; 
-                    case 4: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_074); break; 
-                    case 5: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DS1_055); break; 
-                    case 6: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_283); break; 
-                    case 7: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_088); break; 
-                    case 8: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_038); break; 
-                    case 9: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_573); break; 
-                    case 10: kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_120); break; 
+                    case 1: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_011); break; 
+                    case 2: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_131); break; 
+                    case 3: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_134); break; 
+                    case 4: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.GVG_074); break; 
+                    case 5: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.DS1_055); break; 
+                    case 6: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_283); break; 
+                    case 7: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_088); break; 
+                    case 8: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.NEW1_038); break; 
+                    case 9: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_573); break; 
+                    case 10: kid = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_120); break; 
                 }
             }
             return kid;
@@ -6713,7 +6714,7 @@ namespace HREngine.Bots
                     this.owncards.RemoveRange(0, anz);
                 }
                 
-                if (this.ownQuest.Id != CardDB.CardIdEnum.None) this.ownQuest.trigger_WasDiscard(numDiscardedCards);
+                if (this.ownQuest.Id != CardIdEnum.None) this.ownQuest.trigger_WasDiscard(numDiscardedCards);
 
                 
                 int malchezaarsimpCount = 0;
@@ -7021,7 +7022,7 @@ namespace HREngine.Bots
         }
 
 
-        public void setNewHeroPower(CardDB.CardIdEnum newHeroPower, bool own)
+        public void setNewHeroPower(CardIdEnum newHeroPower, bool own)
         {
             if (own)
             {
@@ -7360,38 +7361,38 @@ namespace HREngine.Bots
             }
             switch (tmp)
             {
-                case 1: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t01);
-                case 2: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t02);
-                case 3: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t03);
-                case 4: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t04);
-                case 5: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t05);
-                case 6: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t06);
-                case 7: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t07);
-                case 8: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t08);
-                case 9: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t09);
-                case 10: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t10);
-                case 11: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t11);
-                case 12: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t12);
-                case 13: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t13);
-                case 14: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t14);
-                case 15: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t15);
-                case 16: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t16);
-                case 17: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t17);
-                case 18: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t18);
-                case 19: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t19);
-                case 20: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t20);
-                case 21: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t21);
-                case 22: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t22);
-                case 23: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t23);
-                case 24: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t24);
-                case 25: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t25);
-                case 26: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t26);
-                case 27: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t27);
-                case 28: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t28);
-                case 29: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t29);
-                case 30: return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t30);
+                case 1: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t01);
+                case 2: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t02);
+                case 3: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t03);
+                case 4: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t04);
+                case 5: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t05);
+                case 6: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t06);
+                case 7: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t07);
+                case 8: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t08);
+                case 9: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t09);
+                case 10: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t10);
+                case 11: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t11);
+                case 12: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t12);
+                case 13: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t13);
+                case 14: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t14);
+                case 15: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t15);
+                case 16: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t16);
+                case 17: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t17);
+                case 18: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t18);
+                case 19: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t19);
+                case 20: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t20);
+                case 21: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t21);
+                case 22: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t22);
+                case 23: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t23);
+                case 24: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t24);
+                case 25: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t25);
+                case 26: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t26);
+                case 27: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t27);
+                case 28: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t28);
+                case 29: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t29);
+                case 30: return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t30);
             }
-            return CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_712_t01);
+            return CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_712_t01);
         }
 
         public void debugMinions()
@@ -7486,7 +7487,7 @@ namespace HREngine.Bots
             if (this.ownSecretsIDList.Count > 0)
             {
                 retval += "\r\n" + ("ownSecrets\t" );
-                foreach (CardDB.CardIdEnum s in this.ownSecretsIDList)
+                foreach (CardIdEnum s in this.ownSecretsIDList)
                 {
                     retval += " " + CardDB.Instance.getCardDataFromID(s).name;
                 }

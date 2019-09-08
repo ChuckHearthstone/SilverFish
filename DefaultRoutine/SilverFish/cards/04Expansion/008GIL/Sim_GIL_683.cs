@@ -18,7 +18,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GIL_683t);
+            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.GIL_683t);
             int pos = (m.own) ? p.enemyMinions.Count : p.ownMinions.Count;
             p.CallKid(kid, pos, !m.own);
         }

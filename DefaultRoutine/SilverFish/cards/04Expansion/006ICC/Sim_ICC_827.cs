@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._006ICC
         
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.CardIdEnum.ICC_827p, ownplay); // Death's Shadow
+            p.setNewHeroPower(CardIdEnum.ICC_827p, ownplay); // Death's Shadow
             if (ownplay)
             {
                 p.ownHero.armor += 5;

@@ -6,9 +6,9 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Choose One - Transform into a 1/2 with Poisonous; or a 1/5 with Taunt.
 
-        CardDB.Card kid12 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_051t);
-        CardDB.Card kid15 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_051t2);
-        CardDB.Card kidMix = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_051t3);
+        CardDB.Card kid12 = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_051t);
+        CardDB.Card kid15 = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_051t2);
+        CardDB.Card kidMix = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_051t3);
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

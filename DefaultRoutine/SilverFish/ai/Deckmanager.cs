@@ -1,11 +1,12 @@
-﻿namespace HREngine.Bots
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SilverFish.Enums;
 
+namespace HREngine.Bots
+{
 
     public class Deck
     {
-        public Dictionary<CardDB.CardIdEnum, int> deckDiff = new Dictionary<CardDB.CardIdEnum, int>();
+        public Dictionary<CardIdEnum, int> deckDiff = new Dictionary<CardIdEnum, int>();
         public int deckSize = 0;
         public bool deckChanged = false;
         //public int anzcards = 0;
@@ -18,14 +19,14 @@
 
         }
 
-        public Deck(Playfield p, CardDB.CardIdEnum cardId, int number, bool own)
+        public Deck(Playfield p, CardIdEnum cardId, int number, bool own)
         {
             Deck newDeck = new Deck();
             newDeck.deckChanged = true;
             if (this.deckChanged)
             {
                 newDeck.deckSize += this.deckSize;
-                foreach (KeyValuePair<CardDB.CardIdEnum, int> diff in this.deckDiff)
+                foreach (KeyValuePair<CardIdEnum, int> diff in this.deckDiff)
                 {
                     newDeck.deckDiff.Add(diff.Key, diff.Value);
                 }

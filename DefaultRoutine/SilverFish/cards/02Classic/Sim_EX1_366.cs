@@ -4,7 +4,7 @@ namespace SilverFish.cards._02Classic
 {
 	class Sim_EX1_366 : SimTemplate //swordofjustice
 	{
-        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_366);
+        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_366);
 
 //    jedes mal, wenn ihr einen diener herbeiruft, erhält dieser +1/+1 und diese waffe verliert 1 haltbarkeit.
 

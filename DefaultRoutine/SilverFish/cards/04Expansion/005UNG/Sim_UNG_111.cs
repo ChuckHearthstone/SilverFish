@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Transform your Mana Crystals into 2/2 minions. Recover the mana when they die.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_111t1); //Mana Treant
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_111t1); //Mana Treant
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

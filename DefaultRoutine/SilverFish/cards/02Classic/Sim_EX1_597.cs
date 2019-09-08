@@ -7,7 +7,7 @@ namespace SilverFish.cards._02Classic
 
 //    fügt am ende eures zuges diesem diener 1 schaden zu und beschwört einen wichtel (1/1).
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_598);//imp
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_598);//imp
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {

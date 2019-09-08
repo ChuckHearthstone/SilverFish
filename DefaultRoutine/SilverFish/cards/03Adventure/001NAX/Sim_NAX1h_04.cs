@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 	{
 		// Hero Power: Summon a 4/4 Nerubian.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX1h_03);//4/4Nerubian
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.NAX1h_03);//4/4Nerubian
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

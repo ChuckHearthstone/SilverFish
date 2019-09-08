@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Battlecry: If you played an Elemental last turn, summon two 2/3 Elementals with Taunt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_208t); //Rock Elemental
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_208t); //Rock Elemental
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

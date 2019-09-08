@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.Helpers
 {
@@ -16,11 +17,11 @@ namespace SilverFish.Helpers
 
     public class CardNotImplementedHelper
     {
-        private static readonly ConcurrentDictionary<CardDB.CardIdEnum, NotImplementedInfo> NotImplementedCards =
-            new ConcurrentDictionary<CardDB.CardIdEnum, NotImplementedInfo>();
+        private static readonly ConcurrentDictionary<CardIdEnum, NotImplementedInfo> NotImplementedCards =
+            new ConcurrentDictionary<CardIdEnum, NotImplementedInfo>();
 
-        private static readonly Dictionary<CardDB.CardIdEnum, CardDB.Card> SingleGameCards =
-            new Dictionary<CardDB.CardIdEnum, CardDB.Card>();
+        private static readonly Dictionary<CardIdEnum, CardDB.Card> SingleGameCards =
+            new Dictionary<CardIdEnum, CardDB.Card>();
 
         public static void Add(CardDB.Card card)
         {

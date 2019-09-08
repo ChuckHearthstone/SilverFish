@@ -13,7 +13,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             {
                 CardDB.Card c;
                 int count = 0;
-                foreach (KeyValuePair<CardDB.CardIdEnum, int> cid in p.prozis.turnDeck)
+                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if (c.cost == 1)

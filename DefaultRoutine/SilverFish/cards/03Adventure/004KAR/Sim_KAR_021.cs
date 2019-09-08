@@ -6,9 +6,9 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Whenever you cast a spell, summon a random basic Totem.
 
-        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_050);
-        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_009);
-        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_052);
+        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_050);
+        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardIdEnum.NEW1_009);
+        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_052);
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {

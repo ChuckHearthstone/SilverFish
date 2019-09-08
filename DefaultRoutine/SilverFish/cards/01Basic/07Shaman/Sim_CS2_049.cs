@@ -10,10 +10,10 @@ namespace SilverFish.cards._01Basic._07Shaman
     {
         //Hero Power: Summon a random Totem.
 
-        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_050);
-        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_009);
-        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_052);
-        CardDB.Card stoneclaw = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_051);
+        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_050);
+        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardIdEnum.NEW1_009);
+        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_052);
+        CardDB.Card stoneclaw = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_051);
 
         /// <summary>
         /// "LocStringEnUs": "<b>Hero Power</b>\nSummon a random Totem.",

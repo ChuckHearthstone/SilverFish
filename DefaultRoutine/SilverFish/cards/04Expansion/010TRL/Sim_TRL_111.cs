@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	
 	//战吼：如果你控制一个野兽，便获得+1耐久度。
 	{
-        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.TRL_111);
+        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardIdEnum.TRL_111);
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

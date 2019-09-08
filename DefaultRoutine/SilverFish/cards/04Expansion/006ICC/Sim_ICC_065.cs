@@ -8,8 +8,8 @@ namespace SilverFish.cards._04Expansion._006ICC
         
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardIdEnum.ICC_026t, m.own, true); //Skeleton 1/1
-            p.drawACard(CardDB.CardIdEnum.ICC_026t, m.own, true);
+            p.drawACard(CardIdEnum.ICC_026t, m.own, true); //Skeleton 1/1
+            p.drawACard(CardIdEnum.ICC_026t, m.own, true);
         }
     }
 }

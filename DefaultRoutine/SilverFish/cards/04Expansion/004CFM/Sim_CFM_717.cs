@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	public class Sim_CFM_717 : SimTemplate
 	{
         
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_717);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_717);
 
         /// <summary>
         /// "LocStringEnUs": "<b>Battlecry:</b> Summon a{1} {0} <b>Jade Golem</b>.\n<b><b>Overload</b>:</b> (1)@<b>Battlecry:</b> Summon a <b>Jade Golem</b>.

@@ -1,4 +1,5 @@
 ﻿using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -90,13 +91,13 @@ namespace HREngine.Bots
         List<Minion> ownminions = new List<Minion>();
         List<Minion> enemyminions = new List<Minion>();
         List<Handmanager.Handcard> handcards = new List<Handmanager.Handcard>();
-        List<CardDB.CardIdEnum> enemycards = new List<CardDB.CardIdEnum>();
+        List<CardIdEnum> enemycards = new List<CardIdEnum>();
         List<GraveYardItem> turnGraveYard = new List<GraveYardItem>();
         List<GraveYardItem> turnGraveYardAll = new List<GraveYardItem>();
         List<string> discover = new List<string>();
         Dictionary<int, IDEnumOwner> LurkersDB = new Dictionary<int, IDEnumOwner>();
-        Dictionary<CardDB.CardIdEnum, int> og = new Dictionary<CardDB.CardIdEnum, int>();
-        Dictionary<CardDB.CardIdEnum, int> eg = new Dictionary<CardDB.CardIdEnum, int>();
+        Dictionary<CardIdEnum, int> og = new Dictionary<CardIdEnum, int>();
+        Dictionary<CardIdEnum, int> eg = new Dictionary<CardIdEnum, int>();
 
         bool feugendead = false;
         bool stalaggdead = false;
@@ -161,8 +162,8 @@ namespace HREngine.Bots
                 lines = data.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             }
 
-            CardDB.Card heroability = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_034);
-            CardDB.Card enemyability = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_034);
+            CardDB.Card heroability = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_034);
+            CardDB.Card enemyability = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_034);
             bool abilityReady = false;
 
             int readstate = 0;
@@ -465,7 +466,7 @@ namespace HREngine.Bots
                         if (tmp == "" || tmp == " ") continue;
                         string id = tmp.Split(',')[0];
                         int anz = Convert.ToInt32(tmp.Split(',')[1]);
-                        CardDB.CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(id);
+                        CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(id);
                         this.og.Add(cide, anz);
                     }
                     continue;
@@ -478,7 +479,7 @@ namespace HREngine.Bots
                         if (tmp == "" || tmp == " ") continue;
                         string id = tmp.Split(',')[0];
                         int anz = Convert.ToInt32(tmp.Split(',')[1]);
-                        CardDB.CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(id);
+                        CardIdEnum cide = CardDB.Instance.cardIdstringToEnum(id);
                         this.eg.Add(cide, anz);
                     }
                     continue;

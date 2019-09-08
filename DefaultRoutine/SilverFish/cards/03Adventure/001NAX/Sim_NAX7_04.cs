@@ -7,7 +7,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 		//Deals double damage to heroes.
 		//Handled in minionAttacksMinion()
 
-		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX7_04);
+		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.NAX7_04);
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

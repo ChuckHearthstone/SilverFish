@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
     {
         //Deathrattle: Your Hero Power becomes 'Deal 2 damage.'
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_050);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_050);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
@@ -15,7 +15,7 @@ namespace SilverFish.cards._04Expansion._002AT
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.setNewHeroPower(CardDB.CardIdEnum.AT_050t, m.own); // Lightning Jolt
+            p.setNewHeroPower(CardIdEnum.AT_050t, m.own); // Lightning Jolt
         }
     }
 }

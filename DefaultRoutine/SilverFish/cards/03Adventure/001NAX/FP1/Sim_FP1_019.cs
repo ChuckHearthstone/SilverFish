@@ -4,7 +4,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
 {
 	class Sim_FP1_019 : SimTemplate //poisonseeds
 	{
-        CardDB.Card d = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);
+        CardDB.Card d = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_158t);
 //    vernichtet alle diener und ruft für jeden einen treant (2/2) als ersatz herbei.
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)

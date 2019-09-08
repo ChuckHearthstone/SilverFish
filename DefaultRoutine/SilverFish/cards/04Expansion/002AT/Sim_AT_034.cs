@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Your Hero Power gives this weapon +1 attack instead of replacing it.
 		
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_034);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_034);
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Deal 5 damage. Draw 5 cards. Gain 5 Armor. Summon a 5/5 Ghoul.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_085t); //Ghoul Infestor
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_085t); //Ghoul Infestor
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

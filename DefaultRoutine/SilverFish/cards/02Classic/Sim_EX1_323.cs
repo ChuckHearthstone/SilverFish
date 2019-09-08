@@ -6,12 +6,12 @@ namespace SilverFish.cards._02Classic
 	{
         // Battlecry: Destroy your hero and replace it with Lord Jaraxxus.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_323w);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_323w);
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             p.equipWeapon(weapon, own.own);
-            p.setNewHeroPower(CardDB.CardIdEnum.EX1_tk33, own.own); // INFERNO!
+            p.setNewHeroPower(CardIdEnum.EX1_tk33, own.own); // INFERNO!
 
             if (own.own)
             {

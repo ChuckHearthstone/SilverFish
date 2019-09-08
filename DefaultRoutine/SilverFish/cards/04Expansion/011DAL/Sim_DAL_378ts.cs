@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //召唤一个5/5并具有突袭的双足飞龙。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_378t1);//双足飞龙
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.DAL_378t1);//双足飞龙
         
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

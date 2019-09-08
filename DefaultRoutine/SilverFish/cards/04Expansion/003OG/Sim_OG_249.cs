@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Taunt. Deathrattle: Summon a 2/2 Slime.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX11_03);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.NAX11_03);
 		
         public override void onDeathrattle(Playfield p, Minion m)
         {

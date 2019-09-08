@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -94,23 +95,23 @@ namespace HREngine.Bots
     public class RulesEngine
     {
         Dictionary<int, Rule> heapOfRules = new Dictionary<int, Rule>();
-        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsPlay = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
-        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsAttack = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
-        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsHand = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
-        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsOwnBoard = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
-        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsEnemyBoard = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
+        Dictionary<int, List<CardIdEnum>> RuleCardIdsPlay = new Dictionary<int, List<CardIdEnum>>(); 
+        Dictionary<int, List<CardIdEnum>> RuleCardIdsAttack = new Dictionary<int, List<CardIdEnum>>(); 
+        Dictionary<int, List<CardIdEnum>> RuleCardIdsHand = new Dictionary<int, List<CardIdEnum>>(); 
+        Dictionary<int, List<CardIdEnum>> RuleCardIdsOwnBoard = new Dictionary<int, List<CardIdEnum>>(); 
+        Dictionary<int, List<CardIdEnum>> RuleCardIdsEnemyBoard = new Dictionary<int, List<CardIdEnum>>(); 
         Dictionary<int, int> BoardStateRules = new Dictionary<int, int>(); 
         Dictionary<int, int> BoardStateRulesGame = new Dictionary<int, int>(); 
         Dictionary<int, int> BoardStateRulesTurn = new Dictionary<int, int>(); 
-        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRules = new Dictionary<CardDB.CardIdEnum, List<int>>();
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesPlayGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesHandGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesOwnBoardGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesEnemyBoardGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> AttackerIdRulesGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRulesTurnPlay = new Dictionary<CardDB.CardIdEnum, List<int>>(); 
-        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRulesTurnHand = new Dictionary<CardDB.CardIdEnum, List<int>>();
+        Dictionary<CardIdEnum, List<int>> CardIdRules = new Dictionary<CardIdEnum, List<int>>();
+        Dictionary<CardIdEnum, Dictionary<int, int>> CardIdRulesGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, Dictionary<int, int>> CardIdRulesPlayGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, Dictionary<int, int>> CardIdRulesHandGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, Dictionary<int, int>> CardIdRulesOwnBoardGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, Dictionary<int, int>> CardIdRulesEnemyBoardGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, Dictionary<int, int>> AttackerIdRulesGame = new Dictionary<CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardIdEnum, List<int>> CardIdRulesTurnPlay = new Dictionary<CardIdEnum, List<int>>(); 
+        Dictionary<CardIdEnum, List<int>> CardIdRulesTurnHand = new Dictionary<CardIdEnum, List<int>>();
         Dictionary<TAG_RACE, List<int>> hcRaceRulesGame = new Dictionary<TAG_RACE, List<int>>();
         Dictionary<TAG_RACE, List<int>> hcRaceRulesTurn = new Dictionary<TAG_RACE, List<int>>();
         List<int> pfStateRulesGame = new List<int>();
@@ -122,7 +123,7 @@ namespace HREngine.Bots
         public bool mulliganRulesLoaded = false;
         Dictionary<string, string> MulliganRules = new Dictionary<string, string>();
         Dictionary<string, Dictionary<string, string>> MulliganRulesDB = new Dictionary<string, Dictionary<string, string>>();
-        Dictionary<CardDB.CardIdEnum, string> MulliganRulesManual = new Dictionary<CardDB.CardIdEnum, string>();
+        Dictionary<CardIdEnum, string> MulliganRulesManual = new Dictionary<CardIdEnum, string>();
         Condition condTmp;
         string condErr;
         Minion target;
@@ -411,7 +412,7 @@ namespace HREngine.Bots
             public param parameter = param.None;
             public int num = int.MinValue;
             public TAG_CLASS hClass = TAG_CLASS.INVALID;
-            public CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
+            public CardIdEnum cardID = CardIdEnum.None;
             public int numCards = 0;
             public int bonus = 0;
             public int orCondNum = -1;
@@ -425,7 +426,7 @@ namespace HREngine.Bots
                 this.num = pnum;
                 this.parentRule = pRule;
             }
-            public Condition(param paramtr, CardDB.CardIdEnum cID, string pRule)
+            public Condition(param paramtr, CardIdEnum cID, string pRule)
             {
                 this.parameter = paramtr;
                 this.cardID = cID;
@@ -450,11 +451,11 @@ namespace HREngine.Bots
 
         public class actUnit
         {
-            public CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
+            public CardIdEnum cardID = CardIdEnum.None;
             public Action action = null;
             public int entity = -1;
 
-            public actUnit(CardDB.CardIdEnum cid, Action a, int ent)
+            public actUnit(CardIdEnum cid, Action a, int ent)
             {
                 this.cardID = cid;
                 this.action = a;
@@ -487,14 +488,14 @@ namespace HREngine.Bots
             int weight = 0;
             List<int> possibleRules = new List<int>();
             possibleRules.AddRange(this.BoardStateRulesTurn.Keys);
-            Dictionary<CardDB.CardIdEnum, int> handCardsWRule = new Dictionary<CardDB.CardIdEnum, int>();
-            Dictionary<CardDB.CardIdEnum, List<actUnit>> playedCardsWRule = new Dictionary<CardDB.CardIdEnum, List<actUnit>>();
-            Dictionary<CardDB.CardIdEnum, int> playedCardsWRulePen = new Dictionary<CardDB.CardIdEnum, int>();
-            Dictionary<CardDB.CardIdEnum, List<actUnit>> attackersWRule = new Dictionary<CardDB.CardIdEnum, List<actUnit>>();
-            Dictionary<CardDB.CardIdEnum, int> attackersWRulePen = new Dictionary<CardDB.CardIdEnum, int>();
+            Dictionary<CardIdEnum, int> handCardsWRule = new Dictionary<CardIdEnum, int>();
+            Dictionary<CardIdEnum, List<actUnit>> playedCardsWRule = new Dictionary<CardIdEnum, List<actUnit>>();
+            Dictionary<CardIdEnum, int> playedCardsWRulePen = new Dictionary<CardIdEnum, int>();
+            Dictionary<CardIdEnum, List<actUnit>> attackersWRule = new Dictionary<CardIdEnum, List<actUnit>>();
+            Dictionary<CardIdEnum, int> attackersWRulePen = new Dictionary<CardIdEnum, int>();
             foreach (Action a in p.playactions)
             {
-                CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
+                CardIdEnum cardID = CardIdEnum.None;
                 switch (a.actionType)
                 {
                     case actionEnum.playcard:
@@ -731,9 +732,9 @@ namespace HREngine.Bots
             }
         }
 
-        private void addCardIdRulesGame(Dictionary<int, List<CardDB.CardIdEnum>> baseDct, Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> targetDct, int ruleNum)
+        private void addCardIdRulesGame(Dictionary<int, List<CardIdEnum>> baseDct, Dictionary<CardIdEnum, Dictionary<int, int>> targetDct, int ruleNum)
         {
-            foreach (CardDB.CardIdEnum cid in baseDct[ruleNum])
+            foreach (CardIdEnum cid in baseDct[ruleNum])
             {
                 if (targetDct.ContainsKey(cid))
                 {
@@ -747,7 +748,7 @@ namespace HREngine.Bots
                 else targetDct.Add(cid, new Dictionary<int, int>() { { ruleNum, 0 } });
             }
 
-            foreach (CardDB.CardIdEnum cid in baseDct[ruleNum])
+            foreach (CardIdEnum cid in baseDct[ruleNum])
             {
                 if (CardIdRulesGame.ContainsKey(cid))
                 {
@@ -764,7 +765,7 @@ namespace HREngine.Bots
 
         private void addAttackerIdRulesGame(int ruleNum)
         {
-            foreach (CardDB.CardIdEnum cid in RuleCardIdsAttack[ruleNum])
+            foreach (CardIdEnum cid in RuleCardIdsAttack[ruleNum])
             {
                 if (AttackerIdRulesGame.ContainsKey(cid))
                 {
@@ -1151,11 +1152,11 @@ namespace HREngine.Bots
             {
                 bool stateRule = false;
                 bool playRule = false;
-                List<CardDB.CardIdEnum> IDsListPlay = new List<CardDB.CardIdEnum>();
-                List<CardDB.CardIdEnum> IDsListHand = new List<CardDB.CardIdEnum>();
-                List<CardDB.CardIdEnum> IDsListOB = new List<CardDB.CardIdEnum>();
-                List<CardDB.CardIdEnum> IDsListEB = new List<CardDB.CardIdEnum>();
-                List<CardDB.CardIdEnum> IDsListAttack = new List<CardDB.CardIdEnum>();
+                List<CardIdEnum> IDsListPlay = new List<CardIdEnum>();
+                List<CardIdEnum> IDsListHand = new List<CardIdEnum>();
+                List<CardIdEnum> IDsListOB = new List<CardIdEnum>();
+                List<CardIdEnum> IDsListEB = new List<CardIdEnum>();
+                List<CardIdEnum> IDsListAttack = new List<CardIdEnum>();
                 foreach (Condition cond in getAllCondList(oneRule.Value.conditions))
                 {
                     switch (cond.parameter)
@@ -1556,8 +1557,8 @@ namespace HREngine.Bots
                     }
                     break;
                 case 1:
-                    CardDB.CardIdEnum cardId = CardDB.Instance.cardIdstringToEnum(pval);
-                    if (cardId == CardDB.CardIdEnum.None)
+                    CardIdEnum cardId = CardDB.Instance.cardIdstringToEnum(pval);
+                    if (cardId == CardIdEnum.None)
                     {
                         condErr = "Wrong CardID: ";
                         returnRes = false;
@@ -1591,14 +1592,14 @@ namespace HREngine.Bots
                     getSinglecond(extraParam[i], out tmp, out parameter);
                     
                     int pvalInt = 0;
-                    CardDB.CardIdEnum pvalCardId = CardDB.CardIdEnum.None;
+                    CardIdEnum pvalCardId = CardIdEnum.None;
                     try
                     {
                         switch (tmp[0])
                         {
                             case "tgt":
                                 pvalCardId = CardDB.Instance.cardIdstringToEnum(tmp[1]);
-                                if (pvalCardId == CardDB.CardIdEnum.None)
+                                if (pvalCardId == CardIdEnum.None)
                                 {
                                     condErr = "Wrong CardID: ";
                                     returnRes = false;
@@ -2778,14 +2779,14 @@ namespace HREngine.Bots
                     if (p.enemyHeroStartClass != cond.hClass) return true;
                     return false;
                 case param.tgt_equal:
-                    if (a.target!= null && (a.target.handcard.card.cardIDenum == cond.cardID || (a.target.isHero && cond.cardID == CardDB.CardIdEnum.hero))) return true;
+                    if (a.target!= null && (a.target.handcard.card.cardIDenum == cond.cardID || (a.target.isHero && cond.cardID == CardIdEnum.hero))) return true;
                     return false;
                 case param.tgt_notequal:
                     if (a.target != null)
                     {
                         if (a.target.isHero)
                         {
-                            if (cond.cardID != CardDB.CardIdEnum.hero) return true;
+                            if (cond.cardID != CardIdEnum.hero) return true;
                             else return false;
                         }
                         else if (a.target.handcard.card.cardIDenum != cond.cardID) return true;

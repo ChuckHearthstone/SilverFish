@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
            if (p.ownMinions.Count < 3) p.evaluatePenality +=30;
 		   p.allMinionOfASideGetBuffed(ownplay, 1, 1);
-		   p.drawACard(CardDB.CardIdEnum.DAL_351ts, ownplay);
+		   p.drawACard(CardIdEnum.DAL_351ts, ownplay);
 		}
 	}
 }

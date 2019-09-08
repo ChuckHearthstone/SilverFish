@@ -11,15 +11,15 @@ namespace SilverFish.cards._04Expansion._002AT
         {
             if (own.own)
             {
-                List<CardDB.CardIdEnum> secrets = new List<CardDB.CardIdEnum>();
+                List<CardIdEnum> secrets = new List<CardIdEnum>();
                 CardDB.Card c;
-                foreach (KeyValuePair<CardDB.CardIdEnum, int> cid in p.prozis.turnDeck)
+                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if (c.Secret) secrets.Add(cid.Key);
                 }
 
-                foreach (CardDB.CardIdEnum cId in secrets)
+                foreach (CardIdEnum cId in secrets)
                 {
                     if (p.ownSecretsIDList.Count < 5 && !p.ownSecretsIDList.Contains(cId)) p.ownSecretsIDList.Add(cId);
                 }

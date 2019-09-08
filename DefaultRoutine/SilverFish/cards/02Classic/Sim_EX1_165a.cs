@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Charge
 
-        CardDB.Card cat = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_165t1);
+        CardDB.Card cat = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_165t1);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

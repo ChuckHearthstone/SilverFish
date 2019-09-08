@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Hero PowerSummon a 6/6 Infernal.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_tk34);//infernal
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_tk34);//infernal
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

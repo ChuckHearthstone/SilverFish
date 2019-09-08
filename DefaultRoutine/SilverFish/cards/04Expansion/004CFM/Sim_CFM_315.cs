@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Battlecry: Summon a 1/1 Cat.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_315t); //1/1 Cat
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_315t); //1/1 Cat
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

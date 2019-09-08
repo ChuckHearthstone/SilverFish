@@ -96,7 +96,6 @@
     <Compile Include="ai\BoardTester.cs" />
     <Compile Include="ai\CardDB.cs" />
     <Compile Include="ai\CardDB_Card.cs" />
-    <Compile Include="ai\CardDB_cardIDEnum.cs" />
     <Compile Include="ai\CardDB_cardName.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
     <Compile Include="cards\04Expansion\004CFM\Sim_CFM_712.cs" />
@@ -210,6 +209,7 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_720.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_726.cs" />
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
+    <Compile Include="Enums\CardIdEnum.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />

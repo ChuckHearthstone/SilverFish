@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     class Sim_GVG_080 : SimTemplate //* Druid of the Fang
     {
         //   Battlecry:If you have a Beast, transform this minion into a 7/7.
-        CardDB.Card betterguy = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_080t);
+        CardDB.Card betterguy = CardDB.Instance.getCardDataFromID(CardIdEnum.GVG_080t);
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

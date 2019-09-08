@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
         //After you cast a spell, summon a random minion of that Cost. Lose 1 Durability.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_097t);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_097t);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

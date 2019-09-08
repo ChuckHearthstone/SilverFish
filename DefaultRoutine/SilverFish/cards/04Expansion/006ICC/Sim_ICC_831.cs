@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.CardIdEnum.ICC_831p, ownplay); // Siphon Life
+            p.setNewHeroPower(CardIdEnum.ICC_831p, ownplay); // Siphon Life
             if (ownplay) p.ownHero.armor += 5;
             else p.enemyHero.armor += 5;
 
@@ -21,12 +21,12 @@ namespace SilverFish.cards._04Expansion._006ICC
             int kids = 7 - pos;
             if (kids > 0)
             {
-                p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_301), pos, ownplay); //Felguard Taunt
+                p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_301), pos, ownplay); //Felguard Taunt
                 kids--;
 
                 if (kids > 0)
                 {
-                    foreach (KeyValuePair<CardDB.CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
+                    foreach (KeyValuePair<CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
                     {
                         kid = cdb.getCardDataFromID(e.Key);
                         if ((TAG_RACE)kid.race == TAG_RACE.DEMON)

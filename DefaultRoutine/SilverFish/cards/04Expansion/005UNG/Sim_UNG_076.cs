@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Deathrattle: Summon two 1/1 Raptors.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_076t1); //1/1 Raptor
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_076t1); //1/1 Raptor
         
         public override void onDeathrattle(Playfield p, Minion m)
         {

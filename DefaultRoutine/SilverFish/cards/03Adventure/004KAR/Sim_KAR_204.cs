@@ -10,7 +10,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 		{
             if (own.own)
             {
-                if (p.OwnLastDiedMinion != CardDB.CardIdEnum.None)
+                if (p.OwnLastDiedMinion != CardIdEnum.None)
                 {
                     p.CallKid(CardDB.Instance.getCardDataFromID(p.OwnLastDiedMinion), own.zonepos, own.own);
                 }

@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     {
         //Deathrattle: Give a random friendly Mech +2/+2.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_036);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.GVG_036);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

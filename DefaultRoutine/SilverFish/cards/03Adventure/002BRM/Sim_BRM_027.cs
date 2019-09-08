@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 		        
 		public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.setNewHeroPower(CardDB.CardIdEnum.BRM_027p, m.own); // DIE, INSECT!
+            p.setNewHeroPower(CardIdEnum.BRM_027p, m.own); // DIE, INSECT!
 
 			if (m.own)
             {

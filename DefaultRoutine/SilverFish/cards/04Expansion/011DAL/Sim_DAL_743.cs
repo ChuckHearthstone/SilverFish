@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//突袭，亡语：召唤一个1/1的鱼人。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_743t);// 1/1鱼人
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.DAL_743t);// 1/1鱼人
         
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

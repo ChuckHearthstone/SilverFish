@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._007LOOT
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            var card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_065);
+            var card = CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_065);
             p.CallKid(card, m.zonepos - 1, m.own, true, true);
             p.CallKid(card, m.zonepos, m.own, true, true);
             p.CallKid(card, m.zonepos + 1, m.own, true, true);

@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         // 战吼：召唤两个0/2的地精炸弹。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BOT_031); //地精炸弹
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BOT_031); //地精炸弹
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

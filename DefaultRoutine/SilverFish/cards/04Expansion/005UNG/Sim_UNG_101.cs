@@ -6,9 +6,9 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Choose One - Transform into a 5/3 with Stealth or a 3/5 with Taunt.
 
-        CardDB.Card m53 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_101t);
-        CardDB.Card m35 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_101t2);
-        CardDB.Card m55 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_101t3);
+        CardDB.Card m53 = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_101t);
+        CardDB.Card m35 = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_101t2);
+        CardDB.Card m55 = CardDB.Instance.getCardDataFromID(CardIdEnum.UNG_101t3);
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

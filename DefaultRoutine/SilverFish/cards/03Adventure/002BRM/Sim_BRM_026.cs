@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Battlecry: Summon a random 1-Cost minion for your opponent.
         		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_614t); //flameofazzinoth
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_614t); //flameofazzinoth
 
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

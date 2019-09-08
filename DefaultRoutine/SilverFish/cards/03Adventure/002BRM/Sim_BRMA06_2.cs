@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Hero Power: Summon a 1/3 Flamewaker Acolyte.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRMA06_4);//1/3Flamewaker Acolyte
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRMA06_4);//1/3Flamewaker Acolyte
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

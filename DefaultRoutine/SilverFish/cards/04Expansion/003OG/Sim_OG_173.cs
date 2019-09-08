@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//If you control two of these at the end of your turn, merge them into 'The Ancient One'
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_173a); //The Ancient One
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_173a); //The Ancient One
 		
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {

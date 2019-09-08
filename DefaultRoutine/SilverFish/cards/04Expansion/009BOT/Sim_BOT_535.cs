@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         // 战吼：召唤两个1/1的微型机器人。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BOT_312t); //1/1 微型机器人
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BOT_312t); //1/1 微型机器人
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

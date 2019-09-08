@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_205), m.zonepos-1, m.own); //Silverware Golem.
+			p.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.KAR_205), m.zonepos-1, m.own); //Silverware Golem.
         }
 	}
 }

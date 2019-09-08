@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             int kids = 7 - pos;
             if (kids > 0)
             {
-                foreach (KeyValuePair<CardDB.CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
+                foreach (KeyValuePair<CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
                 {
                     kid = cdb.getCardDataFromID(e.Key);
                     if (kid.tank)

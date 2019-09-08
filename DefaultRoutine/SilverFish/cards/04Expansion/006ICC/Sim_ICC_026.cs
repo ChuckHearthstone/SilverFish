@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Battlecry: Summon two 1/1 Skeletons.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_026t); //1/1 Skeleton
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_026t); //1/1 Skeleton
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

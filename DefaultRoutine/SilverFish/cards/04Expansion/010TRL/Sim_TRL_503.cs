@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//亡语：召唤三个1/1的甲虫。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.TRL_503t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.TRL_503t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

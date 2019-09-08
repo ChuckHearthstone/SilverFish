@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //召唤两个1/2并具有吸血的树妖。
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_733t);//水晶树妖
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.DAL_733t);//水晶树妖
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

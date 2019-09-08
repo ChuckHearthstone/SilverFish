@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Transform into a +1/+1 and Stealth
 		
-        CardDB.Card Stealth = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_042t2);
+        CardDB.Card Stealth = CardDB.Instance.getCardDataFromID(CardIdEnum.AT_042t2);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -8,8 +8,8 @@ namespace SilverFish.cards._02Classic
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            CardDB.CardIdEnum newHeroPower = CardDB.CardIdEnum.EX1_625t; // Mind Spike
-            if ((ownplay ? p.ownHeroAblility.card.cardIDenum : p.enemyHeroAblility.card.cardIDenum) == CardDB.CardIdEnum.EX1_625t) newHeroPower = CardDB.CardIdEnum.EX1_625t2; // Mind Shatter
+            CardIdEnum newHeroPower = CardIdEnum.EX1_625t; // Mind Spike
+            if ((ownplay ? p.ownHeroAblility.card.cardIDenum : p.enemyHeroAblility.card.cardIDenum) == CardIdEnum.EX1_625t) newHeroPower = CardIdEnum.EX1_625t2; // Mind Shatter
             p.setNewHeroPower(newHeroPower, ownplay);
         }
     }

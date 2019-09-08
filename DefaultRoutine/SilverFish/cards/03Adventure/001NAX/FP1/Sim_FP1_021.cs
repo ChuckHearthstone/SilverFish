@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
     {
         //Deathrattle: Deal 1 damage to all minions.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_021);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardIdEnum.FP1_021);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

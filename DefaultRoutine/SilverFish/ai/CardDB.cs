@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using SilverFish.Helpers;
 using Triton.Common.LogUtilities;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -90,12 +91,12 @@ namespace HREngine.Bots
 
         public CardIdEnum cardIdstringToEnum(string s)
         {
-            CardDB.CardIdEnum CardEnum;
+            CardIdEnum CardEnum;
             if (Enum.TryParse<CardIdEnum>(s, false, out CardEnum)) return CardEnum;
             else
             {
                 Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType().ErrorFormat("[Unidentified card ID :" + s + "]");
-                return CardDB.CardIdEnum.None;
+                return CardIdEnum.None;
             }
         }
 
@@ -798,10 +799,10 @@ namespace HREngine.Bots
 
             }
 
-            this.teacherminion = this.getCardDataFromID(CardDB.CardIdEnum.NEW1_026t);
-            this.illidanminion = this.getCardDataFromID(CardDB.CardIdEnum.EX1_614t);
-            this.lepergnome = this.getCardDataFromID(CardDB.CardIdEnum.EX1_029);
-            this.burlyrockjaw = this.getCardDataFromID(CardDB.CardIdEnum.GVG_068);
+            this.teacherminion = this.getCardDataFromID(CardIdEnum.NEW1_026t);
+            this.illidanminion = this.getCardDataFromID(CardIdEnum.EX1_614t);
+            this.lepergnome = this.getCardDataFromID(CardIdEnum.EX1_029);
+            this.burlyrockjaw = this.getCardDataFromID(CardIdEnum.GVG_068);
 
             Helpfunctions.Instance.InfoLog("CardList:" + cardidToCardList.Count);
 
@@ -844,9 +845,9 @@ namespace HREngine.Bots
             LogHelper.WriteMainLog("{");
             foreach (string cardid in this.allCardIDS)
             {
-                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardDB.cardIDEnum." + cardid + ";");
+                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardIdEnum." + cardid + ";");
             }
-            LogHelper.WriteMainLog("return CardDB.cardIDEnum.None;");
+            LogHelper.WriteMainLog("return CardIdEnum.None;");
             LogHelper.WriteMainLog("}");
 
             List<string> namelist = new List<string>();
@@ -881,7 +882,7 @@ namespace HREngine.Bots
             LogHelper.WriteMainLog("{");
             foreach (string cardid in this.allCardIDS)
             {
-                LogHelper.WriteMainLog("if(id == CardDB.cardIDEnum." + cardid + ") return new Sim_" + cardid + "();");
+                LogHelper.WriteMainLog("if(id == CardIdEnum." + cardid + ") return new Sim_" + cardid + "();");
             }
             LogHelper.WriteMainLog("return new SimTemplate();");
             LogHelper.WriteMainLog("}");

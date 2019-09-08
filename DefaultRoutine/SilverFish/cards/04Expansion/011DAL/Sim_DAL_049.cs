@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._011DAL
                 if (triggerEffectMinion.handcard.card.race == murlocEnumValue)
                 {
                     //Bluegill Warrior 蓝腮战士
-                    p.drawACard(CardDB.CardIdEnum.CS2_173, wasOwnCard, true);
+                    p.drawACard(CardIdEnum.CS2_173, wasOwnCard, true);
                 }
             }
         }

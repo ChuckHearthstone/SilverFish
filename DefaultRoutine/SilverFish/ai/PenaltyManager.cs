@@ -1,8 +1,9 @@
-﻿namespace HREngine.Bots
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using SilverFish.Enums;
 
+namespace HREngine.Bots
+{
     public class PenaltyManager
     {
         //todo acolyteofpain
@@ -51,8 +52,8 @@
 
         Dictionary<CardDB.CardName, int> priorityDatabase = new Dictionary<CardDB.CardName, int>();
         Dictionary<CardDB.CardName, int> UsefulNeedKeepDatabase = new Dictionary<CardDB.CardName, int>();
-        Dictionary<CardDB.CardName, CardDB.CardIdEnum> choose1database = new Dictionary<CardDB.CardName, CardDB.CardIdEnum>();
-        Dictionary<CardDB.CardName, CardDB.CardIdEnum> choose2database = new Dictionary<CardDB.CardName, CardDB.CardIdEnum>();
+        Dictionary<CardDB.CardName, CardIdEnum> choose1database = new Dictionary<CardDB.CardName, CardIdEnum>();
+        Dictionary<CardDB.CardName, CardIdEnum> choose2database = new Dictionary<CardDB.CardName, CardIdEnum>();
 
         public Dictionary<CardDB.CardName, int> DamageTargetDatabase = new Dictionary<CardDB.CardName, int>();
         public Dictionary<CardDB.CardName, int> DamageTargetSpecialDatabase = new Dictionary<CardDB.CardName, int>();
@@ -351,7 +352,7 @@
         private int getAttackBuffPenality(CardDB.Card card, Minion target, Playfield p)
         {
             CardDB.CardName name = card.name;
-            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardDB.CardIdEnum.GVG_041a) return 0;
+            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardIdEnum.GVG_041a) return 0;
             int pen = 0;
             //buff enemy?
 
@@ -454,7 +455,7 @@
             int pen = 0;
 
             if (!this.healthBuffDatabase.ContainsKey(name)) return 0;
-            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardDB.CardIdEnum.GVG_041a) return 0;
+            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardIdEnum.GVG_041a) return 0;
 
             if (target != null && !target.own && !this.tauntBuffDatabase.ContainsKey(name))
             {
@@ -471,8 +472,8 @@
             int pen = 0;
             //buff enemy?
             if (!this.tauntBuffDatabase.ContainsKey(name)) return 0;
-            if (name == CardDB.CardName.markofnature && card.cardIDenum != CardDB.CardIdEnum.EX1_155b) return 0;
-            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardDB.CardIdEnum.GVG_041a) return 0;
+            if (name == CardDB.CardName.markofnature && card.cardIDenum != CardIdEnum.EX1_155b) return 0;
+            if (name == CardDB.CardName.darkwispers && card.cardIDenum != CardIdEnum.GVG_041a) return 0;
             
             if (target == null) return 3;
             if (!target.isHero && !target.own)
@@ -1027,10 +1028,10 @@
                     int dmg = this.DamageTargetDatabase.ContainsKey(name) ? this.DamageTargetDatabase[name] : this.HealTargetDatabase[name];
                     switch (card.cardIDenum)
                     {
-                        case CardDB.CardIdEnum.EX1_166a: dmg = 2 - p.spellpower; break; 
-                        case CardDB.CardIdEnum.CS2_031: if (!target.frozen) return 0; break; 
-                        case CardDB.CardIdEnum.EX1_408: if (p.ownHero.HealthPoints <= 12) dmg = 6; break; 
-                        case CardDB.CardIdEnum.EX1_539: 
+                        case CardIdEnum.EX1_166a: dmg = 2 - p.spellpower; break; 
+                        case CardIdEnum.CS2_031: if (!target.frozen) return 0; break; 
+                        case CardIdEnum.EX1_408: if (p.ownHero.HealthPoints <= 12) dmg = 6; break; 
+                        case CardIdEnum.EX1_539: 
                             foreach (Minion mn in p.ownMinions)
                             {
                                 if ((TAG_RACE)mn.handcard.card.race == TAG_RACE.PET) { dmg = 5; break; }
@@ -1146,10 +1147,10 @@
                         realDamage = this.DamageTargetDatabase[name];
                         switch (card.cardIDenum)
                         {
-                            case CardDB.CardIdEnum.EX1_166a: realDamage = 2 - p.spellpower; break; 
-                            case CardDB.CardIdEnum.CS2_031: if (!target.frozen) return 0; break; 
-                            case CardDB.CardIdEnum.EX1_408: if (p.ownHero.HealthPoints <= 12) realDamage = 6; break; 
-                            case CardDB.CardIdEnum.EX1_539: 
+                            case CardIdEnum.EX1_166a: realDamage = 2 - p.spellpower; break; 
+                            case CardIdEnum.CS2_031: if (!target.frozen) return 0; break; 
+                            case CardIdEnum.EX1_408: if (p.ownHero.HealthPoints <= 12) realDamage = 6; break; 
+                            case CardIdEnum.EX1_539: 
                                 foreach (Minion mn in p.ownMinions)
                                 {
                                     if ((TAG_RACE)mn.handcard.card.race == TAG_RACE.PET) { realDamage = 5; break; }
@@ -1298,8 +1299,8 @@
             int pen = 0;
             CardDB.CardName name = card.name;
             if (!cardDrawBattleCryDatabase.ContainsKey(name)) return 0;
-            if (name == CardDB.CardName.wrath && card.cardIDenum != CardDB.CardIdEnum.EX1_154b) return 0;
-            if (name == CardDB.CardName.nourish && card.cardIDenum != CardDB.CardIdEnum.EX1_164b) return 0;
+            if (name == CardDB.CardName.wrath && card.cardIDenum != CardIdEnum.EX1_154b) return 0;
+            if (name == CardDB.CardName.nourish && card.cardIDenum != CardIdEnum.EX1_164b) return 0;
             if (name == CardDB.CardName.tracking) return -1;            
 
             int carddraw = cardDrawBattleCryDatabase[name];
@@ -2131,7 +2132,7 @@
                     }
                     return 20 - targets * 5;
                 case CardDB.CardName.spiritecho: 
-                    if (p.ownQuest.Id == CardDB.CardIdEnum.UNG_942)
+                    if (p.ownQuest.Id == CardIdEnum.UNG_942)
                     {
                         targets = 0;
                         foreach (Minion m in p.ownMinions)
@@ -2603,7 +2604,7 @@
                     if (p.ownMaxMana < 6) return 50;
                     if (p.ownMinions.Count == 7) return 500;
                     if (p.ownMaxMana > 8) return 0;
-                    if (p.OwnLastDiedMinion == CardDB.CardIdEnum.None) return 6;
+                    if (p.OwnLastDiedMinion == CardIdEnum.None) return 6;
                     return 0;
 
                 case CardDB.CardName.lavashock:
@@ -2882,7 +2883,7 @@
                 }
             }
 
-            if (!lethal && card.cardIDenum == CardDB.CardIdEnum.EX1_165t1) //druidoftheclaw	Charge
+            if (!lethal && card.cardIDenum == CardIdEnum.EX1_165t1) //druidoftheclaw	Charge
             {
                 return 20;
             }
@@ -5499,59 +5500,59 @@
 
         private void setupChooseDatabase()
         {
-            this.choose1database.Add(CardDB.CardName.ancientoflore, CardDB.CardIdEnum.NEW1_008a);
-            this.choose1database.Add(CardDB.CardName.ancientofwar, CardDB.CardIdEnum.EX1_178b);
-            this.choose1database.Add(CardDB.CardName.anodizedrobocub, CardDB.CardIdEnum.GVG_030a);
-            this.choose1database.Add(CardDB.CardName.cenarius, CardDB.CardIdEnum.EX1_573a);
-            this.choose1database.Add(CardDB.CardName.darkwispers, CardDB.CardIdEnum.GVG_041b);
-            this.choose1database.Add(CardDB.CardName.druidoftheclaw, CardDB.CardIdEnum.EX1_165t1);
-            this.choose1database.Add(CardDB.CardName.druidoftheflame, CardDB.CardIdEnum.BRM_010t);
-            this.choose1database.Add(CardDB.CardName.druidofthesaber, CardDB.CardIdEnum.AT_042t);
-            this.choose1database.Add(CardDB.CardName.feralrage, CardDB.CardIdEnum.OG_047a);
-            this.choose1database.Add(CardDB.CardName.grovetender, CardDB.CardIdEnum.GVG_032a);
-            this.choose1database.Add(CardDB.CardName.jadeidol, CardDB.CardIdEnum.CFM_602a);
-            this.choose1database.Add(CardDB.CardName.keeperofthegrove, CardDB.CardIdEnum.EX1_166a);
-            this.choose1database.Add(CardDB.CardName.kuntheforgottenking, CardDB.CardIdEnum.CFM_308a);
-            this.choose1database.Add(CardDB.CardName.livingroots, CardDB.CardIdEnum.AT_037a);
-            this.choose1database.Add(CardDB.CardName.markofnature, CardDB.CardIdEnum.EX1_155a);
-            this.choose1database.Add(CardDB.CardName.mirekeeper, CardDB.CardIdEnum.OG_202a);
-            this.choose1database.Add(CardDB.CardName.nourish, CardDB.CardIdEnum.EX1_164a);
-            this.choose1database.Add(CardDB.CardName.powerofthewild, CardDB.CardIdEnum.EX1_160b);
-            this.choose1database.Add(CardDB.CardName.ravenidol, CardDB.CardIdEnum.LOE_115a);
-            this.choose1database.Add(CardDB.CardName.shellshifter, CardDB.CardIdEnum.UNG_101t);
-            this.choose1database.Add(CardDB.CardName.starfall, CardDB.CardIdEnum.NEW1_007b);
-            this.choose1database.Add(CardDB.CardName.wispsoftheoldgods, CardDB.CardIdEnum.OG_195a);
-            this.choose1database.Add(CardDB.CardName.wrath, CardDB.CardIdEnum.EX1_154a);
-            this.choose1database.Add(CardDB.CardName.malfurionthepestilent, CardDB.CardIdEnum.ICC_832b);
-            this.choose1database.Add(CardDB.CardName.plaguelord, CardDB.CardIdEnum.ICC_832pb);
-            this.choose1database.Add(CardDB.CardName.druidoftheswarm, CardDB.CardIdEnum.ICC_051t);
+            this.choose1database.Add(CardDB.CardName.ancientoflore, CardIdEnum.NEW1_008a);
+            this.choose1database.Add(CardDB.CardName.ancientofwar, CardIdEnum.EX1_178b);
+            this.choose1database.Add(CardDB.CardName.anodizedrobocub, CardIdEnum.GVG_030a);
+            this.choose1database.Add(CardDB.CardName.cenarius, CardIdEnum.EX1_573a);
+            this.choose1database.Add(CardDB.CardName.darkwispers, CardIdEnum.GVG_041b);
+            this.choose1database.Add(CardDB.CardName.druidoftheclaw, CardIdEnum.EX1_165t1);
+            this.choose1database.Add(CardDB.CardName.druidoftheflame, CardIdEnum.BRM_010t);
+            this.choose1database.Add(CardDB.CardName.druidofthesaber, CardIdEnum.AT_042t);
+            this.choose1database.Add(CardDB.CardName.feralrage, CardIdEnum.OG_047a);
+            this.choose1database.Add(CardDB.CardName.grovetender, CardIdEnum.GVG_032a);
+            this.choose1database.Add(CardDB.CardName.jadeidol, CardIdEnum.CFM_602a);
+            this.choose1database.Add(CardDB.CardName.keeperofthegrove, CardIdEnum.EX1_166a);
+            this.choose1database.Add(CardDB.CardName.kuntheforgottenking, CardIdEnum.CFM_308a);
+            this.choose1database.Add(CardDB.CardName.livingroots, CardIdEnum.AT_037a);
+            this.choose1database.Add(CardDB.CardName.markofnature, CardIdEnum.EX1_155a);
+            this.choose1database.Add(CardDB.CardName.mirekeeper, CardIdEnum.OG_202a);
+            this.choose1database.Add(CardDB.CardName.nourish, CardIdEnum.EX1_164a);
+            this.choose1database.Add(CardDB.CardName.powerofthewild, CardIdEnum.EX1_160b);
+            this.choose1database.Add(CardDB.CardName.ravenidol, CardIdEnum.LOE_115a);
+            this.choose1database.Add(CardDB.CardName.shellshifter, CardIdEnum.UNG_101t);
+            this.choose1database.Add(CardDB.CardName.starfall, CardIdEnum.NEW1_007b);
+            this.choose1database.Add(CardDB.CardName.wispsoftheoldgods, CardIdEnum.OG_195a);
+            this.choose1database.Add(CardDB.CardName.wrath, CardIdEnum.EX1_154a);
+            this.choose1database.Add(CardDB.CardName.malfurionthepestilent, CardIdEnum.ICC_832b);
+            this.choose1database.Add(CardDB.CardName.plaguelord, CardIdEnum.ICC_832pb);
+            this.choose1database.Add(CardDB.CardName.druidoftheswarm, CardIdEnum.ICC_051t);
 
-            this.choose2database.Add(CardDB.CardName.ancientoflore, CardDB.CardIdEnum.NEW1_008b);
-            this.choose2database.Add(CardDB.CardName.ancientofwar, CardDB.CardIdEnum.EX1_178a);
-            this.choose2database.Add(CardDB.CardName.anodizedrobocub, CardDB.CardIdEnum.GVG_030b);
-            this.choose2database.Add(CardDB.CardName.cenarius, CardDB.CardIdEnum.EX1_573b);
-            this.choose2database.Add(CardDB.CardName.darkwispers, CardDB.CardIdEnum.GVG_041a);
-            this.choose2database.Add(CardDB.CardName.druidoftheclaw, CardDB.CardIdEnum.EX1_165t2);
-            this.choose2database.Add(CardDB.CardName.druidoftheflame, CardDB.CardIdEnum.BRM_010t2);
-            this.choose2database.Add(CardDB.CardName.druidofthesaber, CardDB.CardIdEnum.AT_042t2);
-            this.choose2database.Add(CardDB.CardName.feralrage, CardDB.CardIdEnum.OG_047b);
-            this.choose2database.Add(CardDB.CardName.grovetender, CardDB.CardIdEnum.GVG_032b);
-            this.choose2database.Add(CardDB.CardName.jadeidol, CardDB.CardIdEnum.CFM_602b);
-            this.choose2database.Add(CardDB.CardName.keeperofthegrove, CardDB.CardIdEnum.EX1_166b);
-            this.choose2database.Add(CardDB.CardName.kuntheforgottenking, CardDB.CardIdEnum.CFM_308b);
-            this.choose2database.Add(CardDB.CardName.livingroots, CardDB.CardIdEnum.AT_037b);
-            this.choose2database.Add(CardDB.CardName.markofnature, CardDB.CardIdEnum.EX1_155b);
-            this.choose2database.Add(CardDB.CardName.mirekeeper, CardDB.CardIdEnum.OG_202ae);
-            this.choose2database.Add(CardDB.CardName.nourish, CardDB.CardIdEnum.EX1_164b);
-            this.choose2database.Add(CardDB.CardName.powerofthewild, CardDB.CardIdEnum.EX1_160t);
-            this.choose2database.Add(CardDB.CardName.ravenidol, CardDB.CardIdEnum.LOE_115b);
-            this.choose2database.Add(CardDB.CardName.shellshifter, CardDB.CardIdEnum.UNG_101t2);
-            this.choose2database.Add(CardDB.CardName.starfall, CardDB.CardIdEnum.NEW1_007a);
-            this.choose2database.Add(CardDB.CardName.wispsoftheoldgods, CardDB.CardIdEnum.OG_195b);
-            this.choose2database.Add(CardDB.CardName.wrath, CardDB.CardIdEnum.EX1_154b);
-            this.choose2database.Add(CardDB.CardName.malfurionthepestilent, CardDB.CardIdEnum.ICC_832a);
-            this.choose2database.Add(CardDB.CardName.plaguelord, CardDB.CardIdEnum.ICC_832pa);
-            this.choose2database.Add(CardDB.CardName.druidoftheswarm, CardDB.CardIdEnum.ICC_051t2);
+            this.choose2database.Add(CardDB.CardName.ancientoflore, CardIdEnum.NEW1_008b);
+            this.choose2database.Add(CardDB.CardName.ancientofwar, CardIdEnum.EX1_178a);
+            this.choose2database.Add(CardDB.CardName.anodizedrobocub, CardIdEnum.GVG_030b);
+            this.choose2database.Add(CardDB.CardName.cenarius, CardIdEnum.EX1_573b);
+            this.choose2database.Add(CardDB.CardName.darkwispers, CardIdEnum.GVG_041a);
+            this.choose2database.Add(CardDB.CardName.druidoftheclaw, CardIdEnum.EX1_165t2);
+            this.choose2database.Add(CardDB.CardName.druidoftheflame, CardIdEnum.BRM_010t2);
+            this.choose2database.Add(CardDB.CardName.druidofthesaber, CardIdEnum.AT_042t2);
+            this.choose2database.Add(CardDB.CardName.feralrage, CardIdEnum.OG_047b);
+            this.choose2database.Add(CardDB.CardName.grovetender, CardIdEnum.GVG_032b);
+            this.choose2database.Add(CardDB.CardName.jadeidol, CardIdEnum.CFM_602b);
+            this.choose2database.Add(CardDB.CardName.keeperofthegrove, CardIdEnum.EX1_166b);
+            this.choose2database.Add(CardDB.CardName.kuntheforgottenking, CardIdEnum.CFM_308b);
+            this.choose2database.Add(CardDB.CardName.livingroots, CardIdEnum.AT_037b);
+            this.choose2database.Add(CardDB.CardName.markofnature, CardIdEnum.EX1_155b);
+            this.choose2database.Add(CardDB.CardName.mirekeeper, CardIdEnum.OG_202ae);
+            this.choose2database.Add(CardDB.CardName.nourish, CardIdEnum.EX1_164b);
+            this.choose2database.Add(CardDB.CardName.powerofthewild, CardIdEnum.EX1_160t);
+            this.choose2database.Add(CardDB.CardName.ravenidol, CardIdEnum.LOE_115b);
+            this.choose2database.Add(CardDB.CardName.shellshifter, CardIdEnum.UNG_101t2);
+            this.choose2database.Add(CardDB.CardName.starfall, CardIdEnum.NEW1_007a);
+            this.choose2database.Add(CardDB.CardName.wispsoftheoldgods, CardIdEnum.OG_195b);
+            this.choose2database.Add(CardDB.CardName.wrath, CardIdEnum.EX1_154b);
+            this.choose2database.Add(CardDB.CardName.malfurionthepestilent, CardIdEnum.ICC_832a);
+            this.choose2database.Add(CardDB.CardName.plaguelord, CardIdEnum.ICC_832pa);
+            this.choose2database.Add(CardDB.CardName.druidoftheswarm, CardIdEnum.ICC_051t2);
         }
 
 

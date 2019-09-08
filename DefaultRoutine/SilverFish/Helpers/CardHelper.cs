@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.Helpers
 {
@@ -16,7 +17,7 @@ namespace SilverFish.Helpers
             AssemblyTypes = assembly.GetTypes();
         }
 
-        public static SimTemplate GetCardSimulation(CardDB.CardIdEnum tempCardIdEnum)
+        public static SimTemplate GetCardSimulation(CardIdEnum tempCardIdEnum)
         {
             SimTemplate result = new SimTemplate();
 

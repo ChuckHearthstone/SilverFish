@@ -1,4 +1,5 @@
 ﻿using SilverFish.Helpers;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -11,7 +12,7 @@ namespace HREngine.Bots
         public class QuestItem
         {
             public Dictionary<CardDB.CardName, int> mobsTurn = new Dictionary<CardDB.CardName, int>();
-            public CardDB.CardIdEnum Id = CardDB.CardIdEnum.None;
+            public CardIdEnum Id = CardIdEnum.None;
             public int questProgress = 0;
             public int maxProgress = 1000;
 
@@ -24,7 +25,7 @@ namespace HREngine.Bots
                 this.Id = q.Id;
                 this.questProgress = q.questProgress;
                 this.maxProgress = q.maxProgress;
-                if (Id == CardDB.CardIdEnum.UNG_067)
+                if (Id == CardIdEnum.UNG_067)
                 {
                     this.mobsTurn.Clear();
                     foreach (var n in q.mobsTurn) this.mobsTurn.Add(n.Key, n.Value);
@@ -33,7 +34,7 @@ namespace HREngine.Bots
 
             public void Reset()
             {
-                this.Id = CardDB.CardIdEnum.None;
+                this.Id = CardIdEnum.None;
                 this.questProgress = 0;
                 this.maxProgress = 1000;
                 this.mobsTurn.Clear();
@@ -47,14 +48,14 @@ namespace HREngine.Bots
                 this.maxProgress = Convert.ToInt32(q[2]);
             }
 
-            //-!!!!set in code check if (this.enemyQuest.Id != CardDB.cardIDEnum.None)
+            //-!!!!set in code check if (this.enemyQuest.Id != CardIdEnum.None)
             public void trigger_MinionWasPlayed(Minion m)
             {
                 switch (Id)
                 {
-                    case CardDB.CardIdEnum.UNG_934: if (m.taunt) questProgress++; break;
-                    case CardDB.CardIdEnum.UNG_920: if (m.handcard.card.cost == 1) questProgress++; break;
-                    case CardDB.CardIdEnum.UNG_067:                        
+                    case CardIdEnum.UNG_934: if (m.taunt) questProgress++; break;
+                    case CardIdEnum.UNG_920: if (m.handcard.card.cost == 1) questProgress++; break;
+                    case CardIdEnum.UNG_067:                        
                         if (mobsTurn.ContainsKey(m.name)) mobsTurn[m.name]++;
                         else mobsTurn.Add(m.name, 1);
                         int total = mobsTurn[m.name] + Questmanager.Instance.getPlayedCardFromHand(m.name);
@@ -67,9 +68,9 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.CardIdEnum.UNG_116: if (m.Attack >= 5) questProgress++; break;
-                    case CardDB.CardIdEnum.UNG_940: if (m.handcard.card.deathrattle) questProgress++; break;
-                    case CardDB.CardIdEnum.UNG_942: if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC) questProgress++; break;
+                    case CardIdEnum.UNG_116: if (m.Attack >= 5) questProgress++; break;
+                    case CardIdEnum.UNG_940: if (m.handcard.card.deathrattle) questProgress++; break;
+                    case CardIdEnum.UNG_942: if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC) questProgress++; break;
                 }
             }
 
@@ -77,8 +78,8 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.CardIdEnum.UNG_954: if (target != null && target.own && !target.isHero) questProgress++; break;
-                    case CardDB.CardIdEnum.UNG_028: if (qId > 67) questProgress++; break;
+                    case CardIdEnum.UNG_954: if (target != null && target.own && !target.isHero) questProgress++; break;
+                    case CardIdEnum.UNG_028: if (qId > 67) questProgress++; break;
                 }
             }
             
@@ -86,25 +87,25 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.CardIdEnum.UNG_829: questProgress += num; break;
+                    case CardIdEnum.UNG_829: questProgress += num; break;
                 }
             }
 
-            public CardDB.CardIdEnum Reward()
+            public CardIdEnum Reward()
             {
                 switch (Id)
                 {
-                    case CardDB.CardIdEnum.UNG_028: return CardDB.CardIdEnum.UNG_028t; //-Quest: Cast 6 spells that didn't start in your deck. Reward: Time Warp.
-                    case CardDB.CardIdEnum.UNG_067: return CardDB.CardIdEnum.UNG_067t1; //-Quest: Play four minions with the same name. Reward: Crystal Core.
-                    case CardDB.CardIdEnum.UNG_116: return CardDB.CardIdEnum.UNG_116; //-Quest: Summon 5 minions with 5 or more Attack. Reward: Barnabus.
-                    case CardDB.CardIdEnum.UNG_829: return CardDB.CardIdEnum.UNG_829t1; //-Quest: Discard 6 cards. Reward: Nether Portal.
-                    case CardDB.CardIdEnum.UNG_920: return CardDB.CardIdEnum.UNG_920t1; //-Quest: Play seven 1-Cost minions. Reward: Queen Carnassa.
-                    case CardDB.CardIdEnum.UNG_934: return CardDB.CardIdEnum.UNG_934t1; //-Quest: Play 7 Taunt minions. Reward: Sulfuras.
-                    case CardDB.CardIdEnum.UNG_940: return CardDB.CardIdEnum.UNG_940t8; //-Quest: Summon 7 Deathrattle minions. Reward: Amara, Warden of Hope.
-                    case CardDB.CardIdEnum.UNG_942: return CardDB.CardIdEnum.UNG_942t; //-Quest: Summon 10 Murlocs. Reward: Megafin.
-                    case CardDB.CardIdEnum.UNG_954: return CardDB.CardIdEnum.UNG_954t1; //-Quest: Cast 6 spells on your minions. Reward: Galvadon.
+                    case CardIdEnum.UNG_028: return CardIdEnum.UNG_028t; //-Quest: Cast 6 spells that didn't start in your deck. Reward: Time Warp.
+                    case CardIdEnum.UNG_067: return CardIdEnum.UNG_067t1; //-Quest: Play four minions with the same name. Reward: Crystal Core.
+                    case CardIdEnum.UNG_116: return CardIdEnum.UNG_116; //-Quest: Summon 5 minions with 5 or more Attack. Reward: Barnabus.
+                    case CardIdEnum.UNG_829: return CardIdEnum.UNG_829t1; //-Quest: Discard 6 cards. Reward: Nether Portal.
+                    case CardIdEnum.UNG_920: return CardIdEnum.UNG_920t1; //-Quest: Play seven 1-Cost minions. Reward: Queen Carnassa.
+                    case CardIdEnum.UNG_934: return CardIdEnum.UNG_934t1; //-Quest: Play 7 Taunt minions. Reward: Sulfuras.
+                    case CardIdEnum.UNG_940: return CardIdEnum.UNG_940t8; //-Quest: Summon 7 Deathrattle minions. Reward: Amara, Warden of Hope.
+                    case CardIdEnum.UNG_942: return CardIdEnum.UNG_942t; //-Quest: Summon 10 Murlocs. Reward: Megafin.
+                    case CardIdEnum.UNG_954: return CardIdEnum.UNG_954t1; //-Quest: Cast 6 spells on your minions. Reward: Galvadon.
                 }
-                return CardDB.CardIdEnum.None;
+                return CardIdEnum.None;
             }
         }
         

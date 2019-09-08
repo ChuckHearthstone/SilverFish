@@ -13,11 +13,11 @@ namespace SilverFish.cards._04Expansion._001GvG
             {
                 if (p.enemySecretList.Count >= 1)
                 {
-                    if (p.enemyHeroStartClass == TAG_CLASS.HUNTER) p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_610);
-                    if (p.enemyHeroStartClass == TAG_CLASS.MAGE) p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_594);
-                    if (p.enemyHeroStartClass == TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_130);
+                    if (p.enemyHeroStartClass == TAG_CLASS.HUNTER) p.ownSecretsIDList.Add(CardIdEnum.EX1_610);
+                    if (p.enemyHeroStartClass == TAG_CLASS.MAGE) p.ownSecretsIDList.Add(CardIdEnum.EX1_594);
+                    if (p.enemyHeroStartClass == TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardIdEnum.EX1_130);
 
-                    if (p.enemyHeroStartClass != TAG_CLASS.HUNTER && p.enemyHeroStartClass != TAG_CLASS.MAGE && p.enemyHeroStartClass != TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_130);
+                    if (p.enemyHeroStartClass != TAG_CLASS.HUNTER && p.enemyHeroStartClass != TAG_CLASS.MAGE && p.enemyHeroStartClass != TAG_CLASS.PALADIN) p.ownSecretsIDList.Add(CardIdEnum.EX1_130);
                     
                     p.enemySecretList.RemoveAt(0);
                 }

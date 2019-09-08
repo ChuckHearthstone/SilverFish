@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
 	class Sim_FP1_022 : SimTemplate //* voidcaller
 	{
         //Deathrattle: Put a random Demon from your hand into the battlefield.
-        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_301);//felguard
+        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardIdEnum.EX1_301);//felguard
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

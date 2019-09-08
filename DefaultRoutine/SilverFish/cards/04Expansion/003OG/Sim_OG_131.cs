@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Taunt Battlecry:If your C'Thun has at least 10 attack, summon another Emperor.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_319);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.OG_319);
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

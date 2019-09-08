@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Hero Power: Summon two 4/2 Bone Constructs.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRMA17_6H);//4/2Bone Construct
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.BRMA17_6H);//4/2Bone Construct
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

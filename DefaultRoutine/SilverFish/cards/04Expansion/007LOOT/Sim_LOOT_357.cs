@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._007LOOT
 	{
 		// Battlecry: Summon a 0/8 Treasure Chest for your opponent. (Break it for awesome loot!)
         		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOOT_357l); //Treasure Chest
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.LOOT_357l); //Treasure Chest
 
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Whenever one of your other minions dies, summon a 2/2 Ghoul.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_900t); //Ghoul 2/2
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.ICC_900t); //Ghoul 2/2
 
         public override void onMinionDiedTrigger(Playfield p, Minion m, Minion diedMinion)
         {
