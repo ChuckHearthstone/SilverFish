@@ -71,7 +71,8 @@ namespace HREngine.Bots
             public int spellpowervalue = 0;
             public Bots.CardDB.cardIDEnum cardIDenum = Bots.CardDB.cardIDEnum.None;
             public List<Bots.CardDB.ErrorType2> playrequires;
-            public List<Bots.CardDB.cardtrigers> trigers;
+
+            public List<Bots.CardDB.cardtrigers> Triggers { get; set; }
 
             public SimTemplate CardSimulation
             {

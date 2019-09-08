@@ -197,7 +197,9 @@ namespace HREngine.Bots
         }
 
         List<string> namelist = new List<string>();
-        List<Card> cardlist = new List<Card>();
+
+        public List<Card> CardList { get; } = new List<Card>();
+
         Dictionary<cardIDEnum, Card> cardidToCardList = new Dictionary<cardIDEnum, Card>();
         List<string> allCardIDS = new List<string>();
         public Card unknownCard;
@@ -218,18 +220,18 @@ namespace HREngine.Bots
                     instance = new CardDB();
                     //instance.enumCreator();// only call this to get latest cardids
                     // have to do it 2 times (or the kids inside the simcards will not have a simcard :D
-                    foreach (Card c in instance.cardlist)
+                    foreach (Card c in instance.CardList)
                     {
                         c.CardSimulation = CardHelper.GetCardSimulation(c.cardIDenum);
                     }
 
-                    var totalCardSimCount = instance.cardlist.Count;
-                    var implementedCardSimCount = instance.cardlist.Count(x =>x.CardSimulationImplemented);
+                    var totalCardSimCount = instance.CardList.Count;
+                    var implementedCardSimCount = instance.CardList.Count(x =>x.CardSimulationImplemented);
                     var percentage = implementedCardSimCount / (double)totalCardSimCount;
                     Helpfunctions.Instance.ErrorLog(
                         $"Card simulation implemented {percentage:P}, {implementedCardSimCount}/{totalCardSimCount}");
 
-                    instance.setAdditionalData();
+                    instance.SetAdditionalData();
                 }
                 return instance;
             }
@@ -243,15 +245,15 @@ namespace HREngine.Bots
             string cardDbPath = Path.Combine(path, "_carddb.txt");
             lines = System.IO.File.ReadAllLines(cardDbPath);
             Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
-            cardlist.Clear();
+            CardList.Clear();
             this.cardidToCardList.Clear();
             Card c = new Card();
             int de = 0;
             //placeholdercard
             Card plchldr = new Card {name = cardName.unknown, cost = 1000};
             this.namelist.Add("unknown");
-            this.cardlist.Add(plchldr);
-            this.unknownCard = cardlist[0];
+            this.CardList.Add(plchldr);
+            this.unknownCard = CardList[0];
             string name = "";
             foreach (string s in lines)
             {
@@ -274,7 +276,7 @@ namespace HREngine.Bots
                     if (c.name != CardDB.cardName.unknown)
                     {
 
-                        this.cardlist.Add(c);
+                        this.CardList.Add(c);
                         //LogHelper.WriteCombatLog(c.name);
                         if (!this.cardidToCardList.ContainsKey(c.cardIDenum))
                         {
@@ -809,7 +811,7 @@ namespace HREngine.Bots
         public Card getCardData(CardDB.cardName cardname)
         {
 
-            foreach (Card ca in this.cardlist)
+            foreach (Card ca in this.CardList)
             {
                 if (ca.name == cardname)
                 {
@@ -887,47 +889,47 @@ namespace HREngine.Bots
 
         }
 
-        private void setAdditionalData()
+        private void SetAdditionalData()
         {
             PenaltyManager pen = PenaltyManager.Instance;
 
-            foreach (Card c in this.cardlist)
+            foreach (Card card in CardList)
             {
-                if (pen.cardDrawBattleCryDatabase.ContainsKey(c.name))
+                if (pen.cardDrawBattleCryDatabase.ContainsKey(card.name))
                 {
-                    c.isCarddraw = pen.cardDrawBattleCryDatabase[c.name];
+                    card.isCarddraw = pen.cardDrawBattleCryDatabase[card.name];
                 }
 
-                if (pen.DamageTargetSpecialDatabase.ContainsKey(c.name))
+                if (pen.DamageTargetSpecialDatabase.ContainsKey(card.name))
                 {
-                    c.damagesTargetWithSpecial = true;
+                    card.damagesTargetWithSpecial = true;
                 }
 
-                if (pen.DamageTargetDatabase.ContainsKey(c.name))
+                if (pen.DamageTargetDatabase.ContainsKey(card.name))
                 {
-                    c.damagesTarget = true;
+                    card.damagesTarget = true;
                 }
 
-                if (pen.priorityTargets.ContainsKey(c.name))
+                if (pen.priorityTargets.ContainsKey(card.name))
                 {
-                    c.targetPriority = pen.priorityTargets[c.name];
+                    card.targetPriority = pen.priorityTargets[card.name];
                 }
 
-                if (pen.specialMinions.ContainsKey(c.name))
+                if (pen.specialMinions.ContainsKey(card.name))
                 {
-                    c.isSpecialMinion = true;
+                    card.isSpecialMinion = true;
                 }
                 
-                c.trigers = new List<cardtrigers>();
-                Type trigerType = c.CardSimulation.GetType();
-                foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
+                card.Triggers = new List<cardtrigers>();
+                Type triggerType = card.CardSimulation.GetType();
+                foreach (string triggerName in Enum.GetNames(typeof(cardtrigers)))
                 {
                     try
                     {
-	                    foreach (var m in trigerType.GetMethods().Where(e=>e.Name.Equals(trigerName, StringComparison.Ordinal)))
+	                    foreach (var m in triggerType.GetMethods().Where(e=>e.Name.Equals(triggerName, StringComparison.Ordinal)))
 	                    {
-							if (m.DeclaringType == trigerType)
-								c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
+							if (m.DeclaringType == triggerType)
+								card.Triggers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), triggerName));
 						}
                     }
                     catch(Exception ex)
@@ -935,7 +937,11 @@ namespace HREngine.Bots
                         Helpfunctions.Instance.ErrorLog(ex);
                     }
                 }
-                if (c.trigers.Count > 10) c.trigers.Clear();
+
+                if (card.Triggers.Count > 10)
+                {
+                    card.Triggers.Clear();
+                }
             }
         }
     }
