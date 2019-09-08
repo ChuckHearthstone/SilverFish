@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SilverFish.Helpers;
 
@@ -52,9 +53,14 @@ namespace HREngine.Bots
                         actDmd -= (tmpPf.enemyHero.HealthPoints + tmpPf.enemyHero.armor);
                         actDmgDict.Add(a, actDmd);
                     }
+
                     if (useability > 1) return;
                 }
-                catch { return; }
+                catch(Exception ex)
+                {
+                    Helpfunctions.Instance.ErrorLog(ex);
+                    return;
+                }
 
                 foreach (var pair in actDmgDict.OrderByDescending(pair => pair.Value))
                 {
@@ -69,8 +75,9 @@ namespace HREngine.Bots
                     {
                         tmpPf.doAction(a);
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         this.printError(p.playactions, reorderedActions, a);
                         return;
                     }
@@ -194,8 +201,9 @@ namespace HREngine.Bots
                             tmpPf.doDmgTriggers();
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         printError(p.playactions, reorderedActions, a);
                         return;
                     }

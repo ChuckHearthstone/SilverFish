@@ -132,6 +132,7 @@ def Execute():
             }
             catch (Exception e)
             {
+                Helpfunctions.Instance.ErrorLog(e);
                 ex = e;
                 return false;
             }
@@ -562,6 +563,7 @@ def Execute():
                     }
                     catch (Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         Log.ErrorFormat("[Mulligan] An exception occurred: {0}.", ex);
                         BotManager.Stop();
                         return;

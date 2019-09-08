@@ -99,11 +99,12 @@ namespace SilverFish.Helpers
             {
                 try
                 {
-                    System.IO.File.WriteAllText(Settings.Instance.DataFolderPath + "crrntbrd.txt", this.sendbuffer);
+                    File.WriteAllText(Settings.Instance.DataFolderPath + "crrntbrd.txt", this.sendbuffer);
                     writed = false;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Instance.ErrorLog(ex);
                     writed = true;
                 }
             }
@@ -119,11 +120,12 @@ namespace SilverFish.Helpers
             {
                 try
                 {
-                    System.IO.File.WriteAllText(Settings.Instance.DataFolderPath + "actionstodo.txt", this.sendbuffer);
+                    File.WriteAllText(Settings.Instance.DataFolderPath + "actionstodo.txt", this.sendbuffer);
                     writed = false;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Instance.ErrorLog(ex);
                     writed = true;
                 }
             }

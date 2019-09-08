@@ -148,10 +148,10 @@ namespace HREngine.Bots
                 catch(Exception ex)
                 {
                     this.datareaded = false;
-                    string str = ex.ToString();
-                    LogHelper.WriteCombatLog(str);
-                    Console.WriteLine(str);
-                    Helpfunctions.Instance.ErrorLog(str);
+                    string errorInfo = ex.ToString();
+                    LogHelper.WriteCombatLog(errorInfo);
+                    Console.WriteLine(errorInfo);
+                    Helpfunctions.Instance.ErrorLog(errorInfo);
                     return;
                 }
             }

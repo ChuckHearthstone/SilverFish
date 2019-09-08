@@ -210,12 +210,8 @@ namespace HREngine.Bots
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.WriteCombatLog("Message ---");
-                    LogHelper.WriteCombatLog("Message ---" + ex.Message);
-                    LogHelper.WriteCombatLog("Source ---" + ex.Source);
-                    LogHelper.WriteCombatLog("StackTrace ---" + ex.StackTrace);
-                    LogHelper.WriteCombatLog("TargetSite ---\n{0}" + ex.TargetSite);
-
+                    LogHelper.WriteCombatLog(ex);
+                    Helpfunctions.Instance.ErrorLog(ex);
                 }
                 LogHelper.WriteCombatLog("nmgsime-");
 

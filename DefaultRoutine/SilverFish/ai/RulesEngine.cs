@@ -910,24 +910,27 @@ namespace HREngine.Bots
                                 continue;
                             case "rn":
                                 try { oneRule.ruleNumber = Convert.ToInt32(tmp[1]); }
-                                catch
+                                catch(Exception ex)
                                 {
+                                    Helpfunctions.Instance.ErrorLog(ex);
                                     Helpfunctions.Instance.ErrorLog("[RulesEngine] Wrong rule number (must be a number): " + ss);
                                     getNextRule = true;
                                 }
                                 continue;
                             case "rr":
                                 try { oneRule.replacedRule = Convert.ToInt32(tmp[1]); }
-                                catch
+                                catch(Exception ex)
                                 {
+                                    Helpfunctions.Instance.ErrorLog(ex);
                                     Helpfunctions.Instance.ErrorLog("[RulesEngine] Wrong replaced rule number (must be a number): " + ss);
                                     getNextRule = true;
                                 }
                                 continue;
                             case "bonus":
                                 try { oneRule.bonus = Convert.ToInt32(tmp[1]); }
-                                catch
+                                catch(Exception ex)
                                 {
+                                    Helpfunctions.Instance.ErrorLog(ex);
                                     Helpfunctions.Instance.ErrorLog("[RulesEngine] Wrong bonus (must be a number): " + ss);
                                     getNextRule = true;
                                 }
@@ -1545,8 +1548,9 @@ namespace HREngine.Bots
                         condTmp = new Condition(condParam, Convert.ToInt32(pval), (this.printRules == 0) ? "" : ruleString);
                         returnRes = true;
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         condErr = "Wrong parameter value (must be a number): ";
                         returnRes = false;
                     }
@@ -1605,8 +1609,9 @@ namespace HREngine.Bots
                                 break;
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         condErr = "Wrong extra parameter: ";
                         return false;
                     }

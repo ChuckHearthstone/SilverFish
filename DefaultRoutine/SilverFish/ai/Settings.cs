@@ -181,7 +181,7 @@ namespace HREngine.Bots
             catch (Exception ex)
             {
                 Helpfunctions.Instance.ErrorLog(behavName + " _settings.txt - read error. We continue with the default settings.");
-                Helpfunctions.Instance.ErrorLog(ex.ToString());
+                Helpfunctions.Instance.ErrorLog(ex);
                 EndOfSetSettings();
                 return;
             }

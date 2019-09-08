@@ -431,9 +431,10 @@ namespace HREngine.Bots
                     {
                         temp = s.Split(new string[] {"value=\"0\">"}, StringSplitOptions.RemoveEmptyEntries)[1];
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
+                        Helpfunctions.Instance.ErrorLog(ex);
+                        Logger.GetLoggerInstanceForType()
                             .ErrorFormat("[Unidentified Tag enumID 185 :" + s + "]");
                         continue;
                     }
@@ -745,8 +746,9 @@ namespace HREngine.Bots
                             param = Convert.ToInt32(temp);
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                         param = 0;
                     }
 
@@ -928,8 +930,9 @@ namespace HREngine.Bots
 								c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
 						}
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        Helpfunctions.Instance.ErrorLog(ex);
                     }
                 }
                 if (c.trigers.Count > 10) c.trigers.Clear();

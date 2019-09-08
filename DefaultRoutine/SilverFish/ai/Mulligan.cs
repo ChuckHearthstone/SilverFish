@@ -119,7 +119,7 @@ as well as
             catch (Exception ex)
             {
                 Helpfunctions.Instance.ErrorLog("[Mulligan] _mulligan.txt - read error. We continue without user-defined rules. Only the default rules.");
-                Helpfunctions.Instance.ErrorLog(ex.ToString());
+                Helpfunctions.Instance.ErrorLog(ex);
                 return;
             }
             Helpfunctions.Instance.InfoLog("[Mulligan] Load rules for " + behavName);
@@ -149,7 +149,12 @@ as well as
                 {
                     Convert.ToInt32(ruleValue[1]);
                 }
-                catch (Exception eee) { rejectedRule.Add(getClearRule(oneRule.Key)); continue; }
+                catch (Exception ex)
+                {
+                    Helpfunctions.Instance.ErrorLog(ex);
+                    rejectedRule.Add(getClearRule(oneRule.Key));
+                    continue;
+                }
 
                 if (ruleValue[2] != "/")
                 {
@@ -160,7 +165,10 @@ as well as
                         {
                             manaRule = Convert.ToInt32(ruleValue[2]);
                         }
-                        catch { }
+                        catch(Exception ex)
+                        {
+                            Helpfunctions.Instance.ErrorLog(ex);
+                        }
                         if (manaRule < 0) manaRule = 0;
                         else if (manaRule > 100) manaRule = 100;
 
