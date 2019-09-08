@@ -1,6 +1,6 @@
 using HREngine.Bots;
 
-namespace SilverFish.cards._01Basic._02Hunter
+namespace SilverFish.cards._02Classic._02Hunter
 {
 	class Sim_DS1_188 : SimTemplate //gladiatorslongbow
 	{

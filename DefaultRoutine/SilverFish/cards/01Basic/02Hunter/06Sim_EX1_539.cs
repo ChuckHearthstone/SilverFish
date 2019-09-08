@@ -1,6 +1,6 @@
 using HREngine.Bots;
 
-namespace SilverFish.cards._02Classic
+namespace SilverFish.cards._01Basic._02Hunter
 {
 	class Sim_EX1_539 : SimTemplate //killcommand
 	{
