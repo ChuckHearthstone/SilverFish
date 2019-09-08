@@ -79,7 +79,21 @@ namespace HREngine.Bots
         public bool cantAttackHeroes = false;
         public bool cantAttack = false;
 
-        public int HealthPoints { get; set; }
+        private int healthPoints;
+
+        public int HealthPoints
+        {
+            get => healthPoints;
+            set
+            {
+                if (value < maxHp)
+                {
+                    wounded = true;
+                }
+
+                healthPoints = value;
+            }
+        }
 
         public int maxHp = 0;
         public int armor = 0;

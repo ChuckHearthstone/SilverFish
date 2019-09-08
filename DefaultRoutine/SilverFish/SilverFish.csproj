@@ -202,6 +202,7 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_171.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_208.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_239.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_240.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_293.cs" />

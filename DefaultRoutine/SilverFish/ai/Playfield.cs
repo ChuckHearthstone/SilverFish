@@ -5443,7 +5443,7 @@ namespace HREngine.Bots
 
             foreach (var item in rebornMinions)
             {
-                item.handcard.card.CardSimulation.OnReborn(this, item);
+                Reborn(item);
             }
         }
 
@@ -5485,7 +5485,7 @@ namespace HREngine.Bots
                             deathrattleMinions.Add(m);
                         }
 
-                        if (!m.silenced && m.handcard.card.Reborn)
+                        if (!m.silenced && m.handcard.card.Reborn && !m.handcard.card.HasBeenReborn)
                         {
                             rebornMinions.Add(m);
                         }
@@ -5976,7 +5976,21 @@ namespace HREngine.Bots
             addMinionToBattlefield(m);
 
         }
-        
+
+        /// <summary>
+        /// Reborn is an ability that causes a minion to be resummoned with 1 Health the first time it's destroyed.
+        /// It was introduced in the Saviors of Uldum expansion. 
+        /// </summary>
+        /// <param name="rebornMinion"></param>
+        public void Reborn(Minion rebornMinion)
+        {
+            CallKid(rebornMinion.handcard.card, rebornMinion.zonepos, rebornMinion.own, true, true);
+            var minions = rebornMinion.own ? ownMinions : enemyMinions;
+            var newMinion = minions[rebornMinion.zonepos];
+            newMinion.handcard.card.HasBeenReborn = true;
+            newMinion.HealthPoints = 1;
+        }
+
         public void minionGetFrozen(Minion target)
         {
             target.frozen = true;

@@ -31,6 +31,8 @@ namespace HREngine.Bots
 
             public bool Reborn { get; set; }
 
+            public bool HasBeenReborn { get; set; }
+
             public bool battlecry = false;
             public bool discover = false;
             public bool oneTurnEffect = false;
