@@ -493,6 +493,19 @@ namespace HREngine.Bots
                     continue;
                 }
 
+                //reborn
+                if (s.Contains("<Tag enumID=\"1085\""))
+                {
+                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    temp = temp.Split('\"')[0];
+                    int ti = Convert.ToInt32(temp);
+                    if (ti == 1)
+                    {
+                        c.Reborn = true;
+                    }
+                    continue;
+                }
+
                 //Inspire
                 if (s.Contains("<Tag enumID=\"403\""))
                 {

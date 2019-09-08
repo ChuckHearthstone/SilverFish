@@ -28,6 +28,9 @@ namespace HREngine.Bots
             public bool poisonous = false;
             public bool lifesteal = false;
             public bool deathrattle = false;
+
+            public bool Reborn { get; set; }
+
             public bool battlecry = false;
             public bool discover = false;
             public bool oneTurnEffect = false;
@@ -115,6 +118,7 @@ namespace HREngine.Bots
                 this.Combo = c.Combo;
                 this.cost = c.cost;
                 this.deathrattle = c.deathrattle;
+                this.Reborn = c.Reborn;
                 this.Inspire = c.Inspire;
                 //this.description = c.description;
                 this.Durability = c.Durability;

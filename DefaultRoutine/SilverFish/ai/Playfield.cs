@@ -5562,7 +5562,10 @@ namespace HREngine.Bots
             }
 
 
-            if (deathrattleMinions.Count >= 1) this.doDeathrattles(deathrattleMinions);
+            if (deathrattleMinions.Count >= 1)
+            {
+                this.doDeathrattles(deathrattleMinions);
+            }
 
             if (minionOwnReviving)
             {
