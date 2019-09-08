@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._005UNG
 {
@@ -12,7 +13,7 @@ namespace SilverFish.cards._04Expansion._005UNG
             if (checkBonus) return true;
 			if (own != null) return false;
 
-            p.drawACard(CardDB.CardName.clutchmotherzavas, true, true);
+            p.drawACard(CardName.clutchmotherzavas, true, true);
             int i = p.owncards.Count - 1;
             p.owncards[i].addattack = hc.addattack +2;
             p.owncards[i].addHp = hc.addHp + 2;

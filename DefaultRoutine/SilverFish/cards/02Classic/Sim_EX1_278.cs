@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -11,7 +12,7 @@ namespace SilverFish.cards._02Classic
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             p.minionGetDamageOrHeal(target, dmg);
-           p.drawACard(CardDB.CardName.unknown, ownplay);
+           p.drawACard(CardName.unknown, ownplay);
 		}
 
 	}

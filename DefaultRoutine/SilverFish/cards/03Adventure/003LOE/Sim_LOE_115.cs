@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {
@@ -10,11 +11,11 @@ namespace SilverFish.cards._03Adventure._003LOE
 		{
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                p.drawACard(CardDB.CardName.lepergnome, ownplay, true);
+                p.drawACard(CardName.lepergnome, ownplay, true);
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                p.drawACard(CardDB.CardName.thecoin, ownplay, true);
+                p.drawACard(CardName.thecoin, ownplay, true);
             }
 		}
 	}

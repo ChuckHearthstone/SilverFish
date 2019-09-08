@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._002AT
 {
@@ -25,7 +26,7 @@ namespace SilverFish.cards._04Expansion._002AT
             {
                 foreach (Minion m in p.ownMinions)
                 {
-					if (m.name == CardDB.CardName.maidenofthelake && !m.silenced && own.entitiyID != m.entitiyID) another = true;
+					if (m.name == CardName.maidenofthelake && !m.silenced && own.entitiyID != m.entitiyID) another = true;
                 }
 				if (!another) p.ownHeroAblility.manacost++;
             }
@@ -33,7 +34,7 @@ namespace SilverFish.cards._04Expansion._002AT
             {
                 foreach (Minion m in p.enemyMinions)
                 {
-					if (m.name == CardDB.CardName.maidenofthelake && !m.silenced && own.entitiyID != m.entitiyID) another = true;
+					if (m.name == CardName.maidenofthelake && !m.silenced && own.entitiyID != m.entitiyID) another = true;
                 }
 				if (!another) p.enemyHeroAblility.manacost++;
             }

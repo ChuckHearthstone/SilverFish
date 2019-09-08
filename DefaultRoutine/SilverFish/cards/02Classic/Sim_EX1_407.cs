@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -11,7 +12,7 @@ namespace SilverFish.cards._02Classic
             bool hasWinner = false;
             foreach (Minion m in p.enemyMinions)
             {
-                if ((m.name == CardDB.CardName.darkironbouncer || m.name == CardDB.CardName.corendirebrew) && !hasWinner)
+                if ((m.name == CardName.darkironbouncer || m.name == CardName.corendirebrew) && !hasWinner)
                 {
                     hasWinner = true;
                     continue;
@@ -20,7 +21,7 @@ namespace SilverFish.cards._02Classic
             }
             foreach (Minion m in p.ownMinions)
             {
-                if ((m.name == CardDB.CardName.darkironbouncer || m.name == CardDB.CardName.corendirebrew) && !hasWinner)
+                if ((m.name == CardName.darkironbouncer || m.name == CardName.corendirebrew) && !hasWinner)
                 {
                     hasWinner = true;
                     continue;

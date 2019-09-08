@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.CardName.rivercrocolisk, own.own, true);
+            p.drawACard(CardName.rivercrocolisk, own.own, true);
 		}
 	}
 }

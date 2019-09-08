@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -14,7 +15,7 @@ namespace SilverFish.cards._04Expansion._001GvG
                 m.anzGotDmg = 0;
                 for (int i = 0; i < tmp; i++)
                 {
-                    p.drawACard(CardDB.CardName.armorplating, m.own, true);
+                    p.drawACard(CardName.armorplating, m.own, true);
                 }
             }
         }

@@ -18,14 +18,14 @@ namespace SilverFish.cards._04Expansion._003OG
 				int anz =0;
 				foreach (Minion m in temp)
 				{
-                    if (m.name == CardDB.CardName.bloodoftheancientone) anz++;
+                    if (m.name == CardName.bloodoftheancientone) anz++;
 				}
 				if (anz > 1)
 				{
 					anz = 0;
 					foreach (Minion m in temp)
 					{
-                        if (m.name == CardDB.CardName.bloodoftheancientone)
+                        if (m.name == CardName.bloodoftheancientone)
 						{
 							p.minionGetDestroyed(m);
 							anz++;

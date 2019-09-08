@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -13,7 +14,7 @@ namespace SilverFish.cards._02Classic
             if (dmg >= target.HealthPoints && !target.divineshild && !target.immune)
             {
                 //this.owncarddraw++;
-                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardName.unknown, ownplay);
             }
             p.minionGetDamageOrHeal(target, dmg);
             

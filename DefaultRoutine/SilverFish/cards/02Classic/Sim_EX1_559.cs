@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -11,7 +12,7 @@ namespace SilverFish.cards._02Classic
         {
             if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.CardType.SPELL)
             {
-                p.drawACard(CardDB.CardName.fireball, wasOwnCard, true);
+                p.drawACard(CardName.fireball, wasOwnCard, true);
             }
         }
 

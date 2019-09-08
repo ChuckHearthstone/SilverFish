@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -24,7 +25,7 @@ namespace SilverFish.cards._02Classic
                     triggerEffectMinion.playedThisTurn = false;
                     triggerEffectMinion.Ready = true;
                     p.removeCard(mins);
-                    p.drawACard(CardDB.CardName.alarmobot, true, true);
+                    p.drawACard(CardName.alarmobot, true, true);
                     break;
                 }
                 return;

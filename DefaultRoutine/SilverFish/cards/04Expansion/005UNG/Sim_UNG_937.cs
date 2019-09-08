@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._005UNG
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._04Expansion._005UNG
                 if (m.entitiyID == own.entitiyID) continue;
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC)
 				{
-					p.drawACard(CardDB.CardName.bluegillwarrior, own.own, true);
+					p.drawACard(CardName.bluegillwarrior, own.own, true);
 					break;
 				}
             }

@@ -10,7 +10,7 @@ namespace HREngine.Bots
         public class Card
         {
             //public string CardID = "";
-            public Bots.CardDB.CardName name = Bots.CardDB.CardName.unknown;
+            public CardName name = CardName.unknown;
             public int race = 0;
             public int rarity = 0;
             public int cost = 0;
@@ -266,7 +266,7 @@ namespace HREngine.Bots
                             int difftotem = 0;
                             foreach (Minion m in (own ? p.ownMinions : p.enemyMinions))
                             {
-                                if (m.name == CardDB.CardName.healingtotem || m.name == CardDB.CardName.wrathofairtotem || m.name == CardDB.CardName.searingtotem || m.name == CardDB.CardName.stoneclawtotem) difftotem++;
+                                if (m.name == CardName.healingtotem || m.name == CardName.wrathofairtotem || m.name == CardName.searingtotem || m.name == CardName.stoneclawtotem) difftotem++;
                             }
                             if (difftotem == 4) return retval;
                             continue;
@@ -561,7 +561,7 @@ namespace HREngine.Bots
                             {
                                 switch (this.name)
                                 {
-                                    case Bots.CardDB.CardName.polymorphboar:
+                                    case CardName.polymorphboar:
                                         foreach (Minion m in targets)
                                         {
                                             m.extraParam = false;
@@ -570,8 +570,8 @@ namespace HREngine.Bots
                                             else if (m.taunt) retval.Add(m);
                                         }
                                         break;
-                                    case Bots.CardDB.CardName.hex: goto case Bots.CardDB.CardName.polymorph;
-                                    case Bots.CardDB.CardName.polymorph:
+                                    case CardName.hex: goto case CardName.polymorph;
+                                    case CardName.polymorph:
                                         foreach (Minion m in targets)
                                         {
                                             m.extraParam = false;
@@ -637,26 +637,26 @@ namespace HREngine.Bots
             public List<Minion> getTargetsForHeroPower(Playfield p, bool own)
             {
                 List<Minion> trgts = getTargetsForCard(p, p.isLethalCheck, own);
-                Bots.CardDB.CardName abName = own ? p.ownHeroAblility.card.name : p.enemyHeroAblility.card.name;
+                CardName abName = own ? p.ownHeroAblility.card.name : p.enemyHeroAblility.card.name;
                 int abType = 0; //0 none, 1 damage, 2 heal, 3 baff
                 switch (abName)
                 {
-                    case Bots.CardDB.CardName.heal: goto case Bots.CardDB.CardName.lesserheal;
-                    case Bots.CardDB.CardName.lesserheal:
+                    case CardName.heal: goto case CardName.lesserheal;
+                    case CardName.lesserheal:
                         if (p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0) abType = 1;
                         else abType = 2;
                         break;
-                    case Bots.CardDB.CardName.ballistashot: abType = 1; break;
-                    case Bots.CardDB.CardName.steadyshot: abType = 1; break;
-                    case Bots.CardDB.CardName.fireblast: abType = 1; break;
-                    case Bots.CardDB.CardName.fireblastrank2: abType = 1; break;
-                    case Bots.CardDB.CardName.lightningjolt: abType = 1; break;
-                    case Bots.CardDB.CardName.mindspike: abType = 1; break;
-                    case Bots.CardDB.CardName.mindshatter: abType = 1; break;
-                    case Bots.CardDB.CardName.powerofthefirelord: abType = 1; break;
-                    case Bots.CardDB.CardName.shotgunblast: abType = 1; break;
-                    case Bots.CardDB.CardName.unbalancingstrike: abType = 1; break;
-                    case Bots.CardDB.CardName.dinomancy: abType = 3; break;
+                    case CardName.ballistashot: abType = 1; break;
+                    case CardName.steadyshot: abType = 1; break;
+                    case CardName.fireblast: abType = 1; break;
+                    case CardName.fireblastrank2: abType = 1; break;
+                    case CardName.lightningjolt: abType = 1; break;
+                    case CardName.mindspike: abType = 1; break;
+                    case CardName.mindshatter: abType = 1; break;
+                    case CardName.powerofthefirelord: abType = 1; break;
+                    case CardName.shotgunblast: abType = 1; break;
+                    case CardName.unbalancingstrike: abType = 1; break;
+                    case CardName.dinomancy: abType = 3; break;
                 }
 
                 switch (abType)
@@ -669,12 +669,12 @@ namespace HREngine.Bots
                         {
                             switch (minions[i].name)
                             {
-                                case Bots.CardDB.CardName.shadowboxer:
+                                case CardName.shadowboxer:
                                     if (own && p.enemyHero.HealthPoints == 1 && p.enemyMinions.Count > 0) needCut = false;
                                     break;
-                                case Bots.CardDB.CardName.holychampion: needCut = false; break;
-                                case Bots.CardDB.CardName.lightwarden: needCut = false; break;
-                                case Bots.CardDB.CardName.northshirecleric: needCut = false; break;
+                                case CardName.holychampion: needCut = false; break;
+                                case CardName.lightwarden: needCut = false; break;
+                                case CardName.northshirecleric: needCut = false; break;
 
 
                             }
@@ -761,55 +761,55 @@ namespace HREngine.Bots
 
                 switch (this.name)
                 {
-                    case CardDB.CardName.happyghoul:
+                    case CardName.happyghoul:
                         if (p.ownHero.anzGotHealed > 0) retval = offset;
                         break;
-                    case CardDB.CardName.wildmagic:
+                    case CardName.wildmagic:
                         retval = offset;
                         break;
-                    case CardDB.CardName.dreadcorsair:
+                    case CardName.dreadcorsair:
                         retval = retval + offset - p.ownWeapon.Angr;
                         break;
-                    case CardDB.CardName.volcanicdrake:
+                    case CardName.volcanicdrake:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.knightofthewild:
+                    case CardName.knightofthewild:
                         retval = retval + offset - p.tempTrigger.ownBeastSummoned;
                         break;
-                    case CardDB.CardName.seagiant:
+                    case CardName.seagiant:
                         retval = retval + offset - p.ownMinions.Count - p.enemyMinions.Count;
                         break;
-                    case CardDB.CardName.mountaingiant:
+                    case CardName.mountaingiant:
                         retval = retval + offset - p.owncards.Count;
                         break;
-                    case CardDB.CardName.clockworkgiant:
+                    case CardName.clockworkgiant:
                         retval = retval + offset - p.enemyAnzCards;
                         break;
-                    case CardDB.CardName.moltengiant:
+                    case CardName.moltengiant:
                         retval = retval + offset - p.ownHero.maxHp + p.ownHero.HealthPoints;
                         break;
-                    case CardDB.CardName.frostgiant:
+                    case CardName.frostgiant:
                         retval = retval + offset - p.anzUsedOwnHeroPower;
                         break;
-                    case CardDB.CardName.arcanegiant:
+                    case CardName.arcanegiant:
                         retval = retval + offset - p.spellsplayedSinceRecalc;
                         break;
-                    case CardDB.CardName.snowfurygiant:
+                    case CardName.snowfurygiant:
                         retval = retval + offset - p.ueberladung;
                         break;
-                    case CardDB.CardName.kabalcrystalrunner:
+                    case CardName.kabalcrystalrunner:
                         retval = retval + offset - 2 * p.secretsplayedSinceRecalc;
                         break;
-                    case CardDB.CardName.secondratebruiser:
+                    case CardName.secondratebruiser:
                         retval = retval + offset - ((p.enemyMinions.Count < 3) ? 0 : 2);
                         break;
-                    case CardDB.CardName.golemagg:
+                    case CardName.golemagg:
                         retval = retval + offset - p.ownHero.maxHp + p.ownHero.HealthPoints;
                         break;
-                    case CardDB.CardName.volcaniclumberer:
+                    case CardName.volcaniclumberer:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.skycapnkragg:
+                    case CardName.skycapnkragg:
                         int costBonus = 0;
                         foreach (Minion m in p.ownMinions)
                         {
@@ -817,7 +817,7 @@ namespace HREngine.Bots
                         }
                         retval = retval + offset - costBonus;
                         break;
-                    case CardDB.CardName.everyfinisawesome:
+                    case CardName.everyfinisawesome:
                         int costBonusM = 0;
                         foreach (Minion m in p.ownMinions)
                         {
@@ -825,7 +825,7 @@ namespace HREngine.Bots
                         }
                         retval = retval + offset - costBonusM;
                         break;
-                    case CardDB.CardName.crush:
+                    case CardName.crush:
                         // cost 4 less if we have a dmged minion
                         bool dmgedminions = false;
                         foreach (Minion m in p.ownMinions)
@@ -958,55 +958,55 @@ namespace HREngine.Bots
 
                 switch (this.name)
                 {
-                    case CardDB.CardName.volcaniclumberer:
+                    case CardName.volcaniclumberer:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.solemnvigil:
+                    case CardName.solemnvigil:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.volcanicdrake:
+                    case CardName.volcanicdrake:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.knightofthewild:
+                    case CardName.knightofthewild:
                         retval = retval + offset - p.tempTrigger.ownBeastSummoned;
                         break;
-                    case CardDB.CardName.dragonsbreath:
+                    case CardName.dragonsbreath:
                         retval = retval + offset - p.ownMinionsDiedTurn - p.enemyMinionsDiedTurn;
                         break;
-                    case CardDB.CardName.dreadcorsair:
+                    case CardName.dreadcorsair:
                         retval = retval + offset - p.ownWeapon.Angr + p.ownWeaponAttackStarted; // if weapon attack change we change manacost
                         break;
-                    case CardDB.CardName.seagiant:
+                    case CardName.seagiant:
                         retval = retval + offset - p.ownMinions.Count - p.enemyMinions.Count + p.ownMobsCountStarted + p.enemyMobsCountStarted;
                         break;
-                    case CardDB.CardName.mountaingiant:
+                    case CardName.mountaingiant:
                         retval = retval + offset - p.owncards.Count + p.ownCardsCountStarted;
                         break;
-                    case CardDB.CardName.clockworkgiant:
+                    case CardName.clockworkgiant:
                         retval = retval + offset - p.enemyAnzCards + p.enemyCardsCountStarted;
                         break;
-                    case CardDB.CardName.moltengiant:
+                    case CardName.moltengiant:
                         retval = retval + offset - p.ownHeroHpStarted + p.ownHero.HealthPoints;
                         break;
-                    case CardDB.CardName.frostgiant:
+                    case CardName.frostgiant:
                         retval = retval + offset - p.anzUsedOwnHeroPower;
                         break;
-                    case CardDB.CardName.arcanegiant:
+                    case CardName.arcanegiant:
                         retval = retval + offset - p.spellsplayedSinceRecalc;
                         break;
-                    case CardDB.CardName.snowfurygiant:
+                    case CardName.snowfurygiant:
                         retval = retval + offset - p.ueberladung;
                         break;
-                    case CardDB.CardName.kabalcrystalrunner:
+                    case CardName.kabalcrystalrunner:
                         retval = retval + offset - 2 * p.secretsplayedSinceRecalc;
                         break;
-                    case CardDB.CardName.secondratebruiser:
+                    case CardName.secondratebruiser:
                         retval = retval + offset - ((p.enemyMinions.Count < 3) ? 0 : 2) + ((p.enemyMobsCountStarted < 3) ? 0 : 2);
                         break;
-                    case CardDB.CardName.golemagg:
+                    case CardName.golemagg:
                         retval = retval + offset - p.ownHeroHpStarted + p.ownHero.HealthPoints;
                         break;
-                    case CardDB.CardName.skycapnkragg:
+                    case CardName.skycapnkragg:
                         int costBonus = 0;
                         foreach (Minion m in p.ownMinions)
                         {
@@ -1014,7 +1014,7 @@ namespace HREngine.Bots
                         }
                         retval = retval + offset - costBonus + p.anzOwnPiratesStarted;
                         break;
-                    case CardDB.CardName.everyfinisawesome:
+                    case CardName.everyfinisawesome:
                         int costBonusM = 0;
                         foreach (Minion m in p.ownMinions)
                         {
@@ -1022,7 +1022,7 @@ namespace HREngine.Bots
                         }
                         retval = retval + offset - costBonusM + p.anzOwnMurlocStarted;
                         break;
-                    case CardDB.CardName.crush:
+                    case CardName.crush:
                         // cost 4 less if we have a dmged minion
                         bool dmgedminions = false;
                         foreach (Minion m in p.ownMinions)
@@ -1041,13 +1041,13 @@ namespace HREngine.Bots
                             }
                         }
                         break;
-                    case CardDB.CardName.happyghoul:
+                    case CardName.happyghoul:
                         if (p.ownHero.anzGotHealed > 0) retval = 0;
                         break;
-                    case CardDB.CardName.wildmagic:
+                    case CardName.wildmagic:
                         retval = 0;
                         break;
-                    case CardDB.CardName.thingfrombelow:
+                    case CardName.thingfrombelow:
                         if (p.playactions.Count > 0)
                         {
                             foreach (Action a in p.playactions)
@@ -1056,7 +1056,7 @@ namespace HREngine.Bots
                                 {
                                     switch (a.card.card.name)
                                     {
-                                        case Bots.CardDB.CardName.tuskarrtotemic: retval -= p.ownBrannBronzebeard + 1; break;
+                                        case CardName.tuskarrtotemic: retval -= p.ownBrannBronzebeard + 1; break;
                                         default:
                                             if ((TAG_RACE)a.card.card.race == TAG_RACE.TOTEM) retval--;
                                             break;
@@ -1066,8 +1066,8 @@ namespace HREngine.Bots
                                 {
                                     switch (a.card.card.name)
                                     {
-                                        case Bots.CardDB.CardName.totemiccall: retval--; break;
-                                        case Bots.CardDB.CardName.totemicslam: retval--; break;
+                                        case CardName.totemiccall: retval--; break;
+                                        case CardName.totemicslam: retval--; break;
                                     }
                                 }
                             }

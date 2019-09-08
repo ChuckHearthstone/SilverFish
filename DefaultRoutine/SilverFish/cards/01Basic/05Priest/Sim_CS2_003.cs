@@ -1,4 +1,5 @@
 ﻿using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._05Priest
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._01Basic._05Priest
             int anz = (ownplay) ? p.enemyAnzCards : p.owncards.Count;
             if (anz >= 1)
             {
-                p.drawACard(CardDB.CardName.unknown, ownplay,true);
+                p.drawACard(CardName.unknown, ownplay,true);
             }
         }
 

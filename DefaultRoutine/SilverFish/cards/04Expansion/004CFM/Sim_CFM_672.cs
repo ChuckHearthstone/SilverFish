@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -11,7 +12,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             if (target != null)
             {
                 p.minionGetFrozen(target);
-                p.drawACard(CardDB.CardName.aberration, m.own, true);
+                p.drawACard(CardName.aberration, m.own, true);
             }
         }
     }

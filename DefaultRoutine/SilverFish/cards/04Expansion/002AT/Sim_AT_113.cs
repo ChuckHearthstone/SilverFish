@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._002AT
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._04Expansion._002AT
         {
 			if (m.own == own)
 			{				
-				p.drawACard(CardDB.CardName.squire, own, true);
+				p.drawACard(CardName.squire, own, true);
 			}
         }
 	}

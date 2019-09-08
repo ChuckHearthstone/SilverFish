@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -8,12 +9,12 @@ namespace SilverFish.cards._02Classic
 //    kampfschrei:/ gebt eurem gegner 2 bananen.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.CardName.bananas, !own.own, true);
+            p.drawACard(CardName.bananas, !own.own, true);
             if (own.own)
             {
                 p.enemycarddraw -= 1;
             }
-            p.drawACard(CardDB.CardName.bananas, !own.own, true);
+            p.drawACard(CardName.bananas, !own.own, true);
             if (own.own)
             {
                 p.enemycarddraw -= 1;

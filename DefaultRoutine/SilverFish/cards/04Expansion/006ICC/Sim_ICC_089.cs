@@ -31,8 +31,8 @@ namespace SilverFish.cards._04Expansion._006ICC
             }
             else
             {
-                p.drawACard(CardDB.CardName.unknown, ownplay);
-                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardName.unknown, ownplay);
+                p.drawACard(CardName.unknown, ownplay);
             }
         }
     }

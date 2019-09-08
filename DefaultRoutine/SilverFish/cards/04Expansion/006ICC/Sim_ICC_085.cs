@@ -14,11 +14,11 @@ namespace SilverFish.cards._04Expansion._006ICC
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.minionGetDamageOrHeal(target, dmg);
 
-            p.drawACard(CardDB.CardName.unknown, ownplay);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
 
             p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 5);
 

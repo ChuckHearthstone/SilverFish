@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._02Classic
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             p.allMinionsGetSilenced(!ownplay);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
 		}
 
 	}

@@ -22,7 +22,7 @@ namespace HREngine.Bots
                 p.CallKid(kid, posi, true);
                 if (p.ownMinions.Count >= 1)
                 {
-                    if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.CardName.spellbender)
+                    if (p.ownMinions[p.ownMinions.Count - 1].name == CardName.spellbender)
                     {
                         number = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
                     }
@@ -36,7 +36,7 @@ namespace HREngine.Bots
 
                 if (p.enemyMinions.Count >= 1)
                 {
-                    if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardDB.CardName.spellbender)
+                    if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardName.spellbender)
                     {
                         number = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
                     }

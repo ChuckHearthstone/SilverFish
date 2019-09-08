@@ -1099,7 +1099,7 @@ namespace HREngine.Bots
             bool found = false;
             foreach (Handmanager.Handcard hc in this.handCards)
             {
-                if (hc.card.name == CardDB.CardName.cthun)
+                if (hc.card.name == CardName.cthun)
                 {
                     this.anzOgOwnCThunAngrBonus = hc.addattack;
                     this.anzOgOwnCThunHpBonus = hc.addHp;
@@ -1112,7 +1112,7 @@ namespace HREngine.Bots
             {
                 foreach (Minion m in this.ownMinions)
                 {
-                    if (m.name == CardDB.CardName.cthun)
+                    if (m.name == CardName.cthun)
                     {
                         if (this.anzOgOwnCThunAngrBonus < m.Attack - 6) this.anzOgOwnCThunAngrBonus = m.Attack - 6;
                         if (this.anzOgOwnCThunHpBonus < m.HealthPoints - 6) this.anzOgOwnCThunHpBonus = m.Attack - 6;

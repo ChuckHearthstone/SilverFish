@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._04Expansion._001GvG
         {
             for (int i = 0; i < 4; i++)
             {
-                p.drawACard(CardDB.CardName.murlocraider, m.own, true);
+                p.drawACard(CardName.murlocraider, m.own, true);
             }
             if (m.own) p.ueberladung += 3;
         }

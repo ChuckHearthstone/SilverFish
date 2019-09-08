@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -15,11 +16,11 @@ namespace SilverFish.cards._02Classic
             {
                 if (mnn.wounded)
                 {
-                    p.drawACard(CardDB.CardName.unknown, ownplay);
+                    p.drawACard(CardName.unknown, ownplay);
                 }
             }
-            if (ownplay && p.ownHero.HealthPoints < 30) p.drawACard(CardDB.CardName.unknown, true);
-            if (!ownplay && p.enemyHero.HealthPoints < 30) p.drawACard(CardDB.CardName.unknown, false);
+            if (ownplay && p.ownHero.HealthPoints < 30) p.drawACard(CardName.unknown, true);
+            if (!ownplay && p.enemyHero.HealthPoints < 30) p.drawACard(CardName.unknown, false);
 
 		}
 

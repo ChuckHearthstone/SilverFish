@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -20,7 +21,7 @@ namespace SilverFish.cards._04Expansion._001GvG
                 bool hasss = false;
                 foreach (Minion mnn in p.ownMinions)
                 {
-                    if (m.name == CardDB.CardName.steamwheedlesniper && !mnn.silenced) hasss = true;
+                    if (m.name == CardName.steamwheedlesniper && !mnn.silenced) hasss = true;
                 }
                 p.weHaveSteamwheedleSniper = hasss;
             }
@@ -29,7 +30,7 @@ namespace SilverFish.cards._04Expansion._001GvG
                 bool hasss = false;
                 foreach (Minion mnn in p.enemyMinions)
                 {
-                    if (m.name == CardDB.CardName.steamwheedlesniper && !mnn.silenced) hasss = true;
+                    if (m.name == CardName.steamwheedlesniper && !mnn.silenced) hasss = true;
                 }
                 p.enemyHaveSteamwheedleSniper = hasss;
             }

@@ -770,7 +770,7 @@ def Execute():
                         {
                             foreach (Handmanager.Handcard hc in lastChancePl.owncards)
                             {
-                                if (hc.card.name == CardDB.CardName.unknown) lastChance = true;
+                                if (hc.card.name == CardName.unknown) lastChance = true;
                             }
                             if (!lastChance) doConcede = true;
                         }
@@ -787,21 +787,21 @@ def Execute():
 
                                 switch (m.handcard.card.name)
                                 {
-                                    case CardDB.CardName.cthun:
-                                    case CardDB.CardName.nzoththecorruptor:
-                                    case CardDB.CardName.yoggsaronhopesend:
-                                    case CardDB.CardName.sirfinleymrrgglton:
-                                    case CardDB.CardName.shudderwock:
-                                    case CardDB.CardName.stargazerluna:
+                                    case CardName.cthun:
+                                    case CardName.nzoththecorruptor:
+                                    case CardName.yoggsaronhopesend:
+                                    case CardName.sirfinleymrrgglton:
+                                    case CardName.shudderwock:
+                                    case CardName.stargazerluna:
                                         lastChance = true;
                                         break;
-                                    case CardDB.CardName.ragnarosthefirelord:
+                                    case CardName.ragnarosthefirelord:
                                         if (lastChancePl.enemyHero.HealthPoints < 9)
                                         {
                                             lastChance = true;
                                         }
                                         break;
-                                    case CardDB.CardName.barongeddon:
+                                    case CardName.barongeddon:
                                         if (lastChancePl.enemyHero.HealthPoints < 3)
                                         {
                                             lastChance = true;
@@ -1112,7 +1112,7 @@ def Execute():
 
                 int sirFinleyChoice = -1;
                 if (ai.bestmove == null) Log.ErrorFormat("[Tick] Can't get cards. ChoiceCardMgr is empty");
-                else if (ai.bestmove.actionType == actionEnum.playcard && ai.bestmove.card.card.name == CardDB.CardName.sirfinleymrrgglton)
+                else if (ai.bestmove.actionType == actionEnum.playcard && ai.bestmove.card.card.name == CardName.sirfinleymrrgglton)
                 {
                     sirFinleyChoice = ai.botBase.getSirFinleyPriority(discoverCards);
                 }
@@ -1139,9 +1139,9 @@ def Execute():
                                 case GAME_TAG.DISCOVER:
                                     switch (ai.bestmove.card.card.name)
                                     {
-                                        case CardDB.CardName.eternalservitude:
-                                        case CardDB.CardName.freefromamber:
-                                        case CardDB.CardName.anewchallenger:
+                                        case CardName.eternalservitude:
+                                        case CardName.freefromamber:
+                                        case CardName.anewchallenger:
                                             Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
                                             tmpPlf.ownMinions[tmpPlf.ownMinions.Count - 1] = m;
                                             break;
@@ -1150,7 +1150,7 @@ def Execute():
                                             break;
                                     }
                                     bestval = ai.mainTurnSimulator.DoAllMoves(tmpPlf);
-                                    if (discoverCards[i].card.name == CardDB.CardName.bloodimp) bestval -= 20;
+                                    if (discoverCards[i].card.name == CardName.bloodimp) bestval -= 20;
                                     break;
                                 case GAME_TAG.ADAPT:
                                     bool found = false;

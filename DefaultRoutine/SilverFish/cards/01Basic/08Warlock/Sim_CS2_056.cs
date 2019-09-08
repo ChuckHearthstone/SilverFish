@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._08Warlock
 {
@@ -9,7 +10,7 @@ namespace SilverFish.cards._01Basic._08Warlock
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
 
             int dmg = 2;
             if (ownplay)

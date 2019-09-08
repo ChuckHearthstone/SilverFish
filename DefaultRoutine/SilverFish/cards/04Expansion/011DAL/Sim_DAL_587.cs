@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -10,7 +11,7 @@ namespace HREngine.Bots
 //    亡语：随机将一张猎人法术牌置入你的手牌。
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardName.unknown, m.own);
+            p.drawACard(CardName.unknown, m.own);
         }
 
 	}

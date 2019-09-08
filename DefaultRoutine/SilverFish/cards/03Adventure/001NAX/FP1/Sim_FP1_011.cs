@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._001NAX.FP1
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
 //    todesröcheln:/ fügt eurer hand ein zufälliges wildtier hinzu.
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardName.rivercrocolisk, m.own, true);
+            p.drawACard(CardName.rivercrocolisk, m.own, true);
         }
 	}
 }

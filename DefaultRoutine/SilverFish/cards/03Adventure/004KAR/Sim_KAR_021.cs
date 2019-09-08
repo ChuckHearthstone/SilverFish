@@ -22,10 +22,10 @@ namespace SilverFish.cards._03Adventure._004KAR
 				{
 					switch (m.name)
 					{
-						case CardDB.CardName.searingtotem: otherTotems++; continue;
-						case CardDB.CardName.stoneclawtotem: otherTotems++; continue;
-						case CardDB.CardName.healingtotem: otherTotems++; continue;
-						case CardDB.CardName.wrathofairtotem: wrath = true; continue;
+						case CardName.searingtotem: otherTotems++; continue;
+						case CardName.stoneclawtotem: otherTotems++; continue;
+						case CardName.healingtotem: otherTotems++; continue;
+						case CardName.wrathofairtotem: wrath = true; continue;
 					}
 				}
 				if (p.isLethalCheck)

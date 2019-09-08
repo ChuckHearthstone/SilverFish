@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._002BRM
 {
@@ -13,31 +14,31 @@ namespace SilverFish.cards._03Adventure._002BRM
             switch (opponentHeroClass)
             {
                 case TAG_CLASS.WARRIOR:
-					p.drawACard(CardDB.CardName.shieldblock, ownplay, true);
+					p.drawACard(CardName.shieldblock, ownplay, true);
 					break;
                 case TAG_CLASS.WARLOCK:
-					p.drawACard(CardDB.CardName.baneofdoom, ownplay, true);
+					p.drawACard(CardName.baneofdoom, ownplay, true);
                     break;
                 case TAG_CLASS.ROGUE:
-					p.drawACard(CardDB.CardName.sprint, ownplay, true);
+					p.drawACard(CardName.sprint, ownplay, true);
 					break;
                 case TAG_CLASS.SHAMAN:
-					p.drawACard(CardDB.CardName.farsight, ownplay, true);
+					p.drawACard(CardName.farsight, ownplay, true);
 					break;
                 case TAG_CLASS.PRIEST:
-					p.drawACard(CardDB.CardName.thoughtsteal, ownplay, true);
+					p.drawACard(CardName.thoughtsteal, ownplay, true);
 					break;
                 case TAG_CLASS.PALADIN:
-					p.drawACard(CardDB.CardName.hammerofwrath, ownplay, true);
+					p.drawACard(CardName.hammerofwrath, ownplay, true);
 					break;
                 case TAG_CLASS.MAGE:
-					p.drawACard(CardDB.CardName.frostnova, ownplay, true);
+					p.drawACard(CardName.frostnova, ownplay, true);
 					break;
                 case TAG_CLASS.HUNTER:
-					p.drawACard(CardDB.CardName.cobrashot, ownplay, true);
+					p.drawACard(CardName.cobrashot, ownplay, true);
 					break;
                 case TAG_CLASS.DRUID:
-					p.drawACard(CardDB.CardName.wildgrowth, ownplay, true);
+					p.drawACard(CardName.wildgrowth, ownplay, true);
                     break;
 				//default:
 			}

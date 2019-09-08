@@ -2474,42 +2474,42 @@ namespace HREngine.Bots
                     return false;
                 case param.omc_shr_equal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.omc_shr_notequal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.omc_shr_greater:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.omc_shr_less:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.emc_shr_equal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.emc_shr_notequal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.emc_shr_greater:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.emc_shr_less:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.omc_undamaged_equal:

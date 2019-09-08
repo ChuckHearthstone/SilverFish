@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -10,7 +11,7 @@ namespace HREngine.Bots
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardName.unknown, m.own, true);
+            p.drawACard(CardName.unknown, m.own, true);
         }
 	}
 }

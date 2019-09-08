@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -19,8 +20,8 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                p.drawACard(CardDB.CardName.unknown, true);
-                p.drawACard(CardDB.CardName.unknown, false);
+                p.drawACard(CardName.unknown, true);
+                p.drawACard(CardName.unknown, false);
             }
         }
     }

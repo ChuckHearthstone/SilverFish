@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._09Warrior
 {
@@ -13,7 +14,7 @@ namespace SilverFish.cards._01Basic._09Warrior
             {
                 t.cantLowerHPbelowONE = true;
             }
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
         }
 
     }

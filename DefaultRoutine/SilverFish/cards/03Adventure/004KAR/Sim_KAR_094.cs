@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._004KAR
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardName.sharpfork, m.own, true);
+            p.drawACard(CardName.sharpfork, m.own, true);
         }
     }
 }

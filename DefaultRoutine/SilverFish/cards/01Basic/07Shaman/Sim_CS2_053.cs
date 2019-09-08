@@ -1,4 +1,5 @@
 ﻿using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._07Shaman
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._01Basic._07Shaman
         //todo: bonus for it?
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
         }
 
     }

@@ -1,4 +1,6 @@
-﻿namespace HREngine.Bots
+﻿using SilverFish.Enums;
+
+namespace HREngine.Bots
 {
     using System;
 
@@ -29,7 +31,7 @@
             foreach (Handmanager.Handcard hc in p.owncards)
             {
                 int r = Math.Max(hc.getManaCost(p), 1);
-                if (hc.card.name == CardDB.CardName.unknown) r = 4;
+                if (hc.card.name == CardName.unknown) r = 4;
                 retval += r;
             }
 
@@ -52,7 +54,7 @@
         {
             int retval = 0;
             retval += m.handcard.card.cost;
-            if (m.handcard.card.name == CardDB.CardName.unknown) retval = 4;
+            if (m.handcard.card.name == CardName.unknown) retval = 4;
             return retval;
         }
 

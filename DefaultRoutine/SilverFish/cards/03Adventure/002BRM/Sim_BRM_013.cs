@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._002BRM
 {
@@ -12,7 +13,7 @@ namespace SilverFish.cards._03Adventure._002BRM
             p.minionGetDamageOrHeal(target, dmg);
 			
 			int cardsCount = (ownplay) ? p.owncards.Count : p.enemyAnzCards;
-            if (cardsCount <= 0) p.drawACard(CardDB.CardName.unknown, ownplay);
+            if (cardsCount <= 0) p.drawACard(CardName.unknown, ownplay);
 		}
 	}
 }

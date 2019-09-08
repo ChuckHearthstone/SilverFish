@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._001NAX
 {
@@ -10,11 +11,11 @@ namespace SilverFish.cards._03Adventure._001NAX
 		{
 			foreach (Minion m in p.ownMinions)
             {
-                if (m.name != CardDB.CardName.skeleton) p.minionGetDestroyed(m);
+                if (m.name != CardName.skeleton) p.minionGetDestroyed(m);
             }
             foreach (Minion m in p.enemyMinions)
             {
-                if (m.name != CardDB.CardName.skeleton) p.minionGetDestroyed(m);
+                if (m.name != CardName.skeleton) p.minionGetDestroyed(m);
             }
 		}
 	}

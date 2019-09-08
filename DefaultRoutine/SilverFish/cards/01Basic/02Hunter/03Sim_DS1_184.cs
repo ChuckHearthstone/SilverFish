@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._02Hunter
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._01Basic._02Hunter
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             //TODO NOT SUPPORTED YET
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
             //p.evaluatePenality += 100;
 		}
 

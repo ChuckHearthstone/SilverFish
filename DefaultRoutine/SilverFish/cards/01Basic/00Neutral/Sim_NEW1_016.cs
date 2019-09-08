@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._00Neutral
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._01Basic._00Neutral
 //    kampfschrei:/ fügt eurer hand einen zufälligen piraten aus eurem deck hinzu.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.CardName.unknown, true, true);
+            p.drawACard(CardName.unknown, true, true);
 		}
 
 

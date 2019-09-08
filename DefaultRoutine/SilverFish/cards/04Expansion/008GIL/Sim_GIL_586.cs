@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -20,7 +21,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             p.minionGetBuffed(target, 2, 2);
             if ((TAG_RACE)target.handcard.card.race == TAG_RACE.ELEMENTAL)
-                p.drawACard(CardDB.CardName.unknown, ownplay, true);
+                p.drawACard(CardName.unknown, ownplay, true);
         }
     }
 }

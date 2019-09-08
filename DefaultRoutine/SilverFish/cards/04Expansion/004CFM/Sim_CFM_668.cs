@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             int count = 0;
             foreach (Minion mnn in temp)
             {
-                if (mnn.name == CardDB.CardName.doppelgangster && m.entitiyID != mnn.entitiyID && mnn.playedThisTurn)
+                if (mnn.name == CardName.doppelgangster && m.entitiyID != mnn.entitiyID && mnn.playedThisTurn)
                 {
                     mnn.setMinionToMinion(m);
                     count++;

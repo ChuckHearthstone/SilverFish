@@ -67,14 +67,14 @@ namespace HREngine.Bots
             public int bonusForPlaying = 0;
             public int bonusForPlayingT0 = 0;
             public int bonusForPlayingT1 = 0;
-            public CardDB.CardName requiredWeapon = CardDB.CardName.unknown;
+            public CardName requiredWeapon = CardName.unknown;
             public HeroEnum oHero = HeroEnum.None;
 
             public combo(string s)
             {
                 int i = 0;
                 this.neededMana = 0;
-                requiredWeapon = CardDB.CardName.unknown;
+                requiredWeapon = CardName.unknown;
                 this.type = combotype.combo;
                 this.twoTurnCombo = false;
                 bool fixmana = false;
@@ -247,7 +247,7 @@ namespace HREngine.Bots
                 return 0;
             }
 
-            public int isMultiTurnComboTurn1(List<Handmanager.Handcard> hand, int omm, List<Minion> ownmins, CardDB.CardName weapon)
+            public int isMultiTurnComboTurn1(List<Handmanager.Handcard> hand, int omm, List<Minion> ownmins, CardName weapon)
             {
                 if (!twoTurnCombo) return 0;
                 int cardsincombo = 0;
@@ -278,7 +278,7 @@ namespace HREngine.Bots
                         }
                     }
 
-                    if (requiredWeapon != CardDB.CardName.unknown && requiredWeapon != weapon) return 1;
+                    if (requiredWeapon != CardName.unknown && requiredWeapon != weapon) return 1;
 
                     if (turn0requires >= combot0len) return 2;
 
@@ -520,7 +520,7 @@ namespace HREngine.Bots
             if (this.combos.Count == 0) return 0;
 
             List<Action> alist = p.playactions;
-            CardDB.CardName weapon = p.ownWeapon.name;
+            CardName weapon = p.ownWeapon.name;
             HeroEnum heroname = p.ownHeroName;
 
             //returns a penalty only if the combo could be played, but is not played completely

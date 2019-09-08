@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SilverFish.Enums;
 using SilverFish.Helpers;
 
 namespace HREngine.Bots
@@ -115,7 +116,7 @@ namespace HREngine.Bots
                     switch (aa.actionType)
                     {
                         case actionEnum.useHeroPower:
-                            if (aa.card.card.name == CardDB.CardName.totemiccall) totemiccall = true;
+                            if (aa.card.card.name == CardName.totemiccall) totemiccall = true;
                             break;
                         case actionEnum.playcard:
                             if (penman.DamageAllEnemysDatabase.ContainsKey(aa.card.card.name))

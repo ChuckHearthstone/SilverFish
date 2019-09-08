@@ -21,7 +21,7 @@ namespace SilverFish.cards._02Classic
                     {
                         /*int oldhp = m.Hp;
                         p.minionGetDamageOrHeal(m, dmg);
-                        if (!target.silenced && (target.handcard.card.name == CardDB.cardName.waterelemental ||target.handcard.card.name == CardDB.cardName.snowchugger) && m.Hp < oldhp) m.frozen=true;
+                        if (!target.silenced && (target.handcard.card.name == CardName.waterelemental ||target.handcard.card.name == CardName.snowchugger) && m.Hp < oldhp) m.frozen=true;
                         if (!target.silenced && m.Hp < oldhp && target.poisonous) p.minionGetDestroyed(m);*/
                         p.minionAttacksMinion(target, m, true);
                     }

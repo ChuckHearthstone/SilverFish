@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -20,7 +21,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             m.extraParam2 = diedMinions;
             for (int i = 0; i < residual; i++)
             {
-                p.drawACard(CardDB.CardName.unknown, m.own);
+                p.drawACard(CardName.unknown, m.own);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -321,7 +322,7 @@ namespace HREngine.Bots
             {
                 if (m.Attack > strongestAttack) strongestAttack = m.Attack;
                 if (m.taunt) return true;
-                if (m.name == CardDB.CardName.dancingswords || m.name == CardDB.CardName.deathlord) return true;
+                if (m.name == CardName.dancingswords || m.name == CardName.deathlord) return true;
             }
 
             int haspets = 0;
@@ -330,45 +331,45 @@ namespace HREngine.Bots
             bool spawnminions = false;
             foreach (Minion m in ownm)
             {
-                if (m.name == CardDB.CardName.cultmaster) return true;
-                if (m.name == CardDB.CardName.knifejuggler) hasJuggler = true;
+                if (m.name == CardName.cultmaster) return true;
+                if (m.name == CardName.knifejuggler) hasJuggler = true;
                 if (m.Ready && m.Attack >= 1)
                 {
                     if (m.AdjacentAttack >= 1) return true;//wolphalfa or flametongue is in play
-                    if (m.name == CardDB.CardName.northshirecleric) return true;
-                    if (m.name == CardDB.CardName.armorsmith) return true;
-                    if (m.name == CardDB.CardName.loothoarder) return true;
-                    //if (m.name == CardDB.cardName.madscientist) return true; // dont change the tactic
-                    if (m.name == CardDB.CardName.sylvanaswindrunner) return true;
-                    if (m.name == CardDB.CardName.darkcultist) return true;
+                    if (m.name == CardName.northshirecleric) return true;
+                    if (m.name == CardName.armorsmith) return true;
+                    if (m.name == CardName.loothoarder) return true;
+                    //if (m.name == CardName.madscientist) return true; // dont change the tactic
+                    if (m.name == CardName.sylvanaswindrunner) return true;
+                    if (m.name == CardName.darkcultist) return true;
                     if (m.ownBlessingOfWisdom >= 1) return true;
                     if (m.ownPowerWordGlory >= 1) return true;
-                    if (m.name == CardDB.CardName.acolyteofpain) return true;
-                    if (m.name == CardDB.CardName.frothingberserker) return true;
-                    if (m.name == CardDB.CardName.flesheatingghoul) return true;
-                    if (m.name == CardDB.CardName.bloodmagethalnos) return true;
-                    if (m.name == CardDB.CardName.webspinner) return true;
-                    if (m.name == CardDB.CardName.tirionfordring) return true;
-                    if (m.name == CardDB.CardName.baronrivendare) return true;
+                    if (m.name == CardName.acolyteofpain) return true;
+                    if (m.name == CardName.frothingberserker) return true;
+                    if (m.name == CardName.flesheatingghoul) return true;
+                    if (m.name == CardName.bloodmagethalnos) return true;
+                    if (m.name == CardName.webspinner) return true;
+                    if (m.name == CardName.tirionfordring) return true;
+                    if (m.name == CardName.baronrivendare) return true;
 
 
-                    //if (m.name == CardDB.cardName.manawraith) return true;
+                    //if (m.name == CardName.manawraith) return true;
                     //buffing minions (attack with them last)
-                    if (m.name == CardDB.CardName.raidleader 
-                        || m.name == CardDB.CardName.stormwindchampion 
-                        || m.name == CardDB.CardName.timberwolf 
-                        || m.name == CardDB.CardName.southseacaptain 
-                        || m.name == CardDB.CardName.murlocwarleader 
-                        || m.name == CardDB.CardName.grimscaleoracle 
-                        || m.name == CardDB.CardName.leokk 
-                        || m.name == CardDB.CardName.fallenhero 
-                        || m.name == CardDB.CardName.warhorsetrainer)
+                    if (m.name == CardName.raidleader 
+                        || m.name == CardName.stormwindchampion 
+                        || m.name == CardName.timberwolf 
+                        || m.name == CardName.southseacaptain 
+                        || m.name == CardName.murlocwarleader 
+                        || m.name == CardName.grimscaleoracle 
+                        || m.name == CardName.leokk 
+                        || m.name == CardName.fallenhero 
+                        || m.name == CardName.warhorsetrainer)
                         return true;
 
 
-                    if (m.name == CardDB.CardName.scavenginghyena) hashyena = true;
+                    if (m.name == CardName.scavenginghyena) hashyena = true;
                     if (m.handcard.card.race == 20) haspets++;
-                    if (m.name == CardDB.CardName.harvestgolem || m.name == CardDB.CardName.hauntedcreeper || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.ancestralspirit >= 1 || m.desperatestand  >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.name == CardDB.CardName.nerubianegg || m.name == CardDB.CardName.savannahhighmane || m.name == CardDB.CardName.sludgebelcher || m.name == CardDB.CardName.cairnebloodhoof || m.name == CardDB.CardName.feugen || m.name == CardDB.CardName.stalagg || m.name == CardDB.CardName.thebeast) spawnminions = true;
+                    if (m.name == CardName.harvestgolem || m.name == CardName.hauntedcreeper || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.ancestralspirit >= 1 || m.desperatestand  >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.name == CardName.nerubianegg || m.name == CardName.savannahhighmane || m.name == CardName.sludgebelcher || m.name == CardName.cairnebloodhoof || m.name == CardName.feugen || m.name == CardName.stalagg || m.name == CardName.thebeast) spawnminions = true;
                     
                 }
             }

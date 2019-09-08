@@ -18,7 +18,7 @@ namespace SilverFish.cards._02Classic
                 p.CallKid(kid, pos, true, true, true);
                 if (p.ownMinions.Count >= 1)
                 {
-                    if (p.ownMinions[p.ownMinions.Count - 1].name == CardDB.CardName.defender)
+                    if (p.ownMinions[p.ownMinions.Count - 1].name == CardName.defender)
                     {
                         number = p.ownMinions[p.ownMinions.Count - 1].entitiyID;
                     }
@@ -31,7 +31,7 @@ namespace SilverFish.cards._02Classic
 
                 if (p.enemyMinions.Count >= 1)
                 {
-                    if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardDB.CardName.defender)
+                    if (p.enemyMinions[p.enemyMinions.Count - 1].name == CardName.defender)
                     {
                         number = p.enemyMinions[p.enemyMinions.Count - 1].entitiyID;
                     }

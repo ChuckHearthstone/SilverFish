@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._002AT
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.name == CardDB.CardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
+                if (m.name == CardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
             }            
 		}
 
@@ -27,7 +28,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.name == CardDB.CardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
+                if (m.name == CardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
             }
         }
 	}

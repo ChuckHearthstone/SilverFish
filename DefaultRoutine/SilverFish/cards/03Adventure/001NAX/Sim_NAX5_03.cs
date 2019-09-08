@@ -1,5 +1,6 @@
 using System;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._001NAX
 {
@@ -9,10 +10,10 @@ namespace SilverFish.cards._03Adventure._001NAX
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.CardName.unknown, true);
-            p.drawACard(CardDB.CardName.unknown, true);
-            p.drawACard(CardDB.CardName.unknown, false);
-            p.drawACard(CardDB.CardName.unknown, false);
+            p.drawACard(CardName.unknown, true);
+            p.drawACard(CardName.unknown, true);
+            p.drawACard(CardName.unknown, false);
+            p.drawACard(CardName.unknown, false);
 			
 			p.mana = Math.Min(10, p.mana+1);
 			p.ownMaxMana = Math.Min(10, p.ownMaxMana+1);

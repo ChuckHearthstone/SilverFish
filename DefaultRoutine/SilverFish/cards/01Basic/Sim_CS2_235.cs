@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._01Basic
         {
             for (int i = 0; i < minionsGotHealed; i++)
             {
-                p.drawACard(CardDB.CardName.unknown, triggerEffectMinion.own);
+                p.drawACard(CardName.unknown, triggerEffectMinion.own);
             }
         }
 	}

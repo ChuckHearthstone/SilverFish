@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -11,7 +12,7 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
            
-			p.drawACard(CardDB.CardName.unknown, own.own, true);
+			p.drawACard(CardName.unknown, own.own, true);
                         
            
 		}

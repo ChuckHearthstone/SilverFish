@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -19,13 +20,13 @@ namespace SilverFish.cards._04Expansion._006ICC
             bool another = false;
             foreach (Minion m in p.ownMinions)
             {
-                if (m.name == CardDB.CardName.mindbreaker && own.entitiyID != m.entitiyID) another = true;
+                if (m.name == CardName.mindbreaker && own.entitiyID != m.entitiyID) another = true;
             }
             if (!another)
             {
                 foreach (Minion m in p.enemyMinions)
                 {
-                    if (m.name == CardDB.CardName.mindbreaker && own.entitiyID != m.entitiyID) another = true;
+                    if (m.name == CardName.mindbreaker && own.entitiyID != m.entitiyID) another = true;
                 }
             }
             if (!another)

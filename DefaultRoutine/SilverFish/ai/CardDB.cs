@@ -273,7 +273,7 @@ namespace HREngine.Bots
                     }
 
                     name = "";
-                    if (c.name != CardDB.CardName.unknown)
+                    if (c.name != CardName.unknown)
                     {
 
                         this.CardList.Add(c);
@@ -386,7 +386,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    if (c.name != CardDB.CardName.unknown)
+                    if (c.name != CardName.unknown)
                     {
                         //LogHelper.WriteCombatLog(temp);
                     }
@@ -725,9 +725,9 @@ namespace HREngine.Bots
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Spellpower = true;
                     c.spellpowervalue = 1;
-                    if (c.name == CardDB.CardName.ancientmage) c.spellpowervalue = 0;
-                    if (c.name == CardDB.CardName.malygos) c.spellpowervalue = 5;
-                    if (c.name == CardDB.CardName.arcanotron) c.spellpowervalue = 2;
+                    if (c.name == CardName.ancientmage) c.spellpowervalue = 0;
+                    if (c.name == CardName.malygos) c.spellpowervalue = 5;
+                    if (c.name == CardName.arcanotron) c.spellpowervalue = 2;
                     continue;
                 }
 
@@ -808,7 +808,7 @@ namespace HREngine.Bots
 
         }
 
-        public Card getCardData(CardDB.CardName cardname)
+        public Card getCardData(CardName cardname)
         {
 
             foreach (Card ca in this.CardList)
@@ -871,9 +871,9 @@ namespace HREngine.Bots
             LogHelper.WriteMainLog("{");
             foreach (string cardid in namelist)
             {
-                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardDB.cardName." + cardid + ";");
+                LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardName." + cardid + ";");
             }
-            LogHelper.WriteMainLog("return CardDB.cardName.unknown;");
+            LogHelper.WriteMainLog("return CardName.unknown;");
             LogHelper.WriteMainLog("}");
 
             // simcard creator:

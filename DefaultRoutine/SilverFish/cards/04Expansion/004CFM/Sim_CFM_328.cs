@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -14,8 +15,8 @@ namespace SilverFish.cards._04Expansion._004CFM
             {
                 if (mnn.HealthPoints >= 6)
                 {
-                    p.drawACard(CardDB.CardName.unknown, m.own);
-                    p.drawACard(CardDB.CardName.unknown, m.own);
+                    p.drawACard(CardName.unknown, m.own);
+                    p.drawACard(CardName.unknown, m.own);
                     break;
                 }
             }

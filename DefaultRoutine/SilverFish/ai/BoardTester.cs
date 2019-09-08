@@ -1136,7 +1136,7 @@ namespace HREngine.Bots
 
             m.updateReadyness();
 
-            if (m.name == CardDB.CardName.lightspawn)
+            if (m.name == CardName.lightspawn)
             {
                 m.Attack = m.HealthPoints;
             }

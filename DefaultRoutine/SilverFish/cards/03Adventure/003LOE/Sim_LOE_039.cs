@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._03Adventure._003LOE
                 if (m.entitiyID == own.entitiyID) continue;
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL)
 				{
-					p.drawACard(CardDB.CardName.spidertank, own.own, true);
+					p.drawACard(CardName.spidertank, own.own, true);
 					break;
 				}
             }

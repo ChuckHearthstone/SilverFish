@@ -1,4 +1,5 @@
 ﻿using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._010TRL
 {
@@ -21,7 +22,7 @@ namespace SilverFish.cards._04Expansion._010TRL
             int count = 2;
             for (int i = 1; i <= count; i++)
             {
-                p.drawACard(CardDB.CardName.bananas, own.own, true);
+                p.drawACard(CardName.bananas, own.own, true);
                 //the card draw counter will plus one in drawACard method
                 //but the card is not drawn from deck, so we subtract it back
                 if (own.own)

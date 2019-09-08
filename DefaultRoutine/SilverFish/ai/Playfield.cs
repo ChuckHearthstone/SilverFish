@@ -586,184 +586,184 @@ namespace HREngine.Bots
 
                 switch (m.name)
                 {
-                    case CardDB.CardName.blackwaterpirate:
+                    case CardName.blackwaterpirate:
                         this.blackwaterpirate++;
                         this.blackwaterpirateStarted++;
                         continue;
-                    case CardDB.CardName.chogall:
+                    case CardName.chogall:
                         if (m.playedThisTurn && this.cardsPlayedThisTurn == this.mobsplayedThisTurn) this.nextSpellThisTurnCostHealth = true; 
                         continue;
-                    case CardDB.CardName.seadevilstinger:
+                    case CardName.seadevilstinger:
                         if (m.playedThisTurn && this.cardsPlayedThisTurn == this.mobsplayedThisTurn) this.nextMurlocThisTurnCostHealth = true; 
                         continue;
-                    case CardDB.CardName.prophetvelen:
+                    case CardName.prophetvelen:
                         this.doublepriest++;
                         continue;
-                    case CardDB.CardName.themistcaller:
+                    case CardName.themistcaller:
                         this.ownMistcaller++;
                         continue;
-                    case CardDB.CardName.pintsizedsummoner:
+                    case CardName.pintsizedsummoner:
                         this.winzigebeschwoererin++;
                         this.startedWithWinzigebeschwoererin++;
                         continue;
-                    case CardDB.CardName.manawraith:
+                    case CardName.manawraith:
                         this.managespenst++;
                         this.startedWithManagespenst++;
                         continue;
-                    case CardDB.CardName.nerubarweblord:
+                    case CardName.nerubarweblord:
                         this.nerubarweblord++;
                         this.startedWithnerubarweblord++;
                         continue;
-                    case CardDB.CardName.venturecomercenary:                        
+                    case CardName.venturecomercenary:                        
                         this.ownMinionsCostMore += 3;
                         this.ownMinionsCostMoreAtStart += 3;
                         continue;
-                    case CardDB.CardName.corpsewidow:
+                    case CardName.corpsewidow:
                         this.ownDRcardsCostMore -= 2;
                         this.ownDRcardsCostMoreAtStart -= 2;
                         continue;
-                    case CardDB.CardName.summoningportal:
+                    case CardName.summoningportal:
                         this.beschwoerungsportal++;
                         this.startedWithbeschwoerungsportal++;
                         continue;
-                    case CardDB.CardName.vaelastrasz:
+                    case CardName.vaelastrasz:
                         this.myCardsCostLess += 3;
                         this.startedWithmyCardsCostLess += 3;
                         continue;
-                    case CardDB.CardName.aviana:
+                    case CardName.aviana:
                         this.anzOwnAviana++;
                         continue;
-                    case CardDB.CardName.cloakedhuntress:
+                    case CardName.cloakedhuntress:
                         this.anzOwnCloakedHuntress++;
                         continue;
-                    case CardDB.CardName.baronrivendare:
+                    case CardName.baronrivendare:
                         this.ownBaronRivendare++;
                         continue;
-                    case CardDB.CardName.brannbronzebeard:
+                    case CardName.brannbronzebeard:
                         this.ownBrannBronzebeard++;
                         continue;
-                    case CardDB.CardName.drakkarienchanter:
+                    case CardName.drakkarienchanter:
                         this.ownTurnEndEffectsTriggerTwice++;
                         continue;
-                    case CardDB.CardName.fandralstaghelm:
+                    case CardName.fandralstaghelm:
                         this.ownFandralStaghelm++;
                         continue;
-                    case CardDB.CardName.loatheb:
+                    case CardName.loatheb:
                         if (m.playedThisTurn) this.loatheb = true;
                         continue;
-                    case CardDB.CardName.kelthuzad:
+                    case CardName.kelthuzad:
                         this.needGraveyard = true;
                         continue;
-                    case CardDB.CardName.leokk:
+                    case CardName.leokk:
                         this.anzOwnRaidleader++;
                         continue;
-                    case CardDB.CardName.raidleader:
+                    case CardName.raidleader:
                         this.anzOwnRaidleader++;
                         continue;
-                    case CardDB.CardName.warhorsetrainer:
+                    case CardName.warhorsetrainer:
                         this.anzOwnWarhorseTrainer++;
                         continue;
-                    case CardDB.CardName.fallenhero:
+                    case CardName.fallenhero:
                         this.ownHeroPowerExtraDamage++;
                         continue;
-                    case CardDB.CardName.garrisoncommander:
+                    case CardName.garrisoncommander:
                         bool another = false;
                         foreach (Minion mnn in this.ownMinions)
                         {
-                            if (mnn.name == CardDB.CardName.garrisoncommander && mnn.entitiyID != m.entitiyID) another = true;
+                            if (mnn.name == CardName.garrisoncommander && mnn.entitiyID != m.entitiyID) another = true;
                         }
                         if (!another) this.ownHeroPowerAllowedQuantity++;
                         continue;
-                    case CardDB.CardName.coldarradrake:
+                    case CardName.coldarradrake:
                         this.ownHeroPowerAllowedQuantity += 100;
                         continue;
-                    case CardDB.CardName.mindbreaker:
+                    case CardName.mindbreaker:
                         this.ownHeroAblility.manacost = 100;
                         this.enemyHeroAblility.manacost = 100;
                         this.ownAbilityReady = false;
                         this.ownAbilityReady = false;
                         continue;
-                    case CardDB.CardName.malganis:
+                    case CardName.malganis:
                         this.anzOwnMalGanis++;
                         continue;
-                    case CardDB.CardName.bolframshield:
+                    case CardName.bolframshield:
                         this.anzOwnBolfRamshield++;
                         continue;
-                    case CardDB.CardName.ladyblaumeux:
+                    case CardName.ladyblaumeux:
                         this.anzOwnHorsemen++;
                         continue;
-                    case CardDB.CardName.thanekorthazz:
+                    case CardName.thanekorthazz:
                         this.anzOwnHorsemen++;
                         continue;
-                    case CardDB.CardName.sirzeliek:
+                    case CardName.sirzeliek:
                         this.anzOwnHorsemen++;
                         continue;
-                    case CardDB.CardName.stormwindchampion:
+                    case CardName.stormwindchampion:
                         this.anzOwnStormwindChamps++;
                         continue;
-                    case CardDB.CardName.animatedarmor:
+                    case CardName.animatedarmor:
                         this.anzOwnAnimatedArmor++;
                         continue;
-                    case CardDB.CardName.moorabi:
+                    case CardName.moorabi:
                         this.anzMoorabi++;
                         continue;
-                    case CardDB.CardName.tundrarhino:
+                    case CardName.tundrarhino:
                         this.anzOwnTundrarhino++;
                         continue;
-                    case CardDB.CardName.timberwolf:
+                    case CardName.timberwolf:
                         this.anzOwnTimberWolfs++;
                         continue;
-                    case CardDB.CardName.murlocwarleader:
+                    case CardName.murlocwarleader:
                         this.anzOwnMurlocWarleader++;
                         continue;
-                    case CardDB.CardName.acidmaw:
+                    case CardName.acidmaw:
                         this.anzAcidmaw++;
                         continue;
-                    case CardDB.CardName.grimscaleoracle:
+                    case CardName.grimscaleoracle:
                         this.anzOwnGrimscaleOracle++;
                         continue;
-                    case CardDB.CardName.shadowfiend:
+                    case CardName.shadowfiend:
                         this.anzOwnShadowfiend++;
                         continue;
-                    case CardDB.CardName.auchenaisoulpriest:
+                    case CardName.auchenaisoulpriest:
                         this.anzOwnAuchenaiSoulpriest++;
                         continue;
-                    case CardDB.CardName.radiantelemental: goto case CardDB.CardName.sorcerersapprentice;
-                    case CardDB.CardName.sorcerersapprentice:
+                    case CardName.radiantelemental: goto case CardName.sorcerersapprentice;
+                    case CardName.sorcerersapprentice:
                         this.ownSpelsCostMore--;
                         this.ownSpelsCostMoreAtStart--;
                         continue;
-                    case CardDB.CardName.nerubianunraveler:                        
+                    case CardName.nerubianunraveler:                        
                         this.ownSpelsCostMore += 2;
                         this.ownSpelsCostMoreAtStart += 2;
                         continue;
-                    case CardDB.CardName.electron:
+                    case CardName.electron:
                         this.ownSpelsCostMore -= 3;
                         this.ownSpelsCostMoreAtStart -= 3;
                         
                         
                         continue;
-                    case CardDB.CardName.icewalker:
+                    case CardName.icewalker:
                         this.ownAbilityFreezesTarget++;
                         continue;
-                    case CardDB.CardName.southseacaptain:
+                    case CardName.southseacaptain:
                         this.anzOwnSouthseacaptain++;
                         continue;
-                    case CardDB.CardName.chromaggus:
+                    case CardName.chromaggus:
                         this.anzOwnChromaggus++;
                         continue;
-                    case CardDB.CardName.mechwarper:
+                    case CardName.mechwarper:
                         this.anzOwnMechwarper++;
                         this.anzOwnMechwarperStarted++;
                         continue;
-                    case CardDB.CardName.steamwheedlesniper:
+                    case CardName.steamwheedlesniper:
                         this.weHaveSteamwheedleSniper = true;
                         continue;
                     default:
                         break;
                 }
 
-                if (m.name == CardDB.CardName.dragonconsort && anzOwnDragonConsort > 0) this.anzOwnDragonConsortStarted++;
+                if (m.name == CardName.dragonconsort && anzOwnDragonConsort > 0) this.anzOwnDragonConsortStarted++;
                 if (m.handcard.card.race == 23) this.anzOwnPiratesStarted++;
                 if (m.handcard.card.race == 14) this.anzOwnMurlocStarted++;
 
@@ -772,7 +772,7 @@ namespace HREngine.Bots
             foreach (Handmanager.Handcard hc in this.owncards)
             {
 
-                if (hc.card.name == CardDB.CardName.kelthuzad)
+                if (hc.card.name == CardName.kelthuzad)
                 {
                     this.needGraveyard = true;
                 }
@@ -788,124 +788,124 @@ namespace HREngine.Bots
                 
                 switch (m.name)
                 {
-                    case CardDB.CardName.baronrivendare:
+                    case CardName.baronrivendare:
                         this.enemyBaronRivendare++;
                         continue;
-                    case CardDB.CardName.brannbronzebeard:
+                    case CardName.brannbronzebeard:
                         this.enemyBrannBronzebeard++;
                         continue;
-                    case CardDB.CardName.drakkarienchanter:
+                    case CardName.drakkarienchanter:
                         this.enemyTurnEndEffectsTriggerTwice++;
                         continue;
-                    case CardDB.CardName.kelthuzad:
+                    case CardName.kelthuzad:
                         this.needGraveyard = true;
                         continue;
-                    case CardDB.CardName.prophetvelen:
+                    case CardName.prophetvelen:
                         this.enemydoublepriest++;
                         continue;
-                    case CardDB.CardName.manawraith:
+                    case CardName.manawraith:
                         this.managespenst++;
                         this.startedWithManagespenst++;
                         continue;
-                    case CardDB.CardName.electron:
+                    case CardName.electron:
                         this.ownSpelsCostMore -= 3;
                         this.ownSpelsCostMoreAtStart -= 3;
                         
                         
                         continue;
-                    case CardDB.CardName.doomedapprentice:
+                    case CardName.doomedapprentice:
                         this.ownSpelsCostMore++;
                         this.ownSpelsCostMoreAtStart++;
                         continue;
-                    case CardDB.CardName.nerubarweblord:
+                    case CardName.nerubarweblord:
                         this.nerubarweblord++;
                         this.startedWithnerubarweblord++;
                         continue;
-                    case CardDB.CardName.garrisoncommander:
+                    case CardName.garrisoncommander:
                         bool another = false;
                         foreach (Minion mnn in this.enemyMinions)
                         {
-                            if (mnn.name == CardDB.CardName.garrisoncommander && mnn.entitiyID != m.entitiyID) another = true;
+                            if (mnn.name == CardName.garrisoncommander && mnn.entitiyID != m.entitiyID) another = true;
                         }
                         if (!another) this.enemyHeroPowerAllowedQuantity++;
                         continue;
-                    case CardDB.CardName.coldarradrake:
+                    case CardName.coldarradrake:
                         this.enemyHeroPowerAllowedQuantity += 100;
                         continue;
-                    case CardDB.CardName.mindbreaker:
+                    case CardName.mindbreaker:
                         this.ownHeroAblility.manacost = 100;
                         this.enemyHeroAblility.manacost = 100;
                         this.ownAbilityReady = false;
                         this.ownAbilityReady = false;
                         continue;
-                    case CardDB.CardName.fallenhero:
+                    case CardName.fallenhero:
                         this.enemyHeroPowerExtraDamage++;
                         continue;
-                    case CardDB.CardName.leokk:
+                    case CardName.leokk:
                         this.anzEnemyRaidleader++;
                         continue;
-                    case CardDB.CardName.raidleader:
+                    case CardName.raidleader:
                         this.anzEnemyRaidleader++;
                         continue;
-                    case CardDB.CardName.warhorsetrainer:
+                    case CardName.warhorsetrainer:
                         this.anzEnemyWarhorseTrainer++;
                         continue;
-                    case CardDB.CardName.malganis:
+                    case CardName.malganis:
                         this.anzEnemyMalGanis++;
                         continue;
-                    case CardDB.CardName.bolframshield:
+                    case CardName.bolframshield:
                         this.anzEnemyBolfRamshield++;
                         continue;
-                    case CardDB.CardName.ladyblaumeux:
+                    case CardName.ladyblaumeux:
                         this.anzEnemyHorsemen++;
                         continue;
-                    case CardDB.CardName.thanekorthazz:
+                    case CardName.thanekorthazz:
                         this.anzEnemyHorsemen++;
                         continue;
-                    case CardDB.CardName.sirzeliek:
+                    case CardName.sirzeliek:
                         this.anzEnemyHorsemen++;
                         continue;
-                    case CardDB.CardName.stormwindchampion:
+                    case CardName.stormwindchampion:
                         this.anzEnemyStormwindChamps++;
                         continue;
-                    case CardDB.CardName.animatedarmor:
+                    case CardName.animatedarmor:
                         this.anzEnemyAnimatedArmor++;
                         continue;
-                    case CardDB.CardName.moorabi:
+                    case CardName.moorabi:
                         this.anzMoorabi++;
                         continue;
-                    case CardDB.CardName.tundrarhino:
+                    case CardName.tundrarhino:
                         this.anzEnemyTundrarhino++;
                         continue;
-                    case CardDB.CardName.timberwolf:
+                    case CardName.timberwolf:
                         this.anzEnemyTimberWolfs++;
                         continue;
-                    case CardDB.CardName.murlocwarleader:
+                    case CardName.murlocwarleader:
                         this.anzEnemyMurlocWarleader++;
                         continue;
-                    case CardDB.CardName.acidmaw:
+                    case CardName.acidmaw:
                         this.anzAcidmaw++;
                         continue;
-                    case CardDB.CardName.grimscaleoracle:
+                    case CardName.grimscaleoracle:
                         this.anzEnemyGrimscaleOracle++;
                         continue;
-                    case CardDB.CardName.auchenaisoulpriest:
+                    case CardName.auchenaisoulpriest:
                         this.anzEnemyAuchenaiSoulpriest++;
                         continue;
-                    case CardDB.CardName.steamwheedlesniper:
+                    case CardName.steamwheedlesniper:
                         this.enemyHaveSteamwheedleSniper = true;
                         continue;
                     
-                    case CardDB.CardName.icewalker:
+                    case CardName.icewalker:
                         this.enemyAbilityFreezesTarget++;
                         continue;
-                    case CardDB.CardName.southseacaptain:
+                    case CardName.southseacaptain:
                         this.anzEnemySouthseacaptain++;
                         continue;
-                    case CardDB.CardName.chromaggus:
+                    case CardName.chromaggus:
                         this.anzEnemyChromaggus++;
                         continue;
-                    case CardDB.CardName.mechwarper:
+                    case CardName.mechwarper:
                         this.anzEnemyMechwarper++;
                         this.anzEnemyMechwarperStarted++;
                         continue;
@@ -1562,7 +1562,7 @@ namespace HREngine.Bots
 
                 if (usewhirlwind)
                 {
-                    mana = EnemyPlaysACard(CardDB.CardName.whirlwind, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.whirlwind, mana, playAroundProb, pap2);
                 }
             }
 
@@ -1571,37 +1571,37 @@ namespace HREngine.Bots
             switch (enemyHeroStrtClass)
             {
                 case TAG_CLASS.MAGE:
-                    mana = EnemyPlaysACard(CardDB.CardName.flamestrike, mana, playAroundProb, pap2);
-                    mana = EnemyPlaysACard(CardDB.CardName.blizzard, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.flamestrike, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.blizzard, mana, playAroundProb, pap2);
                     break;
                 case TAG_CLASS.HUNTER:
-                    mana = EnemyPlaysACard(CardDB.CardName.unleashthehounds, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.unleashthehounds, mana, playAroundProb, pap2);
                     break;
                 case TAG_CLASS.PRIEST:
-                    mana = EnemyPlaysACard(CardDB.CardName.holynova, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.holynova, mana, playAroundProb, pap2);
                     break;
                 case TAG_CLASS.SHAMAN:
-                    mana = EnemyPlaysACard(CardDB.CardName.lightningstorm, mana, playAroundProb, pap2);
-                    mana = EnemyPlaysACard(CardDB.CardName.maelstromportal, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.lightningstorm, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.maelstromportal, mana, playAroundProb, pap2);
                     break;
                 case TAG_CLASS.PALADIN:
-                    mana = EnemyPlaysACard(CardDB.CardName.consecration, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.consecration, mana, playAroundProb, pap2);
                     break;
                 case TAG_CLASS.DRUID:
-                    mana = EnemyPlaysACard(CardDB.CardName.swipe, mana, playAroundProb, pap2);
+                    mana = EnemyPlaysACard(CardName.swipe, mana, playAroundProb, pap2);
                     break;
             }
 
             return mana;
         }
 
-        public int EnemyPlaysACard(CardDB.CardName cardname, int currmana, int playAroundProb, int pap2)
+        public int EnemyPlaysACard(CardName cardname, int currmana, int playAroundProb, int pap2)
         {
             //todo manacosts
             
             switch (cardname)
             {
-                case CardDB.CardName.flamestrike:
+                case CardName.flamestrike:
                     if (currmana >= 7)
                     {
                         if (wehaveCounterspell == 0)
@@ -1625,7 +1625,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.blizzard:
+                case CardName.blizzard:
                     if (currmana >= 6)
                     {
                         if (wehaveCounterspell == 0)
@@ -1650,7 +1650,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.unleashthehounds:
+                case CardName.unleashthehounds:
                     if (currmana >= 4)//3
                     {
                         if (wehaveCounterspell == 0)
@@ -1673,7 +1673,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.holynova:
+                case CardName.holynova:
                     if (currmana >= 5)
                     {
                         if (wehaveCounterspell == 0)
@@ -1705,7 +1705,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.lightningstorm:
+                case CardName.lightningstorm:
                     if (currmana >= 4)//3
                     {
                         if (wehaveCounterspell == 0)
@@ -1729,7 +1729,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.maelstromportal:
+                case CardName.maelstromportal:
                     if (currmana >= 3)//2
                     {
                         if (wehaveCounterspell == 0)
@@ -1753,7 +1753,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.whirlwind:
+                case CardName.whirlwind:
                     if (currmana >= 3)//1
                     {
                         if (wehaveCounterspell == 0)
@@ -1782,7 +1782,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.consecration:
+                case CardName.consecration:
                     if (currmana >= 4)
                     {
                         if (wehaveCounterspell == 0)
@@ -1808,7 +1808,7 @@ namespace HREngine.Bots
                     }
                     break;
 
-                case CardDB.CardName.swipe:
+                case CardName.swipe:
                     if (currmana >= 4)
                     {
                         if (wehaveCounterspell == 0)
@@ -1893,8 +1893,8 @@ namespace HREngine.Bots
             if (this.ownMinions.Count == 0) return 1;
             if (this.ownMinions.Count == 1)
             {
-                if (this.ownMinions[0].handcard.card.name == CardDB.CardName.flametonguetotem || this.ownMinions[0].handcard.card.name == CardDB.CardName.direwolfalpha) return 1;
-                else if (card.name == CardDB.CardName.tuskarrtotemic) return 1;
+                if (this.ownMinions[0].handcard.card.name == CardName.flametonguetotem || this.ownMinions[0].handcard.card.name == CardName.direwolfalpha) return 1;
+                else if (card.name == CardName.tuskarrtotemic) return 1;
                 else return 2;
             }
 
@@ -1908,12 +1908,12 @@ namespace HREngine.Bots
                 bool givesBuff = false;
                 switch (card.name)
                 {
-                    case CardDB.CardName.grimestreetprotector: givesBuff = true; break; 
-                    case CardDB.CardName.defenderofargus: givesBuff = true; break;
-                    case CardDB.CardName.flametonguetotem: givesBuff = true; break;
-                    case CardDB.CardName.direwolfalpha: givesBuff = true; break;
-                    case CardDB.CardName.ancientmage: givesBuff = true; break;
-                    case CardDB.CardName.tuskarrtotemic: givesBuff = true; break;
+                    case CardName.grimestreetprotector: givesBuff = true; break; 
+                    case CardName.defenderofargus: givesBuff = true; break;
+                    case CardName.flametonguetotem: givesBuff = true; break;
+                    case CardName.direwolfalpha: givesBuff = true; break;
+                    case CardName.ancientmage: givesBuff = true; break;
+                    case CardName.tuskarrtotemic: givesBuff = true; break;
                 }
                 if (givesBuff)
                 {
@@ -1955,7 +1955,7 @@ namespace HREngine.Bots
                 }
                 else return this.ownMinions.Count + 1;
             }
-            if (card.name == CardDB.CardName.sunfuryprotector || card.name == CardDB.CardName.defenderofargus) // bestplace, if right and left minions have no taunt + lots of hp, dont make priority-minions to taunt
+            if (card.name == CardName.sunfuryprotector || card.name == CardName.defenderofargus) // bestplace, if right and left minions have no taunt + lots of hp, dont make priority-minions to taunt
             {
                 if (lethal) return 1;
                 if (this.ownMinions.Count == 2)
@@ -2014,17 +2014,17 @@ namespace HREngine.Bots
 
             int cardIsBuffer = 0;
             bool placebuff = false;
-            if (card.name == CardDB.CardName.flametonguetotem || card.name == CardDB.CardName.direwolfalpha || card.name == CardDB.CardName.tuskarrtotemic)
+            if (card.name == CardName.flametonguetotem || card.name == CardName.direwolfalpha || card.name == CardName.tuskarrtotemic)
             {
                 placebuff = true;
-                if (card.name == CardDB.CardName.flametonguetotem || card.name == CardDB.CardName.tuskarrtotemic) cardIsBuffer = 2;
-                if (card.name == CardDB.CardName.direwolfalpha) cardIsBuffer = 1;
+                if (card.name == CardName.flametonguetotem || card.name == CardName.tuskarrtotemic) cardIsBuffer = 2;
+                if (card.name == CardName.direwolfalpha) cardIsBuffer = 1;
             }
             bool tundrarhino = false;
             foreach (Minion m in this.ownMinions)
             {
-                if (m.handcard.card.name == CardDB.CardName.tundrarhino) tundrarhino = true;
-                if (m.handcard.card.name == CardDB.CardName.flametonguetotem || m.handcard.card.name == CardDB.CardName.direwolfalpha) placebuff = true;
+                if (m.handcard.card.name == CardName.tundrarhino) tundrarhino = true;
+                if (m.handcard.card.name == CardName.flametonguetotem || m.handcard.card.name == CardName.direwolfalpha) placebuff = true;
             }
             //max attack this turn
             if (placebuff)
@@ -2037,7 +2037,7 @@ namespace HREngine.Bots
                     cval = card.Attack;
                     if (card.windfury) cval = card.Attack;
                 }
-                if (card.name == CardDB.CardName.nerubianegg)
+                if (card.name == CardName.nerubianegg)
                 {
                     cval += 1;
                 }
@@ -2066,13 +2066,13 @@ namespace HREngine.Bots
 
                     switch(m.handcard.card.name)
                     {
-                        case CardDB.CardName.flametonguetotem:
+                        case CardName.flametonguetotem:
                             buffplaces[i] = 2;
-                            goto case CardDB.CardName.aiextra1;
-                        case CardDB.CardName.direwolfalpha:
+                            goto case CardName.aiextra1;
+                        case CardName.direwolfalpha:
                             buffplaces[i] = 1;
-                            goto case CardDB.CardName.aiextra1;
-                        case CardDB.CardName.aiextra1:
+                            goto case CardName.aiextra1;
+                        case CardName.aiextra1:
                             if (minionsBefore == -1) minionsBefore = i;
                             minionsAfter = omCount - i - 1;
                             break;
@@ -2378,10 +2378,10 @@ namespace HREngine.Bots
                 if (m.frozen) continue;
                 switch (m.name)
                 {
-                    case CardDB.CardName.ancientwatcher: if (!m.silenced) continue; break;
-                    case CardDB.CardName.blackknight: if (!m.silenced) continue; break;
-                    case CardDB.CardName.whiteknight: if (!m.silenced) continue; break;
-                    case CardDB.CardName.humongousrazorleaf: if (!m.silenced) continue; break;
+                    case CardName.ancientwatcher: if (!m.silenced) continue; break;
+                    case CardName.blackknight: if (!m.silenced) continue; break;
+                    case CardName.whiteknight: if (!m.silenced) continue; break;
+                    case CardName.humongousrazorleaf: if (!m.silenced) continue; break;
                 }
                 ghd += m.Attack;
                 if (m.windfury) ghd += m.Attack;
@@ -2477,10 +2477,10 @@ namespace HREngine.Bots
                                     if (m.frozen) continue;
                                     switch (m.name)
                                     {
-                                        case CardDB.CardName.ancientwatcher: if (!m.silenced) continue; break;
-                                        case CardDB.CardName.blackknight: if (!m.silenced) continue; break;
-                                        case CardDB.CardName.whiteknight: if (!m.silenced) continue; break;
-                                        case CardDB.CardName.humongousrazorleaf: if (!m.silenced) continue; break;
+                                        case CardName.ancientwatcher: if (!m.silenced) continue; break;
+                                        case CardName.blackknight: if (!m.silenced) continue; break;
+                                        case CardName.whiteknight: if (!m.silenced) continue; break;
+                                        case CardName.humongousrazorleaf: if (!m.silenced) continue; break;
                                     }
                                     if (m.HealthPoints < 3)
                                     {
@@ -2512,7 +2512,7 @@ namespace HREngine.Bots
                 {
                     switch (m.name)
                     {
-                        case CardDB.CardName.icehowl: if (!m.silenced) continue; break;
+                        case CardName.icehowl: if (!m.silenced) continue; break;
                     }
                     totalEnemyDamage += m.Attack;
                     if (m.windfury) totalEnemyDamage += m.Attack;
@@ -3326,7 +3326,7 @@ namespace HREngine.Bots
                     int dmg = attacker.Attack;
                     switch ((attacker.own ? this.ownWeapon.name : this.enemyWeapon.name))
                     {
-                        case CardDB.CardName.massiveruneblade:
+                        case CardName.massiveruneblade:
                             dmg *= 2;
                             break;
                     }
@@ -3334,7 +3334,7 @@ namespace HREngine.Bots
 
                     switch ((attacker.own ? this.ownWeapon.name : this.enemyWeapon.name))
                     {
-                        case CardDB.CardName.gravevengeance:
+                        case CardName.gravevengeance:
                             if (oldHp > defender.HealthPoints) this.triggerAMinionDealedDmg(attacker, oldHp - defender.HealthPoints, true);
                             break;
                     }
@@ -3349,10 +3349,10 @@ namespace HREngine.Bots
                         {
                             switch ((attacker.own ? this.ownWeapon.name : this.enemyWeapon.name))
                             {
-                                case CardDB.CardName.icebreaker:
+                                case CardName.icebreaker:
                                     if (defender.frozen) minionGetDestroyed(defender);
                                     break;
-                                case CardDB.CardName.gravevengeance:
+                                case CardName.gravevengeance:
                                     this.triggerAMinionDealedDmg(attacker, oldHp - defender.HealthPoints, true);
                                     break;
                             }
@@ -3368,9 +3368,9 @@ namespace HREngine.Bots
                         {
                             switch (defender.handcard.card.name)
                             {
-                                case CardDB.CardName.voodoohexxer: goto case CardDB.CardName.waterelemental;
-                                case CardDB.CardName.snowchugger: goto case CardDB.CardName.waterelemental;
-                                case CardDB.CardName.waterelemental: minionGetFrozen(attacker); break;
+                                case CardName.voodoohexxer: goto case CardName.waterelemental;
+                                case CardName.snowchugger: goto case CardName.waterelemental;
+                                case CardName.waterelemental: minionGetFrozen(attacker); break;
                             }
                             this.triggerAMinionDealedDmg(defender, oldHp - attacker.HealthPoints, false);
                         }
@@ -3410,9 +3410,9 @@ namespace HREngine.Bots
             {
                 switch (attacker.handcard.card.name)
                 {
-                    case CardDB.CardName.voodoohexxer: goto case CardDB.CardName.waterelemental;
-                    case CardDB.CardName.snowchugger: goto case CardDB.CardName.waterelemental;
-                    case CardDB.CardName.waterelemental:
+                    case CardName.voodoohexxer: goto case CardName.waterelemental;
+                    case CardName.snowchugger: goto case CardName.waterelemental;
+                    case CardName.waterelemental:
                         if (!attacker.silenced) minionGetFrozen(defender);
                         break;
                 }
@@ -3435,9 +3435,9 @@ namespace HREngine.Bots
                 {
                     switch (defender.handcard.card.name)
                     {
-                        case CardDB.CardName.voodoohexxer: goto case CardDB.CardName.waterelemental;
-                        case CardDB.CardName.snowchugger: goto case CardDB.CardName.waterelemental;
-                        case CardDB.CardName.waterelemental:
+                        case CardName.voodoohexxer: goto case CardName.waterelemental;
+                        case CardName.snowchugger: goto case CardName.waterelemental;
+                        case CardName.waterelemental:
                             if (!defender.silenced) minionGetFrozen(attacker);
                             break;
                     }
@@ -3460,25 +3460,25 @@ namespace HREngine.Bots
 
             switch (attacker.name)
             {
-                case CardDB.CardName.theboogeymonster: 
+                case CardName.theboogeymonster: 
                     if (!defender.isHero && defender.HealthPoints < 1 && attacker.HealthPoints > 0) this.minionGetBuffed(attacker, 2, 2);
                     break;
-                case CardDB.CardName.windupburglebot: 
-                    if (!defender.isHero && attacker.HealthPoints > 0) this.drawACard(CardDB.CardName.unknown, attacker.own);
+                case CardName.windupburglebot: 
+                    if (!defender.isHero && attacker.HealthPoints > 0) this.drawACard(CardName.unknown, attacker.own);
                     break;
-                case CardDB.CardName.lotusassassin: 
+                case CardName.lotusassassin: 
                     if (!defender.isHero && defender.HealthPoints < 1 && attacker.HealthPoints > 0) attacker.stealth = true;
                     break;
-                case CardDB.CardName.lotusillusionist: 
+                case CardName.lotusillusionist: 
                     if (defender.isHero) this.minionTransform(attacker, this.getRandomCardForManaMinion(6));
                     break;
-                case CardDB.CardName.viciousfledgling: 
+                case CardName.viciousfledgling: 
                     if (defender.isHero) this.getBestAdapt(attacker);
                     break;
-                case CardDB.CardName.knuckles: 
+                case CardName.knuckles: 
                     if (!defender.isHero && attacker.HealthPoints > 0) this.minionAttacksMinion(attacker, attacker.own ? this.enemyHero : this.ownHero, true);
                     break;
-                case CardDB.CardName.finjatheflyingstar: 
+                case CardName.finjatheflyingstar: 
                     if (!defender.isHero && defender.HealthPoints < 1)
                     {
                         if (attacker.own)
@@ -3511,16 +3511,16 @@ namespace HREngine.Bots
                         }
                     }
                     break;
-                case CardDB.CardName.giantsandworm: 
+                case CardName.giantsandworm: 
                     if (!defender.isHero && defender.HealthPoints < 1 && attacker.HealthPoints > 0)
                     {
                         attacker.numAttacksThisTurn = 0; 
                         attacker.Ready = true;
                     }
                     break;
-                case CardDB.CardName.drakonidslayer: goto case CardDB.CardName.foereaper4000;
-                case CardDB.CardName.magnatauralpha: goto case CardDB.CardName.foereaper4000;
-                case CardDB.CardName.foereaper4000:
+                case CardName.drakonidslayer: goto case CardName.foereaper4000;
+                case CardName.magnatauralpha: goto case CardName.foereaper4000;
+                case CardName.foereaper4000:
                     if (!attacker.silenced && !dontcount)
                     {
                         List<Minion> temp = (attacker.own) ? this.enemyMinions : this.ownMinions;
@@ -3549,29 +3549,29 @@ namespace HREngine.Bots
 
             //hero will end his readyness
             hero.updateReadyness();
-            if (weapon.name == CardDB.CardName.foolsbane && !hero.frozen) hero.Ready = true;
+            if (weapon.name == CardName.foolsbane && !hero.frozen) hero.Ready = true;
 
             //heal whether truesilverchampion equipped
             switch (weapon.name)
             {
-                case CardDB.CardName.truesilverchampion:
+                case CardName.truesilverchampion:
                     int heal = own ? this.getMinionHeal(2) : this.getEnemyMinionHeal(2); 
                     this.minionGetDamageOrHeal(hero, -heal);
                     doDmgTriggers();
                     break;
-                case CardDB.CardName.piranhalauncher:
+                case CardName.piranhalauncher:
                     int pos = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
                     this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CFM_337t), pos, own); 
                     break;
-                case CardDB.CardName.vinecleaver:
+                case CardName.vinecleaver:
                     int pos2 = (own) ? this.ownMinions.Count : this.enemyMinions.Count;
                     this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t), pos2, own); 
                     this.CallKid(CardDB.Instance.getCardDataFromID(CardIdEnum.CS2_101t), pos2, own); 
                     break;
-                case CardDB.CardName.foolsbane:
+                case CardName.foolsbane:
                     if (!hero.frozen) hero.Ready = true;
                     break;
-                case CardDB.CardName.brassknuckles:
+                case CardName.brassknuckles:
                     if (own)
                     {
                         Handmanager.Handcard hc = this.searchRandomMinionInHand(this.owncards, searchmode.searchLowestCost, GAME_TAGs.Mob);
@@ -3626,7 +3626,7 @@ namespace HREngine.Bots
             //gorehowl is not killed if he attacks minions
             if (own)
             {
-                if (this.ownWeapon.name == CardDB.CardName.gorehowl && !target.isHero)
+                if (this.ownWeapon.name == CardName.gorehowl && !target.isHero)
                 {
                     this.ownWeapon.Angr--;
                     hero.Attack--;
@@ -3638,7 +3638,7 @@ namespace HREngine.Bots
             }
             else
             {
-                if (enemyWeapon.card.name == CardDB.CardName.gorehowl && !target.isHero)
+                if (enemyWeapon.card.name == CardName.gorehowl && !target.isHero)
                 {
                     this.enemyWeapon.Angr--;
                     hero.Attack--;
@@ -3694,14 +3694,14 @@ namespace HREngine.Bots
                     {
                         switch (target.name)
                         {
-                            case CardDB.CardName.dragonkinsorcerer:
+                            case CardName.dragonkinsorcerer:
                                 this.minionGetBuffed(target, 1, 1);
                                 break;
-                            case CardDB.CardName.eydisdarkbane:
+                            case CardName.eydisdarkbane:
                                 Minion mTarget = this.getEnemyCharTargetForRandomSingleDamage(3);
                                 this.minionGetDamageOrHeal(mTarget, 3, true);
                                 break;
-                            case CardDB.CardName.fjolalightbane:
+                            case CardName.fjolalightbane:
                                 target.divineshild = true;
                                 break;
                             default:
@@ -3761,7 +3761,7 @@ namespace HREngine.Bots
                     {
                         for (int i = 1; i <= stampede; i++)
                         {
-                            this.drawACard(CardDB.CardName.unknown, true, true);
+                            this.drawACard(CardName.unknown, true, true);
                         }
                     }
                 }
@@ -3771,7 +3771,7 @@ namespace HREngine.Bots
                     {
                         for (int i = 1; i <= lockandload; i++)
                         {
-                            this.drawACard(CardDB.CardName.unknown, true, true);
+                            this.drawACard(CardName.unknown, true, true);
                         }
                     }
                     c.CardSimulation.onCardPlay(this, true, target, choice);
@@ -3919,17 +3919,17 @@ namespace HREngine.Bots
                     {
                         switch (m.name)
                         {
-                            case CardDB.CardName.southseadeckhand:
+                            case CardName.southseadeckhand:
                                 if (m.playedThisTurn)
                                 {
                                     m.charge--;
                                     m.updateReadyness();
                                 }
                                 break;
-                            case CardDB.CardName.smalltimebuccaneer:
+                            case CardName.smalltimebuccaneer:
                                 this.minionGetBuffed(m, -2, 0);
                                 break;
-                            case CardDB.CardName.graveshambler:
+                            case CardName.graveshambler:
                                 if (!m.silenced) minionGetBuffed(m, 1, 1);
                                 break;
                         }
@@ -3957,10 +3957,10 @@ namespace HREngine.Bots
                     {
                         switch (m.name)
                         {
-                            case CardDB.CardName.smalltimebuccaneer:
+                            case CardName.smalltimebuccaneer:
                                 this.minionGetBuffed(m, -2, 0);
                                 break;
-                            case CardDB.CardName.graveshambler:
+                            case CardName.graveshambler:
                                 if (!m.silenced) minionGetBuffed(m, 1, 1);
                                 break;
                         }
@@ -4029,14 +4029,14 @@ namespace HREngine.Bots
                 if (mnn.silenced) continue;
                 switch (mnn.handcard.card.name)
                 {
-                    case CardDB.CardName.lightwarden: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.holychampion: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.shadowboxer: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.hoodedacolyte: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.aiextra1:
+                    case CardName.lightwarden: goto case CardName.aiextra1;
+                    case CardName.holychampion: goto case CardName.aiextra1;
+                    case CardName.shadowboxer: goto case CardName.aiextra1;
+                    case CardName.hoodedacolyte: goto case CardName.aiextra1;
+                    case CardName.aiextra1:
                         mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, anz);
                         break;
-                    case CardDB.CardName.blackguard:
+                    case CardName.blackguard:
                         if (ownHero.GotHealedValue > 0) mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, ownHero.GotHealedValue);
                         break;
                 }
@@ -4046,14 +4046,14 @@ namespace HREngine.Bots
                 if (mnn.silenced) continue;
                 switch (mnn.handcard.card.name)
                 {
-                    case CardDB.CardName.lightwarden: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.holychampion: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.shadowboxer: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.hoodedacolyte: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.aiextra1:
+                    case CardName.lightwarden: goto case CardName.aiextra1;
+                    case CardName.holychampion: goto case CardName.aiextra1;
+                    case CardName.shadowboxer: goto case CardName.aiextra1;
+                    case CardName.hoodedacolyte: goto case CardName.aiextra1;
+                    case CardName.aiextra1:
                         mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, anz);
                         break;
-                    case CardDB.CardName.blackguard:
+                    case CardName.blackguard:
                         if (enemyHero.GotHealedValue > 0) mnn.handcard.card.CardSimulation.onACharGotHealed(this, mnn, enemyHero.GotHealedValue);
                         break;
                 }
@@ -4071,9 +4071,9 @@ namespace HREngine.Bots
                 if (mnn.silenced) continue;
                 switch (mnn.handcard.card.name)
                 {
-                    case CardDB.CardName.northshirecleric: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.manageode: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.aiextra1:
+                    case CardName.northshirecleric: goto case CardName.aiextra1;
+                    case CardName.manageode: goto case CardName.aiextra1;
+                    case CardName.aiextra1:
                         mnn.handcard.card.CardSimulation.onAMinionGotHealedTrigger(this, mnn, anz);
                         break;
                 }
@@ -4084,9 +4084,9 @@ namespace HREngine.Bots
                 if (mnn.silenced) continue;
                 switch (mnn.handcard.card.name)
                 {
-                    case CardDB.CardName.northshirecleric: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.manageode: goto case CardDB.CardName.aiextra1;
-                    case CardDB.CardName.aiextra1:
+                    case CardName.northshirecleric: goto case CardName.aiextra1;
+                    case CardName.manageode: goto case CardName.aiextra1;
+                    case CardName.aiextra1:
                         mnn.handcard.card.CardSimulation.onAMinionGotHealedTrigger(this, mnn, anz);
                         break;
                 }
@@ -4139,7 +4139,7 @@ namespace HREngine.Bots
                     m.handcard.card.CardSimulation.onMinionLosesDivineShield(this, m, anzOwn);
                 }
                 
-                if (this.ownWeapon.name == CardDB.CardName.lightssorrow) this.ownWeapon.Angr += anzOwn;
+                if (this.ownWeapon.name == CardName.lightssorrow) this.ownWeapon.Angr += anzOwn;
             }
             
             if (anzEnemy > 0)
@@ -4150,7 +4150,7 @@ namespace HREngine.Bots
                     m.handcard.card.CardSimulation.onMinionLosesDivineShield(this, m, anzEnemy);
                 }
                 
-                if (this.enemyWeapon.name == CardDB.CardName.lightssorrow) this.enemyWeapon.Angr += anzEnemy;
+                if (this.enemyWeapon.name == CardName.lightssorrow) this.enemyWeapon.Angr += anzEnemy;
             }
         }
 
@@ -4174,18 +4174,18 @@ namespace HREngine.Bots
 
             foreach (Handmanager.Handcard hc in this.owncards)
             {
-                if (hc.card.name == CardDB.CardName.bolvarfordragon) hc.addattack += this.tempTrigger.ownMinionsDied;
+                if (hc.card.name == CardName.bolvarfordragon) hc.addattack += this.tempTrigger.ownMinionsDied;
             }
 
             
-            if (this.ownWeapon.name == CardDB.CardName.jaws)
+            if (this.ownWeapon.name == CardName.jaws)
             {
                 int bonus = 0;
                 foreach (Minion m in this.ownMinions) if (m.HealthPoints < 1 && m.handcard.card.deathrattle && !m.silenced) bonus++;
                 foreach (Minion m in this.enemyMinions) if (m.HealthPoints < 1 && m.handcard.card.deathrattle && !m.silenced) bonus++;
                 this.ownWeapon.Angr += bonus * 2;
             }
-            if (this.enemyWeapon.name == CardDB.CardName.jaws)
+            if (this.enemyWeapon.name == CardName.jaws)
             {
                 int bonus = 0;
                 foreach (Minion m in this.ownMinions) if (m.HealthPoints < 1 && m.handcard.card.deathrattle && !m.silenced) bonus++;
@@ -4194,7 +4194,7 @@ namespace HREngine.Bots
             }
 
             
-            if (this.ownHeroAblility.card.name == CardDB.CardName.raisedead)
+            if (this.ownHeroAblility.card.name == CardName.raisedead)
             {
                 if (this.tempTrigger.enemyMinionsDied > 0)
                 {
@@ -4205,7 +4205,7 @@ namespace HREngine.Bots
                     }
                 }
             }
-            if (this.enemyHeroAblility.card.name == CardDB.CardName.raisedead)
+            if (this.enemyHeroAblility.card.name == CardName.raisedead)
             {
                 if (this.tempTrigger.ownMinionsDied > 0)
                 {
@@ -4225,23 +4225,23 @@ namespace HREngine.Bots
 
             switch (attacker.name)
             {
-                case CardDB.CardName.cutpurse:
-                    if (target.isHero) this.drawACard(CardDB.CardName.thecoin, attacker.own, true);
+                case CardName.cutpurse:
+                    if (target.isHero) this.drawACard(CardName.thecoin, attacker.own, true);
                     break;
-                case CardDB.CardName.wretchedtiller:
+                case CardName.wretchedtiller:
                     if (target.isHero) minionGetDamageOrHeal(attacker.own ? this.enemyHero : this.ownHero, 2);
                     break;
-                case CardDB.CardName.shakuthecollector: 
-                    this.drawACard(CardDB.CardName.unknown, attacker.own, true);
+                case CardName.shakuthecollector: 
+                    this.drawACard(CardName.unknown, attacker.own, true);
                     break;
-                case CardDB.CardName.genzotheshark: 
+                case CardName.genzotheshark: 
                     while (this.owncards.Count < 3 && this.ownDeckSize > 0)
                     {
-                        this.drawACard(CardDB.CardName.unknown, true, true);
+                        this.drawACard(CardName.unknown, true, true);
                     }
                     while (this.enemyAnzCards < 3 && this.enemyDeckSize > 0)
                     {
-                        this.drawACard(CardDB.CardName.unknown, false, true);
+                        this.drawACard(CardName.unknown, false, true);
                     }
                     break;
             }
@@ -4250,14 +4250,14 @@ namespace HREngine.Bots
             {
                 for (int i = 0; i < attacker.ownBlessingOfWisdom; i++)
                 {
-                    this.drawACard(CardDB.CardName.unknown, true);
+                    this.drawACard(CardName.unknown, true);
                 }
             }
             if (attacker.enemyBlessingOfWisdom >= 1)
             {
                 for (int i = 0; i < attacker.enemyBlessingOfWisdom; i++)
                 {
-                    this.drawACard(CardDB.CardName.unknown, false);
+                    this.drawACard(CardName.unknown, false);
                 }
             }
 
@@ -4284,7 +4284,7 @@ namespace HREngine.Bots
             //3 cards only has such trigger
             switch (m.name)
             {
-                case CardDB.CardName.alleyarmorsmith:
+                case CardName.alleyarmorsmith:
                     if (!m.silenced) this.minionGetArmor(m.own ? this.ownHero : this.enemyHero, m.Attack);
                     break;
             }
@@ -4317,11 +4317,11 @@ namespace HREngine.Bots
 
                 foreach (Minion m in this.enemyMinions)
                 {
-                    if (m.name == CardDB.CardName.troggzortheearthinator)
+                    if (m.name == CardName.troggzortheearthinator)
                     {
                         burly++;
                     }
-                    if (m.name == CardDB.CardName.felreaver)
+                    if (m.name == CardName.felreaver)
                     {
                         m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                     }
@@ -4331,18 +4331,18 @@ namespace HREngine.Bots
                 {
                     switch (ohc.card.name)
                     {
-                        case CardDB.CardName.shadowreflection:
+                        case CardName.shadowreflection:
                             ohc.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, ohc);
                             break;
-                        case CardDB.CardName.blubberbaron:
+                        case CardName.blubberbaron:
                             ohc.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, ohc);
                             break;
                     }
                 }
 
-                if (this.ownHeroAblility.card.name == CardDB.CardName.voidform) this.ownHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.ownHeroAblility);
+                if (this.ownHeroAblility.card.name == CardName.voidform) this.ownHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.ownHeroAblility);
 
-                if (this.ownWeapon.name == CardDB.CardName.atiesh)
+                if (this.ownWeapon.name == CardName.atiesh)
                 {
                     this.CallKid(this.getRandomCardForManaMinion(hc.manacost), this.ownMinions.Count, own);
                     this.lowerWeaponDurability(1, own);
@@ -4364,19 +4364,19 @@ namespace HREngine.Bots
                 }
                 foreach (Minion m in this.ownMinions)
                 {
-                    if (m.name == CardDB.CardName.troggzortheearthinator)
+                    if (m.name == CardName.troggzortheearthinator)
                     {
                         burly++;
                     }
-                    if (m.name == CardDB.CardName.felreaver)
+                    if (m.name == CardName.felreaver)
                     {
                         m.handcard.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, m);
                     }
                 }
 
-                if (this.enemyHeroAblility.card.name == CardDB.CardName.voidform) this.enemyHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.enemyHeroAblility);
+                if (this.enemyHeroAblility.card.name == CardName.voidform) this.enemyHeroAblility.card.CardSimulation.onCardIsGoingToBePlayed(this, hc, own, this.enemyHeroAblility);
 
-                if (this.enemyWeapon.name == CardDB.CardName.atiesh)
+                if (this.enemyWeapon.name == CardName.atiesh)
                 {
                     this.CallKid(this.getRandomCardForManaMinion(hc.manacost), this.enemyMinions.Count, own);
                     this.lowerWeaponDurability(1, own);
@@ -4426,7 +4426,7 @@ namespace HREngine.Bots
                 }
                 switch (this.ownWeapon.name)
                 {
-                    case CardDB.CardName.swordofjustice:
+                    case CardName.swordofjustice:
                         this.minionGetBuffed(mnn, 1, 1);
                         this.lowerWeaponDurability(1, true);
                         break;
@@ -4443,7 +4443,7 @@ namespace HREngine.Bots
                 }
                 switch (this.enemyWeapon.name)
                 {
-                    case CardDB.CardName.swordofjustice:
+                    case CardName.swordofjustice:
                         this.minionGetBuffed(mnn, 1, 1);
                         this.lowerWeaponDurability(1, false);
                         break;
@@ -4573,7 +4573,7 @@ namespace HREngine.Bots
                 m.justBuffed = 0;
                 if (!m.silenced)
                 {
-                    if (m.name == CardDB.CardName.micromachine) m.handcard.card.CardSimulation.onTurnStartTrigger(this, m, ownturn);
+                    if (m.name == CardName.micromachine) m.handcard.card.CardSimulation.onTurnStartTrigger(this, m, ownturn);
                 }
                 if (ownturn && m.destroyOnOwnTurnStart) this.minionGetDestroyed(m);
                 if (!ownturn && m.destroyOnEnemyTurnStart) this.minionGetDestroyed(m);
@@ -4597,10 +4597,10 @@ namespace HREngine.Bots
                 hero.conceal = false;
                 hero.stealth = false;
             }
-            if (ab.card.name == CardDB.CardName.deathsshadow) ab.card.CardSimulation.onTurnStartTrigger(this, null, ownturn);
+            if (ab.card.name == CardName.deathsshadow) ab.card.CardSimulation.onTurnStartTrigger(this, null, ownturn);
 
             this.doDmgTriggers();
-            this.drawACard(CardDB.CardName.unknown, ownturn);
+            this.drawACard(CardName.unknown, ownturn);
             this.doDmgTriggers();
 
 
@@ -4649,7 +4649,7 @@ namespace HREngine.Bots
         {
             foreach (Minion m in ((ownHero) ? this.ownMinions : this.enemyMinions))
             {
-                if (m.name == CardDB.CardName.siegeengine && !m.silenced)
+                if (m.name == CardName.siegeengine && !m.silenced)
                 {
                     this.minionGetBuffed(m, 1, 0);
                 }
@@ -4665,7 +4665,7 @@ namespace HREngine.Bots
                     
                     foreach (Minion m in this.enemyMinions)
                     {
-                        if (m.name == CardDB.CardName.goblinsapper && !m.silenced)
+                        if (m.name == CardName.goblinsapper && !m.silenced)
                         {
                             this.minionGetBuffed(m, -4, 0);
                         }
@@ -4676,7 +4676,7 @@ namespace HREngine.Bots
                     
                     foreach (Minion m in this.enemyMinions)
                     {
-                        if (m.name == CardDB.CardName.goblinsapper && !m.silenced)
+                        if (m.name == CardName.goblinsapper && !m.silenced)
                         {
                             this.minionGetBuffed(m, 4, 0);
                         }
@@ -4692,7 +4692,7 @@ namespace HREngine.Bots
                     
                     foreach (Minion m in this.ownMinions)
                     {
-                        if (m.name == CardDB.CardName.goblinsapper && !m.silenced)
+                        if (m.name == CardName.goblinsapper && !m.silenced)
                         {
                             this.minionGetBuffed(m, -4, 0);
                         }
@@ -4703,7 +4703,7 @@ namespace HREngine.Bots
                     
                     foreach (Minion m in this.ownMinions)
                     {
-                        if (m.name == CardDB.CardName.goblinsapper && !m.silenced)
+                        if (m.name == CardName.goblinsapper && !m.silenced)
                         {
                             this.minionGetBuffed(m, 4, 0);
                         }
@@ -5260,7 +5260,7 @@ namespace HREngine.Bots
                 {
                     for (int i = 0; i < m.explorershat; i++)
                     {
-                        drawACard(CardDB.CardName.explorershat, m.own, true);
+                        drawACard(CardName.explorershat, m.own, true);
                     }
                 }
 
@@ -5273,7 +5273,7 @@ namespace HREngine.Bots
                 {
                     for (int i = 0; i < m.infest; i++)
                     {
-                        drawACard(CardDB.CardName.rivercrocolisk, m.own, true);
+                        drawACard(CardName.rivercrocolisk, m.own, true);
                     }
                 }
 
@@ -5345,7 +5345,7 @@ namespace HREngine.Bots
                         {
                             for (int i = 0; i < m.explorershat; i++)
                             {
-                                drawACard(CardDB.CardName.explorershat, m.own, true);
+                                drawACard(CardName.explorershat, m.own, true);
                             }
                         }
 
@@ -5358,7 +5358,7 @@ namespace HREngine.Bots
                         {
                             for (int i = 0; i < m.infest; i++)
                             {
-                                drawACard(CardDB.CardName.rivercrocolisk, m.own, true);
+                                drawACard(CardName.rivercrocolisk, m.own, true);
                             }
                         }
 
@@ -5512,7 +5512,7 @@ namespace HREngine.Bots
                 this.updateAdjacentBuffs(false);
             }
 
-            if (this.ownWeapon.name == CardDB.CardName.spiritclaws)
+            if (this.ownWeapon.name == CardName.spiritclaws)
             {
                 int dif = 0;
                 if (this.spellpower > 0) dif += 2;
@@ -5536,7 +5536,7 @@ namespace HREngine.Bots
                     }
                 }
             }
-            if (this.enemyWeapon.name == CardDB.CardName.spiritclaws)
+            if (this.enemyWeapon.name == CardName.spiritclaws)
             {
                 int dif = 0;
                 if (this.enemyspellpower > 0) dif += 2;
@@ -5588,21 +5588,21 @@ namespace HREngine.Bots
             {
                 switch (m.name)
                 {
-                    case CardDB.CardName.raidleader: angr--; break;
-                    case CardDB.CardName.leokk: angr--; break;
-                    case CardDB.CardName.timberwolf: angr--; break;
-                    case CardDB.CardName.stormwindchampion:
+                    case CardName.raidleader: angr--; break;
+                    case CardName.leokk: angr--; break;
+                    case CardName.timberwolf: angr--; break;
+                    case CardName.stormwindchampion:
                         angr--;
                         vert--;
                         break;
-                    case CardDB.CardName.southseacaptain:
+                    case CardName.southseacaptain:
                         angr--;
                         vert--;
                         break;
-                    case CardDB.CardName.grimscaleoracle:
+                    case CardName.grimscaleoracle:
                         angr--;
                         break;
-                    case CardDB.CardName.murlocwarleader:
+                    case CardName.murlocwarleader:
                         if (get)
                         {
                             angr -= 2;
@@ -5627,7 +5627,7 @@ namespace HREngine.Bots
                 angr += anzOwnRaidleader;
                 angr += anzOwnStormwindChamps;
                 vert += anzOwnStormwindChamps;
-                if (m.name == CardDB.CardName.silverhandrecruit) angr += anzOwnWarhorseTrainer;
+                if (m.name == CardName.silverhandrecruit) angr += anzOwnWarhorseTrainer;
                 if (m.handcard.card.race == 20)
                 {
                     angr += anzOwnTimberWolfs;
@@ -5654,7 +5654,7 @@ namespace HREngine.Bots
                 angr += anzEnemyStormwindChamps;
                 vert += anzEnemyStormwindChamps;
 
-                if (m.name == CardDB.CardName.silverhandrecruit) angr += anzEnemyWarhorseTrainer;
+                if (m.name == CardName.silverhandrecruit) angr += anzEnemyWarhorseTrainer;
                 if (m.handcard.card.race == 20)
                 {
                     angr += anzEnemyTimberWolfs;
@@ -5692,20 +5692,20 @@ namespace HREngine.Bots
                 {
                     switch (m.name)
                     {
-                        case CardDB.CardName.faeriedragon: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
-                        case CardDB.CardName.spectralknight: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
-                        case CardDB.CardName.laughingsister: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
-                        case CardDB.CardName.soggoththeslitherer: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
-                        case CardDB.CardName.arcanenullifierx21: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
-                        case CardDB.CardName.weespellstopper:
+                        case CardName.faeriedragon: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
+                        case CardName.spectralknight: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
+                        case CardName.laughingsister: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
+                        case CardName.soggoththeslitherer: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
+                        case CardName.arcanenullifierx21: m.cantBeTargetedBySpellsOrHeroPowers = true; continue;
+                        case CardName.weespellstopper:
                             if (i > 0) temp[i - 1].cantBeTargetedBySpellsOrHeroPowers = true;
                             if (i < anz - 1) temp[i + 1].cantBeTargetedBySpellsOrHeroPowers = true;
                             continue;
-                        case CardDB.CardName.direwolfalpha:
+                        case CardName.direwolfalpha:
                             if (i > 0) this.minionGetAdjacentBuff(temp[i - 1], 1, 0);
                             if (i < anz - 1) this.minionGetAdjacentBuff(temp[i + 1], 1, 0);
                             continue;
-                        case CardDB.CardName.flametonguetotem:
+                        case CardName.flametonguetotem:
                             if (i > 0) this.minionGetAdjacentBuff(temp[i - 1], 2, 0);
                             if (i < anz - 1) this.minionGetAdjacentBuff(temp[i + 1], 2, 0);
                             continue;
@@ -5754,13 +5754,13 @@ namespace HREngine.Bots
 
             switch (m.name)
             {
-                case CardDB.CardName.lightspawn:
+                case CardName.lightspawn:
                     m.Attack = m.HealthPoints;
                     break;
             }
             m.updateReadyness();
 
-            if (m.name == CardDB.CardName.lightspawn)
+            if (m.name == CardName.lightspawn)
             {
                 m.Attack = m.HealthPoints;
             }
@@ -5843,8 +5843,8 @@ namespace HREngine.Bots
                     bool calcLostWeaponDamage = true;
                     switch (c.name)
                     {
-                        case CardDB.CardName.poisoneddagger: goto case CardDB.CardName.wickedknife;
-                        case CardDB.CardName.wickedknife:
+                        case CardName.poisoneddagger: goto case CardName.wickedknife;
+                        case CardName.wickedknife:
                             if (this.ownWeapon.Angr == c.Attack && this.ownWeapon.Durability < c.Durability) calcLostWeaponDamage = false;
                             break;
                     }
@@ -5866,21 +5866,21 @@ namespace HREngine.Bots
             hero.Attack += c.Attack;
             hero.windfury = c.windfury;
             hero.updateReadyness();
-            hero.immuneWhileAttacking = (c.name == CardDB.CardName.gladiatorslongbow);
+            hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow);
 
             List<Minion> temp = (own) ? this.ownMinions : this.enemyMinions;
             foreach (Minion m in temp)
             {
                 switch (m.name)
                 {
-                    case CardDB.CardName.southseadeckhand:
+                    case CardName.southseadeckhand:
                         if (m.playedThisTurn) minionGetCharge(m);
                         break;
-                    case CardDB.CardName.buccaneer:
+                    case CardName.buccaneer:
                         if (own) this.ownWeapon.Angr++;
                         else this.enemyWeapon.Angr++;
                         break;
-                    case CardDB.CardName.smalltimebuccaneer:
+                    case CardName.smalltimebuccaneer:
                         this.minionGetBuffed(m, 2, 0);
                         break;
                 }
@@ -5944,7 +5944,7 @@ namespace HREngine.Bots
                 {
                     switch (m.name)
                     {
-                        case CardDB.CardName.moorabi:
+                        case CardName.moorabi:
                             if (m.silenced) continue;
                             this.drawACard(target.handcard.card.name, m.own, true);
                             break;
@@ -5954,7 +5954,7 @@ namespace HREngine.Bots
                 {
                     switch (m.name)
                     {
-                        case CardDB.CardName.moorabi:
+                        case CardName.moorabi:
                             if (m.silenced) continue;
                             this.drawACard(target.handcard.card.name, m.own, true);
                             break;
@@ -5979,15 +5979,15 @@ namespace HREngine.Bots
             }
         }
 
-        public void drawACard(CardDB.CardName ss, bool own, bool nopen = false)
+        public void drawACard(CardName ss, bool own, bool nopen = false)
         {
-            CardDB.CardName s = ss;
+            CardName s = ss;
 
             // cant hold more than 10 cards
             if (own)
             {
 
-                if (s == CardDB.CardName.unknown && !nopen) 
+                if (s == CardName.unknown && !nopen) 
                 {
                     if (ownDeckSize == 0)
                     {
@@ -6022,7 +6022,7 @@ namespace HREngine.Bots
             }
             else
             {
-                if (s == CardDB.CardName.unknown && !nopen) 
+                if (s == CardName.unknown && !nopen) 
                 {
                     if (enemyDeckSize == 0)
                     {
@@ -6055,7 +6055,7 @@ namespace HREngine.Bots
                 }
                 this.triggerCardsChanged(false);
 
-                if (anzEnemyChromaggus > 0 && s == CardDB.CardName.unknown && !nopen)
+                if (anzEnemyChromaggus > 0 && s == CardName.unknown && !nopen)
                 {
                     for (int i = 1; i <= anzEnemyChromaggus; i++)
                     {
@@ -6073,7 +6073,7 @@ namespace HREngine.Bots
                 return;
             }
 
-            if (s == CardDB.CardName.unknown)
+            if (s == CardName.unknown)
             {
                 CardDB.Card c = CardDB.Instance.getCardData(s);
                 Handmanager.Handcard hc = new Handmanager.Handcard { card = c, position = this.owncards.Count + 1, manacost = 1000, entity = this.getNextEntity() };
@@ -6088,7 +6088,7 @@ namespace HREngine.Bots
                 this.triggerCardsChanged(true);
             }
 
-            if (anzOwnChromaggus > 0 && s == CardDB.CardName.unknown && !nopen) 
+            if (anzOwnChromaggus > 0 && s == CardName.unknown && !nopen) 
             {
                 CardDB.Card c = CardDB.Instance.getCardData(s);
                 for (int i = 1; i <= anzOwnChromaggus; i++)
@@ -6317,9 +6317,9 @@ namespace HREngine.Bots
                     this.owncards.Add(hc);
                     this.triggerCardsChanged(true);
                 }
-                else this.drawACard(CardDB.CardName.unknown, true);
+                else this.drawACard(CardName.unknown, true);
             }
-            else this.drawACard(CardDB.CardName.unknown, false);
+            else this.drawACard(CardName.unknown, false);
 
             if (m.own) this.tempTrigger.ownMinionsChanged = true;
             else this.tempTrigger.enemyMininsChanged = true;
@@ -6508,7 +6508,7 @@ namespace HREngine.Bots
 
         public void minionGetTempBuff(Minion m, int tempAttack, int tempHp)
         {
-            if (!m.silenced && m.name == CardDB.CardName.lightspawn) return;
+            if (!m.silenced && m.name == CardName.lightspawn) return;
             if (tempAttack < 0 && -tempAttack > m.Attack)
             {
                 tempAttack = -m.Attack;
@@ -6519,7 +6519,7 @@ namespace HREngine.Bots
 
         public void minionGetAdjacentBuff(Minion m, int angr, int vert)
         {
-            if (!m.silenced && m.name == CardDB.CardName.lightspawn) return;
+            if (!m.silenced && m.name == CardName.lightspawn) return;
             m.Attack += angr;
             m.AdjacentAttack += angr;
         }
@@ -6556,7 +6556,7 @@ namespace HREngine.Bots
                 m.wounded = (m.maxHp != m.HealthPoints);
             }
 
-            if (m.name == CardDB.CardName.lightspawn && !m.silenced)
+            if (m.name == CardName.lightspawn && !m.silenced)
             {
                 m.Attack = m.HealthPoints;
             }
@@ -6571,7 +6571,7 @@ namespace HREngine.Bots
             bool cthunonboard = false;
             foreach (Minion m in this.ownMinions)
             {
-                if (m.name == CardDB.CardName.cthun)
+                if (m.name == CardName.cthun)
                 {
                     this.minionGetBuffed(m, attackbuff, hpbuff);
                     if (tauntbuff > 0)
@@ -6624,12 +6624,12 @@ namespace HREngine.Bots
                             if (c.isSpecialMinion) cardValue += 10;
                             switch (c.name)
                             {
-                                case CardDB.CardName.direwolfalpha: if (this.ownMinions.Count > 2) cardValue += 10; break;
-                                case CardDB.CardName.flametonguetotem: if (this.ownMinions.Count > 2) cardValue += 10; break;
-                                case CardDB.CardName.stormwindchampion: if (this.ownMinions.Count > 2) cardValue += 10; break;
-                                case CardDB.CardName.raidleader: if (this.ownMinions.Count > 2) cardValue += 10; break;
-                                case CardDB.CardName.silverwaregolem: cardValue = (c.Health + hc.addHp) * 2 + c.rarity; break;
-                                case CardDB.CardName.clutchmotherzavas: cardValue = (c.Health + hc.addHp) * 2 + c.rarity; break;
+                                case CardName.direwolfalpha: if (this.ownMinions.Count > 2) cardValue += 10; break;
+                                case CardName.flametonguetotem: if (this.ownMinions.Count > 2) cardValue += 10; break;
+                                case CardName.stormwindchampion: if (this.ownMinions.Count > 2) cardValue += 10; break;
+                                case CardName.raidleader: if (this.ownMinions.Count > 2) cardValue += 10; break;
+                                case CardName.silverwaregolem: cardValue = (c.Health + hc.addHp) * 2 + c.rarity; break;
+                                case CardName.clutchmotherzavas: cardValue = (c.Health + hc.addHp) * 2 + c.rarity; break;
                             }
                             break;
                         case CardDB.CardType.WEAPON:
@@ -6722,7 +6722,7 @@ namespace HREngine.Bots
                 {
                     if (m.HealthPoints > 0 && !m.silenced)
                     {
-                        if (m.name == CardDB.CardName.malchezaarsimp) malchezaarsimpCount++;
+                        if (m.name == CardName.malchezaarsimp) malchezaarsimpCount++;
                         m.handcard.card.CardSimulation.onCardDicscard(this, m.handcard, m, numDiscardedCards); 
                     }
                 }
@@ -6842,7 +6842,7 @@ namespace HREngine.Bots
 
         public void minionSetAngrToX(Minion m, int newAngr)
         {
-            if (!m.silenced && m.name == CardDB.CardName.lightspawn) return;
+            if (!m.silenced && m.name == CardName.lightspawn) return;
             m.Attack = newAngr;
             m.tempAttack = 0;
             this.minionGetOrEraseAllAreaBuffs(m, true);

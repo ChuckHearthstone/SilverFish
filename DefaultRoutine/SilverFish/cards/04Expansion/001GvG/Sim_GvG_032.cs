@@ -1,5 +1,6 @@
 using System;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -19,8 +20,8 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             if (choice == 2 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.drawACard(CardDB.CardName.unknown, true);
-                p.drawACard(CardDB.CardName.unknown, false);
+                p.drawACard(CardName.unknown, true);
+                p.drawACard(CardName.unknown, false);
             }
         }
 

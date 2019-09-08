@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -26,7 +27,7 @@ namespace SilverFish.cards._02Classic
             {
                 p.ownSecretsIDList.Clear();
             }
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
         }
 
     }

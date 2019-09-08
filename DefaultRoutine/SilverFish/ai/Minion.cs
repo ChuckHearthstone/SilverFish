@@ -34,7 +34,7 @@ namespace HREngine.Bots
         public bool own;
         public int pID = 0;
 
-        public CardDB.CardName name = CardDB.CardName.unknown;
+        public CardName name = CardName.unknown;
         public TAG_CLASS cardClass = TAG_CLASS.INVALID;
         public int synergy = 0;
         public Handmanager.Handcard handcard;
@@ -319,7 +319,7 @@ namespace HREngine.Bots
             {
                 if (this.own)
                 {
-                    if (p.ownWeapon.name == CardDB.CardName.cursedblade) dmg += dmg;
+                    if (p.ownWeapon.name == CardName.cursedblade) dmg += dmg;
                     if (p.anzOwnAnimatedArmor > 0 && dmg > 0) dmg = 1;
                     if (p.anzOwnBolfRamshield > 0 && dmg > 0)
 
@@ -331,7 +331,7 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in p.ownMinions)
                             {
-                                if (m.name == CardDB.CardName.bolframshield)
+                                if (m.name == CardName.bolframshield)
                                 {
                                     m.getDamageOrHeal(-rest, p, true, false);
                                     break;
@@ -344,7 +344,7 @@ namespace HREngine.Bots
                 else
                 {
                     if (p.anzEnemyAnimatedArmor > 0 && dmg > 0) dmg = 1;
-                    if (p.enemyWeapon.name == CardDB.CardName.cursedblade) dmg += dmg;
+                    if (p.enemyWeapon.name == CardName.cursedblade) dmg += dmg;
                     if (p.anzEnemyBolfRamshield > 0 && dmg > 0)
                     {
                         int rest = this.armor - dmg;
@@ -353,7 +353,7 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in p.enemyMinions)
                             {
-                                if (m.name == CardDB.CardName.bolframshield)
+                                if (m.name == CardName.bolframshield)
                                 {
                                     m.getDamageOrHeal(-rest, p, true, false);
                                     break;
@@ -472,7 +472,7 @@ namespace HREngine.Bots
                 {
                     if (p.anzAcidmaw == 1)
                     {
-                        if (this.name != CardDB.CardName.acidmaw) this.HealthPoints = 0;
+                        if (this.name != CardName.acidmaw) this.HealthPoints = 0;
                     }
                     else this.HealthPoints = 0;
                 }
@@ -492,7 +492,7 @@ namespace HREngine.Bots
 
 
 
-            if (this.name == CardDB.CardName.lightspawn && !this.silenced)
+            if (this.name == CardName.lightspawn && !this.silenced)
             {
                 this.Attack = this.HealthPoints;
             }
@@ -516,13 +516,13 @@ namespace HREngine.Bots
 
         public void minionDied(Playfield p)
         {
-            if (this.name == CardDB.CardName.stalagg)
+            if (this.name == CardName.stalagg)
             {
                 p.stalaggDead = true;
             }
             else
             {
-                if (this.name == CardDB.CardName.feugen) p.feugenDead = true;
+                if (this.name == CardName.feugen) p.feugenDead = true;
             }
 
             
@@ -581,7 +581,7 @@ namespace HREngine.Bots
                 return;
             }
 
-            if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || ( !silenced && this.name == CardDB.CardName.v07tr0n && numAttacksThisTurn <=3 )) ) Ready = true;
+            if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || ( !silenced && this.name == CardName.v07tr0n && numAttacksThisTurn <=3 )) ) Ready = true;
 
         }
 
@@ -618,7 +618,7 @@ namespace HREngine.Bots
             returnToHand = 0;
             infest = 0;
             deathrattle2 = null;
-            if (this.name == CardDB.CardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID)) p.LurkersDB.Remove(this.entitiyID);
+            if (this.name == CardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID)) p.LurkersDB.Remove(this.entitiyID);
 
             ownBlessingOfWisdom = 0;
             enemyBlessingOfWisdom = 0;

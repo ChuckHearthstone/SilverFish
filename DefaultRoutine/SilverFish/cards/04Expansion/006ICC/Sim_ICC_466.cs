@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             int count = 0;
             foreach (Minion mnn in temp)
             {
-                if (mnn.name == CardDB.CardName.saronitechaingang && m.entitiyID != mnn.entitiyID && mnn.playedThisTurn)
+                if (mnn.name == CardName.saronitechaingang && m.entitiyID != mnn.entitiyID && mnn.playedThisTurn)
                 {
                     mnn.setMinionToMinion(m);
                     count++;

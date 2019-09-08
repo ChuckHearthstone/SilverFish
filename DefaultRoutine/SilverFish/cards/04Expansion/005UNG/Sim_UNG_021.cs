@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._005UNG
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (p.anzOwnElementalsLastTurn > 0 && own.own) p.drawACard(CardDB.CardName.flamegeyser, own.own, true);
+            if (p.anzOwnElementalsLastTurn > 0 && own.own) p.drawACard(CardName.flamegeyser, own.own, true);
         }
     }
 }

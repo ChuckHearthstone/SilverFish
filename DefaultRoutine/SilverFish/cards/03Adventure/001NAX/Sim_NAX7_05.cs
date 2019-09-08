@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._001NAX
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 		{
             foreach (Minion m in ownplay ? p.enemyMinions : p.ownMinions)
             {
-				if (m.name == CardDB.CardName.understudy) p.minionGetControlled(m, ownplay, true);
+				if (m.name == CardName.understudy) p.minionGetControlled(m, ownplay, true);
 			}
 		}
 	}

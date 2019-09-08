@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -18,7 +19,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             for (int i = 0; i < cardstodraw; i++)
             {
-                p.drawACard(CardDB.CardName.unknown, true);
+                p.drawACard(CardName.unknown, true);
             }
             cardstodraw = 0;
 
@@ -30,7 +31,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             for (int i = 0; i < cardstodraw; i++)
             {
-                p.drawACard(CardDB.CardName.unknown, false);
+                p.drawACard(CardName.unknown, false);
             }
 
         }

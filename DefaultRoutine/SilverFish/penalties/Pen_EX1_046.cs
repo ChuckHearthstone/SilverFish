@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -23,7 +24,7 @@ namespace HREngine.Bots
                 //allow it if you have biggamehunter
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.name == CardDB.CardName.biggamehunter || hc.card.name == CardDB.CardName.shadowworddeath) return 0;
+                    if (hc.card.name == CardName.biggamehunter || hc.card.name == CardName.shadowworddeath) return 0;
                 }
                 return 500;
             }

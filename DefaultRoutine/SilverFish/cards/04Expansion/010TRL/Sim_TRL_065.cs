@@ -43,30 +43,30 @@ if (p.ownSecretsIDList.Count < 5 && !p.ownSecretsIDList.Contains(kid.cardIDenum)
 p.ownSecretsIDList.Add(kid.cardIDenum);
 
 }
-else if(kid.name == CardDB.CardName.unleashthebeasts)
+else if(kid.name == CardName.unleashthebeasts)
 {
 p.CallKid(kid2, pos, ownplay);
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
 if(e.Value>1)p.CallKid(kid2, pos, ownplay);
 }
-else if(kid.name == CardDB.CardName.animalcompanion)
+else if(kid.name == CardName.animalcompanion)
 {
 if(e.Value>1)p.CallKid(kid3, pos, ownplay);
 p.CallKid(kid3, pos, ownplay);
 }
-else if(kid.name == CardDB.CardName.masterscall)
+else if(kid.name == CardName.masterscall)
 {
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
 if(e.Value>1)
 {
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
 }
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
 if(e.Value>1)
 {
-p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardName.unknown, ownplay, true);
 }
 }
 }

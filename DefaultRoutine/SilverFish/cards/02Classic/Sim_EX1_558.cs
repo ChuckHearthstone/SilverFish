@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -12,7 +13,7 @@ namespace SilverFish.cards._02Classic
                 //this.owncarddraw += enemyWeaponDurability;
                 for (int i = 0; i < p.enemyWeapon.Durability; i++)
                 {
-                    p.drawACard(CardDB.CardName.unknown, true);
+                    p.drawACard(CardName.unknown, true);
                 }
                 p.lowerWeaponDurability(1000, false);
             }
@@ -20,7 +21,7 @@ namespace SilverFish.cards._02Classic
             {
                 for (int i = 0; i < p.enemyWeapon.Durability; i++)
                 {
-                    p.drawACard(CardDB.CardName.unknown, false);
+                    p.drawACard(CardName.unknown, false);
                 }
                 p.lowerWeaponDurability(1000, true);
             }

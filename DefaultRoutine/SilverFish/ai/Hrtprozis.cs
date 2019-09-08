@@ -455,7 +455,7 @@ namespace HREngine.Bots
         
         public void updateHero(Weapon w, string heron, CardDB.Card ability, bool abrdy, int abCost, Minion hero, int enMaxMana = 10)
         {
-            if (w.name == CardDB.CardName.foolsbane) w.cantAttackHeroes = true;
+            if (w.name == CardName.foolsbane) w.cantAttackHeroes = true;
 
             if (hero.own)
             {
@@ -467,7 +467,7 @@ namespace HREngine.Bots
                 if (this.ownHeroStartClass == TAG_CLASS.INVALID) this.ownHeroStartClass = hero.cardClass;
                 this.ownHero.poisonous = this.ownWeapon.poisonous;
                 this.ownHero.lifesteal = this.ownWeapon.lifesteal;
-                if (this.ownWeapon.name == CardDB.CardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
+                if (this.ownWeapon.name == CardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
                 
                 this.heroAbility = ability;
                 this.OwnHeroPowerCost = abCost;
@@ -483,7 +483,7 @@ namespace HREngine.Bots
                 if (this.enemyHeroStartClass == TAG_CLASS.INVALID) this.enemyHeroStartClass = enemyHero.cardClass;
                 this.enemyHero.poisonous = this.enemyWeapon.poisonous;
                 this.enemyHero.lifesteal = this.enemyWeapon.lifesteal;
-                if (this.enemyWeapon.name == CardDB.CardName.gladiatorslongbow) this.enemyHero.immuneWhileAttacking = true;
+                if (this.enemyWeapon.name == CardName.gladiatorslongbow) this.enemyHero.immuneWhileAttacking = true;
            
                 this.enemyAbility = ability;
                 this.enemyHeroPowerCost = abCost;
@@ -579,7 +579,7 @@ namespace HREngine.Bots
 
             if (hc.card.Stealth) m.stealth = true;
 
-            if (m.name == CardDB.CardName.lightspawn && !m.silenced)
+            if (m.name == CardName.lightspawn && !m.silenced)
             {
                 m.Attack = m.HealthPoints;
             }
@@ -662,7 +662,7 @@ namespace HREngine.Bots
                 if (m.returnToHand >= 1) mini += " retHand(" + m.returnToHand + ")";
                 if (m.infest >= 1) mini += " infest(" + m.infest + ")";
                 if (m.deathrattle2 != null) mini += " dethrl(" + m.deathrattle2.cardIDenum + ")";
-                if (m.name == CardDB.CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
+                if (m.name == CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
                 {
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }
@@ -718,7 +718,7 @@ namespace HREngine.Bots
                 if (m.returnToHand >= 1) mini += " retHand(" + m.returnToHand + ")";
                 if (m.infest >= 1) mini += " infest(" + m.infest + ")";
                 if (m.deathrattle2 != null) mini += " dethrl(" + m.deathrattle2.cardIDenum + ")";
-                if (m.name == CardDB.CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
+                if (m.name == CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
                 {
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }

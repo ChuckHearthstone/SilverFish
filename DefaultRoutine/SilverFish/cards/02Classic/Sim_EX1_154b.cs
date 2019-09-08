@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._02Classic
 {
@@ -13,7 +14,7 @@ namespace SilverFish.cards._02Classic
             //this.owncarddraw++;
 
             p.minionGetDamageOrHeal(target, damage);
-            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardName.unknown, ownplay);
         }
 
 	}

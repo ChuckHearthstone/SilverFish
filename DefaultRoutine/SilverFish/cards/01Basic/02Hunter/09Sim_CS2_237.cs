@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._02Hunter
 {
@@ -10,7 +11,7 @@ namespace SilverFish.cards._01Basic._02Hunter
         {
             if (triggerEffectMinion.own == summonedMinion.own && (TAG_RACE)summonedMinion.handcard.card.race == TAG_RACE.PET)
             {
-                p.drawACard(CardDB.CardName.unknown, triggerEffectMinion.own);
+                p.drawACard(CardName.unknown, triggerEffectMinion.own);
             }
         }
 

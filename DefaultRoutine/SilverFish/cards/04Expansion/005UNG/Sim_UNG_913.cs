@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._005UNG
 {
@@ -10,8 +11,8 @@ namespace SilverFish.cards._04Expansion._005UNG
 		{
             if (own.own)
             {
-                        p.drawACard(CardDB.CardName.lepergnome, own.own);
-                        p.drawACard(CardDB.CardName.lepergnome, own.own);
+                        p.drawACard(CardName.lepergnome, own.own);
+                        p.drawACard(CardName.lepergnome, own.own);
             }
             else p.enemyAnzCards++;
 		}

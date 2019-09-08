@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -8,8 +9,8 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
-            p.drawACard(CardDB.CardName.unknown, ownplay, true);
-            p.drawACard(CardDB.CardName.unknown, ownplay, true);
+            p.drawACard(CardName.unknown, ownplay, true);
+            p.drawACard(CardName.unknown, ownplay, true);
         }
     }
 }

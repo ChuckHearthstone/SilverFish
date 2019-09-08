@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._003OG
 {
@@ -12,7 +13,7 @@ namespace SilverFish.cards._04Expansion._003OG
 			p.allMinionsGetDestroyed();
             for (int i = 0; i < anz; i++)
             {
-                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardName.unknown, ownplay);
             }
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -115,12 +116,12 @@ namespace HREngine.Bots
                 //if (m.poisonous) retval += 1;
                 if (m.lifesteal) retval += m.Attack/2;
                 if (m.divineshild && m.taunt) retval += 4;
-                //if (m.taunt && m.handcard.card.name == CardDB.cardName.frog) owntaunt++;
+                //if (m.taunt && m.handcard.card.name == CardName.frog) owntaunt++;
                 //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
                 //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
-                if (p.ownMinions.Count > 2 && (m.handcard.card.name == CardDB.CardName.direwolfalpha || m.handcard.card.name == CardDB.CardName.flametonguetotem || m.handcard.card.name == CardDB.CardName.stormwindchampion || m.handcard.card.name == CardDB.CardName.raidleader)) retval += 10;
-                if (m.handcard.card.name == CardDB.CardName.bloodmagethalnos) retval += 10;
-                if (m.handcard.card.name == CardDB.CardName.nerubianegg)
+                if (p.ownMinions.Count > 2 && (m.handcard.card.name == CardName.direwolfalpha || m.handcard.card.name == CardName.flametonguetotem || m.handcard.card.name == CardName.stormwindchampion || m.handcard.card.name == CardName.raidleader)) retval += 10;
+                if (m.handcard.card.name == CardName.bloodmagethalnos) retval += 10;
+                if (m.handcard.card.name == CardName.nerubianegg)
                 {
                     if (m.Attack >= 1) retval += 2;
                     if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
@@ -168,16 +169,16 @@ namespace HREngine.Bots
                 }
                 switch (a.card.card.name)
                 {
-                    case CardDB.CardName.innervate:
-                    case CardDB.CardName.thecoin:
+                    case CardName.innervate:
+                    case CardName.thecoin:
                         usecoin++;
                         if (i == count - 1) retval -= 10;
                         goto default;
-                    case CardDB.CardName.darkshirelibrarian: goto case CardDB.CardName.soulfire;
-                    case CardDB.CardName.darkbargain: goto case CardDB.CardName.soulfire;
-                    case CardDB.CardName.doomguard: goto case CardDB.CardName.soulfire;
-                    case CardDB.CardName.succubus: goto case CardDB.CardName.soulfire;
-                    case CardDB.CardName.soulfire: deletecardsAtLast = 1; break;
+                    case CardName.darkshirelibrarian: goto case CardName.soulfire;
+                    case CardName.darkbargain: goto case CardName.soulfire;
+                    case CardName.doomguard: goto case CardName.soulfire;
+                    case CardName.succubus: goto case CardName.soulfire;
+                    case CardName.soulfire: deletecardsAtLast = 1; break;
                     default:
                         if (deletecardsAtLast == 1) retval -= 20;
                         break;
@@ -205,8 +206,8 @@ namespace HREngine.Bots
             {
                 switch (p.ownHeroAblility.card.name)
                 {
-                    case CardDB.CardName.heal: goto case CardDB.CardName.lesserheal;
-                    case CardDB.CardName.lesserheal:
+                    case CardName.heal: goto case CardName.lesserheal;
+                    case CardName.lesserheal:
                         bool wereTarget = false;
                         if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
                         if (!wereTarget)
@@ -218,25 +219,25 @@ namespace HREngine.Bots
                         }
                         if (wereTarget && !(p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0)) retval -= 10;
                         break;
-                    case CardDB.CardName.poisoneddaggers: goto case CardDB.CardName.daggermastery;
-                    case CardDB.CardName.daggermastery:
+                    case CardName.poisoneddaggers: goto case CardName.daggermastery;
+                    case CardName.daggermastery:
                          if (!(p.ownWeapon.Durability > 1 || p.ownWeapon.Angr > 1)) retval -= 10;
                          break;
-                    case CardDB.CardName.totemicslam: goto case CardDB.CardName.totemiccall;
-                    case CardDB.CardName.totemiccall:
+                    case CardName.totemicslam: goto case CardName.totemiccall;
+                    case CardName.totemiccall:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.CardName.thetidalhand: goto case CardDB.CardName.reinforce;
-                    case CardDB.CardName.thesilverhand: goto case CardDB.CardName.reinforce;
-                    case CardDB.CardName.reinforce:
+                    case CardName.thetidalhand: goto case CardName.reinforce;
+                    case CardName.thesilverhand: goto case CardName.reinforce;
+                    case CardName.reinforce:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.CardName.soultap: 
+                    case CardName.soultap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0) retval -= 10;
                         break;
-                    case CardDB.CardName.lifetap: 
+                    case CardName.lifetap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0)
                         {
                             retval -= 10;
@@ -321,7 +322,7 @@ namespace HREngine.Bots
         {
             int retval = 5;
             retval += m.HealthPoints * 2;
-            if (!m.frozen && !(m.cantAttack && m.name != CardDB.CardName.argentwatchman))
+            if (!m.frozen && !(m.cantAttack && m.name != CardName.argentwatchman))
             {
                 retval += m.Attack * 2;
                 if (m.windfury) retval += m.Attack * 2;
@@ -352,7 +353,7 @@ namespace HREngine.Bots
             {
                 retval += m.handcard.card.targetPriority;
             }
-            if (m.name == CardDB.CardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
+            if (m.name == CardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
             retval += m.synergy;
             return retval;
         }
@@ -366,7 +367,7 @@ namespace HREngine.Bots
             int tmp = int.MinValue;
             for (int i = 0; i < discoverCards.Count; i++)
             {
-                CardDB.CardName name = discoverCards[i].card.name;
+                CardName name = discoverCards[i].card.name;
                 if (SirFinleyPriorityList.ContainsKey(name) && SirFinleyPriorityList[name] > tmp)
                 {
                     tmp = SirFinleyPriorityList[name];
@@ -376,18 +377,18 @@ namespace HREngine.Bots
             return sirFinleyChoice;
         }
 
-        private Dictionary<CardDB.CardName, int> SirFinleyPriorityList = new Dictionary<CardDB.CardName, int>
+        private Dictionary<CardName, int> SirFinleyPriorityList = new Dictionary<CardName, int>
         {
             //{HeroPowerName, Priority}, where 0-9 = manual priority
-            { CardDB.CardName.lesserheal, 0 }, 
-            { CardDB.CardName.shapeshift, 6 },
-            { CardDB.CardName.fireblast, 7 },
-            { CardDB.CardName.totemiccall, 1 },
-            { CardDB.CardName.lifetap, 9 },
-            { CardDB.CardName.daggermastery, 5 },
-            { CardDB.CardName.reinforce, 4 },
-            { CardDB.CardName.armorup, 2 },
-            { CardDB.CardName.steadyshot, 8 }
+            { CardName.lesserheal, 0 }, 
+            { CardName.shapeshift, 6 },
+            { CardName.fireblast, 7 },
+            { CardName.totemiccall, 1 },
+            { CardName.lifetap, 9 },
+            { CardName.daggermastery, 5 },
+            { CardName.reinforce, 4 },
+            { CardName.armorup, 2 },
+            { CardName.steadyshot, 8 }
         };
 		
     }

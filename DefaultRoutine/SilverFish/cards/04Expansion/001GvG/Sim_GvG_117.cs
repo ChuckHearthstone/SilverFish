@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -14,7 +15,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             {
                 if (hc.card.type == CardDB.CardType.SPELL && hc.manacost == 1)
                 {
-                    p.drawACard(CardDB.CardName.shieldedminibot, wasOwnCard, true);
+                    p.drawACard(CardName.shieldedminibot, wasOwnCard, true);
                 }
             }
         }

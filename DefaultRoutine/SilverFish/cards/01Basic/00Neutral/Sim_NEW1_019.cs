@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._00Neutral
 {
@@ -22,10 +23,10 @@ namespace SilverFish.cards._01Basic._00Neutral
                     bool found = false;
                     foreach (Minion m in temp)
                     {
-                        if (m.name == CardDB.CardName.nerubianegg && m.HealthPoints >= 2) continue; //dont attack nerubianegg!
+                        if (m.name == CardName.nerubianegg && m.HealthPoints >= 2) continue; //dont attack nerubianegg!
                         if (m.handcard.card.isToken && m.HealthPoints == 1) continue;
-                        if (m.name == CardDB.CardName.defender) continue;
-                        if (m.name == CardDB.CardName.spellbender) continue;
+                        if (m.name == CardName.defender) continue;
+                        if (m.name == CardName.spellbender) continue;
                         if (m.HealthPoints >= 2 && minhp > m.HealthPoints)
                         {
                             enemy = m;

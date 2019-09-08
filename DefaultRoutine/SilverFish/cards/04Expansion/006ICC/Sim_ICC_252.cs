@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -25,7 +26,7 @@ namespace SilverFish.cards._04Expansion._006ICC
                 }
             }
 
-            if (frozen) p.drawACard(CardDB.CardName.unknown, m.own);
+            if (frozen) p.drawACard(CardName.unknown, m.own);
         }
     }
 }

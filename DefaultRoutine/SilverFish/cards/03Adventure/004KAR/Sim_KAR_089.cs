@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._004KAR
 {
@@ -11,7 +12,7 @@ namespace SilverFish.cards._03Adventure._004KAR
             if (own == null) return false;
             if (checkBonus) return false;
 			
-            p.drawACard(CardDB.CardName.unknown, own.own);
+            p.drawACard(CardName.unknown, own.own);
             return false;
         }
     }

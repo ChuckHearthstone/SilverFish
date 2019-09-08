@@ -11,7 +11,7 @@ namespace HREngine.Bots
     {
         public class QuestItem
         {
-            public Dictionary<CardDB.CardName, int> mobsTurn = new Dictionary<CardDB.CardName, int>();
+            public Dictionary<CardName, int> mobsTurn = new Dictionary<CardName, int>();
             public CardIdEnum Id = CardIdEnum.None;
             public int questProgress = 0;
             public int maxProgress = 1000;
@@ -112,8 +112,8 @@ namespace HREngine.Bots
         StringBuilder sb = new StringBuilder("", 500);
         public QuestItem ownQuest = new QuestItem();
         public QuestItem enemyQuest = new QuestItem();
-        public Dictionary<CardDB.CardName, int> mobsGame = new Dictionary<CardDB.CardName, int>();
-        private CardDB.CardName nextMobName = CardDB.CardName.unknown;
+        public Dictionary<CardName, int> mobsGame = new Dictionary<CardName, int>();
+        private CardName nextMobName = CardName.unknown;
         private int nextMobId = 0;
         private int prevMobId = 0;
         Helpfunctions help;
@@ -144,7 +144,7 @@ namespace HREngine.Bots
         {
             if (step != 0)
             {
-                if (nextMobName != CardDB.CardName.unknown && nextMobId != prevMobId)
+                if (nextMobName != CardName.unknown && nextMobId != prevMobId)
                 {
                     prevMobId = nextMobId;
                     nextMobId = 0;
@@ -160,7 +160,7 @@ namespace HREngine.Bots
 
         public void updatePlayedCardFromHand(Handmanager.Handcard hc)
         {
-            nextMobName = CardDB.CardName.unknown;
+            nextMobName = CardName.unknown;
             nextMobId = 0;
             if (hc != null && hc.card.type == CardDB.CardType.MOB)
             {
@@ -169,7 +169,7 @@ namespace HREngine.Bots
             }
         }
 
-        public int getPlayedCardFromHand(CardDB.CardName name)
+        public int getPlayedCardFromHand(CardName name)
         {
             if (mobsGame.ContainsKey(name)) return mobsGame[name];
             else return 0;
@@ -181,7 +181,7 @@ namespace HREngine.Bots
             mobsGame.Clear();
             ownQuest = new QuestItem();
             enemyQuest = new QuestItem();
-            nextMobName = CardDB.CardName.unknown;
+            nextMobName = CardName.unknown;
             nextMobId = 0;
             prevMobId = 0;
         }

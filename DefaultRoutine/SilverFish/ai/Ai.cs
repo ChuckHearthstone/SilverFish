@@ -1,4 +1,5 @@
-﻿using SilverFish.Helpers;
+﻿using SilverFish.Enums;
+using SilverFish.Helpers;
 
 namespace HREngine.Bots
 {
@@ -223,7 +224,7 @@ namespace HREngine.Bots
                 int twilightelderBonus = 0;
                 foreach (Minion m in this.nextMoveGuess.ownMinions)
                 {
-                    if (m.name == CardDB.CardName.twilightelder && !m.silenced) twilightelderBonus++;
+                    if (m.name == CardName.twilightelder && !m.silenced) twilightelderBonus++;
                 }
                 if (twilightelderBonus > 0)
                 {

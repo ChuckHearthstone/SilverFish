@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.CardName.faeriedragon, m.own, true);
+            p.drawACard(CardName.faeriedragon, m.own, true);
         }
     }
 }

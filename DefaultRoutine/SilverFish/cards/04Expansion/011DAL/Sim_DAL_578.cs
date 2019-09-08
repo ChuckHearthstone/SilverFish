@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SilverFish.Enums;
 
 namespace HREngine.Bots
 {
@@ -11,8 +12,8 @@ namespace HREngine.Bots
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            if (p.ownHeroHasDirectLethal()) p.CallKid(CardDB.Instance.getCardData(CardDB.CardName.icehowl), pos, ownplay, false);
-            else p.CallKid(CardDB.Instance.getCardData(CardDB.CardName.frostgiant), pos, ownplay, false);
+            if (p.ownHeroHasDirectLethal()) p.CallKid(CardDB.Instance.getCardData(CardName.icehowl), pos, ownplay, false);
+            else p.CallKid(CardDB.Instance.getCardData(CardName.frostgiant), pos, ownplay, false);
         }
     }
 }

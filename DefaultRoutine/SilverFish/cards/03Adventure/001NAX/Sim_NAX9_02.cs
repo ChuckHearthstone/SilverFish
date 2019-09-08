@@ -13,7 +13,7 @@ namespace SilverFish.cards._03Adventure._001NAX
             if (own.own)
             {
                 p.ownHero.immune = true;
-                if (p.ownWeapon.name == CardDB.CardName.runeblade && p.anzOwnHorsemen < 1)
+                if (p.ownWeapon.name == CardName.runeblade && p.anzOwnHorsemen < 1)
                 {
                     int bonus = (p.ownWeapon.card.cardIDenum == CardIdEnum.NAX9_05H) ? 6 : 3;
                     p.minionGetBuffed(p.ownHero, -1 * Math.Min(bonus, p.ownWeapon.Angr - 1), 0);
@@ -24,7 +24,7 @@ namespace SilverFish.cards._03Adventure._001NAX
             else
             {
                 p.enemyHero.immune = true;
-                if (p.enemyWeapon.name == CardDB.CardName.runeblade && p.anzEnemyHorsemen < 1)
+                if (p.enemyWeapon.name == CardName.runeblade && p.anzEnemyHorsemen < 1)
                 {
                     int bonus = (p.enemyWeapon.card.cardIDenum == CardIdEnum.NAX9_05H) ? 6 : 3;
                     p.minionGetBuffed(p.enemyHero, -1 * Math.Min(bonus, p.enemyWeapon.Angr - 1), 0);
@@ -42,7 +42,7 @@ namespace SilverFish.cards._03Adventure._001NAX
                 if (p.anzOwnHorsemen < 1)
                 {
                     p.ownHero.immune = false;
-                    if (p.ownWeapon.name == CardDB.CardName.runeblade)
+                    if (p.ownWeapon.name == CardName.runeblade)
                     {
                         int bonus = (p.ownWeapon.card.cardIDenum == CardIdEnum.NAX9_05H) ? 6 : 3;
                         p.minionGetBuffed(p.ownHero, bonus, 0);
@@ -56,7 +56,7 @@ namespace SilverFish.cards._03Adventure._001NAX
                 if (p.anzEnemyHorsemen < 1)
                 {
                     p.enemyHero.immune = false;
-                    if (p.enemyWeapon.name == CardDB.CardName.runeblade)
+                    if (p.enemyWeapon.name == CardName.runeblade)
                     {
                         int bonus = (p.enemyWeapon.card.cardIDenum == CardIdEnum.NAX9_05H) ? 6 : 3;
                         p.minionGetBuffed(p.enemyHero, bonus, 0);

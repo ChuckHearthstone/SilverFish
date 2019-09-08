@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -14,14 +15,14 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.name == CardDB.CardName.shadowreflection)
+                    if (hc.card.name == CardName.shadowreflection)
                     {
                         found = true;
                         break;
                     }
                 }
             }
-            if (!found) p.drawACard(CardDB.CardName.shadowreflection, turnStartOfOwner, true);
+            if (!found) p.drawACard(CardName.shadowreflection, turnStartOfOwner, true);
         }
     }
 }

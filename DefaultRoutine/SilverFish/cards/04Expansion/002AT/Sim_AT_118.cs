@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._002AT
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._002AT
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-			p.drawACard(CardDB.CardName.unknown, m.own, true);
+			p.drawACard(CardName.unknown, m.own, true);
         }
     }
 }

@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -21,14 +22,14 @@ namespace SilverFish.cards._04Expansion._004CFM
                 }
                 if (dragonInHand)
                 {
-                    p.drawACard(CardDB.CardName.enchantedraven, m.own, true);
+                    p.drawACard(CardName.enchantedraven, m.own, true);
                 }
             }
             else
             {
                 if (p.enemyAnzCards >= 2)
                 {
-                    p.drawACard(CardDB.CardName.drakonidcrusher, m.own, true);
+                    p.drawACard(CardName.drakonidcrusher, m.own, true);
                 }
             }
         }

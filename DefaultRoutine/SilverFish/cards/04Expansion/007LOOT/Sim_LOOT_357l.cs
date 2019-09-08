@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._007LOOT
 {
@@ -16,7 +17,7 @@ namespace SilverFish.cards._04Expansion._007LOOT
 				else p.evaluatePenality += 45;
 			}
 			
-            p.drawACard(CardDB.CardName.unknown, !m.own);
+            p.drawACard(CardName.unknown, !m.own);
         }
 	}
 }
