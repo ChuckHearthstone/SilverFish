@@ -3,14 +3,14 @@ using HREngine.Bots;
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// Bewitched Guardian
-    /// 失魂的守卫
+    /// Carrion Drake
+    /// 食腐飞龙
     /// </summary>
-    public class Sim_GIL_507 : SimTemplate
+    public class Sim_GIL_905 : SimTemplate
     {
         /// <summary>
-        /// Taunt Battlecry: Gain +1 Health  for each card in your hand.
-        /// 嘲讽，战吼： 你每有一张手牌，便获得+1生命值。
+        /// Battlecry: If a minion died this turn, gain Poisonous.
+        /// 战吼：如果在本回合中有一个随从死亡，获得剧毒。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -18,7 +18,8 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.minionGetBuffed(own, 0, (own.own) ? p.owncards.Count : p.enemyAnzCards);
+            int isMinionsDiedTurn = (own.own) ? p.ownMinionsDiedTurn : p.enemyMinionsDiedTurn;
+            if (isMinionsDiedTurn >= 1) own.poisonous = true;
         }
     }
 }

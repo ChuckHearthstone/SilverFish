@@ -19,7 +19,8 @@ namespace SilverFish.cards._04Expansion._008GIL
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.minionGetBuffed(target, 2, 2);
-            if ((TAG_RACE)target.handcard.card.race == TAG_RACE.ELEMENTAL) p.drawACard(CardDB.cardName.unknown, ownplay);
+            if ((TAG_RACE)target.handcard.card.race == TAG_RACE.ELEMENTAL)
+                p.drawACard(CardDB.cardName.unknown, ownplay, true);
         }
     }
 }

@@ -3,14 +3,14 @@ using HREngine.Bots;
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// Bewitched Guardian
-    /// 失魂的守卫
+    /// Blink Fox
+    /// 闪狐
     /// </summary>
-    public class Sim_GIL_507 : SimTemplate
+    public class Sim_GIL_827 : SimTemplate
     {
         /// <summary>
-        /// Taunt Battlecry: Gain +1 Health  for each card in your hand.
-        /// 嘲讽，战吼： 你每有一张手牌，便获得+1生命值。
+        /// Battlecry: Add a random card to your hand from your opponent's class.
+        /// 战吼：随机将一张你对手职业的卡牌置入你的手牌。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -18,7 +18,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.minionGetBuffed(own, 0, (own.own) ? p.owncards.Count : p.enemyAnzCards);
+            p.drawACard(CardDB.cardName.unknown, own.own, true);
         }
     }
 }

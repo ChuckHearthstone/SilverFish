@@ -20,19 +20,16 @@ namespace SilverFish.cards._04Expansion._008GIL
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
-            int totemnum = 0;
-            if (temp.Count >= 1)
+            int totemNum = 0;
+            foreach (Minion m in temp)
             {
-                foreach (Minion m in temp)
+                if ((TAG_RACE)m.handcard.card.race == TAG_RACE.TOTEM)
                 {
-                    if ((TAG_RACE)m.handcard.card.race == TAG_RACE.TOTEM)
-                    {
-                        p.minionGetDestroyed(m);
-                        totemnum++;
-                    }
+                    p.minionGetDestroyed(m);
+                    totemNum++;
                 }
             }
-            if (totemnum >= 1) p.minionGetBuffed(own, totemnum * 2, totemnum * 2);
+            if (totemNum >= 1) p.minionGetBuffed(own, totemNum * 2, totemNum * 2);
         }
     }
 }

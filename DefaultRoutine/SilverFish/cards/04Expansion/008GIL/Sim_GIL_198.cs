@@ -3,14 +3,14 @@ using HREngine.Bots;
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// Bewitched Guardian
-    /// 失魂的守卫
+    /// Azalina Soulthief
+    /// 窃魂者阿扎莉娜
     /// </summary>
-    public class Sim_GIL_507 : SimTemplate
+    public class Sim_GIL_198 : SimTemplate
     {
         /// <summary>
-        /// Taunt Battlecry: Gain +1 Health  for each card in your hand.
-        /// 嘲讽，战吼： 你每有一张手牌，便获得+1生命值。
+        /// Battlecry: Replace your hand with a copy of your opponent's.
+        /// 战吼：将你的手牌替换成对手手牌的 复制。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -18,7 +18,11 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.minionGetBuffed(own, 0, (own.own) ? p.owncards.Count : p.enemyAnzCards);
+            p.discardCards(10, own.own);
+            for (int i = 0; i < p.enemyAnzCards; i++)
+            {
+                p.drawACard(CardDB.cardName.unknown, own.own, true);
+            }
         }
     }
 }

@@ -3,14 +3,14 @@ using HREngine.Bots;
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// WANTED!
-    /// 通缉令
+    /// Hagatha the Witch
+    /// 女巫哈加莎
     /// </summary>
-    public class Sim_GIL_687 : SimTemplate
+    public class Sim_GIL_504 : SimTemplate
     {
         /// <summary>
-        /// Deal $3 damage to a minion. If that kills it, add a Coin to your hand.
-        /// 对一个随从造成$3点伤害。如果“通缉令”杀死该随从，将一个幸运币置入你的手牌。
+        /// Battlecry: Deal 3 damage to all minions.
+        /// 战吼：对所有随从造成3点伤害。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>
@@ -18,12 +18,11 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
+            p.setNewHeroPower(CardDB.cardIDEnum.GIL_504h, ownplay); // 蛊惑(Bewitch)
+            if (ownplay) p.ownHero.armor += 5;
+            else p.enemyHero.armor += 5;
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-            if (dmg >= target.HealthPoints && !target.divineshild && !target.immune)
-            {
-                p.drawACard(CardDB.cardName.thecoin, ownplay, true);
-            }
-            p.minionGetDamageOrHeal(target, dmg);
+            p.allMinionsGetDamage(dmg);
         }
     }
 }

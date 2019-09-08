@@ -3,14 +3,14 @@ using HREngine.Bots;
 namespace SilverFish.cards._04Expansion._008GIL
 {
     /// <summary>
-    /// Bewitched Guardian
-    /// 失魂的守卫
+    /// Squashling
+    /// 南瓜宝宝
     /// </summary>
-    public class Sim_GIL_507 : SimTemplate
+    public class Sim_GIL_835 : SimTemplate
     {
         /// <summary>
-        /// Taunt Battlecry: Gain +1 Health  for each card in your hand.
-        /// 嘲讽，战吼： 你每有一张手牌，便获得+1生命值。
+        /// Echo Battlecry: Restore #2 Health.
+        /// 回响，战吼：恢复#2点生命值。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -18,7 +18,8 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.minionGetBuffed(own, 0, (own.own) ? p.owncards.Count : p.enemyAnzCards);
+            int heal = (own.own) ? p.getMinionHeal(2) : p.getEnemyMinionHeal(2);
+            p.minionGetDamageOrHeal(target, -heal);
         }
     }
 }

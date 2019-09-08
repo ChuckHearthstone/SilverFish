@@ -23,7 +23,7 @@ namespace SilverFish.cards._04Expansion._008GIL
             {
                 p.CallKid(target.handcard.card, pos, ownplay);
                 p.ownMinions[pos].setMinionToMinion(target);
-                target.HealthPoints = 1;
+                p.ownMinions[pos].HealthPoints = 1;
             }
         }
     }
