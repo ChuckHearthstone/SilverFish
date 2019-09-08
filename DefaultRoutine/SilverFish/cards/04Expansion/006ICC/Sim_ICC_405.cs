@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Whenever this minion survives damage, summon a random Legendary minion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_014);//King Mukla 5/5
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_014);//King Mukla 5/5
 
         public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {

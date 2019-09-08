@@ -16,7 +16,7 @@ namespace SilverFish.cards._02Classic._01Druid
             
             if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.drawACard(CardDB.cardName.unknown, own.own);
+                p.drawACard(CardDB.CardName.unknown, own.own);
             }
         }
     }

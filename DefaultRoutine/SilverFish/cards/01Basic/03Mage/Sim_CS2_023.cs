@@ -9,8 +9,8 @@ namespace SilverFish.cards._01Basic._03Mage
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.unknown, ownplay);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 		}
 
 	}

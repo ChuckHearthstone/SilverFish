@@ -8,7 +8,7 @@ namespace SilverFish.cards._01Basic._00Neutral
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL) p.allMinionsGetDamage(1);
+            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL) p.allMinionsGetDamage(1);
         }
 	}
 }

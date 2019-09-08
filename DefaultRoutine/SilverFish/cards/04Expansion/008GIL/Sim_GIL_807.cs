@@ -18,9 +18,9 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="triggerEffectMinion"></param>
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.cardtype.SPELL)
+            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.CardType.SPELL)
             {
-                p.drawACard(CardDB.cardName.unknown, wasOwnCard);
+                p.drawACard(CardDB.CardName.unknown, wasOwnCard);
             }
         }
     }

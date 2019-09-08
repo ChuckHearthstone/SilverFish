@@ -17,7 +17,7 @@ namespace SilverFish.cards._04Expansion._001GvG
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL)
                 {
                     p.minionGetBuffed(own, 1, 1);
-                    p.drawACard(CardDB.cardName.armorplating, own.own, true);
+                    p.drawACard(CardDB.CardName.armorplating, own.own, true);
                     return;
                 }
             }

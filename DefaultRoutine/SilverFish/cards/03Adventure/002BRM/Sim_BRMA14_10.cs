@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Hero Power: Activate a random Tron.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRMA14_5);//3/3toxitron
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRMA14_5);//3/3toxitron
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.thecoin, own.own, true);
+            p.drawACard(CardDB.CardName.thecoin, own.own, true);
 			int heal = (own.own) ? p.getMinionHeal(3) : p.getEnemyMinionHeal(3);
             p.minionGetDamageOrHeal(own.own ? p.ownHero : p.enemyHero, -heal);
 		}

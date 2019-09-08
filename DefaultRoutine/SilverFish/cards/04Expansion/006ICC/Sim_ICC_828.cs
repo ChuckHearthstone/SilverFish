@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._006ICC
         
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.ICC_828p, ownplay); // Build-a-Beast
+            p.setNewHeroPower(CardDB.CardIdEnum.ICC_828p, ownplay); // Build-a-Beast
             if (ownplay) p.ownHero.armor += 5;
             else p.enemyHero.armor += 5;
 

@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.sharpfork, m.own, true);
+            p.drawACard(CardDB.CardName.sharpfork, m.own, true);
         }
     }
 }

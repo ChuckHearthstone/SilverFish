@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Deathrattle: If it's your opponent's turn, summon an 8/8 Skeleton.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_019t); //Skeletal Flayer
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_019t); //Skeletal Flayer
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -9,41 +9,41 @@ namespace SilverFish.cards._04Expansion._002AT
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
 		{
             TAG_CLASS HeroStartClass = (m.own) ? p.ownHeroStartClass : p.enemyHeroStartClass;
-			CardDB.cardIDEnum tmp = CardDB.cardIDEnum.None;
+			CardDB.CardIdEnum tmp = CardDB.CardIdEnum.None;
 
             switch (HeroStartClass)
             {
                 case TAG_CLASS.WARRIOR:
-					tmp = CardDB.cardIDEnum.AT_132_WARRIOR; //Tank Up!
+					tmp = CardDB.CardIdEnum.AT_132_WARRIOR; //Tank Up!
 					break;
                 case TAG_CLASS.WARLOCK:
-					tmp = CardDB.cardIDEnum.AT_132_WARLOCK; //Soul Tap
+					tmp = CardDB.CardIdEnum.AT_132_WARLOCK; //Soul Tap
                     break;
                 case TAG_CLASS.ROGUE:
-					tmp = CardDB.cardIDEnum.AT_132_ROGUE; //Poisoned Daggers
+					tmp = CardDB.CardIdEnum.AT_132_ROGUE; //Poisoned Daggers
 					break;
                 case TAG_CLASS.SHAMAN:
-					tmp = CardDB.cardIDEnum.AT_132_SHAMAN; //Totemic Slam
+					tmp = CardDB.CardIdEnum.AT_132_SHAMAN; //Totemic Slam
 					break;
                 case TAG_CLASS.PRIEST:
-					tmp = CardDB.cardIDEnum.AT_132_PRIEST; //Heal
+					tmp = CardDB.CardIdEnum.AT_132_PRIEST; //Heal
 					break;
                 case TAG_CLASS.PALADIN:
-					tmp = CardDB.cardIDEnum.AT_132_PALADIN; //The Silver Hand
+					tmp = CardDB.CardIdEnum.AT_132_PALADIN; //The Silver Hand
 					break;
                 case TAG_CLASS.MAGE:
-					tmp = CardDB.cardIDEnum.AT_132_MAGE; //Fireblast Rank 2
+					tmp = CardDB.CardIdEnum.AT_132_MAGE; //Fireblast Rank 2
 					break;
                 case TAG_CLASS.HUNTER:
-					tmp = CardDB.cardIDEnum.AT_132_HUNTER; //Ballista Shot
+					tmp = CardDB.CardIdEnum.AT_132_HUNTER; //Ballista Shot
 					break;
                 case TAG_CLASS.DRUID:
-					tmp = CardDB.cardIDEnum.AT_132_DRUID; //Dire Shapeshift
+					tmp = CardDB.CardIdEnum.AT_132_DRUID; //Dire Shapeshift
                     break;
 				//default:
 			}
 
-            if (tmp != CardDB.cardIDEnum.None) p.setNewHeroPower(tmp, m.own);
+            if (tmp != CardDB.CardIdEnum.None) p.setNewHeroPower(tmp, m.own);
 		}
 	}
 }

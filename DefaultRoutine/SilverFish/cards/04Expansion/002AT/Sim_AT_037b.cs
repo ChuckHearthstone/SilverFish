@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Summon two 1/1 Saplings.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_037t); //Sapling
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_037t); //Sapling
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

@@ -11,7 +11,7 @@ namespace SilverFish.cards._02Classic
             bool hasWinner = false;
             foreach (Minion m in p.enemyMinions)
             {
-                if ((m.name == CardDB.cardName.darkironbouncer || m.name == CardDB.cardName.corendirebrew) && !hasWinner)
+                if ((m.name == CardDB.CardName.darkironbouncer || m.name == CardDB.CardName.corendirebrew) && !hasWinner)
                 {
                     hasWinner = true;
                     continue;
@@ -20,7 +20,7 @@ namespace SilverFish.cards._02Classic
             }
             foreach (Minion m in p.ownMinions)
             {
-                if ((m.name == CardDB.cardName.darkironbouncer || m.name == CardDB.cardName.corendirebrew) && !hasWinner)
+                if ((m.name == CardDB.CardName.darkironbouncer || m.name == CardDB.CardName.corendirebrew) && !hasWinner)
                 {
                     hasWinner = true;
                     continue;

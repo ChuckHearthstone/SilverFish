@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
     {
 		//Summon three 1/1 Webspinners.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_011);//Webspinner
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_011);//Webspinner
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

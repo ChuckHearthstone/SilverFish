@@ -25,7 +25,7 @@ namespace HREngine.Bots
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.name == CardDB.cardName.biggamehunter || hc.card.name == CardDB.cardName.shadowworddeath) return 0;
+                    if (hc.card.name == CardDB.CardName.biggamehunter || hc.card.name == CardDB.CardName.shadowworddeath) return 0;
                 }
                 bool enemyHasTaunts = false;
                 foreach (Minion e in p.enemyMinions)

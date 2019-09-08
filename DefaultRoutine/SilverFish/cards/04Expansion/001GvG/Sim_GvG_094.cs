@@ -18,7 +18,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             for (int i = 0; i < cardstodraw; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, true);
+                p.drawACard(CardDB.CardName.unknown, true);
             }
             cardstodraw = 0;
 
@@ -30,7 +30,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             for (int i = 0; i < cardstodraw; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, false);
+                p.drawACard(CardDB.CardName.unknown, false);
             }
 
         }

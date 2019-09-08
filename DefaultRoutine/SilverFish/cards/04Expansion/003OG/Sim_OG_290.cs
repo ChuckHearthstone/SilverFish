@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._003OG
         {
             if (triggerEffectMinion.own == turnStartOfOwner)
             {
-				p.drawACard(CardDB.cardName.varianwrynn, turnStartOfOwner);
+				p.drawACard(CardDB.CardName.varianwrynn, turnStartOfOwner);
             }
         }
 	}

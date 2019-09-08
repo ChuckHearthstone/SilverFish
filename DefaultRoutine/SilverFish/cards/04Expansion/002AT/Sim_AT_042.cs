@@ -6,9 +6,9 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Choose One - Charge or +1/+1 and Stealth.
         
-        CardDB.Card cCharge = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042t);
-        CardDB.Card cStealth = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_042t2);
-        CardDB.Card cTiger = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_044c);
+        CardDB.Card cCharge = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_042t);
+        CardDB.Card cStealth = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_042t2);
+        CardDB.Card cTiger = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_044c);
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

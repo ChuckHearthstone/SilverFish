@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.faeriedragon, m.own, true);
+            p.drawACard(CardDB.CardName.faeriedragon, m.own, true);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._003OG
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.lepergnome, ownplay, true);
+            p.drawACard(CardDB.CardName.lepergnome, ownplay, true);
             p.owncards[p.owncards.Count - 1].addattack++;
             p.owncards[p.owncards.Count - 1].addHp++;
         }

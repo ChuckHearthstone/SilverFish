@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Summon two 1/2 Poisonous Spiders
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_051t); //Poisonous Spider
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_051t); //Poisonous Spider
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

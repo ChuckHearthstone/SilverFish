@@ -16,7 +16,7 @@ namespace SilverFish.cards._01Basic._01Druid
                 }
                 else
                 {
-                    p.drawACard(CardDB.cardName.excessmana, true, true);
+                    p.drawACard(CardDB.CardName.excessmana, true, true);
                 }
 
             }
@@ -28,7 +28,7 @@ namespace SilverFish.cards._01Basic._01Druid
                 }
                 else
                 {
-                    p.drawACard(CardDB.cardName.excessmana, false, true);
+                    p.drawACard(CardDB.CardName.excessmana, false, true);
                 }
             }
 		}
@@ -41,7 +41,7 @@ namespace SilverFish.cards._01Basic._01Druid
         //    zieht eine karte. i&gt;(ihr könnt nur 10 mana in eurer leiste haben.)/i&gt;
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
         }
 
     }

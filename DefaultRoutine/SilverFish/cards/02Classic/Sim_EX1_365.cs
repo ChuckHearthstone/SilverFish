@@ -8,7 +8,7 @@ namespace SilverFish.cards._02Classic
 //    zieht eine karte und verursacht schaden, der ihren kosten entspricht.
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             p.minionGetDamageOrHeal(target, dmg);

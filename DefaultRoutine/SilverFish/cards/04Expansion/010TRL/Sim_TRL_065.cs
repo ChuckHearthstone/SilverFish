@@ -11,15 +11,15 @@ class Sim_TRL_065: SimTemplate //* 祖尔金
 
 
 CardDB cdb = CardDB.Instance;
-CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOOT_077t);//Wolf
-CardDB.Card kid2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DAL_378t1);//双足飞龙
-CardDB.Card kid3 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_032);//misha
+CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOOT_077t);//Wolf
+CardDB.Card kid2 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_378t1);//双足飞龙
+CardDB.Card kid3 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_032);//misha
 
 
 public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 {
 
-p.setNewHeroPower(CardDB.cardIDEnum.TRL_065h, ownplay); //
+p.setNewHeroPower(CardDB.CardIdEnum.TRL_065h, ownplay); //
 if (ownplay) p.ownHero.armor += 5;
 else p.enemyHero.armor += 5;
 
@@ -29,11 +29,11 @@ if(ownplay)
 {
 
 
-foreach (KeyValuePair<CardDB.cardIDEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
+foreach (KeyValuePair<CardDB.CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
 {
 kid = cdb.getCardDataFromID(e.Key);
 
-if (kid.type == CardDB.cardtype.SPELL)
+if (kid.type == CardDB.CardType.SPELL)
 {
 {
 
@@ -44,30 +44,30 @@ if (p.ownSecretsIDList.Count < 5 && !p.ownSecretsIDList.Contains(kid.cardIDenum)
 p.ownSecretsIDList.Add(kid.cardIDenum);
 
 }
-else if(kid.name == CardDB.cardName.unleashthebeasts)
+else if(kid.name == CardDB.CardName.unleashthebeasts)
 {
 p.CallKid(kid2, pos, ownplay);
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
 if(e.Value>1)p.CallKid(kid2, pos, ownplay);
 }
-else if(kid.name == CardDB.cardName.animalcompanion)
+else if(kid.name == CardDB.CardName.animalcompanion)
 {
 if(e.Value>1)p.CallKid(kid3, pos, ownplay);
 p.CallKid(kid3, pos, ownplay);
 }
-else if(kid.name == CardDB.cardName.masterscall)
+else if(kid.name == CardDB.CardName.masterscall)
 {
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
 if(e.Value>1)
 {
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
 }
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
 if(e.Value>1)
 {
-p.drawACard(CardDB.cardName.unknown, ownplay, true);
+p.drawACard(CardDB.CardName.unknown, ownplay, true);
 }
 }
 }

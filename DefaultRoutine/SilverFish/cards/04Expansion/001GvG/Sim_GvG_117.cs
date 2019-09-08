@@ -12,9 +12,9 @@ namespace SilverFish.cards._04Expansion._001GvG
         {
             if (triggerEffectMinion.own == wasOwnCard)
             {
-                if (hc.card.type == CardDB.cardtype.SPELL && hc.manacost == 1)
+                if (hc.card.type == CardDB.CardType.SPELL && hc.manacost == 1)
                 {
-                    p.drawACard(CardDB.cardName.shieldedminibot, wasOwnCard, true);
+                    p.drawACard(CardDB.CardName.shieldedminibot, wasOwnCard, true);
                 }
             }
         }

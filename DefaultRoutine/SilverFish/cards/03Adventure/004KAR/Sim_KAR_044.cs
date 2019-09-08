@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Stealth. At the end of your turn, summon a 1/1 Steward.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_044a); //Steward
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_044a); //Steward
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {

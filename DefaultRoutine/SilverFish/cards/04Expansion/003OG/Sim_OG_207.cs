@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Battlecry: Summon a random 3-Cost minion.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_106); //Light's Champion
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.AT_106); //Light's Champion
 				
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

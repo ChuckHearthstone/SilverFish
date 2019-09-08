@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
 //    todesröcheln:/ fügt eurer hand ein zufälliges wildtier hinzu.
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.rivercrocolisk, m.own, true);
+            p.drawACard(CardDB.CardName.rivercrocolisk, m.own, true);
         }
 	}
 }

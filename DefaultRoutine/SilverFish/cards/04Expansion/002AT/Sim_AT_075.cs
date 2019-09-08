@@ -15,7 +15,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
+                if (m.name == CardDB.CardName.silverhandrecruit) p.minionGetBuffed(m, 1, 0);
             }            
 		}
 
@@ -27,7 +27,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			List<Minion> temp = (own.own) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.name == CardDB.cardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
+                if (m.name == CardDB.CardName.silverhandrecruit) p.minionGetBuffed(m, -1, 0);
             }
         }
 	}

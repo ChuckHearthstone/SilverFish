@@ -12,15 +12,15 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
             {
                 if (p.ownHeroStartClass == TAG_CLASS.MAGE)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_289);
+                    p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_289);
                 }
                 if (p.ownHeroStartClass == TAG_CLASS.HUNTER)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_554);
+                    p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_554);
                 }
                 if (p.ownHeroStartClass == TAG_CLASS.PALADIN)
                 {
-                    p.ownSecretsIDList.Add(CardDB.cardIDEnum.EX1_130);
+                    p.ownSecretsIDList.Add(CardDB.CardIdEnum.EX1_130);
                 }
             }
             else

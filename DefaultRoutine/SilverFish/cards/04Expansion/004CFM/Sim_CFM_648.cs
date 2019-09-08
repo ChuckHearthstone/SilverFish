@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Battlecry: Summon a 6/6 Ogre.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_648t); //6/6 Ogre
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_648t); //6/6 Ogre
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

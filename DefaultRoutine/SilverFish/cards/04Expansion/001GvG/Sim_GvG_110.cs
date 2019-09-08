@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         //  Battlecry: Summon two 1/1 Boom Bots. WARNING: Bots may explode. 
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_110t);//chillwind
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_110t);//chillwind
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

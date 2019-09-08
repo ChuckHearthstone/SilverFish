@@ -14,7 +14,7 @@ namespace SilverFish.cards._02Classic
                 List<Handmanager.Handcard> temp2 = new List<Handmanager.Handcard>();
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardDB.cardtype.MOB) temp2.Add(hc);
+                    if (hc.card.type == CardDB.CardType.MOB) temp2.Add(hc);
                 }
                 temp2.Sort((a, b) => -a.card.Attack.CompareTo(b.card.Attack));//damage the stronges
                 foreach (Handmanager.Handcard mins in temp2)
@@ -24,7 +24,7 @@ namespace SilverFish.cards._02Classic
                     triggerEffectMinion.playedThisTurn = false;
                     triggerEffectMinion.Ready = true;
                     p.removeCard(mins);
-                    p.drawACard(CardDB.cardName.alarmobot, true, true);
+                    p.drawACard(CardDB.CardName.alarmobot, true, true);
                     break;
                 }
                 return;

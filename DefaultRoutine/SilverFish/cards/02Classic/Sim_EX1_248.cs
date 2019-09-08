@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Summon two 2/3 Spirit Wolves with Taunt. Overload: (2)
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_tk11);//spiritwolf
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_tk11);//spiritwolf
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

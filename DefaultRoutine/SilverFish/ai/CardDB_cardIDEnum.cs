@@ -2,7 +2,7 @@
 {
     public partial class CardDB
     {
-        public enum cardIDEnum
+        public enum CardIdEnum
         {
             None,
             hero,

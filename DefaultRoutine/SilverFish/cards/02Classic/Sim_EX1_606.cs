@@ -16,7 +16,7 @@ namespace SilverFish.cards._02Classic
             {
                 p.minionGetArmor(p.enemyHero, 5);
             }
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 		}
 
 	}

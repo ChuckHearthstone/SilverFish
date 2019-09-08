@@ -5,7 +5,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     class Sim_GVG_116 : SimTemplate //* Mekgineer Thermaplugg
     {
         //   Whenever an enemy minion dies, summon a Leper Gnome.
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_029);//lepergnome
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_029);//lepergnome
 		
         public override void onMinionDiedTrigger(Playfield p, Minion m, Minion diedMinion)
         {

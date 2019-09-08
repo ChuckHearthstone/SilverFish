@@ -70,7 +70,7 @@
                 if (p.ownHeroName == HeroEnum.warrior && a.actionType == actionEnum.attackWithHero && useAbili) retval -= 1;
                 //if (a.actionType == actionEnum.useHeroPower && a.card.card.name == CardDB.cardName.lesserheal && (!a.target.own)) retval -= 5;
                 if (a.actionType != actionEnum.playcard) continue;
-                if (a.card.card.name == CardDB.cardName.thecoin || a.card.card.name == CardDB.cardName.innervate) usecoin++;
+                if (a.card.card.name == CardDB.CardName.thecoin || a.card.card.name == CardDB.CardName.innervate) usecoin++;
             }
             if (usecoin > 0)
             {
@@ -82,8 +82,8 @@
             {
                 switch (p.ownHeroAblility.card.name)
                 {
-                    case CardDB.cardName.heal: goto case CardDB.cardName.lesserheal;
-                    case CardDB.cardName.lesserheal:
+                    case CardDB.CardName.heal: goto case CardDB.CardName.lesserheal;
+                    case CardDB.CardName.lesserheal:
                         bool wereTarget = false;
                         if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
                         if (!wereTarget)
@@ -95,25 +95,25 @@
                         }
                         if (wereTarget && !(p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0)) retval -= 10;
                         break;
-                    case CardDB.cardName.poisoneddaggers: goto case CardDB.cardName.daggermastery;
-                    case CardDB.cardName.daggermastery:
+                    case CardDB.CardName.poisoneddaggers: goto case CardDB.CardName.daggermastery;
+                    case CardDB.CardName.daggermastery:
                         if (!(p.ownWeapon.Durability > 1 || p.ownWeapon.Angr > 1)) retval -= 10;
                         break;
-                    case CardDB.cardName.totemicslam: goto case CardDB.cardName.totemiccall;
-                    case CardDB.cardName.totemiccall:
+                    case CardDB.CardName.totemicslam: goto case CardDB.CardName.totemiccall;
+                    case CardDB.CardName.totemiccall:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.cardName.thetidalhand: goto case CardDB.cardName.reinforce;
-                    case CardDB.cardName.thesilverhand: goto case CardDB.cardName.reinforce;
-                    case CardDB.cardName.reinforce:
+                    case CardDB.CardName.thetidalhand: goto case CardDB.CardName.reinforce;
+                    case CardDB.CardName.thesilverhand: goto case CardDB.CardName.reinforce;
+                    case CardDB.CardName.reinforce:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.cardName.soultap: 
+                    case CardDB.CardName.soultap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0) retval -= 10;
                         break;
-                    case CardDB.cardName.lifetap: 
+                    case CardDB.CardName.lifetap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0)
                         {
                             retval -= 10;
@@ -135,9 +135,9 @@
                 if (m.windfury) retval += m.Attack;
                 if (m.taunt) retval += 1;
                 if (!m.taunt && m.stealth && m.handcard.card.isSpecialMinion && !m.silenced) retval += 20;
-                if (m.handcard.card.name == CardDB.cardName.silverhandrecruit && m.Attack == 1 && m.HealthPoints == 1) retval -= 5;
-                if (p.ownMinions.Count > 1 && (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader || m.handcard.card.name == CardDB.cardName.fallenhero)) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.nerubianegg)
+                if (m.handcard.card.name == CardDB.CardName.silverhandrecruit && m.Attack == 1 && m.HealthPoints == 1) retval -= 5;
+                if (p.ownMinions.Count > 1 && (m.handcard.card.name == CardDB.CardName.direwolfalpha || m.handcard.card.name == CardDB.CardName.flametonguetotem || m.handcard.card.name == CardDB.CardName.stormwindchampion || m.handcard.card.name == CardDB.CardName.raidleader || m.handcard.card.name == CardDB.CardName.fallenhero)) retval += 10;
+                if (m.handcard.card.name == CardDB.CardName.nerubianegg)
                 {
                     if (m.Attack >= 1) retval += 2;
                     if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
@@ -147,7 +147,7 @@
 
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardDB.cardtype.MOB)
+                if (hc.card.type == CardDB.CardType.MOB)
                 {
                     retval += hc.addattack + hc.addHp + hc.elemPoweredUp;
                 }
@@ -174,8 +174,8 @@
             foreach (Action a in p.playactions)
             {
                 if (a.actionType != actionEnum.playcard) continue;
-                if (a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus) deletecardsAtLast = 1;
-                if (deletecardsAtLast == 1 && !(a.card.card.name == CardDB.cardName.soulfire || a.card.card.name == CardDB.cardName.doomguard || a.card.card.name == CardDB.cardName.succubus)) retval -= 20;
+                if (a.card.card.name == CardDB.CardName.soulfire || a.card.card.name == CardDB.CardName.doomguard || a.card.card.name == CardDB.CardName.succubus) deletecardsAtLast = 1;
+                if (deletecardsAtLast == 1 && !(a.card.card.name == CardDB.CardName.soulfire || a.card.card.name == CardDB.CardName.doomguard || a.card.card.name == CardDB.CardName.succubus)) retval -= 20;
             }
             if (p.enemyHero.HealthPoints >= 1 && p.guessingHeroHP <= 0)
             {
@@ -194,7 +194,7 @@
             if (p.enemyMinions.Count >= 4 || m.taunt || (m.handcard.card.targetPriority >= 1 && !m.silenced) || m.Attack >= 5)
             {
                 retval += m.HealthPoints;
-                if (!m.frozen && !(m.cantAttack && m.name != CardDB.cardName.argentwatchman))
+                if (!m.frozen && !(m.cantAttack && m.name != CardDB.CardName.argentwatchman))
                 {
                     retval += m.Attack * 2;
                     if (m.windfury) retval += 2 * m.Attack;
@@ -215,7 +215,7 @@
             if (m.handcard.card.targetPriority >= 1 && !m.silenced) retval += m.handcard.card.targetPriority;
             if (m.Attack >= 4) retval += 20;
             if (m.Attack >= 7) retval += 50;
-            if (m.name == CardDB.cardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
+            if (m.name == CardDB.CardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
             return retval;
         }
 

@@ -7,11 +7,11 @@ namespace HREngine.Bots
 {
     public partial class CardDB
     {
-        public Dictionary<cardIDEnum,cardName> SpecialNames { get; set; }
+        public Dictionary<CardIdEnum,CardName> SpecialNames { get; set; }
 
         public void InitSpecialNames()
         {
-            SpecialNames = new Dictionary<cardIDEnum, cardName>();
+            SpecialNames = new Dictionary<CardIdEnum, CardName>();
             string path = Settings.Instance.DataFolderPath;
 			string specialCardNamePath = Path.Combine(path, "special_card_name.txt");
 			string[] lines = File.ReadAllLines(specialCardNamePath);
@@ -26,13 +26,13 @@ namespace HREngine.Bots
 
                 string key = array[0];
                 string value = array[1];
-                var tempCardIdEnum = (cardIDEnum) Enum.Parse(typeof(cardIDEnum), key);
-                var tempCardNameEnum = (cardName) Enum.Parse(typeof(cardName), value);
+                var tempCardIdEnum = (CardIdEnum) Enum.Parse(typeof(CardIdEnum), key);
+                var tempCardNameEnum = (CardName) Enum.Parse(typeof(CardName), value);
                 SpecialNames.Add(tempCardIdEnum, tempCardNameEnum);
             }
         }
 
-        public cardName GetSpecialCardNameEnumFromCardIdEnum(cardIDEnum tempCardIdEnum)
+        public CardName GetSpecialCardNameEnumFromCardIdEnum(CardIdEnum tempCardIdEnum)
         {
             if (SpecialNames.ContainsKey(tempCardIdEnum))
             {
@@ -40,7 +40,7 @@ namespace HREngine.Bots
             }
             else
             {
-                return cardName.unknown;
+                return CardName.unknown;
             }
         }
     }

@@ -8,7 +8,7 @@ namespace HREngine.Bots
     public class Weapon
     {
         public int pID = 0;
-        public CardDB.cardName name = CardDB.cardName.unknown;
+        public CardDB.CardName name = CardDB.CardName.unknown;
         public CardDB.Card card;
         public int numAttacksThisTurn = 0;
         public bool immuneWhileAttacking = false;
@@ -68,7 +68,7 @@ namespace HREngine.Bots
             this.immune = false;
             this.lifesteal = c.lifesteal;
             this.poisonous = c.poisonous;
-            this.cantAttackHeroes = (c.name == CardDB.cardName.foolsbane) ? true : false;
+            this.cantAttackHeroes = (c.name == CardDB.CardName.foolsbane) ? true : false;
         }
 
         public string weaponToString()

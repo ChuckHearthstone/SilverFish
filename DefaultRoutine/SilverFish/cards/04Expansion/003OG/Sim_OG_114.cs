@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Spend all your Mana. Summon that many 1/1 Tentacles.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_114a); //Icky Tentacle
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_114a); //Icky Tentacle
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

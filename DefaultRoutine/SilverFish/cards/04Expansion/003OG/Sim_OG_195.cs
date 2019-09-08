@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Choose One - Summon seven 1/1 Wisps; or Give your minions +2/+2.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_231);
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 			int bestAdapt = 0;
             foreach (Minion m in temp)
             {
-                if (m.name == CardDB.cardName.silverhandrecruit)
+                if (m.name == CardDB.CardName.silverhandrecruit)
 				{
 					if (first )
 					{

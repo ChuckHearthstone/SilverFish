@@ -15,7 +15,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 			}
             else p.enemyDeckSize++;
 			
-			p.drawACard(CardDB.cardName.unknown, ownplay);
+			p.drawACard(CardDB.CardName.unknown, ownplay);
 		}
 	}
 }

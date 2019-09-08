@@ -16,11 +16,11 @@ namespace SilverFish.Helpers
 
     public class CardNotImplementedHelper
     {
-        private static readonly ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo> NotImplementedCards =
-            new ConcurrentDictionary<CardDB.cardIDEnum, NotImplementedInfo>();
+        private static readonly ConcurrentDictionary<CardDB.CardIdEnum, NotImplementedInfo> NotImplementedCards =
+            new ConcurrentDictionary<CardDB.CardIdEnum, NotImplementedInfo>();
 
-        private static readonly Dictionary<CardDB.cardIDEnum, CardDB.Card> SingleGameCards =
-            new Dictionary<CardDB.cardIDEnum, CardDB.Card>();
+        private static readonly Dictionary<CardDB.CardIdEnum, CardDB.Card> SingleGameCards =
+            new Dictionary<CardDB.CardIdEnum, CardDB.Card>();
 
         public static void Add(CardDB.Card card)
         {

@@ -8,13 +8,13 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            CardDB.cardIDEnum cId = CardDB.cardIDEnum.None;
+            CardDB.CardIdEnum cId = CardDB.CardIdEnum.None;
             for (int i = m.Attack - 1; i >= 0; i--)
             {
                 cId = p.prozis.getDeckCardsForCost(i);
-                if (cId != CardDB.cardIDEnum.None) break;
+                if (cId != CardDB.CardIdEnum.None) break;
             }
-            if (cId != CardDB.cardIDEnum.None)
+            if (cId != CardDB.CardIdEnum.None)
             {
                 CardDB.Card kid = CardDB.Instance.getCardDataFromID(cId);
                 p.CallKid(kid, m.zonepos - 1, m.own);

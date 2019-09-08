@@ -10,7 +10,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 			
 			p.mana = Math.Min(10, p.mana++);
 			if (ownplay)

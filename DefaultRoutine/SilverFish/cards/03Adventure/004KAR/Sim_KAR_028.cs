@@ -7,7 +7,7 @@ namespace SilverFish.cards._03Adventure._004KAR
         //Unlimited attacks each turn. Can't attack heroes.
         // handled in public void getMoveList
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_028);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_028);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

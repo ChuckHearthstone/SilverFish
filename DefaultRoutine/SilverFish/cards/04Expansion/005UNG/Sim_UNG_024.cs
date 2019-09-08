@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void onSecretPlay(Playfield p, bool ownplay, int number)
         {
-            p.drawACard(CardDB.cardName.unknown, ownplay, true);
+            p.drawACard(CardDB.CardName.unknown, ownplay, true);
         }
     }
 }

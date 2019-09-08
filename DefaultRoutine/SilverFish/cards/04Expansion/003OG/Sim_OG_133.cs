@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._003OG
 
             if (kids > 0)
             {
-                foreach (KeyValuePair<CardDB.cardIDEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
+                foreach (KeyValuePair<CardDB.CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOut)
                 {
                     kid = CardDBI.getCardDataFromID(e.Key);
                     if (kid.deathrattle)

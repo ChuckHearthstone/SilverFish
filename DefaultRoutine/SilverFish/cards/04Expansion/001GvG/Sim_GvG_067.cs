@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (hc.card.type == CardDB.cardtype.SPELL && wasOwnCard != triggerEffectMinion.own)
+            if (hc.card.type == CardDB.CardType.SPELL && wasOwnCard != triggerEffectMinion.own)
             {
                 p.minionGetBuffed(triggerEffectMinion, 1, 0);
             }

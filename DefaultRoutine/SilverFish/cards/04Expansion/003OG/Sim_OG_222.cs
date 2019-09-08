@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._003OG
     {
         //Battlecry: Give +1/+1 to your minions with Divine Shield.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_222);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_222);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

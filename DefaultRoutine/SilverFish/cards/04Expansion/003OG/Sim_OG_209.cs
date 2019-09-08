@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._003OG
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
             {
                 Minion target = (ownplay) ? p.ownHero : p.enemyHero;
                 p.minionGetDamageOrHeal(target, -p.prozis.penman.guessTotalSpellDamage(p, hc.card.name, ownplay));

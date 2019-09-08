@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Battlecry: Equip Atiesh, Greatstaff of the Guardian.
 		
-        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_097t);//Atiesh
+        CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_097t);//Atiesh
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

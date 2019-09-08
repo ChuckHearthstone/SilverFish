@@ -14,7 +14,7 @@ namespace HREngine.Bots
 			
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             
-			p.drawACard(CardDB.cardIDEnum.BOT_219t, ownplay);
+			p.drawACard(CardDB.CardIdEnum.BOT_219t, ownplay);
 		}
 	}
 }

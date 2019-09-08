@@ -8,7 +8,7 @@ namespace SilverFish.cards._02Classic
 //    erhält jedes mal +2 angriff in diesem zug, wenn ihr einen zauber wirkt.
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.cardtype.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.CardType.SPELL)
             {
                 p.minionGetTempBuff(triggerEffectMinion, 2, 0);
             }

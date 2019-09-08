@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._004CFM
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                p.drawACard(CardDB.cardName.malchezaarsimp, turnEndOfOwner, true);
+                p.drawACard(CardDB.CardName.malchezaarsimp, turnEndOfOwner, true);
             }
         }
     }

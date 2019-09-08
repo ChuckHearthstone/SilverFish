@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//亡语：召唤一个1/1的机械袋鼠宝宝。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BOT_445t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BOT_445t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

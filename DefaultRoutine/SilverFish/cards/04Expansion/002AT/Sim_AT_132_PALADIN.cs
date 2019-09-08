@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Hero Power. Summon two 1/1 Recruits.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t);//silverhandrecruit
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t);//silverhandrecruit
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

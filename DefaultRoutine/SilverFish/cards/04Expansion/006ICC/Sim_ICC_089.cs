@@ -13,7 +13,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 CardDB.Card c;
                 int count = 0;
-                foreach (KeyValuePair<CardDB.cardIDEnum, int> cid in p.prozis.turnDeck)
+                foreach (KeyValuePair<CardDB.CardIdEnum, int> cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if ((TAG_RACE)c.race == TAG_RACE.MURLOC)
@@ -30,8 +30,8 @@ namespace SilverFish.cards._04Expansion._006ICC
             }
             else
             {
-                p.drawACard(CardDB.cardName.unknown, ownplay);
-                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
             }
         }
     }

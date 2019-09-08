@@ -14,7 +14,7 @@ namespace SilverFish.cards._02Classic
                 for (int i = 0; i < diff; i++)
                 {
                     //this.owncarddraw++;
-                    p.drawACard(CardDB.cardName.unknown, ownplay);
+                    p.drawACard(CardDB.CardName.unknown, ownplay);
                 }
             }
 		}

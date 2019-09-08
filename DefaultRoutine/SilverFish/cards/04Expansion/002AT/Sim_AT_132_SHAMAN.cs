@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Hero Power. Summon a Totem of your choice.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_051);//Stoneclaw Totem
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_051);//Stoneclaw Totem
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

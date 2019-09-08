@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Deathrattle: Summon a number of 1/1 Rats equal to this minion's Attack.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_316t); //1/1 Rat
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_316t); //1/1 Rat
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

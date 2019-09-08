@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.bananas, !own.own, true);
+            p.drawACard(CardDB.CardName.bananas, !own.own, true);
             if (own.own)
             {
                 p.enemycarddraw -= 1;

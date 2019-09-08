@@ -11,7 +11,7 @@ namespace SilverFish.cards._02Classic
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                p.drawACard(CardDB.cardName.yseraawakens, turnEndOfOwner, true);
+                p.drawACard(CardDB.CardName.yseraawakens, turnEndOfOwner, true);
             }
         }
 

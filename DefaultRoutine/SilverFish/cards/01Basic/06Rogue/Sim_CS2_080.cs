@@ -6,7 +6,7 @@ namespace SilverFish.cards._01Basic._06Rogue
 	{
 
 //
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_080);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_080);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

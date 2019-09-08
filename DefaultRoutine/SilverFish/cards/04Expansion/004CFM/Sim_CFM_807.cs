@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
             {
                 if (m.own)
                 {

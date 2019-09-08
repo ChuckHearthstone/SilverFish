@@ -21,7 +21,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             if (triggerEffectMinion.own == wasOwnCard)
             {
-                if (hc.card.type == CardDB.cardtype.MOB && hc.manacost == 1)
+                if (hc.card.type == CardDB.CardType.MOB && hc.manacost == 1)
                 {
                     triggerEffectMinion.poisonous = true;
                 }

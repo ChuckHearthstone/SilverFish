@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         // Deathrattle: Summon a random 2-Cost minion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_172);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_172);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -8,8 +8,8 @@ namespace SilverFish.cards._04Expansion._002AT
 		
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, ownplay, true);
-            p.drawACard(CardDB.cardName.unknown, ownplay, true);
+            p.drawACard(CardDB.CardName.unknown, ownplay, true);
+            p.drawACard(CardDB.CardName.unknown, ownplay, true);
         }
     }
 }

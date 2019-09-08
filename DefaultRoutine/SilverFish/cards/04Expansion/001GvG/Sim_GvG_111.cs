@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     {
         //   At the start of your turn, if you have at least 3 Mechs, destroy them all and form V-07-TR-0N.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_111t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_111t);
 
         public override void onTurnStartTrigger(Playfield p, Minion triggerEffectMinion, bool turnStartOfOwner)
         {

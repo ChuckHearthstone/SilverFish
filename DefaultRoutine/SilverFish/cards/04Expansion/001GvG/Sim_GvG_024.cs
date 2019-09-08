@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         //    Has +2 Attack while you have a Mech.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_024);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_024);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			{
 				foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardDB.cardtype.MOB)
+                    if (hc.card.type == CardDB.CardType.MOB)
                     {
                         hc.addattack++;
                         hc.addHp++;

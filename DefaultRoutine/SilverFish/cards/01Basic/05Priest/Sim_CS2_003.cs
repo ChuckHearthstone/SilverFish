@@ -10,7 +10,7 @@ namespace SilverFish.cards._01Basic._05Priest
             int anz = (ownplay) ? p.enemyAnzCards : p.owncards.Count;
             if (anz >= 1)
             {
-                p.drawACard(CardDB.cardName.unknown, ownplay,true);
+                p.drawACard(CardDB.CardName.unknown, ownplay,true);
             }
         }
 

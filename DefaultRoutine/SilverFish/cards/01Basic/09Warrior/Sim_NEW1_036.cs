@@ -13,7 +13,7 @@ namespace SilverFish.cards._01Basic._09Warrior
             {
                 t.cantLowerHPbelowONE = true;
             }
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
         }
 
     }

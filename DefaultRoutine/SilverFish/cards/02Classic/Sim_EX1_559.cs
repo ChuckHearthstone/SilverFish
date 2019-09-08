@@ -9,9 +9,9 @@ namespace SilverFish.cards._02Classic
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.cardtype.SPELL)
+            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.CardType.SPELL)
             {
-                p.drawACard(CardDB.cardName.fireball, wasOwnCard, true);
+                p.drawACard(CardDB.CardName.fireball, wasOwnCard, true);
             }
         }
 

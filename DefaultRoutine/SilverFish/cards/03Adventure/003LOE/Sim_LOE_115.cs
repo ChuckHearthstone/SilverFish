@@ -10,11 +10,11 @@ namespace SilverFish.cards._03Adventure._003LOE
 		{
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                p.drawACard(CardDB.cardName.lepergnome, ownplay, true);
+                p.drawACard(CardDB.CardName.lepergnome, ownplay, true);
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
-                p.drawACard(CardDB.cardName.thecoin, ownplay, true);
+                p.drawACard(CardDB.CardName.thecoin, ownplay, true);
             }
 		}
 	}

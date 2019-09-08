@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             if (target != null)
             {
                 p.minionGetFrozen(target);
-                p.drawACard(CardDB.cardName.aberration, m.own, true);
+                p.drawACard(CardDB.CardName.aberration, m.own, true);
             }
         }
     }

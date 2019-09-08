@@ -25,7 +25,7 @@ namespace SilverFish.cards._04Expansion._006ICC
                 }
             }
 
-            if (frozen) p.drawACard(CardDB.cardName.unknown, m.own);
+            if (frozen) p.drawACard(CardDB.CardName.unknown, m.own);
         }
     }
 }

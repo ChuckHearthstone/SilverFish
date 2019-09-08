@@ -115,21 +115,21 @@ namespace HREngine.Bots
                     switch (aa.actionType)
                     {
                         case actionEnum.useHeroPower:
-                            if (aa.card.card.name == CardDB.cardName.totemiccall) totemiccall = true;
+                            if (aa.card.card.name == CardDB.CardName.totemiccall) totemiccall = true;
                             break;
                         case actionEnum.playcard:
                             if (penman.DamageAllEnemysDatabase.ContainsKey(aa.card.card.name))
                             {
                                 if (i != aoeEnNum)
                                 {
-                                    if (totemiccall && aa.card.card.type == CardDB.cardtype.SPELL) return;
+                                    if (totemiccall && aa.card.card.type == CardDB.CardType.SPELL) return;
                                     reorderedActions.RemoveAt(i);
                                     reorderedActions.Insert(aoeEnNum, aa);
                                     outOfPlace++;
                                 }
                                 aoeEnNum++;
                             }
-                            else if (rndBeforeDamageAll && aa.card.card.type == CardDB.cardtype.SPELL && penman.DamageRandomDatabase.ContainsKey(aa.card.card.name))
+                            else if (rndBeforeDamageAll && aa.card.card.type == CardDB.CardType.SPELL && penman.DamageRandomDatabase.ContainsKey(aa.card.card.name))
                             {
                                 damageRandom = true;
                                 Playfield tmp = new Playfield(tmpPlOld);
@@ -239,7 +239,7 @@ namespace HREngine.Bots
                             {
                                 if (p.ownMinions.Count > 6)
                                 {
-                                    if (hc.card.type == CardDB.cardtype.MOB) return false;
+                                    if (hc.card.type == CardDB.CardType.MOB) return false;
                                 }
                                 actionFound = true;
                             }

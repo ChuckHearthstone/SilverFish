@@ -21,7 +21,7 @@ namespace SilverFish.cards._04Expansion._008GIL
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             if (dmg >= target.HealthPoints && !target.divineshild && !target.immune)
             {
-                p.drawACard(CardDB.cardName.thecoin, ownplay, true);
+                p.drawACard(CardDB.CardName.thecoin, ownplay, true);
             }
             p.minionGetDamageOrHeal(target, dmg);
         }

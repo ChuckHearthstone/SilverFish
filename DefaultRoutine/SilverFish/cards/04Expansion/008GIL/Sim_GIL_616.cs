@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            var card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_616t);
+            var card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GIL_616t);
             p.CallKid(card, m.zonepos - 1, m.own, true, true);
             p.CallKid(card, m.zonepos - 1, m.own, true, true);
         }

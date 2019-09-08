@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Deathrattle: Summon two 2/2 Hyenas.
 
-        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_534t);//hyena
+        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_534t);//hyena
         
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -21,7 +21,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             if (triggerEffectMinion.own == wasOwnCard)
             {
-                if (hc.card.type == CardDB.cardtype.SPELL)
+                if (hc.card.type == CardDB.CardType.SPELL)
                 {
                     int pos = (wasOwnCard) ? p.ownMinions.Count : p.enemyMinions.Count;
                     p.CallKid(p.getRandomCardForManaMinion(2), pos, wasOwnCard);

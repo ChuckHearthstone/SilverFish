@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Open a permanent portal that summons 3/2 Imps.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_829t2); //Nether Portal
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_829t2); //Nether Portal
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

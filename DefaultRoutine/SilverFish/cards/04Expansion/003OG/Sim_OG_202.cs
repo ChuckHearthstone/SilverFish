@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._003OG
     {
         //Choose One - Summon a 2/2 Slime; or Gain an empty Mana Crystal.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NAX11_03);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX11_03);
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

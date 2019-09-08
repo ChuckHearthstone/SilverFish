@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Deathrattle: Summon three 1/1 Murlocs.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_201t); //Primalfin
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_201t); //Primalfin
         
         public override void onDeathrattle(Playfield p, Minion m)
         {

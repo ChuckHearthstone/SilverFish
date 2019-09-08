@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 	{
 		//Windfury. Deathrattle: Put this weapon into your hand.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NAX10_02H);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX10_02H);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
@@ -15,7 +15,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-			p.drawACard(CardDB.cardIDEnum.NAX10_02H, m.own, true);
+			p.drawACard(CardDB.CardIdEnum.NAX10_02H, m.own, true);
         }
     }
 }

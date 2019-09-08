@@ -9,9 +9,9 @@ namespace HREngine.Bots
     {
         public bool own;
         public int entity;
-        public CardDB.cardIDEnum cardid;
+        public CardDB.CardIdEnum cardid;
 
-        public GraveYardItem(CardDB.cardIDEnum id, int entity, bool own)
+        public GraveYardItem(CardDB.CardIdEnum id, int entity, bool own)
         {
             this.own = own;
             this.cardid = id;
@@ -342,8 +342,8 @@ namespace HREngine.Bots
 
     public class Probabilitymaker
     {
-        public Dictionary<CardDB.cardIDEnum, int> ownCardsOut = new Dictionary<CardDB.cardIDEnum, int>();
-        public Dictionary<CardDB.cardIDEnum, int> enemyCardsOut = new Dictionary<CardDB.cardIDEnum, int>();
+        public Dictionary<CardDB.CardIdEnum, int> ownCardsOut = new Dictionary<CardDB.CardIdEnum, int>();
+        public Dictionary<CardDB.CardIdEnum, int> enemyCardsOut = new Dictionary<CardDB.CardIdEnum, int>();
         List<GraveYardItem> graveyard = new List<GraveYardItem>();
         public List<GraveYardItem> turngraveyard = new List<GraveYardItem>();//MOBS only
         public List<GraveYardItem> turngraveyardAll = new List<GraveYardItem>();//All
@@ -368,7 +368,7 @@ namespace HREngine.Bots
 
         }
 
-        public void setOwnCardsOut(Dictionary<CardDB.cardIDEnum, int> og)
+        public void setOwnCardsOut(Dictionary<CardDB.CardIdEnum, int> og)
         {
             ownCardsOut.Clear();
             this.stalaggDead = false;
@@ -376,18 +376,18 @@ namespace HREngine.Bots
             foreach (var tmp in og)
             {
                 ownCardsOut.Add(tmp.Key, tmp.Value);
-                if (tmp.Key == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
-                if (tmp.Key == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
+                if (tmp.Key == CardDB.CardIdEnum.FP1_015) this.feugenDead = true;
+                if (tmp.Key == CardDB.CardIdEnum.FP1_014) this.stalaggDead = true;
             }
         }
-        public void setEnemyCardsOut(Dictionary<CardDB.cardIDEnum, int> eg)
+        public void setEnemyCardsOut(Dictionary<CardDB.CardIdEnum, int> eg)
         {
             enemyCardsOut.Clear();
             foreach (var tmp in eg)
             {
                 enemyCardsOut.Add(tmp.Key, tmp.Value);
-                if (tmp.Key == CardDB.cardIDEnum.FP1_015) this.feugenDead = true;
-                if (tmp.Key == CardDB.cardIDEnum.FP1_014) this.stalaggDead = true;
+                if (tmp.Key == CardDB.CardIdEnum.FP1_015) this.feugenDead = true;
+                if (tmp.Key == CardDB.CardIdEnum.FP1_014) this.stalaggDead = true;
             }
         }
         
@@ -444,15 +444,15 @@ namespace HREngine.Bots
             this.turngraveyard.Clear();
             this.turngraveyardAll.Clear();
 
-            GraveYardItem OwnLastDiedMinion = new GraveYardItem(CardDB.cardIDEnum.None, -1, true);
+            GraveYardItem OwnLastDiedMinion = new GraveYardItem(CardDB.CardIdEnum.None, -1, true);
             foreach (GraveYardItem ent in list)
             {
-                if (ent.cardid == CardDB.cardIDEnum.FP1_015)
+                if (ent.cardid == CardDB.CardIdEnum.FP1_015)
                 {
                     this.feugenDead = true;
                 }
 
-                if (ent.cardid == CardDB.cardIDEnum.FP1_014)
+                if (ent.cardid == CardDB.CardIdEnum.FP1_014)
                 {
                     this.stalaggDead = true;
                 }
@@ -470,13 +470,13 @@ namespace HREngine.Bots
 
                 if (!found)
                 {
-                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.cardtype.MOB)
+                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.CardType.MOB)
                     {
                         this.turngraveyard.Add(ent);
                     }
                     this.turngraveyardAll.Add(ent);
                 }
-                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.cardtype.MOB)
+                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.CardType.MOB)
                 {
                     OwnLastDiedMinion = ent;
                 }
@@ -492,7 +492,7 @@ namespace HREngine.Bots
             this.turngraveyardAll.AddRange(listAll);
         }
 
-        public bool hasEnemyThisCardInDeck(CardDB.cardIDEnum cardid)
+        public bool hasEnemyThisCardInDeck(CardDB.CardIdEnum cardid)
         {
             if (this.enemyCardsOut.ContainsKey(cardid))
             {
@@ -506,7 +506,7 @@ namespace HREngine.Bots
             return true;
         }
 
-        public int anzCardsInDeck(CardDB.cardIDEnum cardid)
+        public int anzCardsInDeck(CardDB.CardIdEnum cardid)
         {
             int ret = 2;
             CardDB.Card c = CardDB.Instance.getCardDataFromID(cardid);
@@ -528,12 +528,12 @@ namespace HREngine.Bots
         public void printGraveyards()
         {
             string og = "og: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.ownCardsOut)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> e in this.ownCardsOut)
             {
                 og += e.Key + "," + e.Value + ";";
             }
             string eg = "eg: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.enemyCardsOut)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> e in this.enemyCardsOut)
             {
                 eg += e.Key + "," + e.Value + ";";
             }
@@ -541,7 +541,7 @@ namespace HREngine.Bots
             LogHelper.WriteCombatLog(eg);
         }
 
-        public int getProbOfEnemyHavingCardInHand(CardDB.cardIDEnum cardid, int handsize, int decksize)
+        public int getProbOfEnemyHavingCardInHand(CardDB.CardIdEnum cardid, int handsize, int decksize)
         {
             //calculates probability \in [0,...,100]
 
@@ -565,7 +565,7 @@ namespace HREngine.Bots
             return (int)(100.0 * retval);
         }
 
-        public bool hasCardinGraveyard(CardDB.cardIDEnum cardid)
+        public bool hasCardinGraveyard(CardDB.CardIdEnum cardid)
         {
             foreach (GraveYardItem gyi in this.graveyard)
             {
@@ -637,42 +637,42 @@ namespace HREngine.Bots
                 sec.canBe_avenge = false;
                 sec.canBe_sacredtrial = false;
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_554) && enemyCardsOut[CardDB.cardIDEnum.EX1_554] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_554) && enemyCardsOut[CardDB.CardIdEnum.EX1_554] >= 2)
                 {
                     sec.canBe_snaketrap = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_609) && enemyCardsOut[CardDB.cardIDEnum.EX1_609] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_609) && enemyCardsOut[CardDB.CardIdEnum.EX1_609] >= 2)
                 {
                     sec.canBe_snipe = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_610) && enemyCardsOut[CardDB.cardIDEnum.EX1_610] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_610) && enemyCardsOut[CardDB.CardIdEnum.EX1_610] >= 2)
                 {
                     sec.canBe_explosive = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.AT_060) && enemyCardsOut[CardDB.cardIDEnum.AT_060] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.AT_060) && enemyCardsOut[CardDB.CardIdEnum.AT_060] >= 2)
                 {
                     sec.canBe_beartrap = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_611) && enemyCardsOut[CardDB.cardIDEnum.EX1_611] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_611) && enemyCardsOut[CardDB.CardIdEnum.EX1_611] >= 2)
                 {
                     sec.canBe_freezing = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_533) && enemyCardsOut[CardDB.cardIDEnum.EX1_533] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_533) && enemyCardsOut[CardDB.CardIdEnum.EX1_533] >= 2)
                 {
                     sec.canBe_missdirection = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.LOE_021) && enemyCardsOut[CardDB.cardIDEnum.LOE_021] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.LOE_021) && enemyCardsOut[CardDB.CardIdEnum.LOE_021] >= 2)
                 {
                     sec.canBe_darttrap = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.KAR_004) && enemyCardsOut[CardDB.cardIDEnum.KAR_004] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.KAR_004) && enemyCardsOut[CardDB.CardIdEnum.KAR_004] >= 2)
                 {
                     sec.canBe_cattrick = false;
                 }
@@ -697,42 +697,42 @@ namespace HREngine.Bots
                 sec.canBe_avenge = false;
                 sec.canBe_sacredtrial = false;
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_287) && enemyCardsOut[CardDB.cardIDEnum.EX1_287] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_287) && enemyCardsOut[CardDB.CardIdEnum.EX1_287] >= 2)
                 {
                     sec.canBe_counterspell = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_289) && enemyCardsOut[CardDB.cardIDEnum.EX1_289] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_289) && enemyCardsOut[CardDB.CardIdEnum.EX1_289] >= 2)
                 {
                     sec.canBe_icebarrier = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_295) && enemyCardsOut[CardDB.cardIDEnum.EX1_295] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_295) && enemyCardsOut[CardDB.CardIdEnum.EX1_295] >= 2)
                 {
                     sec.canBe_iceblock = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_294) && enemyCardsOut[CardDB.cardIDEnum.EX1_294] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_294) && enemyCardsOut[CardDB.CardIdEnum.EX1_294] >= 2)
                 {
                     sec.canBe_mirrorentity = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.tt_010) && enemyCardsOut[CardDB.cardIDEnum.tt_010] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.tt_010) && enemyCardsOut[CardDB.CardIdEnum.tt_010] >= 2)
                 {
                     sec.canBe_spellbender = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_594) && enemyCardsOut[CardDB.cardIDEnum.EX1_594] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_594) && enemyCardsOut[CardDB.CardIdEnum.EX1_594] >= 2)
                 {
                     sec.canBe_vaporize = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.FP1_018) && enemyCardsOut[CardDB.cardIDEnum.FP1_018] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.FP1_018) && enemyCardsOut[CardDB.CardIdEnum.FP1_018] >= 2)
                 {
                     sec.canBe_duplicate = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.AT_002) && enemyCardsOut[CardDB.cardIDEnum.AT_002] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.AT_002) && enemyCardsOut[CardDB.CardIdEnum.AT_002] >= 2)
                 {
                     sec.canBe_effigy = false;
                 }
@@ -758,32 +758,32 @@ namespace HREngine.Bots
                 sec.canBe_duplicate = false;
                 sec.canBe_effigy = false;
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_132) && enemyCardsOut[CardDB.cardIDEnum.EX1_132] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_132) && enemyCardsOut[CardDB.CardIdEnum.EX1_132] >= 2)
                 {
                     sec.canBe_eyeforaneye = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_130) && enemyCardsOut[CardDB.cardIDEnum.EX1_130] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_130) && enemyCardsOut[CardDB.CardIdEnum.EX1_130] >= 2)
                 {
                     sec.canBe_noblesacrifice = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_136) && enemyCardsOut[CardDB.cardIDEnum.EX1_136] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_136) && enemyCardsOut[CardDB.CardIdEnum.EX1_136] >= 2)
                 {
                     sec.canBe_redemption = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_379) && enemyCardsOut[CardDB.cardIDEnum.EX1_379] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_379) && enemyCardsOut[CardDB.CardIdEnum.EX1_379] >= 2)
                 {
                     sec.canBe_repentance = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.FP1_020) && enemyCardsOut[CardDB.cardIDEnum.FP1_020] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.FP1_020) && enemyCardsOut[CardDB.CardIdEnum.FP1_020] >= 2)
                 {
                     sec.canBe_avenge = false;
                 }
 
-                if (enemyCardsOut.ContainsKey(CardDB.cardIDEnum.LOE_027) && enemyCardsOut[CardDB.cardIDEnum.LOE_027] >= 2)
+                if (enemyCardsOut.ContainsKey(CardDB.CardIdEnum.LOE_027) && enemyCardsOut[CardDB.CardIdEnum.LOE_027] >= 2)
                 {
                     sec.canBe_sacredtrial = false;
                 }
@@ -793,7 +793,7 @@ namespace HREngine.Bots
         }
 
 
-        public bool isAllowedSecret(CardDB.cardIDEnum cardID)
+        public bool isAllowedSecret(CardDB.CardIdEnum cardID)
         {
             if (ownCardsOut.ContainsKey(cardID) && ownCardsOut[cardID] >= 2) return false;
             return true;
@@ -865,15 +865,15 @@ namespace HREngine.Bots
             Action doneMove = Ai.Instance.bestmove;
             if (doneMove == null) return;
 
-            List<CardDB.cardIDEnum> enemySecretsOpenedStep = new List<CardDB.cardIDEnum>();
+            List<CardDB.CardIdEnum> enemySecretsOpenedStep = new List<CardDB.CardIdEnum>();
             List<CardDB.Card> enemyMinionsDiedStep = new List<CardDB.Card>();
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> tmp in p.enemyCardsOut)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> tmp in p.enemyCardsOut)
             {
                 if (!old.enemyCardsOut.ContainsKey(tmp.Key) || old.enemyCardsOut[tmp.Key] != tmp.Value)
                 {
                     CardDB.Card c = CardDB.Instance.getCardDataFromID(tmp.Key);
                     if (c.Secret) enemySecretsOpenedStep.Add(tmp.Key);
-                    else if (c.type == CardDB.cardtype.MOB) enemyMinionsDiedStep.Add(c);
+                    else if (c.type == CardDB.CardType.MOB) enemyMinionsDiedStep.Add(c);
                 }
             }
 
@@ -917,20 +917,20 @@ namespace HREngine.Bots
                 {
                     switch (enemyMinionsDiedStep[0].cardIDenum)
                     {
-                        case CardDB.cardIDEnum.AT_019: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.AT_036: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.BRMC_87: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.EX1_110: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.EX1_534: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.EX1_556: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.FP1_002: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.FP1_007: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.FP1_012: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.GVG_096: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.GVG_105: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.GVG_114: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.LOE_050: redemption = false; effigy = false; break;
-                        case CardDB.cardIDEnum.LOE_089: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.AT_019: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.AT_036: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.BRMC_87: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.EX1_110: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.EX1_534: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.EX1_556: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.FP1_002: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.FP1_007: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.FP1_012: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.GVG_096: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.GVG_105: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.GVG_114: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.LOE_050: redemption = false; effigy = false; break;
+                        case CardDB.CardIdEnum.LOE_089: redemption = false; effigy = false; break;
                         default: redemption = true; effigy = true; break;
                     }
                 }
@@ -973,15 +973,15 @@ namespace HREngine.Bots
                     if (!attackerIsHero) freezing = true;
                     if (old.enemyMinions.Count < 7) noblesacrifice = true;
 
-                    foreach (CardDB.cardIDEnum id in enemySecretsOpenedStep)
+                    foreach (CardDB.CardIdEnum id in enemySecretsOpenedStep)
                     {
                         switch (id)
                         {
-                            case CardDB.cardIDEnum.AT_060:  //beartrap
+                            case CardDB.CardIdEnum.AT_060:  //beartrap
                                 beartrap = true;
                                 missdirection = true;
                                 continue;
-                            case CardDB.cardIDEnum.EX1_610:  //explosivetrap
+                            case CardDB.CardIdEnum.EX1_610:  //explosivetrap
                                 if (enemySecretsOpenedStep.Count == 1)
                                 {
                                     missdirection = true;
@@ -992,24 +992,24 @@ namespace HREngine.Bots
                                     }
                                 }
                                 continue;
-                            case CardDB.cardIDEnum.EX1_533:  //misdirection
+                            case CardDB.CardIdEnum.EX1_533:  //misdirection
                                 missdirection = true;
                                 vaporize = false;
-                                if (enemySecretsOpenedStep.Contains(CardDB.cardIDEnum.EX1_554)) continue;
+                                if (enemySecretsOpenedStep.Contains(CardDB.CardIdEnum.EX1_554)) continue;
                                 int hpBalance = 0; //we need to know who has become the new target
                                 foreach (Minion m in p.enemyMinions) hpBalance += m.HealthPoints;
                                 foreach (Minion m in old.enemyMinions) hpBalance -= m.HealthPoints;
                                 if (hpBalance < 0) snaketrap = true;
                                 continue;
-                            case CardDB.cardIDEnum.EX1_611:  //freezingtrap
+                            case CardDB.CardIdEnum.EX1_611:  //freezingtrap
                                 freezing = true;
                                 vaporize = false;
                                 continue;
-                            case CardDB.cardIDEnum.EX1_594:   //vaporize
+                            case CardDB.CardIdEnum.EX1_594:   //vaporize
                                 vaporize = true;
                                 freezing = false;
                                 continue;
-                            case CardDB.cardIDEnum.EX1_130:   //noblesacrifice
+                            case CardDB.CardIdEnum.EX1_130:   //noblesacrifice
                                 noblesacrifice = true;
                                 snaketrap = true;
                                 vaporize = false;
@@ -1021,7 +1021,7 @@ namespace HREngine.Bots
             }
             else if (doneMove.actionType == actionEnum.playcard)
             {
-                if (doneMove.card.card.type == CardDB.cardtype.SPELL)
+                if (doneMove.card.card.type == CardDB.CardType.SPELL)
                 {
                     cattrick = true;
                     counterspell = true;
@@ -1046,32 +1046,32 @@ namespace HREngine.Bots
             if (p.enemyHero.HealthPoints + p.enemyHero.armor < old.enemyHero.HealthPoints + old.enemyHero.armor) eyeforaneye = true;
             if (doneMove.actionType == actionEnum.useHeroPower) darttrap = true;
 
-            foreach (CardDB.cardIDEnum id in enemySecretsOpenedStep)
+            foreach (CardDB.CardIdEnum id in enemySecretsOpenedStep)
             {
                 switch (id)
                 {
-                    case CardDB.cardIDEnum.AT_002: effigy = true; continue;
-                    case CardDB.cardIDEnum.AT_060: beartrap = true; continue;
-                    case CardDB.cardIDEnum.EX1_130: noblesacrifice = true; continue;
-                    case CardDB.cardIDEnum.EX1_132: eyeforaneye = true; continue;
-                    case CardDB.cardIDEnum.EX1_136: redemption = true; continue;
-                    case CardDB.cardIDEnum.EX1_287: counterspell = true; continue;
-                    case CardDB.cardIDEnum.EX1_289: icebarrier = true; continue;
-                    case CardDB.cardIDEnum.EX1_294: mirrorentity = true; continue;
-                    case CardDB.cardIDEnum.EX1_295: iceblock = true; continue;
-                    case CardDB.cardIDEnum.EX1_379: repentance = true; continue;
-                    case CardDB.cardIDEnum.EX1_533: missdirection = true; continue;
-                    case CardDB.cardIDEnum.EX1_554: snaketrap = true; continue;
-                    case CardDB.cardIDEnum.EX1_594: vaporize = true; continue;
-                    case CardDB.cardIDEnum.EX1_609: snipe = true; continue;
-                    case CardDB.cardIDEnum.EX1_610: explosive = true; continue;
-                    case CardDB.cardIDEnum.EX1_611: freezing = true; continue;
-                    case CardDB.cardIDEnum.FP1_018: duplicate = true; continue;
-                    case CardDB.cardIDEnum.FP1_020: avenge = true; continue;
-                    case CardDB.cardIDEnum.LOE_021: darttrap = true; continue;
-                    case CardDB.cardIDEnum.LOE_027: sacredtrial = true; continue;
-                    case CardDB.cardIDEnum.tt_010: spellbender = true; continue;
-                    case CardDB.cardIDEnum.KAR_004: cattrick = true; continue;
+                    case CardDB.CardIdEnum.AT_002: effigy = true; continue;
+                    case CardDB.CardIdEnum.AT_060: beartrap = true; continue;
+                    case CardDB.CardIdEnum.EX1_130: noblesacrifice = true; continue;
+                    case CardDB.CardIdEnum.EX1_132: eyeforaneye = true; continue;
+                    case CardDB.CardIdEnum.EX1_136: redemption = true; continue;
+                    case CardDB.CardIdEnum.EX1_287: counterspell = true; continue;
+                    case CardDB.CardIdEnum.EX1_289: icebarrier = true; continue;
+                    case CardDB.CardIdEnum.EX1_294: mirrorentity = true; continue;
+                    case CardDB.CardIdEnum.EX1_295: iceblock = true; continue;
+                    case CardDB.CardIdEnum.EX1_379: repentance = true; continue;
+                    case CardDB.CardIdEnum.EX1_533: missdirection = true; continue;
+                    case CardDB.CardIdEnum.EX1_554: snaketrap = true; continue;
+                    case CardDB.CardIdEnum.EX1_594: vaporize = true; continue;
+                    case CardDB.CardIdEnum.EX1_609: snipe = true; continue;
+                    case CardDB.CardIdEnum.EX1_610: explosive = true; continue;
+                    case CardDB.CardIdEnum.EX1_611: freezing = true; continue;
+                    case CardDB.CardIdEnum.FP1_018: duplicate = true; continue;
+                    case CardDB.CardIdEnum.FP1_020: avenge = true; continue;
+                    case CardDB.CardIdEnum.LOE_021: darttrap = true; continue;
+                    case CardDB.CardIdEnum.LOE_027: sacredtrial = true; continue;
+                    case CardDB.CardIdEnum.tt_010: spellbender = true; continue;
+                    case CardDB.CardIdEnum.KAR_004: cattrick = true; continue;
                 }
             }
 

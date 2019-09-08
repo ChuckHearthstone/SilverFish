@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     {
         //   Summon 5 Wisps;
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_231);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             for (int i = 0; i < 5; i++)

@@ -772,7 +772,7 @@ def Execute():
                         {
                             foreach (Handmanager.Handcard hc in lastChancePl.owncards)
                             {
-                                if (hc.card.name == CardDB.cardName.unknown) lastChance = true;
+                                if (hc.card.name == CardDB.CardName.unknown) lastChance = true;
                             }
                             if (!lastChance) doConcede = true;
                         }
@@ -789,21 +789,21 @@ def Execute():
 
                                 switch (m.handcard.card.name)
                                 {
-                                    case CardDB.cardName.cthun:
-                                    case CardDB.cardName.nzoththecorruptor:
-                                    case CardDB.cardName.yoggsaronhopesend:
-                                    case CardDB.cardName.sirfinleymrrgglton:
-                                    case CardDB.cardName.shudderwock:
-                                    case CardDB.cardName.stargazerluna:
+                                    case CardDB.CardName.cthun:
+                                    case CardDB.CardName.nzoththecorruptor:
+                                    case CardDB.CardName.yoggsaronhopesend:
+                                    case CardDB.CardName.sirfinleymrrgglton:
+                                    case CardDB.CardName.shudderwock:
+                                    case CardDB.CardName.stargazerluna:
                                         lastChance = true;
                                         break;
-                                    case CardDB.cardName.ragnarosthefirelord:
+                                    case CardDB.CardName.ragnarosthefirelord:
                                         if (lastChancePl.enemyHero.HealthPoints < 9)
                                         {
                                             lastChance = true;
                                         }
                                         break;
-                                    case CardDB.cardName.barongeddon:
+                                    case CardDB.CardName.barongeddon:
                                         if (lastChancePl.enemyHero.HealthPoints < 3)
                                         {
                                             lastChance = true;
@@ -811,13 +811,13 @@ def Execute():
                                         break;
                                 }
                             }
-                            foreach (CardDB.cardIDEnum cardId in lastChancePl.ownSecretsIDList)
+                            foreach (CardDB.CardIdEnum cardId in lastChancePl.ownSecretsIDList)
                             {
                                 switch (cardId)
                                 {
-                                    case CardDB.cardIDEnum.EX1_295:
-                                    case CardDB.cardIDEnum.EX1_130:
-                                    case CardDB.cardIDEnum.ULD_239:
+                                    case CardDB.CardIdEnum.EX1_295:
+                                    case CardDB.CardIdEnum.EX1_130:
+                                    case CardDB.CardIdEnum.ULD_239:
                                         lastChance = true;
                                         break;
                                 }
@@ -891,15 +891,15 @@ def Execute():
                             
                             await cardtoplay.Pickup();
 
-                            if (moveTodo.card.card.type == CardDB.cardtype.MOB)
+                            if (moveTodo.card.card.type == CardDB.CardType.MOB)
                             {
                                 await cardtoplay.UseAt(moveTodo.place);
                             }
-                            else if (moveTodo.card.card.type == CardDB.cardtype.WEAPON) // This fixes perdition's blade
+                            else if (moveTodo.card.card.type == CardDB.CardType.WEAPON) // This fixes perdition's blade
                             {
                                 await cardtoplay.UseOn(target.Card);
                             }
-                            else if (moveTodo.card.card.type == CardDB.cardtype.SPELL)
+                            else if (moveTodo.card.card.type == CardDB.CardType.SPELL)
                             {
                                 await cardtoplay.UseOn(target.Card);
                             }
@@ -931,7 +931,7 @@ def Execute():
 
                     await cardtoplay.Pickup();
 
-                    if (moveTodo.card.card.type == CardDB.cardtype.MOB)
+                    if (moveTodo.card.card.type == CardDB.CardType.MOB)
                     {
                         await cardtoplay.UseAt(moveTodo.place);
                     }
@@ -1071,7 +1071,7 @@ def Execute():
                 var lscc = ccm.m_lastShownChoiceState;
                 GAME_TAG choiceMode = GAME_TAG.CHOOSE_ONE;
                 int sourceEntityId = -1;
-                CardDB.cardIDEnum sourceEntityCId = CardDB.cardIDEnum.None;
+                CardDB.CardIdEnum sourceEntityCId = CardDB.CardIdEnum.None;
                 if (lscc != null)
                 {
                     sourceEntityId = lscc.m_sourceEntityId;
@@ -1114,7 +1114,7 @@ def Execute():
 
                 int sirFinleyChoice = -1;
                 if (ai.bestmove == null) Log.ErrorFormat("[Tick] Can't get cards. ChoiceCardMgr is empty");
-                else if (ai.bestmove.actionType == actionEnum.playcard && ai.bestmove.card.card.name == CardDB.cardName.sirfinleymrrgglton)
+                else if (ai.bestmove.actionType == actionEnum.playcard && ai.bestmove.card.card.name == CardDB.CardName.sirfinleymrrgglton)
                 {
                     sirFinleyChoice = ai.botBase.getSirFinleyPriority(discoverCards);
                 }
@@ -1141,9 +1141,9 @@ def Execute():
                                 case GAME_TAG.DISCOVER:
                                     switch (ai.bestmove.card.card.name)
                                     {
-                                        case CardDB.cardName.eternalservitude:
-                                        case CardDB.cardName.freefromamber:
-                                        case CardDB.cardName.anewchallenger:
+                                        case CardDB.CardName.eternalservitude:
+                                        case CardDB.CardName.freefromamber:
+                                        case CardDB.CardName.anewchallenger:
                                             Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
                                             tmpPlf.ownMinions[tmpPlf.ownMinions.Count - 1] = m;
                                             break;
@@ -1152,7 +1152,7 @@ def Execute():
                                             break;
                                     }
                                     bestval = ai.mainTurnSimulator.DoAllMoves(tmpPlf);
-                                    if (discoverCards[i].card.name == CardDB.cardName.bloodimp) bestval -= 20;
+                                    if (discoverCards[i].card.name == CardDB.CardName.bloodimp) bestval -= 20;
                                     break;
                                 case GAME_TAG.ADAPT:
                                     bool found = false;
@@ -1163,12 +1163,12 @@ def Execute():
                                             bool forbidden = false;
                                             switch (discoverCards[i].card.cardIDenum)
                                             {
-                                                case CardDB.cardIDEnum.UNG_999t5: if (m.cantBeTargetedBySpellsOrHeroPowers) forbidden = true; break;
-                                                case CardDB.cardIDEnum.UNG_999t6: if (m.taunt) forbidden = true; break;
-                                                case CardDB.cardIDEnum.UNG_999t7: if (m.windfury) forbidden = true; break;
-                                                case CardDB.cardIDEnum.UNG_999t8: if (m.divineshild) forbidden = true; break;
-                                                case CardDB.cardIDEnum.UNG_999t10: if (m.stealth) forbidden = true; break;
-                                                case CardDB.cardIDEnum.UNG_999t13: if (m.poisonous) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t5: if (m.cantBeTargetedBySpellsOrHeroPowers) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t6: if (m.taunt) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t7: if (m.windfury) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t8: if (m.divineshild) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t10: if (m.stealth) forbidden = true; break;
+                                                case CardDB.CardIdEnum.UNG_999t13: if (m.poisonous) forbidden = true; break;
                                             }
                                             if (forbidden) bestval = -2000000;
                                             else
@@ -1192,7 +1192,7 @@ def Execute():
                     }
                     ai.mainTurnSimulator.setSecondTurnSimu(true, dirtyTwoTurnSim);
                 }
-                if (sourceEntityCId == CardDB.cardIDEnum.UNG_035) dirtychoice = new Random().Next(0, 2);
+                if (sourceEntityCId == CardDB.CardIdEnum.UNG_035) dirtychoice = new Random().Next(0, 2);
                 if (dirtychoice == 0) dirtychoice = 1;
                 else if (dirtychoice == 1) dirtychoice = 0;
                 int ttf = (int)(DateTime.Now - tmp).TotalMilliseconds;

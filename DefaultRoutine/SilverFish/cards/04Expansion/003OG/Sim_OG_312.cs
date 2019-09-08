@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Battlecry: Equip a 1/3 Rusty Hook.
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_058);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_058);
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

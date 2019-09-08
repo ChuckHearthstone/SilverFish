@@ -20,7 +20,7 @@ namespace SilverFish.cards._04Expansion._005UNG
                     }
                 }
             }
-            else p.CallKid(CardDB.Instance.getCardData(CardDB.cardName.seagiant), p.enemyMinions.Count, m.own);
+            else p.CallKid(CardDB.Instance.getCardData(CardDB.CardName.seagiant), p.enemyMinions.Count, m.own);
         }
 	}
 }

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._002AT
 	{
 		//Deathrattle: Return this to your hand and summon a 4/4 Nerubian.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_007t);//Nerubian
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_007t);//Nerubian
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

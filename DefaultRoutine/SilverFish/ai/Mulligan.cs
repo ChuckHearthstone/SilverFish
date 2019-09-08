@@ -37,13 +37,13 @@ as well as
         public bool mulliganRulesLoaded = false;
         Dictionary<string, string> MulliganRules = new Dictionary<string, string>();
         Dictionary<string, Dictionary<string, string>> MulliganRulesDB = new Dictionary<string, Dictionary<string, string>>();
-        Dictionary<CardDB.cardIDEnum, string> MulliganRulesManual = new Dictionary<CardDB.cardIDEnum, string>();
+        Dictionary<CardDB.CardIdEnum, string> MulliganRulesManual = new Dictionary<CardDB.CardIdEnum, string>();
         List<CardIDEntity> cards = new List<CardIDEntity>();
         private static readonly ILog Log = Logger.GetLoggerInstanceForType();
 
         public class CardIDEntity
         {
-            public CardDB.cardIDEnum id = CardDB.cardIDEnum.None;
+            public CardDB.CardIdEnum id = CardDB.CardIdEnum.None;
             public int entitiy = 0;
             public int hold = 0;
             public int holdByRule = 0;
@@ -180,10 +180,10 @@ as well as
                     {
                         bool wasBreak = false;
                         string[] addedCards = ruleValue[2].Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                        Dictionary<CardDB.cardIDEnum, string> MulliganRulesManualTmp = new Dictionary<CardDB.cardIDEnum, string>();
+                        Dictionary<CardDB.CardIdEnum, string> MulliganRulesManualTmp = new Dictionary<CardDB.CardIdEnum, string>();
                         foreach (string s in addedCards)
                         {
-                            CardDB.cardIDEnum tempID = CardDB.Instance.cardIdstringToEnum(s);
+                            CardDB.CardIdEnum tempID = CardDB.Instance.cardIdstringToEnum(s);
                             if (s != tempID.ToString())
                             {
                                 rejectedRule.Add(getClearRule(oneRule.Key));
@@ -255,7 +255,7 @@ as well as
         }
 
 
-        private string getMullRuleKey(CardDB.cardIDEnum cardIDM = CardDB.cardIDEnum.None, HeroEnum ownMHero = HeroEnum.None, HeroEnum enemyMHero = HeroEnum.None, int isExtraRule = 0)
+        private string getMullRuleKey(CardDB.CardIdEnum cardIDM = CardDB.CardIdEnum.None, HeroEnum ownMHero = HeroEnum.None, HeroEnum enemyMHero = HeroEnum.None, int isExtraRule = 0)
         {
             StringBuilder MullRuleKey = new StringBuilder("", 500);
             MullRuleKey.Append(cardIDM).Append(";").Append(ownMHero).Append(";").Append(enemyMHero).Append(";").Append(isExtraRule);
@@ -290,7 +290,7 @@ as well as
             HeroEnum enemyHeroClass = Hrtprozis.Instance.heroTAG_CLASSstringToEnum(mulliganData.OpponentClass.ToString());
             
             int manaRule = 4;
-            string MullRuleKey = getMullRuleKey(CardDB.cardIDEnum.None, ownHeroClass, enemyHeroClass, 1);
+            string MullRuleKey = getMullRuleKey(CardDB.CardIdEnum.None, ownHeroClass, enemyHeroClass, 1);
             if (MulliganRules.ContainsKey(MullRuleKey))
             {
                 string[] temp = MulliganRules[MullRuleKey].Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
@@ -298,7 +298,7 @@ as well as
             }
             else
             {
-                MullRuleKey = getMullRuleKey(CardDB.cardIDEnum.None, ownHeroClass, HeroEnum.None, 1);
+                MullRuleKey = getMullRuleKey(CardDB.CardIdEnum.None, ownHeroClass, HeroEnum.None, 1);
                 if (MulliganRules.ContainsKey(MullRuleKey))
                 {
                     string[] temp = MulliganRules[MullRuleKey].Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);

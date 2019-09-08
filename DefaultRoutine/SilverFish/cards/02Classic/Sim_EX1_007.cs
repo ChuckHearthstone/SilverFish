@@ -14,7 +14,7 @@ namespace SilverFish.cards._02Classic
                 m.anzGotDmg = 0;
                 for (int i = 0; i < tmp; i++)
                 {
-                    p.drawACard(CardDB.cardName.unknown, m.own);
+                    p.drawACard(CardDB.CardName.unknown, m.own);
                 }
             }
         }

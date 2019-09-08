@@ -22,10 +22,10 @@ namespace SilverFish.cards._01Basic._00Neutral
                     bool found = false;
                     foreach (Minion m in temp)
                     {
-                        if (m.name == CardDB.cardName.nerubianegg && m.HealthPoints >= 2) continue; //dont attack nerubianegg!
+                        if (m.name == CardDB.CardName.nerubianegg && m.HealthPoints >= 2) continue; //dont attack nerubianegg!
                         if (m.handcard.card.isToken && m.HealthPoints == 1) continue;
-                        if (m.name == CardDB.cardName.defender) continue;
-                        if (m.name == CardDB.cardName.spellbender) continue;
+                        if (m.name == CardDB.CardName.defender) continue;
+                        if (m.name == CardDB.CardName.spellbender) continue;
                         if (m.HealthPoints >= 2 && minhp > m.HealthPoints)
                         {
                             enemy = m;

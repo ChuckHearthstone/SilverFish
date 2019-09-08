@@ -16,7 +16,7 @@ namespace SilverFish.Helpers
             AssemblyTypes = assembly.GetTypes();
         }
 
-        public static SimTemplate GetCardSimulation(CardDB.cardIDEnum tempCardIdEnum)
+        public static SimTemplate GetCardSimulation(CardDB.CardIdEnum tempCardIdEnum)
         {
             SimTemplate result = new SimTemplate();
 

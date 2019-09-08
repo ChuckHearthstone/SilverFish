@@ -21,14 +21,14 @@ namespace SilverFish.cards._03Adventure._004KAR
 				}
 				if(dragonInHand)
 				{
-					p.drawACard(CardDB.cardName.drakonidcrusher, own.own, true);
+					p.drawACard(CardDB.CardName.drakonidcrusher, own.own, true);
                 }
 			}
 			else
 			{
 				if (p.enemyAnzCards >= 2)
 				{
-					p.drawACard(CardDB.cardName.drakonidcrusher, own.own, true);
+					p.drawACard(CardDB.CardName.drakonidcrusher, own.own, true);
                 }					
 			}
         }

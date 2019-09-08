@@ -10,7 +10,7 @@ namespace HREngine.Bots
 //    亡语：随机将一张猎人法术牌置入你的手牌。
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.unknown, m.own);
+            p.drawACard(CardDB.CardName.unknown, m.own);
         }
 
 	}

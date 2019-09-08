@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Hero Power: Deal 1 damage. If this kills a minion, summon a Water Elemental.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_033); //Water Elemental
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_033); //Water Elemental
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

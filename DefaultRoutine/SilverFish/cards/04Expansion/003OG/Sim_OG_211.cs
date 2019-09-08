@@ -6,9 +6,9 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Summon all 3 Animal Companions.
 		
-        CardDB.Card c1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_034);//Huffer
-        CardDB.Card c2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_033);//Leokk
-        CardDB.Card c3 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_032);//Misha
+        CardDB.Card c1 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_034);//Huffer
+        CardDB.Card c2 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_033);//Leokk
+        CardDB.Card c3 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_032);//Misha
         
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

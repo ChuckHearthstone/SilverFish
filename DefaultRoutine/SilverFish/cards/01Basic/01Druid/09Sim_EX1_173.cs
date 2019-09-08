@@ -12,7 +12,7 @@ namespace SilverFish.cards._01Basic._01Druid
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.minionGetDamageOrHeal(target, dmg);
             //this.owncarddraw++;
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 		}
 
 	}

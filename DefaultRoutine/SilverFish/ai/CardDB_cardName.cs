@@ -2,7 +2,7 @@
 {
     public partial class CardDB
     {
-        public enum cardName
+        public enum CardName
         {
             unknown,
             aiextra1,

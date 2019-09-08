@@ -31,7 +31,7 @@ namespace SilverFish.cards._04Expansion._003OG
 				if (p.enemyAnzCards > 1)
                 {
                     int pos = p.enemyMinions.Count;
-                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_561), pos, false); //Alexstrasza
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_561), pos, false); //Alexstrasza
 					p.enemyAnzCards--;
                     p.triggerCardsChanged(false);
                     if (p.ownHeroHasDirectLethal())

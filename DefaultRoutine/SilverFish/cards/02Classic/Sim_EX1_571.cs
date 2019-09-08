@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
         //Summon three 2/2 Treants.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_158t);//Treant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);//Treant
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

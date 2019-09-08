@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._002AT
         {
 			if (m.own == own)
 			{				
-				p.drawACard(CardDB.cardName.squire, own, true);
+				p.drawACard(CardDB.CardName.squire, own, true);
 			}
         }
 	}

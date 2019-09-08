@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //召唤两个3/2的迅猛龙
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TRL_254t);//迅猛龙
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.TRL_254t);//迅猛龙
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

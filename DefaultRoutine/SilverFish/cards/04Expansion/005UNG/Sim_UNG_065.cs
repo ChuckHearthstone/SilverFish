@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Deathrattle: Go dormant. Play 4 cards in a turn to revive this minion.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_065t); //Sherazin, Seed
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_065t); //Sherazin, Seed
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

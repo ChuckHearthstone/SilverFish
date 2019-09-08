@@ -8,8 +8,8 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, m.own);
-            p.drawACard(CardDB.cardName.unknown, m.own);
+            p.drawACard(CardDB.CardName.unknown, m.own);
+            p.drawACard(CardDB.CardName.unknown, m.own);
         }
     }
 }

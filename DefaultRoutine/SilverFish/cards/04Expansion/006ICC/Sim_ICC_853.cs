@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (own.own && p.prozis.getDeckCardsForCost(4) == CardDB.cardIDEnum.None)
+            if (own.own && p.prozis.getDeckCardsForCost(4) == CardDB.CardIdEnum.None)
             {
                 own.lifesteal = true;
                 own.taunt = true;

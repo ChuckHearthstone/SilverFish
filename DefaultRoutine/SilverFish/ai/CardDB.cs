@@ -24,7 +24,7 @@ namespace HREngine.Bots
     {
         // Data is stored in hearthstone-folder -> data->win cardxml0
         //(data-> cardxml0 seems outdated (blutelfkleriker has 3hp there >_>)
-        public enum cardtype
+        public enum CardType
         {
             NONE,
             MOB,
@@ -33,7 +33,6 @@ namespace HREngine.Bots
             HEROPWR,
             ENCHANTMENT,
             HERO,
-
         }
 
         public enum CardTrigger
@@ -60,7 +59,7 @@ namespace HREngine.Bots
             triggerInspire
         }
 
-        public enum cardrace
+        public enum CardRace
         {
             INVALID,
             BLOODELF,
@@ -89,27 +88,27 @@ namespace HREngine.Bots
             DRAGON
         }
 
-        public cardIDEnum cardIdstringToEnum(string s)
+        public CardIdEnum cardIdstringToEnum(string s)
         {
-            CardDB.cardIDEnum CardEnum;
-            if (Enum.TryParse<cardIDEnum>(s, false, out CardEnum)) return CardEnum;
+            CardDB.CardIdEnum CardEnum;
+            if (Enum.TryParse<CardIdEnum>(s, false, out CardEnum)) return CardEnum;
             else
             {
                 Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType().ErrorFormat("[Unidentified card ID :" + s + "]");
-                return CardDB.cardIDEnum.None;
+                return CardDB.CardIdEnum.None;
             }
         }
 
-        public cardName cardNameStringToEnum(string s, cardIDEnum tempCardIdEnum)
+        public CardName cardNameStringToEnum(string s, CardIdEnum tempCardIdEnum)
         {
-            if (Enum.TryParse(s, false, out cardName nameEnum))
+            if (Enum.TryParse(s, false, out CardName nameEnum))
             {
                 return nameEnum;
             }
             else
             {
                 nameEnum = GetSpecialCardNameEnumFromCardIdEnum(tempCardIdEnum);
-                if (nameEnum == cardName.unknown)
+                if (nameEnum == CardName.unknown)
                 {
                     Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
                         .ErrorFormat("[Unidentified card name :" + s + "]");
@@ -200,7 +199,7 @@ namespace HREngine.Bots
 
         public List<Card> CardList { get; } = new List<Card>();
 
-        Dictionary<cardIDEnum, Card> cardidToCardList = new Dictionary<cardIDEnum, Card>();
+        Dictionary<CardIdEnum, Card> cardidToCardList = new Dictionary<CardIdEnum, Card>();
         List<string> allCardIDS = new List<string>();
         public Card unknownCard;
         public bool installedWrong = false;
@@ -250,7 +249,7 @@ namespace HREngine.Bots
             Card c = new Card();
             int de = 0;
             //placeholdercard
-            Card plchldr = new Card {name = cardName.unknown, cost = 1000};
+            Card plchldr = new Card {name = CardName.unknown, cost = 1000};
             this.namelist.Add("unknown");
             this.CardList.Add(plchldr);
             this.unknownCard = CardList[0];
@@ -259,7 +258,7 @@ namespace HREngine.Bots
             {
                 if (s.Contains("/Entity"))
                 {
-                    if (c.type == cardtype.ENCHANTMENT)
+                    if (c.type == CardType.ENCHANTMENT)
                     {
                         //LogHelper.WriteCombatLog(c.CardID);
                         //LogHelper.WriteCombatLog(c.name);
@@ -273,7 +272,7 @@ namespace HREngine.Bots
                     }
 
                     name = "";
-                    if (c.name != CardDB.cardName.unknown)
+                    if (c.name != CardDB.CardName.unknown)
                     {
 
                         this.CardList.Add(c);
@@ -386,7 +385,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    if (c.name != CardDB.cardName.unknown)
+                    if (c.name != CardDB.CardName.unknown)
                     {
                         //LogHelper.WriteCombatLog(temp);
                     }
@@ -394,32 +393,32 @@ namespace HREngine.Bots
                     int crdtype = Convert.ToInt32(temp);
                     if (crdtype == 10)
                     {
-                        c.type = CardDB.cardtype.HEROPWR;
+                        c.type = CardDB.CardType.HEROPWR;
                     }
 
                     if (crdtype == 3)
                     {
-                        c.type = CardDB.cardtype.HERO;
+                        c.type = CardDB.CardType.HERO;
                     }
 
                     if (crdtype == 4)
                     {
-                        c.type = CardDB.cardtype.MOB;
+                        c.type = CardDB.CardType.MOB;
                     }
 
                     if (crdtype == 5)
                     {
-                        c.type = CardDB.cardtype.SPELL;
+                        c.type = CardDB.CardType.SPELL;
                     }
 
                     if (crdtype == 6)
                     {
-                        c.type = CardDB.cardtype.ENCHANTMENT;
+                        c.type = CardDB.CardType.ENCHANTMENT;
                     }
 
                     if (crdtype == 7)
                     {
-                        c.type = CardDB.cardtype.WEAPON;
+                        c.type = CardDB.CardType.WEAPON;
                     }
 
                     continue;
@@ -725,9 +724,9 @@ namespace HREngine.Bots
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) c.Spellpower = true;
                     c.spellpowervalue = 1;
-                    if (c.name == CardDB.cardName.ancientmage) c.spellpowervalue = 0;
-                    if (c.name == CardDB.cardName.malygos) c.spellpowervalue = 5;
-                    if (c.name == CardDB.cardName.arcanotron) c.spellpowervalue = 2;
+                    if (c.name == CardDB.CardName.ancientmage) c.spellpowervalue = 0;
+                    if (c.name == CardDB.CardName.malygos) c.spellpowervalue = 5;
+                    if (c.name == CardDB.CardName.arcanotron) c.spellpowervalue = 2;
                     continue;
                 }
 
@@ -799,16 +798,16 @@ namespace HREngine.Bots
 
             }
 
-            this.teacherminion = this.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t);
-            this.illidanminion = this.getCardDataFromID(CardDB.cardIDEnum.EX1_614t);
-            this.lepergnome = this.getCardDataFromID(CardDB.cardIDEnum.EX1_029);
-            this.burlyrockjaw = this.getCardDataFromID(CardDB.cardIDEnum.GVG_068);
+            this.teacherminion = this.getCardDataFromID(CardDB.CardIdEnum.NEW1_026t);
+            this.illidanminion = this.getCardDataFromID(CardDB.CardIdEnum.EX1_614t);
+            this.lepergnome = this.getCardDataFromID(CardDB.CardIdEnum.EX1_029);
+            this.burlyrockjaw = this.getCardDataFromID(CardDB.CardIdEnum.GVG_068);
 
             Helpfunctions.Instance.InfoLog("CardList:" + cardidToCardList.Count);
 
         }
 
-        public Card getCardData(CardDB.cardName cardname)
+        public Card getCardData(CardDB.CardName cardname)
         {
 
             foreach (Card ca in this.CardList)
@@ -822,7 +821,7 @@ namespace HREngine.Bots
             return unknownCard;
         }
 
-        public Card getCardDataFromID(cardIDEnum id)
+        public Card getCardDataFromID(CardIdEnum id)
         {
             return this.cardidToCardList.ContainsKey(id) ? this.cardidToCardList[id] : this.unknownCard;
         }

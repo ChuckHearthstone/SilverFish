@@ -118,9 +118,9 @@ namespace HREngine.Bots
                 //if (m.taunt && m.handcard.card.name == CardDB.cardName.frog) owntaunt++;
                 //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
                 //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
-                if (p.ownMinions.Count > 2 && (m.handcard.card.name == CardDB.cardName.direwolfalpha || m.handcard.card.name == CardDB.cardName.flametonguetotem || m.handcard.card.name == CardDB.cardName.stormwindchampion || m.handcard.card.name == CardDB.cardName.raidleader)) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.bloodmagethalnos) retval += 10;
-                if (m.handcard.card.name == CardDB.cardName.nerubianegg)
+                if (p.ownMinions.Count > 2 && (m.handcard.card.name == CardDB.CardName.direwolfalpha || m.handcard.card.name == CardDB.CardName.flametonguetotem || m.handcard.card.name == CardDB.CardName.stormwindchampion || m.handcard.card.name == CardDB.CardName.raidleader)) retval += 10;
+                if (m.handcard.card.name == CardDB.CardName.bloodmagethalnos) retval += 10;
+                if (m.handcard.card.name == CardDB.CardName.nerubianegg)
                 {
                     if (m.Attack >= 1) retval += 2;
                     if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
@@ -168,16 +168,16 @@ namespace HREngine.Bots
                 }
                 switch (a.card.card.name)
                 {
-                    case CardDB.cardName.innervate:
-                    case CardDB.cardName.thecoin:
+                    case CardDB.CardName.innervate:
+                    case CardDB.CardName.thecoin:
                         usecoin++;
                         if (i == count - 1) retval -= 10;
                         goto default;
-                    case CardDB.cardName.darkshirelibrarian: goto case CardDB.cardName.soulfire;
-                    case CardDB.cardName.darkbargain: goto case CardDB.cardName.soulfire;
-                    case CardDB.cardName.doomguard: goto case CardDB.cardName.soulfire;
-                    case CardDB.cardName.succubus: goto case CardDB.cardName.soulfire;
-                    case CardDB.cardName.soulfire: deletecardsAtLast = 1; break;
+                    case CardDB.CardName.darkshirelibrarian: goto case CardDB.CardName.soulfire;
+                    case CardDB.CardName.darkbargain: goto case CardDB.CardName.soulfire;
+                    case CardDB.CardName.doomguard: goto case CardDB.CardName.soulfire;
+                    case CardDB.CardName.succubus: goto case CardDB.CardName.soulfire;
+                    case CardDB.CardName.soulfire: deletecardsAtLast = 1; break;
                     default:
                         if (deletecardsAtLast == 1) retval -= 20;
                         break;
@@ -185,7 +185,7 @@ namespace HREngine.Bots
                 if (a.card.card.Combo && i > 0) wasCombo++;
                 if (a.target == null) continue;
                 //save spell for all classes
-                if (a.card.card.type == CardDB.cardtype.SPELL && (a.target.isHero && !a.target.own))
+                if (a.card.card.type == CardDB.CardType.SPELL && (a.target.isHero && !a.target.own))
                 {
                     if (i == 0) firstSpellToEnHero = true;
                     retval -= 11;
@@ -205,8 +205,8 @@ namespace HREngine.Bots
             {
                 switch (p.ownHeroAblility.card.name)
                 {
-                    case CardDB.cardName.heal: goto case CardDB.cardName.lesserheal;
-                    case CardDB.cardName.lesserheal:
+                    case CardDB.CardName.heal: goto case CardDB.CardName.lesserheal;
+                    case CardDB.CardName.lesserheal:
                         bool wereTarget = false;
                         if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
                         if (!wereTarget)
@@ -218,25 +218,25 @@ namespace HREngine.Bots
                         }
                         if (wereTarget && !(p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0)) retval -= 10;
                         break;
-                    case CardDB.cardName.poisoneddaggers: goto case CardDB.cardName.daggermastery;
-                    case CardDB.cardName.daggermastery:
+                    case CardDB.CardName.poisoneddaggers: goto case CardDB.CardName.daggermastery;
+                    case CardDB.CardName.daggermastery:
                          if (!(p.ownWeapon.Durability > 1 || p.ownWeapon.Angr > 1)) retval -= 10;
                          break;
-                    case CardDB.cardName.totemicslam: goto case CardDB.cardName.totemiccall;
-                    case CardDB.cardName.totemiccall:
+                    case CardDB.CardName.totemicslam: goto case CardDB.CardName.totemiccall;
+                    case CardDB.CardName.totemiccall:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.cardName.thetidalhand: goto case CardDB.cardName.reinforce;
-                    case CardDB.cardName.thesilverhand: goto case CardDB.cardName.reinforce;
-                    case CardDB.cardName.reinforce:
+                    case CardDB.CardName.thetidalhand: goto case CardDB.CardName.reinforce;
+                    case CardDB.CardName.thesilverhand: goto case CardDB.CardName.reinforce;
+                    case CardDB.CardName.reinforce:
                         if (p.ownMinions.Count < 7) retval -= 10;
                         else retval -= 3;
                         break;
-                    case CardDB.cardName.soultap: 
+                    case CardDB.CardName.soultap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0) retval -= 10;
                         break;
-                    case CardDB.cardName.lifetap: 
+                    case CardDB.CardName.lifetap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0)
                         {
                             retval -= 10;
@@ -254,7 +254,7 @@ namespace HREngine.Bots
             int bigMobsInHand = 0;
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardDB.cardtype.MOB)
+                if (hc.card.type == CardDB.CardType.MOB)
                 {
                     mobsInHand++;
                     if (hc.card.Attack + hc.addattack >= 3) bigMobsInHand++;
@@ -321,7 +321,7 @@ namespace HREngine.Bots
         {
             int retval = 5;
             retval += m.HealthPoints * 2;
-            if (!m.frozen && !(m.cantAttack && m.name != CardDB.cardName.argentwatchman))
+            if (!m.frozen && !(m.cantAttack && m.name != CardDB.CardName.argentwatchman))
             {
                 retval += m.Attack * 2;
                 if (m.windfury) retval += m.Attack * 2;
@@ -352,7 +352,7 @@ namespace HREngine.Bots
             {
                 retval += m.handcard.card.targetPriority;
             }
-            if (m.name == CardDB.cardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
+            if (m.name == CardDB.CardName.nerubianegg && m.Attack <= 3 && !m.taunt) retval = 0;
             retval += m.synergy;
             return retval;
         }
@@ -366,7 +366,7 @@ namespace HREngine.Bots
             int tmp = int.MinValue;
             for (int i = 0; i < discoverCards.Count; i++)
             {
-                CardDB.cardName name = discoverCards[i].card.name;
+                CardDB.CardName name = discoverCards[i].card.name;
                 if (SirFinleyPriorityList.ContainsKey(name) && SirFinleyPriorityList[name] > tmp)
                 {
                     tmp = SirFinleyPriorityList[name];
@@ -376,18 +376,18 @@ namespace HREngine.Bots
             return sirFinleyChoice;
         }
 
-        private Dictionary<CardDB.cardName, int> SirFinleyPriorityList = new Dictionary<CardDB.cardName, int>
+        private Dictionary<CardDB.CardName, int> SirFinleyPriorityList = new Dictionary<CardDB.CardName, int>
         {
             //{HeroPowerName, Priority}, where 0-9 = manual priority
-            { CardDB.cardName.lesserheal, 0 }, 
-            { CardDB.cardName.shapeshift, 6 },
-            { CardDB.cardName.fireblast, 7 },
-            { CardDB.cardName.totemiccall, 1 },
-            { CardDB.cardName.lifetap, 9 },
-            { CardDB.cardName.daggermastery, 5 },
-            { CardDB.cardName.reinforce, 4 },
-            { CardDB.cardName.armorup, 2 },
-            { CardDB.cardName.steadyshot, 8 }
+            { CardDB.CardName.lesserheal, 0 }, 
+            { CardDB.CardName.shapeshift, 6 },
+            { CardDB.CardName.fireblast, 7 },
+            { CardDB.CardName.totemiccall, 1 },
+            { CardDB.CardName.lifetap, 9 },
+            { CardDB.CardName.daggermastery, 5 },
+            { CardDB.CardName.reinforce, 4 },
+            { CardDB.CardName.armorup, 2 },
+            { CardDB.CardName.steadyshot, 8 }
         };
 		
     }

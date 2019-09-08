@@ -15,7 +15,7 @@ namespace SilverFish.cards._03Adventure._003LOE
                 if (m.entitiyID == own.entitiyID) continue;
                 if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL)
 				{
-					p.drawACard(CardDB.cardName.spidertank, own.own, true);
+					p.drawACard(CardDB.CardName.spidertank, own.own, true);
 					break;
 				}
             }

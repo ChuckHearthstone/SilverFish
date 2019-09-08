@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._002AT
         {
 			if (m.own == own)
 			{
-                p.drawACard(CardDB.cardName.frostbolt, own, true);
+                p.drawACard(CardDB.CardName.frostbolt, own, true);
 			}
         }
 	}

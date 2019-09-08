@@ -7,12 +7,12 @@ namespace HREngine.Bots
 
     public class miniEnch
     {
-        public CardDB.cardIDEnum CARDID = CardDB.cardIDEnum.None;
+        public CardDB.CardIdEnum CARDID = CardDB.CardIdEnum.None;
         public int creator = 0; // the minion
         public int controllerOfCreator = 0; // own or enemys buff?
         public int copyDeathrattle = 0;
 
-        public miniEnch(CardDB.cardIDEnum id, int crtr, int controler, int copydr)
+        public miniEnch(CardDB.CardIdEnum id, int crtr, int controler, int copydr)
         {
             this.CARDID = id;
             this.creator = crtr;
@@ -34,7 +34,7 @@ namespace HREngine.Bots
         public bool own;
         public int pID = 0;
 
-        public CardDB.cardName name = CardDB.cardName.unknown;
+        public CardDB.CardName name = CardDB.CardName.unknown;
         public TAG_CLASS cardClass = TAG_CLASS.INVALID;
         public int synergy = 0;
         public Handmanager.Handcard handcard;
@@ -319,7 +319,7 @@ namespace HREngine.Bots
             {
                 if (this.own)
                 {
-                    if (p.ownWeapon.name == CardDB.cardName.cursedblade) dmg += dmg;
+                    if (p.ownWeapon.name == CardDB.CardName.cursedblade) dmg += dmg;
                     if (p.anzOwnAnimatedArmor > 0 && dmg > 0) dmg = 1;
                     if (p.anzOwnBolfRamshield > 0 && dmg > 0)
 
@@ -331,7 +331,7 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in p.ownMinions)
                             {
-                                if (m.name == CardDB.cardName.bolframshield)
+                                if (m.name == CardDB.CardName.bolframshield)
                                 {
                                     m.getDamageOrHeal(-rest, p, true, false);
                                     break;
@@ -344,7 +344,7 @@ namespace HREngine.Bots
                 else
                 {
                     if (p.anzEnemyAnimatedArmor > 0 && dmg > 0) dmg = 1;
-                    if (p.enemyWeapon.name == CardDB.cardName.cursedblade) dmg += dmg;
+                    if (p.enemyWeapon.name == CardDB.CardName.cursedblade) dmg += dmg;
                     if (p.anzEnemyBolfRamshield > 0 && dmg > 0)
                     {
                         int rest = this.armor - dmg;
@@ -353,7 +353,7 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in p.enemyMinions)
                             {
-                                if (m.name == CardDB.cardName.bolframshield)
+                                if (m.name == CardDB.CardName.bolframshield)
                                 {
                                     m.getDamageOrHeal(-rest, p, true, false);
                                     break;
@@ -472,7 +472,7 @@ namespace HREngine.Bots
                 {
                     if (p.anzAcidmaw == 1)
                     {
-                        if (this.name != CardDB.cardName.acidmaw) this.HealthPoints = 0;
+                        if (this.name != CardDB.CardName.acidmaw) this.HealthPoints = 0;
                     }
                     else this.HealthPoints = 0;
                 }
@@ -492,7 +492,7 @@ namespace HREngine.Bots
 
 
 
-            if (this.name == CardDB.cardName.lightspawn && !this.silenced)
+            if (this.name == CardDB.CardName.lightspawn && !this.silenced)
             {
                 this.Attack = this.HealthPoints;
             }
@@ -516,13 +516,13 @@ namespace HREngine.Bots
 
         public void minionDied(Playfield p)
         {
-            if (this.name == CardDB.cardName.stalagg)
+            if (this.name == CardDB.CardName.stalagg)
             {
                 p.stalaggDead = true;
             }
             else
             {
-                if (this.name == CardDB.cardName.feugen) p.feugenDead = true;
+                if (this.name == CardDB.CardName.feugen) p.feugenDead = true;
             }
 
             
@@ -581,7 +581,7 @@ namespace HREngine.Bots
                 return;
             }
 
-            if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || ( !silenced && this.name == CardDB.cardName.v07tr0n && numAttacksThisTurn <=3 )) ) Ready = true;
+            if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || ( !silenced && this.name == CardDB.CardName.v07tr0n && numAttacksThisTurn <=3 )) ) Ready = true;
 
         }
 
@@ -618,7 +618,7 @@ namespace HREngine.Bots
             returnToHand = 0;
             infest = 0;
             deathrattle2 = null;
-            if (this.name == CardDB.cardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID)) p.LurkersDB.Remove(this.entitiyID);
+            if (this.name == CardDB.CardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID)) p.LurkersDB.Remove(this.entitiyID);
 
             ownBlessingOfWisdom = 0;
             enemyBlessingOfWisdom = 0;
@@ -714,7 +714,7 @@ namespace HREngine.Bots
                 // reborns and destoyings----------------------------------------------
 
                 
-                if (me.CARDID == CardDB.cardIDEnum.EX1_363e || me.CARDID == CardDB.cardIDEnum.EX1_363e2) //BlessingOfWisdom
+                if (me.CARDID == CardDB.CardIdEnum.EX1_363e || me.CARDID == CardDB.CardIdEnum.EX1_363e2) //BlessingOfWisdom
                 {
                     if (me.controllerOfCreator == ownPlayerControler)
                     {
@@ -726,7 +726,7 @@ namespace HREngine.Bots
                     }
                 }
 
-                if (me.CARDID == CardDB.cardIDEnum.AT_013e) //PowerWordGlory
+                if (me.CARDID == CardDB.CardIdEnum.AT_013e) //PowerWordGlory
                 {
                     if (me.controllerOfCreator == ownPlayerControler)
                     {
@@ -739,7 +739,7 @@ namespace HREngine.Bots
                 }
 
 
-                if (me.CARDID == CardDB.cardIDEnum.EX1_316e) //overwhelmingpower
+                if (me.CARDID == CardDB.CardIdEnum.EX1_316e) //overwhelmingpower
                 {
                     if (me.controllerOfCreator == ownPlayerControler)
                     {
@@ -751,20 +751,20 @@ namespace HREngine.Bots
                     }
                 }
 
-                if (me.CARDID == CardDB.cardIDEnum.EX1_334e) //Dark Command
+                if (me.CARDID == CardDB.CardIdEnum.EX1_334e) //Dark Command
                 {
                     this.shadowmadnessed = true;
                 }
 
-                if (me.CARDID == CardDB.cardIDEnum.FP1_030e) //Necrotic Aura
+                if (me.CARDID == CardDB.CardIdEnum.FP1_030e) //Necrotic Aura
                 {
                     //todo Eure Zauber kosten in diesem Zug (5) mehr.
                 }
-                if (me.CARDID == CardDB.cardIDEnum.NEW1_029t) //death to millhouse!
+                if (me.CARDID == CardDB.CardIdEnum.NEW1_029t) //death to millhouse!
                 {
                     // todo spells cost (0) this turn!
                 }
-                if (me.CARDID == CardDB.cardIDEnum.EX1_612o) //Power of the Kirin Tor
+                if (me.CARDID == CardDB.CardIdEnum.EX1_612o) //Power of the Kirin Tor
                 {
                     // todo Your next Secret costs (0).
                 }
@@ -779,77 +779,77 @@ namespace HREngine.Bots
 
 
                     // destroy-------------------------------------------------
-                    case CardDB.cardIDEnum.CS2_063e:
+                    case CardDB.CardIdEnum.CS2_063e:
                         if (me.controllerOfCreator == ownPlayerControler) this.destroyOnOwnTurnStart = true;
                         else this.destroyOnEnemyTurnStart = true;   //corruption
                         continue;
-                    case CardDB.cardIDEnum.DREAM_05e:
+                    case CardDB.CardIdEnum.DREAM_05e:
                         if (me.controllerOfCreator == ownPlayerControler) this.destroyOnOwnTurnStart = true;
                         else this.destroyOnEnemyTurnStart = true;   //nightmare
                         continue;
 
                     // deathrattles-------------------------------------------------
-                    case CardDB.cardIDEnum.LOE_105e: this.explorershat++; continue;
-                    case CardDB.cardIDEnum.UNG_956e: this.returnToHand++; continue;
+                    case CardDB.CardIdEnum.LOE_105e: this.explorershat++; continue;
+                    case CardDB.CardIdEnum.UNG_956e: this.returnToHand++; continue;
                         
-                    case CardDB.cardIDEnum.CS2_038e: this.ancestralspirit++; continue;
-                    case CardDB.cardIDEnum.ICC_244e: this.desperatestand++; continue;
-                    case CardDB.cardIDEnum.EX1_158e: this.souloftheforest++; continue;
-                    case CardDB.cardIDEnum.UNG_952e: this.stegodon++; continue;
-                    case CardDB.cardIDEnum.UNG_999t2e: this.livingspores++; continue;
+                    case CardDB.CardIdEnum.CS2_038e: this.ancestralspirit++; continue;
+                    case CardDB.CardIdEnum.ICC_244e: this.desperatestand++; continue;
+                    case CardDB.CardIdEnum.EX1_158e: this.souloftheforest++; continue;
+                    case CardDB.CardIdEnum.UNG_952e: this.stegodon++; continue;
+                    case CardDB.CardIdEnum.UNG_999t2e: this.livingspores++; continue;
                         
-                    case CardDB.cardIDEnum.OG_045a: this.infest++; continue;
-                    case CardDB.cardIDEnum.LOE_019e: this.extraParam2 = me.copyDeathrattle; continue; //unearthedraptor
+                    case CardDB.CardIdEnum.OG_045a: this.infest++; continue;
+                    case CardDB.CardIdEnum.LOE_019e: this.extraParam2 = me.copyDeathrattle; continue; //unearthedraptor
                    // case CardDB.cardIDEnum.LOE_012e: this.deathrattle2 = ; continue; //zzdeletetombexplorer
 
 
                     //conceal-------------------------------------------------
-                    case CardDB.cardIDEnum.EX1_128e: this.conceal = true; continue;
-                    case CardDB.cardIDEnum.NEW1_014e: this.conceal = true; continue;
-                    case CardDB.cardIDEnum.PART_004e: this.conceal = true; continue;
-                    case CardDB.cardIDEnum.OG_080de: this.conceal = true; continue; 
+                    case CardDB.CardIdEnum.EX1_128e: this.conceal = true; continue;
+                    case CardDB.CardIdEnum.NEW1_014e: this.conceal = true; continue;
+                    case CardDB.CardIdEnum.PART_004e: this.conceal = true; continue;
+                    case CardDB.CardIdEnum.OG_080de: this.conceal = true; continue; 
 
                     //cantLowerHPbelowONE-------------------------------------------------
-                    case CardDB.cardIDEnum.NEW1_036e: this.cantLowerHPbelowONE = true; continue; //commandingshout
-                    case CardDB.cardIDEnum.NEW1_036e2: this.cantLowerHPbelowONE = true; continue; //commandingshout
+                    case CardDB.CardIdEnum.NEW1_036e: this.cantLowerHPbelowONE = true; continue; //commandingshout
+                    case CardDB.CardIdEnum.NEW1_036e2: this.cantLowerHPbelowONE = true; continue; //commandingshout
 
                     //spellpower-------------------------------------------------
-                    case CardDB.cardIDEnum.GVG_010b: this.spellpower++; continue; //velenschosen
-                    case CardDB.cardIDEnum.AT_006e: this.spellpower++; continue; //dalaran
-                    case CardDB.cardIDEnum.EX1_584e: this.spellpower++; continue; //ancient mage
+                    case CardDB.CardIdEnum.GVG_010b: this.spellpower++; continue; //velenschosen
+                    case CardDB.CardIdEnum.AT_006e: this.spellpower++; continue; //dalaran
+                    case CardDB.CardIdEnum.EX1_584e: this.spellpower++; continue; //ancient mage
 
                     //charge-------------------------------------------------
-                    case CardDB.cardIDEnum.AT_071e: this.charge++; continue;
-                    case CardDB.cardIDEnum.CS2_103e2: this.charge++; continue;
-                    case CardDB.cardIDEnum.TB_AllMinionsTauntCharge: this.charge++; continue;
-                    case CardDB.cardIDEnum.DS1_178e: this.charge++; continue;
+                    case CardDB.CardIdEnum.AT_071e: this.charge++; continue;
+                    case CardDB.CardIdEnum.CS2_103e2: this.charge++; continue;
+                    case CardDB.CardIdEnum.TB_AllMinionsTauntCharge: this.charge++; continue;
+                    case CardDB.CardIdEnum.DS1_178e: this.charge++; continue;
 
                     //adjacentbuffs-------------------------------------------------
-                    case CardDB.cardIDEnum.EX1_565o: this.AdjacentAttack += 2; continue; //flametongue
-                    case CardDB.cardIDEnum.EX1_162o: this.AdjacentAttack += 1; continue; //dire wolf alpha
+                    case CardDB.CardIdEnum.EX1_565o: this.AdjacentAttack += 2; continue; //flametongue
+                    case CardDB.CardIdEnum.EX1_162o: this.AdjacentAttack += 1; continue; //dire wolf alpha
 
                     //tempbuffs-------------------------------------------------
-                    case CardDB.cardIDEnum.CS2_083e: this.tempAttack += 1; continue;
-                    case CardDB.cardIDEnum.EX1_549o: this.tempAttack += 2; this.immune = true; continue;
-                    case CardDB.cardIDEnum.AT_057o: this.immune = true; continue;
-                    case CardDB.cardIDEnum.AT_039e: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.AT_132_DRUIDe: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.CS2_005o: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.CS2_011o: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.EX1_046e: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.GVG_057a: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.CS2_046e: this.tempAttack += 3; continue;
-                    case CardDB.cardIDEnum.CS2_105e: this.tempAttack += 4; continue;
-                    case CardDB.cardIDEnum.EX1_570e: this.tempAttack += 4; continue;
-                    case CardDB.cardIDEnum.OG_047e: this.tempAttack += 4; continue;  
-                    case CardDB.cardIDEnum.NAX12_04e: this.tempAttack += 6; continue;
-                    case CardDB.cardIDEnum.GVG_011a: this.tempAttack += -2; continue;
-                    case CardDB.cardIDEnum.CFM_661e: this.tempAttack += -3; continue;
-                    case CardDB.cardIDEnum.BRM_001e: this.tempAttack += -1000; continue;
-                    case CardDB.cardIDEnum.TU4c_008e: this.tempAttack += 8; continue;
-                    case CardDB.cardIDEnum.CS2_045e: this.tempAttack += 3; continue;
-                    case CardDB.cardIDEnum.CS2_188o: this.tempAttack += 2; continue;
-                    case CardDB.cardIDEnum.CS2_017o: this.tempAttack += 1; continue;
+                    case CardDB.CardIdEnum.CS2_083e: this.tempAttack += 1; continue;
+                    case CardDB.CardIdEnum.EX1_549o: this.tempAttack += 2; this.immune = true; continue;
+                    case CardDB.CardIdEnum.AT_057o: this.immune = true; continue;
+                    case CardDB.CardIdEnum.AT_039e: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.AT_132_DRUIDe: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.CS2_005o: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.CS2_011o: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.EX1_046e: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.GVG_057a: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.CS2_046e: this.tempAttack += 3; continue;
+                    case CardDB.CardIdEnum.CS2_105e: this.tempAttack += 4; continue;
+                    case CardDB.CardIdEnum.EX1_570e: this.tempAttack += 4; continue;
+                    case CardDB.CardIdEnum.OG_047e: this.tempAttack += 4; continue;  
+                    case CardDB.CardIdEnum.NAX12_04e: this.tempAttack += 6; continue;
+                    case CardDB.CardIdEnum.GVG_011a: this.tempAttack += -2; continue;
+                    case CardDB.CardIdEnum.CFM_661e: this.tempAttack += -3; continue;
+                    case CardDB.CardIdEnum.BRM_001e: this.tempAttack += -1000; continue;
+                    case CardDB.CardIdEnum.TU4c_008e: this.tempAttack += 8; continue;
+                    case CardDB.CardIdEnum.CS2_045e: this.tempAttack += 3; continue;
+                    case CardDB.CardIdEnum.CS2_188o: this.tempAttack += 2; continue;
+                    case CardDB.CardIdEnum.CS2_017o: this.tempAttack += 1; continue;
 
 
                         

@@ -8,8 +8,8 @@ namespace SilverFish.cards._04Expansion._005UNG
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.shadowworddeath, ownplay, true);
-            p.drawACard(CardDB.cardName.holynova, ownplay, true);
+            p.drawACard(CardDB.CardName.shadowworddeath, ownplay, true);
+            p.drawACard(CardDB.CardName.holynova, ownplay, true);
 			p.owncarddraw--;
 		}
 	}

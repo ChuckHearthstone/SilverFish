@@ -13,7 +13,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             int sum = 10000;
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardDB.cardtype.MOB)
+                if (hc.card.type == CardDB.CardType.MOB)
                 {
                     int s = hc.card.Health + hc.card.Attack + ((hc.card.tank) ? 1 : 0) + ((hc.card.Shield) ? 1 : 0);
                     if (s < sum)

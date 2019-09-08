@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         //   Deal $2-$4 damage to a minion. Summon a 1/1 Imp for each damage dealt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_045t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.GVG_045t);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

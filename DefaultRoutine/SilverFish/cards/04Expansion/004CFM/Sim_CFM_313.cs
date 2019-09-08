@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.lightningbolt, ownplay);
+            p.drawACard(CardDB.CardName.lightningbolt, ownplay);
             if (ownplay) p.ueberladung++;
         }
     }

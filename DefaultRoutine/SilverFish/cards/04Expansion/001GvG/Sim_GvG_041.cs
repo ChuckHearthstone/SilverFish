@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     {
         //   Choose One - Summon 5 Wisps; or Give a minion +5/+5 and Taunt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_231);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_231);
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))

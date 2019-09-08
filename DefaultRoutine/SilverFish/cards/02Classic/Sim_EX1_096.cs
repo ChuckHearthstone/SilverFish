@@ -9,7 +9,7 @@ namespace SilverFish.cards._02Classic
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.unknown, m.own);
+            p.drawACard(CardDB.CardName.unknown, m.own);
         }
 
 	}

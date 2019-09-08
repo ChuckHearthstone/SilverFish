@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.UNG_917t1, ownplay); // Dinomancy
+            p.setNewHeroPower(CardDB.CardIdEnum.UNG_917t1, ownplay); // Dinomancy
         }
     }
 }

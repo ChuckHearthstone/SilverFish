@@ -8,10 +8,10 @@ namespace SilverFish.cards._02Classic
 //    kampfschrei:/ jeder spieler zieht 2 karten.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.unknown, true);
-            p.drawACard(CardDB.cardName.unknown, true);
-            p.drawACard(CardDB.cardName.unknown, false);
-            p.drawACard(CardDB.cardName.unknown, false);
+            p.drawACard(CardDB.CardName.unknown, true);
+            p.drawACard(CardDB.CardName.unknown, true);
+            p.drawACard(CardDB.CardName.unknown, false);
+            p.drawACard(CardDB.CardName.unknown, false);
 
 		}
 

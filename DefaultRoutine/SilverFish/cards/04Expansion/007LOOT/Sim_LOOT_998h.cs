@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._007LOOT
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 			if (ownplay) p.owncarddraw += 10 - p.owncards.Count;
 		}
 	}

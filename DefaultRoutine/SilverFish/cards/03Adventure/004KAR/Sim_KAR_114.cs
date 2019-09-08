@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Battlecry: Summon a 1/1 copy of a random minion in your deck.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_156a); //Ooze with Taunt
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_156a); //Ooze with Taunt
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

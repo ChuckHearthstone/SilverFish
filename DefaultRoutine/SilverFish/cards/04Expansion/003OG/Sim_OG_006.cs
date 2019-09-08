@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._003OG
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.OG_006b, own.own); // The Tidal Hand
+            p.setNewHeroPower(CardDB.CardIdEnum.OG_006b, own.own); // The Tidal Hand
 		}
 	}
 }

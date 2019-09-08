@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         // Deathrattle: Summon a random legendary minion.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_014);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_014);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

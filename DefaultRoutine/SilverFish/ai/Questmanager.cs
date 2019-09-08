@@ -10,8 +10,8 @@ namespace HREngine.Bots
     {
         public class QuestItem
         {
-            public Dictionary<CardDB.cardName, int> mobsTurn = new Dictionary<CardDB.cardName, int>();
-            public CardDB.cardIDEnum Id = CardDB.cardIDEnum.None;
+            public Dictionary<CardDB.CardName, int> mobsTurn = new Dictionary<CardDB.CardName, int>();
+            public CardDB.CardIdEnum Id = CardDB.CardIdEnum.None;
             public int questProgress = 0;
             public int maxProgress = 1000;
 
@@ -24,7 +24,7 @@ namespace HREngine.Bots
                 this.Id = q.Id;
                 this.questProgress = q.questProgress;
                 this.maxProgress = q.maxProgress;
-                if (Id == CardDB.cardIDEnum.UNG_067)
+                if (Id == CardDB.CardIdEnum.UNG_067)
                 {
                     this.mobsTurn.Clear();
                     foreach (var n in q.mobsTurn) this.mobsTurn.Add(n.Key, n.Value);
@@ -33,7 +33,7 @@ namespace HREngine.Bots
 
             public void Reset()
             {
-                this.Id = CardDB.cardIDEnum.None;
+                this.Id = CardDB.CardIdEnum.None;
                 this.questProgress = 0;
                 this.maxProgress = 1000;
                 this.mobsTurn.Clear();
@@ -52,9 +52,9 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_934: if (m.taunt) questProgress++; break;
-                    case CardDB.cardIDEnum.UNG_920: if (m.handcard.card.cost == 1) questProgress++; break;
-                    case CardDB.cardIDEnum.UNG_067:                        
+                    case CardDB.CardIdEnum.UNG_934: if (m.taunt) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_920: if (m.handcard.card.cost == 1) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_067:                        
                         if (mobsTurn.ContainsKey(m.name)) mobsTurn[m.name]++;
                         else mobsTurn.Add(m.name, 1);
                         int total = mobsTurn[m.name] + Questmanager.Instance.getPlayedCardFromHand(m.name);
@@ -67,9 +67,9 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_116: if (m.Attack >= 5) questProgress++; break;
-                    case CardDB.cardIDEnum.UNG_940: if (m.handcard.card.deathrattle) questProgress++; break;
-                    case CardDB.cardIDEnum.UNG_942: if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_116: if (m.Attack >= 5) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_940: if (m.handcard.card.deathrattle) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_942: if ((TAG_RACE)m.handcard.card.race == TAG_RACE.MURLOC) questProgress++; break;
                 }
             }
 
@@ -77,8 +77,8 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_954: if (target != null && target.own && !target.isHero) questProgress++; break;
-                    case CardDB.cardIDEnum.UNG_028: if (qId > 67) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_954: if (target != null && target.own && !target.isHero) questProgress++; break;
+                    case CardDB.CardIdEnum.UNG_028: if (qId > 67) questProgress++; break;
                 }
             }
             
@@ -86,33 +86,33 @@ namespace HREngine.Bots
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_829: questProgress += num; break;
+                    case CardDB.CardIdEnum.UNG_829: questProgress += num; break;
                 }
             }
 
-            public CardDB.cardIDEnum Reward()
+            public CardDB.CardIdEnum Reward()
             {
                 switch (Id)
                 {
-                    case CardDB.cardIDEnum.UNG_028: return CardDB.cardIDEnum.UNG_028t; //-Quest: Cast 6 spells that didn't start in your deck. Reward: Time Warp.
-                    case CardDB.cardIDEnum.UNG_067: return CardDB.cardIDEnum.UNG_067t1; //-Quest: Play four minions with the same name. Reward: Crystal Core.
-                    case CardDB.cardIDEnum.UNG_116: return CardDB.cardIDEnum.UNG_116; //-Quest: Summon 5 minions with 5 or more Attack. Reward: Barnabus.
-                    case CardDB.cardIDEnum.UNG_829: return CardDB.cardIDEnum.UNG_829t1; //-Quest: Discard 6 cards. Reward: Nether Portal.
-                    case CardDB.cardIDEnum.UNG_920: return CardDB.cardIDEnum.UNG_920t1; //-Quest: Play seven 1-Cost minions. Reward: Queen Carnassa.
-                    case CardDB.cardIDEnum.UNG_934: return CardDB.cardIDEnum.UNG_934t1; //-Quest: Play 7 Taunt minions. Reward: Sulfuras.
-                    case CardDB.cardIDEnum.UNG_940: return CardDB.cardIDEnum.UNG_940t8; //-Quest: Summon 7 Deathrattle minions. Reward: Amara, Warden of Hope.
-                    case CardDB.cardIDEnum.UNG_942: return CardDB.cardIDEnum.UNG_942t; //-Quest: Summon 10 Murlocs. Reward: Megafin.
-                    case CardDB.cardIDEnum.UNG_954: return CardDB.cardIDEnum.UNG_954t1; //-Quest: Cast 6 spells on your minions. Reward: Galvadon.
+                    case CardDB.CardIdEnum.UNG_028: return CardDB.CardIdEnum.UNG_028t; //-Quest: Cast 6 spells that didn't start in your deck. Reward: Time Warp.
+                    case CardDB.CardIdEnum.UNG_067: return CardDB.CardIdEnum.UNG_067t1; //-Quest: Play four minions with the same name. Reward: Crystal Core.
+                    case CardDB.CardIdEnum.UNG_116: return CardDB.CardIdEnum.UNG_116; //-Quest: Summon 5 minions with 5 or more Attack. Reward: Barnabus.
+                    case CardDB.CardIdEnum.UNG_829: return CardDB.CardIdEnum.UNG_829t1; //-Quest: Discard 6 cards. Reward: Nether Portal.
+                    case CardDB.CardIdEnum.UNG_920: return CardDB.CardIdEnum.UNG_920t1; //-Quest: Play seven 1-Cost minions. Reward: Queen Carnassa.
+                    case CardDB.CardIdEnum.UNG_934: return CardDB.CardIdEnum.UNG_934t1; //-Quest: Play 7 Taunt minions. Reward: Sulfuras.
+                    case CardDB.CardIdEnum.UNG_940: return CardDB.CardIdEnum.UNG_940t8; //-Quest: Summon 7 Deathrattle minions. Reward: Amara, Warden of Hope.
+                    case CardDB.CardIdEnum.UNG_942: return CardDB.CardIdEnum.UNG_942t; //-Quest: Summon 10 Murlocs. Reward: Megafin.
+                    case CardDB.CardIdEnum.UNG_954: return CardDB.CardIdEnum.UNG_954t1; //-Quest: Cast 6 spells on your minions. Reward: Galvadon.
                 }
-                return CardDB.cardIDEnum.None;
+                return CardDB.CardIdEnum.None;
             }
         }
         
         StringBuilder sb = new StringBuilder("", 500);
         public QuestItem ownQuest = new QuestItem();
         public QuestItem enemyQuest = new QuestItem();
-        public Dictionary<CardDB.cardName, int> mobsGame = new Dictionary<CardDB.cardName, int>();
-        private CardDB.cardName nextMobName = CardDB.cardName.unknown;
+        public Dictionary<CardDB.CardName, int> mobsGame = new Dictionary<CardDB.CardName, int>();
+        private CardDB.CardName nextMobName = CardDB.CardName.unknown;
         private int nextMobId = 0;
         private int prevMobId = 0;
         Helpfunctions help;
@@ -143,7 +143,7 @@ namespace HREngine.Bots
         {
             if (step != 0)
             {
-                if (nextMobName != CardDB.cardName.unknown && nextMobId != prevMobId)
+                if (nextMobName != CardDB.CardName.unknown && nextMobId != prevMobId)
                 {
                     prevMobId = nextMobId;
                     nextMobId = 0;
@@ -159,16 +159,16 @@ namespace HREngine.Bots
 
         public void updatePlayedCardFromHand(Handmanager.Handcard hc)
         {
-            nextMobName = CardDB.cardName.unknown;
+            nextMobName = CardDB.CardName.unknown;
             nextMobId = 0;
-            if (hc != null && hc.card.type == CardDB.cardtype.MOB)
+            if (hc != null && hc.card.type == CardDB.CardType.MOB)
             {
                 nextMobName = hc.card.name;
                 nextMobId = hc.entity;
             }
         }
 
-        public int getPlayedCardFromHand(CardDB.cardName name)
+        public int getPlayedCardFromHand(CardDB.CardName name)
         {
             if (mobsGame.ContainsKey(name)) return mobsGame[name];
             else return 0;
@@ -180,7 +180,7 @@ namespace HREngine.Bots
             mobsGame.Clear();
             ownQuest = new QuestItem();
             enemyQuest = new QuestItem();
-            nextMobName = CardDB.cardName.unknown;
+            nextMobName = CardDB.CardName.unknown;
             nextMobId = 0;
             prevMobId = 0;
         }

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Deathrattle: Summon a 1/1 Shadowbeast.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_241a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_241a);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

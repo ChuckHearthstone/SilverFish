@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //召唤三个个2/2的树人。
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_158t);//树人
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_158t);//树人
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

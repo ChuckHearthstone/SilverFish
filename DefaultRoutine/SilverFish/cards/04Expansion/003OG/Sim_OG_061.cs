@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Deal 1 damage. Summon a 1/1 Mastiff.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_061t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_061t);
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

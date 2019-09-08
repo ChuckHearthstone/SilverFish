@@ -11,21 +11,21 @@ namespace SilverFish.cards._04Expansion._002AT
 			if (own.own)
 			{
 				int tmpCard = p.owncards.Count;
-				p.drawACard(CardDB.cardName.unknown, own.own);
+				p.drawACard(CardDB.CardName.unknown, own.own);
 				if (tmpCard < 10)
 				{
 					p.owncards.RemoveRange(p.owncards.Count - 1, 1);
 					p.owncarddraw--;
-                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_120), p.ownMinions.Count, own.own, false);//river crocolisk
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_120), p.ownMinions.Count, own.own, false);//river crocolisk
 				}
-				p.drawACard(CardDB.cardName.unknown, own.own);
+				p.drawACard(CardDB.CardName.unknown, own.own);
 				if (tmpCard < 10)
 				{
 					p.owncards.RemoveRange(p.owncards.Count - 1, 1);
 					p.owncarddraw--;
-                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_048), p.ownMinions.Count, own.own, false);//spellbreaker
+                    p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_048), p.ownMinions.Count, own.own, false);//spellbreaker
 				}
-				p.drawACard(CardDB.cardName.unknown, own.own);
+				p.drawACard(CardDB.CardName.unknown, own.own);
 			}
 		}
 	}

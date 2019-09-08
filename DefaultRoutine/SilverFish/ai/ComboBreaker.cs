@@ -17,7 +17,7 @@ namespace HREngine.Bots
             weaponuse
         }
 
-        private Dictionary<CardDB.cardIDEnum, int> playByValue = new Dictionary<CardDB.cardIDEnum, int>();
+        private Dictionary<CardDB.CardIdEnum, int> playByValue = new Dictionary<CardDB.CardIdEnum, int>();
         private List<combo> combos = new List<combo>();
         public int attackFaceHP = -1;
 
@@ -47,11 +47,11 @@ namespace HREngine.Bots
             private ComboBreaker cb;
             public combotype type = combotype.combo;
             public int neededMana = 0;
-            public Dictionary<CardDB.cardIDEnum, int> combocards = new Dictionary<CardDB.cardIDEnum, int>();
-            public Dictionary<CardDB.cardIDEnum, int> cardspen = new Dictionary<CardDB.cardIDEnum, int>();
-            public Dictionary<CardDB.cardIDEnum, int> combocardsTurn0Mobs = new Dictionary<CardDB.cardIDEnum, int>();
-            public Dictionary<CardDB.cardIDEnum, int> combocardsTurn0All = new Dictionary<CardDB.cardIDEnum, int>();
-            public Dictionary<CardDB.cardIDEnum, int> combocardsTurn1 = new Dictionary<CardDB.cardIDEnum, int>();
+            public Dictionary<CardDB.CardIdEnum, int> combocards = new Dictionary<CardDB.CardIdEnum, int>();
+            public Dictionary<CardDB.CardIdEnum, int> cardspen = new Dictionary<CardDB.CardIdEnum, int>();
+            public Dictionary<CardDB.CardIdEnum, int> combocardsTurn0Mobs = new Dictionary<CardDB.CardIdEnum, int>();
+            public Dictionary<CardDB.CardIdEnum, int> combocardsTurn0All = new Dictionary<CardDB.CardIdEnum, int>();
+            public Dictionary<CardDB.CardIdEnum, int> combocardsTurn1 = new Dictionary<CardDB.CardIdEnum, int>();
             public int penality = 0;
             public int combolength = 0;
             public int combot0len = 0;
@@ -61,14 +61,14 @@ namespace HREngine.Bots
             public int bonusForPlaying = 0;
             public int bonusForPlayingT0 = 0;
             public int bonusForPlayingT1 = 0;
-            public CardDB.cardName requiredWeapon = CardDB.cardName.unknown;
+            public CardDB.CardName requiredWeapon = CardDB.CardName.unknown;
             public HeroEnum oHero = HeroEnum.None;
 
             public combo(string s)
             {
                 int i = 0;
                 this.neededMana = 0;
-                requiredWeapon = CardDB.cardName.unknown;
+                requiredWeapon = CardDB.CardName.unknown;
                 this.type = combotype.combo;
                 this.twoTurnCombo = false;
                 bool fixmana = false;
@@ -173,7 +173,7 @@ namespace HREngine.Bots
                             else
                             {
                                 CardDB.Card lolcrd = cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd));
-                                if (lolcrd.type == CardDB.cardtype.MOB)
+                                if (lolcrd.type == CardDB.CardType.MOB)
                                 {
                                     if (this.combocardsTurn0Mobs.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                     {
@@ -185,7 +185,7 @@ namespace HREngine.Bots
                                     }
                                     this.combot0len++;
                                 }
-                                if (lolcrd.type == CardDB.cardtype.WEAPON)
+                                if (lolcrd.type == CardDB.CardType.WEAPON)
                                 {
                                     this.requiredWeapon = lolcrd.name;
                                 }
@@ -226,7 +226,7 @@ namespace HREngine.Bots
             public int isInCombo(List<Handmanager.Handcard> hand, int omm)
             {
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocards);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocards);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -241,11 +241,11 @@ namespace HREngine.Bots
                 return 0;
             }
 
-            public int isMultiTurnComboTurn1(List<Handmanager.Handcard> hand, int omm, List<Minion> ownmins, CardDB.cardName weapon)
+            public int isMultiTurnComboTurn1(List<Handmanager.Handcard> hand, int omm, List<Minion> ownmins, CardDB.CardName weapon)
             {
                 if (!twoTurnCombo) return 0;
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocardsTurn1);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocardsTurn1);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -260,7 +260,7 @@ namespace HREngine.Bots
                 {
                     //search for required minions on field
                     int turn0requires = 0;
-                    foreach (CardDB.cardIDEnum s in combocardsTurn0Mobs.Keys)
+                    foreach (CardDB.CardIdEnum s in combocardsTurn0Mobs.Keys)
                     {
                         foreach (Minion m in ownmins)
                         {
@@ -272,7 +272,7 @@ namespace HREngine.Bots
                         }
                     }
 
-                    if (requiredWeapon != CardDB.cardName.unknown && requiredWeapon != weapon) return 1;
+                    if (requiredWeapon != CardDB.CardName.unknown && requiredWeapon != weapon) return 1;
 
                     if (turn0requires >= combot0len) return 2;
 
@@ -286,7 +286,7 @@ namespace HREngine.Bots
             {
                 if (!twoTurnCombo) return 0;
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocardsTurn0All);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocardsTurn0All);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -327,7 +327,7 @@ namespace HREngine.Bots
             public int hasPlayedCombo(List<Handmanager.Handcard> hand)
             {
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocards);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocards);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -345,7 +345,7 @@ namespace HREngine.Bots
             {
                 if (this.combocardsTurn0All.Count == 0) return 0;
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocardsTurn0All);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocardsTurn0All);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -363,7 +363,7 @@ namespace HREngine.Bots
             {
                 if (this.combocardsTurn1.Count == 0) return 0;
                 int cardsincombo = 0;
-                Dictionary<CardDB.cardIDEnum, int> combocardscopy = new Dictionary<CardDB.cardIDEnum, int>(this.combocardsTurn1);
+                Dictionary<CardDB.CardIdEnum, int> combocardscopy = new Dictionary<CardDB.CardIdEnum, int>(this.combocardsTurn1);
                 foreach (Handmanager.Handcard hc in hand)
                 {
                     if (combocardscopy.ContainsKey(hc.card.cardIDenum) && combocardscopy[hc.card.cardIDenum] >= 1)
@@ -447,7 +447,7 @@ namespace HREngine.Bots
                         try
                         {
                             string cardvalue = line.Replace("cardvalue:", "");
-                            CardDB.cardIDEnum ce = cdb.cardIdstringToEnum(cardvalue.Split(',')[0]);
+                            CardDB.CardIdEnum ce = cdb.cardIdstringToEnum(cardvalue.Split(',')[0]);
                             int val = Convert.ToInt32(cardvalue.Split(',')[1]);
                             if (this.playByValue.ContainsKey(ce)) continue;
                             this.playByValue.Add(ce, val);
@@ -514,7 +514,7 @@ namespace HREngine.Bots
             if (this.combos.Count == 0) return 0;
 
             List<Action> alist = p.playactions;
-            CardDB.cardName weapon = p.ownWeapon.name;
+            CardDB.CardName weapon = p.ownWeapon.name;
             HeroEnum heroname = p.ownHeroName;
 
             //returns a penalty only if the combo could be played, but is not played completely
@@ -567,7 +567,7 @@ namespace HREngine.Bots
 
         }
 
-        public int getPlayValue(CardDB.cardIDEnum ce)
+        public int getPlayValue(CardDB.CardIdEnum ce)
         {
             if (this.playByValue.Count == 0) return 0;
             if (this.playByValue.ContainsKey(ce))

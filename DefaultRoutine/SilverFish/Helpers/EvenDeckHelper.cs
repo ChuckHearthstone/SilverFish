@@ -16,14 +16,14 @@ namespace SilverFish.Helpers
             IsEvenDeck = false;
         }
 
-        public static void EvenShamanCheck(Dictionary<CardDB.cardIDEnum, int> dictionary)
+        public static void EvenShamanCheck(Dictionary<CardDB.CardIdEnum, int> dictionary)
         {
             if (EvenDeckChecked)
             {
                 return;
             }
 
-            if (dictionary.Keys.Contains(CardDB.cardIDEnum.GIL_692))
+            if (dictionary.Keys.Contains(CardDB.CardIdEnum.GIL_692))
             {
                 bool isEvenShaman = true;
                 foreach (var item in dictionary.Keys)

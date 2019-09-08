@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
 	{
         //Deathrattle: If Stalagg also died this game, summon Thaddius.
 
-        CardDB.Card thaddius = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_014t);
+        CardDB.Card thaddius = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_014t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Deathrattle: Summon a 5/5 Faceless Destroyer.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_272t);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_272t);
 
         public override void onDeathrattle(Playfield p, Minion m)
         {

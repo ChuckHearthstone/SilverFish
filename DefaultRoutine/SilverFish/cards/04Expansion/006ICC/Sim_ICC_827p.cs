@@ -14,14 +14,14 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.name == CardDB.cardName.shadowreflection)
+                    if (hc.card.name == CardDB.CardName.shadowreflection)
                     {
                         found = true;
                         break;
                     }
                 }
             }
-            if (!found) p.drawACard(CardDB.cardName.shadowreflection, turnStartOfOwner, true);
+            if (!found) p.drawACard(CardDB.CardName.shadowreflection, turnStartOfOwner, true);
         }
     }
 }

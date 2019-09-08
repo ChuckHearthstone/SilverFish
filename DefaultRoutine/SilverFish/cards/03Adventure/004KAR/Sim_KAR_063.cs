@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Has +2 Attack while you have Spell Damage.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_063);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_063);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

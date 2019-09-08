@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._001NAX
 	{
 		// Deal $1 damage to all enemy minions. Summon a Spore.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NAX6_03t);//Spore
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NAX6_03t);//Spore
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

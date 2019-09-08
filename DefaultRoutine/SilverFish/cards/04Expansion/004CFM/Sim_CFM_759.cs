@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            if (m.Attack >= 2) p.drawACard(CardDB.cardName.unknown, m.own);
+            if (m.Attack >= 2) p.drawACard(CardDB.CardName.unknown, m.own);
         }
     }
 }

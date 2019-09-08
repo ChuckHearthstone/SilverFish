@@ -10,7 +10,7 @@ namespace SilverFish.cards._01Basic
         {
             for (int i = 0; i < minionsGotHealed; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, triggerEffectMinion.own);
+                p.drawACard(CardDB.CardName.unknown, triggerEffectMinion.own);
             }
         }
 	}

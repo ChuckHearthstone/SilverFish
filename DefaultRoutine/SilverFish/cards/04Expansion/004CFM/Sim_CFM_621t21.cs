@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Transform a random enemy minion into a 1/1 Sheep.
 		
-		private CardDB.Card sheep = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_621_m5);
+		private CardDB.Card sheep = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_621_m5);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

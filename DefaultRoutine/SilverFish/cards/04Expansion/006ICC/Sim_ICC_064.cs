@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Battlecry and Deathrattle: Deal 1 damage to all minions.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_064);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_064);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

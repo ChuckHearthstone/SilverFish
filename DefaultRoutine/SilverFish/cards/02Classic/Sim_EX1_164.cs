@@ -26,9 +26,9 @@ namespace SilverFish.cards._02Classic
             if (choice == 2 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 //this.owncarddraw+=3;
-                p.drawACard(CardDB.cardName.unknown, ownplay);
-                p.drawACard(CardDB.cardName.unknown, ownplay);
-                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
             }
         }
 

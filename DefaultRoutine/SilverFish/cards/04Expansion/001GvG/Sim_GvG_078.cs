@@ -9,8 +9,8 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.armorplating, false, true);
-            p.drawACard(CardDB.cardName.unknown, true, true);
+            p.drawACard(CardDB.CardName.armorplating, false, true);
+            p.drawACard(CardDB.CardName.unknown, true, true);
         }
     }
 }

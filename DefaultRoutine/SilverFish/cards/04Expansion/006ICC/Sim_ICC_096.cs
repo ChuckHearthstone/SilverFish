@@ -15,7 +15,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
                 foreach(Handmanager.Handcard hc in p.owncards.ToArray())
                 {
-                    if (hc.card.type == CardDB.cardtype.WEAPON)
+                    if (hc.card.type == CardDB.CardType.WEAPON)
                     {
                         atkBuff += hc.card.Attack + hc.addattack;
                         hpBuff += hc.card.Durability + hc.addHp;

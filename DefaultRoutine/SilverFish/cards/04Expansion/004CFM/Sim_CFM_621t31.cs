@@ -8,9 +8,9 @@ namespace SilverFish.cards._04Expansion._004CFM
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-		    p.drawACard(CardDB.cardName.malchezaarsimp, ownplay, true);
-		    p.drawACard(CardDB.cardIDEnum.CFM_621_m2, ownplay, true);
-		    p.drawACard(CardDB.cardIDEnum.CFM_621_m4, ownplay, true);
+		    p.drawACard(CardDB.CardName.malchezaarsimp, ownplay, true);
+		    p.drawACard(CardDB.CardIdEnum.CFM_621_m2, ownplay, true);
+		    p.drawACard(CardDB.CardIdEnum.CFM_621_m4, ownplay, true);
 		}
 	}
 }

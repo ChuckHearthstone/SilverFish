@@ -4,7 +4,7 @@ namespace SilverFish.cards._01Basic._00Neutral
 {
 	class Sim_NEW1_040 : SimTemplate //hogger
 	{
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_040t);//gnoll
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_040t);//gnoll
 //    ruft am ende eures zuges einen gnoll (2/2) mit spott/ herbei.
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)

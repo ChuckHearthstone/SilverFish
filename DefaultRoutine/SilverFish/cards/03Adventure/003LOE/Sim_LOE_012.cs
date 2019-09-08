@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 		
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.thecoin, m.own);
+            p.drawACard(CardDB.CardName.thecoin, m.own);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SilverFish.cards._02Classic
                 {
                     foreach (Minion m in temp)
                     {
-                        if (m.name == CardDB.cardName.knifejuggler && !m.silenced) m.handcard.card.CardSimulation.onMinionWasSummoned(p, m, temp[num]);
+                        if (m.name == CardDB.CardName.knifejuggler && !m.silenced) m.handcard.card.CardSimulation.onMinionWasSummoned(p, m, temp[num]);
                     }
                 }
             }

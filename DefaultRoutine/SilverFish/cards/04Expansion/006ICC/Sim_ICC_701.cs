@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 foreach (Handmanager.Handcard hc in p.owncards.ToArray())
                 {
-                    if (hc.manacost == 1 && hc.card.type == CardDB.cardtype.SPELL) p.owncards.Remove(hc);
+                    if (hc.manacost == 1 && hc.card.type == CardDB.CardType.SPELL) p.owncards.Remove(hc);
                 }
                 p.renumHandCards(p.owncards);
             }

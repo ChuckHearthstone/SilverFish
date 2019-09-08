@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Hero Power: Put two minions from your deck and one from your opponent's into the battlefield.
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.FP1_007t);//4/4Nerubian
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.FP1_007t);//4/4Nerubian
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

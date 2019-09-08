@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
     {
         //Hero Power Summon a 1/1 Silver Hand Murloc.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_006a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_006a);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

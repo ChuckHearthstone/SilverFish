@@ -7,7 +7,7 @@ namespace SilverFish.cards._02Classic
     {
         //Choose One - Give your other minions +2/+2; or Summon two 2/2 Treants with Taunt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_573t); //special treant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_573t); //special treant
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

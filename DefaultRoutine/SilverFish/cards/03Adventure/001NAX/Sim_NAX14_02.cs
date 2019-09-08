@@ -16,7 +16,7 @@ namespace SilverFish.cards._03Adventure._001NAX
             {
 				temp[i].extraParam = true;
                 if (temp[i].frozen) temp[i].extraParam = false;
-                if (temp[i].name == CardDB.cardName.frozenchampion && !temp[i].silenced)
+                if (temp[i].name == CardDB.CardName.frozenchampion && !temp[i].silenced)
 				{
 					temp[i].extraParam = false;
 					if (i > 0) temp[i-1].extraParam = false;

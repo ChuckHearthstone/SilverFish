@@ -14,8 +14,8 @@ namespace SilverFish.cards._04Expansion._004CFM
             {
                 if (mnn.HealthPoints >= 6)
                 {
-                    p.drawACard(CardDB.cardName.unknown, m.own);
-                    p.drawACard(CardDB.cardName.unknown, m.own);
+                    p.drawACard(CardDB.CardName.unknown, m.own);
+                    p.drawACard(CardDB.CardName.unknown, m.own);
                     break;
                 }
             }

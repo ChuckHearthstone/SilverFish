@@ -5,7 +5,7 @@ namespace SilverFish.cards._01Basic._04Paladin
 	class Sim_CS2_101 : SimTemplate //* reinforce
 	{
         //Hero Power: Summon a 1/1 Silver Hand Recruit.
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t);//silverhandrecruit
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_101t);//silverhandrecruit
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

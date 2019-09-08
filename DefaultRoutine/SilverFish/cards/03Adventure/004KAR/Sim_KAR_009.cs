@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.frostbolt, own.own, true);
+            p.drawACard(CardDB.CardName.frostbolt, own.own, true);
 		}
 	}
 }

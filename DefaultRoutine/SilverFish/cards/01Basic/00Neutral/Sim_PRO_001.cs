@@ -8,8 +8,8 @@ namespace SilverFish.cards._01Basic._00Neutral
 //    kampfschrei:/ verleiht beiden spielern die macht des rock! (durch eine powerakkordkarte)
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.roguesdoit, true, true);
-            p.drawACard(CardDB.cardName.roguesdoit, false, true);
+            p.drawACard(CardDB.CardName.roguesdoit, true, true);
+            p.drawACard(CardDB.CardName.roguesdoit, false, true);
 		}
 
 	}

@@ -47,7 +47,7 @@
                     enemMana = posmoves[0].EnemyCardPlaying(rootfield.enemyHeroStartClass, enemMana, rootfield.enemyAnzCards, pprob, pprob2);
                     if (posmoves[0].wehaveCounterspell > 1)
                     {
-                        posmoves[0].ownSecretsIDList.Remove(CardDB.cardIDEnum.EX1_287);
+                        posmoves[0].ownSecretsIDList.Remove(CardDB.CardIdEnum.EX1_287);
                         posmoves[0].evaluatePenality -= 7;
                     }
                     float newval = Ai.Instance.botBase.getPlayfieldValue(posmoves[0]);
@@ -234,14 +234,14 @@
             tempDict.Clear();
         }
 
-        CardDB.Card flame = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_614t);
-        CardDB.Card spellbreaker43 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_048);
+        CardDB.Card flame = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_614t);
+        CardDB.Card spellbreaker43 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_048);
 
         private void doSomeBasicEnemyAi(Playfield p)
         {
             if (p.enemyHeroName == HeroEnum.mage)
             {
-                if (Probabilitymaker.Instance.enemyCardsOut.ContainsKey(CardDB.cardIDEnum.EX1_561)) p.ownHero.HealthPoints = Math.Max(5, p.ownHero.HealthPoints - 7);
+                if (Probabilitymaker.Instance.enemyCardsOut.ContainsKey(CardDB.CardIdEnum.EX1_561)) p.ownHero.HealthPoints = Math.Max(5, p.ownHero.HealthPoints - 7);
             }
 
             //play some cards (to not overdraw)
@@ -264,18 +264,18 @@
             foreach (Minion m in p.enemyMinions.ToArray())
             {
                 if (m.silenced) continue;
-                if (p.enemyAnzCards >= 2 && (m.name == CardDB.cardName.gadgetzanauctioneer || m.name == CardDB.cardName.starvingbuzzard))
+                if (p.enemyAnzCards >= 2 && (m.name == CardDB.CardName.gadgetzanauctioneer || m.name == CardDB.CardName.starvingbuzzard))
                 {
                     if (p.enemyDeckSize >= 1)
                     {
-                        p.drawACard(CardDB.cardName.unknown, false);
+                        p.drawACard(CardDB.CardName.unknown, false);
                     }
                 }
                 int anz = 0;
                 switch (m.name)
                 {
                     //****************************************heal
-                    case CardDB.cardName.northshirecleric:
+                    case CardDB.CardName.northshirecleric:
                         anz = 0;
                         foreach (Minion mnn in p.enemyMinions)
                         {
@@ -284,10 +284,10 @@
                         anz = Math.Min(anz, 3);
                         for (int i = 0; i < anz; i++)
                         {
-                            if (p.enemyDeckSize >= 1) p.drawACard(CardDB.cardName.unknown, false);
+                            if (p.enemyDeckSize >= 1) p.drawACard(CardDB.CardName.unknown, false);
                         }
                         continue;
-                    case CardDB.cardName.shadowboxer:
+                    case CardDB.CardName.shadowboxer:
                         anz = 0;
                         foreach (Minion mnn in p.enemyMinions)
                         {
@@ -305,7 +305,7 @@
                             }
                         }
                         continue;
-                    case CardDB.cardName.lightwarden:
+                    case CardDB.CardName.lightwarden:
                         anz = 0;
                         foreach (Minion mnn in p.enemyMinions)
                         {
@@ -316,45 +316,45 @@
                         continue;
                         //****************************************
                     //****************************************spell
-                    case CardDB.cardName.manaaddict:
+                    case CardDB.CardName.manaaddict:
                         if (p.enemyAnzCards >= 1)
                         {
                             p.minionGetTempBuff(m, 2, 0);
                             if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.minionGetTempBuff(m, 2, 0);
                         }
                         continue;
-                    case CardDB.cardName.manawyrm:
+                    case CardDB.CardName.manawyrm:
                         if (p.enemyAnzCards >= 1)
                         {
                             p.minionGetBuffed(m, 1, 0);
                             if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.minionGetBuffed(m, 1, 0);
                         }
                         continue;
-                    case CardDB.cardName.dragonkinsorcerer:
+                    case CardDB.CardName.dragonkinsorcerer:
                         if (p.enemyAnzCards >= 1)
                         {
                             p.minionGetTempBuff(m, 1, 1);
                             if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.minionGetBuffed(m, 1, 1);
                         }
                         continue;
-                    case CardDB.cardName.violetteacher:
+                    case CardDB.CardName.violetteacher:
                         if (p.enemyAnzCards >= 1)
                         {
-                            p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
-                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_026t), p.enemyMinions.Count, false);
+                            p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_026t), p.enemyMinions.Count, false);
+                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_026t), p.enemyMinions.Count, false);
                         }
                         continue;
-                    case CardDB.cardName.warsongcommander:
-                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_165t1), p.enemyMinions.Count, false, false);
+                    case CardDB.CardName.warsongcommander:
+                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_165t1), p.enemyMinions.Count, false, false);
                         continue;
-                    case CardDB.cardName.gadgetzanauctioneer:
+                    case CardDB.CardName.gadgetzanauctioneer:
                         if (p.enemyAnzCards >= 1)
                         {
-                            p.drawACard(CardDB.cardName.unknown, false);
-                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.drawACard(CardDB.cardName.unknown, false);
+                            p.drawACard(CardDB.CardName.unknown, false);
+                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.drawACard(CardDB.CardName.unknown, false);
                         }
                         continue;
-                    case CardDB.cardName.archmageantonidas:
+                    case CardDB.CardName.archmageantonidas:
                         if (p.ownMinions.Count < 1) p.minionGetDamageOrHeal(p.ownHero, 6);
                         else
                         {
@@ -366,14 +366,14 @@
                             p.minionGetDamageOrHeal(target, 6);
                         }
                         continue;
-                    case CardDB.cardName.gazlowe:
+                    case CardDB.CardName.gazlowe:
                         if (p.enemyAnzCards >= 1)
                         {
-                            p.drawACard(CardDB.cardName.unknown, false);
-                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.drawACard(CardDB.cardName.unknown, false);
+                            p.drawACard(CardDB.CardName.unknown, false);
+                            if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.drawACard(CardDB.CardName.unknown, false);
                         }
                         continue;
-                    case CardDB.cardName.flamewaker:
+                    case CardDB.CardName.flamewaker:
                         anz = 0;
                         if (p.enemyAnzCards >= 1) anz++;
                         if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) anz++;
@@ -392,53 +392,53 @@
                         continue;
                         //****************************************
                     //****************************************secret
-                    case CardDB.cardName.secretkeeper:
+                    case CardDB.CardName.secretkeeper:
                         if (p.enemyAnzCards >= 3) p.minionGetBuffed(m, 1, 1);
                         continue;
-                    case CardDB.cardName.etherealarcanist:
+                    case CardDB.CardName.etherealarcanist:
                         if (p.enemyAnzCards >= 3 || p.enemySecretCount > 0) p.minionGetBuffed(m, 2, 2);
                         continue;
                         //****************************************
                     //****************************************play
-                    case CardDB.cardName.illidanstormrage:
+                    case CardDB.CardName.illidanstormrage:
                         if (p.enemyAnzCards >= 1) p.CallKid(flame, p.enemyMinions.Count, false);
                         continue;
-                    case CardDB.cardName.questingadventurer:
+                    case CardDB.CardName.questingadventurer:
                         if (p.enemyAnzCards >= 1)
                         {
                             p.minionGetBuffed(m, 1, 1);
                             if (p.enemyAnzCards >= 3 && p.enemyMaxMana >= 5) p.minionGetBuffed(m, 1, 1);
                         }
                         continue;
-                    case CardDB.cardName.unboundelemental:
+                    case CardDB.CardName.unboundelemental:
                         if (p.enemyAnzCards >= 2)p.minionGetBuffed(m, 1, 1);
                         continue;
                         //****************************************
                     //****************************************turn
                     //****************************************armor
-                    case CardDB.cardName.siegeengine:
+                    case CardDB.CardName.siegeengine:
                         anz = 0;
                         foreach (Minion mnn in p.enemyMinions)
                         {
-                            if (mnn.name == CardDB.cardName.armorsmith) anz++;
+                            if (mnn.name == CardDB.CardName.armorsmith) anz++;
                         }
                         if (p.enemyAnzCards >= 3) anz++;
                         if (anz > 0) p.minionGetBuffed(m, anz, 0);
                         continue;
                     //****************************************summon
-                    case CardDB.cardName.murloctidecaller:
+                    case CardDB.CardName.murloctidecaller:
                         if (p.enemyAnzCards >= 2) p.minionGetBuffed(m, 1, 0);
                         continue;
-                    case CardDB.cardName.undertaker:
+                    case CardDB.CardName.undertaker:
                         if (p.enemyAnzCards >= 2) p.minionGetBuffed(m, 1, 0);
                         continue;
-                    case CardDB.cardName.starvingbuzzard:
-                        if (p.enemyAnzCards >= 2) p.drawACard(CardDB.cardName.unknown, false);
+                    case CardDB.CardName.starvingbuzzard:
+                        if (p.enemyAnzCards >= 2) p.drawACard(CardDB.CardName.unknown, false);
                         continue;
-                    case CardDB.cardName.cobaltguardian:
+                    case CardDB.CardName.cobaltguardian:
                         if (p.enemyAnzCards >= 2) m.divineshild = true;
                         continue;
-                    case CardDB.cardName.knifejuggler:
+                    case CardDB.CardName.knifejuggler:
                         anz = Math.Min(p.enemyAnzCards, (int)p.enemyMaxMana/2);
                         if (anz > 0)
                         {
@@ -451,7 +451,7 @@
                             }
                         }
                         continue;
-                    case CardDB.cardName.shipscannon:
+                    case CardDB.CardName.shipscannon:
                         if (p.enemyAnzCards >= 2)
                         {
                             Minion target = p.ownHero;
@@ -460,55 +460,55 @@
                             p.minionGetDamageOrHeal(target, 1);
                         }
                         continue;
-                    case CardDB.cardName.tundrarhino:
-                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_125), p.enemyMinions.Count, false, true, true);
+                    case CardDB.CardName.tundrarhino:
+                        p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_125), p.enemyMinions.Count, false, true, true);
                         continue;
                         //****************************************
                     //****************************************damage
-                    case CardDB.cardName.frothingberserker:
+                    case CardDB.CardName.frothingberserker:
                         if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 1, 0);
                         continue;
-                    case CardDB.cardName.gurubashiberserker:
+                    case CardDB.CardName.gurubashiberserker:
                         if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, 3, 0);
                         continue;
-                    case CardDB.cardName.floatingwatcher:
+                    case CardDB.CardName.floatingwatcher:
                         if (p.enemyMaxMana >= p.enemyAnzCards * 2) p.minionGetBuffed(m, 2, 2);
                         continue;
-                    case CardDB.cardName.armorsmith:
+                    case CardDB.CardName.armorsmith:
                         if (p.enemyMinions.Count >= 3) p.minionGetArmor(p.enemyHero, 1);
                         continue;
-                    case CardDB.cardName.gahzrilla:
+                    case CardDB.CardName.gahzrilla:
                         if (m.HealthPoints >= 4 && p.enemyAnzCards >= 3) p.minionGetBuffed(m, m.Attack * 2, 0);
                         continue;
-                    case CardDB.cardName.acolyteofpain:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
+                    case CardDB.CardName.acolyteofpain:
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.CardName.unknown, false);
                         continue;
-                    case CardDB.cardName.mechbearcat:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.cardName.unknown, false);
+                    case CardDB.CardName.mechbearcat:
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.drawACard(CardDB.CardName.unknown, false);
                         continue;
-                    case CardDB.cardName.grimpatron:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3)  p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_019), p.enemyMinions.Count, false);
+                    case CardDB.CardName.grimpatron:
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3)  p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_019), p.enemyMinions.Count, false);
                         continue;
-                    case CardDB.cardName.dragonegg:
-                        if (p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_022t), p.enemyMinions.Count, false);
+                    case CardDB.CardName.dragonegg:
+                        if (p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_022t), p.enemyMinions.Count, false);
                         continue;
-                    case CardDB.cardName.impgangboss:
-                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_006t), p.enemyMinions.Count, false);
+                    case CardDB.CardName.impgangboss:
+                        if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_006t), p.enemyMinions.Count, false);
                         continue;
-                    case CardDB.cardName.axeflinger:
+                    case CardDB.CardName.axeflinger:
                         if (m.HealthPoints >= 3 && p.enemyAnzCards >= 3) p.minionGetDamageOrHeal(p.ownHero, 2);
                         continue;
-                    case CardDB.cardName.brannbronzebeard:
+                    case CardDB.CardName.brannbronzebeard:
                         p.minionGetBuffed(m, 0, 6);
                         continue;
-                    case CardDB.cardName.obsidiandestroyer:
-                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_009t), p.enemyMinions.Count, false);
+                    case CardDB.CardName.obsidiandestroyer:
+                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOE_009t), p.enemyMinions.Count, false);
                         continue;
-                    case CardDB.cardName.tunneltrogg:                        
+                    case CardDB.CardName.tunneltrogg:                        
                         p.minionGetBuffed(m, 1, 0);
                         continue;
-                    case CardDB.cardName.summoningstone:
-                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_017), p.enemyMinions.Count, false);
+                    case CardDB.CardName.summoningstone:
+                        if (p.enemyMinions.Count < 6) p.CallKid(CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOE_017), p.enemyMinions.Count, false);
                         continue;
                         //****************************************
                     //****************************************dies (rough approximation)

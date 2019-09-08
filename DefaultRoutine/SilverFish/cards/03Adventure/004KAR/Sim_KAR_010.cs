@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 	{
 		//Battlecry: If you're holding a Dragon, summon two 1/1 Whelps.
 		
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.KAR_010a);//Whelp
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.KAR_010a);//Whelp
 		
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

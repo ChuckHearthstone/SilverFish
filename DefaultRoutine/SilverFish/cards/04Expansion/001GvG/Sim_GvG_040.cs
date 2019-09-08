@@ -20,7 +20,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             m.extraParam2 = diedMinions;
             for (int i = 0; i < residual; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, m.own);
+                p.drawACard(CardDB.CardName.unknown, m.own);
             }
         }
     }

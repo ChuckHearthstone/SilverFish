@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.thecoin, own.own, true);
+            p.drawACard(CardDB.CardName.thecoin, own.own, true);
             p.minionGetDamageOrHeal(own.own ? p.ownHero : p.enemyHero, 3);
 		}
 	}

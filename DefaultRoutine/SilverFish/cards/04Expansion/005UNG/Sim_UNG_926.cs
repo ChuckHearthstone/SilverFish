@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 	{
 		//Taunt. Battlecry: Summon three 1/1 Raptors for your opponent.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.UNG_076t1); //1/1 Raptor
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.UNG_076t1); //1/1 Raptor
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

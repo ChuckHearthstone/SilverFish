@@ -13,7 +13,7 @@ namespace SilverFish.cards._04Expansion._006ICC
                 Handmanager.Handcard hcCopy = null;
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardDB.cardtype.MOB)
+                    if (hc.card.type == CardDB.CardType.MOB)
                     {
                         if (hcCopy == null) hcCopy = hc;
                         else

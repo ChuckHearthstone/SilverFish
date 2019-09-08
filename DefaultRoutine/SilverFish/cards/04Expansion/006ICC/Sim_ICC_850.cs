@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Battlecry: Your hero is Immune this turn.
 
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_850);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_850);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

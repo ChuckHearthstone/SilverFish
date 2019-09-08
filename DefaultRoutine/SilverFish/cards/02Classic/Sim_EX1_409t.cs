@@ -4,7 +4,7 @@ namespace SilverFish.cards._02Classic
 {
     class Sim_EX1_409t : SimTemplate //* Heavy Axe
 	{
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_409t);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_409t);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

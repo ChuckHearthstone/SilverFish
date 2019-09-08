@@ -13,40 +13,40 @@ namespace SilverFish.cards._03Adventure._002BRM
             switch (opponentHeroClass)
             {
                 case TAG_CLASS.WARRIOR:
-					p.drawACard(CardDB.cardName.shieldblock, m.own, true);
-					p.drawACard(CardDB.cardName.shieldblock, m.own, true);
+					p.drawACard(CardDB.CardName.shieldblock, m.own, true);
+					p.drawACard(CardDB.CardName.shieldblock, m.own, true);
 					break;
                 case TAG_CLASS.WARLOCK:
-					p.drawACard(CardDB.cardName.baneofdoom, m.own, true);
-					p.drawACard(CardDB.cardName.baneofdoom, m.own, true);
+					p.drawACard(CardDB.CardName.baneofdoom, m.own, true);
+					p.drawACard(CardDB.CardName.baneofdoom, m.own, true);
                     break;
                 case TAG_CLASS.ROGUE:
-					p.drawACard(CardDB.cardName.sprint, m.own, true);
-					p.drawACard(CardDB.cardName.sprint, m.own, true);
+					p.drawACard(CardDB.CardName.sprint, m.own, true);
+					p.drawACard(CardDB.CardName.sprint, m.own, true);
 					break;
                 case TAG_CLASS.SHAMAN:
-					p.drawACard(CardDB.cardName.farsight, m.own, true);
-					p.drawACard(CardDB.cardName.farsight, m.own, true);
+					p.drawACard(CardDB.CardName.farsight, m.own, true);
+					p.drawACard(CardDB.CardName.farsight, m.own, true);
 					break;
                 case TAG_CLASS.PRIEST:
-					p.drawACard(CardDB.cardName.thoughtsteal, m.own, true);
-					p.drawACard(CardDB.cardName.thoughtsteal, m.own, true);
+					p.drawACard(CardDB.CardName.thoughtsteal, m.own, true);
+					p.drawACard(CardDB.CardName.thoughtsteal, m.own, true);
 					break;
                 case TAG_CLASS.PALADIN:
-					p.drawACard(CardDB.cardName.hammerofwrath, m.own, true);
-					p.drawACard(CardDB.cardName.hammerofwrath, m.own, true);
+					p.drawACard(CardDB.CardName.hammerofwrath, m.own, true);
+					p.drawACard(CardDB.CardName.hammerofwrath, m.own, true);
 					break;
                 case TAG_CLASS.MAGE:
-					p.drawACard(CardDB.cardName.frostnova, m.own, true);
-					p.drawACard(CardDB.cardName.frostnova, m.own, true);
+					p.drawACard(CardDB.CardName.frostnova, m.own, true);
+					p.drawACard(CardDB.CardName.frostnova, m.own, true);
 					break;
                 case TAG_CLASS.HUNTER:
-					p.drawACard(CardDB.cardName.cobrashot, m.own, true);
-					p.drawACard(CardDB.cardName.cobrashot, m.own, true);
+					p.drawACard(CardDB.CardName.cobrashot, m.own, true);
+					p.drawACard(CardDB.CardName.cobrashot, m.own, true);
 					break;
                 case TAG_CLASS.DRUID:
-					p.drawACard(CardDB.cardName.wildgrowth, m.own, true);
-					p.drawACard(CardDB.cardName.wildgrowth, m.own, true);
+					p.drawACard(CardDB.CardName.wildgrowth, m.own, true);
+					p.drawACard(CardDB.CardName.wildgrowth, m.own, true);
                     break;
 				//default:
 			}

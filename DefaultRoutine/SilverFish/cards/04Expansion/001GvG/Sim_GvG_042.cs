@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._001GvG
         {
             for (int i = 0; i < 4; i++)
             {
-                p.drawACard(CardDB.cardName.murlocraider, m.own, true);
+                p.drawACard(CardDB.CardName.murlocraider, m.own, true);
             }
             if (m.own) p.ueberladung += 3;
         }

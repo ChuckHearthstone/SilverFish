@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._001GvG
                 m.anzGotDmg = 0;
                 for (int i = 0; i < tmp; i++)
                 {
-                    p.drawACard(CardDB.cardName.armorplating, m.own, true);
+                    p.drawACard(CardDB.CardName.armorplating, m.own, true);
                 }
             }
         }

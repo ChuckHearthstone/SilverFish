@@ -8,7 +8,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 		
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.lanternofpower, own.own, true);
+            p.drawACard(CardDB.CardName.lanternofpower, own.own, true);
 		}
 	}
 }

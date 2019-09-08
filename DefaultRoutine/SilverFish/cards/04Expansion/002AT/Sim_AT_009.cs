@@ -8,9 +8,9 @@ namespace SilverFish.cards._04Expansion._002AT
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardDB.cardName.arcanemissiles, m.own, true);
-            p.drawACard(CardDB.cardName.arcanemissiles, m.own, true);
-            p.drawACard(CardDB.cardName.arcanemissiles, m.own, true);
+            p.drawACard(CardDB.CardName.arcanemissiles, m.own, true);
+            p.drawACard(CardDB.CardName.arcanemissiles, m.own, true);
+            p.drawACard(CardDB.CardName.arcanemissiles, m.own, true);
         }
 	}
 }

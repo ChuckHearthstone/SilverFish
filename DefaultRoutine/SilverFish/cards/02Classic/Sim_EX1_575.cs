@@ -10,7 +10,7 @@ namespace SilverFish.cards._02Classic
         {
             if (turnEndOfOwner == triggerEffectMinion.own)
             {
-                p.drawACard(CardDB.cardName.unknown, turnEndOfOwner);
+                p.drawACard(CardDB.CardName.unknown, turnEndOfOwner);
             }
         }
 

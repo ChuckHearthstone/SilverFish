@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._006ICC
         // Destroy any Frozen minion damaged by this.
         //done in Playfield
 
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_236);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_236);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

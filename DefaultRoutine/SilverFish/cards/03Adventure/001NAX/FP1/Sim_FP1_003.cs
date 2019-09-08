@@ -15,7 +15,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
                 List<Minion> temp = (turnEndOfOwner) ? p.ownMinions : p.enemyMinions;
                 foreach (Minion mnn in temp)
                 {
-                    if (mnn.name == CardDB.cardName.echoingooze && triggerEffectMinion.entitiyID != mnn.entitiyID)
+                    if (mnn.name == CardDB.CardName.echoingooze && triggerEffectMinion.entitiyID != mnn.entitiyID)
                     {
                         mnn.setMinionToMinion(triggerEffectMinion);
                         break;

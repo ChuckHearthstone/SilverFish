@@ -14,7 +14,7 @@ namespace SilverFish.cards._02Classic
             if (target.HealthPoints > dmg || target.immune || target.divineshild)
             {
                 //this.owncarddraw++;
-                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
             }
             p.minionGetDamageOrHeal(target, dmg);
             

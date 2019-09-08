@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._003OG
 			p.allMinionsGetDestroyed();
             for (int i = 0; i < anz; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, ownplay);
+                p.drawACard(CardDB.CardName.unknown, ownplay);
             }
 		}
 	}

@@ -15,11 +15,11 @@ namespace SilverFish.cards._02Classic
             {
                 if (mnn.wounded)
                 {
-                    p.drawACard(CardDB.cardName.unknown, ownplay);
+                    p.drawACard(CardDB.CardName.unknown, ownplay);
                 }
             }
-            if (ownplay && p.ownHero.HealthPoints < 30) p.drawACard(CardDB.cardName.unknown, true);
-            if (!ownplay && p.enemyHero.HealthPoints < 30) p.drawACard(CardDB.cardName.unknown, false);
+            if (ownplay && p.ownHero.HealthPoints < 30) p.drawACard(CardDB.CardName.unknown, true);
+            if (!ownplay && p.enemyHero.HealthPoints < 30) p.drawACard(CardDB.CardName.unknown, false);
 
 		}
 

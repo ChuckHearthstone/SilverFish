@@ -6,12 +6,12 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Choose One - Summon 2 Poisonous Spiders; or 2 Scarabs with Taunt.
 
-        CardDB.Card kidSpider = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_832t3); //Frost Widow
-        CardDB.Card kidScarab = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_832t4); //Scarab Beetle
+        CardDB.Card kidSpider = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_832t3); //Frost Widow
+        CardDB.Card kidScarab = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_832t4); //Scarab Beetle
         
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.ICC_832p, ownplay); // Plague Lord
+            p.setNewHeroPower(CardDB.CardIdEnum.ICC_832p, ownplay); // Plague Lord
             if (ownplay) p.ownHero.armor += 5;
             else p.enemyHero.armor += 5;
 

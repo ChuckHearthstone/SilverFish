@@ -26,7 +26,7 @@ namespace SilverFish.cards._02Classic
             {
                 p.ownSecretsIDList.Clear();
             }
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
         }
 
     }

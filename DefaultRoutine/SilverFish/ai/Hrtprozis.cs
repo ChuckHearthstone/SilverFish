@@ -48,11 +48,11 @@ namespace HREngine.Bots
         public bool herofrozen = false;
         public bool enemyfrozen = false;
 
-        public List<CardDB.cardIDEnum> ownSecretList = new List<CardDB.cardIDEnum>();
+        public List<CardDB.CardIdEnum> ownSecretList = new List<CardDB.CardIdEnum>();
         public int enemySecretCount = 0;
-        public Dictionary<int, CardDB.cardIDEnum> DiscoverCards = new Dictionary<int, CardDB.cardIDEnum>();
-        public Dictionary<CardDB.cardIDEnum, int> turnDeck = new Dictionary<CardDB.cardIDEnum, int>();
-        private Dictionary<int, CardDB.cardIDEnum> deckCardForCost = new Dictionary<int, CardDB.cardIDEnum>();
+        public Dictionary<int, CardDB.CardIdEnum> DiscoverCards = new Dictionary<int, CardDB.CardIdEnum>();
+        public Dictionary<CardDB.CardIdEnum, int> turnDeck = new Dictionary<CardDB.CardIdEnum, int>();
+        private Dictionary<int, CardDB.CardIdEnum> deckCardForCost = new Dictionary<int, CardDB.CardIdEnum>();
         public bool noDuplicates = false;
 
         private int numTauntCards = -1;
@@ -88,7 +88,7 @@ namespace HREngine.Bots
         public int enemyHeroPowerCost = 2;
         public int numOptionsPlayedThisTurn = 0;
         public int numMinionsPlayedThisTurn = 0;
-        public CardDB.cardIDEnum OwnLastDiedMinion = CardDB.cardIDEnum.None;
+        public CardDB.CardIdEnum OwnLastDiedMinion = CardDB.CardIdEnum.None;
 
         public int cardsPlayedThisTurn = 0;
         public int ueberladung = 0;
@@ -372,10 +372,10 @@ namespace HREngine.Bots
             this.enemySecretCount = numEnemSec;
         }
         
-        public void updateTurnDeck(Dictionary<CardDB.cardIDEnum, int> deck, bool noDupl)
+        public void updateTurnDeck(Dictionary<CardDB.CardIdEnum, int> deck, bool noDupl)
         {
             this.turnDeck.Clear();
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> c in deck)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> c in deck)
             {
                 this.turnDeck.Add(c.Key, c.Value);
             }
@@ -383,19 +383,19 @@ namespace HREngine.Bots
             deckCardForCost.Clear();
         }
 
-        public CardDB.cardIDEnum getDeckCardsForCost(int cost)
+        public CardDB.CardIdEnum getDeckCardsForCost(int cost)
         {
             if (deckCardForCost.Count == 0)
             {
                 CardDB.Card c;
-                foreach (KeyValuePair<CardDB.cardIDEnum, int> cn in turnDeck)
+                foreach (KeyValuePair<CardDB.CardIdEnum, int> cn in turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cn.Key);
                     if (!deckCardForCost.ContainsKey(c.cost)) deckCardForCost.Add(c.cost, c.cardIDenum);
                 }
             }
             if (deckCardForCost.ContainsKey(cost)) return deckCardForCost[cost];
-            else return CardDB.cardIDEnum.None;
+            else return CardDB.CardIdEnum.None;
         }
 
         public int numDeckCardsByTag(GAME_TAGs tag)
@@ -413,7 +413,7 @@ namespace HREngine.Bots
             numWindfuryCards = 0;
 
             CardDB.Card c;
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> cn in turnDeck)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> cn in turnDeck)
             {
                 c = CardDB.Instance.getCardDataFromID(cn.Key);
                 if (c.tank) numTauntCards += cn.Value;
@@ -454,7 +454,7 @@ namespace HREngine.Bots
         
         public void updateHero(Weapon w, string heron, CardDB.Card ability, bool abrdy, int abCost, Minion hero, int enMaxMana = 10)
         {
-            if (w.name == CardDB.cardName.foolsbane) w.cantAttackHeroes = true;
+            if (w.name == CardDB.CardName.foolsbane) w.cantAttackHeroes = true;
 
             if (hero.own)
             {
@@ -466,7 +466,7 @@ namespace HREngine.Bots
                 if (this.ownHeroStartClass == TAG_CLASS.INVALID) this.ownHeroStartClass = hero.cardClass;
                 this.ownHero.poisonous = this.ownWeapon.poisonous;
                 this.ownHero.lifesteal = this.ownWeapon.lifesteal;
-                if (this.ownWeapon.name == CardDB.cardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
+                if (this.ownWeapon.name == CardDB.CardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
                 
                 this.heroAbility = ability;
                 this.OwnHeroPowerCost = abCost;
@@ -482,7 +482,7 @@ namespace HREngine.Bots
                 if (this.enemyHeroStartClass == TAG_CLASS.INVALID) this.enemyHeroStartClass = enemyHero.cardClass;
                 this.enemyHero.poisonous = this.enemyWeapon.poisonous;
                 this.enemyHero.lifesteal = this.enemyWeapon.lifesteal;
-                if (this.enemyWeapon.name == CardDB.cardName.gladiatorslongbow) this.enemyHero.immuneWhileAttacking = true;
+                if (this.enemyWeapon.name == CardDB.CardName.gladiatorslongbow) this.enemyHero.immuneWhileAttacking = true;
            
                 this.enemyAbility = ability;
                 this.enemyHeroPowerCost = abCost;
@@ -544,7 +544,7 @@ namespace HREngine.Bots
             }
         }
 
-        public void updateOwnLastDiedMinion(CardDB.cardIDEnum cid)
+        public void updateOwnLastDiedMinion(CardDB.CardIdEnum cid)
         {
             this.OwnLastDiedMinion = cid;
         }
@@ -578,7 +578,7 @@ namespace HREngine.Bots
 
             if (hc.card.Stealth) m.stealth = true;
 
-            if (m.name == CardDB.cardName.lightspawn && !m.silenced)
+            if (m.name == CardDB.CardName.lightspawn && !m.silenced)
             {
                 m.Attack = m.HealthPoints;
             }
@@ -597,7 +597,7 @@ namespace HREngine.Bots
             LogHelper.WriteCombatLog("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             LogHelper.WriteCombatLog("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
             string secs = "";
-            foreach (CardDB.cardIDEnum sec in this.ownSecretList)
+            foreach (CardDB.CardIdEnum sec in this.ownSecretList)
             {
                 secs += sec + " ";
             }
@@ -661,7 +661,7 @@ namespace HREngine.Bots
                 if (m.returnToHand >= 1) mini += " retHand(" + m.returnToHand + ")";
                 if (m.infest >= 1) mini += " infest(" + m.infest + ")";
                 if (m.deathrattle2 != null) mini += " dethrl(" + m.deathrattle2.cardIDenum + ")";
-                if (m.name == CardDB.cardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
+                if (m.name == CardDB.CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
                 {
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }
@@ -717,7 +717,7 @@ namespace HREngine.Bots
                 if (m.returnToHand >= 1) mini += " retHand(" + m.returnToHand + ")";
                 if (m.infest >= 1) mini += " infest(" + m.infest + ")";
                 if (m.deathrattle2 != null) mini += " dethrl(" + m.deathrattle2.cardIDenum + ")";
-                if (m.name == CardDB.cardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
+                if (m.name == CardDB.CardName.moatlurker && this.LurkersDB.ContainsKey(m.entitiyID))
                 {
                     mini += " respawn:" + this.LurkersDB[m.entitiyID].IDEnum + ":" + this.LurkersDB[m.entitiyID].own;
                 }
@@ -732,7 +732,7 @@ namespace HREngine.Bots
             EvenDeckHelper.EvenShamanCheck(turnDeck);
 
             string od = "od: ";
-            foreach (KeyValuePair<CardDB.cardIDEnum, int> e in this.turnDeck)
+            foreach (KeyValuePair<CardDB.CardIdEnum, int> e in this.turnDeck)
             {
                 od += e.Key + "," + e.Value + ";";
             }

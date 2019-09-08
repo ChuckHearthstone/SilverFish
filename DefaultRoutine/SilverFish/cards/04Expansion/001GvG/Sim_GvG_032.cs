@@ -19,8 +19,8 @@ namespace SilverFish.cards._04Expansion._001GvG
 
             if (choice == 2 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.drawACard(CardDB.cardName.unknown, true);
-                p.drawACard(CardDB.cardName.unknown, false);
+                p.drawACard(CardDB.CardName.unknown, true);
+                p.drawACard(CardDB.CardName.unknown, false);
             }
         }
 

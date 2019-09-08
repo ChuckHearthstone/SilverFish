@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.drawACard(CardDB.cardName.unknown, own.own);
+            p.drawACard(CardDB.CardName.unknown, own.own);
         }
 
     }

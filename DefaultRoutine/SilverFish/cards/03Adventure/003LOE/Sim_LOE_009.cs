@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 	{
 		//At the end of your turn, summon a 1/1 Scarab with Taunt.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOE_009t); //Scarab
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.LOE_009t); //Scarab
 
         public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
         {

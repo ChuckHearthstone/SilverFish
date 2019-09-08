@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Summon a 2/2 Demon.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_621_m4);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CFM_621_m4);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {

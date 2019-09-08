@@ -10,10 +10,10 @@ namespace SilverFish.cards._01Basic._07Shaman
     {
         //Hero Power: Summon a random Totem.
 
-        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_050);
-        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_009);
-        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_052);
-        CardDB.Card stoneclaw = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_051);
+        CardDB.Card searing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_050);
+        CardDB.Card healing = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.NEW1_009);
+        CardDB.Card wrathofair = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_052);
+        CardDB.Card stoneclaw = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_051);
 
         /// <summary>
         /// "LocStringEnUs": "<b>Hero Power</b>\nSummon a random Totem.",
@@ -33,10 +33,10 @@ namespace SilverFish.cards._01Basic._07Shaman
             {
                 switch (m.name)
                 {
-                    case CardDB.cardName.searingtotem: otherTotems++; continue;
-                    case CardDB.cardName.stoneclawtotem: otherTotems++; continue;
-                    case CardDB.cardName.healingtotem: otherTotems++; continue;
-                    case CardDB.cardName.wrathofairtotem: wrath = true; continue;
+                    case CardDB.CardName.searingtotem: otherTotems++; continue;
+                    case CardDB.CardName.stoneclawtotem: otherTotems++; continue;
+                    case CardDB.CardName.healingtotem: otherTotems++; continue;
+                    case CardDB.CardName.wrathofairtotem: wrath = true; continue;
                 }
             }
             if (p.isLethalCheck)

@@ -41,7 +41,7 @@ namespace HREngine.Bots
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
                     int cardCost = hc.card.getManaCost(p, hc.manacost);
-                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL) ||
+                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.CardType.SPELL) ||
                         (p.nextMurlocThisTurnCostHealth && (TAG_RACE) hc.card.race == TAG_RACE.MURLOC))
                     {
                         if (p.ownHero.HealthPoints > cardCost || p.ownHero.immune)
@@ -99,7 +99,7 @@ namespace HREngine.Bots
                         }
 
                         if (p.ownMinions.Count > 6 &&
-                            (c.type == CardDB.cardtype.MOB || hc.card.type == CardDB.cardtype.MOB))
+                            (c.type == CardDB.CardType.MOB || hc.card.type == CardDB.CardType.MOB))
                         {
                             continue;
                         }
@@ -111,7 +111,7 @@ namespace HREngine.Bots
 
                         int cardPlayPenalty = 0;
                         CardDB.Card card;
-                        if (c.type == CardDB.cardtype.MOB)
+                        if (c.type == CardDB.CardType.MOB)
                         {
                             card = c;
                         }
@@ -321,7 +321,7 @@ namespace HREngine.Bots
             {
                 if (m.Attack > strongestAttack) strongestAttack = m.Attack;
                 if (m.taunt) return true;
-                if (m.name == CardDB.cardName.dancingswords || m.name == CardDB.cardName.deathlord) return true;
+                if (m.name == CardDB.CardName.dancingswords || m.name == CardDB.CardName.deathlord) return true;
             }
 
             int haspets = 0;
@@ -330,45 +330,45 @@ namespace HREngine.Bots
             bool spawnminions = false;
             foreach (Minion m in ownm)
             {
-                if (m.name == CardDB.cardName.cultmaster) return true;
-                if (m.name == CardDB.cardName.knifejuggler) hasJuggler = true;
+                if (m.name == CardDB.CardName.cultmaster) return true;
+                if (m.name == CardDB.CardName.knifejuggler) hasJuggler = true;
                 if (m.Ready && m.Attack >= 1)
                 {
                     if (m.AdjacentAttack >= 1) return true;//wolphalfa or flametongue is in play
-                    if (m.name == CardDB.cardName.northshirecleric) return true;
-                    if (m.name == CardDB.cardName.armorsmith) return true;
-                    if (m.name == CardDB.cardName.loothoarder) return true;
+                    if (m.name == CardDB.CardName.northshirecleric) return true;
+                    if (m.name == CardDB.CardName.armorsmith) return true;
+                    if (m.name == CardDB.CardName.loothoarder) return true;
                     //if (m.name == CardDB.cardName.madscientist) return true; // dont change the tactic
-                    if (m.name == CardDB.cardName.sylvanaswindrunner) return true;
-                    if (m.name == CardDB.cardName.darkcultist) return true;
+                    if (m.name == CardDB.CardName.sylvanaswindrunner) return true;
+                    if (m.name == CardDB.CardName.darkcultist) return true;
                     if (m.ownBlessingOfWisdom >= 1) return true;
                     if (m.ownPowerWordGlory >= 1) return true;
-                    if (m.name == CardDB.cardName.acolyteofpain) return true;
-                    if (m.name == CardDB.cardName.frothingberserker) return true;
-                    if (m.name == CardDB.cardName.flesheatingghoul) return true;
-                    if (m.name == CardDB.cardName.bloodmagethalnos) return true;
-                    if (m.name == CardDB.cardName.webspinner) return true;
-                    if (m.name == CardDB.cardName.tirionfordring) return true;
-                    if (m.name == CardDB.cardName.baronrivendare) return true;
+                    if (m.name == CardDB.CardName.acolyteofpain) return true;
+                    if (m.name == CardDB.CardName.frothingberserker) return true;
+                    if (m.name == CardDB.CardName.flesheatingghoul) return true;
+                    if (m.name == CardDB.CardName.bloodmagethalnos) return true;
+                    if (m.name == CardDB.CardName.webspinner) return true;
+                    if (m.name == CardDB.CardName.tirionfordring) return true;
+                    if (m.name == CardDB.CardName.baronrivendare) return true;
 
 
                     //if (m.name == CardDB.cardName.manawraith) return true;
                     //buffing minions (attack with them last)
-                    if (m.name == CardDB.cardName.raidleader 
-                        || m.name == CardDB.cardName.stormwindchampion 
-                        || m.name == CardDB.cardName.timberwolf 
-                        || m.name == CardDB.cardName.southseacaptain 
-                        || m.name == CardDB.cardName.murlocwarleader 
-                        || m.name == CardDB.cardName.grimscaleoracle 
-                        || m.name == CardDB.cardName.leokk 
-                        || m.name == CardDB.cardName.fallenhero 
-                        || m.name == CardDB.cardName.warhorsetrainer)
+                    if (m.name == CardDB.CardName.raidleader 
+                        || m.name == CardDB.CardName.stormwindchampion 
+                        || m.name == CardDB.CardName.timberwolf 
+                        || m.name == CardDB.CardName.southseacaptain 
+                        || m.name == CardDB.CardName.murlocwarleader 
+                        || m.name == CardDB.CardName.grimscaleoracle 
+                        || m.name == CardDB.CardName.leokk 
+                        || m.name == CardDB.CardName.fallenhero 
+                        || m.name == CardDB.CardName.warhorsetrainer)
                         return true;
 
 
-                    if (m.name == CardDB.cardName.scavenginghyena) hashyena = true;
+                    if (m.name == CardDB.CardName.scavenginghyena) hashyena = true;
                     if (m.handcard.card.race == 20) haspets++;
-                    if (m.name == CardDB.cardName.harvestgolem || m.name == CardDB.cardName.hauntedcreeper || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.ancestralspirit >= 1 || m.desperatestand  >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.name == CardDB.cardName.nerubianegg || m.name == CardDB.cardName.savannahhighmane || m.name == CardDB.cardName.sludgebelcher || m.name == CardDB.cardName.cairnebloodhoof || m.name == CardDB.cardName.feugen || m.name == CardDB.cardName.stalagg || m.name == CardDB.cardName.thebeast) spawnminions = true;
+                    if (m.name == CardDB.CardName.harvestgolem || m.name == CardDB.CardName.hauntedcreeper || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.ancestralspirit >= 1 || m.desperatestand  >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.name == CardDB.CardName.nerubianegg || m.name == CardDB.CardName.savannahhighmane || m.name == CardDB.CardName.sludgebelcher || m.name == CardDB.CardName.cairnebloodhoof || m.name == CardDB.CardName.feugen || m.name == CardDB.CardName.stalagg || m.name == CardDB.CardName.thebeast) spawnminions = true;
                     
                 }
             }

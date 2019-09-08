@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //抉择：使你的所有其他随从获得+1/+1；或者召唤两个2/2的树人。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_573t); //special treant
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_573t); //special treant
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{

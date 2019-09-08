@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         // 战吼：召唤两个1/1的融合怪。
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DAL_087t); //1/1 融合怪
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.DAL_087t); //1/1 融合怪
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

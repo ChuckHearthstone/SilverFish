@@ -19,11 +19,11 @@ namespace HREngine.Bots
             }
             else
             {
-                if (m.handcard.card.type == CardDB.cardtype.MOB && p.ownMinions.Count == 0) return 0;
+                if (m.handcard.card.type == CardDB.CardType.MOB && p.ownMinions.Count == 0) return 0;
                 //allow it if you have biggamehunter
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.name == CardDB.cardName.biggamehunter || hc.card.name == CardDB.cardName.shadowworddeath) return 0;
+                    if (hc.card.name == CardDB.CardName.biggamehunter || hc.card.name == CardDB.CardName.shadowworddeath) return 0;
                 }
                 return 500;
             }

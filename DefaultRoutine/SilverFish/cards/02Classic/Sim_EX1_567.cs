@@ -6,7 +6,7 @@ namespace SilverFish.cards._02Classic
 	{
 
 //    windzorn/, überladung:/ (2)
-        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_567);
+        CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_567);
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

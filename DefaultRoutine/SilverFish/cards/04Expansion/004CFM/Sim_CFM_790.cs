@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 	{
 		// Taunt. Battlecry: Your opponent summons a random minion from their hand.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_066); //acidicswampooze
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_066); //acidicswampooze
 
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

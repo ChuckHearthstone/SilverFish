@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             if (p.ownMaxMana >= 6)
             {
                 int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
-                CardDB.Card kid = CardDB.Instance.getCardDataFromID((p.OwnLastDiedMinion == CardDB.cardIDEnum.None) ? CardDB.cardIDEnum.EX1_345t : p.OwnLastDiedMinion); // Shadow of Nothing 0:1 or ownMinion
+                CardDB.Card kid = CardDB.Instance.getCardDataFromID((p.OwnLastDiedMinion == CardDB.CardIdEnum.None) ? CardDB.CardIdEnum.EX1_345t : p.OwnLastDiedMinion); // Shadow of Nothing 0:1 or ownMinion
                 p.CallKid(kid, pos, ownplay, false);
             }
         }

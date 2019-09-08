@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._001GvG
     {
 
         //   Battlecry: Equip a random weapon for each player.
-        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_080);
+        CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_080);
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {

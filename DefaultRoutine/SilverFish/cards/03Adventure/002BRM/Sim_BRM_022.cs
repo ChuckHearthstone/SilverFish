@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Whenever this minion takes damage, summon a 2/1 Whelp.
 
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRM_022t); //Black Whelp
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRM_022t); //Black Whelp
 
         public override void onMinionGotDmgTrigger(Playfield p, Minion m, int anzOwnMinionsGotDmg, int anzEnemyMinionsGotDmg, int anzOwnHeroGotDmg, int anzEnemyHeroGotDmg)
         {

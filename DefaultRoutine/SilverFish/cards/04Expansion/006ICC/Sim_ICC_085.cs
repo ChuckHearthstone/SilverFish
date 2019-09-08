@@ -6,18 +6,18 @@ namespace SilverFish.cards._04Expansion._006ICC
     {
         // Deal 5 damage. Draw 5 cards. Gain 5 Armor. Summon a 5/5 Ghoul.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_085t); //Ghoul Infestor
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.ICC_085t); //Ghoul Infestor
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.minionGetDamageOrHeal(target, dmg);
 
-            p.drawACard(CardDB.cardName.unknown, ownplay);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
 
             p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 5);
 

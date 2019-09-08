@@ -8,7 +8,7 @@ namespace SilverFish.cards._01Basic
 //    kampfschrei:/ zieht eine karte.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            p.drawACard(CardDB.cardName.unknown, own.own);
+            p.drawACard(CardDB.CardName.unknown, own.own);
 		}
 
 

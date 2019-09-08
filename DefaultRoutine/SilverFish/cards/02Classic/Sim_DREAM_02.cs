@@ -12,11 +12,11 @@ namespace SilverFish.cards._02Classic
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             foreach (Minion m in p.ownMinions)
             {
-                if (m.name != CardDB.cardName.ysera) p.minionGetDamageOrHeal(m, dmg);
+                if (m.name != CardDB.CardName.ysera) p.minionGetDamageOrHeal(m, dmg);
             }
             foreach (Minion m in p.enemyMinions)
             {
-                if (m.name != CardDB.cardName.ysera) p.minionGetDamageOrHeal(m, dmg);
+                if (m.name != CardDB.CardName.ysera) p.minionGetDamageOrHeal(m, dmg);
             }
             p.minionGetDamageOrHeal(p.ownHero, dmg);
             p.minionGetDamageOrHeal(p.enemyHero, dmg);

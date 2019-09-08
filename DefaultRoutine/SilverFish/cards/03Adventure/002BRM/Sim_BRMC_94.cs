@@ -6,7 +6,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 	{
 		// Deathrattle:: Your Hero Power becomes 'Deal 8 damage to a random enemy'.
 		
-        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRMC_94);
+        CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.BRMC_94);
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
@@ -15,7 +15,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.BRM_027p, m.own); // DIE, INSECT!
+            p.setNewHeroPower(CardDB.CardIdEnum.BRM_027p, m.own); // DIE, INSECT!
         }
     }
 }

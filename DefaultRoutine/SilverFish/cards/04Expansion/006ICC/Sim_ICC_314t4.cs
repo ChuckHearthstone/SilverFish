@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 if (p.enemyDeckSize > 0)
                 {
-                    p.drawACard(CardDB.cardName.unknown, ownplay, true);
+                    p.drawACard(CardDB.CardName.unknown, ownplay, true);
                     p.enemyDeckSize--;
                 }
             }
@@ -20,7 +20,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 if (p.ownDeckSize > 0)
                 {
-                    p.drawACard(CardDB.cardName.unknown, ownplay, true);
+                    p.drawACard(CardDB.CardName.unknown, ownplay, true);
                     p.ownDeckSize--;
                 }
             }

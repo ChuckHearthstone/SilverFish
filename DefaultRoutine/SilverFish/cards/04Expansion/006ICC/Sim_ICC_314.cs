@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 if (triggerEffectMinion.own)
                 {
-                    p.drawACard(CardDB.cardName.unknown, triggerEffectMinion.own, true);
+                    p.drawACard(CardDB.CardName.unknown, triggerEffectMinion.own, true);
                 }
                 else
                 {

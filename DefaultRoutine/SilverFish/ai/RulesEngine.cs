@@ -94,23 +94,23 @@ namespace HREngine.Bots
     public class RulesEngine
     {
         Dictionary<int, Rule> heapOfRules = new Dictionary<int, Rule>();
-        Dictionary<int, List<CardDB.cardIDEnum>> RuleCardIdsPlay = new Dictionary<int, List<CardDB.cardIDEnum>>(); 
-        Dictionary<int, List<CardDB.cardIDEnum>> RuleCardIdsAttack = new Dictionary<int, List<CardDB.cardIDEnum>>(); 
-        Dictionary<int, List<CardDB.cardIDEnum>> RuleCardIdsHand = new Dictionary<int, List<CardDB.cardIDEnum>>(); 
-        Dictionary<int, List<CardDB.cardIDEnum>> RuleCardIdsOwnBoard = new Dictionary<int, List<CardDB.cardIDEnum>>(); 
-        Dictionary<int, List<CardDB.cardIDEnum>> RuleCardIdsEnemyBoard = new Dictionary<int, List<CardDB.cardIDEnum>>(); 
+        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsPlay = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
+        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsAttack = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
+        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsHand = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
+        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsOwnBoard = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
+        Dictionary<int, List<CardDB.CardIdEnum>> RuleCardIdsEnemyBoard = new Dictionary<int, List<CardDB.CardIdEnum>>(); 
         Dictionary<int, int> BoardStateRules = new Dictionary<int, int>(); 
         Dictionary<int, int> BoardStateRulesGame = new Dictionary<int, int>(); 
         Dictionary<int, int> BoardStateRulesTurn = new Dictionary<int, int>(); 
-        Dictionary<CardDB.cardIDEnum, List<int>> CardIdRules = new Dictionary<CardDB.cardIDEnum, List<int>>();
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> CardIdRulesGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> CardIdRulesPlayGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> CardIdRulesHandGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> CardIdRulesOwnBoardGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> CardIdRulesEnemyBoardGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> AttackerIdRulesGame = new Dictionary<CardDB.cardIDEnum, Dictionary<int, int>>(); 
-        Dictionary<CardDB.cardIDEnum, List<int>> CardIdRulesTurnPlay = new Dictionary<CardDB.cardIDEnum, List<int>>(); 
-        Dictionary<CardDB.cardIDEnum, List<int>> CardIdRulesTurnHand = new Dictionary<CardDB.cardIDEnum, List<int>>();
+        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRules = new Dictionary<CardDB.CardIdEnum, List<int>>();
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesPlayGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesHandGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesOwnBoardGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> CardIdRulesEnemyBoardGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> AttackerIdRulesGame = new Dictionary<CardDB.CardIdEnum, Dictionary<int, int>>(); 
+        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRulesTurnPlay = new Dictionary<CardDB.CardIdEnum, List<int>>(); 
+        Dictionary<CardDB.CardIdEnum, List<int>> CardIdRulesTurnHand = new Dictionary<CardDB.CardIdEnum, List<int>>();
         Dictionary<TAG_RACE, List<int>> hcRaceRulesGame = new Dictionary<TAG_RACE, List<int>>();
         Dictionary<TAG_RACE, List<int>> hcRaceRulesTurn = new Dictionary<TAG_RACE, List<int>>();
         List<int> pfStateRulesGame = new List<int>();
@@ -122,7 +122,7 @@ namespace HREngine.Bots
         public bool mulliganRulesLoaded = false;
         Dictionary<string, string> MulliganRules = new Dictionary<string, string>();
         Dictionary<string, Dictionary<string, string>> MulliganRulesDB = new Dictionary<string, Dictionary<string, string>>();
-        Dictionary<CardDB.cardIDEnum, string> MulliganRulesManual = new Dictionary<CardDB.cardIDEnum, string>();
+        Dictionary<CardDB.CardIdEnum, string> MulliganRulesManual = new Dictionary<CardDB.CardIdEnum, string>();
         Condition condTmp;
         string condErr;
         Minion target;
@@ -411,7 +411,7 @@ namespace HREngine.Bots
             public param parameter = param.None;
             public int num = int.MinValue;
             public TAG_CLASS hClass = TAG_CLASS.INVALID;
-            public CardDB.cardIDEnum cardID = CardDB.cardIDEnum.None;
+            public CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
             public int numCards = 0;
             public int bonus = 0;
             public int orCondNum = -1;
@@ -425,7 +425,7 @@ namespace HREngine.Bots
                 this.num = pnum;
                 this.parentRule = pRule;
             }
-            public Condition(param paramtr, CardDB.cardIDEnum cID, string pRule)
+            public Condition(param paramtr, CardDB.CardIdEnum cID, string pRule)
             {
                 this.parameter = paramtr;
                 this.cardID = cID;
@@ -450,11 +450,11 @@ namespace HREngine.Bots
 
         public class actUnit
         {
-            public CardDB.cardIDEnum cardID = CardDB.cardIDEnum.None;
+            public CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
             public Action action = null;
             public int entity = -1;
 
-            public actUnit(CardDB.cardIDEnum cid, Action a, int ent)
+            public actUnit(CardDB.CardIdEnum cid, Action a, int ent)
             {
                 this.cardID = cid;
                 this.action = a;
@@ -487,14 +487,14 @@ namespace HREngine.Bots
             int weight = 0;
             List<int> possibleRules = new List<int>();
             possibleRules.AddRange(this.BoardStateRulesTurn.Keys);
-            Dictionary<CardDB.cardIDEnum, int> handCardsWRule = new Dictionary<CardDB.cardIDEnum, int>();
-            Dictionary<CardDB.cardIDEnum, List<actUnit>> playedCardsWRule = new Dictionary<CardDB.cardIDEnum, List<actUnit>>();
-            Dictionary<CardDB.cardIDEnum, int> playedCardsWRulePen = new Dictionary<CardDB.cardIDEnum, int>();
-            Dictionary<CardDB.cardIDEnum, List<actUnit>> attackersWRule = new Dictionary<CardDB.cardIDEnum, List<actUnit>>();
-            Dictionary<CardDB.cardIDEnum, int> attackersWRulePen = new Dictionary<CardDB.cardIDEnum, int>();
+            Dictionary<CardDB.CardIdEnum, int> handCardsWRule = new Dictionary<CardDB.CardIdEnum, int>();
+            Dictionary<CardDB.CardIdEnum, List<actUnit>> playedCardsWRule = new Dictionary<CardDB.CardIdEnum, List<actUnit>>();
+            Dictionary<CardDB.CardIdEnum, int> playedCardsWRulePen = new Dictionary<CardDB.CardIdEnum, int>();
+            Dictionary<CardDB.CardIdEnum, List<actUnit>> attackersWRule = new Dictionary<CardDB.CardIdEnum, List<actUnit>>();
+            Dictionary<CardDB.CardIdEnum, int> attackersWRulePen = new Dictionary<CardDB.CardIdEnum, int>();
             foreach (Action a in p.playactions)
             {
-                CardDB.cardIDEnum cardID = CardDB.cardIDEnum.None;
+                CardDB.CardIdEnum cardID = CardDB.CardIdEnum.None;
                 switch (a.actionType)
                 {
                     case actionEnum.playcard:
@@ -731,9 +731,9 @@ namespace HREngine.Bots
             }
         }
 
-        private void addCardIdRulesGame(Dictionary<int, List<CardDB.cardIDEnum>> baseDct, Dictionary<CardDB.cardIDEnum, Dictionary<int, int>> targetDct, int ruleNum)
+        private void addCardIdRulesGame(Dictionary<int, List<CardDB.CardIdEnum>> baseDct, Dictionary<CardDB.CardIdEnum, Dictionary<int, int>> targetDct, int ruleNum)
         {
-            foreach (CardDB.cardIDEnum cid in baseDct[ruleNum])
+            foreach (CardDB.CardIdEnum cid in baseDct[ruleNum])
             {
                 if (targetDct.ContainsKey(cid))
                 {
@@ -747,7 +747,7 @@ namespace HREngine.Bots
                 else targetDct.Add(cid, new Dictionary<int, int>() { { ruleNum, 0 } });
             }
 
-            foreach (CardDB.cardIDEnum cid in baseDct[ruleNum])
+            foreach (CardDB.CardIdEnum cid in baseDct[ruleNum])
             {
                 if (CardIdRulesGame.ContainsKey(cid))
                 {
@@ -764,7 +764,7 @@ namespace HREngine.Bots
 
         private void addAttackerIdRulesGame(int ruleNum)
         {
-            foreach (CardDB.cardIDEnum cid in RuleCardIdsAttack[ruleNum])
+            foreach (CardDB.CardIdEnum cid in RuleCardIdsAttack[ruleNum])
             {
                 if (AttackerIdRulesGame.ContainsKey(cid))
                 {
@@ -1151,11 +1151,11 @@ namespace HREngine.Bots
             {
                 bool stateRule = false;
                 bool playRule = false;
-                List<CardDB.cardIDEnum> IDsListPlay = new List<CardDB.cardIDEnum>();
-                List<CardDB.cardIDEnum> IDsListHand = new List<CardDB.cardIDEnum>();
-                List<CardDB.cardIDEnum> IDsListOB = new List<CardDB.cardIDEnum>();
-                List<CardDB.cardIDEnum> IDsListEB = new List<CardDB.cardIDEnum>();
-                List<CardDB.cardIDEnum> IDsListAttack = new List<CardDB.cardIDEnum>();
+                List<CardDB.CardIdEnum> IDsListPlay = new List<CardDB.CardIdEnum>();
+                List<CardDB.CardIdEnum> IDsListHand = new List<CardDB.CardIdEnum>();
+                List<CardDB.CardIdEnum> IDsListOB = new List<CardDB.CardIdEnum>();
+                List<CardDB.CardIdEnum> IDsListEB = new List<CardDB.CardIdEnum>();
+                List<CardDB.CardIdEnum> IDsListAttack = new List<CardDB.CardIdEnum>();
                 foreach (Condition cond in getAllCondList(oneRule.Value.conditions))
                 {
                     switch (cond.parameter)
@@ -1556,8 +1556,8 @@ namespace HREngine.Bots
                     }
                     break;
                 case 1:
-                    CardDB.cardIDEnum cardId = CardDB.Instance.cardIdstringToEnum(pval);
-                    if (cardId == CardDB.cardIDEnum.None)
+                    CardDB.CardIdEnum cardId = CardDB.Instance.cardIdstringToEnum(pval);
+                    if (cardId == CardDB.CardIdEnum.None)
                     {
                         condErr = "Wrong CardID: ";
                         returnRes = false;
@@ -1591,14 +1591,14 @@ namespace HREngine.Bots
                     getSinglecond(extraParam[i], out tmp, out parameter);
                     
                     int pvalInt = 0;
-                    CardDB.cardIDEnum pvalCardId = CardDB.cardIDEnum.None;
+                    CardDB.CardIdEnum pvalCardId = CardDB.CardIdEnum.None;
                     try
                     {
                         switch (tmp[0])
                         {
                             case "tgt":
                                 pvalCardId = CardDB.Instance.cardIdstringToEnum(tmp[1]);
-                                if (pvalCardId == CardDB.cardIDEnum.None)
+                                if (pvalCardId == CardDB.CardIdEnum.None)
                                 {
                                     condErr = "Wrong CardID: ";
                                     returnRes = false;
@@ -1826,42 +1826,42 @@ namespace HREngine.Bots
 	                return false;
                 case param.ohc_minions_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_minions_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_minions_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_minions_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_spells_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_spells_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_spells_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_spells_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_secrets_equal:
@@ -1886,22 +1886,22 @@ namespace HREngine.Bots
                     return false;
                 case param.ohc_weapons_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_weapons_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_weapons_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_weapons_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.cardtype.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_murlocs_equal:
@@ -2473,42 +2473,42 @@ namespace HREngine.Bots
                     return false;
                 case param.omc_shr_equal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.omc_shr_notequal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.omc_shr_greater:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.omc_shr_less:
                     tmp_counter = 0;
-                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.ownMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.emc_shr_equal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.emc_shr_notequal:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.emc_shr_greater:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.emc_shr_less:
                     tmp_counter = 0;
-                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.cardName.silverhandrecruit) tmp_counter++;
+                    foreach (Minion m in p.enemyMinions) if (m.name == CardDB.CardName.silverhandrecruit) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.omc_undamaged_equal:
@@ -2778,14 +2778,14 @@ namespace HREngine.Bots
                     if (p.enemyHeroStartClass != cond.hClass) return true;
                     return false;
                 case param.tgt_equal:
-                    if (a.target!= null && (a.target.handcard.card.cardIDenum == cond.cardID || (a.target.isHero && cond.cardID == CardDB.cardIDEnum.hero))) return true;
+                    if (a.target!= null && (a.target.handcard.card.cardIDenum == cond.cardID || (a.target.isHero && cond.cardID == CardDB.CardIdEnum.hero))) return true;
                     return false;
                 case param.tgt_notequal:
                     if (a.target != null)
                     {
                         if (a.target.isHero)
                         {
-                            if (cond.cardID != CardDB.cardIDEnum.hero) return true;
+                            if (cond.cardID != CardDB.CardIdEnum.hero) return true;
                             else return false;
                         }
                         else if (a.target.handcard.card.cardIDenum != cond.cardID) return true;

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		{
             own.cantAttackHeroes = true;
 
-            p.drawACard(CardDB.cardIDEnum.TRL_348t, own.own, true);
+            p.drawACard(CardDB.CardIdEnum.TRL_348t, own.own, true);
 		}
 
         public override void onTurnStartTrigger(Playfield p, Minion triggerEffectMinion, bool turnStartOfOwner)

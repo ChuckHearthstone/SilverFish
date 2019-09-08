@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//战吼：随机召唤一个法力值消耗为（2）点的随从。
 		
-		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_121); // 2/2
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.CS2_121); // 2/2
 				
 		public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {

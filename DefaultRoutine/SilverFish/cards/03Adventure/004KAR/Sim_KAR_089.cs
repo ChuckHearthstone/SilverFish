@@ -11,7 +11,7 @@ namespace SilverFish.cards._03Adventure._004KAR
             if (own == null) return false;
             if (checkBonus) return false;
 			
-            p.drawACard(CardDB.cardName.unknown, own.own);
+            p.drawACard(CardDB.CardName.unknown, own.own);
             return false;
         }
     }

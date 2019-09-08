@@ -12,7 +12,7 @@ namespace SilverFish.cards._03Adventure._002BRM
             p.minionGetDamageOrHeal(target, dmg);
 			
 			int cardsCount = (ownplay) ? p.owncards.Count : p.enemyAnzCards;
-            if (cardsCount <= 0) p.drawACard(CardDB.cardName.unknown, ownplay);
+            if (cardsCount <= 0) p.drawACard(CardDB.CardName.unknown, ownplay);
 		}
 	}
 }

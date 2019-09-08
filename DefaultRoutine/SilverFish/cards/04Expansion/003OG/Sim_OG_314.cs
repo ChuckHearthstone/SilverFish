@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._003OG
 	{
 		//Deal 1 damage to a minion. If it survives, summon a 2/2 Slime.
 
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.OG_249a);
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.OG_249a);
 		
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{

@@ -9,7 +9,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.cardtype.SPELL)
+            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
             {
                 Minion target = (ownplay) ? p.enemyHero : p.ownHero;
                 p.minionGetDamageOrHeal(target, 1);

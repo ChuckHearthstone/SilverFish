@@ -5,8 +5,8 @@ namespace SilverFish.cards._02Classic
 {
 	class Sim_EX1_083 : SimTemplate //tinkmasteroverspark
 	{
-        CardDB.Card card1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_tk29); // rex
-        CardDB.Card card2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_tk28); // squirrel
+        CardDB.Card card1 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_tk29); // rex
+        CardDB.Card card2 = CardDB.Instance.getCardDataFromID(CardDB.CardIdEnum.EX1_tk28); // squirrel
         //todo better
 //    kampfschrei:/ verwandelt einen anderen zufälligen diener in einen teufelssaurier (5/5) oder ein eichhörnchen (1/1).
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)

@@ -13,7 +13,7 @@ namespace SilverFish.cards._02Classic
             //this.owncarddraw++;
 
             p.minionGetDamageOrHeal(target, damage);
-            p.drawACard(CardDB.cardName.unknown, ownplay);
+            p.drawACard(CardDB.CardName.unknown, ownplay);
         }
 
 	}
