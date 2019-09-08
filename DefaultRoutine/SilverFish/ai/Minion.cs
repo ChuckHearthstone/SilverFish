@@ -587,16 +587,25 @@ namespace HREngine.Bots
 
         public void becomeSilence(Playfield p)
         {
-            if (this.untouchable) return;
+            if (this.untouchable)
+            {
+                return;
+            }
             if (own)
             {
                 p.spellpower -= spellpower;
-                if (this.taunt) p.anzOwnTaunt--;
+                if (this.taunt)
+                {
+                    p.anzOwnTaunt--;
+                }
             }
             else
             {
                 p.enemyspellpower -= spellpower;
-                if (this.taunt) p.anzEnemyTaunt--;
+                if (this.taunt)
+                {
+                    p.anzEnemyTaunt--;
+                }
             }
             spellpower = 0;
 
@@ -618,7 +627,10 @@ namespace HREngine.Bots
             returnToHand = 0;
             infest = 0;
             deathrattle2 = null;
-            if (this.name == CardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID)) p.LurkersDB.Remove(this.entitiyID);
+            if (this.name == CardName.moatlurker && p.LurkersDB.ContainsKey(this.entitiyID))
+            {
+                p.LurkersDB.Remove(this.entitiyID);
+            }
 
             ownBlessingOfWisdom = 0;
             enemyBlessingOfWisdom = 0;
