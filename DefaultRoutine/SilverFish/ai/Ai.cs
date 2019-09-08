@@ -32,7 +32,7 @@ namespace HREngine.Bots
 
         public string currentCalculatedBoard = "1";
 
-        PenalityManager penman = PenalityManager.Instance;
+        PenaltyManager penman = PenaltyManager.Instance;
         Settings settings = Settings.Instance;
 
         List<Playfield> posmoves = new List<Playfield>(7000);

@@ -227,7 +227,7 @@
     <Compile Include="ai\Mulligan.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\CardNotImplementedHelper.cs" />
-    <Compile Include="ai\PenalityManager.cs" />
+    <Compile Include="ai\PenaltyManager.cs" />
     <Compile Include="ai\PenTemplate.cs" />
     <Compile Include="ai\Playfield.cs" />
     <Compile Include="ai\Probabilitymaker.cs" />

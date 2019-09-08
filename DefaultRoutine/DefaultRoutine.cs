@@ -207,7 +207,7 @@ def Execute():
             {
                 Hrtprozis.Instance.setInstances();
                 ComboBreaker.Instance.setInstances();
-                PenalityManager.Instance.setInstances();
+                PenaltyManager.Instance.setInstances();
             }
             behave = sf.getBehaviorByName(DefaultRoutineSettings.Instance.DefaultBehavior);
             foreach (var tuple in _mulliganRules)

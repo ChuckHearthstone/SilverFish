@@ -24,7 +24,7 @@ namespace SilverFish.Test
             {
                 Hrtprozis.Instance.setInstances();
                 ComboBreaker.Instance.setInstances();
-                PenalityManager.Instance.setInstances();
+                PenaltyManager.Instance.setInstances();
             }
 
             //-mode: 0-all, 1-lethalcheck, 2-normal

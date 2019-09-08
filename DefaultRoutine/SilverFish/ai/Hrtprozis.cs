@@ -117,7 +117,7 @@ namespace HREngine.Bots
         public int ownElementalsHaveLifesteal = 0;
         private int ownPlayerController = 0;
         
-        public PenalityManager penman;
+        public PenaltyManager penman;
         public Settings settings;
         Helpfunctions help;
         CardDB cdb;
@@ -135,7 +135,7 @@ namespace HREngine.Bots
         public void setInstances()
         {
             help = Helpfunctions.Instance;
-            penman = PenalityManager.Instance;
+            penman = PenaltyManager.Instance;
             settings = Settings.Instance;
             cdb = CardDB.Instance;
         }

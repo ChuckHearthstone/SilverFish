@@ -1129,8 +1129,8 @@ namespace HREngine.Bots
             m.lifesteal = hc.card.lifesteal;
             m.stealth = hc.card.Stealth;
 
-            if (own) m.synergy = PenalityManager.Instance.getClassRacePriorityPenality(heroNametoClass(this.ownheroname), (TAG_RACE)hc.card.race);
-            else m.synergy = PenalityManager.Instance.getClassRacePriorityPenality(heroNametoClass(this.enemyheroname), (TAG_RACE)hc.card.race);
+            if (own) m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(heroNametoClass(this.ownheroname), (TAG_RACE)hc.card.race);
+            else m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(heroNametoClass(this.enemyheroname), (TAG_RACE)hc.card.race);
             if (m.synergy > 0 && hc.card.Stealth) m.synergy++;
 
             m.updateReadyness();

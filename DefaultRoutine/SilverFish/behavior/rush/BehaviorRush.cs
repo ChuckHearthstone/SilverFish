@@ -5,7 +5,7 @@
         public override string BehaviorName() { return "Rush"; }
 
 
-        PenalityManager penman = PenalityManager.Instance;
+        PenaltyManager penman = PenaltyManager.Instance;
 
         public override float getPlayfieldValue(Playfield p)
         {

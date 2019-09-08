@@ -797,13 +797,13 @@ namespace HREngine.Bots
                     if (entitiy.GetTag(GAME_TAG.CONTROLLER) == this.ownPlayerController) 
                     {
                         m.own = true;                        
-                        m.synergy = PenalityManager.Instance.getClassRacePriorityPenality(this.ownHero.cardClass, (TAG_RACE)c.race);
+                        m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.ownHero.cardClass, (TAG_RACE)c.race);
                         this.ownMinions.Add(m);
                     }
                     else
                     {
                         m.own = false;
-                        m.synergy = PenalityManager.Instance.getClassRacePriorityPenality(this.enemyHero.cardClass, (TAG_RACE)c.race);
+                        m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.enemyHero.cardClass, (TAG_RACE)c.race);
                         this.enemyMinions.Add(m);
                     }
                 }

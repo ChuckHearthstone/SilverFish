@@ -889,7 +889,7 @@ namespace HREngine.Bots
 
         private void setAdditionalData()
         {
-            PenalityManager pen = PenalityManager.Instance;
+            PenaltyManager pen = PenaltyManager.Instance;
 
             foreach (Card c in this.cardlist)
             {

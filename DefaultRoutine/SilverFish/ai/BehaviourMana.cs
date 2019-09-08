@@ -4,7 +4,7 @@
 
     public class BehaviorMana : Behavior
     {
-        PenalityManager penman = PenalityManager.Instance;
+        PenaltyManager penman = PenaltyManager.Instance;
 
         public override string BehaviorName() { return "Mana"; }
 

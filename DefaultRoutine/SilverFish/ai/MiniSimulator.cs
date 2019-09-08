@@ -50,7 +50,7 @@ namespace HREngine.Bots
 
         Movegenerator movegen = Movegenerator.Instance;
 
-        PenalityManager pen = PenalityManager.Instance;
+        PenaltyManager pen = PenaltyManager.Instance;
 
         public MiniSimulator()
         {

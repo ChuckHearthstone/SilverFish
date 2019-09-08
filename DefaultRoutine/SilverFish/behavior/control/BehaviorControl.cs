@@ -8,7 +8,7 @@ namespace HREngine.Bots
         public override string BehaviorName() { return "Control"; }
 
 
-        PenalityManager penman = PenalityManager.Instance;
+        PenaltyManager penman = PenaltyManager.Instance;
 
         public override float getPlayfieldValue(Playfield p)
         {

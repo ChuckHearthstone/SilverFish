@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class PenalityManager
+    public class PenaltyManager
     {
         //todo acolyteofpain
         //todo better aoe-penality
@@ -79,13 +79,13 @@
         CardDB cdb;
         Ai ai;
 
-        private static PenalityManager instance;
+        private static PenaltyManager instance;
 
-        public static PenalityManager Instance
+        public static PenaltyManager Instance
         {
             get
             {
-                return instance ?? (instance = new PenalityManager());
+                return instance ?? (instance = new PenaltyManager());
             }
         }
 
@@ -98,7 +98,7 @@
             cdb = CardDB.Instance;
         }
 
-        private PenalityManager()
+        private PenaltyManager()
         {
             setupHealDatabase();
             setupEnrageDatabase();

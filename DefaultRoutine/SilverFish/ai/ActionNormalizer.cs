@@ -7,7 +7,7 @@ namespace HREngine.Bots
 {
     public class ActionNormalizer
     {
-        PenalityManager penman = PenalityManager.Instance;
+        PenaltyManager penman = PenaltyManager.Instance;
         Helpfunctions help = Helpfunctions.Instance;
         Settings settings = Settings.Instance;
 

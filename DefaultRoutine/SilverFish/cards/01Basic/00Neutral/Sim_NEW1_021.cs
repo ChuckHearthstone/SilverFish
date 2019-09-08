@@ -15,7 +15,7 @@ namespace SilverFish.cards._01Basic._00Neutral
                     if (m.entitiyID == triggerEffectMinion.entitiyID) continue;
                     if (m.playedThisTurn || m.playedPrevTurn)
                     {
-                        if (PenalityManager.Instance.ownSummonFromDeathrattle.ContainsKey(m.name)) continue;
+                        if (PenaltyManager.Instance.ownSummonFromDeathrattle.ContainsKey(m.name)) continue;
                         p.evaluatePenality += (m.HealthPoints * 2 + m.Attack * 2) * 2;
                     }
                 }

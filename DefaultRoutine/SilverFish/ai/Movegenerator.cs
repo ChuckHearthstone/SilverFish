@@ -5,7 +5,7 @@ namespace HREngine.Bots
 {
     public class Movegenerator
     {
-        PenalityManager pen = PenalityManager.Instance;
+        PenaltyManager pen = PenaltyManager.Instance;
 
         private static Movegenerator instance;
 

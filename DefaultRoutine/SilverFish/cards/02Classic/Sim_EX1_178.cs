@@ -12,10 +12,10 @@ namespace SilverFish.cards._02Classic
             {
                 for (int iChoice = 1; iChoice < 3; iChoice++)
                 {
-                    PenalityManager.Instance.getChooseCard(own.handcard.card, choice).CardSimulation.onCardPlay(p, own.own, own, iChoice);
+                    PenaltyManager.Instance.getChooseCard(own.handcard.card, choice).CardSimulation.onCardPlay(p, own.own, own, iChoice);
                 }
             }
-            else PenalityManager.Instance.getChooseCard(own.handcard.card, choice).CardSimulation.onCardPlay(p, own.own, own, choice);
+            else PenaltyManager.Instance.getChooseCard(own.handcard.card, choice).CardSimulation.onCardPlay(p, own.own, own, choice);
         }
     }
 }
