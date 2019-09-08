@@ -5985,11 +5985,19 @@ namespace HREngine.Bots
         public void Reborn(Minion rebornMinion)
         {
             var position = rebornMinion.zonepos;
-            CallKid(rebornMinion.handcard.card, position, rebornMinion.own, true, true);
+            var card = CardDB.Instance.getCardDataFromID(rebornMinion.handcard.card.cardIDenum);
+            CallKid(card, position, rebornMinion.own, true, true);
             var minions = rebornMinion.own ? ownMinions : enemyMinions;
-            var newMinion = minions.First(x => x.zonepos == position);
-            newMinion.handcard.card.HasBeenReborn = true;
-            newMinion.HealthPoints = 1;
+            var newMinion = minions.FirstOrDefault(x => x.zonepos == position);
+            if (newMinion == null)
+            {
+                Helpfunctions.Instance.ErrorLog($"Reborn minion failed for {card.cardIDenum}");
+            }
+            else
+            {
+                newMinion.handcard.card.HasBeenReborn = true;
+                newMinion.HealthPoints = 1;
+            }
         }
 
         public void minionGetFrozen(Minion target)
