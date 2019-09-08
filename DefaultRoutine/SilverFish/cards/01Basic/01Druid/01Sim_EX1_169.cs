@@ -1,7 +1,7 @@
 using System;
 using HREngine.Bots;
 
-namespace SilverFish.cards._02Classic
+namespace SilverFish.cards._01Basic._01Druid
 {
     class Sim_EX1_169 : SimTemplate //* Innervate
 	{

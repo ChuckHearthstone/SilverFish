@@ -1,6 +1,6 @@
 ﻿using HREngine.Bots;
 
-namespace SilverFish.cards._01Basic.Druid
+namespace SilverFish.cards._02Classic._01Druid
 {
     class Sim_NEW1_007a : SimTemplate //starfall choice left
     {

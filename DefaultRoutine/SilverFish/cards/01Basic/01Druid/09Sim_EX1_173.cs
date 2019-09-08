@@ -1,6 +1,6 @@
 using HREngine.Bots;
 
-namespace SilverFish.cards._02Classic
+namespace SilverFish.cards._01Basic._01Druid
 {
 	class Sim_EX1_173 : SimTemplate //starfire
 	{
