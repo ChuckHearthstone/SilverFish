@@ -105,6 +105,11 @@
             return;
         }
 
+        public virtual void OnReborn(Playfield playfield,Minion rebornMinion)
+        {
+
+        }
+
         public virtual void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
             return;

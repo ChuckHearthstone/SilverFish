@@ -1,4 +1,5 @@
-﻿using SilverFish.Helpers;
+﻿using System.Linq;
+using SilverFish.Helpers;
 using SilverFish.Enums;
 
 namespace HREngine.Bots
@@ -5433,6 +5434,18 @@ namespace HREngine.Bots
             }
         }
 
+        public void DoReborn(List<Minion> rebornMinions)
+        {
+            if (rebornMinions.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var item in rebornMinions)
+            {
+                item.handcard.card.CardSimulation.OnReborn(this, item);
+            }
+        }
 
         public void updateBoards()
         {
@@ -5441,6 +5454,7 @@ namespace HREngine.Bots
                 return;
             }
             List<Minion> deathrattleMinions = new List<Minion>();
+            var rebornMinions = new List<Minion>();
 
             bool minionOwnReviving = false;
             bool minionEnemyReviving = false;
@@ -5469,6 +5483,11 @@ namespace HREngine.Bots
                         if ((!m.silenced && m.handcard.card.deathrattle) || m.ancestralspirit >= 1 || m.desperatestand >= 1 || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.deathrattle2 != null)
                         {
                             deathrattleMinions.Add(m);
+                        }
+
+                        if (!m.silenced && m.handcard.card.Reborn)
+                        {
+                            rebornMinions.Add(m);
                         }
 
                         // end aura of minion m
@@ -5509,6 +5528,11 @@ namespace HREngine.Bots
                         if ((!m.silenced && m.handcard.card.deathrattle) || m.ancestralspirit >= 1 || m.desperatestand >= 1 || m.souloftheforest >= 1 || m.stegodon >= 1 || m.livingspores >= 1 || m.infest >= 1 || m.explorershat >= 1 || m.returnToHand >= 1 || m.deathrattle2 != null)
                         {
                             deathrattleMinions.Add(m);
+                        }
+
+                        if (!m.silenced && m.handcard.card.Reborn)
+                        {
+                            rebornMinions.Add(m);
                         }
 
                         // end aura of minion m
@@ -5580,6 +5604,8 @@ namespace HREngine.Bots
             {
                 this.doDeathrattles(deathrattleMinions);
             }
+
+            DoReborn(rebornMinions);
 
             if (minionOwnReviving)
             {
