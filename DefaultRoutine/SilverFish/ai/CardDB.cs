@@ -36,7 +36,7 @@ namespace HREngine.Bots
 
         }
 
-        public enum cardtrigers
+        public enum CardTrigger
         {
             newtriger,
             getBattlecryEffect,
@@ -891,46 +891,54 @@ namespace HREngine.Bots
 
         private void SetAdditionalData()
         {
-            PenaltyManager pen = PenaltyManager.Instance;
+            PenaltyManager penaltyManager = PenaltyManager.Instance;
+
+            var triggerType = typeof(CardTrigger);
+            var triggerNameArray = Enum.GetNames(triggerType);
 
             foreach (Card card in CardList)
             {
-                if (pen.cardDrawBattleCryDatabase.ContainsKey(card.name))
+                if (penaltyManager.cardDrawBattleCryDatabase.ContainsKey(card.name))
                 {
-                    card.isCarddraw = pen.cardDrawBattleCryDatabase[card.name];
+                    card.isCarddraw = penaltyManager.cardDrawBattleCryDatabase[card.name];
                 }
 
-                if (pen.DamageTargetSpecialDatabase.ContainsKey(card.name))
+                if (penaltyManager.DamageTargetSpecialDatabase.ContainsKey(card.name))
                 {
                     card.damagesTargetWithSpecial = true;
                 }
 
-                if (pen.DamageTargetDatabase.ContainsKey(card.name))
+                if (penaltyManager.DamageTargetDatabase.ContainsKey(card.name))
                 {
                     card.damagesTarget = true;
                 }
 
-                if (pen.priorityTargets.ContainsKey(card.name))
+                if (penaltyManager.priorityTargets.ContainsKey(card.name))
                 {
-                    card.targetPriority = pen.priorityTargets[card.name];
+                    card.targetPriority = penaltyManager.priorityTargets[card.name];
                 }
 
-                if (pen.specialMinions.ContainsKey(card.name))
+                if (penaltyManager.specialMinions.ContainsKey(card.name))
                 {
                     card.isSpecialMinion = true;
                 }
                 
-                card.Triggers = new List<cardtrigers>();
-                Type triggerType = card.CardSimulation.GetType();
-                foreach (string triggerName in Enum.GetNames(typeof(cardtrigers)))
+                card.Triggers = new List<CardTrigger>();
+                var cardSimulationType = card.CardSimulation.GetType();
+                foreach (var triggerName in triggerNameArray)
                 {
                     try
                     {
-	                    foreach (var m in triggerType.GetMethods().Where(e=>e.Name.Equals(triggerName, StringComparison.Ordinal)))
-	                    {
-							if (m.DeclaringType == triggerType)
-								card.Triggers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), triggerName));
-						}
+                        var methods = cardSimulationType.GetMethods()
+                            .Where(x => x.Name.Equals(triggerName, StringComparison.Ordinal));
+                        foreach (var methodInfo in methods)
+                        {
+                            if (methodInfo.DeclaringType == cardSimulationType)
+                            {
+                                var trigger = (CardTrigger) Enum.Parse(triggerType, triggerName);
+                                card.Triggers.Add(trigger);
+                            }
+                        }
                     }
                     catch(Exception ex)
                     {
@@ -940,6 +948,7 @@ namespace HREngine.Bots
 
                 if (card.Triggers.Count > 10)
                 {
+                    Helpfunctions.Instance.ErrorLog($"{cardSimulationType}'s triggers count is {card.Triggers.Count}");
                     card.Triggers.Clear();
                 }
             }

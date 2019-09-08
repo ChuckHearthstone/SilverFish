@@ -72,7 +72,7 @@ namespace HREngine.Bots
             public Bots.CardDB.cardIDEnum cardIDenum = Bots.CardDB.cardIDEnum.None;
             public List<Bots.CardDB.ErrorType2> playrequires;
 
-            public List<Bots.CardDB.cardtrigers> Triggers { get; set; }
+            public List<Bots.CardDB.CardTrigger> Triggers { get; set; }
 
             public SimTemplate CardSimulation
             {
