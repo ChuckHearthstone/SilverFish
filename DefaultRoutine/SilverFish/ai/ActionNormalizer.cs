@@ -123,14 +123,14 @@ namespace HREngine.Bots
                             {
                                 if (i != aoeEnNum)
                                 {
-                                    if (totemiccall && aa.card.card.type == CardDB.CardType.SPELL) return;
+                                    if (totemiccall && aa.card.card.type == CardType.SPELL) return;
                                     reorderedActions.RemoveAt(i);
                                     reorderedActions.Insert(aoeEnNum, aa);
                                     outOfPlace++;
                                 }
                                 aoeEnNum++;
                             }
-                            else if (rndBeforeDamageAll && aa.card.card.type == CardDB.CardType.SPELL && penman.DamageRandomDatabase.ContainsKey(aa.card.card.name))
+                            else if (rndBeforeDamageAll && aa.card.card.type == CardType.SPELL && penman.DamageRandomDatabase.ContainsKey(aa.card.card.name))
                             {
                                 damageRandom = true;
                                 Playfield tmp = new Playfield(tmpPlOld);
@@ -240,7 +240,7 @@ namespace HREngine.Bots
                             {
                                 if (p.ownMinions.Count > 6)
                                 {
-                                    if (hc.card.type == CardDB.CardType.MOB) return false;
+                                    if (hc.card.type == CardType.MOB) return false;
                                 }
                                 actionFound = true;
                             }

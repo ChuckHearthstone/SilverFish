@@ -186,7 +186,7 @@ namespace HREngine.Bots
                 if (a.card.card.Combo && i > 0) wasCombo++;
                 if (a.target == null) continue;
                 //save spell for all classes
-                if (a.card.card.type == CardDB.CardType.SPELL && (a.target.isHero && !a.target.own))
+                if (a.card.card.type == CardType.SPELL && (a.target.isHero && !a.target.own))
                 {
                     if (i == 0) firstSpellToEnHero = true;
                     retval -= 11;
@@ -255,7 +255,7 @@ namespace HREngine.Bots
             int bigMobsInHand = 0;
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardDB.CardType.MOB)
+                if (hc.card.type == CardType.MOB)
                 {
                     mobsInHand++;
                     if (hc.card.Attack + hc.addattack >= 3) bigMobsInHand++;

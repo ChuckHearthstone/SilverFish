@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -12,7 +13,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardDB.CardType.MOB)
+                    if (hc.card.type == CardType.MOB)
                     {
                         hc.addattack++;
                         hc.addHp++;

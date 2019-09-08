@@ -162,7 +162,7 @@ namespace HREngine.Bots
         {
             nextMobName = CardName.unknown;
             nextMobId = 0;
-            if (hc != null && hc.card.type == CardDB.CardType.MOB)
+            if (hc != null && hc.card.type == CardType.MOB)
             {
                 nextMobName = hc.card.name;
                 nextMobId = hc.entity;

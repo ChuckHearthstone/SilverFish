@@ -1496,7 +1496,7 @@ namespace HREngine.Bots
                                     continue;
                             }
                         }
-                        if (this.playactions[this.playactions.Count - 1].card != null && this.playactions[this.playactions.Count - 1].card.card.type == CardDB.CardType.MOB) retval++;
+                        if (this.playactions[this.playactions.Count - 1].card != null && this.playactions[this.playactions.Count - 1].card.card.type == CardType.MOB) retval++;
                         retval += this.manaTurnEnd;
                     }
                 }
@@ -1889,7 +1889,7 @@ namespace HREngine.Bots
         public int getBestPlace(CardDB.Card card, bool lethal)
         {
             //we return the zonepos!
-            if (card.type != CardDB.CardType.MOB) return 1;
+            if (card.type != CardType.MOB) return 1;
             if (this.ownMinions.Count == 0) return 1;
             if (this.ownMinions.Count == 1)
             {
@@ -3666,7 +3666,7 @@ namespace HREngine.Bots
         {
             CardDB.Card c = hc.card;
             this.evaluatePenality += penality;
-            if (this.nextSpellThisTurnCostHealth && hc.card.type == CardDB.CardType.SPELL)
+            if (this.nextSpellThisTurnCostHealth && hc.card.type == CardType.SPELL)
             {
                 this.minionGetDamageOrHeal(this.ownHero, hc.card.getManaCost(this, hc.manacost));
                 doDmgTriggers();
@@ -3683,7 +3683,7 @@ namespace HREngine.Bots
 
             this.triggerCardsChanged(true);
 
-            if (c.type == CardDB.CardType.SPELL)
+            if (c.type == CardType.SPELL)
             {
                 this.playedPreparation = false;
                 this.spellsplayedSinceRecalc++;
@@ -3744,13 +3744,13 @@ namespace HREngine.Bots
                 }
                 if (this.ownHero.entitiyID == newTarget) target = this.ownHero;
                 if (this.enemyHero.entitiyID == newTarget) target = this.enemyHero;
-                if (this.ownQuest.Id != CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
+                if (this.ownQuest.Id != CardIdEnum.None && c.type == CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
                 hc.target = target;
             }
             if (newTarget != -2) // trigger spell-secrets!
             {
 
-                if (c.type == CardDB.CardType.MOB)
+                if (c.type == CardType.MOB)
                 {
                     if (this.ownMinions.Count < 7)
                     {
@@ -3767,7 +3767,7 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    if (this.lockandload > 0 && c.type == CardDB.CardType.SPELL)
+                    if (this.lockandload > 0 && c.type == CardType.SPELL)
                     {
                         for (int i = 1; i <= lockandload; i++)
                         {
@@ -3775,8 +3775,8 @@ namespace HREngine.Bots
                         }
                     }
                     c.CardSimulation.onCardPlay(this, true, target, choice);
-                    if (this.ownQuest.Id != CardIdEnum.None && c.type == CardDB.CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
-                    else if (c.type == CardDB.CardType.WEAPON)
+                    if (this.ownQuest.Id != CardIdEnum.None && c.type == CardType.SPELL) this.ownQuest.trigger_SpellWasPlayed(target, hc.entity);
+                    else if (c.type == CardType.WEAPON)
                     {
                         this.ownWeapon.Angr += hc.addattack;
                         this.ownWeapon.Durability += hc.addHp;
@@ -3847,7 +3847,7 @@ namespace HREngine.Bots
             }
             if (newTarget != -2) // trigger spell-secrets!
             {
-                if (c.type == CardDB.CardType.MOB)
+                if (c.type == CardType.MOB)
                 {
                     //todo mob playing
                     //this.placeAmobSomewhere(hc, target, choice, position);
@@ -4969,7 +4969,7 @@ namespace HREngine.Bots
         {
             int triggered = 0;
             int retval = 0;
-            bool isSpell = (c.type == CardDB.CardType.SPELL);
+            bool isSpell = (c.type == CardType.SPELL);
             if (this.isOwnTurn && isSpell && this.enemySecretCount > 0) //actual secrets need a spell played!
             {
                 foreach (SecretItem si in this.enemySecretList)
@@ -6614,7 +6614,7 @@ namespace HREngine.Bots
                     c = hc.card;
                     switch (c.type)
                     {
-                        case CardDB.CardType.MOB:
+                        case CardType.MOB:
                             cardValue = (c.Health + hc.addHp) * 2 + (c.Attack + hc.addattack) * 2 + c.rarity + hc.elemPoweredUp * 2;
                             if (c.windfury) cardValue += c.Attack + hc.addattack;
                             if (c.tank) cardValue += 2;
@@ -6632,11 +6632,11 @@ namespace HREngine.Bots
                                 case CardName.clutchmotherzavas: cardValue = (c.Health + hc.addHp) * 2 + c.rarity; break;
                             }
                             break;
-                        case CardDB.CardType.WEAPON:
+                        case CardType.WEAPON:
                             cardValue = c.Attack * c.Durability * 2;
                             if (c.battlecry || c.deathrattle) cardValue += 7;
                             break;
-                        case CardDB.CardType.SPELL:
+                        case CardType.SPELL:
                             cardValue = 15;
                             break;
                     }
@@ -7045,18 +7045,18 @@ namespace HREngine.Bots
                     foreach (Handmanager.Handcard hc in cards) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.Spell:
-                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardDB.CardType.SPELL) hc.extraParam3 = true;
+                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardType.SPELL) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.SECRET:
                     foreach (Handmanager.Handcard hc in cards) if (hc.card.Secret) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.Mob:
-                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardDB.CardType.MOB) hc.extraParam3 = true;
+                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardType.MOB) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.CARDRACE:
                     foreach (Handmanager.Handcard hc in cards)
                     {
-                        if (hc.card.type == CardDB.CardType.MOB)
+                        if (hc.card.type == CardType.MOB)
                         {
                             if (race == TAG_RACE.INVALID) hc.extraParam3 = true;
                             else if (hc.card.race == (int)race) hc.extraParam3 = true;
@@ -7085,7 +7085,7 @@ namespace HREngine.Bots
                     foreach (Handmanager.Handcard hc in cards) if (hc.card.Class == (int)ownHeroStartClass) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.Weapon:
-                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardDB.CardType.WEAPON) hc.extraParam3 = true;
+                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardType.WEAPON) hc.extraParam3 = true;
                     break;
             }
         }

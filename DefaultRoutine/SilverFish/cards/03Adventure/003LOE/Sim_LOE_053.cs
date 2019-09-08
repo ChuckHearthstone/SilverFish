@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (hc.card.type == CardDB.CardType.SPELL && hc.target != null && hc.target.own == wasOwnCard)
+            if (hc.card.type == CardType.SPELL && hc.target != null && hc.target.own == wasOwnCard)
             {
                 if (hc.target.own == triggerEffectMinion.own && hc.target.entitiyID != triggerEffectMinion.entitiyID)
                 {

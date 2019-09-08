@@ -23,72 +23,6 @@ namespace HREngine.Bots
 
     public partial class CardDB
     {
-        // Data is stored in hearthstone-folder -> data->win cardxml0
-        //(data-> cardxml0 seems outdated (blutelfkleriker has 3hp there >_>)
-        public enum CardType
-        {
-            NONE,
-            MOB,
-            SPELL,
-            WEAPON,
-            HEROPWR,
-            ENCHANTMENT,
-            HERO,
-        }
-
-        public enum CardTrigger
-        {
-            newtriger,
-            getBattlecryEffect,
-            onAHeroGotHealedTrigger,
-            onAMinionGotHealedTrigger,
-            onAuraEnds,
-            onAuraStarts,
-            onCardIsGoingToBePlayed,
-            onCardPlay,
-            onCardWasPlayed,
-            onDeathrattle,
-            onEnrageStart,
-            onEnrageStop,
-            onMinionDiedTrigger,
-            onMinionGotDmgTrigger,
-            onMinionIsSummoned,
-            onMinionWasSummoned,
-            onSecretPlay,
-            onTurnEndsTrigger,
-            onTurnStartTrigger,
-            triggerInspire
-        }
-
-        public enum CardRace
-        {
-            INVALID,
-            BLOODELF,
-            DRAENEI,
-            DWARF,
-            GNOME,
-            GOBLIN,
-            HUMAN,
-            NIGHTELF,
-            ORC,
-            TAUREN,
-            TROLL,
-            UNDEAD,
-            WORGEN,
-            GOBLIN2,
-            MURLOC,
-            DEMON,
-            SCOURGE,
-            MECHANICAL,
-            ELEMENTAL,
-            OGRE,
-            PET,
-            TOTEM,
-            NERUBIAN,
-            PIRATE,
-            DRAGON
-        }
-
         public CardIdEnum cardIdstringToEnum(string s)
         {
             CardIdEnum CardEnum;
@@ -394,32 +328,32 @@ namespace HREngine.Bots
                     int crdtype = Convert.ToInt32(temp);
                     if (crdtype == 10)
                     {
-                        c.type = CardDB.CardType.HEROPWR;
+                        c.type = CardType.HEROPWR;
                     }
 
                     if (crdtype == 3)
                     {
-                        c.type = CardDB.CardType.HERO;
+                        c.type = CardType.HERO;
                     }
 
                     if (crdtype == 4)
                     {
-                        c.type = CardDB.CardType.MOB;
+                        c.type = CardType.MOB;
                     }
 
                     if (crdtype == 5)
                     {
-                        c.type = CardDB.CardType.SPELL;
+                        c.type = CardType.SPELL;
                     }
 
                     if (crdtype == 6)
                     {
-                        c.type = CardDB.CardType.ENCHANTMENT;
+                        c.type = CardType.ENCHANTMENT;
                     }
 
                     if (crdtype == 7)
                     {
-                        c.type = CardDB.CardType.WEAPON;
+                        c.type = CardType.WEAPON;
                     }
 
                     continue;

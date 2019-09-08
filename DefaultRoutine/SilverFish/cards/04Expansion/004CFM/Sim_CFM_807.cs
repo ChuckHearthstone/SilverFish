@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._004CFM
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
+            if (m.own == ownplay && hc.card.type == CardType.SPELL)
             {
                 if (m.own)
                 {

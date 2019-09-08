@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic.Mage
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._01Basic.Mage
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.CardType.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardType.SPELL)
             {
 				p.minionGetBuffed(triggerEffectMinion, 1, 0);
             }

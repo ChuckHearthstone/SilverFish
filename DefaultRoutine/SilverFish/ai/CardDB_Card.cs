@@ -15,7 +15,7 @@ namespace HREngine.Bots
             public int rarity = 0;
             public int cost = 0;
             public int Class = 0;
-            public Bots.CardDB.CardType type = CardDB.CardType.NONE;
+            public CardType type = CardType.NONE;
             //public string description = "";
 
             public int Attack = 0;
@@ -73,7 +73,7 @@ namespace HREngine.Bots
             public CardIdEnum cardIDenum = CardIdEnum.None;
             public List<ErrorType2> playrequires;
 
-            public List<Bots.CardDB.CardTrigger> Triggers { get; set; }
+            public List<CardTrigger> Triggers { get; set; }
 
             public SimTemplate CardSimulation
             {
@@ -165,7 +165,7 @@ namespace HREngine.Bots
             {
                 //if wereTargets=true and 0 targets at end -> then can not play this card
                 List<Minion> retval = new List<Minion>();
-                if (this.type == CardDB.CardType.MOB && ((own && p.ownMinions.Count >= 7) || (!own && p.enemyMinions.Count >= 7))) return retval; // cant play mob, if we have allready 7 mininos
+                if (this.type == CardType.MOB && ((own && p.ownMinions.Count >= 7) || (!own && p.enemyMinions.Count >= 7))) return retval; // cant play mob, if we have allready 7 mininos
                 if (this.Secret && ((own && (p.ownSecretsIDList.Contains(this.cardIDenum) || p.ownSecretsIDList.Count >= 5)) || (!own && p.enemySecretCount >= 5))) return retval;
                 //if (p.mana < this.getManaCost(p, 1)) return retval;
 
@@ -509,7 +509,7 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in targets)
                             {
-                                if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == Bots.CardDB.CardType.HEROPWR || this.type == Bots.CardDB.CardType.SPELL))
+                                if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == CardType.HEROPWR || this.type == CardType.SPELL))
                                 {
                                     m.extraParam = true;
                                     if (m.stealth && !m.own) m.extraParam = true;
@@ -540,7 +540,7 @@ namespace HREngine.Bots
 
                     switch (this.type)
                     {
-                        case Bots.CardDB.CardType.SPELL:
+                        case CardType.SPELL:
                             if (p.prozis.penman.attackBuffDatabase.ContainsKey(this.name))
                             {
                                 if (targetOwnHero && own) retval.Add(p.ownHero);
@@ -581,7 +581,7 @@ namespace HREngine.Bots
                                 }
                             }
                             break;
-                        case Bots.CardDB.CardType.MOB:
+                        case CardType.MOB:
                             foreach (Minion m in targets)
                             {
                                 if (m.extraParam != true)
@@ -592,7 +592,7 @@ namespace HREngine.Bots
                                 m.extraParam = false;
                             }
                             break;
-                        case Bots.CardDB.CardType.HEROPWR:
+                        case CardType.HEROPWR:
                             if (p.prozis.penman.attackBuffDatabase.ContainsKey(this.name))
                             {
                                 foreach (Minion m in targets)
@@ -621,7 +621,7 @@ namespace HREngine.Bots
                         if (m.extraParam != true)
                         {
                             if (m.stealth && !m.own) continue;
-                            if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == Bots.CardDB.CardType.SPELL || this.type == Bots.CardDB.CardType.HEROPWR)) continue;
+                            if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == CardType.SPELL || this.type == CardType.HEROPWR)) continue;
                             retval.Add(m);
                         }
                         m.extraParam = false;
@@ -715,7 +715,7 @@ namespace HREngine.Bots
 
                 switch (this.type)
                 {
-                    case Bots.CardDB.CardType.MOB:
+                    case CardType.MOB:
                         if (p.anzOwnAviana > 0) retval = 1;
 
                         offset += p.ownMinionsCostMore;
@@ -743,7 +743,7 @@ namespace HREngine.Bots
                             offset -= p.anzOwnMechwarper;
                         }
                         break;
-                    case Bots.CardDB.CardType.SPELL:
+                    case CardType.SPELL:
                         if (p.nextSpellThisTurnCost0) return 0;
                         offset += p.ownSpelsCostMore;
                         if (p.playedPreparation)
@@ -751,7 +751,7 @@ namespace HREngine.Bots
                             offset -= 3;
                         }
                         break;
-                    case Bots.CardDB.CardType.WEAPON:
+                    case CardType.WEAPON:
                         offset -= p.blackwaterpirate * 2;
                         if (this.deathrattle) offset += p.ownDRcardsCostMore;
                         break;
@@ -861,11 +861,11 @@ namespace HREngine.Bots
                 // CARDS that increase/decrease the manacosts of others ##############################
                 switch (this.type)
                 {
-                    case Bots.CardDB.CardType.HEROPWR:
+                    case CardType.HEROPWR:
                         retval += p.ownHeroPowerCostLessOnce;
                         if (retval < 0) retval = 0;
                         return retval;
-                    case Bots.CardDB.CardType.MOB:
+                    case CardType.MOB:
 
                         if (p.ownMinionsCostMore != p.ownMinionsCostMoreAtStart)
                         {
@@ -920,7 +920,7 @@ namespace HREngine.Bots
                             offset += (p.anzOwnDragonConsortStarted - p.anzOwnDragonConsort) * 2;
                         }
                         break;
-                    case Bots.CardDB.CardType.SPELL:
+                    case CardType.SPELL:
 
                         if (p.nextSpellThisTurnCost0) return 0;
 
@@ -936,7 +936,7 @@ namespace HREngine.Bots
                             offset -= 3;
                         }
                         break;
-                    case Bots.CardDB.CardType.WEAPON:
+                    case CardType.WEAPON:
 
                         if (p.blackwaterpirateStarted != p.blackwaterpirate)
                         {

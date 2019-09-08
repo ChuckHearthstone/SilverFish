@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._006ICC
 {
@@ -15,7 +16,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
                 foreach(Handmanager.Handcard hc in p.owncards.ToArray())
                 {
-                    if (hc.card.type == CardDB.CardType.WEAPON)
+                    if (hc.card.type == CardType.WEAPON)
                     {
                         atkBuff += hc.card.Attack + hc.addattack;
                         hpBuff += hc.card.Durability + hc.addHp;

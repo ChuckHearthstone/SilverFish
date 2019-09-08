@@ -13,7 +13,7 @@ namespace SilverFish.cards._03Adventure._004KAR
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.CardType.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardType.SPELL)
             {
 				CardDB.Card kid;
 				int otherTotems = 0;

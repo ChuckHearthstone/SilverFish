@@ -210,6 +210,9 @@
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
     <Compile Include="Enums\CardIdEnum.cs" />
     <Compile Include="Enums\CardName.cs" />
+    <Compile Include="Enums\CardRace.cs" />
+    <Compile Include="Enums\CardTrigger.cs" />
+    <Compile Include="Enums\CardType.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />

@@ -32,7 +32,7 @@ foreach (KeyValuePair<CardIdEnum, int> e in Probabilitymaker.Instance.ownCardsOu
 {
 kid = cdb.getCardDataFromID(e.Key);
 
-if (kid.type == CardDB.CardType.SPELL)
+if (kid.type == CardType.SPELL)
 {
 {
 

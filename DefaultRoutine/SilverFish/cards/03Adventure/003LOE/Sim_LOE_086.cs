@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._03Adventure._003LOE
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardDB.CardType.SPELL)
+            if (triggerEffectMinion.own == wasOwnCard && hc.card.type == CardType.SPELL)
             {
                 int pos = (wasOwnCard) ? p.ownMinions.Count : p.enemyMinions.Count;
                 p.CallKid(p.getRandomCardForManaMinion(hc.manacost), pos, wasOwnCard);

@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._001GvG
 {
@@ -9,7 +10,7 @@ namespace SilverFish.cards._04Expansion._001GvG
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (hc.card.type == CardDB.CardType.SPELL && wasOwnCard != triggerEffectMinion.own)
+            if (hc.card.type == CardType.SPELL && wasOwnCard != triggerEffectMinion.own)
             {
                 p.minionGetBuffed(triggerEffectMinion, 2, 0);
             }

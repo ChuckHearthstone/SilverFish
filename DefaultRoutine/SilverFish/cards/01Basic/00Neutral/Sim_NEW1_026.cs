@@ -11,7 +11,7 @@ namespace SilverFish.cards._01Basic._00Neutral
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardDB.CardType.SPELL)
+            if (wasOwnCard == triggerEffectMinion.own && hc.card.type == CardType.SPELL)
             {
                 p.CallKid(card, triggerEffectMinion.zonepos, wasOwnCard);
             }

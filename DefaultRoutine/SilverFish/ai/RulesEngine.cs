@@ -1827,42 +1827,42 @@ namespace HREngine.Bots
 	                return false;
                 case param.ohc_minions_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_minions_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_minions_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_minions_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_spells_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.SPELL) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_spells_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.SPELL) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_spells_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.SPELL) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_spells_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.SPELL) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.SPELL) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_secrets_equal:
@@ -1887,22 +1887,22 @@ namespace HREngine.Bots
                     return false;
                 case param.ohc_weapons_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.WEAPON) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_weapons_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.WEAPON) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_weapons_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.WEAPON) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_weapons_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardDB.CardType.WEAPON) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.WEAPON) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_murlocs_equal:

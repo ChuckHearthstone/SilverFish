@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._003OG
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._003OG
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL) p.cthunGetBuffed(1, 1, 0);
+            if (m.own == ownplay && hc.card.type == CardType.SPELL) p.cthunGetBuffed(1, 1, 0);
         }
 		
         public override void onAuraStarts(Playfield p, Minion own)

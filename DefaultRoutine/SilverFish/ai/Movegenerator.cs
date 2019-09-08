@@ -42,7 +42,7 @@ namespace HREngine.Bots
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
                     int cardCost = hc.card.getManaCost(p, hc.manacost);
-                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardDB.CardType.SPELL) ||
+                    if ((p.nextSpellThisTurnCostHealth && hc.card.type == CardType.SPELL) ||
                         (p.nextMurlocThisTurnCostHealth && (TAG_RACE) hc.card.race == TAG_RACE.MURLOC))
                     {
                         if (p.ownHero.HealthPoints > cardCost || p.ownHero.immune)
@@ -100,7 +100,7 @@ namespace HREngine.Bots
                         }
 
                         if (p.ownMinions.Count > 6 &&
-                            (c.type == CardDB.CardType.MOB || hc.card.type == CardDB.CardType.MOB))
+                            (c.type == CardType.MOB || hc.card.type == CardType.MOB))
                         {
                             continue;
                         }
@@ -112,7 +112,7 @@ namespace HREngine.Bots
 
                         int cardPlayPenalty = 0;
                         CardDB.Card card;
-                        if (c.type == CardDB.CardType.MOB)
+                        if (c.type == CardType.MOB)
                         {
                             card = c;
                         }

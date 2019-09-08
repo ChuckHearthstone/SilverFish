@@ -179,7 +179,7 @@ namespace HREngine.Bots
                             else
                             {
                                 CardDB.Card lolcrd = cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd));
-                                if (lolcrd.type == CardDB.CardType.MOB)
+                                if (lolcrd.type == CardType.MOB)
                                 {
                                     if (this.combocardsTurn0Mobs.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                     {
@@ -191,7 +191,7 @@ namespace HREngine.Bots
                                     }
                                     this.combot0len++;
                                 }
-                                if (lolcrd.type == CardDB.CardType.WEAPON)
+                                if (lolcrd.type == CardType.WEAPON)
                                 {
                                     this.requiredWeapon = lolcrd.name;
                                 }

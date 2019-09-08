@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._003OG
 {
@@ -8,7 +9,7 @@ namespace SilverFish.cards._04Expansion._003OG
 		
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
+            if (m.own == ownplay && hc.card.type == CardType.SPELL)
             {
                 Minion target = (ownplay) ? p.ownHero : p.enemyHero;
                 p.minionGetDamageOrHeal(target, -p.prozis.penman.guessTotalSpellDamage(p, hc.card.name, ownplay));

@@ -471,13 +471,13 @@ namespace HREngine.Bots
 
                 if (!found)
                 {
-                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.CardType.MOB)
+                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.MOB)
                     {
                         this.turngraveyard.Add(ent);
                     }
                     this.turngraveyardAll.Add(ent);
                 }
-                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardDB.CardType.MOB)
+                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.MOB)
                 {
                     OwnLastDiedMinion = ent;
                 }
@@ -874,7 +874,7 @@ namespace HREngine.Bots
                 {
                     CardDB.Card c = CardDB.Instance.getCardDataFromID(tmp.Key);
                     if (c.Secret) enemySecretsOpenedStep.Add(tmp.Key);
-                    else if (c.type == CardDB.CardType.MOB) enemyMinionsDiedStep.Add(c);
+                    else if (c.type == CardType.MOB) enemyMinionsDiedStep.Add(c);
                 }
             }
 
@@ -1022,13 +1022,13 @@ namespace HREngine.Bots
             }
             else if (doneMove.actionType == actionEnum.playcard)
             {
-                if (doneMove.card.card.type == CardDB.CardType.SPELL)
+                if (doneMove.card.card.type == CardType.SPELL)
                 {
                     cattrick = true;
                     counterspell = true;
                     if (!targetWasHero) spellbender = true;
                 }
-                /* else if (doneMove.card.card.type == CardDB.cardtype.MOB) //we need the response from the core
+                /* else if (doneMove.card.card.type == CardType.MOB) //we need the response from the core
                  {
                      mirrorentity = true;
                      snipe = true;

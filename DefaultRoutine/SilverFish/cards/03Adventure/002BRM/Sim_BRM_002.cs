@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._002BRM
 {
@@ -9,7 +10,7 @@ namespace SilverFish.cards._03Adventure._002BRM
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool ownplay, Minion m)
         {
-            if (m.own == ownplay && hc.card.type == CardDB.CardType.SPELL)
+            if (m.own == ownplay && hc.card.type == CardType.SPELL)
             {
                 Minion target = (ownplay) ? p.enemyHero : p.ownHero;
                 p.minionGetDamageOrHeal(target, 1);

@@ -889,15 +889,15 @@ def Execute():
                             
                             await cardtoplay.Pickup();
 
-                            if (moveTodo.card.card.type == CardDB.CardType.MOB)
+                            if (moveTodo.card.card.type == CardType.MOB)
                             {
                                 await cardtoplay.UseAt(moveTodo.place);
                             }
-                            else if (moveTodo.card.card.type == CardDB.CardType.WEAPON) // This fixes perdition's blade
+                            else if (moveTodo.card.card.type == CardType.WEAPON) // This fixes perdition's blade
                             {
                                 await cardtoplay.UseOn(target.Card);
                             }
-                            else if (moveTodo.card.card.type == CardDB.CardType.SPELL)
+                            else if (moveTodo.card.card.type == CardType.SPELL)
                             {
                                 await cardtoplay.UseOn(target.Card);
                             }
@@ -929,7 +929,7 @@ def Execute():
 
                     await cardtoplay.Pickup();
 
-                    if (moveTodo.card.card.type == CardDB.CardType.MOB)
+                    if (moveTodo.card.card.type == CardType.MOB)
                     {
                         await cardtoplay.UseAt(moveTodo.place);
                     }

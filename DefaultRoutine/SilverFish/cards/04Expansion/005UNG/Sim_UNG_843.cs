@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._005UNG
         
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
-            if (hc.card.type == CardDB.CardType.SPELL && hc.target != null && hc.target.entitiyID == triggerEffectMinion.entitiyID)
+            if (hc.card.type == CardType.SPELL && hc.target != null && hc.target.entitiyID == triggerEffectMinion.entitiyID)
             {
                 List<Minion> tmp = triggerEffectMinion.own ? p.ownMinions : p.enemyMinions;
 
