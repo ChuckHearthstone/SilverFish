@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -18,7 +19,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.setNewHeroPower(CardDB.cardIDEnum.GIL_504h, ownplay); // 蛊惑(Bewitch)
+            p.setNewHeroPower(CardIdEnum.GIL_504h, ownplay); // 蛊惑(Bewitch)
             if (ownplay) p.ownHero.armor += 5;
             else p.enemyHero.armor += 5;
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

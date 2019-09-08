@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -28,7 +29,7 @@ namespace SilverFish.cards._04Expansion._008GIL
                     }
                 }
             }
-            else p.CallKid(CardDB.Instance.getCardData(CardDB.cardName.unknown), p.enemyMinions.Count, m.own);
+            else p.CallKid(CardDB.Instance.getCardData(CardName.unknown), p.enemyMinions.Count, m.own);
         }
     }
 }

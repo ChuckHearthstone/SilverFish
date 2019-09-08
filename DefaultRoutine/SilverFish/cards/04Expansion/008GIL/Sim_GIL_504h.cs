@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -20,7 +21,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         {
             if (summonedMinion.playedFromHand && summonedMinion.own == m.own && summonedMinion.entitiyID != m.entitiyID)
             {
-                p.drawACard(CardDB.cardName.unknown, m.own, true);
+                p.drawACard(CardName.unknown, m.own, true);
             }
         }
     }

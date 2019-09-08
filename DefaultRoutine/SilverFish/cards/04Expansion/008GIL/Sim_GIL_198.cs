@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -21,7 +22,7 @@ namespace SilverFish.cards._04Expansion._008GIL
             p.discardCards(10, own.own);
             for (int i = 0; i < p.enemyAnzCards; i++)
             {
-                p.drawACard(CardDB.cardName.unknown, own.own, true);
+                p.drawACard(CardName.unknown, own.own, true);
             }
         }
     }

@@ -1,4 +1,5 @@
 using HREngine.Bots;
+using SilverFish.Enums;
 
 namespace SilverFish.cards._04Expansion._008GIL
 {
@@ -18,9 +19,9 @@ namespace SilverFish.cards._04Expansion._008GIL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            CardDB.Card druidofthescythe42 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_188t);
-            CardDB.Card druidofthescythe24 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_188t2);
-            CardDB.Card druidofthescythe44 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_188t3);
+            CardDB.Card druidofthescythe42 = CardDB.Instance.getCardDataFromID(CardIdEnum.GIL_188t);
+            CardDB.Card druidofthescythe24 = CardDB.Instance.getCardDataFromID(CardIdEnum.GIL_188t2);
+            CardDB.Card druidofthescythe44 = CardDB.Instance.getCardDataFromID(CardIdEnum.GIL_188t3);
             if (p.ownFandralStaghelm > 0)
             {
                 p.minionTransform(own, druidofthescythe44);
