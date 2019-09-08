@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using HREngine.Bots;
 using NUnit.Framework;
 using SilverFish.Enums;
@@ -29,6 +30,18 @@ namespace SilverFish.Test
             var cards = CardDB.Instance.CardList;
             var rebornMinions = cards.Where(x => x.Reborn).ToList();
             Assert.AreEqual(expectedCount,rebornMinions.Count);
+        }
+
+        [Test]
+        public void KhartutDefenderTest()
+        {
+            var testFilePath = Path.Combine(Settings.Instance.BaseDirectory, @"SilverFish.Test\Data\RebornTest.txt");
+            var data = File.ReadAllText(testFilePath);
+            //Console.WriteLine(data);
+
+            Ai ai = Ai.Instance;
+            ai.autoTester(true, data, 0);
+            
         }
     }
 }

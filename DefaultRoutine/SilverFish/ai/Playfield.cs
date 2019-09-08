@@ -5984,9 +5984,10 @@ namespace HREngine.Bots
         /// <param name="rebornMinion"></param>
         public void Reborn(Minion rebornMinion)
         {
-            CallKid(rebornMinion.handcard.card, rebornMinion.zonepos, rebornMinion.own, true, true);
+            var position = rebornMinion.zonepos;
+            CallKid(rebornMinion.handcard.card, position, rebornMinion.own, true, true);
             var minions = rebornMinion.own ? ownMinions : enemyMinions;
-            var newMinion = minions[rebornMinion.zonepos];
+            var newMinion = minions.First(x => x.zonepos == position);
             newMinion.handcard.card.HasBeenReborn = true;
             newMinion.HealthPoints = 1;
         }

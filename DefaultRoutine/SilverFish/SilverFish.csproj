@@ -2530,6 +2530,8 @@
     <Content Include="behavior\control\_settings.txt" />
     <Content Include="behavior\rush\_settings.txt" />
     <Content Include="behavior\_settings - example.txt" />
+    <Content Include="data\special_card_name.txt" />
+    <Content Include="data\test.txt" />
     <Content Include="data\_carddb.txt" />
   </ItemGroup>
   <ItemGroup />
