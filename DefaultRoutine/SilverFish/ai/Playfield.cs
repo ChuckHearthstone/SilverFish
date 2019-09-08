@@ -30,8 +30,12 @@ namespace HREngine.Bots
         public int ownMinionLosesDivineShield;
         public int enemyMinionLosesDivineShield;
 
+        /// <summary>
+        /// minion died, silenced, return to hand, return to deck, transform or get controlled
+        /// </summary>
         public bool ownMinionsChanged;
-        public bool enemyMininsChanged;
+
+        public bool enemyMinionsChanged;
     }
 
     public struct IDEnumOwner
@@ -3995,8 +3999,15 @@ namespace HREngine.Bots
             if (this.tempTrigger.ownMinionsDied + this.tempTrigger.enemyMinionsDied >= 1)
             {
                 triggerAMinionDied(); //possible effects: draw card, gain attack + hp, callKid.
-                if (this.tempTrigger.ownMinionsDied >= 1) this.tempTrigger.ownMinionsChanged = true;
-                if (this.tempTrigger.enemyMinionsDied >= 1) this.tempTrigger.enemyMininsChanged = true;
+                if (this.tempTrigger.ownMinionsDied >= 1)
+                {
+                    this.tempTrigger.ownMinionsChanged = true;
+                }
+
+                if (this.tempTrigger.enemyMinionsDied >= 1)
+                {
+                    this.tempTrigger.enemyMinionsChanged = true;
+                }
                 this.tempTrigger.ownMinionsDied = 0;
                 this.tempTrigger.enemyMinionsDied = 0;
                 this.tempTrigger.ownBeastDied = 0;
@@ -5425,7 +5436,10 @@ namespace HREngine.Bots
 
         public void updateBoards()
         {
-            if (!this.tempTrigger.ownMinionsChanged && !this.tempTrigger.enemyMininsChanged) return;
+            if (!this.tempTrigger.ownMinionsChanged && !this.tempTrigger.enemyMinionsChanged)
+            {
+                return;
+            }
             List<Minion> deathrattleMinions = new List<Minion>();
 
             bool minionOwnReviving = false;
@@ -5472,9 +5486,9 @@ namespace HREngine.Bots
                 this.updateAdjacentBuffs(true);
             }
 
-            if (this.tempTrigger.enemyMininsChanged)
+            if (this.tempTrigger.enemyMinionsChanged)
             {
-                this.tempTrigger.enemyMininsChanged = false;
+                this.tempTrigger.enemyMinionsChanged = false;
                 List<Minion> temp = new List<Minion>();
                 int i = 1;
                 foreach (Minion m in this.enemyMinions)
@@ -5825,7 +5839,7 @@ namespace HREngine.Bots
                 this.tempTrigger.ownMinionsChanged = true;
                 if (m.handcard.card.race == 20) this.tempTrigger.ownBeastSummoned++;
             }
-            else this.tempTrigger.enemyMininsChanged = true;
+            else this.tempTrigger.enemyMinionsChanged = true;
 
             //minion was played secrets? trigger here---- (+ do triggers)
 
@@ -6324,8 +6338,11 @@ namespace HREngine.Bots
             }
             else this.drawACard(CardName.unknown, false);
 
-            if (m.own) this.tempTrigger.ownMinionsChanged = true;
-            else this.tempTrigger.enemyMininsChanged = true;
+            if (m.own)
+            {
+                this.tempTrigger.ownMinionsChanged = true;
+            }
+            else this.tempTrigger.enemyMinionsChanged = true;
         }
 
         public void minionReturnToDeck(Minion m, bool own)
@@ -6334,8 +6351,11 @@ namespace HREngine.Bots
             m.handcard.card.CardSimulation.onAuraEnds(this, m);
             temp.Remove(m);
 
-            if (m.own) this.tempTrigger.ownMinionsChanged = true;
-            else this.tempTrigger.enemyMininsChanged = true;
+            if (m.own)
+            {
+                this.tempTrigger.ownMinionsChanged = true;
+            }
+            else this.tempTrigger.enemyMinionsChanged = true;
 
             if (own) this.ownDeckSize++;
             else this.enemyDeckSize++;
@@ -6383,7 +6403,7 @@ namespace HREngine.Bots
             }
             else
             {
-                this.tempTrigger.enemyMininsChanged = true;
+                this.tempTrigger.enemyMinionsChanged = true;
             }
 
             if (logging) LogHelper.WriteCombatLog("minion got sheep" + m.name + " " + m.Attack);
@@ -6444,7 +6464,7 @@ namespace HREngine.Bots
             }
 
             this.tempTrigger.ownMinionsChanged = true;
-            this.tempTrigger.enemyMininsChanged = true;
+            this.tempTrigger.enemyMinionsChanged = true;
             if (m.taunt)
             {
                 if (newOwner)

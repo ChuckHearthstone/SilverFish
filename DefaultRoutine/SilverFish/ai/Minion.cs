@@ -687,7 +687,7 @@ namespace HREngine.Bots
             }
             else
             {
-                p.tempTrigger.enemyMininsChanged = true;
+                p.tempTrigger.enemyMinionsChanged = true;
             }
             if (this.shadowmadnessed)
             {
