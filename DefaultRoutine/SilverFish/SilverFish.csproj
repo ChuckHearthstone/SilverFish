@@ -1583,7 +1583,6 @@
     <Compile Include="cards\01Basic\08Warlock\Sim_NEW1_003.cs" />
     <Compile Include="cards\01Basic\06Rogue\Sim_NEW1_004.cs" />
     <Compile Include="cards\01Basic\06Rogue\Sim_NEW1_005.cs" />
-    <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_006.cs" />
     <Compile Include="cards\01Basic\01Druid\Sim_NEW1_007.cs" />
     <Compile Include="cards\01Basic\01Druid\Sim_NEW1_007a.cs" />
     <Compile Include="cards\01Basic\01Druid\Sim_NEW1_007b.cs" />
