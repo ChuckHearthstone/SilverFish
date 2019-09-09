@@ -612,7 +612,7 @@ namespace HREngine.Bots
 
         }
 
-        public void becomeSilence(Playfield p)
+        public void GetSilenced(Playfield p)
         {
             if (this.untouchable)
             {
@@ -671,7 +671,11 @@ namespace HREngine.Bots
             charge = 0;
             hChoice = 0;
             taunt = false;
+
             DivineShield = false;
+
+            Reborn = false;
+
             windfury = false;
             frozen = false;
             stealth = false;

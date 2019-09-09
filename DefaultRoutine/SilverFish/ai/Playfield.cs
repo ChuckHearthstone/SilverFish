@@ -6035,7 +6035,7 @@ namespace HREngine.Bots
         public void minionGetSilenced(Minion m)
         {
             //minion cant die due to silencing!
-            m.becomeSilence(this);
+            m.GetSilenced(this);
 
         }
 
@@ -6044,7 +6044,7 @@ namespace HREngine.Bots
             List<Minion> temp = (own) ? this.ownMinions : this.enemyMinions;
             foreach (Minion m in temp)
             {
-                m.becomeSilence(this);
+                m.GetSilenced(this);
             }
         }
 
