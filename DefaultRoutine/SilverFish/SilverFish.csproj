@@ -241,10 +241,12 @@
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
     <Compile Include="Enums\CardIdEnum.cs" />
     <Compile Include="Enums\CardName.cs" />
+    <Compile Include="Enums\CardPropertyType.cs" />
     <Compile Include="Enums\CardRace.cs" />
     <Compile Include="Enums\CardTrigger.cs" />
     <Compile Include="Enums\CardType.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
+    <Compile Include="Helpers\ConvertHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
     <Compile Include="ai\ComboBreaker.cs" />
     <Compile Include="ai\Deckmanager.cs" />
@@ -2021,6 +2023,7 @@
     <Compile Include="cards\04Expansion\005UNG\Sim_UNG_999t7.cs" />
     <Compile Include="cards\04Expansion\005UNG\Sim_UNG_999t8.cs" />
     <Compile Include="Helpers\WriteOnce.cs" />
+    <Compile Include="Helpers\XmlHelper.cs" />
     <Compile Include="penalties\Pen_CS1h_001.cs" />
     <Compile Include="penalties\Pen_CS1_042.cs" />
     <Compile Include="penalties\Pen_CS1_069.cs" />

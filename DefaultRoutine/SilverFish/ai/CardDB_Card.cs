@@ -9,6 +9,10 @@ namespace HREngine.Bots
     {
         public class Card
         {
+            public string ChineseName { get; set; }
+
+            public string EnglishName { get; set; }
+
             //public string CardID = "";
             public CardName name = CardName.unknown;
             public int race = 0;
