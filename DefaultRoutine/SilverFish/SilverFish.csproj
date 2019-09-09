@@ -2020,6 +2020,7 @@
     <Compile Include="cards\04Expansion\005UNG\Sim_UNG_999t6.cs" />
     <Compile Include="cards\04Expansion\005UNG\Sim_UNG_999t7.cs" />
     <Compile Include="cards\04Expansion\005UNG\Sim_UNG_999t8.cs" />
+    <Compile Include="Helpers\WriteOnce.cs" />
     <Compile Include="penalties\Pen_CS1h_001.cs" />
     <Compile Include="penalties\Pen_CS1_042.cs" />
     <Compile Include="penalties\Pen_CS1_069.cs" />

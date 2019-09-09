@@ -22,7 +22,7 @@ namespace SilverFish.cards._03Adventure._001NAX.FP1
                     }
                 }
 
-                temp.Sort((x, y) => x.card.Attack.CompareTo(y.card.Attack));
+                temp.Sort((x, y) => x.card.Attack.Value.CompareTo(y.card.Attack));
 
                 foreach (Handmanager.Handcard mnn in temp)
                 {

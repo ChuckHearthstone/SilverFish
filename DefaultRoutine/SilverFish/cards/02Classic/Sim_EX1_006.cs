@@ -17,7 +17,7 @@ namespace SilverFish.cards._02Classic
                 {
                     if (hc.card.type == CardType.MOB) temp2.Add(hc);
                 }
-                temp2.Sort((a, b) => -a.card.Attack.CompareTo(b.card.Attack));//damage the stronges
+                temp2.Sort((a, b) => -a.card.Attack.Value.CompareTo(b.card.Attack));//damage the stronges
                 foreach (Handmanager.Handcard mins in temp2)
                 {
                     CardDB.Card c = CardDB.Instance.getCardDataFromID(mins.card.cardIDenum);

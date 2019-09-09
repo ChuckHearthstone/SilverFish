@@ -18,7 +18,8 @@ namespace HREngine.Bots
             public CardType type = CardType.NONE;
             //public string description = "";
 
-            public int Attack = 0;
+            public WriteOnce<int> Attack { get; } = new WriteOnce<int>();
+
             public int Health = 0;
             public int Durability = 0;//for weapons
             public bool tank = false;

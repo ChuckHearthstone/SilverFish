@@ -284,7 +284,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.Attack = Convert.ToInt32(temp);
+                    c.Attack.Value = Convert.ToInt32(temp);
                     continue;
                 }
 
