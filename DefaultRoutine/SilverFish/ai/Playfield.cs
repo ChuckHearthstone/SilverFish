@@ -5988,7 +5988,7 @@ namespace HREngine.Bots
         public void Reborn(Minion rebornMinion)
         {
             var position = rebornMinion.zonepos;
-            var card = CardDB.Instance.getCardDataFromID(rebornMinion.handcard.card.cardIDenum);
+            var card = rebornMinion.handcard.card;
             CallKid(card, position, rebornMinion.own, true, true);
             var minions = rebornMinion.own ? ownMinions : enemyMinions;
             var newMinion = minions.FirstOrDefault(x => x.zonepos == position);
