@@ -1,5 +1,6 @@
 using HREngine.Bots;
 using SilverFish.Enums;
+using System.Collections.Generic;
 
 namespace SilverFish.cards._04Expansion._012ULD
 {
@@ -19,7 +20,26 @@ namespace SilverFish.cards._04Expansion._012ULD
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.drawACard(CardName.unknown, ownplay);
+            if (ownplay)
+            {
+                CardDB.Card c;
+                bool secretDrew = false;
+                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
+                {
+                    c = CardDB.Instance.getCardDataFromID(cid.Key);
+                    if (c.Secret)
+                    {
+                        p.drawACard(c.name, ownplay);
+                        p.owncards[p.owncards.Count - 1].manacost = 0;
+                        secretDrew = true;
+                    }
+                    if (secretDrew) break;
+                }
+            }
+            else
+            {
+                p.drawACard(CardName.unknown, ownplay);
+            }
         }
     }
 }
