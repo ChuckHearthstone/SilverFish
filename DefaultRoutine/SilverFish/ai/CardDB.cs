@@ -630,7 +630,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Shield = true;
+                    if (ti == 1) c.DivineShield = true;
                     continue;
                 }
 

@@ -418,7 +418,7 @@ namespace HREngine.Bots
             {
                 c = CardDB.Instance.getCardDataFromID(cn.Key);
                 if (c.tank) numTauntCards += cn.Value;
-                if (c.Shield) numDivineShieldCards += cn.Value;
+                if (c.DivineShield) numDivineShieldCards += cn.Value;
                 if (c.lifesteal) numLifestealCards += cn.Value;
                 if (c.windfury) numWindfuryCards += cn.Value;
             }
@@ -573,7 +573,7 @@ namespace HREngine.Bots
                 m.Ready = true;
                 m.charge = 1;
             }
-            if (hc.card.Shield) m.DivineShield = true;
+            if (hc.card.DivineShield) m.DivineShield = true;
             if (hc.card.poisonous) m.poisonous = true;
             if (hc.card.lifesteal) m.lifesteal = true;
 

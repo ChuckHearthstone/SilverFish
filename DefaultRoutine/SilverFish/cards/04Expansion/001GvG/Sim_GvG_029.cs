@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             {
                 if (hc.card.type == CardType.MOB)
                 {
-                    int s = hc.card.Health + hc.card.Attack + ((hc.card.tank) ? 1 : 0) + ((hc.card.Shield) ? 1 : 0);
+                    int s = hc.card.Health + hc.card.Attack + ((hc.card.tank) ? 1 : 0) + ((hc.card.DivineShield) ? 1 : 0);
                     if (s < sum)
                     {
                         c = hc;

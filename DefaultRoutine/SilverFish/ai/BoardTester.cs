@@ -1125,7 +1125,7 @@ namespace HREngine.Bots
             m.windfury = hc.card.windfury;
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
-            m.DivineShield = hc.card.Shield;
+            m.DivineShield = hc.card.DivineShield;
             m.poisonous = hc.card.poisonous;
             m.lifesteal = hc.card.lifesteal;
             m.stealth = hc.card.Stealth;

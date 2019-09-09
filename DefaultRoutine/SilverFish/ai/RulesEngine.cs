@@ -2066,22 +2066,22 @@ namespace HREngine.Bots
                     return false;
                 case param.ohc_shields_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.Shield) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.DivineShield) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_shields_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.Shield) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.DivineShield) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_shields_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.Shield) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.DivineShield) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_shields_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.Shield) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.DivineShield) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_taunts_equal:

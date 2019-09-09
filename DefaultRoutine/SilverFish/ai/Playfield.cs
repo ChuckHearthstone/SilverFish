@@ -2167,7 +2167,7 @@ namespace HREngine.Bots
             if (prozis.settings.placement == 1)
             {
                 int cardvalue = card.Health * 2 + card.Attack;
-                if (card.Shield) cardvalue = cardvalue * 3 / 2;
+                if (card.DivineShield) cardvalue = cardvalue * 3 / 2;
                 cardvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(card.name);
 
                 i = 0;
@@ -5788,7 +5788,7 @@ namespace HREngine.Bots
             m.windfury = hc.card.windfury;
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
-            m.DivineShield = hc.card.Shield;
+            m.DivineShield = hc.card.DivineShield;
             m.poisonous = hc.card.poisonous;
             m.lifesteal = hc.card.lifesteal;
             if (this.prozis.ownElementalsHaveLifesteal > 0 && (TAG_RACE)m.handcard.card.race == TAG_RACE.ELEMENTAL) m.lifesteal = true;
@@ -6426,7 +6426,7 @@ namespace HREngine.Bots
                 minionvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
 
                 int cvalue = c.Health * 2 + c.Attack;
-                if (c.Shield) cvalue = cvalue * 3 / 2;
+                if (c.DivineShield) cvalue = cvalue * 3 / 2;
                 cvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(c.name);
 
                 this.evaluatePenality += (minionvalue - cvalue - 2);
@@ -6690,7 +6690,7 @@ namespace HREngine.Bots
                             cardValue = (c.Health + hc.addHp) * 2 + (c.Attack + hc.addattack) * 2 + c.rarity + hc.elemPoweredUp * 2;
                             if (c.windfury) cardValue += c.Attack + hc.addattack;
                             if (c.tank) cardValue += 2;
-                            if (c.Shield) cardValue += 2;
+                            if (c.DivineShield) cardValue += 2;
                             if (c.Charge) cardValue += 3;
                             if (c.Stealth) cardValue += 1;
                             if (c.isSpecialMinion) cardValue += 10;
@@ -7142,7 +7142,7 @@ namespace HREngine.Bots
                     foreach (Handmanager.Handcard hc in cards) if (hc.card.Combo) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.DIVINE_SHIELD:
-                    foreach (Handmanager.Handcard hc in cards) if (hc.card.Shield) hc.extraParam3 = true;
+                    foreach (Handmanager.Handcard hc in cards) if (hc.card.DivineShield) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.ENRAGED:
                     foreach (Handmanager.Handcard hc in cards) if (hc.card.Enrage) hc.extraParam3 = true;

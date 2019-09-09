@@ -31,8 +31,6 @@ namespace HREngine.Bots
 
             public bool Reborn { get; set; }
 
-            public bool HasBeenReborn { get; set; }
-
             public bool battlecry = false;
             public bool discover = false;
             public bool oneTurnEffect = false;
@@ -46,7 +44,7 @@ namespace HREngine.Bots
             public bool Stealth = false;
             public bool Freeze = false;
             public bool AdjacentBuff = false;
-            public bool Shield = false;
+            public bool DivineShield = false;
             public bool Charge = false;
             public bool Secret = false;
             public bool Quest = false;
@@ -149,7 +147,7 @@ namespace HREngine.Bots
                 this.overload = c.overload;
                 this.Secret = c.Secret;
                 this.Quest = c.Quest;
-                this.Shield = c.Shield;
+                this.DivineShield = c.DivineShield;
                 this.Silence = c.Silence;
                 this.Spellpower = c.Spellpower;
                 this.spellpowervalue = c.spellpowervalue;
