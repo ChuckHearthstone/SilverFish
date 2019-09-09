@@ -573,7 +573,7 @@ namespace HREngine.Bots
                 m.Ready = true;
                 m.charge = 1;
             }
-            if (hc.card.Shield) m.divineshild = true;
+            if (hc.card.Shield) m.DivineShield = true;
             if (hc.card.poisonous) m.poisonous = true;
             if (hc.card.lifesteal) m.lifesteal = true;
 
@@ -626,7 +626,7 @@ namespace HREngine.Bots
                 if (m.taunt) mini += " tnt";
                 if (m.frozen) mini += " frz";
                 if (m.silenced) mini += " silenced";
-                if (m.divineshild) mini += " divshield";
+                if (m.DivineShield) mini += " divshield";
                 if (m.playedThisTurn) mini += " ptt";
                 if (m.windfury) mini += " wndfr";
                 if (m.stealth) mini += " stlth";
@@ -682,7 +682,7 @@ namespace HREngine.Bots
                 if (m.taunt) mini += " tnt";
                 if (m.frozen) mini += " frz";
                 if (m.silenced) mini += " silenced";
-                if (m.divineshild) mini += " divshield";
+                if (m.DivineShield) mini += " divshield";
                 if (m.playedThisTurn) mini += " ptt";
                 if (m.windfury) mini += " wndfr";
                 if (m.stealth) mini += " stlth";

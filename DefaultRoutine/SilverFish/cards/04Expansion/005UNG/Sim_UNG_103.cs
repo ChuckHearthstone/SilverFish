@@ -27,7 +27,7 @@ namespace SilverFish.cards._04Expansion._005UNG
                         case 2: p.minionGetBuffed(m, 3, 0); break;
                         case 3: p.minionGetBuffed(m, 0, 3); break;
                         case 4: m.taunt = true; break;
-                        case 5: m.divineshild = true; break;
+                        case 5: m.DivineShield = true; break;
                         case 6: m.poisonous = true; break;
 					}
 				}				

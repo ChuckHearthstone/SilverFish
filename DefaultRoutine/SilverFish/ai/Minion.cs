@@ -110,7 +110,8 @@ namespace HREngine.Bots
         public bool taunt = false;
         public bool wounded = false;//hp red?
 
-        public bool divineshild = false;
+        public bool DivineShield { get; set; }
+
         public bool windfury = false;
         public bool frozen = false;
         public bool stealth = false;
@@ -199,7 +200,7 @@ namespace HREngine.Bots
             this.taunt = m.taunt;
             this.wounded = m.wounded;
 
-            this.divineshild = m.divineshild;
+            this.DivineShield = m.DivineShield;
             this.windfury = m.windfury;
             this.frozen = m.frozen;
             this.stealth = m.stealth;
@@ -281,7 +282,7 @@ namespace HREngine.Bots
             this.taunt = m.taunt;
             this.wounded = m.wounded;
 
-            this.divineshild = m.divineshild;
+            this.DivineShield = m.DivineShield;
             this.windfury = m.windfury;
             this.frozen = m.frozen;
             this.stealth = m.stealth;
@@ -422,7 +423,7 @@ namespace HREngine.Bots
             bool woundedbefore = this.wounded;
             if (damage > 0) this.allreadyAttacked = true;
 
-            if (damage > 0 && this.divineshild)
+            if (damage > 0 && this.DivineShield)
             {
                 p.minionLosesDivineShield(this);
                 if (!own && !dontCalcLostDmg && p.turnCounter == 0)
@@ -658,7 +659,7 @@ namespace HREngine.Bots
             charge = 0;
             hChoice = 0;
             taunt = false;
-            divineshild = false;
+            DivineShield = false;
             windfury = false;
             frozen = false;
             stealth = false;

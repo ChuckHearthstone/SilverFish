@@ -147,7 +147,7 @@ namespace HREngine.Bots
                     {
                         if (!target.taunt)
                         {
-                            if (m.HealthPoints <= target.Attack && m.own && !m.divineshild && !m.immune) return 65;
+                            if (m.HealthPoints <= target.Attack && m.own && !m.DivineShield && !m.immune) return 65;
                         }
                     }
                     goto case CardName.aiextra1;
@@ -163,7 +163,7 @@ namespace HREngine.Bots
                 case CardName.webspinner: goto case CardName.aiextra1;
                 case CardName.aiextra1:
                     
-                    if (m.HealthPoints <= target.Attack && m.own && !m.divineshild && !m.immune)
+                    if (m.HealthPoints <= target.Attack && m.own && !m.DivineShield && !m.immune)
                     {
                         int carddraw = 1; 
                         if (p.owncards.Count + carddraw > 10) retval += 15 * (p.owncards.Count + carddraw - 10);
@@ -173,10 +173,10 @@ namespace HREngine.Bots
                     break;
             }
             if (this.specialMinions.ContainsKey(m.name) && target.HealthPoints > m.Attack && !target.isHero) retval++;
-            if (this.UsefulNeedKeepDatabase.ContainsKey(m.name) && !target.isHero && !(m.divineshild || target.Attack == 0)) retval++;
+            if (this.UsefulNeedKeepDatabase.ContainsKey(m.name) && !target.isHero && !(m.DivineShield || target.Attack == 0)) retval++;
             if (m.justBuffed > 0)
             {
-                if (m.divineshild || m.immune) {}
+                if (m.DivineShield || m.immune) {}
                 else if (target.poisonous || target.Attack >= m.HealthPoints) retval += m.justBuffed;
             }
             return retval;
@@ -435,7 +435,7 @@ namespace HREngine.Bots
                     }
                     return 50;
                 }
-                if (m.HealthPoints == 1 && !m.divineshild && !this.buffing1TurnDatabase.ContainsKey(name))
+                if (m.HealthPoints == 1 && !m.DivineShield && !this.buffing1TurnDatabase.ContainsKey(name))
                 {
                     return 10;
                 }
@@ -562,7 +562,7 @@ namespace HREngine.Bots
                         if (target.handcard.card.deathrattle) return 0;
                     }
 
-                    if (target.Attack <= target.handcard.card.Attack && target.maxHp <= target.handcard.card.Health && !target.taunt && !target.windfury && !target.divineshild && !target.poisonous && !target.lifesteal && !this.specialMinions.ContainsKey(name))
+                    if (target.Attack <= target.handcard.card.Attack && target.maxHp <= target.handcard.card.Health && !target.taunt && !target.windfury && !target.DivineShield && !target.poisonous && !target.lifesteal && !this.specialMinions.ContainsKey(name))
                     {
                         if (name == CardName.keeperofthegrove) return 500;
                         return 30;
@@ -629,7 +629,7 @@ namespace HREngine.Bots
                 for (int i = 0; i < anz; i++)
                 {
                     Minion m = p.enemyMinions[i];
-                    if (aoeDamage >= m.HealthPoints && !m.divineshild)
+                    if (aoeDamage >= m.HealthPoints && !m.DivineShield)
                     {
                         switch (name)
                         {
@@ -667,7 +667,7 @@ namespace HREngine.Bots
                                 
                                 if (i > 0)
                                 {
-                                    if (p.enemyMinions[i - 1].divineshild)
+                                    if (p.enemyMinions[i - 1].DivineShield)
                                     {
                                         preventDamage += 1;
                                         if (preventDamageAdd == 0 && p.ownHero.Ready && p.enemyMinions[i - 1].HealthPoints <= p.ownHero.Attack) preventDamageAdd = 1;
@@ -680,7 +680,7 @@ namespace HREngine.Bots
                                 }
                                 if (i < anz - 1)
                                 {
-                                    if (p.enemyMinions[i + 1].divineshild)
+                                    if (p.enemyMinions[i + 1].DivineShield)
                                     {
                                         preventDamage += 1;
                                         if (preventDamageAdd == 0 && p.ownHero.Ready && p.enemyMinions[i + 1].HealthPoints <= p.ownHero.Attack) preventDamageAdd = 1;
@@ -696,7 +696,7 @@ namespace HREngine.Bots
                                 if (m.silenced) break;
                                 if (i > 0)
                                 {
-                                    if (p.enemyMinions[i - 1].divineshild)
+                                    if (p.enemyMinions[i - 1].DivineShield)
                                     {
                                         preventDamage += 2;
                                         if (preventDamageAdd == 0 && p.ownHero.Ready && p.enemyMinions[i - 1].HealthPoints <= p.ownHero.Attack) preventDamageAdd = 1;
@@ -709,7 +709,7 @@ namespace HREngine.Bots
                                 }
                                 if (i < anz - 1)
                                 {
-                                    if (p.enemyMinions[i + 1].divineshild)
+                                    if (p.enemyMinions[i + 1].DivineShield)
                                     {
                                         preventDamage += 2;
                                         if (preventDamageAdd == 0 && p.ownHero.Ready && p.enemyMinions[i + 1].HealthPoints <= p.ownHero.Attack) preventDamageAdd = 1;
@@ -723,21 +723,21 @@ namespace HREngine.Bots
                                 break;
                             case CardName.leokk: 
                                 if (m.silenced) break;
-                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) preventDamage += 1;
+                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) preventDamage += 1;
                                 break;
                             case CardName.raidleader: 
                                 if (m.silenced) break;
-                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) preventDamage += 1;
+                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) preventDamage += 1;
                                 break;
                             case CardName.stormwindchampion: 
                                 if (m.silenced) break;
-                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) preventDamage += 1;
+                                foreach (Minion mm in p.enemyMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) preventDamage += 1;
                                 break;
                             case CardName.grimscaleoracle: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 1;
+                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 1;
                                 }
                                 break;
                                  
@@ -745,42 +745,42 @@ namespace HREngine.Bots
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 2;
+                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 2;
                                 }
                                 break;
                             case CardName.malganis: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.DEMON && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 2;
+                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.DEMON && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 2;
                                 }
                                 break;
                             case CardName.southseacaptain: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 1;
+                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 1;
                                 }
                                 break;
                             case CardName.timberwolf: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PET && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 1;
+                                    if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PET && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 1;
                                 }
                                 break;
                             case CardName.warhorsetrainer: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if (mm.name == CardName.silverhandrecruit && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 1;
+                                    if (mm.name == CardName.silverhandrecruit && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 1;
                                 }
                                 break;
                             case CardName.warsongcommander: 
                                 if (m.silenced) break;
                                 foreach (Minion mm in p.enemyMinions)
                                 {
-                                    if (mm.charge > 0 && (mm.HealthPoints > aoeDamage || mm.divineshild)) preventDamage += 1;
+                                    if (mm.charge > 0 && (mm.HealthPoints > aoeDamage || mm.DivineShield)) preventDamage += 1;
                                 }
                                 break;
                             case CardName.tunneltrogg:
@@ -810,7 +810,7 @@ namespace HREngine.Bots
                     for (int i = 0; i < anz; i++)
                     {
                         Minion m = p.ownMinions[i];
-                        if (aoeDamage >= m.HealthPoints && !m.divineshild)
+                        if (aoeDamage >= m.HealthPoints && !m.DivineShield)
                         {
                             switch (name)
                             {
@@ -844,31 +844,31 @@ namespace HREngine.Bots
                             {
                                 case CardName.direwolfalpha: 
                                     if (m.silenced) break;
-                                    if (i > 0 && (p.ownMinions[i - 1].HealthPoints > aoeDamage || p.ownMinions[i - 1].divineshild)) lostOwnDamage += 1;
-                                    if (i < anz - 1 && (p.ownMinions[i + 1].HealthPoints > aoeDamage || p.ownMinions[i + 1].divineshild)) lostOwnDamage += 1;
+                                    if (i > 0 && (p.ownMinions[i - 1].HealthPoints > aoeDamage || p.ownMinions[i - 1].DivineShield)) lostOwnDamage += 1;
+                                    if (i < anz - 1 && (p.ownMinions[i + 1].HealthPoints > aoeDamage || p.ownMinions[i + 1].DivineShield)) lostOwnDamage += 1;
                                     break;
                                 case CardName.flametonguetotem: 
                                     if (m.silenced) break;
-                                    if (i > 0 && (p.ownMinions[i - 1].HealthPoints > aoeDamage || p.ownMinions[i - 1].divineshild)) lostOwnDamage += 2;
-                                    if (i < anz - 1 && (p.ownMinions[i + 1].HealthPoints > aoeDamage || p.ownMinions[i + 1].divineshild)) lostOwnDamage += 2;
+                                    if (i > 0 && (p.ownMinions[i - 1].HealthPoints > aoeDamage || p.ownMinions[i - 1].DivineShield)) lostOwnDamage += 2;
+                                    if (i < anz - 1 && (p.ownMinions[i + 1].HealthPoints > aoeDamage || p.ownMinions[i + 1].DivineShield)) lostOwnDamage += 2;
                                     break;
                                 case CardName.leokk: 
                                     if (m.silenced) break;
-                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) lostOwnDamage += 1;
+                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) lostOwnDamage += 1;
                                     break;
                                 case CardName.raidleader: 
                                     if (m.silenced) break;
-                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) lostOwnDamage += 1;
+                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) lostOwnDamage += 1;
                                     break;
                                 case CardName.stormwindchampion: 
                                     if (m.silenced) break;
-                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.divineshild) lostOwnDamage += 1;
+                                    foreach (Minion mm in p.ownMinions) if (mm.HealthPoints > aoeDamage || mm.DivineShield) lostOwnDamage += 1;
                                     break;
                                 case CardName.grimscaleoracle: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 1;
+                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 1;
                                     }
                                     break;
                                 
@@ -876,42 +876,42 @@ namespace HREngine.Bots
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 2;
+                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.MURLOC && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 2;
                                     }
                                     break;
                                 case CardName.malganis: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.DEMON && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 2;
+                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.DEMON && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 2;
                                     }
                                     break;
                                 case CardName.southseacaptain: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 1;
+                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PIRATE && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 1;
                                     }
                                     break;
                                 case CardName.timberwolf: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PET && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 1;
+                                        if ((TAG_RACE)mm.handcard.card.race == TAG_RACE.PET && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 1;
                                     }
                                     break;
                                 case CardName.warhorsetrainer: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if (mm.name == CardName.silverhandrecruit && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 1;
+                                        if (mm.name == CardName.silverhandrecruit && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 1;
                                     }
                                     break;
                                 case CardName.warsongcommander: 
                                     if (m.silenced) break;
                                     foreach (Minion mm in p.ownMinions)
                                     {
-                                        if (mm.charge > 0 && (mm.HealthPoints > aoeDamage || mm.divineshild)) lostOwnDamage += 1;
+                                        if (mm.charge > 0 && (mm.HealthPoints > aoeDamage || mm.DivineShield)) lostOwnDamage += 1;
                                     }
                                     break;
                             }
@@ -2589,7 +2589,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion mm in p.ownMinions)
                         {
-                            if (!mm.divineshild) return 500;
+                            if (!mm.DivineShield) return 500;
                         }
                     }
                     if (target.HealthPoints == 1) pen = 15;
@@ -2782,11 +2782,11 @@ namespace HREngine.Bots
                     int shilds = 0;
                     foreach (Minion min in p.ownMinions)
                     {
-                        if (min.divineshild) shilds++;
+                        if (min.DivineShield) shilds++;
                     }
                     foreach (Minion min in p.enemyMinions)
                     {
-                        if (min.divineshild) shilds++;
+                        if (min.DivineShield) shilds++;
                     }
                     if (shilds == 0) pen = 10;
                     break;
@@ -3232,7 +3232,7 @@ namespace HREngine.Bots
                     if (canBe_duplicate)
                     {
                         pen = 1;
-                        if (target.HealthPoints > m.Attack || target.divineshild) return 0;
+                        if (target.HealthPoints > m.Attack || target.DivineShield) return 0;
                         else
                         {
                             pen += target.handcard.card.cost;

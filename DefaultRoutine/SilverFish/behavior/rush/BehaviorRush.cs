@@ -142,7 +142,7 @@ namespace HREngine.Bots
                 if (m.handcard.card.name == CardName.nerubianegg)
                 {
                     if (m.Attack >= 1) retval += 2;
-                    if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
+                    if ((!m.taunt && m.Attack == 0) && (m.DivineShield || m.maxHp > 2)) retval -= 10;
                 }
                 retval += m.synergy;
             }
@@ -202,7 +202,7 @@ namespace HREngine.Bots
                     if (m.windfury) retval += 2 * m.Attack;
                 }
                 if (m.taunt) retval += 5;
-                if (m.divineshild) retval += m.Attack;
+                if (m.DivineShield) retval += m.Attack;
                 if (m.frozen) retval -= 1; // because its bad for enemy :D
                 if (m.poisonous)
                 {

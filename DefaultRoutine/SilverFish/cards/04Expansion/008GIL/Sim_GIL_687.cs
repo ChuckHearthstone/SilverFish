@@ -20,7 +20,7 @@ namespace SilverFish.cards._04Expansion._008GIL
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-            if (dmg >= target.HealthPoints && !target.divineshild && !target.immune)
+            if (dmg >= target.HealthPoints && !target.DivineShield && !target.immune)
             {
                 p.drawACard(CardName.thecoin, ownplay, true);
             }

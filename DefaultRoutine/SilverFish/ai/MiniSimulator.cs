@@ -490,7 +490,7 @@ namespace HREngine.Bots
 
                         if ((!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced))) // both are not special, if they are the same, dont add
                         {
-                            if (mnn.Attack == m.Attack && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
+                            if (mnn.Attack == m.Attack && mnn.HealthPoints == m.HealthPoints && mnn.DivineShield == m.DivineShield && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 
@@ -501,7 +501,7 @@ namespace HREngine.Bots
                                 continue;
                             }
                             // same name -> test whether they are equal
-                            if (mnn.Attack == m.Attack && mnn.HealthPoints == m.HealthPoints && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
+                            if (mnn.Attack == m.Attack && mnn.HealthPoints == m.HealthPoints && mnn.DivineShield == m.DivineShield && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal) goingtoadd = false;
                             continue;
                         }
 

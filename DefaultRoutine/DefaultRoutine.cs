@@ -1164,7 +1164,7 @@ def Execute():
                                                 case CardIdEnum.UNG_999t5: if (m.cantBeTargetedBySpellsOrHeroPowers) forbidden = true; break;
                                                 case CardIdEnum.UNG_999t6: if (m.taunt) forbidden = true; break;
                                                 case CardIdEnum.UNG_999t7: if (m.windfury) forbidden = true; break;
-                                                case CardIdEnum.UNG_999t8: if (m.divineshild) forbidden = true; break;
+                                                case CardIdEnum.UNG_999t8: if (m.DivineShield) forbidden = true; break;
                                                 case CardIdEnum.UNG_999t10: if (m.stealth) forbidden = true; break;
                                                 case CardIdEnum.UNG_999t13: if (m.poisonous) forbidden = true; break;
                                             }

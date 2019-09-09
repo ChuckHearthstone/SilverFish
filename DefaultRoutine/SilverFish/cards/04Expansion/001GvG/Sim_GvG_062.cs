@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._001GvG
         {
             if (triggerEffectMinion.own==summonedMinion.own && (TAG_RACE)summonedMinion.handcard.card.race == TAG_RACE.MECHANICAL)
             {
-                triggerEffectMinion.divineshild = true;
+                triggerEffectMinion.DivineShield = true;
             }
         }
 

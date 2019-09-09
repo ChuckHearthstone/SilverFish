@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._005UNG
             p.minionGetBuffed(own, 6, 0);
             p.minionGetBuffed(own, 0, 3);
             own.taunt = true;
-            own.divineshild = true;
+            own.DivineShield = true;
         }
     }
 }

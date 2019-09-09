@@ -12,7 +12,7 @@ namespace SilverFish.cards._02Classic
 		{
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
-            if (target.HealthPoints > dmg || target.immune || target.divineshild)
+            if (target.HealthPoints > dmg || target.immune || target.DivineShield)
             {
                 //this.owncarddraw++;
                 p.drawACard(CardName.unknown, ownplay);

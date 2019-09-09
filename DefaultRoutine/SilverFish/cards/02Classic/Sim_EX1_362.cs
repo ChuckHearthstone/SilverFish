@@ -8,7 +8,7 @@ namespace SilverFish.cards._02Classic
 //    kampfschrei:/ verleiht einem befreundeten diener gottesschild/.
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if (target != null) target.divineshild = true;
+            if (target != null) target.DivineShield = true;
 		}
 
 	}

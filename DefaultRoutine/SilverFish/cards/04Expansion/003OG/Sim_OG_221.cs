@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._003OG
         public override void onDeathrattle(Playfield p, Minion m)
         {
 			Minion target = (m.own) ? p.searchRandomMinion(p.ownMinions, searchmode.searchLowestAttack) : p.searchRandomMinion(p.enemyMinions, searchmode.searchLowestAttack);
-			if (target != null) target.divineshild = true;
+			if (target != null) target.DivineShield = true;
         }
     }
 }

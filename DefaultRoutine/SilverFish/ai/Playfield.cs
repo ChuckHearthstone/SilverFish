@@ -1279,7 +1279,7 @@ namespace HREngine.Bots
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
-                if (dis.divineshild != pis.divineshild || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
+                if (dis.DivineShield != pis.DivineShield || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
                 if (dis.ownBlessingOfWisdom != pis.ownBlessingOfWisdom || dis.enemyBlessingOfWisdom != pis.enemyBlessingOfWisdom) minionbool = false;
                 if (dis.ownPowerWordGlory != pis.ownPowerWordGlory || dis.enemyPowerWordGlory != pis.enemyPowerWordGlory) minionbool = false;
                 if (dis.destroyOnEnemyTurnStart != pis.destroyOnEnemyTurnStart || dis.destroyOnEnemyTurnEnd != pis.destroyOnEnemyTurnEnd || dis.destroyOnOwnTurnEnd != pis.destroyOnOwnTurnEnd || dis.destroyOnOwnTurnStart != pis.destroyOnOwnTurnStart) minionbool = false;
@@ -1302,7 +1302,7 @@ namespace HREngine.Bots
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
-                if (dis.divineshild != pis.divineshild || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
+                if (dis.DivineShield != pis.DivineShield || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
                 if (dis.ownBlessingOfWisdom != pis.ownBlessingOfWisdom || dis.enemyBlessingOfWisdom != pis.enemyBlessingOfWisdom) minionbool = false;
                 if (dis.ownPowerWordGlory != pis.ownPowerWordGlory || dis.enemyPowerWordGlory != pis.enemyPowerWordGlory) minionbool = false;
                 if (dis.destroyOnEnemyTurnStart != pis.destroyOnEnemyTurnStart || dis.destroyOnEnemyTurnEnd != pis.destroyOnEnemyTurnEnd || dis.destroyOnOwnTurnEnd != pis.destroyOnOwnTurnEnd || dis.destroyOnOwnTurnStart != pis.destroyOnOwnTurnStart) minionbool = false;
@@ -1390,7 +1390,7 @@ namespace HREngine.Bots
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
-                if (dis.divineshild != pis.divineshild || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
+                if (dis.DivineShield != pis.DivineShield || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
                 if (dis.ownBlessingOfWisdom != pis.ownBlessingOfWisdom || dis.enemyBlessingOfWisdom != pis.enemyBlessingOfWisdom) minionbool = false;
                 if (dis.ownPowerWordGlory != pis.ownPowerWordGlory || dis.enemyPowerWordGlory != pis.enemyPowerWordGlory) minionbool = false;
                 if (dis.destroyOnEnemyTurnStart != pis.destroyOnEnemyTurnStart || dis.destroyOnEnemyTurnEnd != pis.destroyOnEnemyTurnEnd || dis.destroyOnOwnTurnEnd != pis.destroyOnOwnTurnEnd || dis.destroyOnOwnTurnStart != pis.destroyOnOwnTurnStart) minionbool = false;
@@ -1415,7 +1415,7 @@ namespace HREngine.Bots
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
                 if (dis.silenced != pis.silenced || dis.stealth != pis.stealth || dis.taunt != pis.taunt || dis.windfury != pis.windfury || dis.zonepos != pis.zonepos) minionbool = false;
-                if (dis.divineshild != pis.divineshild || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
+                if (dis.DivineShield != pis.DivineShield || dis.cantLowerHPbelowONE != pis.cantLowerHPbelowONE || dis.immune != pis.immune) minionbool = false;
                 if (dis.ownBlessingOfWisdom != pis.ownBlessingOfWisdom || dis.enemyBlessingOfWisdom != pis.enemyBlessingOfWisdom) minionbool = false;
                 if (dis.ownPowerWordGlory != pis.ownPowerWordGlory || dis.enemyPowerWordGlory != pis.enemyPowerWordGlory) minionbool = false;
                 if (dis.destroyOnEnemyTurnStart != pis.destroyOnEnemyTurnStart || dis.destroyOnEnemyTurnEnd != pis.destroyOnEnemyTurnEnd || dis.destroyOnOwnTurnEnd != pis.destroyOnOwnTurnEnd || dis.destroyOnOwnTurnStart != pis.destroyOnOwnTurnStart) minionbool = false;
@@ -1514,7 +1514,7 @@ namespace HREngine.Bots
 
                 foreach (Minion m in this.ownMinions)
                 {
-                    retval += m.entitiyID + m.Attack + m.HealthPoints + (m.taunt ? 1 : 0) + (m.divineshild ? 1 : 0) + (m.wounded ? 0 : 1);
+                    retval += m.entitiyID + m.Attack + m.HealthPoints + (m.taunt ? 1 : 0) + (m.DivineShield ? 1 : 0) + (m.wounded ? 0 : 1);
                 }
                 retval *= 10000000;
             }
@@ -2175,7 +2175,7 @@ namespace HREngine.Bots
                 {
                     places[i] = 0;
                     tempval = m.maxHp * 2 + m.Attack;
-                    if (m.divineshild) tempval = tempval * 3 / 2;
+                    if (m.DivineShield) tempval = tempval * 3 / 2;
                     if (!m.silenced) tempval += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
                     places[i] = tempval;
                     i++;
@@ -2306,7 +2306,7 @@ namespace HREngine.Bots
                     else this.anzEnemyTaunt++;
                     return 4;
                 }
-                else if (!m.divineshild) { m.divineshild = true; return 5; }
+                else if (!m.DivineShield) { m.DivineShield = true; return 5; }
                 else if (!m.poisonous) { m.poisonous = true; return 6; }
                 else { this.minionGetBuffed(m, 0, 3);  return 3; }
             }
@@ -2401,7 +2401,7 @@ namespace HREngine.Bots
             foreach (Minion m in this.ownMinions)
             {
                 if (m.taunt) ghd -= m.HealthPoints;
-                if (m.taunt && m.divineshild) ghd -= 1;
+                if (m.taunt && m.DivineShield) ghd -= 1;
             }
 
             int guessingHeroDamage = Math.Max(0, ghd);
@@ -2797,8 +2797,8 @@ namespace HREngine.Bots
                         temp.Sort((a, b) => a.HealthPoints.CompareTo(b.HealthPoints));
                         foreach (Minion m in temp)
                         {
-                            if (m.divineshild) continue;
-                            m.divineshild = true;
+                            if (m.DivineShield) continue;
+                            m.DivineShield = true;
                             break;
                         }
                         continue;
@@ -3707,7 +3707,7 @@ namespace HREngine.Bots
                                 this.minionGetDamageOrHeal(mTarget, 3, true);
                                 break;
                             case CardName.fjolalightbane:
-                                target.divineshild = true;
+                                target.DivineShield = true;
                                 break;
                             default:
                                 break;
@@ -5788,7 +5788,7 @@ namespace HREngine.Bots
             m.windfury = hc.card.windfury;
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
-            m.divineshild = hc.card.Shield;
+            m.DivineShield = hc.card.Shield;
             m.poisonous = hc.card.poisonous;
             m.lifesteal = hc.card.lifesteal;
             if (this.prozis.ownElementalsHaveLifesteal > 0 && (TAG_RACE)m.handcard.card.race == TAG_RACE.ELEMENTAL) m.lifesteal = true;
@@ -6422,7 +6422,7 @@ namespace HREngine.Bots
             else if (m.own)
             {
                 int minionvalue = m.HealthPoints * 2 + m.Attack;
-                if (m.divineshild) minionvalue = minionvalue * 3 / 2;
+                if (m.DivineShield) minionvalue = minionvalue * 3 / 2;
                 minionvalue += prozis.penman.getValueOfUsefulNeedKeepPriority(m.handcard.card.name);
 
                 int cvalue = c.Health * 2 + c.Attack;
@@ -6657,7 +6657,7 @@ namespace HREngine.Bots
 
         public void minionLosesDivineShield(Minion m)
         {
-            m.divineshild = false;
+            m.DivineShield = false;
             if (m.own) this.tempTrigger.ownMinionLosesDivineShield++;
             else this.tempTrigger.enemyMinionLosesDivineShield++;
         }
@@ -7031,9 +7031,9 @@ namespace HREngine.Bots
             for (int pos = 0; pos < temp.Count; pos++)
             {
                 Minion m = temp[pos];
-                if (m.divineshild)
+                if (m.DivineShield)
                 {
-                    m.divineshild = false;
+                    m.DivineShield = false;
                     times--;
                     if (times < 1) break;
                 }

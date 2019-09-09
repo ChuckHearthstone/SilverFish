@@ -32,7 +32,7 @@ namespace SilverFish.cards._04Expansion._008GIL
                 if (dragonInHand)
                 {
                     m.taunt = true;
-                    m.divineshild = true;
+                    m.DivineShield = true;
                     p.anzOwnTaunt++;
                 }
             }
@@ -41,7 +41,7 @@ namespace SilverFish.cards._04Expansion._008GIL
                 if (p.enemyAnzCards >= 2)
                 {
                     m.taunt = true;
-                    m.divineshild = true;
+                    m.DivineShield = true;
                     p.anzEnemyTaunt++;
                 }
             }

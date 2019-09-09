@@ -16,7 +16,7 @@ namespace SilverFish.cards._02Classic
 
             bool summondemon = false;
 
-            if (!target.isHero && dmg >= target.HealthPoints && !target.divineshild && !target.immune)
+            if (!target.isHero && dmg >= target.HealthPoints && !target.DivineShield && !target.immune)
             {
                 summondemon = true;
             }

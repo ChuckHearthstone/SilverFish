@@ -101,7 +101,7 @@ namespace HREngine.Bots
                 retval += m.Attack * 2;
                 retval += m.handcard.card.rarity;
                 if (!m.playedThisTurn && m.windfury) retval += m.Attack;
-                if (m.divineshild) retval += 1;
+                if (m.DivineShield) retval += 1;
                 if (m.stealth) retval += 1;
                 if (m.handcard.card.isSpecialMinion && !m.silenced)
                 {
@@ -110,12 +110,12 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.divineshild) retval -= 5;
+                    if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.DivineShield) retval -= 5;
                 }
                 //if (!m.taunt && m.stealth && penman.specialMinions.ContainsKey(m.name)) retval += 20;
                 //if (m.poisonous) retval += 1;
                 if (m.lifesteal) retval += m.Attack/2;
-                if (m.divineshild && m.taunt) retval += 4;
+                if (m.DivineShield && m.taunt) retval += 4;
                 //if (m.taunt && m.handcard.card.name == CardName.frog) owntaunt++;
                 //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
                 //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
@@ -124,7 +124,7 @@ namespace HREngine.Bots
                 if (m.handcard.card.name == CardName.nerubianegg)
                 {
                     if (m.Attack >= 1) retval += 2;
-                    if ((!m.taunt && m.Attack == 0) && (m.divineshild || m.maxHp > 2)) retval -= 10;
+                    if ((!m.taunt && m.Attack == 0) && (m.DivineShield || m.maxHp > 2)) retval -= 10;
                 }
                 if (m.Ready) readycount++;
                 if (m.HealthPoints <= 4 && (m.Attack > 2 || m.HealthPoints > 3)) ownMinionsCount++;
@@ -333,13 +333,13 @@ namespace HREngine.Bots
             if (!m.handcard.card.isSpecialMinion)
             {
                 if (m.Attack == 0) retval -= 7;
-                else if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.divineshild) retval -= 5;
+                else if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.DivineShield) retval -= 5;
             }
             else retval += m.handcard.card.rarity;
 			
             if (m.taunt) retval += 5;
-            if (m.divineshild) retval += m.Attack;
-            if (m.divineshild && m.taunt) retval += 5;
+            if (m.DivineShield) retval += m.Attack;
+            if (m.DivineShield && m.taunt) retval += 5;
             if (m.stealth) retval += 1;
 
             if (m.poisonous)

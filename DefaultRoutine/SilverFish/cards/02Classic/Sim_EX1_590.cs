@@ -11,7 +11,7 @@ namespace SilverFish.cards._02Classic
             int shilds = 0;
             foreach (Minion m in p.ownMinions)
             {
-                if (m.divineshild)
+                if (m.DivineShield)
                 {
                     p.minionLosesDivineShield(m);
                     shilds++;
@@ -19,7 +19,7 @@ namespace SilverFish.cards._02Classic
             }
             foreach (Minion m in p.enemyMinions)
             {
-                if (m.divineshild)
+                if (m.DivineShield)
                 {
                     p.minionLosesDivineShield(m);
                     shilds++;

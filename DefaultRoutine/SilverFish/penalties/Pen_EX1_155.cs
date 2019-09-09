@@ -19,7 +19,7 @@ namespace HREngine.Bots
                     {
                         return 50;
                     }
-                    if (m.HealthPoints == 1 && !m.divineshild)
+                    if (m.HealthPoints == 1 && !m.DivineShield)
                     {
                         return 10;
                     }

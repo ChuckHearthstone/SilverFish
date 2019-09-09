@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._005UNG
         {
 			if (p.anzOwnElementalsLastTurn > 0 && own.own)
 			{
-				own.divineshild = true;
+				own.DivineShield = true;
 				own.taunt = true;
                 p.anzOwnTaunt++;
 			}

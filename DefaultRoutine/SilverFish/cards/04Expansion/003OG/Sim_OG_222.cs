@@ -16,7 +16,7 @@ namespace SilverFish.cards._04Expansion._003OG
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {
-                if (m.divineshild) p.minionGetBuffed(m, 1, 1);
+                if (m.DivineShield) p.minionGetBuffed(m, 1, 1);
             }
         }
     }

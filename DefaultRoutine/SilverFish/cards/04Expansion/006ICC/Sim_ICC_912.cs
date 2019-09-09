@@ -15,7 +15,7 @@ namespace SilverFish.cards._04Expansion._006ICC
                     own.taunt = true;
                     p.anzOwnTaunt++;
                 }
-                if (p.prozis.numDeckCardsByTag(GAME_TAGs.DIVINE_SHIELD) > 0) own.divineshild = true;
+                if (p.prozis.numDeckCardsByTag(GAME_TAGs.DIVINE_SHIELD) > 0) own.DivineShield = true;
                 if (p.prozis.numDeckCardsByTag(GAME_TAGs.LIFESTEAL) > 0) own.lifesteal = true;
                 if (p.prozis.numDeckCardsByTag(GAME_TAGs.WINDFURY) > 0) own.windfury = true;
             }

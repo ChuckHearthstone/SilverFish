@@ -21,7 +21,7 @@ namespace SilverFish.cards._04Expansion._007LOOT
             int dmg2minion = (ownplay) ? p.getSpellDamageDamage(6) : p.getEnemySpellDamageDamage(6);
             int damg2hero = 0;
             p.minionGetDamageOrHeal(target, dmg2minion);
-            if (dmg2minion >= target.HealthPoints && !target.divineshild && !target.immune)
+            if (dmg2minion >= target.HealthPoints && !target.DivineShield && !target.immune)
             {
                 damg2hero = dmg2minion - target.HealthPoints;
             }

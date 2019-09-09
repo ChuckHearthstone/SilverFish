@@ -10,7 +10,7 @@ namespace SilverFish.cards._04Expansion._003OG
         {
             if (summonedMinion.HealthPoints == 1 && m.own == summonedMinion.own && m.entitiyID != summonedMinion.entitiyID)
             {
-                summonedMinion.divineshild = true;
+                summonedMinion.DivineShield = true;
             }
         }
     }

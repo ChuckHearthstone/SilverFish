@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._005UNG
 
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-			target.divineshild = true;
+			target.DivineShield = true;
         }
     }
 }

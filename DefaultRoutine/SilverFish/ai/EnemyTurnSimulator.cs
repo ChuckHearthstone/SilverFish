@@ -438,7 +438,7 @@ namespace HREngine.Bots
                         if (p.enemyAnzCards >= 2) p.drawACard(CardName.unknown, false);
                         continue;
                     case CardName.cobaltguardian:
-                        if (p.enemyAnzCards >= 2) m.divineshild = true;
+                        if (p.enemyAnzCards >= 2) m.DivineShield = true;
                         continue;
                     case CardName.knifejuggler:
                         anz = Math.Min(p.enemyAnzCards, (int)p.enemyMaxMana/2);

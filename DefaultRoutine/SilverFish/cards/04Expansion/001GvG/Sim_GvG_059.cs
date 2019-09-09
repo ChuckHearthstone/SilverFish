@@ -17,7 +17,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             Minion m = p.searchRandomMinion(temp, searchmode.searchLowestHP);
             if (m != null)
             {
-                m.divineshild = true;
+                m.DivineShield = true;
                 if (!m.taunt)
                 {
                     m.taunt = true;

@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._002AT
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             p.minionGetBuffed(target, 3, 0);
-			target.divineshild = true;
+			target.DivineShield = true;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._003OG
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
-            if (target.HealthPoints > dmg || target.immune || target.divineshild)
+            if (target.HealthPoints > dmg || target.immune || target.DivineShield)
             {
 				int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 				p.CallKid(kid, pos, ownplay);

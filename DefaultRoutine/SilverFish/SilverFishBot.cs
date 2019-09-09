@@ -705,7 +705,7 @@ namespace HREngine.Bots
 
                     m.frozen = (entitiy.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
 
-                    m.divineshild = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) == 0) ? false : true;
+                    m.DivineShield = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) == 0) ? false : true;
 
                     m.stealth = (entitiy.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
 

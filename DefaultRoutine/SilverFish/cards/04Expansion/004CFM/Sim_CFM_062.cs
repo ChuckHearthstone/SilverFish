@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._004CFM
             {
                 if (mnn.zonepos == m.zonepos - 1 || mnn.zonepos == m.zonepos + 1)
                 {
-                    mnn.divineshild = true;
+                    mnn.DivineShield = true;
                 }
             }
         }

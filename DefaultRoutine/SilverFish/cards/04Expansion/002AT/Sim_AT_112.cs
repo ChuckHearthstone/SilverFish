@@ -8,7 +8,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			own.divineshild = true; // optimistic
+			own.DivineShield = true; // optimistic
             if (!own.taunt)
             {
                 own.taunt = true;

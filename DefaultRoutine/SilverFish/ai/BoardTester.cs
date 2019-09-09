@@ -718,7 +718,7 @@ namespace HREngine.Bots
                         tempminion.taunt = taunt;
                         tempminion.frozen = frzn;
                         tempminion.silenced = silenced;
-                        tempminion.divineshild = divshield;
+                        tempminion.DivineShield = divshield;
                         tempminion.playedThisTurn = ptt;
                         tempminion.windfury = wndfry;
                         tempminion.stealth = stl;
@@ -873,7 +873,7 @@ namespace HREngine.Bots
                         tempminion.taunt = taunt;
                         tempminion.frozen = frzn;
                         tempminion.silenced = silenced;
-                        tempminion.divineshild = divshield;
+                        tempminion.DivineShield = divshield;
                         tempminion.playedThisTurn = ptt;
                         tempminion.windfury = wndfry;
                         tempminion.stealth = stl;
@@ -1125,7 +1125,7 @@ namespace HREngine.Bots
             m.windfury = hc.card.windfury;
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
-            m.divineshild = hc.card.Shield;
+            m.DivineShield = hc.card.Shield;
             m.poisonous = hc.card.poisonous;
             m.lifesteal = hc.card.lifesteal;
             m.stealth = hc.card.Stealth;
