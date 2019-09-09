@@ -15,8 +15,8 @@ namespace HREngine.Bots
 
         public targett(int targ, int ent)
         {
-            this.target = targ;
-            this.targetEntity = ent;
+            target = targ;
+            targetEntity = ent;
         }
     }
 
@@ -29,7 +29,7 @@ namespace HREngine.Bots
             if (Enum.TryParse<CardIdEnum>(s, false, out CardEnum)) return CardEnum;
             else
             {
-                Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType().ErrorFormat("[Unidentified card ID :" + s + "]");
+                Logger.GetLoggerInstanceForType().ErrorFormat("[Unidentified card ID :" + s + "]");
                 return CardIdEnum.None;
             }
         }
@@ -45,7 +45,7 @@ namespace HREngine.Bots
                 nameEnum = GetSpecialCardNameEnumFromCardIdEnum(tempCardIdEnum);
                 if (nameEnum == CardName.unknown)
                 {
-                    Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
+                    Logger.GetLoggerInstanceForType()
                         .ErrorFormat("[Unidentified card name :" + s + "]");
                 }
             }
@@ -174,26 +174,27 @@ namespace HREngine.Bots
         private CardDB()
         {
             InitSpecialNames();
-            string[] lines = new string[0] { };
             string path = Settings.Instance.DataFolderPath;
             string cardDbPath = Path.Combine(path, "_carddb.txt");
-            lines = System.IO.File.ReadAllLines(cardDbPath);
+            var lines = File.ReadAllLines(cardDbPath);
             Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
             CardList.Clear();
-            this.cardidToCardList.Clear();
-            Card c = new Card();
-            int de = 0;
+            cardidToCardList.Clear();
+
             //placeholdercard
             Card plchldr = new Card {name = CardName.unknown, cost = 1000};
-            this.namelist.Add("unknown");
-            this.CardList.Add(plchldr);
-            this.unknownCard = CardList[0];
+            namelist.Add("unknown");
+            CardList.Add(plchldr);
+            unknownCard = CardList[0];
+
+
+            Card card = new Card();
             string name = "";
             foreach (string s in lines)
             {
                 if (s.Contains("/Entity"))
                 {
-                    if (c.type == CardType.ENCHANTMENT)
+                    if (card.type == CardType.ENCHANTMENT)
                     {
                         //LogHelper.WriteCombatLog(c.CardID);
                         //LogHelper.WriteCombatLog(c.name);
@@ -203,23 +204,23 @@ namespace HREngine.Bots
 
                     if (name != "")
                     {
-                        this.namelist.Add(name);
+                        namelist.Add(name);
                     }
 
                     name = "";
-                    if (c.name != CardName.unknown)
+                    if (card.name != CardName.unknown)
                     {
 
-                        this.CardList.Add(c);
+                        CardList.Add(card);
                         //LogHelper.WriteCombatLog(c.name);
-                        if (!this.cardidToCardList.ContainsKey(c.cardIDenum))
+                        if (!cardidToCardList.ContainsKey(card.cardIDenum))
                         {
-                            this.cardidToCardList.Add(c.cardIDenum, c);
+                            cardidToCardList.Add(card.cardIDenum, card);
                         }
                         else
                         {
-                            Triton.Common.LogUtilities.Logger.GetLoggerInstanceForType()
-                                .ErrorFormat("[c.cardIDenum:" + c.cardIDenum + "] already exists in cardidToCardList");
+                            Logger.GetLoggerInstanceForType()
+                                .ErrorFormat("[c.cardIDenum:" + card.cardIDenum + "] already exists in cardidToCardList");
                         }
                     }
 
@@ -227,35 +228,34 @@ namespace HREngine.Bots
 
                 if (s.Contains("<Entity CardID=\"") && s.Contains(" version=\""))
                 {
-                    c = new Card();
-                    de = 0;
+                    card = new Card();
                     string temp = s.Split(new string[] {"CardID=\""}, StringSplitOptions.None)[1];
                     temp = temp.Replace("\">", "");
                     temp = temp.Split(new string[] {"\""}, StringSplitOptions.None)[0];
                     allCardIDS.Add(temp);
-                    c.cardIDenum = this.cardIdstringToEnum(temp);
+                    card.cardIDenum = cardIdstringToEnum(temp);
 
                     //token:
                     if (temp.EndsWith("t"))
                     {
-                        c.isToken = true;
+                        card.isToken = true;
                     }
 
-                    if (temp.Equals("ds1_whelptoken")) c.isToken = true;
-                    if (temp.Equals("CS2_mirror")) c.isToken = true;
-                    if (temp.Equals("CS2_050")) c.isToken = true;
-                    if (temp.Equals("CS2_052")) c.isToken = true;
-                    if (temp.Equals("CS2_051")) c.isToken = true;
-                    if (temp.Equals("NEW1_009")) c.isToken = true;
-                    if (temp.Equals("CS2_152")) c.isToken = true;
-                    if (temp.Equals("CS2_boar")) c.isToken = true;
-                    if (temp.Equals("EX1_tk11")) c.isToken = true;
-                    if (temp.Equals("EX1_506a")) c.isToken = true;
-                    if (temp.Equals("skele21")) c.isToken = true;
-                    if (temp.Equals("EX1_tk9")) c.isToken = true;
-                    if (temp.Equals("EX1_finkle")) c.isToken = true;
-                    if (temp.Equals("EX1_598")) c.isToken = true;
-                    if (temp.Equals("EX1_tk34")) c.isToken = true;
+                    if (temp.Equals("ds1_whelptoken")) card.isToken = true;
+                    if (temp.Equals("CS2_mirror")) card.isToken = true;
+                    if (temp.Equals("CS2_050")) card.isToken = true;
+                    if (temp.Equals("CS2_052")) card.isToken = true;
+                    if (temp.Equals("CS2_051")) card.isToken = true;
+                    if (temp.Equals("NEW1_009")) card.isToken = true;
+                    if (temp.Equals("CS2_152")) card.isToken = true;
+                    if (temp.Equals("CS2_boar")) card.isToken = true;
+                    if (temp.Equals("EX1_tk11")) card.isToken = true;
+                    if (temp.Equals("EX1_506a")) card.isToken = true;
+                    if (temp.Equals("skele21")) card.isToken = true;
+                    if (temp.Equals("EX1_tk9")) card.isToken = true;
+                    if (temp.Equals("EX1_finkle")) card.isToken = true;
+                    if (temp.Equals("EX1_598")) card.isToken = true;
+                    if (temp.Equals("EX1_tk34")) card.isToken = true;
                     //if (c.isToken) Helpfunctions.Instance.ErrorLog(temp +" is token");
 
                     continue;
@@ -266,7 +266,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.Health = Convert.ToInt32(temp);
+                    card.Health = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -275,7 +275,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.Class = Convert.ToInt32(temp);
+                    card.Class = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -284,7 +284,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.Attack.Value = Convert.ToInt32(temp);
+                    card.Attack.Value = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -293,7 +293,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.race = Convert.ToInt32(temp);
+                    card.race = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -302,7 +302,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.rarity = Convert.ToInt32(temp);
+                    card.rarity = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -311,7 +311,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.cost = Convert.ToInt32(temp);
+                    card.cost = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -320,7 +320,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    if (c.name != CardName.unknown)
+                    if (card.name != CardName.unknown)
                     {
                         //LogHelper.WriteCombatLog(temp);
                     }
@@ -328,32 +328,32 @@ namespace HREngine.Bots
                     int crdtype = Convert.ToInt32(temp);
                     if (crdtype == 10)
                     {
-                        c.type = CardType.HEROPWR;
+                        card.type = CardType.HEROPWR;
                     }
 
                     if (crdtype == 3)
                     {
-                        c.type = CardType.HERO;
+                        card.type = CardType.HERO;
                     }
 
                     if (crdtype == 4)
                     {
-                        c.type = CardType.MOB;
+                        card.type = CardType.MOB;
                     }
 
                     if (crdtype == 5)
                     {
-                        c.type = CardType.SPELL;
+                        card.type = CardType.SPELL;
                     }
 
                     if (crdtype == 6)
                     {
-                        c.type = CardType.ENCHANTMENT;
+                        card.type = CardType.ENCHANTMENT;
                     }
 
                     if (crdtype == 7)
                     {
-                        c.type = CardType.WEAPON;
+                        card.type = CardType.WEAPON;
                     }
 
                     continue;
@@ -377,7 +377,7 @@ namespace HREngine.Bots
 
                     temp = temp.Split(new string[] {"</Tag>"}, StringSplitOptions.RemoveEmptyEntries)[0];
                     temp = TrimHelper.TrimEnglishName(temp);
-                    c.name = this.cardNameStringToEnum(temp, c.cardIDenum);
+                    card.name = cardNameStringToEnum(temp, card.cardIDenum);
                     name = temp;
 
 
@@ -396,7 +396,7 @@ namespace HREngine.Bots
 
                     if (temp.Contains("choose one"))
                     {
-                        c.choice = true;
+                        card.choice = true;
                         //LogHelper.WriteCombatLog(c.name + " is choice");
                     }
 
@@ -409,7 +409,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.poisonous = true;
+                    if (ti == 1) card.poisonous = true;
                     continue;
                 }
 
@@ -419,7 +419,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Enrage = true;
+                    if (ti == 1) card.Enrage = true;
                     continue;
                 }
 
@@ -429,7 +429,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.oneTurnEffect = true;
+                    if (ti == 1) card.oneTurnEffect = true;
                     continue;
                 }
 
@@ -439,7 +439,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Aura = true;
+                    if (ti == 1) card.Aura = true;
                     continue;
                 }
 
@@ -449,7 +449,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.tank = true;
+                    if (ti == 1) card.tank = true;
                     continue;
                 }
 
@@ -459,7 +459,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.battlecry = true;
+                    if (ti == 1) card.battlecry = true;
                     continue;
                 }
 
@@ -469,7 +469,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.discover = true;
+                    if (ti == 1) card.discover = true;
                     continue;
                 }
 
@@ -479,7 +479,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.windfury = true;
+                    if (ti == 1) card.windfury = true;
                     continue;
                 }
 
@@ -489,7 +489,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.deathrattle = true;
+                    if (ti == 1) card.deathrattle = true;
                     continue;
                 }
 
@@ -501,7 +501,7 @@ namespace HREngine.Bots
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1)
                     {
-                        c.Reborn = true;
+                        card.Reborn = true;
                     }
                     continue;
                 }
@@ -512,7 +512,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Inspire = true;
+                    if (ti == 1) card.Inspire = true;
                     continue;
                 }
 
@@ -521,7 +521,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.Durability = Convert.ToInt32(temp);
+                    card.Durability = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -531,7 +531,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Elite = true;
+                    if (ti == 1) card.Elite = true;
                     continue;
                 }
 
@@ -541,7 +541,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Combo = true;
+                    if (ti == 1) card.Combo = true;
                     continue;
                 }
 
@@ -550,7 +550,7 @@ namespace HREngine.Bots
                 {
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
-                    c.overload = Convert.ToInt32(temp);
+                    card.overload = Convert.ToInt32(temp);
                     continue;
                 }
 
@@ -560,7 +560,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.lifesteal = true;
+                    if (ti == 1) card.lifesteal = true;
                     continue;
                 }
 
@@ -570,7 +570,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.untouchable = true;
+                    if (ti == 1) card.untouchable = true;
                     continue;
                 }
 
@@ -580,7 +580,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Stealth = true;
+                    if (ti == 1) card.Stealth = true;
                     continue;
                 }
 
@@ -590,7 +590,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Secret = true;
+                    if (ti == 1) card.Secret = true;
                     continue;
                 }
 
@@ -600,7 +600,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Quest = true;
+                    if (ti == 1) card.Quest = true;
                     continue;
                 }
 
@@ -610,7 +610,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Freeze = true;
+                    if (ti == 1) card.Freeze = true;
                     continue;
                 }
 
@@ -620,7 +620,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.AdjacentBuff = true;
+                    if (ti == 1) card.AdjacentBuff = true;
                     continue;
                 }
 
@@ -630,7 +630,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.DivineShield = true;
+                    if (ti == 1) card.DivineShield = true;
                     continue;
                 }
 
@@ -640,7 +640,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Charge = true;
+                    if (ti == 1) card.Charge = true;
                     continue;
                 }
 
@@ -650,7 +650,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Silence = true;
+                    if (ti == 1) card.Silence = true;
                     continue;
                 }
 
@@ -660,7 +660,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Morph = true;
+                    if (ti == 1) card.Morph = true;
                     continue;
                 }
 
@@ -670,11 +670,11 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
-                    if (ti == 1) c.Spellpower = true;
-                    c.spellpowervalue = 1;
-                    if (c.name == CardName.ancientmage) c.spellpowervalue = 0;
-                    if (c.name == CardName.malygos) c.spellpowervalue = 5;
-                    if (c.name == CardName.arcanotron) c.spellpowervalue = 2;
+                    if (ti == 1) card.Spellpower = true;
+                    card.spellpowervalue = 1;
+                    if (card.name == CardName.ancientmage) card.spellpowervalue = 0;
+                    if (card.name == CardName.malygos) card.spellpowervalue = 5;
+                    if (card.name == CardName.arcanotron) card.spellpowervalue = 2;
                     continue;
                 }
 
@@ -683,7 +683,7 @@ namespace HREngine.Bots
                     string temp = s.Split(new string[] {"reqID=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
                     temp = temp.Split('\"')[0];
                     int reqID = Convert.ToInt32(temp);
-                    c.playrequires.Add((ErrorType2) reqID);
+                    card.playrequires.Add((ErrorType2) reqID);
 
                     int param = 0;
                     temp = s.Split(new string[] {"param=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
@@ -706,31 +706,31 @@ namespace HREngine.Bots
                         switch (reqID)
                         {
                             case 8:
-                                c.needWithMaxAttackValueOf = param;
+                                card.needWithMaxAttackValueOf = param;
                                 continue;
                             case 10:
-                                c.needRaceForPlaying = param;
+                                card.needRaceForPlaying = param;
                                 continue;
                             case 12:
-                                c.needEmptyPlacesForPlaying = param;
+                                card.needEmptyPlacesForPlaying = param;
                                 continue;
                             case 19:
-                                c.needMinionsCapIfAvailable = param;
+                                card.needMinionsCapIfAvailable = param;
                                 continue;
                             case 23:
-                                c.needMinNumberOfEnemy = param;
+                                card.needMinNumberOfEnemy = param;
                                 continue;
                             case 41:
-                                c.needWithMinAttackValueOf = param;
+                                card.needWithMinAttackValueOf = param;
                                 continue;
                             case 45:
-                                c.needMinTotalMinions = param;
+                                card.needMinTotalMinions = param;
                                 continue;
                             case 56:
-                                c.needMinOwnMinions = param;
+                                card.needMinOwnMinions = param;
                                 continue;
                             case 59:
-                                c.needControlaSecret = param;
+                                card.needControlaSecret = param;
                                 continue;
                         }
                     }
@@ -746,10 +746,10 @@ namespace HREngine.Bots
 
             }
 
-            this.teacherminion = this.getCardDataFromID(CardIdEnum.NEW1_026t);
-            this.illidanminion = this.getCardDataFromID(CardIdEnum.EX1_614t);
-            this.lepergnome = this.getCardDataFromID(CardIdEnum.EX1_029);
-            this.burlyrockjaw = this.getCardDataFromID(CardIdEnum.GVG_068);
+            teacherminion = getCardDataFromID(CardIdEnum.NEW1_026t);
+            illidanminion = getCardDataFromID(CardIdEnum.EX1_614t);
+            lepergnome = getCardDataFromID(CardIdEnum.EX1_029);
+            burlyrockjaw = getCardDataFromID(CardIdEnum.GVG_068);
 
             Helpfunctions.Instance.InfoLog("CardList:" + cardidToCardList.Count);
 
@@ -758,7 +758,7 @@ namespace HREngine.Bots
         public Card getCardData(CardName cardname)
         {
 
-            foreach (Card ca in this.CardList)
+            foreach (Card ca in CardList)
             {
                 if (ca.name == cardname)
                 {
@@ -771,7 +771,7 @@ namespace HREngine.Bots
 
         public Card getCardDataFromID(CardIdEnum id)
         {
-            return this.cardidToCardList.ContainsKey(id) ? this.cardidToCardList[id] : this.unknownCard;
+            return cardidToCardList.ContainsKey(id) ? cardidToCardList[id] : unknownCard;
         }
 
         private void enumCreator()
@@ -780,7 +780,7 @@ namespace HREngine.Bots
             LogHelper.WriteMainLog("public enum cardIDEnum");
             LogHelper.WriteMainLog("{");
             LogHelper.WriteMainLog("None,");
-            foreach (string cardid in this.allCardIDS)
+            foreach (string cardid in allCardIDS)
             {
                 LogHelper.WriteMainLog(cardid + ",");
             }
@@ -790,7 +790,7 @@ namespace HREngine.Bots
 
             LogHelper.WriteMainLog("public cardIDEnum cardIdstringToEnum(string s)");
             LogHelper.WriteMainLog("{");
-            foreach (string cardid in this.allCardIDS)
+            foreach (string cardid in allCardIDS)
             {
                 LogHelper.WriteMainLog("if(s==\"" + cardid + "\") return CardIdEnum." + cardid + ";");
             }
@@ -827,7 +827,7 @@ namespace HREngine.Bots
 
             LogHelper.WriteMainLog("public SimTemplate getSimCard(cardIDEnum id)");
             LogHelper.WriteMainLog("{");
-            foreach (string cardid in this.allCardIDS)
+            foreach (string cardid in allCardIDS)
             {
                 LogHelper.WriteMainLog("if(id == CardIdEnum." + cardid + ") return new Sim_" + cardid + "();");
             }
