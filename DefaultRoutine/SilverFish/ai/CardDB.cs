@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using HearthDb;
+using HearthDb.Enums;
 using SilverFish.Helpers;
 using Triton.Common.LogUtilities;
 using SilverFish.Enums;
+using CardType = SilverFish.Enums.CardType;
 
 namespace HREngine.Bots
 {
@@ -190,6 +193,41 @@ namespace HREngine.Bots
 
             Card card = new Card();
             string name = "";
+            var cards = Cards.All;
+            foreach (var item in cards.Keys)
+            {
+                card.cardIDenum = ConvertHelper.cardIdstringToEnum(item);
+                var dbCard = cards[item];
+                card.Health = dbCard.Health;
+                card.Class = (int) dbCard.Class;
+                card.Attack.Value = dbCard.Attack;
+                card.race = (int) dbCard.Race;
+                card.rarity = (int) dbCard.Rarity;
+                card.cost = dbCard.Cost;
+                card.type = (CardType) dbCard.Type;
+                if (card.type == CardType.Token)
+                {
+                    card.isToken = true;
+                }
+
+                var trimmedCardName = TrimHelper.TrimEnglishName(dbCard.Name);
+                card.name = ConvertHelper.cardNamestringToEnum(trimmedCardName);
+
+                card.poisonous = dbCard.Entity.GetTag(GameTag.POISONOUS) == 1;
+                card.Enrage = dbCard.Entity.GetTag(GameTag.ENRAGED) == 1;
+                card.Aura = dbCard.Entity.GetTag(GameTag.AURA) == 1;
+                card.tank = dbCard.Entity.GetTag(GameTag.TAUNT) == 1;
+                card.battlecry= dbCard.Entity.GetTag(GameTag.BATTLECRY) == 1;
+                card.discover = dbCard.Entity.GetTag(GameTag.DISCOVER) == 1;
+                card.windfury = dbCard.Entity.GetTag(GameTag.WINDFURY) == 1;
+                card.deathrattle = dbCard.Entity.GetTag(GameTag.DEATHRATTLE) == 1;
+                card.Reborn = dbCard.Entity.GetTag(GameTag.REBORN) == 1;
+                card.Inspire = dbCard.Entity.GetTag(GameTag.INSPIRE) == 1;
+                card.Durability = dbCard.Entity.GetTag(GameTag.DURABILITY);
+                card.Elite = dbCard.Entity.GetTag(GameTag.ELITE) == 1;
+                card.Combo= dbCard.Entity.GetTag(GameTag.COMBO) == 1;
+            }
+
             foreach (string s in lines)
             {
                 if (s.Contains("/Entity"))
@@ -261,129 +299,6 @@ namespace HREngine.Bots
                     continue;
                 }
 
-                //health
-                if (s.Contains("<Tag enumID=\"45\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.Health = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //Class
-                if (s.Contains("Tag enumID=\"199\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.Class = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //attack
-                if (s.Contains("<Tag enumID=\"47\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.Attack.Value = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //race
-                if (s.Contains("<Tag enumID=\"200\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.race = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //rarity
-                if (s.Contains("<Tag enumID=\"203\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.rarity = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //manacost
-                if (s.Contains("<Tag enumID=\"48\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.cost = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //cardtype
-                if (s.Contains("<Tag enumID=\"202\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    if (card.name != CardName.unknown)
-                    {
-                        //LogHelper.WriteCombatLog(temp);
-                    }
-
-                    int crdtype = Convert.ToInt32(temp);
-                    if (crdtype == 10)
-                    {
-                        card.type = CardType.HEROPWR;
-                    }
-
-                    if (crdtype == 3)
-                    {
-                        card.type = CardType.HERO;
-                    }
-
-                    if (crdtype == 4)
-                    {
-                        card.type = CardType.MOB;
-                    }
-
-                    if (crdtype == 5)
-                    {
-                        card.type = CardType.SPELL;
-                    }
-
-                    if (crdtype == 6)
-                    {
-                        card.type = CardType.ENCHANTMENT;
-                    }
-
-                    if (crdtype == 7)
-                    {
-                        card.type = CardType.WEAPON;
-                    }
-
-                    continue;
-                }
-
-                //cardname
-                if (s.Contains("<Tag enumID=\"185\""))
-                {
-                    string temp = string.Empty;
-                    try
-                    {
-                        temp = s.Split(new string[] {"value=\"0\">"}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    }
-                    catch(Exception ex)
-                    {
-                        Helpfunctions.Instance.ErrorLog(ex);
-                        Logger.GetLoggerInstanceForType()
-                            .ErrorFormat("[Unidentified Tag enumID 185 :" + s + "]");
-                        continue;
-                    }
-
-                    temp = temp.Split(new string[] {"</Tag>"}, StringSplitOptions.RemoveEmptyEntries)[0];
-                    temp = TrimHelper.TrimEnglishName(temp);
-                    card.name = cardNameStringToEnum(temp, card.cardIDenum);
-                    name = temp;
-
-
-                    continue;
-                }
-
                 //cardtextinhand
                 if (s.Contains("<Tag enumID=\"184\""))
                 {
@@ -403,26 +318,6 @@ namespace HREngine.Bots
                     continue;
                 }
 
-                //poisonous
-                if (s.Contains("<Tag enumID=\"363\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.poisonous = true;
-                    continue;
-                }
-
-                //enrage
-                if (s.Contains("<Tag enumID=\"212\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.Enrage = true;
-                    continue;
-                }
-
                 //OneTurnEffect
                 if (s.Contains("<Tag enumID=\"338\""))
                 {
@@ -430,118 +325,6 @@ namespace HREngine.Bots
                     temp = temp.Split('\"')[0];
                     int ti = Convert.ToInt32(temp);
                     if (ti == 1) card.oneTurnEffect = true;
-                    continue;
-                }
-
-                //aura
-                if (s.Contains("<Tag enumID=\"362\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.Aura = true;
-                    continue;
-                }
-
-                //taunt
-                if (s.Contains("<Tag enumID=\"190\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.tank = true;
-                    continue;
-                }
-
-                //battlecry
-                if (s.Contains("<Tag enumID=\"218\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.battlecry = true;
-                    continue;
-                }
-
-                //discover
-                if (s.Contains("<Tag enumID=\"415\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.discover = true;
-                    continue;
-                }
-
-                //windfury
-                if (s.Contains("<Tag enumID=\"189\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.windfury = true;
-                    continue;
-                }
-
-                //deathrattle
-                if (s.Contains("<Tag enumID=\"217\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.deathrattle = true;
-                    continue;
-                }
-
-                //reborn
-                if (s.Contains("<Tag enumID=\"1085\""))
-                {
-                    string temp = s.Split(new string[] { "value=\"" }, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1)
-                    {
-                        card.Reborn = true;
-                    }
-                    continue;
-                }
-
-                //Inspire
-                if (s.Contains("<Tag enumID=\"403\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.Inspire = true;
-                    continue;
-                }
-
-                //durability
-                if (s.Contains("<Tag enumID=\"187\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    card.Durability = Convert.ToInt32(temp);
-                    continue;
-                }
-
-                //elite
-                if (s.Contains("<Tag enumID=\"114\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.Elite = true;
-                    continue;
-                }
-
-                //combo
-                if (s.Contains("<Tag enumID=\"220\""))
-                {
-                    string temp = s.Split(new string[] {"value=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int ti = Convert.ToInt32(temp);
-                    if (ti == 1) card.Combo = true;
                     continue;
                 }
 
