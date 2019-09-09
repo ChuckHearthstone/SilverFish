@@ -1142,7 +1142,7 @@ def Execute():
                                         case CardName.eternalservitude:
                                         case CardName.freefromamber:
                                         case CardName.anewchallenger:
-                                            Minion m = tmpPlf.createNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
+                                            Minion m = tmpPlf.CreateNewMinion(discoverCards[i], tmpPlf.ownMinions.Count, true);
                                             tmpPlf.ownMinions[tmpPlf.ownMinions.Count - 1] = m;
                                             break;
                                         default:

@@ -112,6 +112,10 @@ namespace HREngine.Bots
 
         public bool DivineShield { get; set; }
 
+        public bool Reborn { get; set; }
+
+        public bool HasBeenReborn { get; set; }
+
         public bool windfury = false;
         public bool frozen = false;
         public bool stealth = false;
@@ -201,6 +205,10 @@ namespace HREngine.Bots
             this.wounded = m.wounded;
 
             this.DivineShield = m.DivineShield;
+
+            Reborn = m.Reborn;
+            HasBeenReborn = m.HasBeenReborn;
+
             this.windfury = m.windfury;
             this.frozen = m.frozen;
             this.stealth = m.stealth;
@@ -283,6 +291,10 @@ namespace HREngine.Bots
             this.wounded = m.wounded;
 
             this.DivineShield = m.DivineShield;
+
+            Reborn = m.Reborn;
+            HasBeenReborn = m.HasBeenReborn;
+
             this.windfury = m.windfury;
             this.frozen = m.frozen;
             this.stealth = m.stealth;

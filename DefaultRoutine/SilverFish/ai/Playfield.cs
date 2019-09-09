@@ -5485,7 +5485,7 @@ namespace HREngine.Bots
                             deathrattleMinions.Add(m);
                         }
 
-                        if (!m.silenced && m.handcard.card.Reborn && !m.handcard.card.HasBeenReborn)
+                        if (!m.silenced && m.Reborn && !m.HasBeenReborn)
                         {
                             rebornMinions.Add(m);
                         }
@@ -5757,7 +5757,7 @@ namespace HREngine.Bots
             }
         }
 
-        public Minion createNewMinion(Handmanager.Handcard hc, int zonepos, bool own)
+        public Minion CreateNewMinion(Handmanager.Handcard hc, int zonepos, bool own)
         {
             Minion m = new Minion();
             Handmanager.Handcard handc = new Handmanager.Handcard(hc);
@@ -5789,6 +5789,9 @@ namespace HREngine.Bots
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
             m.DivineShield = hc.card.DivineShield;
+
+            m.Reborn = hc.card.Reborn;
+
             m.poisonous = hc.card.poisonous;
             m.lifesteal = hc.card.lifesteal;
             if (this.prozis.ownElementalsHaveLifesteal > 0 && (TAG_RACE)m.handcard.card.race == TAG_RACE.ELEMENTAL) m.lifesteal = true;
@@ -5826,7 +5829,7 @@ namespace HREngine.Bots
             int mobplace = zonepos;
 
             
-            Minion m = createNewMinion(hc, mobplace, true);
+            Minion m = CreateNewMinion(hc, mobplace, true);
             m.playedFromHand = true;
 
             
@@ -5971,7 +5974,7 @@ namespace HREngine.Bots
             {
                 entity = this.getNextEntity()
             };
-            Minion m = createNewMinion(hc, mobplace, own);
+            Minion m = CreateNewMinion(hc, mobplace, own);
             //put it on battle field (+triggers)
             addMinionToBattlefield(m);
 
@@ -5995,7 +5998,7 @@ namespace HREngine.Bots
             }
             else
             {
-                newMinion.handcard.card.HasBeenReborn = true;
+                newMinion.HasBeenReborn = true;
                 newMinion.HealthPoints = 1;
             }
         }
@@ -6436,7 +6439,7 @@ namespace HREngine.Bots
                 if (m.own) this.anzOwnTaunt--;
                 else this.anzEnemyTaunt--;
             }
-            m.setMinionToMinion(createNewMinion(hc, m.zonepos, m.own));
+            m.setMinionToMinion(CreateNewMinion(hc, m.zonepos, m.own));
             if (m.taunt)
             {
                 if (m.own) this.anzOwnTaunt++;
