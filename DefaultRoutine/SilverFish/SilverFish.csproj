@@ -277,6 +277,7 @@
     <Compile Include="Enums\CardRace.cs" />
     <Compile Include="Enums\CardTrigger.cs" />
     <Compile Include="Enums\CardType.cs" />
+    <Compile Include="Enums\ErrorType2.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\ConvertHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />

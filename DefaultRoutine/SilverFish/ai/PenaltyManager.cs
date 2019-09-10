@@ -3161,10 +3161,10 @@ namespace HREngine.Bots
                             switch (a.actionType)
                             {
                                 case actionEnum.useHeroPower:
-                                    if (a.card.card.playrequires.Contains(CardDB.ErrorType2.REQ_NUM_MINION_SLOTS)) pen += 22;
+                                    if (a.card.card.playrequires.Contains(ErrorType2.REQ_NUM_MINION_SLOTS)) pen += 22;
                                     break;
                                 case actionEnum.playcard:
-                                    if (a.card.card.type == CardType.Minion || a.card.card.playrequires.Contains(CardDB.ErrorType2.REQ_NUM_MINION_SLOTS))
+                                    if (a.card.card.type == CardType.Minion || a.card.card.playrequires.Contains(ErrorType2.REQ_NUM_MINION_SLOTS))
                                     {
                                         pen += 20;
                                     }

@@ -105,7 +105,7 @@ namespace HREngine.Bots
 
             public Card()
             {
-                playrequires = new List<Bots.CardDB.ErrorType2>();
+                playrequires = new List<ErrorType2>();
             }
 
             public Card(Card c)
@@ -145,7 +145,7 @@ namespace HREngine.Bots
                 this.needWithMaxAttackValueOf = c.needWithMaxAttackValueOf;
                 this.needWithMinAttackValueOf = c.needWithMinAttackValueOf;
                 this.oneTurnEffect = c.oneTurnEffect;
-                this.playrequires = new List<Bots.CardDB.ErrorType2>(c.playrequires);
+                this.playrequires = new List<ErrorType2>(c.playrequires);
                 this.poisonous = c.poisonous;
                 this.lifesteal = c.lifesteal;
                 this.race = c.race;
@@ -165,7 +165,7 @@ namespace HREngine.Bots
                 this.isToken = c.isToken;
             }
 
-            public bool isRequirementInList(CardDB.ErrorType2 et)
+            public bool isRequirementInList(ErrorType2 et)
             {
                 return this.playrequires.Contains(et);
             }
@@ -211,74 +211,74 @@ namespace HREngine.Bots
                 bool REQ_STEALTHED_TARGET = false;
                 bool REQ_TARGET_IF_AVAILABE_AND_ELEMENTAL_PLAYED_LAST_TURN = false;
 
-                foreach (CardDB.ErrorType2 PlayReq in this.playrequires)
+                foreach (ErrorType2 PlayReq in this.playrequires)
                 {
                     switch (PlayReq)
                     {
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_TO_PLAY:
+                        case ErrorType2.REQ_TARGET_TO_PLAY:
                             targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINION_TARGET:
+                        case ErrorType2.REQ_MINION_TARGET:
                             targetOnlyMinion = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_IF_AVAILABLE:
+                        case ErrorType2.REQ_TARGET_IF_AVAILABLE:
                             REQ_TARGET_IF_AVAILABLE = true;
                             targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_FRIENDLY_TARGET:
+                        case ErrorType2.REQ_FRIENDLY_TARGET:
                             if (own) targetAllFriendly = true;
                             else targetAllEnemy = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_NUM_MINION_SLOTS:
+                        case ErrorType2.REQ_NUM_MINION_SLOTS:
                             if ((own ? p.ownMinions.Count : p.enemyMinions.Count) > 7 - this.needEmptyPlacesForPlaying) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINION_SLOT_OR_MANA_CRYSTAL_SLOT:
+                        case ErrorType2.REQ_MINION_SLOT_OR_MANA_CRYSTAL_SLOT:
                             if (own) { if (p.ownMinions.Count > 6 & p.ownMaxMana > 9) return retval; }
                             else if (p.enemyMinions.Count > 6 & p.enemyMaxMana > 9) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_ENEMY_TARGET:
+                        case ErrorType2.REQ_ENEMY_TARGET:
                             if (own) targetAllEnemy = true;
                             else targetAllFriendly = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_HERO_TARGET:
+                        case ErrorType2.REQ_HERO_TARGET:
                             REQ_HERO_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINIMUM_ENEMY_MINIONS:
+                        case ErrorType2.REQ_MINIMUM_ENEMY_MINIONS:
                             if ((own ? p.enemyMinions.Count : p.ownMinions.Count) < this.needMinNumberOfEnemy) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_NONSELF_TARGET:
+                        case ErrorType2.REQ_NONSELF_TARGET:
                             targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_WITH_RACE:
+                        case ErrorType2.REQ_TARGET_WITH_RACE:
                             REQ_TARGET_WITH_RACE = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_DAMAGED_TARGET:
+                        case ErrorType2.REQ_DAMAGED_TARGET:
                             REQ_DAMAGED_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_MAX_ATTACK:
+                        case ErrorType2.REQ_TARGET_MAX_ATTACK:
                             REQ_TARGET_MAX_ATTACK = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_WEAPON_EQUIPPED:
+                        case ErrorType2.REQ_WEAPON_EQUIPPED:
                             if ((own ? p.ownWeapon.Durability : p.enemyWeapon.Durability) == 0) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_FOR_COMBO:
+                        case ErrorType2.REQ_TARGET_FOR_COMBO:
                             if (p.cardsPlayedThisTurn >= 1) targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_MIN_ATTACK:
+                        case ErrorType2.REQ_TARGET_MIN_ATTACK:
                             REQ_TARGET_MIN_ATTACK = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINIMUM_TOTAL_MINIONS:
+                        case ErrorType2.REQ_MINIMUM_TOTAL_MINIONS:
                             if (this.needMinTotalMinions > p.ownMinions.Count + p.enemyMinions.Count) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINION_CAP_IF_TARGET_AVAILABLE:
+                        case ErrorType2.REQ_MINION_CAP_IF_TARGET_AVAILABLE:
                             if ((own ? p.ownMinions.Count : p.enemyMinions.Count) > 7 - this.needMinionsCapIfAvailable) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_ENTIRE_ENTOURAGE_NOT_IN_PLAY:
+                        case ErrorType2.REQ_ENTIRE_ENTOURAGE_NOT_IN_PLAY:
                             int difftotem = 0;
                             foreach (Minion m in (own ? p.ownMinions : p.enemyMinions))
                             {
@@ -286,11 +286,11 @@ namespace HREngine.Bots
                             }
                             if (difftotem == 4) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MUST_TARGET_TAUNTER:
+                        case ErrorType2.REQ_MUST_TARGET_TAUNTER:
                             REQ_MUST_TARGET_TAUNTER = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_DRAGON_IN_HAND:
+                        case ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_DRAGON_IN_HAND:
                             if (own)
                             {
                                 foreach (Handmanager.Handcard hc in p.owncards)
@@ -300,40 +300,40 @@ namespace HREngine.Bots
                             }
                             else targetAll = true; // apriori the enemy have a dragon
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_LEGENDARY_TARGET:
+                        case ErrorType2.REQ_LEGENDARY_TARGET:
                             REQ_LEGENDARY_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_UNDAMAGED_TARGET:
+                        case ErrorType2.REQ_UNDAMAGED_TARGET:
                             REQ_UNDAMAGED_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_WITH_DEATHRATTLE:
+                        case ErrorType2.REQ_TARGET_WITH_DEATHRATTLE:
                             REQ_TARGET_WITH_DEATHRATTLE = true;
                             targetOnlyMinion = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_IF_AVAILABE_AND_ELEMENTAL_PLAYED_LAST_TURN:
+                        case ErrorType2.REQ_TARGET_IF_AVAILABE_AND_ELEMENTAL_PLAYED_LAST_TURN:
                             REQ_TARGET_IF_AVAILABE_AND_ELEMENTAL_PLAYED_LAST_TURN = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_STEADY_SHOT:
+                        case ErrorType2.REQ_STEADY_SHOT:
                             REQ_STEADY_SHOT = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_FROZEN_TARGET:
+                        case ErrorType2.REQ_FROZEN_TARGET:
                             REQ_FROZEN_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MINION_OR_ENEMY_HERO:
+                        case ErrorType2.REQ_MINION_OR_ENEMY_HERO:
                             REQ_STEADY_SHOT = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_STEALTHED_TARGET:
+                        case ErrorType2.REQ_STEALTHED_TARGET:
                             REQ_STEALTHED_TARGET = true;
                             extraParam = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_ENEMY_WEAPON_EQUIPPED:
+                        case ErrorType2.REQ_ENEMY_WEAPON_EQUIPPED:
                             if (own)
                             {
                                 if (p.enemyWeapon.Durability > 0) targetEnemyHero = true;
@@ -345,17 +345,17 @@ namespace HREngine.Bots
                                 else return retval;
                             }
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_MINIONS:
+                        case ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_MINIONS:
                             int tmp = (own) ? p.ownMinions.Count : p.enemyMinions.Count;
                             if (tmp >= needMinOwnMinions) targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_SECRETS:
+                        case ErrorType2.REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_SECRETS:
                             if (p.ownSecretsIDList.Count >= needControlaSecret) targetAll = true;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_MUST_PLAY_OTHER_CARD_FIRST:
+                        case ErrorType2.REQ_MUST_PLAY_OTHER_CARD_FIRST:
                             if (p.cardsPlayedThisTurn == 0) return retval;
                             continue;
-                        case Bots.CardDB.ErrorType2.REQ_HAND_NOT_FULL:
+                        case ErrorType2.REQ_HAND_NOT_FULL:
                             if (p.owncards.Count == 10) return retval;
                             continue;
 
