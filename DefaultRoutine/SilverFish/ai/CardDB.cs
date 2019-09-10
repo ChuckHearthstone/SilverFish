@@ -7,6 +7,7 @@ using HearthDb.Enums;
 using SilverFish.Helpers;
 using Triton.Common.LogUtilities;
 using SilverFish.Enums;
+using SilverFish.Enums.PlayErrors;
 using CardType = SilverFish.Enums.CardType;
 
 namespace HREngine.Bots
@@ -191,15 +192,15 @@ namespace HREngine.Bots
                     }
                 }
 
-                var error1 = dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_1);
-                if (error1 > 0)
+                var playRequirements = dbCard.Entity?.Power?.PlayRequirements;
+                if (playRequirements != null)
                 {
-                    Console.WriteLine($"error1 = {error1}, {card.cardIDenum}");
-                }
-                var error2 = dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_2);
-                if (error2 > 0)
-                {
-                    Console.WriteLine($"error2 = {error2}, {card.cardIDenum}");
+                    foreach (var playRequirement in playRequirements)
+                    {
+                        var reqId = Convert.ToInt32(playRequirement.ReqId);
+                        var errorType = (ErrorType) Enum.ToObject(typeof(ErrorType), reqId);
+                        card.playrequires.Add(errorType);
+                    }
                 }
 
                 if (card.name != CardName.unknown)

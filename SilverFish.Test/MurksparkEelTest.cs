@@ -11,7 +11,7 @@ namespace SilverFish.Test
     class MurksparkEelTest : TestBase
     {
         [Test]
-        public void Test()
+        public void BattlecryDamageTest()
         {
 
             var testFilePath = Path.Combine(Settings.Instance.BaseDirectory,
