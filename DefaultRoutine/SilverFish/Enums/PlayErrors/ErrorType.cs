@@ -4,173 +4,262 @@
     {
         // Token: 0x04001BBB RID: 7099
         INVALID = -1,
+
         // Token: 0x04001BBC RID: 7100
         NONE,
+
         // Token: 0x04001BBD RID: 7101
         REQ_MINION_TARGET,
+
         // Token: 0x04001BBE RID: 7102
         REQ_FRIENDLY_TARGET,
+
         // Token: 0x04001BBF RID: 7103
         REQ_ENEMY_TARGET,
+
         // Token: 0x04001BC0 RID: 7104
         REQ_DAMAGED_TARGET,
+
         // Token: 0x04001BC1 RID: 7105
         REQ_MAX_SECRETS,
+
         // Token: 0x04001BC2 RID: 7106
         REQ_FROZEN_TARGET,
+
         // Token: 0x04001BC3 RID: 7107
         REQ_CHARGE_TARGET,
+
         // Token: 0x04001BC4 RID: 7108
         REQ_TARGET_MAX_ATTACK,
+
         // Token: 0x04001BC5 RID: 7109
         REQ_NONSELF_TARGET,
+
         // Token: 0x04001BC6 RID: 7110
         REQ_TARGET_WITH_RACE,
+
         // Token: 0x04001BC7 RID: 7111
         REQ_TARGET_TO_PLAY,
+
         // Token: 0x04001BC8 RID: 7112
         REQ_NUM_MINION_SLOTS,
+
         // Token: 0x04001BC9 RID: 7113
         REQ_WEAPON_EQUIPPED,
+
         // Token: 0x04001BCA RID: 7114
         REQ_ENOUGH_MANA,
+
         // Token: 0x04001BCB RID: 7115
         REQ_YOUR_TURN,
+
         // Token: 0x04001BCC RID: 7116
         REQ_NONSTEALTH_ENEMY_TARGET,
+
         // Token: 0x04001BCD RID: 7117
         REQ_HERO_TARGET,
+
         // Token: 0x04001BCE RID: 7118
         REQ_SECRET_ZONE_CAP,
+
         // Token: 0x04001BCF RID: 7119
         REQ_MINION_CAP_IF_TARGET_AVAILABLE,
+
         // Token: 0x04001BD0 RID: 7120
         REQ_MINION_CAP,
+
         // Token: 0x04001BD1 RID: 7121
         REQ_TARGET_ATTACKED_THIS_TURN,
+
         // Token: 0x04001BD2 RID: 7122
         REQ_TARGET_IF_AVAILABLE,
+
         // Token: 0x04001BD3 RID: 7123
         REQ_MINIMUM_ENEMY_MINIONS,
+
         // Token: 0x04001BD4 RID: 7124
         REQ_TARGET_FOR_COMBO,
+
         // Token: 0x04001BD5 RID: 7125
         REQ_NOT_EXHAUSTED_ACTIVATE,
+
         // Token: 0x04001BD6 RID: 7126
         REQ_UNIQUE_SECRET_OR_QUEST,
+
         // Token: 0x04001BD7 RID: 7127
         REQ_TARGET_TAUNTER,
+
         // Token: 0x04001BD8 RID: 7128
         REQ_CAN_BE_ATTACKED,
+
         // Token: 0x04001BD9 RID: 7129
         REQ_ACTION_PWR_IS_MASTER_PWR,
+
         // Token: 0x04001BDA RID: 7130
         REQ_TARGET_MAGNET,
+
         // Token: 0x04001BDB RID: 7131
         REQ_ATTACK_GREATER_THAN_0,
+
         // Token: 0x04001BDC RID: 7132
         REQ_ATTACKER_NOT_FROZEN,
+
         // Token: 0x04001BDD RID: 7133
         REQ_HERO_OR_MINION_TARGET,
+
         // Token: 0x04001BDE RID: 7134
         REQ_CAN_BE_TARGETED_BY_SPELLS,
+
         // Token: 0x04001BDF RID: 7135
         REQ_SUBCARD_IS_PLAYABLE,
+
         // Token: 0x04001BE0 RID: 7136
         REQ_TARGET_FOR_NO_COMBO,
+
         // Token: 0x04001BE1 RID: 7137
         REQ_NOT_MINION_JUST_PLAYED,
+
         // Token: 0x04001BE2 RID: 7138
         REQ_NOT_EXHAUSTED_HERO_POWER,
+
         // Token: 0x04001BE3 RID: 7139
         REQ_CAN_BE_TARGETED_BY_OPPONENTS,
+
         // Token: 0x04001BE4 RID: 7140
         REQ_ATTACKER_CAN_ATTACK,
+
         // Token: 0x04001BE5 RID: 7141
         REQ_TARGET_MIN_ATTACK,
+
         // Token: 0x04001BE6 RID: 7142
         REQ_CAN_BE_TARGETED_BY_HERO_POWERS,
+
         // Token: 0x04001BE7 RID: 7143
         REQ_ENEMY_TARGET_NOT_IMMUNE,
+
         // Token: 0x04001BE8 RID: 7144
         REQ_ENTIRE_ENTOURAGE_NOT_IN_PLAY,
+
         // Token: 0x04001BE9 RID: 7145
         REQ_MINIMUM_TOTAL_MINIONS,
+
         // Token: 0x04001BEA RID: 7146
         REQ_MUST_TARGET_TAUNTER,
+
         // Token: 0x04001BEB RID: 7147
         REQ_UNDAMAGED_TARGET,
+
         // Token: 0x04001BEC RID: 7148
         REQ_CAN_BE_TARGETED_BY_BATTLECRIES,
+
         // Token: 0x04001BED RID: 7149
         REQ_STEADY_SHOT,
+
         // Token: 0x04001BEE RID: 7150
         REQ_MINION_OR_ENEMY_HERO,
+
         // Token: 0x04001BEF RID: 7151
         REQ_TARGET_IF_AVAILABLE_AND_DRAGON_IN_HAND,
+
         // Token: 0x04001BF0 RID: 7152
         REQ_LEGENDARY_TARGET,
+
         // Token: 0x04001BF1 RID: 7153
         REQ_FRIENDLY_MINION_DIED_THIS_TURN,
+
         // Token: 0x04001BF2 RID: 7154
         REQ_FRIENDLY_MINION_DIED_THIS_GAME,
+
         // Token: 0x04001BF3 RID: 7155
         REQ_ENEMY_WEAPON_EQUIPPED,
+
         // Token: 0x04001BF4 RID: 7156
         REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_MINIONS,
+
         // Token: 0x04001BF5 RID: 7157
         REQ_TARGET_WITH_BATTLECRY,
+
         // Token: 0x04001BF6 RID: 7158
         REQ_TARGET_WITH_DEATHRATTLE,
+
         // Token: 0x04001BF7 RID: 7159
         REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_SECRETS,
+
         // Token: 0x04001BF8 RID: 7160
         REQ_SECRET_ZONE_CAP_FOR_NON_SECRET,
+
         // Token: 0x04001BF9 RID: 7161
         REQ_TARGET_EXACT_COST,
+
         // Token: 0x04001BFA RID: 7162
         REQ_STEALTHED_TARGET,
+
         // Token: 0x04001BFB RID: 7163
         REQ_MINION_SLOT_OR_MANA_CRYSTAL_SLOT,
+
         // Token: 0x04001BFC RID: 7164
         REQ_MAX_QUESTS,
+
         // Token: 0x04001BFD RID: 7165
         REQ_TARGET_IF_AVAILABE_AND_ELEMENTAL_PLAYED_LAST_TURN,
+
         // Token: 0x04001BFE RID: 7166
         REQ_TARGET_NOT_VAMPIRE,
+
         // Token: 0x04001BFF RID: 7167
         REQ_TARGET_NOT_DAMAGEABLE_ONLY_BY_WEAPONS,
+
         // Token: 0x04001C00 RID: 7168
         REQ_NOT_DISABLED_HERO_POWER,
+
         // Token: 0x04001C01 RID: 7169
         REQ_MUST_PLAY_OTHER_CARD_FIRST,
+
         // Token: 0x04001C02 RID: 7170
         REQ_HAND_NOT_FULL,
+
         // Token: 0x04001C03 RID: 7171
         REQ_TARGET_IF_AVAILABLE_AND_NO_3_COST_CARD_IN_DECK,
+
         // Token: 0x04001C04 RID: 7172
         REQ_CAN_BE_TARGETED_BY_COMBOS,
+
         // Token: 0x04001C05 RID: 7173
         REQ_CANNOT_PLAY_THIS,
+
         // Token: 0x04001C06 RID: 7174
         REQ_FRIENDLY_MINIONS_OF_RACE_DIED_THIS_GAME,
+
         // Token: 0x04001C07 RID: 7175
         REQ_OPPONENT_PLAYED_CARDS_THIS_GAME = 77,
+
         // Token: 0x04001C08 RID: 7176
         REQ_LITERALLY_UNPLAYABLE,
+
         // Token: 0x04001C09 RID: 7177
         REQ_TARGET_IF_AVAILABLE_AND_HERO_HAS_ATTACK,
+
         // Token: 0x04001C0A RID: 7178
         REQ_FRIENDLY_MINION_OF_RACE_DIED_THIS_TURN,
+
         // Token: 0x04001C0B RID: 7179
         REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_SPELLS_PLAYED_THIS_TURN,
+
         // Token: 0x04001C0C RID: 7180
         REQ_FRIENDLY_MINION_OF_RACE_IN_HAND,
+
         // Token: 0x04001C0D RID: 7181
         REQ_FRIENDLY_DEATHRATTLE_MINION_DIED_THIS_GAME = 86,
+
         // Token: 0x04001C0E RID: 7182
         REQ_BOARD_NOT_COMPLETELY_FULL = 92,
+
         // Token: 0x04001C0F RID: 7183
-        REQ_DRAG_TO_PLAY
+        REQ_DRAG_TO_PLAY,
+
+        /// <summary>
+        /// 阴燃电鳗(Murkspark Eel)
+        /// </summary>
+        REQ_TARGET_TO_PLAY2 = 75
     }
 }

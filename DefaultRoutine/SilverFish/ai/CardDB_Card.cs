@@ -217,6 +217,7 @@ namespace HREngine.Bots
                     switch (PlayReq)
                     {
                         case ErrorType.REQ_TARGET_TO_PLAY:
+                        case ErrorType.REQ_TARGET_TO_PLAY2:
                             targetAll = true;
                             continue;
                         case ErrorType.REQ_MINION_TARGET:
@@ -359,8 +360,6 @@ namespace HREngine.Bots
                         case ErrorType.REQ_HAND_NOT_FULL:
                             if (p.owncards.Count == 10) return retval;
                             continue;
-
-                            //default:
                     }
                 }
 
@@ -645,7 +644,10 @@ namespace HREngine.Bots
                     }
                 }
 
-                if (retval.Count == 0 && (!wereTargets || REQ_TARGET_IF_AVAILABLE)) retval.Add(null);
+                if (retval.Count == 0 && (!wereTargets || REQ_TARGET_IF_AVAILABLE))
+                {
+                    retval.Add(null);
+                }
 
                 return retval;
             }
