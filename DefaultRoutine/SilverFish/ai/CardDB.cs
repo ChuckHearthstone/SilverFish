@@ -197,6 +197,7 @@ namespace HREngine.Bots
             string cardDbPath = Path.Combine(path, "_carddb.txt");
             var lines = File.ReadAllLines(cardDbPath);
             Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
+
             CardList.Clear();
             cardidToCardList.Clear();
 
@@ -206,12 +207,12 @@ namespace HREngine.Bots
             CardList.Add(plchldr);
             unknownCard = CardList[0];
 
-
-            Card card = new Card();
             string name = "";
             var cards = Cards.All;
             foreach (var item in cards.Keys)
             {
+                var card = new Card();
+                allCardIDS.Add(item);
                 card.cardIDenum = ConvertHelper.cardIdstringToEnum(item);
                 var dbCard = cards[item];
                 card.Health = dbCard.Health;
@@ -225,8 +226,16 @@ namespace HREngine.Bots
                 {
                     card.isToken = true;
                 }
+                if (card.type == CardType.ENCHANTMENT)
+                {
+                    continue;
+                }
 
                 var trimmedCardName = TrimHelper.TrimEnglishName(dbCard.Name);
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    namelist.Add(trimmedCardName);
+                }
                 card.name = ConvertHelper.cardNamestringToEnum(trimmedCardName);
 
                 card.poisonous = dbCard.Entity.GetTag(GameTag.POISONOUS) == 1;
@@ -257,164 +266,27 @@ namespace HREngine.Bots
                 card.Morph = dbCard.Entity.GetTag(GameTag.MORPH) == 1;
                 card.Spellpower = dbCard.Entity.GetTag(GameTag.SPELLPOWER) > 0;
                 card.spellpowervalue = dbCard.Entity.GetTag(GameTag.SPELLPOWER);
-            }
-
-            foreach (string s in lines)
-            {
-                if (s.Contains("/Entity"))
+                if (dbCard.Text.ToLower().Contains("choose one"))
                 {
-                    if (card.type == CardType.ENCHANTMENT)
-                    {
-                        //LogHelper.WriteCombatLog(c.CardID);
-                        //LogHelper.WriteCombatLog(c.name);
-                        //LogHelper.WriteCombatLog(c.description);
-                        continue;
-                    }
-
-                    if (name != "")
-                    {
-                        namelist.Add(name);
-                    }
-
-                    name = "";
-                    if (card.name != CardName.unknown)
-                    {
-
-                        CardList.Add(card);
-                        //LogHelper.WriteCombatLog(c.name);
-                        if (!cardidToCardList.ContainsKey(card.cardIDenum))
-                        {
-                            cardidToCardList.Add(card.cardIDenum, card);
-                        }
-                        else
-                        {
-                            Logger.GetLoggerInstanceForType()
-                                .ErrorFormat("[c.cardIDenum:" + card.cardIDenum + "] already exists in cardidToCardList");
-                        }
-                    }
-
+                    card.choice = true;
                 }
 
-                if (s.Contains("<Entity CardID=\"") && s.Contains(" version=\""))
+                dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_1);
+                dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_2);
+
+                if (card.name != CardName.unknown)
                 {
-                    card = new Card();
-                    string temp = s.Split(new string[] {"CardID=\""}, StringSplitOptions.None)[1];
-                    temp = temp.Replace("\">", "");
-                    temp = temp.Split(new string[] {"\""}, StringSplitOptions.None)[0];
-                    allCardIDS.Add(temp);
-                    card.cardIDenum = cardIdstringToEnum(temp);
-
-                    //token:
-                    if (temp.EndsWith("t"))
+                    CardList.Add(card);
+                    if (!cardidToCardList.ContainsKey(card.cardIDenum))
                     {
-                        card.isToken = true;
+                        cardidToCardList.Add(card.cardIDenum, card);
                     }
-
-                    if (temp.Equals("ds1_whelptoken")) card.isToken = true;
-                    if (temp.Equals("CS2_mirror")) card.isToken = true;
-                    if (temp.Equals("CS2_050")) card.isToken = true;
-                    if (temp.Equals("CS2_052")) card.isToken = true;
-                    if (temp.Equals("CS2_051")) card.isToken = true;
-                    if (temp.Equals("NEW1_009")) card.isToken = true;
-                    if (temp.Equals("CS2_152")) card.isToken = true;
-                    if (temp.Equals("CS2_boar")) card.isToken = true;
-                    if (temp.Equals("EX1_tk11")) card.isToken = true;
-                    if (temp.Equals("EX1_506a")) card.isToken = true;
-                    if (temp.Equals("skele21")) card.isToken = true;
-                    if (temp.Equals("EX1_tk9")) card.isToken = true;
-                    if (temp.Equals("EX1_finkle")) card.isToken = true;
-                    if (temp.Equals("EX1_598")) card.isToken = true;
-                    if (temp.Equals("EX1_tk34")) card.isToken = true;
-                    //if (c.isToken) Helpfunctions.Instance.ErrorLog(temp +" is token");
-
-                    continue;
-                }
-
-                //cardtextinhand
-                if (s.Contains("<Tag enumID=\"184\""))
-                {
-                    string temp = s.Split(new string[] {"value=\"0\">"}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split(new string[] {"</Tag>"}, StringSplitOptions.RemoveEmptyEntries)[0];
-                    temp = temp.Replace("&lt;", "");
-                    temp = temp.Replace("b&gt;", "");
-                    temp = temp.Replace("/b&gt;", "");
-                    temp = temp.ToLower(new System.Globalization.CultureInfo("en-US", false));
-
-                    if (temp.Contains("choose one"))
+                    else
                     {
-                        card.choice = true;
-                        //LogHelper.WriteCombatLog(c.name + " is choice");
-                    }
-
-                    continue;
-                }
-
-                if (s.Contains("<PlayRequirement"))
-                {
-                    string temp = s.Split(new string[] {"reqID=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-                    int reqID = Convert.ToInt32(temp);
-                    card.playrequires.Add((ErrorType2) reqID);
-
-                    int param = 0;
-                    temp = s.Split(new string[] {"param=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    try
-                    {
-                        if (Char.IsDigit(temp, 0))
-                        {
-                            temp = temp.Split('\"')[0];
-                            param = Convert.ToInt32(temp);
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        Helpfunctions.Instance.ErrorLog(ex);
-                        param = 0;
-                    }
-
-                    if (param > 0)
-                    {
-                        switch (reqID)
-                        {
-                            case 8:
-                                card.needWithMaxAttackValueOf = param;
-                                continue;
-                            case 10:
-                                card.needRaceForPlaying = param;
-                                continue;
-                            case 12:
-                                card.needEmptyPlacesForPlaying = param;
-                                continue;
-                            case 19:
-                                card.needMinionsCapIfAvailable = param;
-                                continue;
-                            case 23:
-                                card.needMinNumberOfEnemy = param;
-                                continue;
-                            case 41:
-                                card.needWithMinAttackValueOf = param;
-                                continue;
-                            case 45:
-                                card.needMinTotalMinions = param;
-                                continue;
-                            case 56:
-                                card.needMinOwnMinions = param;
-                                continue;
-                            case 59:
-                                card.needControlaSecret = param;
-                                continue;
-                        }
+                        Logger.GetLoggerInstanceForType()
+                            .ErrorFormat("[c.cardIDenum:" + card.cardIDenum + "] already exists in cardidToCardList");
                     }
                 }
-
-                if (s.Contains("<Tag name="))
-                {
-                    string temp = s.Split(new string[] {"<Tag name=\""}, StringSplitOptions.RemoveEmptyEntries)[1];
-                    temp = temp.Split('\"')[0];
-
-                }
-
-
             }
 
             teacherminion = getCardDataFromID(CardIdEnum.NEW1_026t);
