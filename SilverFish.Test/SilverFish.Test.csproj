@@ -75,6 +75,7 @@
   <ItemGroup>
     <Content Include="Data\MurksparkEelTest.txt" />
     <Content Include="Data\RebornTest.txt" />
+    <Content Include="Data\test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

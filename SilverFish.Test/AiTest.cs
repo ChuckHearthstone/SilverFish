@@ -10,9 +10,13 @@ namespace SilverFish.Test
         [Test]
         public void Test()
         {
+            var testFilePath = Path.Combine(Settings.Instance.BaseDirectory,
+                @"SilverFish.Test\Data\test.txt");
+            var data = File.ReadAllText(testFilePath);
+
             //-mode: 0-all, 1-lethalcheck, 2-normal
             Ai ai = Ai.Instance;
-            ai.autoTester(true, string.Empty, 0);
+            ai.autoTester(true, data, 0);
 
         }
     }
