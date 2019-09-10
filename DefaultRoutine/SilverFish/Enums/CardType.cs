@@ -8,7 +8,7 @@ namespace SilverFish.Enums
     {
         NONE = 0,
         HERO = 3,
-        MOB = 4,
+        Minion = 4,
         SPELL = 5,
         ENCHANTMENT = 6,
         WEAPON = 7,

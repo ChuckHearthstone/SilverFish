@@ -23,7 +23,7 @@ namespace SilverFish.cards._04Expansion._012ULD
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardType.MOB && hc.card.tank)
+                    if (hc.card.type == CardType.Minion && hc.card.tank)
                     {
                         hc.addattack += 2;
                         hc.addHp += 2;

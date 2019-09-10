@@ -375,7 +375,7 @@ namespace HREngine.Bots
             if (target == null) return 60;
             if (!target.isHero && !target.own)
             {
-                if (card.type == CardType.MOB && p.ownMinions.Count == 0) return 2;
+                if (card.type == CardType.Minion && p.ownMinions.Count == 0) return 2;
                 
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
@@ -1329,7 +1329,7 @@ namespace HREngine.Bots
                             {
                                 foreach (Handmanager.Handcard hc in p.owncards)
                                 {
-                                    if (hc.card.type == CardType.MOB) return 500;
+                                    if (hc.card.type == CardType.Minion) return 500;
                                 }
                                 if (p.owncards.Count < 2) return -10;
                                 else if (p.owncards.Count < 4) return -2;
@@ -1511,7 +1511,7 @@ namespace HREngine.Bots
                 }
             }
 
-            if (card.type == CardType.MOB && (TAG_RACE)card.race == TAG_RACE.PET)
+            if (card.type == CardType.Minion && (TAG_RACE)card.race == TAG_RACE.PET)
             {
                 foreach (Minion mnn in p.ownMinions)
                 {
@@ -1625,7 +1625,7 @@ namespace HREngine.Bots
 
                 if (a.actionType == actionEnum.playcard)
                 {
-                    if (card.name == CardName.knifejuggler && card.type == CardType.MOB)
+                    if (card.name == CardName.knifejuggler && card.type == CardType.Minion)
                     {
                         continue;
                     }
@@ -1655,7 +1655,7 @@ namespace HREngine.Bots
                         continue;
                     }
 
-                    if (hasknife && card.type == CardType.MOB)
+                    if (hasknife && card.type == CardType.Minion)
                     {
                         continue;
                     }
@@ -1708,7 +1708,7 @@ namespace HREngine.Bots
                 case CardName.grimestreetoutfitter: 
                     foreach (Handmanager.Handcard hc1 in p.owncards)
                     {
-                        if (hc1.card.type == CardType.MOB) anz++;
+                        if (hc1.card.type == CardType.Minion) anz++;
                     }
                     anz--; 
                     if (anz > 0) return -1 * anz * 4;
@@ -1717,7 +1717,7 @@ namespace HREngine.Bots
                 case CardName.themistcaller: 
                     foreach (Handmanager.Handcard hc1 in p.owncards)
                     {
-                        if (hc1.card.type == CardType.MOB) anz++;
+                        if (hc1.card.type == CardType.Minion) anz++;
                     }
                     anz--; 
                     anz += p.ownDeckSize / 4;
@@ -1744,7 +1744,7 @@ namespace HREngine.Bots
                 case CardName.smugglersrun: 
                     foreach (Handmanager.Handcard hc3 in p.owncards)
                     {
-                        if (hc3.card.type == CardType.MOB) anz++;
+                        if (hc3.card.type == CardType.Minion) anz++;
                     }
                     anz--; 
                     if (anz > 0) return -1 * anz * 4;
@@ -1958,7 +1958,7 @@ namespace HREngine.Bots
             bool lethal = p.isLethalCheck;
             CardName name = card.name;
 
-            if (lethal && card.type == CardType.MOB)
+            if (lethal && card.type == CardType.Minion)
             {
                 if (this.lethalHelpers.ContainsKey(name))
                 {
@@ -2335,7 +2335,7 @@ namespace HREngine.Bots
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.manacost <= p.ownMaxMana && hc.card.type == CardType.MOB) return 5;
+                    if (hc.manacost <= p.ownMaxMana && hc.card.type == CardType.Minion) return 5;
                 }
 
             }
@@ -2356,7 +2356,7 @@ namespace HREngine.Bots
                             if (hc.card.name == CardName.flare) continue;
                             if (hc.card.cost <= p.mana - 2) 
                             {
-                                if (!canPlayMinion && hc.card.type == CardType.MOB)
+                                if (!canPlayMinion && hc.card.type == CardType.Minion)
                                 {
                                     
                                     int tmp = p.getSecretTriggersByType(0, true, false, target);
@@ -3072,7 +3072,7 @@ namespace HREngine.Bots
 
             if (p.enemyHeroStartClass == TAG_CLASS.HUNTER)
             {
-                if (c.type == CardType.MOB
+                if (c.type == CardType.Minion
                     && (attackedbefore == 0 || c.Health <= 4
                         || (p.enemyHero.HealthPoints >= p.enemyHeroHpStarted && attackedbefore >= 1)))
                 {
@@ -3082,7 +3082,7 @@ namespace HREngine.Bots
 
             if (p.enemyHeroStartClass == TAG_CLASS.MAGE)
             {
-                if (c.type == CardType.MOB)
+                if (c.type == CardType.Minion)
                 {
                     Minion m = new Minion
                     {
@@ -3109,7 +3109,7 @@ namespace HREngine.Bots
 
             if (p.enemyHeroStartClass == TAG_CLASS.PALADIN)
             {
-                if (c.type == CardType.MOB)
+                if (c.type == CardType.Minion)
                 {
                     Minion m = new Minion
                     {
@@ -3164,7 +3164,7 @@ namespace HREngine.Bots
                                     if (a.card.card.playrequires.Contains(CardDB.ErrorType2.REQ_NUM_MINION_SLOTS)) pen += 22;
                                     break;
                                 case actionEnum.playcard:
-                                    if (a.card.card.type == CardType.MOB || a.card.card.playrequires.Contains(CardDB.ErrorType2.REQ_NUM_MINION_SLOTS))
+                                    if (a.card.card.type == CardType.Minion || a.card.card.playrequires.Contains(CardDB.ErrorType2.REQ_NUM_MINION_SLOTS))
                                     {
                                         pen += 20;
                                     }
@@ -3216,7 +3216,7 @@ namespace HREngine.Bots
                         {
                             foreach (Handmanager.Handcard hc in p.owncards)
                             {
-                                if (hc.card.type == CardType.MOB && hc.canplayCard(p, true)) { pen += 10; break; }
+                                if (hc.card.type == CardType.Minion && hc.canplayCard(p, true)) { pen += 10; break; }
                             }
                         }
                     }
@@ -3318,7 +3318,7 @@ namespace HREngine.Bots
             int val = getValueOfMinion(mnn);
             foreach (Handmanager.Handcard card in p.owncards)
             {
-                if (card.card.type != CardType.MOB) continue;
+                if (card.card.type != CardType.Minion) continue;
                 CardDB.Card c = card.card;
                 m.HealthPoints = c.Health;
                 m.maxHp = c.Health;

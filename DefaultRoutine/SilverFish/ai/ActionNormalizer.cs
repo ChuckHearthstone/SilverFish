@@ -240,7 +240,7 @@ namespace HREngine.Bots
                             {
                                 if (p.ownMinions.Count > 6)
                                 {
-                                    if (hc.card.type == CardType.MOB) return false;
+                                    if (hc.card.type == CardType.Minion) return false;
                                 }
                                 actionFound = true;
                             }

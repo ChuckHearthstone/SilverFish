@@ -1501,7 +1501,7 @@ namespace HREngine.Bots
                                     continue;
                             }
                         }
-                        if (this.playactions[this.playactions.Count - 1].card != null && this.playactions[this.playactions.Count - 1].card.card.type == CardType.MOB) retval++;
+                        if (this.playactions[this.playactions.Count - 1].card != null && this.playactions[this.playactions.Count - 1].card.card.type == CardType.Minion) retval++;
                         retval += this.manaTurnEnd;
                     }
                 }
@@ -1894,7 +1894,7 @@ namespace HREngine.Bots
         public int getBestPlace(CardDB.Card card, bool lethal)
         {
             //we return the zonepos!
-            if (card.type != CardType.MOB) return 1;
+            if (card.type != CardType.Minion) return 1;
             if (this.ownMinions.Count == 0) return 1;
             if (this.ownMinions.Count == 1)
             {
@@ -3755,7 +3755,7 @@ namespace HREngine.Bots
             if (newTarget != -2) // trigger spell-secrets!
             {
 
-                if (c.type == CardType.MOB)
+                if (c.type == CardType.Minion)
                 {
                     if (this.ownMinions.Count < 7)
                     {
@@ -3852,7 +3852,7 @@ namespace HREngine.Bots
             }
             if (newTarget != -2) // trigger spell-secrets!
             {
-                if (c.type == CardType.MOB)
+                if (c.type == CardType.Minion)
                 {
                     //todo mob playing
                     //this.placeAmobSomewhere(hc, target, choice, position);
@@ -6689,7 +6689,7 @@ namespace HREngine.Bots
                     c = hc.card;
                     switch (c.type)
                     {
-                        case CardType.MOB:
+                        case CardType.Minion:
                             cardValue = (c.Health + hc.addHp) * 2 + (c.Attack + hc.addattack) * 2 + c.rarity + hc.elemPoweredUp * 2;
                             if (c.windfury) cardValue += c.Attack + hc.addattack;
                             if (c.tank) cardValue += 2;
@@ -7126,12 +7126,12 @@ namespace HREngine.Bots
                     foreach (Handmanager.Handcard hc in cards) if (hc.card.Secret) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.Mob:
-                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardType.MOB) hc.extraParam3 = true;
+                    foreach (Handmanager.Handcard hc in cards) if (hc.card.type == CardType.Minion) hc.extraParam3 = true;
                     break;
                 case GAME_TAGs.CARDRACE:
                     foreach (Handmanager.Handcard hc in cards)
                     {
-                        if (hc.card.type == CardType.MOB)
+                        if (hc.card.type == CardType.Minion)
                         {
                             if (race == TAG_RACE.INVALID) hc.extraParam3 = true;
                             else if (hc.card.race == (int)race) hc.extraParam3 = true;

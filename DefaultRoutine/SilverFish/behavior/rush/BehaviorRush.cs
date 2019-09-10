@@ -149,7 +149,7 @@ namespace HREngine.Bots
 
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardType.MOB)
+                if (hc.card.type == CardType.Minion)
                 {
                     retval += hc.addattack + hc.addHp + hc.elemPoweredUp;
                 }

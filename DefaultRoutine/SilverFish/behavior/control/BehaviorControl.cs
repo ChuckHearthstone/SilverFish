@@ -255,7 +255,7 @@ namespace HREngine.Bots
             int bigMobsInHand = 0;
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardType.MOB)
+                if (hc.card.type == CardType.Minion)
                 {
                     mobsInHand++;
                     if (hc.card.Attack + hc.addattack >= 3) bigMobsInHand++;

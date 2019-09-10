@@ -179,7 +179,7 @@ namespace HREngine.Bots
                             else
                             {
                                 CardDB.Card lolcrd = cb.cdb.getCardDataFromID(cb.cdb.cardIdstringToEnum(crd));
-                                if (lolcrd.type == CardType.MOB)
+                                if (lolcrd.type == CardType.Minion)
                                 {
                                     if (this.combocardsTurn0Mobs.ContainsKey(cb.cdb.cardIdstringToEnum(crd)))
                                     {

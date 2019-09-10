@@ -15,7 +15,7 @@ namespace SilverFish.cards._02Classic
                 List<Handmanager.Handcard> temp2 = new List<Handmanager.Handcard>();
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardType.MOB) temp2.Add(hc);
+                    if (hc.card.type == CardType.Minion) temp2.Add(hc);
                 }
                 temp2.Sort((a, b) => -a.card.Attack.Value.CompareTo(b.card.Attack));//damage the stronges
                 foreach (Handmanager.Handcard mins in temp2)

@@ -181,7 +181,7 @@ namespace HREngine.Bots
             {
                 //if wereTargets=true and 0 targets at end -> then can not play this card
                 List<Minion> retval = new List<Minion>();
-                if (this.type == CardType.MOB && ((own && p.ownMinions.Count >= 7) || (!own && p.enemyMinions.Count >= 7))) return retval; // cant play mob, if we have allready 7 mininos
+                if (this.type == CardType.Minion && ((own && p.ownMinions.Count >= 7) || (!own && p.enemyMinions.Count >= 7))) return retval; // cant play mob, if we have allready 7 mininos
                 if (this.Secret && ((own && (p.ownSecretsIDList.Contains(this.cardIDenum) || p.ownSecretsIDList.Count >= 5)) || (!own && p.enemySecretCount >= 5))) return retval;
                 //if (p.mana < this.getManaCost(p, 1)) return retval;
 
@@ -597,7 +597,7 @@ namespace HREngine.Bots
                                 }
                             }
                             break;
-                        case CardType.MOB:
+                        case CardType.Minion:
                             foreach (Minion m in targets)
                             {
                                 if (m.extraParam != true)
@@ -731,7 +731,7 @@ namespace HREngine.Bots
 
                 switch (this.type)
                 {
-                    case CardType.MOB:
+                    case CardType.Minion:
                         if (p.anzOwnAviana > 0) retval = 1;
 
                         offset += p.ownMinionsCostMore;
@@ -881,7 +881,7 @@ namespace HREngine.Bots
                         retval += p.ownHeroPowerCostLessOnce;
                         if (retval < 0) retval = 0;
                         return retval;
-                    case CardType.MOB:
+                    case CardType.Minion:
 
                         if (p.ownMinionsCostMore != p.ownMinionsCostMoreAtStart)
                         {

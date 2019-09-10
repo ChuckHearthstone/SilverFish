@@ -1827,22 +1827,22 @@ namespace HREngine.Bots
 	                return false;
                 case param.ohc_minions_equal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.Minion) tmp_counter++;
                     if (tmp_counter == cond.num) return true;
                     return false;
                 case param.ohc_minions_notequal:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.Minion) tmp_counter++;
                     if (tmp_counter != cond.num) return true;
                     return false;
                 case param.ohc_minions_greater:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.Minion) tmp_counter++;
                     if (tmp_counter > cond.num) return true;
                     return false;
                 case param.ohc_minions_less:
                     tmp_counter = 0;
-                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.MOB) tmp_counter++;
+                    foreach (Handmanager.Handcard hc in p.owncards) if (hc.card.type == CardType.Minion) tmp_counter++;
                     if (tmp_counter < cond.num) return true;
                     return false;
                 case param.ohc_spells_equal:

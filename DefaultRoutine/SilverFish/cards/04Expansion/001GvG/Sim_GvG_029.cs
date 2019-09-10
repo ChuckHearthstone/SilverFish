@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._001GvG
             int sum = 10000;
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                if (hc.card.type == CardType.MOB)
+                if (hc.card.type == CardType.Minion)
                 {
                     int s = hc.card.Health + hc.card.Attack + ((hc.card.tank) ? 1 : 0) + ((hc.card.DivineShield) ? 1 : 0);
                     if (s < sum)

@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._004CFM
 
         public override void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Handmanager.Handcard triggerhc)
         {
-            if (hc.card.battlecry && hc.card.type == CardType.MOB)
+            if (hc.card.battlecry && hc.card.type == CardType.Minion)
             {
                 hc.addattack++;
                 hc.addHp++;

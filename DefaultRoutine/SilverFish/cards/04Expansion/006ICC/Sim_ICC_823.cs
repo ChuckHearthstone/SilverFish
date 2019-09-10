@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._006ICC
                 Handmanager.Handcard hcCopy = null;
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.type == CardType.MOB)
+                    if (hc.card.type == CardType.Minion)
                     {
                         if (hcCopy == null) hcCopy = hc;
                         else

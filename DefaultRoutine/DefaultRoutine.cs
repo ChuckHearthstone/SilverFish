@@ -889,7 +889,7 @@ def Execute():
                             
                             await cardtoplay.Pickup();
 
-                            if (moveTodo.card.card.type == CardType.MOB)
+                            if (moveTodo.card.card.type == CardType.Minion)
                             {
                                 await cardtoplay.UseAt(moveTodo.place);
                             }
@@ -929,7 +929,7 @@ def Execute():
 
                     await cardtoplay.Pickup();
 
-                    if (moveTodo.card.card.type == CardType.MOB)
+                    if (moveTodo.card.card.type == CardType.Minion)
                     {
                         await cardtoplay.UseAt(moveTodo.place);
                     }

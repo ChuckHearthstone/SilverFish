@@ -471,13 +471,13 @@ namespace HREngine.Bots
 
                 if (!found)
                 {
-                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.MOB)
+                    if (CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.Minion)
                     {
                         this.turngraveyard.Add(ent);
                     }
                     this.turngraveyardAll.Add(ent);
                 }
-                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.MOB)
+                if (ent.own && CardDB.Instance.getCardDataFromID(ent.cardid).type == CardType.Minion)
                 {
                     OwnLastDiedMinion = ent;
                 }
@@ -874,7 +874,7 @@ namespace HREngine.Bots
                 {
                     CardDB.Card c = CardDB.Instance.getCardDataFromID(tmp.Key);
                     if (c.Secret) enemySecretsOpenedStep.Add(tmp.Key);
-                    else if (c.type == CardType.MOB) enemyMinionsDiedStep.Add(c);
+                    else if (c.type == CardType.Minion) enemyMinionsDiedStep.Add(c);
                 }
             }
 

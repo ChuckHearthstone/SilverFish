@@ -15,7 +15,7 @@ namespace SilverFish.cards._04Expansion._004CFM
                 {
                     foreach (Handmanager.Handcard hc in p.owncards)
                     {
-                        if (hc.card.type == CardType.MOB)
+                        if (hc.card.type == CardType.Minion)
                         {
                             hc.addattack++;
                             hc.addHp++;

@@ -100,7 +100,7 @@ namespace HREngine.Bots
                         }
 
                         if (p.ownMinions.Count > 6 &&
-                            (c.type == CardType.MOB || hc.card.type == CardType.MOB))
+                            (c.type == CardType.Minion || hc.card.type == CardType.Minion))
                         {
                             continue;
                         }
@@ -112,7 +112,7 @@ namespace HREngine.Bots
 
                         int cardPlayPenalty = 0;
                         CardDB.Card card;
-                        if (c.type == CardType.MOB)
+                        if (c.type == CardType.Minion)
                         {
                             card = c;
                         }
