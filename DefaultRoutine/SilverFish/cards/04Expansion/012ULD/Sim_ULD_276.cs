@@ -1,5 +1,5 @@
 using HREngine.Bots;
-using SilverFish.Enums;
+using SilverFish.Helpers;
 
 namespace SilverFish.cards._04Expansion._012ULD
 {
@@ -20,7 +20,8 @@ namespace SilverFish.cards._04Expansion._012ULD
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                p.drawACard(CardName.unknown, turnEndOfOwner, true);
+                var cardIdEnum = LackeyHelper.Instance.GetRandomLackey();
+                p.drawACard(cardIdEnum, turnEndOfOwner, true);
             }
         }
     }

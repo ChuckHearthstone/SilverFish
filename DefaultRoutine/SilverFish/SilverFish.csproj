@@ -293,6 +293,7 @@
     <Compile Include="ai\MiniSimulatorNextTurn.cs" />
     <Compile Include="ai\Movegenerator.cs" />
     <Compile Include="ai\Mulligan.cs" />
+    <Compile Include="Helpers\LackeyHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\CardNotImplementedHelper.cs" />
     <Compile Include="ai\PenaltyManager.cs" />
