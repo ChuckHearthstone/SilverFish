@@ -66,9 +66,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DefaultRoutine\SilverFish\SilverFish.csproj">
+    <ProjectReference Include="..\DefaultRoutine\Chuck.SilverFish\Chuck.SilverFish.csproj">
       <Project>{6d57950b-011e-4d50-8d8a-9dbff9d366bc}</Project>
-      <Name>SilverFish</Name>
+      <Name>Chuck.SilverFish</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
