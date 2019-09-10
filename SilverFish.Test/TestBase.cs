@@ -13,12 +13,12 @@ namespace SilverFish.Test
 
             Settings.Instance.Test = true;
 
-            var repositoryFolder = @"C:\repository\GitHub\ChuckLu\SilverFish";
+            var repositoryFolder = @"C:\repository\GitHub\ChuckLu\HearthBuddy\SilverFish";
             Settings.Instance.LogFolderPath = Path.Combine(repositoryFolder, "Logs");
             Settings.Instance.DataFolderPath = Path.Combine(repositoryFolder, @"DefaultRoutine\SilverFish\data");
             Settings.Instance.BaseDirectory = repositoryFolder;
 
-            //C:\repository\GitHub\ChuckLu\SilverFish\Logs\ChuckSilverFishAi\CombatLogs
+            //C:\repository\GitHub\ChuckLu\HearthBuddy\SilverFish\Logs\ChuckSilverFishAi\CombatLogs
             Settings.Instance.writeToSingleFile = true;
 
             if (Hrtprozis.Instance.settings == null)
