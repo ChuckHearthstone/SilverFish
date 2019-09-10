@@ -192,12 +192,6 @@ namespace HREngine.Bots
 
         private CardDB()
         {
-            InitSpecialNames();
-            string path = Settings.Instance.DataFolderPath;
-            string cardDbPath = Path.Combine(path, "_carddb.txt");
-            var lines = File.ReadAllLines(cardDbPath);
-            Helpfunctions.Instance.InfoLog("read carddb.txt " + lines.Length + " lines");
-
             CardList.Clear();
             cardidToCardList.Clear();
 
