@@ -191,8 +191,16 @@ namespace HREngine.Bots
                     }
                 }
 
-                dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_1);
-                dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_2);
+                var error1 = dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_1);
+                if (error1 > 0)
+                {
+                    Console.WriteLine($"error1 = {error1}, {card.cardIDenum}");
+                }
+                var error2 = dbCard.Entity.GetTag(GameTag.ADDITIONAL_PLAY_REQS_2);
+                if (error2 > 0)
+                {
+                    Console.WriteLine($"error2 = {error2}, {card.cardIDenum}");
+                }
 
                 if (card.name != CardName.unknown)
                 {
