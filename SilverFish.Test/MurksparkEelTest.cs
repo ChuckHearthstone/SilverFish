@@ -29,10 +29,19 @@ namespace SilverFish.Test
         {
             var card = Cards.All["GIL_530"];
             Console.WriteLine(card.Name);
-            var error1 = card.Entity.GetReferencedTag(GameTag.ADDITIONAL_PLAY_REQS_1);
+
+            var entity = card.Entity;
+            var error1 = entity.GetReferencedTag(GameTag.ADDITIONAL_PLAY_REQS_1);
             Console.WriteLine(error1);
-            var error2 = card.Entity.GetReferencedTag(GameTag.ADDITIONAL_PLAY_REQS_2);
+            var error2 = entity.GetReferencedTag(GameTag.ADDITIONAL_PLAY_REQS_2);
             Console.WriteLine(error2);
+
+            var playRequirements = entity.Power.PlayRequirements;
+            foreach (var item in playRequirements)
+            {
+                Console.WriteLine($"{nameof(item.ReqId)} = {item.ReqId}, {nameof(item.Param)} = {item.Param} ");
+            }
+            Console.WriteLine($"{nameof(entity.MasterPower)} = {entity.MasterPower}");
         }
     }
 }
