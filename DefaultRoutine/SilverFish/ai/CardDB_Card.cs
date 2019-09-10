@@ -170,7 +170,14 @@ namespace HREngine.Bots
                 return this.playrequires.Contains(et);
             }
 
-            public List<Minion> getTargetsForCard(Playfield p, bool isLethalCheck, bool own)
+            /// <summary>
+            /// /
+            /// </summary>
+            /// <param name="p"></param>
+            /// <param name="isLethalCheck"></param>
+            /// <param name="own"></param>
+            /// <returns></returns>
+            public List<Minion> GetTargetsForCard(Playfield p, bool isLethalCheck, bool own)
             {
                 //if wereTargets=true and 0 targets at end -> then can not play this card
                 List<Minion> retval = new List<Minion>();
@@ -645,7 +652,7 @@ namespace HREngine.Bots
 
             public List<Minion> getTargetsForHeroPower(Playfield p, bool own)
             {
-                List<Minion> trgts = getTargetsForCard(p, p.isLethalCheck, own);
+                List<Minion> trgts = GetTargetsForCard(p, p.isLethalCheck, own);
                 CardName abName = own ? p.ownHeroAblility.card.name : p.enemyHeroAblility.card.name;
                 int abType = 0; //0 none, 1 damage, 2 heal, 3 baff
                 switch (abName)
@@ -1100,7 +1107,7 @@ namespace HREngine.Bots
             public bool canplayCard(Playfield p, int manacost, bool own)
             {
                 if (p.mana < this.getManaCost(p, manacost)) return false;
-                if (this.getTargetsForCard(p, false, own).Count == 0) return false;
+                if (this.GetTargetsForCard(p, false, own).Count == 0) return false;
                 return true;
             }
 

@@ -104,7 +104,7 @@ namespace HREngine.Bots
                         {
                             continue;
                         }
-                        targetMinions = c.getTargetsForCard(p, p.isLethalCheck, true);
+                        targetMinions = c.GetTargetsForCard(p, p.isLethalCheck, true);
                         if (targetMinions.Count == 0)
                         {
                             continue;
