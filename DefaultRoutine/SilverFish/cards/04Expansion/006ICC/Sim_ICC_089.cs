@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             {
                 CardDB.Card c;
                 int count = 0;
-                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
+                foreach (var cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if ((TAG_RACE)c.race == TAG_RACE.MURLOC)

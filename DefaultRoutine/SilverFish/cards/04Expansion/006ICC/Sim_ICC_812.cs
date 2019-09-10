@@ -12,7 +12,7 @@ namespace SilverFish.cards._04Expansion._006ICC
             CardIdEnum cId = CardIdEnum.None;
             for (int i = m.Attack - 1; i >= 0; i--)
             {
-                cId = p.prozis.getDeckCardsForCost(i);
+                cId = p.prozis.GetDeckCardsForCost(i);
                 if (cId != CardIdEnum.None) break;
             }
             if (cId != CardIdEnum.None)

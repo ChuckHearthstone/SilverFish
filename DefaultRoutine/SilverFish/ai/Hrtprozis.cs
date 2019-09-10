@@ -373,23 +373,23 @@ namespace HREngine.Bots
             this.enemySecretCount = numEnemSec;
         }
         
-        public void updateTurnDeck(Dictionary<CardIdEnum, int> deck, bool noDupl)
+        public void UpdateTurnDeck(Dictionary<CardIdEnum, int> deckFromBot, bool noDupl)
         {
-            this.turnDeck.Clear();
-            foreach (KeyValuePair<CardIdEnum, int> c in deck)
+            turnDeck.Clear();
+            foreach (KeyValuePair<CardIdEnum, int> c in deckFromBot)
             {
-                this.turnDeck.Add(c.Key, c.Value);
+                turnDeck.Add(c.Key, c.Value);
             }
-            this.noDuplicates = noDupl;
+            noDuplicates = noDupl;
             deckCardForCost.Clear();
         }
 
-        public CardIdEnum getDeckCardsForCost(int cost)
+        public CardIdEnum GetDeckCardsForCost(int cost)
         {
             if (deckCardForCost.Count == 0)
             {
                 CardDB.Card c;
-                foreach (KeyValuePair<CardIdEnum, int> cn in turnDeck)
+                foreach (var cn in turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cn.Key);
                     if (!deckCardForCost.ContainsKey(c.cost)) deckCardForCost.Add(c.cost, c.cardIDenum);
@@ -399,7 +399,7 @@ namespace HREngine.Bots
             else return CardIdEnum.None;
         }
 
-        public int numDeckCardsByTag(GAME_TAGs tag)
+        public int NumDeckCardsByTag(GAME_TAGs tag)
         {
             switch (tag)
             {
@@ -414,7 +414,7 @@ namespace HREngine.Bots
             numWindfuryCards = 0;
 
             CardDB.Card c;
-            foreach (KeyValuePair<CardIdEnum, int> cn in turnDeck)
+            foreach (var cn in turnDeck)
             {
                 c = CardDB.Instance.getCardDataFromID(cn.Key);
                 if (c.tank) numTauntCards += cn.Value;
@@ -733,7 +733,7 @@ namespace HREngine.Bots
             EvenDeckHelper.EvenShamanCheck(turnDeck);
 
             string od = "od: ";
-            foreach (KeyValuePair<CardIdEnum, int> e in this.turnDeck)
+            foreach (var e in turnDeck)
             {
                 od += e.Key + "," + e.Value + ";";
             }

@@ -32,7 +32,9 @@ namespace HREngine.Bots
         public Dictionary<string, string> BehaviorPath = new Dictionary<string, string>();
         List<HSCard> ETallcards = new List<HSCard>();
         Dictionary<string, int> startDeck = new Dictionary<string, int>();
-        Dictionary<CardIdEnum, int> turnDeck = new Dictionary<CardIdEnum, int>();
+
+        public Dictionary<CardIdEnum, int> TurnDeck = new Dictionary<CardIdEnum, int>();
+
         Dictionary<int, extraCard> extraDeck = new Dictionary<int, extraCard>();
         bool noDuplicates = false;
 
@@ -249,10 +251,10 @@ namespace HREngine.Bots
             getHerostuff();
             getMinions();
             getHandcards();
-            getDecks();
+            GetDecks();
 
 
-            Hrtprozis.Instance.updateTurnDeck(turnDeck, noDuplicates);
+            Hrtprozis.Instance.UpdateTurnDeck(TurnDeck, noDuplicates);
             Hrtprozis.Instance.setOwnPlayer(ownPlayerController);                
             Handmanager.Instance.setOwnPlayer(ownPlayerController);
 
@@ -858,7 +860,7 @@ namespace HREngine.Bots
             
         }
 
-        private void getDecks()
+        private void GetDecks()
         {
             Dictionary<string, int> tmpDeck = new Dictionary<string, int>(startDeck);
             List<GraveYardItem> graveYard = new List<GraveYardItem>();
@@ -866,7 +868,7 @@ namespace HREngine.Bots
             Dictionary<CardIdEnum, int> eg = new Dictionary<CardIdEnum, int>();
             int owncontroler = TritonHs.OurHero.GetTag(GAME_TAG.CONTROLLER);
             int enemycontroler = TritonHs.EnemyHero.GetTag(GAME_TAG.CONTROLLER);
-            turnDeck.Clear();
+            TurnDeck.Clear();
             noDuplicates = false;
 
             List<HSCard> allcards = TritonHs.GetAllCards();
@@ -999,16 +1001,16 @@ namespace HREngine.Bots
                 }
                 c.Value.setId(entityId);
                 ce = CardDB.Instance.cardIdstringToEnum(entityId);
-                if (turnDeck.ContainsKey(ce)) turnDeck[ce]++;
-                else turnDeck.Add(ce, 1);
+                if (TurnDeck.ContainsKey(ce)) TurnDeck[ce]++;
+                else TurnDeck.Add(ce, 1);
             }
             foreach (var c in tmpDeck)
             {
                 if (c.Value < 1) continue;
                 CardIdEnum ce = CardDB.Instance.cardIdstringToEnum(c.Key);
                 if (ce == CardIdEnum.None) continue;
-                if (turnDeck.ContainsKey(ce)) turnDeck[ce] += c.Value;
-                else turnDeck.Add(ce, c.Value);
+                if (TurnDeck.ContainsKey(ce)) TurnDeck[ce] += c.Value;
+                else TurnDeck.Add(ce, c.Value);
             }
 
             Probabilitymaker.Instance.setOwnCardsOut(og);
@@ -1023,7 +1025,7 @@ namespace HREngine.Bots
 
             if (startDeck.Count == 0) return;
             noDuplicates = true;
-            foreach (int i in turnDeck.Values)
+            foreach (int i in TurnDeck.Values)
             {
                 if (i > 1)
                 {

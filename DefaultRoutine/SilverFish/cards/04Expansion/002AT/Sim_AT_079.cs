@@ -14,7 +14,7 @@ namespace SilverFish.cards._04Expansion._002AT
             {
                 List<CardIdEnum> secrets = new List<CardIdEnum>();
                 CardDB.Card c;
-                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
+                foreach (var cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if (c.Secret) secrets.Add(cid.Key);

@@ -9,7 +9,7 @@ namespace SilverFish.cards._04Expansion._006ICC
 
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            if (own.own && p.prozis.getDeckCardsForCost(3) == CardIdEnum.None)
+            if (own.own && p.prozis.GetDeckCardsForCost(3) == CardIdEnum.None)
             {
                 if (target != null)
                 {

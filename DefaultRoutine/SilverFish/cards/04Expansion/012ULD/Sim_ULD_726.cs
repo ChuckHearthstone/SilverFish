@@ -1,6 +1,5 @@
 using HREngine.Bots;
 using SilverFish.Enums;
-using System.Collections.Generic;
 
 namespace SilverFish.cards._04Expansion._012ULD
 {
@@ -24,7 +23,7 @@ namespace SilverFish.cards._04Expansion._012ULD
             {
                 CardDB.Card c;
                 bool secretDrew = false;
-                foreach (KeyValuePair<CardIdEnum, int> cid in p.prozis.turnDeck)
+                foreach (var cid in p.prozis.turnDeck)
                 {
                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                     if (c.Secret)

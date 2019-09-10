@@ -3493,7 +3493,7 @@ namespace HREngine.Bots
                             if (count > 0)
                             {
                                 if (count > 2) count = 2;
-                                foreach (KeyValuePair<CardIdEnum, int> cid in this.prozis.turnDeck)
+                                foreach (var cid in this.prozis.turnDeck)
                                 {
                                     c = CardDB.Instance.getCardDataFromID(cid.Key);
                                     if ((TAG_RACE)c.race == TAG_RACE.MURLOC)
