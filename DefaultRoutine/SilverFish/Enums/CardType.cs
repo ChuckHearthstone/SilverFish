@@ -6,12 +6,13 @@ namespace SilverFish.Enums
     //(data-> cardxml0 seems outdated (blutelfkleriker has 3hp there >_>)
     public enum CardType
     {
-        NONE,
-        MOB,
-        SPELL,
-        WEAPON,
-        HEROPWR,
-        ENCHANTMENT,
-        HERO,
+        NONE = 0,
+        HERO = 3,
+        MOB = 4,
+        SPELL = 5,
+        ENCHANTMENT = 6,
+        WEAPON = 7,
+        Token = 9,
+        HEROPWR = 10,
     }
 }
