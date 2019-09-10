@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Pen_FP1_026 : PenTemplate //anubarambusher
 	{

@@ -2,7 +2,7 @@
 using System.Text;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class Movegenerator
     {

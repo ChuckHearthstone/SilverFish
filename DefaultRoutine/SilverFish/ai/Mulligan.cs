@@ -9,7 +9,7 @@ using SilverFish.Helpers;
 using Logger = Triton.Common.LogUtilities.Logger;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     /*
 This programm allows:

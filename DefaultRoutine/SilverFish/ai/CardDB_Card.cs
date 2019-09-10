@@ -4,7 +4,7 @@ using SilverFish.Helpers;
 using SilverFish.Enums;
 using SilverFish.Enums.PlayErrors;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public partial class CardDB
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Sim_TU4f_004 : SimTemplate //* Legacy of the Emperor
 	{

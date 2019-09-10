@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Sim_TRL_111 : SimTemplate //猎头者之斧
 	

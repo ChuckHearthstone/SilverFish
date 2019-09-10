@@ -10,7 +10,7 @@ using SilverFish.Enums;
 using SilverFish.Enums.PlayErrors;
 using CardType = SilverFish.Enums.CardType;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public struct targett
     {

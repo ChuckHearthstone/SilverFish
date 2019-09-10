@@ -4,7 +4,7 @@ using System.Linq;
 using SilverFish.Enums;
 using SilverFish.Helpers;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class ActionNormalizer
     {

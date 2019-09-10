@@ -8,7 +8,7 @@ using Triton.Common;
 using Triton.Game.Mapping;
 using Logger = Triton.Common.LogUtilities.Logger;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     /// <summary>Settings for the DefaultRoutine. </summary>
     public class DefaultRoutineSettings : JsonSettings

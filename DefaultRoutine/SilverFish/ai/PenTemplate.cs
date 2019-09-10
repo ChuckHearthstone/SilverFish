@@ -1,4 +1,4 @@
-﻿namespace HREngine.Bots
+﻿namespace Chuck.SilverFish
 {
    
     internal class PenTemplate

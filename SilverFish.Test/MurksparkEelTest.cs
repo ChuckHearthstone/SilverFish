@@ -2,7 +2,7 @@
 using System.IO;
 using HearthDb;
 using HearthDb.Enums;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using NUnit.Framework;
 
 namespace SilverFish.Test

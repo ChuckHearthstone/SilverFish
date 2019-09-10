@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Sim_BOT_219t : SimTemplate //* 更多手臂
 	{

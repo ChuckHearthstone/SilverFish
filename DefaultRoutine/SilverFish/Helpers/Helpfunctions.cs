@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Hearthbuddy.Windows;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using log4net;
 
 namespace SilverFish.Helpers

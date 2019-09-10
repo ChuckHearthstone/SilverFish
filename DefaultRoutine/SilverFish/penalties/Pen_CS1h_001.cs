@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Pen_CS1h_001 : PenTemplate //lesserheal
 	{

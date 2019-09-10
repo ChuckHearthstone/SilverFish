@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using SilverFish.Enums;
 
 namespace SilverFish.Helpers

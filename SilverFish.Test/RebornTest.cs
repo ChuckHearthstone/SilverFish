@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using NUnit.Framework;
 using SilverFish.Enums;
 

@@ -27,7 +27,7 @@ using Triton.Game.Mapping;
 
 using Logger = Triton.Common.LogUtilities.Logger;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class DefaultRoutine : IRoutine
     {
@@ -756,7 +756,7 @@ def Execute():
                 {
                     doEndTurn = true;
                 }
-                else if (Bots.Settings.Instance.concedeMode != 0)
+                else if (SilverFish.Settings.Instance.concedeMode != 0)
                 {
                     doConcede = true;
                 }

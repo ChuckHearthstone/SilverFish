@@ -1,4 +1,4 @@
-using HREngine.Bots;
+using Chuck.SilverFish;
 
 namespace SilverFish.cards._03Adventure._001NAX.FP1
 {

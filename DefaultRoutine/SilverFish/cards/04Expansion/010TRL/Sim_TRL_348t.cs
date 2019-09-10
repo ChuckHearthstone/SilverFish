@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Sim_TRL_348t : SimTemplate //* 山猫
 	{

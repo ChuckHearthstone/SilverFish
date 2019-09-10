@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Pen_CS2_188 : PenTemplate //abusivesergeant
 	{

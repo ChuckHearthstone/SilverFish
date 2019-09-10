@@ -1,5 +1,5 @@
 using System;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using SilverFish.Enums;
 
 namespace SilverFish.cards._03Adventure._001NAX

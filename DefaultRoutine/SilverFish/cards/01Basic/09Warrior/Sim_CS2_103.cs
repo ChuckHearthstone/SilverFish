@@ -1,4 +1,4 @@
-﻿using HREngine.Bots;
+﻿using Chuck.SilverFish;
 
 namespace SilverFish.cards._01Basic._09Warrior
 {

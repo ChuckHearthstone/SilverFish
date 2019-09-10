@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 	class Sim_BOT_422b : SimTemplate //* 新生幼苗
 	{

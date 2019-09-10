@@ -1,4 +1,4 @@
-﻿namespace HREngine.Bots.Silverfish.Cards
+﻿namespace Chuck.SilverFish.Silverfish.Cards
 {
     public class QuestBase : SimTemplate
     {

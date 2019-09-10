@@ -1,5 +1,5 @@
 using System;
-using HREngine.Bots;
+using Chuck.SilverFish;
 
 namespace SilverFish.cards._04Expansion._005UNG
 {

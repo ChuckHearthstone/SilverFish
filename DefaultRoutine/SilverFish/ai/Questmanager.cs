@@ -1,7 +1,7 @@
 ﻿using SilverFish.Helpers;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     using System;
     using System.Text;

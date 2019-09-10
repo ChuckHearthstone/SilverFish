@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public abstract class Behavior
     {

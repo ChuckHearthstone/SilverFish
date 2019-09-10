@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 class Sim_TRL_566 : SimTemplate //*荒野的复仇
 {

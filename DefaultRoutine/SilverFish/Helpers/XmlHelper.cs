@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 using SilverFish.Enums;
-using Card = HREngine.Bots.CardDB.Card;
+using Card = Chuck.SilverFish.CardDB.Card;
 
 namespace SilverFish.Helpers
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SilverFish.Enums;
 using SilverFish.Enums.PlayErrors;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class PenaltyManager
     {

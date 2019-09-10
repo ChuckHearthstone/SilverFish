@@ -1,4 +1,4 @@
-using HREngine.Bots;
+using Chuck.SilverFish;
 using SilverFish.Enums;
 
 namespace SilverFish.cards._01Basic._04Paladin

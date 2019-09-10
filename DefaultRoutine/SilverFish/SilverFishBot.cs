@@ -9,7 +9,7 @@ using Triton.Game;
 using Triton.Game.Mapping;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class SilverFishBot
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 
     public class Deck

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using HREngine.Bots;
+using Chuck.SilverFish;
 using SilverFish.Enums;
 
 namespace SilverFish.Helpers

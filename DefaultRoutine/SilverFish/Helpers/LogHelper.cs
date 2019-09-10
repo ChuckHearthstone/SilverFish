@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using HREngine.Bots;
+using Chuck.SilverFish;
 
 namespace SilverFish.Helpers
 {

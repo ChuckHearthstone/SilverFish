@@ -4,7 +4,7 @@ using System.IO;
 using SilverFish.Enums;
 using SilverFish.Helpers;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public partial class CardDB
     {

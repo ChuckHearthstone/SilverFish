@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using SilverFish.Enums;
 
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
 class Sim_TRL_065: SimTemplate //* 祖尔金
 {

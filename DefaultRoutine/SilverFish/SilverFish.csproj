@@ -7,8 +7,8 @@
     <ProjectGuid>{6D57950B-011E-4D50-8D8A-9DBFF9D366BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SilverFish</RootNamespace>
-    <AssemblyName>SilverFish</AssemblyName>
+    <RootNamespace>Chuck.SilverFish</RootNamespace>
+    <AssemblyName>Chuck.SilverFish</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

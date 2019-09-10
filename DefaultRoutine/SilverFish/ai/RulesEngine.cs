@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using SilverFish.Helpers;
 using SilverFish.Enums;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     //!!!	Under test
     //v0.1.2

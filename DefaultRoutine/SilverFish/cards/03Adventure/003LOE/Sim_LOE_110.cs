@@ -1,5 +1,5 @@
 using System;
-using HREngine.Bots;
+using Chuck.SilverFish;
 
 namespace SilverFish.cards._03Adventure._003LOE
 {

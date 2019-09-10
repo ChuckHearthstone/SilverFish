@@ -2,7 +2,7 @@
 using System.IO;
 using SilverFish.Helpers;
 
-namespace HREngine.Bots
+namespace Chuck.SilverFish
 {
     public class Settings
     {
