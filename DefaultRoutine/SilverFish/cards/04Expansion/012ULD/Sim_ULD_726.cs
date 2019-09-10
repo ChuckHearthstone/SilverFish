@@ -14,25 +14,23 @@ namespace SilverFish.cards._04Expansion._012ULD
         /// 从你的牌库中抽一张奥秘牌。其法力值消耗为0点。
         /// </summary>
         /// <param name="p"></param>
-        /// <param name="m"></param>
+        /// <param name="ownplay"></param>
         /// <param name="target"></param>
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             if (ownplay)
             {
-                CardDB.Card c;
-                bool secretDrew = false;
-                foreach (var cid in p.prozis.turnDeck)
+                var deck = p.prozis.turnDeck;
+                foreach (var item in deck)
                 {
-                    c = CardDB.Instance.getCardDataFromID(cid.Key);
-                    if (c.Secret)
+                    var card = CardDB.Instance.getCardDataFromID(item.Key);
+                    if (card.Secret)
                     {
-                        p.drawACard(c.name, ownplay);
+                        p.drawACard(card.name, ownplay);
                         p.owncards[p.owncards.Count - 1].manacost = 0;
-                        secretDrew = true;
+                        break;
                     }
-                    if (secretDrew) break;
                 }
             }
             else
