@@ -743,6 +743,7 @@ namespace Chuck.SilverFish
                     minion.cantBeTargetedBySpellsOrHeroPowers = (entitiy.GetTag(GAME_TAG.CANT_BE_TARGETED_BY_HERO_POWERS) != 0);
 
                     minion.charge = entitiy.HasCharge ? 1 : 0;
+                    minion.Rush = entitiy.GetTag(GAME_TAG.RUSH) == 1;
 
 
                     minion.zonepos = zp;
