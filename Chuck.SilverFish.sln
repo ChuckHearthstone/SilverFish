@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chuck.SilverFish", "Default
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chuck.SilverFish.Test", "Chuck.SilverFish.Test\Chuck.SilverFish.Test.csproj", "{EF37854E-4420-421E-9D0E-C2C6964FA308}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chuck.SilverFish.Plugins", "Chuck.SilverFish.Plugins\Chuck.SilverFish.Plugins.csproj", "{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{EF37854E-4420-421E-9D0E-C2C6964FA308}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EF37854E-4420-421E-9D0E-C2C6964FA308}.Release|x86.ActiveCfg = Release|Any CPU
 		{EF37854E-4420-421E-9D0E-C2C6964FA308}.Release|x86.Build.0 = Release|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F8F4470-05AB-4F17-8FCB-6E4F0D66955E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

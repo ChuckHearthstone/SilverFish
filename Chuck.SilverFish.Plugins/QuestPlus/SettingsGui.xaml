@@ -1,0 +1,144 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="440" d:DesignWidth="627">
+    <Grid x:Name="Root">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Priority" HorizontalAlignment="Center" Margin="0,0,3,3" VerticalAlignment="Center" ToolTip="For Quests taking into account the 'Class' priority, and if they are the same, or the class does not matter, it will be selected a deck with 'Top Deck Name'. \nAfter the quests - vice versa."/>
+                        <Label Grid.Row="0" Grid.Column="1" Content="Class" HorizontalAlignment="Center" Margin="3,0,3,3" VerticalAlignment="Center" ToolTip="Plugin taking into account the 'Class' priority, and if they are the same, or the class does not matter, it will be selected a deck with 'Top Deck Name'."/>
+                        <Label Grid.Row="0" Grid.Column="2" Content="Top Deck Names" HorizontalAlignment="Center" Margin="0,0,0,3" VerticalAlignment="Center" ToolTip="Plugin taking into account the 'Class' priority, and if they are the same, or the class does not matter, it will be selected a deck with 'Top Deck Name'."/>
+                        <TextBox Grid.Row="1" Name="priority1_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="2" Name="priority2_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="3" Name="priority3_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="4" Name="priority4_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="5" Name="priority5_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="6" Name="priority6_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="7" Name="priority7_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="8" Name="priority8_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <TextBox Grid.Row="9" Name="priority9_tb" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="30" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="1 - max priority, 9 - min priority. "/>
+                        <Label Grid.Row="1" Grid.Column="1" Name="HeroClass1_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="2" Grid.Column="1" Name="HeroClass2_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="3" Grid.Column="1" Name="HeroClass3_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="4" Grid.Column="1" Name="HeroClass4_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="5" Grid.Column="1" Name="HeroClass5_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="6" Grid.Column="1" Name="HeroClass6_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="7" Grid.Column="1" Name="HeroClass7_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="8" Grid.Column="1" Name="HeroClass8_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <Label Grid.Row="9" Grid.Column="1" Name="HeroClass9_lbl" Content="Label" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"/>
+
+                        <TextBox Grid.Row="1" Grid.Column="2" Name="topDeck1_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="2" Grid.Column="2" Name="topDeck2_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="3" Grid.Column="2" Name="topDeck3_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="4" Grid.Column="2" Name="topDeck4_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="5" Grid.Column="2" Name="topDeck5_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="6" Grid.Column="2" Name="topDeck6_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="7" Grid.Column="2" Name="topDeck7_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="8" Grid.Column="2" Name="topDeck8_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+                        <TextBox Grid.Row="9" Grid.Column="2" Name="topDeck9_tb" HorizontalAlignment="Left" Height="20" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="80" ToolTip="Write here only the names of strong Decks" Width="100"/>
+
+
+                        <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="25" Grid.Row="10" Grid.Column="0"  VerticalAlignment="Top" Margin="10,2,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Name="KeepRank_chb" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,4" VerticalAlignment="Center" Grid.ColumnSpan="2"  ToolTip="Сoncedes on the Mulligan screen (for concedes in the game tick Keep Constructed Rank on the DefaultBot tab)."/>
+                            <Label Content="Keep Rank " Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" VerticalContentAlignment="Center"  ToolTip="Сoncedes on the Mulligan screen &#x0a;(for concedes in the game tick Keep Constructed Rank on the DefaultBot tab)."/>
+                            <ComboBox Name="KeepRankComboBox" Grid.Row="0" Grid.Column="2" Margin="0,1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Grid>
+
+                    </Grid>
+                    <Grid Grid.Column="1" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="QuestsPlan:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="0,1,3,1" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="The execution mode of Quests"/>
+                        <Label Content="QuestPlayMode:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Ranked or Casual"/>
+                        <Label Content="AfterQuestsPlan:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="What bot should do after all Quests done?"/>
+                        <Label Content="AfterQuestPlayMode:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="Ranked or Casual"/>
+                        <Label Content="AfterQuestGameMode:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="The game mode after all Quests done."/>
+                        <ComboBox Name="QuestsPlanComboBox" Grid.Row="0" Grid.Column="1" Margin="0,0,0,1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="90"/>
+                        <ComboBox Name="QuestPlayModeComboBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" VerticalAlignment="Center" Width="90"/>
+                        <ComboBox Name="AfterQuestsPlanComboBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="0,3,0,1" VerticalAlignment="Top" Width="90"/>
+                        <ComboBox x:Name="AfterQuestPlayModeComboBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" VerticalAlignment="Center" Width="90" IsEditable="False" />
+                        <ComboBox Name="AfterQuestGameModeComboBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" VerticalAlignment="Center" Width="90"/>
+                        <CheckBox Name="UseSuitableDeck_chb" Content="Use the most suitable deck for quests" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Margin="0,2" VerticalAlignment="Center" Grid.ColumnSpan="3" ToolTip="Automatically selects the most suitable deck ignoring all priorities."/>
+                        <CheckBox Name="RemoveTheWorstQuest_chb" Content="Remove the worst quest" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Margin="0,2" VerticalAlignment="Center" Grid.ColumnSpan="3" ToolTip="Quest without a suitable deck or the cheapest quest &#x0a;(it never removes Spectate and Play a Friend!)"/>
+                        <CheckBox Name="RemoveTavernBrawl_chb" Content="Remove Tavern Brawl" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" Margin="0,2" VerticalAlignment="Center" Grid.ColumnSpan="3" ToolTip="Should the bot remove Tavern Brawl?"/>
+                        <TextBox Name="QuestsPlanDesc_tb" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="3,0,3,3" TextWrapping="Wrap" Text="Description of the QuestsPlan" VerticalAlignment="Top" Grid.RowSpan="4" AllowDrop="False" BorderThickness="0" IsEnabled="False" Background="Transparent" Foreground="Black" MaxHeight="95"/>
+                        <Label Grid.Row="0" Grid.Column="2" Content="Description:" HorizontalAlignment="Left" Margin="0,0,5,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                        <CheckBox Name="RankedModeForQuests_chb" Content="If Rank > 20 than use Ranked mode for quests" HorizontalAlignment="Left" Margin="0,2,0,0" Grid.Row="8" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                        <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="25" Grid.Row="9" Grid.Column="0"  VerticalAlignment="Top" Margin="0,0,0,-2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Name="StopIfXfreeSlots_chb" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
+                            <Label Content="Stop if you have " Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                            <ComboBox Name="StopIfXfreeSlotsNumComboBox" Grid.Row="0" Grid.Column="2" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Label Content=" free slot" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="25" Grid.Row="10" Grid.Column="0"  VerticalAlignment="Top" Margin="0,-2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Name="ChangeClassIfUReachLvlX_chb" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,4" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                            <Label Content="Change class if it has reached level: " Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                            <ComboBox Name="ChangeClassLvlComboBox" Grid.Row="0" Grid.Column="2" Margin="0,1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Label Content="(Hold your mouse over items for hints)" Grid.Row="11" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
