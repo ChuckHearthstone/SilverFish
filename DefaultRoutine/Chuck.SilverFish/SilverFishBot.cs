@@ -705,39 +705,42 @@ namespace Chuck.SilverFish
                         }
                     }
 
-                    minion.exhausted = (entitiy.GetTag(GAME_TAG.EXHAUSTED) == 0) ? false : true;
+                    minion.exhausted = (entitiy.GetTag(GAME_TAG.EXHAUSTED) != 0);
 
-                    minion.taunt = (entitiy.GetTag(GAME_TAG.TAUNT) == 0) ? false : true;
+                    minion.taunt = (entitiy.GetTag(GAME_TAG.TAUNT) != 0);
 
                     minion.numAttacksThisTurn = entitiy.GetTag(GAME_TAG.NUM_ATTACKS_THIS_TURN);
 
                     int temp = entitiy.GetTag(GAME_TAG.NUM_TURNS_IN_PLAY);
-                    minion.playedThisTurn = (temp == 0) ? true : false;
+                    minion.playedThisTurn = (temp == 0);
 
-                    minion.windfury = (entitiy.GetTag(GAME_TAG.WINDFURY) == 0) ? false : true;
+                    minion.windfury = (entitiy.GetTag(GAME_TAG.WINDFURY) != 0);
 
-                    minion.frozen = (entitiy.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
+                    minion.frozen = (entitiy.GetTag(GAME_TAG.FROZEN) != 0);
 
-                    minion.DivineShield = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) == 0) ? false : true;
+                    minion.DivineShield = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) != 0);
 
-                    minion.stealth = (entitiy.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
+                    minion.stealth = (entitiy.GetTag(GAME_TAG.STEALTH) != 0);
 
-                    minion.poisonous = (entitiy.GetTag(GAME_TAG.POISONOUS) == 0) ? false : true;
+                    minion.poisonous = (entitiy.GetTag(GAME_TAG.POISONOUS) != 0);
 
-                    minion.lifesteal = (entitiy.GetTag(GAME_TAG.LIFESTEAL) == 0) ? false : true;
+                    minion.lifesteal = (entitiy.GetTag(GAME_TAG.LIFESTEAL) != 0);
 
-                    minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE) == 0) ? false : true;
-                    if (!minion.immune) minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) == 0) ? false : true;
+                    minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE) != 0);
+                    if (!minion.immune)
+                    {
+                        minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) != 0);
+                    }
 
-                    minion.untouchable = (entitiy.GetTag(GAME_TAG.UNTOUCHABLE) == 0) ? false : true;
+                    minion.untouchable = (entitiy.GetTag(GAME_TAG.UNTOUCHABLE) != 0);
 
-                    minion.silenced = (entitiy.GetTag(GAME_TAG.SILENCED) == 0) ? false : true;
+                    minion.silenced = (entitiy.GetTag(GAME_TAG.SILENCED) != 0);
 
-                    minion.cantAttackHeroes = (entitiy.GetTag(GAME_TAG.CANNOT_ATTACK_HEROES) == 0) ? false : true;
+                    minion.cantAttackHeroes = (entitiy.GetTag(GAME_TAG.CANNOT_ATTACK_HEROES) != 0);
 
-                    minion.cantAttack = (entitiy.GetTag(GAME_TAG.CANT_ATTACK) == 0) ? false : true;
+                    minion.cantAttack = (entitiy.GetTag(GAME_TAG.CANT_ATTACK) != 0);
                     
-                    minion.cantBeTargetedBySpellsOrHeroPowers = (entitiy.GetTag(GAME_TAG.CANT_BE_TARGETED_BY_HERO_POWERS) == 0) ? false : true;
+                    minion.cantBeTargetedBySpellsOrHeroPowers = (entitiy.GetTag(GAME_TAG.CANT_BE_TARGETED_BY_HERO_POWERS) != 0);
 
                     minion.charge = entitiy.HasCharge ? 1 : 0;
 
