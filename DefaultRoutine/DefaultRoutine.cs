@@ -748,7 +748,9 @@ def Execute():
             }
 
             var moveTodo = Ai.Instance.bestmove;
-            if (moveTodo == null || moveTodo.actionType == actionEnum.endturn || Ai.Instance.bestmoveValue < -9999)
+            if (moveTodo == null 
+                || moveTodo.actionType == actionEnum.endturn 
+                || Ai.Instance.bestmoveValue < -9999)
             {
                 bool doEndTurn = false;
                 bool doConcede = false;
