@@ -3553,7 +3553,7 @@ namespace Chuck.SilverFish
             hero.numAttacksThisTurn++;
 
             //hero will end his readyness
-            hero.updateReadyness();
+            hero.UpdateReadiness();
             if (weapon.name == CardName.foolsbane && !hero.frozen) hero.Ready = true;
 
             //heal whether truesilverchampion equipped
@@ -3928,7 +3928,7 @@ namespace Chuck.SilverFish
                                 if (m.playedThisTurn)
                                 {
                                     m.charge--;
-                                    m.updateReadyness();
+                                    m.UpdateReadiness();
                                 }
                                 break;
                             case CardName.smalltimebuccaneer:
@@ -3939,7 +3939,7 @@ namespace Chuck.SilverFish
                                 break;
                         }
                     }
-                    this.ownHero.updateReadyness();
+                    this.ownHero.UpdateReadiness();
                 }
             }
             else
@@ -3971,7 +3971,7 @@ namespace Chuck.SilverFish
                         }
                     }
 
-                    this.enemyHero.updateReadyness();
+                    this.enemyHero.UpdateReadiness();
                 }
             }
         }
@@ -4562,7 +4562,7 @@ namespace Chuck.SilverFish
                 m.playedThisTurn = false;
                 m.numAttacksThisTurn = 0;
                 m.justBuffed = 0;
-                m.updateReadyness();
+                m.UpdateReadiness();
 
                 if (m.conceal)
                 {
@@ -4638,7 +4638,7 @@ namespace Chuck.SilverFish
                 this.ownHero.Attack = this.ownWeapon.Angr;
                 this.ownHero.numAttacksThisTurn = 0;
                 this.ownAbilityReady = true;
-                this.ownHero.updateReadyness();
+                this.ownHero.UpdateReadiness();
                 this.owncarddraw = 0;
             }
             else
@@ -4649,7 +4649,7 @@ namespace Chuck.SilverFish
                 this.enemyHero.Attack = this.enemyWeapon.Angr;
                 this.enemyHero.numAttacksThisTurn = 0;
                 this.enemyAbilityReady = true;
-                this.enemyHero.updateReadyness();
+                this.enemyHero.UpdateReadiness();
             }
 
 
@@ -5788,6 +5788,7 @@ namespace Chuck.SilverFish
             m.windfury = hc.card.windfury;
             m.taunt = hc.card.tank;
             m.charge = (hc.card.Charge) ? 1 : 0;
+            m.Rush = hc.card.Rush;
             m.DivineShield = hc.card.DivineShield;
 
             m.Reborn = hc.card.Reborn;
@@ -5804,7 +5805,7 @@ namespace Chuck.SilverFish
                     m.Attack = m.HealthPoints;
                     break;
             }
-            m.updateReadyness();
+            m.UpdateReadiness();
 
             if (m.name == CardName.lightspawn)
             {
@@ -5876,7 +5877,7 @@ namespace Chuck.SilverFish
             triggerAMinionWasSummoned(m);
             doDmgTriggers();
 
-            m.updateReadyness();
+            m.UpdateReadiness();
         }
 
         public void equipWeapon(CardDB.Card c, bool own)
@@ -5911,7 +5912,7 @@ namespace Chuck.SilverFish
 
             hero.Attack += c.Attack;
             hero.windfury = c.windfury;
-            hero.updateReadyness();
+            hero.UpdateReadiness();
             hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow);
 
             List<Minion> temp = (own) ? this.ownMinions : this.enemyMinions;
@@ -6553,7 +6554,7 @@ namespace Chuck.SilverFish
                 {
                     this.minionGetCharge(m);
                 }
-                else m.updateReadyness();
+                else m.UpdateReadiness();
             }
 
         }
@@ -6564,19 +6565,19 @@ namespace Chuck.SilverFish
         {
             if (m.windfury) return;
             m.windfury = true;
-            m.updateReadyness();
+            m.UpdateReadiness();
         }
 
         public void minionGetCharge(Minion m)
         {
             m.charge++;
-            m.updateReadyness();
+            m.UpdateReadiness();
         }
 
         public void minionLostCharge(Minion m)
         {
             m.charge--;
-            m.updateReadyness();
+            m.UpdateReadiness();
         }
 
 

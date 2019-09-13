@@ -614,18 +614,40 @@ namespace Chuck.SilverFish
             }
         }
 
-        public void updateReadyness()
+        public void UpdateReadiness()
         {
             Ready = false;
-            if (cantAttack) return;
-
-            if (isHero)
+            if (cantAttack)
             {
-                if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury))) Ready = true;
                 return;
             }
 
-            if (!frozen && ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || ( !silenced && this.name == CardName.v07tr0n && numAttacksThisTurn <=3 )) ) Ready = true;
+            if (isHero)
+            {
+                if (!frozen 
+                    && ((charge >= 1 && playedThisTurn) 
+                        || !playedThisTurn)
+                    && (numAttacksThisTurn == 0 
+                        || (numAttacksThisTurn == 1 && windfury)))
+                {
+                    Ready = true;
+                }
+                return;
+            }
+
+            if (!frozen //未冻结
+                && ((charge >= 1 && playedThisTurn) //本回合召唤的随从,有冲锋
+                    || !playedThisTurn //不是本回合的随从
+                    || Rush
+                    || shadowmadnessed)
+                && (numAttacksThisTurn == 0 //本回合未攻击
+                    || (numAttacksThisTurn == 1 && windfury) //本回合攻击一次,有风怒
+                    || (!silenced && this.name == CardName.v07tr0n && numAttacksThisTurn <= 3)//
+                    )
+                )
+            {
+                Ready = true;
+            }
 
         }
 
@@ -727,7 +749,7 @@ namespace Chuck.SilverFish
             }
 
             silenced = true;
-            this.updateReadyness();
+            this.UpdateReadiness();
             p.minionGetOrEraseAllAreaBuffs(this, true);
             if (own)
             {

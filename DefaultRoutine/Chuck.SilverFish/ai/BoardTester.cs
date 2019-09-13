@@ -756,7 +756,7 @@ namespace Chuck.SilverFish
                         tempminion.deathrattle2 = deathrattle2;
 
                         if (maxhp > hp) tempminion.wounded = true;
-                        tempminion.updateReadyness();
+                        tempminion.UpdateReadiness();
                         this.ownminions.Add(tempminion);
 
 
@@ -911,7 +911,7 @@ namespace Chuck.SilverFish
                         tempminion.deathrattle2 = deathrattle2;
 
                         if (maxhp > hp) tempminion.wounded = true;
-                        tempminion.updateReadyness();
+                        tempminion.UpdateReadiness();
                         this.enemyminions.Add(tempminion);
 
 
@@ -1075,7 +1075,7 @@ namespace Chuck.SilverFish
             this.enemyHero.stealth = enemyHeroStealth;
             this.enemyHero.Ready = false;
 
-            this.ownHero.updateReadyness();
+            this.ownHero.UpdateReadiness();
 
 
             //save data
@@ -1134,7 +1134,7 @@ namespace Chuck.SilverFish
             else m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(heroNametoClass(this.enemyheroname), (TAG_RACE)hc.card.race);
             if (m.synergy > 0 && hc.card.Stealth) m.synergy++;
 
-            m.updateReadyness();
+            m.UpdateReadiness();
 
             if (m.name == CardName.lightspawn)
             {

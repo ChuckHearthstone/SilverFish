@@ -11,7 +11,7 @@ namespace SilverFish.cards._04Expansion._002AT
 			if (m.own == own)
 			{
                 m.cantAttack = false;
-				m.updateReadyness();
+				m.UpdateReadiness();
 			}
         }
 		

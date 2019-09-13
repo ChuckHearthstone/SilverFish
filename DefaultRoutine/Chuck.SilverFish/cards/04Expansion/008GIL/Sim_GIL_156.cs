@@ -17,12 +17,12 @@ namespace SilverFish.cards._04Expansion._008GIL
         public override void onEnrageStart(Playfield p, Minion m)
         {
             m.cantAttack = false;
-            m.updateReadyness();
+            m.UpdateReadiness();
         }
         public override void onEnrageStop(Playfield p, Minion m)
         {
 			m.cantAttack = true;
-			m.updateReadyness();            
+			m.UpdateReadiness();            
         }
     }
 }

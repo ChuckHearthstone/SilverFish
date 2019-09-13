@@ -11,7 +11,7 @@ namespace SilverFish.cards._03Adventure._003LOE
             if (!m.silenced)
             {
                 m.cantAttack = (p.ownMinions.Count + p.enemyMinions.Count > 0) ? true : false;
-                m.updateReadyness();
+                m.UpdateReadiness();
             }
         }
 		
@@ -23,7 +23,7 @@ namespace SilverFish.cards._03Adventure._003LOE
                 foreach (Minion mnn in p.ownMinions) if (mnn.HealthPoints > 0) minionsOnBoard++;
                 foreach (Minion mnn in p.enemyMinions) if (mnn.HealthPoints > 0) minionsOnBoard++;
                 m.cantAttack = (minionsOnBoard > 0) ? true : false;
-                m.updateReadyness();
+                m.UpdateReadiness();
             }
         }
 	}
