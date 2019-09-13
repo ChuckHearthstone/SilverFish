@@ -176,6 +176,7 @@ namespace Chuck.SilverFish
             {
                 string sss = lines[i];
                 string s = sss + " ";
+                s = s.Replace("\r", string.Empty);
                 LogHelper.WriteCombatLog(s);
                 
                 if (s.StartsWith("ailoop") || s.StartsWith("deep ") || s.StartsWith("cut to len"))
