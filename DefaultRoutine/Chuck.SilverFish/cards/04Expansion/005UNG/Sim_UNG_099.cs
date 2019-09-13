@@ -6,7 +6,7 @@ namespace SilverFish.cards._04Expansion._005UNG
     /// Charged Devilsaur
     /// ¿ñ±¼µÄÄ§±©Áú
     /// </summary>
-    class Sim_UNG_099 : SimTemplate
+    public class Sim_UNG_099 : SimTemplate
 	{
         /// <summary>
         /// Charge Battlecry: Can't attack heroes this turn.

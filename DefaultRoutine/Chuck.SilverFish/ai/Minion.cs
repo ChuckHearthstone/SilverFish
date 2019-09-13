@@ -134,6 +134,23 @@ namespace Chuck.SilverFish
         public bool extraParam = false;
         public int extraParam2 = 0;
 
+        private bool _rush;
+
+        public bool Rush
+        {
+            get => _rush;
+            set
+            {
+                if (value)
+                {
+                    cantAttackHeroes = true;
+                    Ready = true;
+                }
+
+                _rush = value;
+            }
+        }
+
         public Minion()
         {
             this.handcard = new Handmanager.Handcard();

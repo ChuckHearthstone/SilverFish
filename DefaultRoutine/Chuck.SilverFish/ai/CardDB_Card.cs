@@ -52,6 +52,9 @@ namespace Chuck.SilverFish
             public bool AdjacentBuff = false;
             public bool DivineShield = false;
             public bool Charge = false;
+
+            public WriteOnce<bool> Rush { get; set; } = new WriteOnce<bool>();
+
             public bool Secret = false;
             public bool Quest = false;
             public bool Morph = false;

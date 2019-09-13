@@ -182,6 +182,7 @@ namespace Chuck.SilverFish
                 card.AdjacentBuff = dbCard.Entity.GetTag(GameTag.ADJACENT_BUFF) == 1;
                 card.DivineShield = dbCard.Entity.GetTag(GameTag.DIVINE_SHIELD) == 1;
                 card.Charge = dbCard.Entity.GetTag(GameTag.CHARGE) == 1;
+                card.Rush.Value = dbCard.Entity.GetTag(GameTag.RUSH) == 1;
                 card.Silence = dbCard.Entity.GetTag(GameTag.SILENCE) == 1;
                 card.Morph = dbCard.Entity.GetTag(GameTag.MORPH) == 1;
                 card.Spellpower = dbCard.Entity.GetTag(GameTag.SPELLPOWER) > 0;

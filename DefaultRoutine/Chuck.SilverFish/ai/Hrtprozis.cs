@@ -562,7 +562,8 @@ namespace Chuck.SilverFish
                 maxHp = hc.card.Health,
                 name = hc.card.name,
                 playedThisTurn = true,
-                numAttacksThisTurn = 0
+                numAttacksThisTurn = 0,
+                Rush = hc.card.Rush
             };
 
 
