@@ -1,35 +1,44 @@
 #######################################################################
-start calculations, current time: 12:16:19 V2019.08.29.001 Control 3000 face 15 berserk:1 ets 40 secret iC 1 aA 0
+start calculations, current time: 16:53:42 V2019.09.13.001 Control 5000 face 15 berserk:1 twoturnsim 500 ntss 10 20 200 ets 40 ets2 200 secret iC 1 aA 0
 #######################################################################
-turn 11/0
-mana 6/6
-emana 6
+turn 7/0
+mana 4/4
+emana 4
 own secretsCount: 0
 enemy secretsCount: 0 ;
 player:
-0 0 0 0 1
+0 0 0 0 2
 ownhero:
-shaman 29 30 0 False False 64 False 0 False 0 0 False
+warrior 25 30 0 False False 66 False 0 False 0 0 False
 weapon: 0 0 unknown None 0 0
-ability: True CS2_049_H1
-osecrets:
+ability: True CS2_102
+osecrets: 
 cthunbonus: 0 0 0
 jadegolems: 0 0
 elementals: 0 0 0
-quests: None 0 1000 None 3 5
+quests: None 0 1000 None 0 1000
 advanced: 0 0
 enemyhero:
-pala 10 30 0 False False 66 False
+hunter 30 30 0 False False 64 False
 weapon: 0 0 unknown None 0 0
-ability: True ULD_431p
-fatigue: 21 0 20 0
+ability: True DS1h_292
+fatigue: 23 0 23 0
 OwnMinions:
+rabidworgen GIL_113 zp:1 e:54 A:3 H:3 mH:3 rdy:True natt:0
 EnemyMinions:
-ironfurgrizzly CS2_125 zp:1 e:63 A:3 H:3 mH:3 rdy:False ex
-Own Handcards:
-pos 1 sightlessranger 5 entity 13 TRL_020 0 0 0
-Enemy cards: 3
-ownDiedMinions:
-enemyDiedMinions:
-otg:
-etg:
+leokk NEW1_033 zp:1 e:84 A:2 H:4 mH:4 rdy:False ex
+Own Handcards: 
+pos 1 rocketboots 2 entity 39 BOT_067 0 0 0
+pos 2 redbandwasp 2 entity 50 GIL_155 0 0 0
+pos 3 militiacommander 4 entity 56 GIL_803 0 0 0
+pos 4 spark 1 entity 80 BOT_102t 0 0 0
+pos 5 rocketboots 2 entity 52 BOT_067 0 0 0
+pos 6 sparkdrill 6 entity 51 BOT_102 0 0 0
+Enemy cards: 5
+ownDiedMinions: 
+enemyDiedMinions: 
+otg: 
+etg: 
+og: BOT_538,1;
+eg: NEW1_031,1;CS2_172,1;GAME_005,1;
+od: BOT_020,2;GIL_143,1;ULD_712,2;GIL_653,2;BOT_067,2;BOT_538,1;DAL_743,2;GIL_155,2;GIL_113,2;DAL_582,1;GIL_803,2;ULD_206,2;BOT_603,1;TRL_020,1;DAL_565,1;BOT_102,2;ULD_178,1;TRL_550,1;DAL_760,2;
