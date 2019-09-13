@@ -1,24 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Chuck.SilverFish;
+using SilverFish.Enums;
+
 
 namespace Chuck.SilverFish {
     /// <summary>
-    /// Goblin Lackey
-    /// 地精跟班
+    /// Ethereal Lackey
+    /// 虚灵跟班
     /// </summary>
-    class Sim_DAL_739 : SimTemplate {
+    public class Sim_DAL_741 : SimTemplate {
         /// <summary>
-        /// Battlecry: Give a friendly minion +1 Attack and Rush.
-        /// 战吼：使一个友方随从获得+1攻击力和突袭。
+        /// Battlecry: Discover a spell.
+        /// 战吼：发现一张法术牌。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
         /// <param name="target"></param>
         /// <param name="choice"></param>
         public override void getBattlecryEffect (Playfield p, Minion own, Minion target, int choice) {
-            if (target != null) p.minionGetBuffed (target, 1, 0);
-            ///未实现突袭
+            p.drawACard (CardName.unknown, own.own, true);
         }
     }
 }
