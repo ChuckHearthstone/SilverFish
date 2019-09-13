@@ -234,6 +234,7 @@ namespace Chuck.SilverFish
             this.exhausted = m.exhausted;
 
             this.charge = m.charge;
+            Rush = m.Rush;
             this.hChoice = m.hChoice;
             this.poisonous = m.poisonous;
             this.lifesteal = m.lifesteal;
@@ -321,8 +322,15 @@ namespace Chuck.SilverFish
 
             this.charge = m.charge;
             this.hChoice = m.hChoice;
-            if (m.charge > 0 && !m.frozen && !m.silenced) this.Ready = true;
-            else this.Ready = false;
+            if (m.charge > 0 && !m.frozen && !m.silenced)
+            {
+                this.Ready = true;
+            }
+            else
+            {
+                this.Ready = false;
+            }
+            Rush = m.Rush;
             this.poisonous = m.poisonous;
             this.lifesteal = m.lifesteal;
             this.cantLowerHPbelowONE = m.cantLowerHPbelowONE;

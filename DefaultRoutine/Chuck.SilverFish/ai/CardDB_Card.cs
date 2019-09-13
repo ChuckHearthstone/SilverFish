@@ -123,6 +123,7 @@ namespace Chuck.SilverFish
                 this.discover = c.discover;
                 //this.CardID = c.CardID;
                 this.Charge = c.Charge;
+                Rush = c.Rush;
                 this.choice = c.choice;
                 this.Combo = c.Combo;
                 this.cost = c.cost;
