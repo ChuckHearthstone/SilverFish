@@ -249,7 +249,7 @@ namespace Chuck.SilverFish
             Handmanager.Instance.clearAllRecalc();
             
             getHerostuff();
-            getMinions();
+            GetMinions();
             getHandcards();
             GetDecks();
 
@@ -630,57 +630,68 @@ namespace Chuck.SilverFish
 
 
 
-        private void getMinions()
+        private void GetMinions()
         {
-            int tmp = Triton.Game.Mapping.GameState.Get().GetTurn();
-            if (gTurn == tmp) gTurnStep++;
-            else gTurnStep = 0;
+            int tmp = GameState.Get().GetTurn();
+            if (gTurn == tmp)
+            {
+                gTurnStep++;
+            }
+            else
+            {
+                gTurnStep = 0;
+            }
             gTurn = tmp;
             
             List<HSCard> list = TritonHs.GetCards(CardZone.Battlefield, true);
             list.AddRange(TritonHs.GetCards(CardZone.Battlefield, false));
 
-            var enchantments = new List<HSCard>();
             ownMinions.Clear();
             enemyMinions.Clear();
             LurkersDB.Clear();
-            List<HSCard> allcards = TritonHs.GetAllCards();
+            List<HSCard> allCards = TritonHs.GetAllCards();
 
-            foreach (HSCard entiti in list)
+            foreach (HSCard entity in list)
             {
-                int zp = entiti.GetTag(GAME_TAG.ZONE_POSITION);
+                int zp = entity.GetTag(GAME_TAG.ZONE_POSITION);
 
-                if (entiti.IsMinion && zp >= 1)
+                if (entity.IsMinion && zp >= 1)
                 {
 
-                    HSCard entitiy = entiti;
+                    HSCard entitiy = entity;
 
-                    foreach (HSCard ent in allcards)
+                    foreach (HSCard ent in allCards)
                     {
-                        if (ent.EntityId == entiti.EntityId)
+                        if (ent.EntityId == entity.EntityId)
                         {
                             entitiy = ent;
                             break;
                         }
                     }
 
+                    var cardIdEnum = CardDB.Instance.cardIdstringToEnum(entitiy.Id);
+                    CardDB.Card card = CardDB.Instance.getCardDataFromID(cardIdEnum);
+                    Minion minion = new Minion();
+                    minion.name = card.name;
+                    minion.handcard.card = card;
 
-                    CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(entitiy.Id));
-                    Minion m = new Minion();
-                    m.name = c.name;
-                    m.handcard.card = c;
-
-                    m.Attack = entitiy.GetTag(GAME_TAG.ATK);
-                    m.maxHp = entitiy.GetTag(GAME_TAG.HEALTH);
-                    m.HealthPoints = entitiy.GetTag(GAME_TAG.HEALTH) - entitiy.GetTag(GAME_TAG.DAMAGE);
-                    if (m.HealthPoints <= 0) continue;
-                    m.wounded = false;
-                    if (m.maxHp > m.HealthPoints) m.wounded = true;
+                    minion.Attack = entitiy.GetTag(GAME_TAG.ATK);
+                    minion.maxHp = entitiy.GetTag(GAME_TAG.HEALTH);
+                    minion.HealthPoints = entitiy.GetTag(GAME_TAG.HEALTH) - entitiy.GetTag(GAME_TAG.DAMAGE);
+                    if (minion.HealthPoints <= 0)
+                    {
+                        continue;
+                    }
+                    minion.wounded = false;
+                    if (minion.maxHp > minion.HealthPoints)
+                    {
+                        minion.wounded = true;
+                    }
 
                     int ctarget = entitiy.GetTag(GAME_TAG.CARD_TARGET);
                     if (ctarget > 0)
                     {
-                        foreach (HSCard hcard in allcards)
+                        foreach (HSCard hcard in allCards)
                         {
                             if (hcard.EntityId == ctarget)
                             {
@@ -694,55 +705,55 @@ namespace Chuck.SilverFish
                         }
                     }
 
-                    m.exhausted = (entitiy.GetTag(GAME_TAG.EXHAUSTED) == 0) ? false : true;
+                    minion.exhausted = (entitiy.GetTag(GAME_TAG.EXHAUSTED) == 0) ? false : true;
 
-                    m.taunt = (entitiy.GetTag(GAME_TAG.TAUNT) == 0) ? false : true;
+                    minion.taunt = (entitiy.GetTag(GAME_TAG.TAUNT) == 0) ? false : true;
 
-                    m.numAttacksThisTurn = entitiy.GetTag(GAME_TAG.NUM_ATTACKS_THIS_TURN);
+                    minion.numAttacksThisTurn = entitiy.GetTag(GAME_TAG.NUM_ATTACKS_THIS_TURN);
 
                     int temp = entitiy.GetTag(GAME_TAG.NUM_TURNS_IN_PLAY);
-                    m.playedThisTurn = (temp == 0) ? true : false;
+                    minion.playedThisTurn = (temp == 0) ? true : false;
 
-                    m.windfury = (entitiy.GetTag(GAME_TAG.WINDFURY) == 0) ? false : true;
+                    minion.windfury = (entitiy.GetTag(GAME_TAG.WINDFURY) == 0) ? false : true;
 
-                    m.frozen = (entitiy.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
+                    minion.frozen = (entitiy.GetTag(GAME_TAG.FROZEN) == 0) ? false : true;
 
-                    m.DivineShield = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) == 0) ? false : true;
+                    minion.DivineShield = (entitiy.GetTag(GAME_TAG.DIVINE_SHIELD) == 0) ? false : true;
 
-                    m.stealth = (entitiy.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
+                    minion.stealth = (entitiy.GetTag(GAME_TAG.STEALTH) == 0) ? false : true;
 
-                    m.poisonous = (entitiy.GetTag(GAME_TAG.POISONOUS) == 0) ? false : true;
+                    minion.poisonous = (entitiy.GetTag(GAME_TAG.POISONOUS) == 0) ? false : true;
 
-                    m.lifesteal = (entitiy.GetTag(GAME_TAG.LIFESTEAL) == 0) ? false : true;
+                    minion.lifesteal = (entitiy.GetTag(GAME_TAG.LIFESTEAL) == 0) ? false : true;
 
-                    m.immune = (entitiy.GetTag(GAME_TAG.IMMUNE) == 0) ? false : true;
-                    if (!m.immune) m.immune = (entitiy.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) == 0) ? false : true;
+                    minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE) == 0) ? false : true;
+                    if (!minion.immune) minion.immune = (entitiy.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) == 0) ? false : true;
 
-                    m.untouchable = (entitiy.GetTag(GAME_TAG.UNTOUCHABLE) == 0) ? false : true;
+                    minion.untouchable = (entitiy.GetTag(GAME_TAG.UNTOUCHABLE) == 0) ? false : true;
 
-                    m.silenced = (entitiy.GetTag(GAME_TAG.SILENCED) == 0) ? false : true;
+                    minion.silenced = (entitiy.GetTag(GAME_TAG.SILENCED) == 0) ? false : true;
 
-                    m.cantAttackHeroes = (entitiy.GetTag(GAME_TAG.CANNOT_ATTACK_HEROES) == 0) ? false : true;
+                    minion.cantAttackHeroes = (entitiy.GetTag(GAME_TAG.CANNOT_ATTACK_HEROES) == 0) ? false : true;
 
-                    m.cantAttack = (entitiy.GetTag(GAME_TAG.CANT_ATTACK) == 0) ? false : true;
+                    minion.cantAttack = (entitiy.GetTag(GAME_TAG.CANT_ATTACK) == 0) ? false : true;
                     
-                    m.cantBeTargetedBySpellsOrHeroPowers = (entitiy.GetTag(GAME_TAG.CANT_BE_TARGETED_BY_HERO_POWERS) == 0) ? false : true;
+                    minion.cantBeTargetedBySpellsOrHeroPowers = (entitiy.GetTag(GAME_TAG.CANT_BE_TARGETED_BY_HERO_POWERS) == 0) ? false : true;
 
-                    m.charge = entitiy.HasCharge ? 1 : 0;
+                    minion.charge = entitiy.HasCharge ? 1 : 0;
 
 
-                    m.zonepos = zp;
+                    minion.zonepos = zp;
 
-                    m.entitiyID = entitiy.EntityId;
+                    minion.entitiyID = entitiy.EntityId;
                     
 
                     
-                    m.hChoice = entitiy.GetTag(GAME_TAG.HIDDEN_CHOICE);
+                    minion.hChoice = entitiy.GetTag(GAME_TAG.HIDDEN_CHOICE);
 
                     List<miniEnch> enchs = new List<miniEnch>();
-                    foreach (HSCard ent in allcards)
+                    foreach (HSCard ent in allCards)
                     {
-                        if (ent.GetTag(GAME_TAG.ATTACHED) == m.entitiyID && ent.GetTag(GAME_TAG.ZONE) == 1) 
+                        if (ent.GetTag(GAME_TAG.ATTACHED) == minion.entitiyID && ent.GetTag(GAME_TAG.ZONE) == 1) 
                         {
                             CardIdEnum id = CardDB.Instance.cardIdstringToEnum(ent.Id);
                             int controler = ent.GetTag(GAME_TAG.CONTROLLER);
@@ -752,19 +763,19 @@ namespace Chuck.SilverFish
                         }
                     }
                     
-                    m.loadEnchantments(enchs, entitiy.GetTag(GAME_TAG.CONTROLLER));
-                    if (m.extraParam2 != 0)
+                    minion.loadEnchantments(enchs, entitiy.GetTag(GAME_TAG.CONTROLLER));
+                    if (minion.extraParam2 != 0)
                     {
                         bool needBreak = false;
-                        foreach (HSCard ent in allcards)
+                        foreach (HSCard ent in allCards)
                         {
-                            if (m.extraParam2 == ent.EntityId)
+                            if (minion.extraParam2 == ent.EntityId)
                             {
                                 int copyDeathrattle = ent.GetTag(GAME_TAG.COPY_DEATHRATTLE);
                                 switch (ent.Id)
                                 {
                                     case "LOE_019":
-                                        foreach (HSCard ent2 in allcards)
+                                        foreach (HSCard ent2 in allCards)
                                         {
                                             if (copyDeathrattle == ent2.EntityId)
                                             {
@@ -773,14 +784,14 @@ namespace Chuck.SilverFish
                                                     copyDeathrattle = ent2.GetTag(GAME_TAG.COPY_DEATHRATTLE);
                                                     goto case "LOE_019";
                                                 }
-                                                m.deathrattle2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(ent2.Id));
+                                                minion.deathrattle2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(ent2.Id));
                                                 needBreak = true;
                                                 break;
                                             }
                                         }
                                         break;
                                     default:
-                                        m.deathrattle2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(ent.Id));
+                                        minion.deathrattle2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(ent.Id));
                                         needBreak = true;
                                         break;
                                 }
@@ -789,8 +800,8 @@ namespace Chuck.SilverFish
                         }
                     }
 
-                    m.Ready = entitiy.CanBeUsed;
-                    if (m.charge > 0 && m.playedThisTurn && !m.Ready && m.numAttacksThisTurn == 0)
+                    minion.Ready = entitiy.CanBeUsed;
+                    if (minion.charge > 0 && minion.playedThisTurn && !minion.Ready && minion.numAttacksThisTurn == 0)
                     {
                         needSleep = true;
                         Helpfunctions.Instance.ErrorLog("[AI] Charge minion not ready");
@@ -799,15 +810,15 @@ namespace Chuck.SilverFish
 
                     if (entitiy.GetTag(GAME_TAG.CONTROLLER) == this.ownPlayerController) 
                     {
-                        m.own = true;                        
-                        m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.ownHero.cardClass, (TAG_RACE)c.race);
-                        this.ownMinions.Add(m);
+                        minion.own = true;                        
+                        minion.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.ownHero.cardClass, (TAG_RACE)card.race);
+                        this.ownMinions.Add(minion);
                     }
                     else
                     {
-                        m.own = false;
-                        m.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.enemyHero.cardClass, (TAG_RACE)c.race);
-                        this.enemyMinions.Add(m);
+                        minion.own = false;
+                        minion.synergy = PenaltyManager.Instance.getClassRacePriorityPenality(this.enemyHero.cardClass, (TAG_RACE)card.race);
+                        this.enemyMinions.Add(minion);
                     }
                 }
             }
