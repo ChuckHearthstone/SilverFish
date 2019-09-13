@@ -5,7 +5,6 @@ using log4net;
 using Newtonsoft.Json;
 using Triton.Bot.Settings;
 using Triton.Common;
-using Triton.Game.Mapping;
 using Logger = Triton.Common.LogUtilities.Logger;
 
 namespace Chuck.SilverFish

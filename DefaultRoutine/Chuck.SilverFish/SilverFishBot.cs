@@ -13,7 +13,7 @@ namespace Chuck.SilverFish
 {
     public class SilverFishBot
     {
-        public string versionnumber = "2019.09.01.002";
+        public string versionnumber = "2019.09.13.001";
         private bool singleLog = Settings.Instance.writeToSingleFile;
         private string botbehave = "noname";
         private bool needSleep = false;
@@ -109,11 +109,11 @@ namespace Chuck.SilverFish
 
         private SilverFishBot()
         {
-            Helpfunctions.Instance.InfoLog("init Silverfish");
+            Helpfunctions.Instance.InfoLog("init Chuck.Silverfish");
             this.singleLog = Settings.Instance.writeToSingleFile;
 
             string baseDirectory = Settings.Instance.BaseDirectory;
-            string dataFolderPath = Path.Combine(baseDirectory, @"Routines\DefaultRoutine\Silverfish\data");
+            string dataFolderPath = Path.Combine(baseDirectory, @"Routines\DefaultRoutine\Chuck.Silverfish\data");
             _settings.DataFolderPath = dataFolderPath;
 
             setBehavior();
@@ -137,11 +137,11 @@ namespace Chuck.SilverFish
             string p;
             if (Settings.Instance.Test)
             {
-                p = Path.Combine(baseDir, @"DefaultRoutine\SilverFish");
+                p = Path.Combine(baseDir, @"DefaultRoutine\Chuck.SilverFish");
             }
             else
             {
-                p = Path.Combine(baseDir, @"Routines\DefaultRoutine\Silverfish\behavior");
+                p = Path.Combine(baseDir, @"Routines\DefaultRoutine\Chuck.Silverfish\behavior");
             }
             string[] files = Directory.GetFiles(p, "Behavior*.cs", SearchOption.AllDirectories);
             int bCount = 0;

@@ -78,7 +78,7 @@ namespace Chuck.SilverFish
             bool printstuff = false; // if true, the best board of the tested file is printet stepp by stepp
 
             Helpfunctions.Instance.InfoLog("----------------------------");
-            Helpfunctions.Instance.ErrorLog("you are running SilverFish AI(https://github.com/ChuckHearthBuddy/SilverFish) written by ChuckLu Version:" + SilverFishBot.Instance.versionnumber);
+            Helpfunctions.Instance.ErrorLog("you are running SilverFish AI(https://github.com/ChuckHearthstone/SilverFish) maintained by ChuckLu Version:" + SilverFishBot.Instance.versionnumber);
             Helpfunctions.Instance.InfoLog("----------------------------");
 
             if (teststuff)
