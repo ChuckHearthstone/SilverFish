@@ -133,6 +133,8 @@ namespace Chuck.SilverFish
                 allCardIDS.Add(item);
                 card.cardIDenum = ConvertHelper.cardIdstringToEnum(item);
                 var dbCard = cards[item];
+                card.EnglishName = dbCard.GetLocName(Locale.enUS);
+                card.ChineseName = dbCard.GetLocName(Locale.zhCN);
                 card.Health = dbCard.Health;
                 card.Class = (int) dbCard.Class;
                 card.Attack.Value = dbCard.Attack;
