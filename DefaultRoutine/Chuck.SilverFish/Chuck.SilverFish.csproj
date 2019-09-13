@@ -200,6 +200,7 @@
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_339.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_348.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_348t.cs" />
+    <Compile Include="cards\04Expansion\010TRL\Sim_TRL_400.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_503.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_503t.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_509.cs" />
