@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ExportCollection\SettingsGui.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="QuestPlus\SettingsGui.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
