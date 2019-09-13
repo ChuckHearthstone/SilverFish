@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+using Chuck.SilverFish;
 using HearthDb;
 using HearthDb.Enums;
-using Chuck.SilverFish;
 using NUnit.Framework;
 
 namespace SilverFish.Test

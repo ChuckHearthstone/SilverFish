@@ -56,9 +56,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hearthbuddy.exe</HintPath>
     </Reference>
-    <Reference Include="HearthDb">
-      <HintPath>..\..\packages\HearthDb.dll</HintPath>
-    </Reference>
     <Reference Include="IronPython">
       <HintPath>..\..\packages\IronPython.dll</HintPath>
     </Reference>
