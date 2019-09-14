@@ -678,7 +678,7 @@ namespace Chuck.SilverFish
             stringBuilder.AppendLine($"{nameof(shadowmadnessed)} = {shadowmadnessed}");
             stringBuilder.AppendLine($"{nameof(numAttacksThisTurn)} = {numAttacksThisTurn}");
             stringBuilder.AppendLine($"{nameof(windfury)} = {windfury}");
-            LogHelper.WriteAllText("ChuckReadiness.log", stringBuilder);
+            Helpfunctions.Instance.InfoLog(stringBuilder);
         } 
 
         public void GetSilenced(Playfield p)
