@@ -657,6 +657,7 @@ def Execute():
 		/// <returns></returns>
 		public async Task OurTurnLogic()
         {
+            LogHelper.WriteCombatLog("OurTurnLogic");
             if (this.behave.BehaviorName() != DefaultRoutineSettings.Instance.DefaultBehavior)
             {
                 behave = sf.getBehaviorByName(DefaultRoutineSettings.Instance.DefaultBehavior);
