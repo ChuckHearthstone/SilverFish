@@ -1,17 +1,17 @@
 using Chuck.SilverFish;
 using SilverFish.Helpers;
 
-namespace SilverFish._cards._04Expansion._011DAL
+namespace Chuck.SilverFish._cards._04Expansion._011DAL
 {
     /// <summary>
-    /// EVIL Cable Rat
-    /// 怪盗布缆鼠
+    /// Sludge Slurper
+    /// 淤泥吞食者
     /// </summary>
-    public class Sim_DAL_400 : SimTemplate
+    public class Sim_DAL_433 : SimTemplate
     {
         /// <summary>
-        /// Battlecry: Add a Lackey to your hand.
-        /// 战吼：将一张跟班牌置入你的手牌。
+        /// Battlecry: Add a Lackey to your hand. Overload: (1)
+        /// 战吼：将一张跟班牌置入你的手牌。过载：（1）
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -21,6 +21,7 @@ namespace SilverFish._cards._04Expansion._011DAL
         {
             var cardIdEnum = LackeyHelper.Instance.GetRandomLackey();
             p.drawACard(cardIdEnum, own.own, true);
+            if (own.own) p.ueberladung++;
         }
     }
 }
