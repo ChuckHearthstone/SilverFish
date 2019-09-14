@@ -219,6 +219,8 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_378ts.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_400.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_413.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Sim_DAL_415.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Sim_DAL_433.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_558.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_566.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_566t.cs" />
@@ -231,8 +233,10 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_733.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_733t.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_739.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Sim_DAL_741.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Sim_DAL_769.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_003.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_133.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_136.cs" />
@@ -262,6 +266,7 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_309.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_328.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_439.cs" />
+    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_616.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_714.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_715.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_715t.cs" />

@@ -1,13 +1,13 @@
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-
-namespace Chuck.SilverFish {
+namespace Chuck.SilverFish.cards._04Expansion._011DAL
+{
     /// <summary>
     /// Ethereal Lackey
     /// 虚灵跟班
     /// </summary>
-    public class Sim_DAL_741 : SimTemplate {
+    public class Sim_DAL_741 : SimTemplate
+    {
         /// <summary>
         /// Battlecry: Discover a spell.
         /// 战吼：发现一张法术牌。
@@ -16,8 +16,9 @@ namespace Chuck.SilverFish {
         /// <param name="own"></param>
         /// <param name="target"></param>
         /// <param name="choice"></param>
-        public override void getBattlecryEffect (Playfield p, Minion own, Minion target, int choice) {
-            p.drawACard (CardName.unknown, own.own, true);
+        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        {
+            p.drawACard(CardName.unknown, own.own, true);
         }
     }
 }

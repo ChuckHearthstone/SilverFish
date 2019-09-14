@@ -6,7 +6,7 @@ namespace Chuck.SilverFish
     /// EVIL Conscripter
     /// 怪盗征募员
     /// </summary>
-    public class Sim_DAL_413:SimTemplate
+    public class Sim_DAL_413 : SimTemplate
     {
         /// <summary>
         /// Deathrattle: Add a Lackey to your hand.

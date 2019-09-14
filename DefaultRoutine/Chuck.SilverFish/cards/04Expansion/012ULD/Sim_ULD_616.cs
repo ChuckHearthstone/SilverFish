@@ -24,8 +24,14 @@ namespace SilverFish.cards._04Expansion._012ULD
                 if (!target.taunt)
                 {
                     target.taunt = true;
-                    if (target.own) p.anzOwnTaunt++;
-                    else p.anzEnemyTaunt++;
+                    if (target.own)
+                    {
+                        p.anzOwnTaunt++;
+                    }
+                    else
+                    {
+                        p.anzEnemyTaunt++;
+                    }
                 }
             }
         }

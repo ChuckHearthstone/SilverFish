@@ -1,4 +1,3 @@
-using Chuck.SilverFish;
 using SilverFish.Helpers;
 
 namespace Chuck.SilverFish._cards._04Expansion._011DAL
@@ -10,8 +9,8 @@ namespace Chuck.SilverFish._cards._04Expansion._011DAL
     public class Sim_DAL_433 : SimTemplate
     {
         /// <summary>
-        /// Battlecry: Add a Lackey to your hand. Overload: (1)
-        /// 战吼：将一张跟班牌置入你的手牌。过载：（1）
+        /// Battlecry: Add a Lackey to your hand. Overload: 1
+        /// 战吼：将一张跟班牌置入你的手牌。 
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -21,7 +20,10 @@ namespace Chuck.SilverFish._cards._04Expansion._011DAL
         {
             var cardIdEnum = LackeyHelper.Instance.GetRandomLackey();
             p.drawACard(cardIdEnum, own.own, true);
-            if (own.own) p.ueberladung++;
+            if (own.own)
+            {
+                p.ueberladung += 1;
+            }
         }
     }
 }

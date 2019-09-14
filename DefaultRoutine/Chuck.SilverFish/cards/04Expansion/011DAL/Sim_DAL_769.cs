@@ -1,6 +1,6 @@
 using SilverFish.Helpers;
 
-namespace Chuck.SilverFish
+namespace Chuck.SilverFish.cards._04Expansion._011DAL
 {
     /// <summary>
     /// Improve Morale
@@ -18,14 +18,13 @@ namespace Chuck.SilverFish
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
-            if (target.HealthPoints > dmg || target.immune || target.DivineShield)
+            int damage = ownplay ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
+            p.minionGetDamageOrHeal(target, damage);
+            if (target.HealthPoints >= 1)
             {
                 var cardIdEnum = LackeyHelper.Instance.GetRandomLackey();
                 p.drawACard(cardIdEnum, ownplay, true);
             }
-            p.minionGetDamageOrHeal(target, dmg);
-
         }
     }
 }
