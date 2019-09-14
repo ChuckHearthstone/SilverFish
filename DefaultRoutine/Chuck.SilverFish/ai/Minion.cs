@@ -173,6 +173,8 @@ namespace Chuck.SilverFish
             this.own = m.own;
 
             this.name = m.name;
+            EnglishName = m.EnglishName;
+            ChineseName = m.ChineseName;
             this.cardClass = m.cardClass;
             this.synergy = m.synergy;
             this.handcard = m.handcard;
@@ -263,6 +265,8 @@ namespace Chuck.SilverFish
             this.own = m.own;
 
             this.name = m.name;
+            EnglishName = m.EnglishName;
+            ChineseName = m.ChineseName;
             this.cardClass = m.cardClass;
             this.synergy = m.synergy;
             this.handcard = m.handcard;
@@ -664,7 +668,10 @@ namespace Chuck.SilverFish
             }
 
             //打印状态
-            PrintReadinessCondition();
+            if (Ready == false)
+            {
+                PrintReadinessCondition();
+            }
         }
 
         private void PrintReadinessCondition()
