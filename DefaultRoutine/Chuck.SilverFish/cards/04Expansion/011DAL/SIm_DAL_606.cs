@@ -7,7 +7,7 @@ namespace SilverFish.cards._04Expansion._011DAL
     /// EVIL Genius
     /// 怪盗天才
     /// </summary>
-    public class SIm_DAL_606 : SimTemplate
+    public class Sim_DAL_606 : SimTemplate
     {
         /// <summary>
         /// Battlecry: Destroy a friendly minion to add 2 random Lackeys to your hand.
