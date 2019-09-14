@@ -555,6 +555,8 @@ namespace Chuck.SilverFish
             Minion m = new Minion
             {
                 handcard = new Handmanager.Handcard(hc),
+                EnglishName = hc.card.EnglishName,
+                ChineseName = hc.card.ChineseName,
                 zonepos = id + 1,
                 entitiyID = hc.entity,
                 Attack = hc.card.Attack,

@@ -151,6 +151,10 @@ namespace Chuck.SilverFish
             }
         }
 
+        public string EnglishName { get; set; }
+
+        public string ChineseName { get; set; }
+
         public Minion()
         {
             this.handcard = new Handmanager.Handcard();
@@ -642,7 +646,7 @@ namespace Chuck.SilverFish
                 }
                 return;
             }
-
+            //打印状态
             if (!frozen //未冻结
                 && ((charge >= 1 && playedThisTurn) //本回合召唤的随从,有冲锋
                     || !playedThisTurn //不是本回合的随从
