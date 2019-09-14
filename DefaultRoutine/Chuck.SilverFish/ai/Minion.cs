@@ -1,4 +1,6 @@
-﻿using SilverFish.Enums;
+﻿using System.Text;
+using SilverFish.Enums;
+using SilverFish.Helpers;
 
 namespace Chuck.SilverFish
 {
@@ -646,7 +648,10 @@ namespace Chuck.SilverFish
                 }
                 return;
             }
+
             //打印状态
+            PrintReadinessCondition();
+
             if (!frozen //未冻结
                 && ((charge >= 1 && playedThisTurn) //本回合召唤的随从,有冲锋
                     || !playedThisTurn //不是本回合的随从
@@ -662,6 +667,19 @@ namespace Chuck.SilverFish
             }
 
         }
+
+        private void PrintReadinessCondition()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"{nameof(frozen)} = {frozen}");
+            stringBuilder.AppendLine($"{nameof(charge)} = {charge}");
+            stringBuilder.AppendLine($"{nameof(playedThisTurn)} = {playedThisTurn}");
+            stringBuilder.AppendLine($"{nameof(Rush)} = {Rush}");
+            stringBuilder.AppendLine($"{nameof(shadowmadnessed)} = {shadowmadnessed}");
+            stringBuilder.AppendLine($"{nameof(numAttacksThisTurn)} = {numAttacksThisTurn}");
+            stringBuilder.AppendLine($"{nameof(windfury)} = {windfury}");
+            LogHelper.WriteCombatLog(stringBuilder);
+        } 
 
         public void GetSilenced(Playfield p)
         {
