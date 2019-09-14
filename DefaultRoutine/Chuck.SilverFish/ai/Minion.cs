@@ -649,9 +649,6 @@ namespace Chuck.SilverFish
                 return;
             }
 
-            //打印状态
-            PrintReadinessCondition();
-
             if (!frozen //未冻结
                 && ((charge >= 1 && playedThisTurn) //本回合召唤的随从,有冲锋
                     || !playedThisTurn //不是本回合的随从
@@ -666,11 +663,14 @@ namespace Chuck.SilverFish
                 Ready = true;
             }
 
+            //打印状态
+            PrintReadinessCondition();
         }
 
         private void PrintReadinessCondition()
         {
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Print readiness for {ChineseName}:");
             stringBuilder.AppendLine($"{nameof(frozen)} = {frozen}");
             stringBuilder.AppendLine($"{nameof(charge)} = {charge}");
             stringBuilder.AppendLine($"{nameof(playedThisTurn)} = {playedThisTurn}");
