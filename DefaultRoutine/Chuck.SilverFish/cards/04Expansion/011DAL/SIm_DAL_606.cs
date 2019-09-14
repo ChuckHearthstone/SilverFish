@@ -19,6 +19,10 @@ namespace SilverFish.cards._04Expansion._011DAL
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
+            if (target == null)
+            {
+                return;
+            }
             p.minionGetDestroyed(target);
             var count = 2;
             for (var i = 1; i <= count; i++)
