@@ -37,7 +37,7 @@ namespace SilverFish.Helpers
             }
         }
 
-        private static void WriteAllText(string filePath, object obj)
+        public static void WriteAllText(string filePath, object obj)
         {
             File.WriteAllText(filePath, obj?.ToString());
         }
