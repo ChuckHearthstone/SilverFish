@@ -670,7 +670,7 @@ namespace Chuck.SilverFish
             //打印状态
             if (Ready == false)
             {
-                PrintReadinessCondition();
+                //PrintReadinessCondition();
             }
         }
 
