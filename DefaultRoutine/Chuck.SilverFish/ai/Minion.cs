@@ -169,6 +169,11 @@ namespace Chuck.SilverFish
 
         public Minion(Minion m)
         {
+            if (m == null)
+            {
+                handcard = new Handmanager.Handcard();
+                return;
+            }
             //dont silence----------------------------
             //this.anzGotDmg = m.anzGotDmg;
             //this.GotDmgValue = m.GotDmgValue;
