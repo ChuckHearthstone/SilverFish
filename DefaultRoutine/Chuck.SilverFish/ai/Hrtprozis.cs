@@ -555,8 +555,6 @@ namespace Chuck.SilverFish
             Minion m = new Minion
             {
                 handcard = new Handmanager.Handcard(hc),
-                EnglishName = hc.card.EnglishName,
-                ChineseName = hc.card.ChineseName,
                 zonepos = id + 1,
                 entitiyID = hc.entity,
                 Attack = hc.card.Attack,
@@ -597,7 +595,21 @@ namespace Chuck.SilverFish
             LogHelper.WriteCombatLog(this.numMinionsPlayedThisTurn + " " + this.cardsPlayedThisTurn + " " + this.ueberladung + " " + this.lockedMana + " " + this.ownPlayerController);
 
             LogHelper.WriteCombatLog("ownhero:");
-            LogHelper.WriteCombatLog((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) + " " + this.ownHero.HealthPoints + " " + this.ownHero.maxHp + " " + this.ownHero.armor + " " + this.ownHero.immuneWhileAttacking + " " + this.ownHero.immune + " " + this.ownHero.entitiyID + " " + this.ownHero.Ready + " " + this.ownHero.numAttacksThisTurn + " " + this.ownHero.frozen + " " + this.ownHero.Attack + " " + this.ownHero.tempAttack + " " + this.enemyHero.stealth);
+            LogHelper.WriteCombatLog((this.heroname == HeroEnum.None ? this.heronameingame : this.heroname.ToString()) 
+                                     + " " + this.ownHero.HealthPoints 
+                                     + " " + this.ownHero.maxHp 
+                                     + " " + this.ownHero.armor 
+                                     + " " + this.ownHero.immuneWhileAttacking 
+                                     + " " + this.ownHero.immune 
+                                     + " " + this.ownHero.entitiyID 
+                                     + " " + this.ownHero.Ready 
+                                     + " " + this.ownHero.numAttacksThisTurn 
+                                     + " " + this.ownHero.frozen 
+                                     + " " + this.ownHero.Attack 
+                                     + " " + this.ownHero.tempAttack
+                                     + " " + this.enemyHero.stealth 
+                                     + " " + this.ownHero.handcard.card.cardIDenum
+                                     + " " + this.ownHero.ChineseName);
             LogHelper.WriteCombatLog("weapon: " + ownWeapon.Angr + " " + ownWeapon.Durability + " " + this.ownWeapon.name + " " + this.ownWeapon.card.cardIDenum + " " + (this.ownWeapon.poisonous ? 1 : 0) + " " + (this.ownWeapon.lifesteal ? 1 : 0));
             LogHelper.WriteCombatLog("ability: " + this.ownAbilityisReady + " " + this.heroAbility.cardIDenum);
             string secs = "";
@@ -612,7 +624,16 @@ namespace Chuck.SilverFish
             LogHelper.WriteCombatLog(Questmanager.Instance.getQuestsString());
             LogHelper.WriteCombatLog("advanced: " + this.ownCrystalCore + " " + (this.ownMinionsInDeckCost0 ? 1: 0));
             LogHelper.WriteCombatLog("enemyhero:");
-            LogHelper.WriteCombatLog((this.enemyHeroname == HeroEnum.None ? this.enemyHeronameingame : this.enemyHeroname.ToString()) + " " + this.enemyHero.HealthPoints + " " + this.enemyHero.maxHp + " " + this.enemyHero.armor + " " + this.enemyHero.frozen + " " + this.enemyHero.immune + " " + this.enemyHero.entitiyID + " " + this.enemyHero.stealth);
+            LogHelper.WriteCombatLog((this.enemyHeroname == HeroEnum.None ? this.enemyHeronameingame : this.enemyHeroname.ToString()) 
+                                     + " " + this.enemyHero.HealthPoints 
+                                     + " " + this.enemyHero.maxHp 
+                                     + " " + this.enemyHero.armor 
+                                     + " " + this.enemyHero.frozen 
+                                     + " " + this.enemyHero.immune 
+                                     + " " + this.enemyHero.entitiyID 
+                                     + " " + this.enemyHero.stealth 
+                                     + " " + this.enemyHero.handcard.card.cardIDenum
+                                     + " " + this.enemyHero.ChineseName);
             LogHelper.WriteCombatLog("weapon: " + this.enemyWeapon.Angr + " " + this.enemyWeapon.Durability + " " + this.enemyWeapon.name + " " + this.enemyWeapon.card.cardIDenum + " " + (this.enemyWeapon.poisonous ? 1 : 0) + " " + (this.enemyWeapon.lifesteal ? 1 : 0));
             LogHelper.WriteCombatLog("ability: " + "True" + " " + this.enemyAbility.cardIDenum);
             LogHelper.WriteCombatLog("fatigue: " + this.ownDeckSize + " " + this.ownHeroFatigue + " " + this.enemyDeckSize + " " + this.enemyHeroFatigue);

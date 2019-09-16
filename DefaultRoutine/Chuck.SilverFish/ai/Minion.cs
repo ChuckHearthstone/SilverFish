@@ -153,9 +153,9 @@ namespace Chuck.SilverFish
             }
         }
 
-        public string EnglishName { get; set; }
+        public string EnglishName => handcard.card.EnglishName;
 
-        public string ChineseName { get; set; }
+        public string ChineseName => handcard.card.ChineseName;
 
         public Minion()
         {
@@ -173,8 +173,6 @@ namespace Chuck.SilverFish
             this.own = m.own;
 
             this.name = m.name;
-            EnglishName = m.EnglishName;
-            ChineseName = m.ChineseName;
             this.cardClass = m.cardClass;
             this.synergy = m.synergy;
             this.handcard = m.handcard;
@@ -265,8 +263,6 @@ namespace Chuck.SilverFish
             this.own = m.own;
 
             this.name = m.name;
-            EnglishName = m.EnglishName;
-            ChineseName = m.ChineseName;
             this.cardClass = m.cardClass;
             this.synergy = m.synergy;
             this.handcard = m.handcard;
