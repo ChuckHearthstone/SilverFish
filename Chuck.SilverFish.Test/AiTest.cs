@@ -26,7 +26,7 @@ namespace SilverFish.Test
         {
             var testFilePath = Path.Combine(Settings.Instance.BaseDirectory,
                 @"Chuck.SilverFish.Test\Data\test-new.txt");
-            var data = File.ReadAllText(testFilePath, Encoding.UTF8);
+            var data = File.ReadAllText(testFilePath, Encoding.Default);
 
             //-mode: 0-all, 1-lethalcheck, 2-normal
             Ai ai = Ai.Instance;
