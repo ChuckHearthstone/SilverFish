@@ -394,7 +394,11 @@ namespace Chuck.SilverFish
             int ownheroentity = TritonHs.OurHero.EntityId;
             int enemyheroentity = TritonHs.EnemyHero.EntityId;
             this.ownHero = new Minion();
+            var card1 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(ownHeroCard.Id));
+            ownHero.handcard = new Handmanager.Handcard(card1);
             this.enemyHero = new Minion();
+            var card2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(enemHeroCard.Id));
+            enemyHero.handcard = new Handmanager.Handcard(card2);
 
             foreach (HSCard ent in allcards)
             {
