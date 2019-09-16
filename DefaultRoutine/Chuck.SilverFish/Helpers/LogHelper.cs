@@ -71,6 +71,18 @@ namespace SilverFish.Helpers
             AppendText(obj, CombatLogFileName, CombatLogFolder);
         }
 
+        /// <summary>
+        /// write test log, only write log in test mode
+        /// </summary>
+        /// <param name="obj"></param>
+        public static void WriteTestCombatLog(object obj)
+        {
+            if (Settings.Instance.Test)
+            {
+                AppendText(obj, CombatLogFileName, CombatLogFolder);
+            }
+        }
+
         public static void WriteMainLog(object obj)
         {
             MainLogFileName = $"ChuckSilverFishAi-{DateTime.Now:yyyyMMdd}.log";
