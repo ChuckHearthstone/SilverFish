@@ -1,0 +1,43 @@
+#######################################################################
+start calculations, current time: 00:06:53 V2019.09.13.001 Control 5000 face 15 berserk:1 twoturnsim 500 ntss 10 20 200 ets 40 ets2 200 secret iC 1 aA 0
+#######################################################################
+turn 7/0
+mana 4/4
+emana 4
+own secretsCount: 0
+enemy secretsCount: 0 ;
+player:
+0 0 0 0 1
+ownhero:
+pala 30 30 0 False False 64 False 0 False 0 0 False HERO_04 乌瑟尔·光明使者
+weapon: 0 0 unknown None 0 0
+ability: True CS2_101
+osecrets: 
+cthunbonus: 0 0 0
+jadegolems: 0 0
+elementals: 0 0 0
+quests: None 0 1000 None 0 1000
+advanced: 0 0
+enemyhero:
+mage 29 30 0 False False 66 False HERO_08 吉安娜·普罗德摩尔
+weapon: 0 0 unknown None 0 0
+ability: True CS2_034
+fatigue: 23 0 23 0
+OwnMinions:
+scarletcrusader EX1_020 zp:1 e:14 A:3 H:1 mH:1 rdy:True natt:0 divshield
+EnemyMinions:
+Own Handcards: 
+pos 1 pharaohsblessing 6 entity 11 ULD_143 0 0 0
+pos 2 bulldozer 9 entity 20 BOT_534 0 0 0
+pos 3 silvermoonguardian 4 entity 33 EX1_023 0 0 0
+pos 4 scarletcrusader 3 entity 17 EX1_020 0 0 0
+pos 5 illidanstormrage 6 entity 9 EX1_614 0 0 0
+pos 6 tirionfordring 8 entity 30 EX1_383 0 0 0
+Enemy cards: 6
+ownDiedMinions: 
+enemyDiedMinions: 
+otg: 
+etg: 
+og: 
+eg: BOT_101,1;EX1_180,1;
+od: EX1_008,2;GIL_635,2;EX1_362,1;BOT_414,2;EX1_590,1;BOT_911,2;DAL_078,2;EX1_023,1;GIL_545,1;DAL_085,2;EX1_032,2;TRL_305,1;GIL_202,1;TRL_513,2;BOT_534,1;

@@ -510,7 +510,7 @@ namespace Chuck.SilverFish
 
                 if (readstate == 1 && counter == 1) // class + hp + defence + immunewhile attacking + immune
                 {
-                    String[] h = s.Split(' ');
+                    var h = s.Split(' ');
                     ownheroname = h[0];
                     ownherohp = Convert.ToInt32(h[1]);
                     ownheromaxhp = Convert.ToInt32(h[2]);
@@ -523,8 +523,15 @@ namespace Chuck.SilverFish
                     ownHeroFrozen = (h[9] == "True") ? true : false;
                     ownHeroAttack = Convert.ToInt32(h[10]);
                     ownHeroTempAttack = Convert.ToInt32(h[11]);
-                    if (h.Length > 12) ownHeroStealth = (h[12] == "True") ? true : false;
+                    if (h.Length > 12)
+                    {
+                        ownHeroStealth = (h[12] == "True") ? true : false;
+                    }
 
+                    var heroId = h[13];
+                    var card1 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(heroId));
+                    var handCard1 = new Handmanager.Handcard(card1);
+                    ownHero = new Minion(handCard1);
                 }
 
                 if (readstate == 1 && counter == 2) // own hero weapon
@@ -563,7 +570,7 @@ namespace Chuck.SilverFish
 
                 if (readstate == 2 && counter == 1) // class + hp + defence + frozen + immune
                 {
-                    String[] h = s.Split(' ');
+                    var h = s.Split(' ');
                     enemyheroname = h[0];
                     enemyherohp = Convert.ToInt32(h[1]);
                     enemyheromaxhp = Convert.ToInt32(h[2]);
@@ -571,7 +578,15 @@ namespace Chuck.SilverFish
                     enemyFrozen = (h[4] == "True") ? true : false;
                     enemyHeroImmune = (h[5] == "True") ? true : false;
                     enemyHEntity = Convert.ToInt32(h[6]);
-                    if (h.Length > 7) enemyHeroStealth = (h[7] == "True") ? true : false;
+                    if (h.Length > 7)
+                    {
+                        enemyHeroStealth = (h[7] == "True") ? true : false;
+                    }
+
+                    var heroId = h[8];
+                    var card2 = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(heroId));
+                    var handCard2 = new Handmanager.Handcard(card2);
+                    enemyHero = new Minion(handCard2);
                 }
 
                 if (readstate == 2 && counter == 2) // weapon + stuff
