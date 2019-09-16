@@ -1,13 +1,12 @@
-﻿using SilverFish.Helpers;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using SilverFish.Helpers;
 
 namespace Chuck.SilverFish
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.Concurrent;
-    using System.Threading.Tasks;
-    using System.Linq;
-
     public class MiniSimulator
     {
         //#####################################################################################################################
@@ -20,8 +19,8 @@ namespace Chuck.SilverFish
         private bool useLethalCheck = true;
         private bool useComparison = true;
 
-        private bool printNormalstuff = false;
-        private bool print = false;
+        private bool printNormalstuff;
+        private bool print;
 
         List<Playfield> posmoves = new List<Playfield>(7000);
         List<Playfield> bestoldDuplicates = new List<Playfield>(7000);
@@ -30,23 +29,23 @@ namespace Chuck.SilverFish
         List<List<Playfield>> threadresults = new List<List<Playfield>>(64);
         private int dirtyTwoTurnSim = 256;
 
-        public Action bestmove = null;
-        public float bestmoveValue = 0;
+        public Action bestmove;
+        public float bestmoveValue;
         private float bestoldval = -20000000;
         public Playfield bestboard = new Playfield();
 
-        public Behavior botBase = null;
-        private int calculated = 0;
-        private bool enoughCalculations = false;
+        public Behavior botBase;
+        private int calculated;
+        private bool enoughCalculations;
 
-        private bool isLethalCheck = false;
+        private bool isLethalCheck;
         private bool simulateSecondTurn = false;
-        private bool playaround = false;
+        private bool playaround;
         private int playaroundprob = 50;
         private int playaroundprob2 = 80;
 
         private static readonly object threadnumberLocker = new object();
-        private int threadnumberGlobal = 0;
+        private int threadnumberGlobal;
 
         Movegenerator movegen = Movegenerator.Instance;
 
@@ -57,78 +56,78 @@ namespace Chuck.SilverFish
         }
         public MiniSimulator(int deep, int wide, int ttlboards)
         {
-            this.maxdeep = deep;
-            this.maxwide = wide;
-            this.totalboards = ttlboards;
+            maxdeep = deep;
+            maxwide = wide;
+            totalboards = ttlboards;
         }
 
         public void updateParams(int deep, int wide, int ttlboards)
         {
-            this.maxdeep = deep;
-            this.maxwide = wide;
-            this.totalboards = ttlboards;
+            maxdeep = deep;
+            maxwide = wide;
+            totalboards = ttlboards;
         }
 
         public void setPrintingstuff(bool sp)
         {
-            this.printNormalstuff = sp;
+            printNormalstuff = sp;
         }
 
         public void setSecondTurnSimu(bool sts, int amount)
         {
             //this.simulateSecondTurn = sts;
-            this.dirtyTwoTurnSim = amount;
+            dirtyTwoTurnSim = amount;
         }
 
         public int getSecondTurnSimu()
         {
-            return this.dirtyTwoTurnSim;
+            return dirtyTwoTurnSim;
         }
 
         public void setPlayAround(bool spa, int pprob, int pprob2)
         {
-            this.playaround = spa;
-            this.playaroundprob = pprob;
-            this.playaroundprob2 = pprob2;
+            playaround = spa;
+            playaroundprob = pprob;
+            playaroundprob2 = pprob2;
         }
 
         private void addToPosmoves(Playfield pf)
         {
             if (pf.ownHero.HealthPoints <= 0) return;
-            this.posmoves.Add(pf);
-            if (this.totalboards >= 1)
+            posmoves.Add(pf);
+            if (totalboards >= 1)
             {
-                this.calculated++;
+                calculated++;
             }
         }
         
         public float DoAllMoves(Playfield playf)
         {
             print = playf.print;
-            this.isLethalCheck = playf.isLethalCheck;
+            isLethalCheck = playf.isLethalCheck;
             enoughCalculations = false;
             botBase = Ai.Instance.botBase;
-            this.posmoves.Clear();
-            this.twoturnfields.Clear();
-            this.addToPosmoves(playf);
+            posmoves.Clear();
+            twoturnfields.Clear();
+            addToPosmoves(playf);
             bool havedonesomething = true;
             List<Playfield> temp = new List<Playfield>();
             int deep = 0;
-            this.calculated = 0;
+            calculated = 0;
             Playfield bestold = null;
             bestoldval = -20000000;
             int loopCount = -1;
             while (havedonesomething)
             {
                 loopCount++;
-                if (this.printNormalstuff)
+                if (printNormalstuff)
                 {
                     LogHelper.WriteCombatLog($"ailoop{loopCount}");
                 }
                 GC.Collect();
                 temp.Clear();
-                temp.AddRange(this.posmoves);
-                this.posmoves.Clear();
+                temp.AddRange(posmoves);
+                posmoves.Clear();
                 havedonesomething = false;
                 threadnumberGlobal = 0;
 
@@ -147,10 +146,10 @@ namespace Chuck.SilverFish
 
                 foreach (Playfield p in temp)
                 {
-                    if (this.totalboards > 0) this.calculated += p.nextPlayfields.Count;
-                    if (this.calculated <= this.totalboards)
+                    if (totalboards > 0) calculated += p.nextPlayfields.Count;
+                    if (calculated <= totalboards)
                     {
-                        this.posmoves.AddRange(p.nextPlayfields);
+                        posmoves.AddRange(p.nextPlayfields);
                         p.nextPlayfields.Clear();
                     }
                     
@@ -167,15 +166,15 @@ namespace Chuck.SilverFish
 
                 if (isLethalCheck && bestoldval >= 10000)
                 {
-                    this.posmoves.Clear();
+                    posmoves.Clear();
                 }
 
-                if (this.posmoves.Count > 0)
+                if (posmoves.Count > 0)
                 {
                     havedonesomething = true;
                 }
                 
-                if (this.printNormalstuff)
+                if (printNormalstuff)
                 {
                     int donec = 0;
                     foreach (Playfield p in posmoves)
@@ -185,36 +184,36 @@ namespace Chuck.SilverFish
                             donec++;
                         }
                     }
-                    LogHelper.WriteCombatLog("deep " + deep + " len " + this.posmoves.Count + " dones " + donec);
+                    LogHelper.WriteCombatLog("deep " + deep + " len " + posmoves.Count + " dones " + donec);
                 }
 
                 cuttingposibilities(isLethalCheck);
 
-                if (this.printNormalstuff)
+                if (printNormalstuff)
                 {
-                    LogHelper.WriteCombatLog("cut to len " + this.posmoves.Count);
+                    LogHelper.WriteCombatLog("cut to len " + posmoves.Count);
                 }
                 deep++;
                 temp.Clear();
 
-                if (this.calculated > this.totalboards)
+                if (calculated > totalboards)
                 {
                     enoughCalculations = true;
                 }
 
-                if (deep >= this.maxdeep)
+                if (deep >= maxdeep)
                 {
                     enoughCalculations = true;
                 }
             }
 
-            if (this.dirtyTwoTurnSim > 0 && !twoturnfields.Contains(bestold))
+            if (dirtyTwoTurnSim > 0 && !twoturnfields.Contains(bestold))
             {
                 twoturnfields.Add(bestold);
             }
-            this.posmoves.Clear();
-            this.posmoves.Add(bestold);
-            this.posmoves.AddRange(bestoldDuplicates);
+            posmoves.Clear();
+            posmoves.Add(bestold);
+            posmoves.AddRange(bestoldDuplicates);
 
             // search the best play...........................................................
             //do dirtytwoturnsim first :D
@@ -233,28 +232,28 @@ namespace Chuck.SilverFish
                 {
                     float val = botBase.getPlayfieldValue(posmoves[i]);
                     if (bestval > val) break;
-                    if (posmoves[i].cardsPlayedThisTurn > bestplay.cardsPlayedThisTurn) continue; 
-                    else if (posmoves[i].cardsPlayedThisTurn == bestplay.cardsPlayedThisTurn)
+                    if (posmoves[i].cardsPlayedThisTurn > bestplay.cardsPlayedThisTurn) continue;
+                    if (posmoves[i].cardsPlayedThisTurn == bestplay.cardsPlayedThisTurn)
                     {
-                        if (bestplay.optionsPlayedThisTurn > posmoves[i].optionsPlayedThisTurn) continue; 
-                        else if (bestplay.optionsPlayedThisTurn == posmoves[i].optionsPlayedThisTurn && bestplay.enemyHero.HealthPoints <= posmoves[i].enemyHero.HealthPoints) continue;
-                        
+                        if (bestplay.optionsPlayedThisTurn > posmoves[i].optionsPlayedThisTurn) continue;
+                        if (bestplay.optionsPlayedThisTurn == posmoves[i].optionsPlayedThisTurn && bestplay.enemyHero.HealthPoints <= posmoves[i].enemyHero.HealthPoints) continue;
+
                     }
                     bestplay = posmoves[i];
                     bestval = val;
                 }
-                this.bestmove = bestplay.getNextAction();
-                this.bestmoveValue = bestval;
-                this.bestboard = new Playfield(bestplay);
-                this.bestboard.guessingHeroHP = bestplay.guessingHeroHP;
-                this.bestboard.value = bestplay.value;
-                this.bestboard.hashcode = bestplay.hashcode;
+                bestmove = bestplay.getNextAction();
+                bestmoveValue = bestval;
+                bestboard = new Playfield(bestplay);
+                bestboard.guessingHeroHP = bestplay.guessingHeroHP;
+                bestboard.value = bestplay.value;
+                bestboard.hashcode = bestplay.hashcode;
                 bestoldDuplicates.Clear();
                 return bestval;
             }
-            this.bestmove = null;
-            this.bestmoveValue = -100000;
-            this.bestboard = playf;
+            bestmove = null;
+            bestmoveValue = -100000;
+            bestboard = playf;
 
             return -10000;
         }
@@ -266,7 +265,7 @@ namespace Chuck.SilverFish
             lock (threadnumberLocker)
             {
                 threadnumber = threadnumberGlobal++;
-                System.Threading.Monitor.Pulse(threadnumberLocker);
+                Monitor.Pulse(threadnumberLocker);
             }
             if (threadnumber > Ai.Instance.maxNumberOfThreads - 2)
             {
@@ -301,7 +300,7 @@ namespace Chuck.SilverFish
                     }
                 }
 
-                if (this.isLethalCheck)
+                if (isLethalCheck)
                 {
                     if (berserk > 0)
                     {
@@ -314,7 +313,7 @@ namespace Chuck.SilverFish
                             {
                                 if (p.anzOwnTaunt < 1) foreach (Minion m in p.ownMinions) { if (m.Ready) { needETS = false; break; } }
                             }
-                            if (needETS) Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, this.simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
+                            if (needETS) Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
                         }
                     }
  
@@ -327,7 +326,7 @@ namespace Chuck.SilverFish
 
                     if (p.enemyHero.HealthPoints > 0)
                     {
-                        Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, this.simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
+                        Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, simulateSecondTurn, playaround, false, playaroundprob, playaroundprob2);
                         if (p.value <= -10000)
                         {
                             bool secondChance = false;
@@ -356,19 +355,19 @@ namespace Chuck.SilverFish
 
         public void doDirtyTwoTurnsim()
         {
-            if (this.dirtyTwoTurnSim == 0) return;
-            this.posmoves.Clear();
+            if (dirtyTwoTurnSim == 0) return;
+            posmoves.Clear();
 
             if (print) doDirtyTwoTurnsimThread(twoturnfields, 0, twoturnfields.Count);
             else
             {
-                Parallel.ForEach(Partitioner.Create(0, this.twoturnfields.Count),
+                Parallel.ForEach(Partitioner.Create(0, twoturnfields.Count),
                           range =>
                           {
                               doDirtyTwoTurnsimThread(twoturnfields, range.Item1, range.Item2);
                           });
             }
-            this.posmoves.AddRange(this.twoturnfields);
+            posmoves.AddRange(twoturnfields);
         }
 
         public void doDirtyTwoTurnsimThread(List<Playfield> source, int startIndex, int endIndex)
@@ -387,7 +386,7 @@ namespace Chuck.SilverFish
                     p.complete = false;
                     p.value = int.MinValue;
                     p.bestEnemyPlay = null;
-                    Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, true, playaround, false, this.playaroundprob, this.playaroundprob2);
+                    Ai.Instance.enemyTurnSim[threadnumber].simulateEnemysTurn(p, true, playaround, false, playaroundprob, playaroundprob2);
                 }
                 else
                 {
@@ -405,10 +404,10 @@ namespace Chuck.SilverFish
             Dictionary<Int64, Playfield> tempDict = new Dictionary<Int64, Playfield>();
             posmoves.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));//want to keep the best
 
-            if (this.useComparison)
+            if (useComparison)
             {
                 int i = 0;
-                int max = Math.Min(posmoves.Count, this.maxwide);
+                int max = Math.Min(posmoves.Count, maxwide);
 
                 Playfield p = null;
                 for (i = 0; i < max; i++)
@@ -438,20 +437,20 @@ namespace Chuck.SilverFish
 
 
             //twoturnfields!
-            if (this.dirtyTwoTurnSim == 0 || isLethalCheck) return;
+            if (dirtyTwoTurnSim == 0 || isLethalCheck) return;
             tempDict.Clear();
             temp.Clear();
             if (bestoldval >= 10000) return;
             foreach (Playfield p in twoturnfields) tempDict.Add(p.hashcode, p);
             posmoves.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));
 
-            int maxTts = Math.Min(posmoves.Count, this.dirtyTwoTurnSim);
+            int maxTts = Math.Min(posmoves.Count, dirtyTwoTurnSim);
             for (int i = 0; i < maxTts; i++)
             {
                 if (!tempDict.ContainsKey(posmoves[i].hashcode)) temp.Add(posmoves[i]);
             }
             twoturnfields.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));
-            temp.AddRange(twoturnfields.GetRange(0, Math.Min(this.dirtyTwoTurnSim, twoturnfields.Count)));
+            temp.AddRange(twoturnfields.GetRange(0, Math.Min(dirtyTwoTurnSim, twoturnfields.Count)));
             twoturnfields.Clear();
             twoturnfields.AddRange(temp);
 
@@ -520,7 +519,6 @@ namespace Chuck.SilverFish
                         //LogHelper.WriteCombatLog(m.name + " is not needed to attack");
                         continue;
                     }
-
                 }
             }
             //LogHelper.WriteCombatLog("end targetcutting");
@@ -532,7 +530,7 @@ namespace Chuck.SilverFish
         public void printPosmoves()
         {
             int i = 0;
-            foreach (Playfield p in this.posmoves)
+            foreach (Playfield p in posmoves)
             {
                 p.printBoard();
                 i++;
