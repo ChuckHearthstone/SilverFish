@@ -159,7 +159,12 @@ namespace Chuck.SilverFish
 
         public Minion()
         {
-            this.handcard = new Handmanager.Handcard();
+            handcard = new Handmanager.Handcard();
+        }
+
+        public Minion(Handmanager.Handcard tempHandcard)
+        {
+            handcard = tempHandcard;
         }
 
         public Minion(Minion m)
