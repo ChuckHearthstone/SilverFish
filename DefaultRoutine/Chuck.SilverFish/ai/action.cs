@@ -114,12 +114,14 @@
             }
             if (this.actionType == actionEnum.playcard)
             {
-                string playaction = "play ";
+                string playaction = "play card ";
 
-                playaction += "id " + this.card.entity;
+                //playaction += "id " + this.card.entity;
+                playaction += this.card.card.ChineseName;
                 if (this.target != null)
                 {
-                    playaction += " target " + this.target.entitiyID;
+                    //playaction += " target " + this.target.entitiyID;
+                    playaction += " target " + this.target.ChineseName;
                 }
 
                 if (this.place >= 0)
