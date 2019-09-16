@@ -1060,8 +1060,8 @@ namespace Chuck.SilverFish
 
             //create heros:
 
-            this.ownHero = new Minion();
-            this.enemyHero = new Minion();
+            //this.ownHero = new Minion();
+            //this.enemyHero = new Minion();
             this.ownHero.isHero = true;
             this.enemyHero.isHero = true;
             this.ownHero.own = true;
