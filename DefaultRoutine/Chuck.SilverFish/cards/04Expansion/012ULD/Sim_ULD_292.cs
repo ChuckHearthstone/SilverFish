@@ -22,7 +22,7 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD
             }
             if (choice == 2 || (p.ownFandralStaghelm > 0 && own.own))
             {
-                p.CallKid(target.handcard.card, own.zonepos, own.own);
+                p.CallKid(own.handcard.card, own.zonepos, own.own);
                 p.ownMinions[own.zonepos + 1].setMinionToMinion(own);
             }
         }
