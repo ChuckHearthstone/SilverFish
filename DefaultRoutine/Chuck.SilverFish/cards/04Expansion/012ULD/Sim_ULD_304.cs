@@ -3,14 +3,14 @@ using SilverFish.Enums;
 namespace Chuck.SilverFish.cards._04Expansion._012ULD
 {
     /// <summary>
-    /// Garden Gnome
-    /// 园艺侏儒 
+    /// King Phaoris
+    /// 法奥瑞斯国王 
     /// </summary>
-    public class Sim_ULD_137 : SimTemplate
+    public class Sim_ULD_304 : SimTemplate
     {
         /// <summary>
-        /// Battlecry: If you're holding a spell that costs (5) or more, summon two 2/2 Treants.
-        /// 战吼：如果你的手牌中有法力值消耗大于或等于（5）的法术牌，便召唤两个2/2的树人。
+        /// Battlecry: For each spell in your hand, summon a random minion of the same Cost.
+        /// 战吼：你手牌中每有一张法术牌，便召唤一个法力值消耗与法术牌相同的随机随从。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="own"></param>
@@ -18,18 +18,15 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardIdEnum.ULD_137t);
-
             if (own.own)
             {
                 foreach (Handmanager.Handcard hc in p.owncards)
                 {
-                    if (hc.card.cost >= 5 && hc.card.type == CardType.SPELL)
+                    if (hc.card.type == CardType.SPELL)
                     {
-                        p.CallKid(kid, own.zonepos, own.own, false);
-                        p.CallKid(kid, own.zonepos - 1, own.own);
-                        break;
+                        p.CallKid(p.getRandomCardForManaMinion(hc.manacost), p.ownMinions.Count, own.own);
                     }
+                    if (p.ownMinions.Count == 7) break;
                 }
             }
         }
