@@ -127,24 +127,31 @@
                     playaction += " pos " + this.place;
                 }
 
-                if (this.druidchoice >= 1) playaction += " choice " + this.druidchoice;
+                if (this.druidchoice >= 1)
+                {
+                    playaction += " choice " + this.druidchoice;
+                }
 
                 LogHelper.WriteCombatLog(playaction);
             }
             if (this.actionType == actionEnum.attackWithMinion)
             {
                 LogHelper.WriteCombatLog("attacker: " + this.own.entitiyID + " enemy: " + this.target.entitiyID);
+                LogHelper.WriteCombatLog("attacker: " + this.own.ChineseName + " enemy: " + this.target.ChineseName);
             }
             if (this.actionType == actionEnum.attackWithHero)
             {
                 LogHelper.WriteCombatLog("attack with hero, enemy: " + this.target.entitiyID);
+                LogHelper.WriteCombatLog("attack with hero, enemy: " + this.target.ChineseName);
             }
             if (this.actionType == actionEnum.useHeroPower)
             {
                 LogHelper.WriteCombatLog("useability ");
+                LogHelper.WriteCombatLog($"useability {card.card.ChineseName}");
                 if (this.target != null)
                 {
                     LogHelper.WriteCombatLog("on enemy: " + this.target.entitiyID);
+                    LogHelper.WriteCombatLog("on enemy: " + this.target.ChineseName);
                 }
             }
             LogHelper.WriteCombatLog("");
