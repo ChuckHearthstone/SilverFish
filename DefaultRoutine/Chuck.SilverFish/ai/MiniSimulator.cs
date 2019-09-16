@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using SilverFish.Helpers;
@@ -400,30 +401,38 @@ namespace Chuck.SilverFish
         public void cuttingposibilities(bool isLethalCheck)
         {
             // take the x best values
-            List<Playfield> temp = new List<Playfield>();
-            Dictionary<Int64, Playfield> tempDict = new Dictionary<Int64, Playfield>();
-            posmoves.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));//want to keep the best
+            var temp = new List<Playfield>();
+            var tempDict = new Dictionary<long, Playfield>();
+            foreach (var itemPlayfield in posmoves)
+            {
+                botBase.getPlayfieldValue(itemPlayfield);//this method will set value of itemPlayfield
+            }
+
+            posmoves = posmoves.OrderBy(x => x.value).ToList();//want to keep the best
 
             if (useComparison)
             {
-                int i = 0;
+                int i;
                 int max = Math.Min(posmoves.Count, maxwide);
 
-                Playfield p = null;
+                Playfield playfield;
                 for (i = 0; i < max; i++)
                 {
-                    p = posmoves[i];
-                    Int64 hash = p.GetPHash();
-                    p.hashcode = hash;
-                    if (!tempDict.ContainsKey(hash)) tempDict.Add(hash, p);
-                    else if (p.evaluatePenality < tempDict[hash].evaluatePenality)
+                    playfield = posmoves[i];
+                    var hash = playfield.GetPHash();
+                    playfield.hashcode = hash;
+                    if (!tempDict.ContainsKey(hash))
                     {
-                        tempDict[hash] = p;
+                        tempDict.Add(hash, playfield);
+                    }
+                    else if (playfield.evaluatePenality < tempDict[hash].evaluatePenality)
+                    {
+                        tempDict[hash] = playfield;
                     }
                 }
-                foreach (KeyValuePair<Int64, Playfield> d in tempDict)
+                foreach (var itemPlayfield in tempDict)
                 {
-                    temp.Add(d.Value);
+                    temp.Add(itemPlayfield.Value);
                 }
             }
             else
@@ -437,25 +446,36 @@ namespace Chuck.SilverFish
 
 
             //twoturnfields!
-            if (dirtyTwoTurnSim == 0 || isLethalCheck) return;
+            if (dirtyTwoTurnSim == 0 || isLethalCheck)
+            {
+                return;
+            }
+
             tempDict.Clear();
             temp.Clear();
-            if (bestoldval >= 10000) return;
-            foreach (Playfield p in twoturnfields) tempDict.Add(p.hashcode, p);
+            if (bestoldval >= 10000)
+            {
+                return;
+            }
+
+            foreach (Playfield p in twoturnfields)
+            {
+                tempDict.Add(p.hashcode, p);
+            }
             posmoves.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));
 
             int maxTts = Math.Min(posmoves.Count, dirtyTwoTurnSim);
             for (int i = 0; i < maxTts; i++)
             {
-                if (!tempDict.ContainsKey(posmoves[i].hashcode)) temp.Add(posmoves[i]);
+                if (!tempDict.ContainsKey(posmoves[i].hashcode))
+                {
+                    temp.Add(posmoves[i]);
+                }
             }
             twoturnfields.Sort((a, b) => botBase.getPlayfieldValue(b).CompareTo(botBase.getPlayfieldValue(a)));
             temp.AddRange(twoturnfields.GetRange(0, Math.Min(dirtyTwoTurnSim, twoturnfields.Count)));
             twoturnfields.Clear();
             twoturnfields.AddRange(temp);
-
-
-
         }
 
         public List<targett> cutAttackTargets(List<targett> oldlist, Playfield p, bool own)
