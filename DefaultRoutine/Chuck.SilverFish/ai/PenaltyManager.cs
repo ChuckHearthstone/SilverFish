@@ -1239,8 +1239,8 @@ namespace Chuck.SilverFish
                 if (target.isHero && !target.own) return 510; // dont heal enemy
                 if ((target.isHero && target.own) && p.ownHero.HealthPoints == 30) return 150;
                 if ((target.isHero && target.own) && p.ownHero.HealthPoints + heal - 1 > 30) pen = p.ownHero.HealthPoints + heal - 30;
-                Minion m = new Minion();
 
+                Minion m;
                 if (!target.isHero && target.own)
                 {
                     m = target;

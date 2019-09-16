@@ -169,7 +169,6 @@ namespace Chuck.SilverFish
             int readstate = 0;
             int counter = 0;
 
-            Minion tempminion = new Minion();
             int j = 0;
             int i;
             for(i = 0; i < lines.Length; i++)
@@ -606,6 +605,7 @@ namespace Chuck.SilverFish
                     this.enemyFatigue = Convert.ToInt32(s.Split(' ')[4]);
                 }
 
+                Minion tempminion;
                 if (readstate == 3) // minion + enchantment
                 {
                     if (s.Contains(" zp:"))
@@ -1105,9 +1105,8 @@ namespace Chuck.SilverFish
 
         public Minion createNewMinion(Handmanager.Handcard hc, int zonepos, bool own)
         {
-            Minion m = new Minion
+            Minion m = new Minion(new Handmanager.Handcard(hc))
             {
-                handcard = new Handmanager.Handcard(hc),
                 zonepos = zonepos,
                 entitiyID = hc.entity,
                 Attack = hc.card.Attack,

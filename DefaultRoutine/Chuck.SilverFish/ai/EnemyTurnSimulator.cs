@@ -357,13 +357,26 @@ namespace Chuck.SilverFish
                         }
                         continue;
                     case CardName.archmageantonidas:
-                        if (p.ownMinions.Count < 1) p.minionGetDamageOrHeal(p.ownHero, 6);
+                        if (p.ownMinions.Count < 1)
+                        {
+                            p.minionGetDamageOrHeal(p.ownHero, 6);
+                        }
                         else
                         {
-                            Minion target = new Minion();
+                            Minion target = null;
                             foreach (Minion mnn in p.ownMinions)
                             {
-                                if (mnn.HealthPoints <= 6 && (mnn.HealthPoints + mnn.Attack) > (target.HealthPoints + target.Attack)) target = mnn;
+                                if (mnn.HealthPoints <= 6)
+                                {
+                                    if (target == null)
+                                    {
+                                        target = mnn;
+                                    }
+                                    else if (mnn.HealthPoints + mnn.Attack > target.HealthPoints + target.Attack)
+                                    {
+                                        target = mnn;
+                                    }
+                                }
                             }
                             p.minionGetDamageOrHeal(target, 6);
                         }

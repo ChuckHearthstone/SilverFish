@@ -5759,9 +5759,8 @@ namespace Chuck.SilverFish
 
         public Minion CreateNewMinion(Handmanager.Handcard hc, int zonepos, bool own)
         {
-            Minion m = new Minion();
             Handmanager.Handcard handc = new Handmanager.Handcard(hc);
-            m.handcard = handc;
+            Minion m = new Minion(handc);
             m.own = own;
             m.isHero = false;
             m.entitiyID = hc.entity;

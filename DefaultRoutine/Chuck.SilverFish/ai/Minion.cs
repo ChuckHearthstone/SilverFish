@@ -809,21 +809,40 @@ namespace Chuck.SilverFish
         {
             if (this.Attack == 0) return null;
             if ((own ? p.enemyMinions.Count : p.ownMinions.Count) < 1) return (own ? p.enemyHero : p.ownHero);
-            Minion target = new Minion();
-            Minion targetTaumt = new Minion();
+            Minion target = null;
+            Minion targetTaunt = null;
             foreach (Minion m in own ? p.enemyMinions : p.ownMinions)
             {
                 if (m.taunt && !m.silenced)
                 {
-                    if (this.HealthPoints > m.HealthPoints && (m.HealthPoints + m.Attack + m.Attack * (m.windfury ? 1 : 0)) > (targetTaumt.HealthPoints + targetTaumt.Attack + targetTaumt.Attack * (targetTaumt.windfury ? 1 : 0))) targetTaumt = m;
+                    if (this.HealthPoints > m.HealthPoints
+                        && (m.HealthPoints + m.Attack + m.Attack * (m.windfury ? 1 : 0)) >
+                        (targetTaunt.HealthPoints + targetTaunt.Attack +
+                         targetTaunt.Attack * (targetTaunt.windfury ? 1 : 0)))
+                    {
+                        targetTaunt = m;
+                    }
                 }
                 else
                 {
-                    if (this.HealthPoints > m.HealthPoints && (m.HealthPoints + m.Attack + m.Attack * (m.windfury ? 1 : 0)) > (target.HealthPoints + target.Attack + target.Attack * (target.windfury ? 1 : 0))) target = m;
+                    if (this.HealthPoints > m.HealthPoints
+                        && (m.HealthPoints + m.Attack + m.Attack * (m.windfury ? 1 : 0)) >
+                        (target.HealthPoints + target.Attack + target.Attack * (target.windfury ? 1 : 0)))
+                    {
+                        target = m;
+                    }
                 }
             }
-            if (targetTaumt.HealthPoints > 0) return targetTaumt;
-            if (target.HealthPoints > 0) return target;
+
+            if (targetTaunt.HealthPoints > 0)
+            {
+                return targetTaunt;
+            }
+
+            if (target.HealthPoints > 0)
+            {
+                return target;
+            }
             return null;
         }
 

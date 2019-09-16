@@ -98,8 +98,8 @@ namespace Chuck.SilverFish
         public int ownMaxMana = 0;
         public int enemyMaxMana = 0;
         
-        public Minion ownHero = new Minion();
-        public Minion enemyHero = new Minion();
+        public Minion ownHero;
+        public Minion enemyHero;
         public Weapon ownWeapon = new Weapon();
         public Weapon enemyWeapon = new Weapon();
         public List<Minion> ownMinions = new List<Minion>();
@@ -552,9 +552,8 @@ namespace Chuck.SilverFish
 
         private Minion createNewMinion(Handmanager.Handcard hc, int id)
         {
-            Minion m = new Minion
+            Minion m = new Minion(new Handmanager.Handcard(hc))
             {
-                handcard = new Handmanager.Handcard(hc),
                 zonepos = id + 1,
                 entitiyID = hc.entity,
                 Attack = hc.card.Attack,
