@@ -7639,10 +7639,12 @@ namespace Chuck.SilverFish
 
         public void printActions(bool toBuffer = false)
         {
+            int actionIndex = 0;
             foreach (Action a in this.playactions)
             {
+                actionIndex++;
+                LogHelper.WriteTestCombatLog($"Action{actionIndex}");
                 a.print(toBuffer);
-                LogHelper.WriteCombatLog("");
             }
         }
 

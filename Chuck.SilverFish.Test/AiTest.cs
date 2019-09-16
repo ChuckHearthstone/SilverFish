@@ -11,7 +11,7 @@ namespace SilverFish.Test
         public void Test()
         {
             var testFilePath = Path.Combine(Settings.Instance.BaseDirectory,
-                @"SilverFish.Test\Data\test.txt");
+                @"Chuck.SilverFish.Test\Data\test.txt");
             var data = File.ReadAllText(testFilePath);
 
             //-mode: 0-all, 1-lethalcheck, 2-normal

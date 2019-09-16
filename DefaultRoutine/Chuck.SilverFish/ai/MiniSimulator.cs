@@ -117,13 +117,11 @@ namespace Chuck.SilverFish
             calculated = 0;
             Playfield bestold = null;
             bestoldval = -20000000;
-            int loopCount = -1;
             while (havedonesomething)
             {
-                loopCount++;
                 if (printNormalstuff)
                 {
-                    LogHelper.WriteCombatLog($"ailoop{loopCount}");
+                    LogHelper.WriteCombatLog($"ailoop{deep}");
                 }
                 GC.Collect();
                 temp.Clear();
@@ -188,11 +186,20 @@ namespace Chuck.SilverFish
                     LogHelper.WriteCombatLog("deep " + deep + " len " + posmoves.Count + " dones " + donec);
                 }
 
-                cuttingposibilities(isLethalCheck);
+                cuttingposibilities(isLethalCheck);//will update posmoves
 
                 if (printNormalstuff)
                 {
                     LogHelper.WriteCombatLog("cut to len " + posmoves.Count);
+                }
+
+                int itemPlayfieldIndex = 0;
+                foreach (var itemPlayfield in posmoves)
+                {
+                    itemPlayfieldIndex++;
+                    var actionsCount = itemPlayfield.playactions.Count;
+                    LogHelper.WriteTestCombatLog($"{nameof(itemPlayfield)}{itemPlayfieldIndex} with {actionsCount} actions");
+                    itemPlayfield.printActions();
                 }
                 deep++;
                 temp.Clear();
