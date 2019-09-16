@@ -117,11 +117,13 @@ namespace Chuck.SilverFish
             this.calculated = 0;
             Playfield bestold = null;
             bestoldval = -20000000;
+            int loopCount = -1;
             while (havedonesomething)
             {
+                loopCount++;
                 if (this.printNormalstuff)
                 {
-                    LogHelper.WriteCombatLog("ailoop");
+                    LogHelper.WriteCombatLog($"ailoop{loopCount}");
                 }
                 GC.Collect();
                 temp.Clear();
