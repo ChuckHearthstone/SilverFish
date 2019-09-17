@@ -13,7 +13,7 @@
 [Online mulligan editor](https://magician333.github.io/hbmulligan/) is used to generate the mulligan easily.  
 
 # For Developer
-Make sure you have the following four files under packages folder  
+Make sure you have the following files under packages folder  
 1.GreyMagic.dll  
 2.Hearthbuddy.exe  
 3.IronPython.dll  
