@@ -467,7 +467,7 @@ namespace Chuck.SilverFish
                 if (this.ownHeroStartClass == TAG_CLASS.INVALID) this.ownHeroStartClass = hero.cardClass;
                 this.ownHero.poisonous = this.ownWeapon.poisonous;
                 this.ownHero.lifesteal = this.ownWeapon.lifesteal;
-                if (this.ownWeapon.name == CardName.gladiatorslongbow) this.ownHero.immuneWhileAttacking = true;
+                if (this.ownWeapon.name == CardName.gladiatorslongbow || this.ownWeapon.name == CardName.mirageblade) this.ownHero.immuneWhileAttacking = true;
                 
                 this.heroAbility = ability;
                 this.OwnHeroPowerCost = abCost;
@@ -483,7 +483,7 @@ namespace Chuck.SilverFish
                 if (this.enemyHeroStartClass == TAG_CLASS.INVALID) this.enemyHeroStartClass = enemyHero.cardClass;
                 this.enemyHero.poisonous = this.enemyWeapon.poisonous;
                 this.enemyHero.lifesteal = this.enemyWeapon.lifesteal;
-                if (this.enemyWeapon.name == CardName.gladiatorslongbow) this.enemyHero.immuneWhileAttacking = true;
+                if (this.enemyWeapon.name == CardName.gladiatorslongbow || this.ownWeapon.name == CardName.mirageblade) this.enemyHero.immuneWhileAttacking = true;
            
                 this.enemyAbility = ability;
                 this.enemyHeroPowerCost = abCost;
