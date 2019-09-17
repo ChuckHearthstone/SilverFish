@@ -9,7 +9,7 @@ enemy secretsCount: 0 ;
 player:
 0 0 0 0 2
 ownhero:
-warrior 25 30 0 False False 66 False 0 False 0 0 False
+warrior 25 30 0 False False 66 False 0 False 0 0 False HERO_01
 weapon: 0 0 unknown None 0 0
 ability: True CS2_102
 osecrets: 
@@ -19,7 +19,7 @@ elementals: 0 0 0
 quests: None 0 1000 None 0 1000
 advanced: 0 0
 enemyhero:
-hunter 30 30 0 False False 64 False
+hunter 30 30 0 False False 64 False HERO_05
 weapon: 0 0 unknown None 0 0
 ability: True DS1h_292
 fatigue: 23 0 23 0

@@ -9,7 +9,7 @@ enemy secretsCount: 0 ;
 player:
 0 0 0 0 1
 ownhero:
-shaman 29 30 0 False False 64 False 0 False 0 0 False
+shaman 29 30 0 False False 64 False 0 False 0 0 False HERO_02
 weapon: 0 0 unknown None 0 0
 ability: True CS2_049_H1
 osecrets:
@@ -19,7 +19,7 @@ elementals: 0 0 0
 quests: None 0 1000 None 3 5
 advanced: 0 0
 enemyhero:
-pala 10 30 0 False False 66 False
+pala 10 30 0 False False 66 False HERO_04
 weapon: 0 0 unknown None 0 0
 ability: True ULD_431p
 fatigue: 21 0 20 0
