@@ -145,7 +145,10 @@ namespace Chuck.SilverFish
 
                 foreach (Playfield p in temp)
                 {
-                    if (totalboards > 0) calculated += p.nextPlayfields.Count;
+                    if (totalboards > 0)
+                    {
+                        calculated += p.nextPlayfields.Count;
+                    }
                     if (calculated <= totalboards)
                     {
                         posmoves.AddRange(p.nextPlayfields);
@@ -160,7 +163,10 @@ namespace Chuck.SilverFish
                         bestold = p;
                         bestoldDuplicates.Clear();
                     }
-                    else if (pVal == bestoldval) bestoldDuplicates.Add(p);
+                    else if (Math.Abs(pVal - bestoldval) < 0.001f)
+                    {
+                        bestoldDuplicates.Add(p);
+                    }
                 }
 
                 if (isLethalCheck && bestoldval >= 10000)
@@ -422,10 +428,9 @@ namespace Chuck.SilverFish
                 int i;
                 int max = Math.Min(posmoves.Count, maxwide);
 
-                Playfield playfield;
                 for (i = 0; i < max; i++)
                 {
-                    playfield = posmoves[i];
+                    var playfield = posmoves[i];
                     var hash = playfield.GetPHash();
                     playfield.hashcode = hash;
                     if (!tempDict.ContainsKey(hash))

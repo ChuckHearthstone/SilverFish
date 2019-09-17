@@ -15,7 +15,7 @@ namespace SilverFish.Test
             //Console.WriteLine(data);
 
             Ai ai = Ai.Instance;
-            ai.autoTester(true, data, 0);
+            ai.autoTester(true, data, 2);
         }
     }
 }

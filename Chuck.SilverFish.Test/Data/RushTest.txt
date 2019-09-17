@@ -25,7 +25,8 @@ ability: True ULD_431p
 fatigue: 21 0 20 0
 OwnMinions:
 EnemyMinions:
-ironfurgrizzly CS2_125 zp:1 e:63 A:3 H:3 mH:3 rdy:False ex
+snowflipperpenguin ICC_023 zp:1 e:63 A:1 H:1 mH:1 rdy:False ex
+snowflipperpenguin ICC_023 zp:2 e:67 A:1 H:1 mH:1 rdy:False ex
 Own Handcards:
 pos 1 sightlessranger 5 entity 13 TRL_020 0 0 0
 Enemy cards: 3
