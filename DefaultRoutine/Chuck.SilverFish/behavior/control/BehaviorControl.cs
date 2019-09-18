@@ -13,63 +13,90 @@ namespace Chuck.SilverFish
 
         public override float getPlayfieldValue(Playfield p)
         {
-            if (p.value >= -2000000) return p.value;
-            int retval = 0;
-            int hpboarder = 10;
-            if (p.ownHeroName == HeroEnum.warlock && p.enemyHeroName != HeroEnum.mage) hpboarder = 6;
-            int aggroboarder = 11;
+            if (p.value >= -2000000)
+            {
+                return p.value;
+            }
+            int resultValue = 0;
+            int healthPointsBoarder = 10;
+            if (p.ownHeroName == HeroEnum.warlock && p.enemyHeroName != HeroEnum.mage)
+            {
+                healthPointsBoarder = 6;
+            }
+            int attackBoarder = 11;
 
-            retval -= p.evaluatePenality;
-            retval += p.owncards.Count * 5;
-            retval += p.ownQuest.questProgress * 10;
+            resultValue -= p.evaluatePenality;
+            resultValue += p.owncards.Count * 5;
+            resultValue += p.ownQuest.questProgress * 10;
 
-            retval += p.ownMaxMana;
-            retval -= p.enemyMaxMana;
+            resultValue += p.ownMaxMana;
+            resultValue -= p.enemyMaxMana;
 
-            retval += p.ownMaxMana * 20 - p.enemyMaxMana * 20;
-            retval += (p.enemyHeroAblility.manacost - p.ownHeroAblility.manacost) * 4;
+            resultValue += p.ownMaxMana * 20 - p.enemyMaxMana * 20;
+            resultValue += (p.enemyHeroAblility.manacost - p.ownHeroAblility.manacost) * 4;
             if (p.ownHeroPowerAllowedQuantity != p.enemyHeroPowerAllowedQuantity)
             {
-                if(p.ownHeroPowerAllowedQuantity > p.enemyHeroPowerAllowedQuantity) retval += 3;
-                else retval -= 3;
+                if (p.ownHeroPowerAllowedQuantity > p.enemyHeroPowerAllowedQuantity)
+                {
+                    resultValue += 3;
+                }
+                else
+                {
+                    resultValue -= 3;
+                }
             }
 
-            if (p.enemyHeroName == HeroEnum.mage || p.enemyHeroName == HeroEnum.druid) retval -= 2 * p.enemyspellpower;
-
-            if (p.ownHero.HealthPoints + p.ownHero.armor > hpboarder)
+            if (p.enemyHeroName == HeroEnum.mage || p.enemyHeroName == HeroEnum.druid)
             {
-                retval += p.ownHero.HealthPoints + p.ownHero.armor;
+                resultValue -= 2 * p.enemyspellpower;
+            }
+
+            if (p.ownHero.HealthPoints + p.ownHero.armor > healthPointsBoarder)
+            {
+                resultValue += p.ownHero.HealthPoints + p.ownHero.armor;
             }
             else
             {
-                if (p.nextTurnWin()) retval -= (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
-                else retval -= 2 * (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor) * (hpboarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
+                if (p.nextTurnWin())
+                {
+                    resultValue -= (healthPointsBoarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
+                }
+                else
+                {
+                    resultValue -= 2 * (healthPointsBoarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor) * (healthPointsBoarder + 1 - p.ownHero.HealthPoints - p.ownHero.armor);
+                }
             }
 
-            if (p.enemyHero.HealthPoints + p.enemyHero.armor > aggroboarder)
+            if (p.enemyHero.HealthPoints + p.enemyHero.armor > attackBoarder)
             {
-                retval += -p.enemyHero.HealthPoints - p.enemyHero.armor;
+                resultValue += -p.enemyHero.HealthPoints - p.enemyHero.armor;
             }
             else
             {
-                retval += 4 * (aggroboarder + 1 - p.enemyHero.HealthPoints - p.enemyHero.armor);
+                resultValue += 4 * (attackBoarder + 1 - p.enemyHero.HealthPoints - p.enemyHero.armor);
             }
 
             if (p.ownWeapon.Angr > 0)
             {
-                if (p.ownWeapon.Angr > 1) retval += p.ownWeapon.Angr * p.ownWeapon.Durability;
-                else retval += p.ownWeapon.Angr * p.ownWeapon.Durability + 1;
+                if (p.ownWeapon.Angr > 1)
+                {
+                    resultValue += p.ownWeapon.Angr * p.ownWeapon.Durability;
+                }
+                else
+                {
+                    resultValue += p.ownWeapon.Angr * p.ownWeapon.Durability + 1;
+                }
             }
 
             if (!p.enemyHero.frozen)
             {
-                retval -= p.enemyWeapon.Durability * p.enemyWeapon.Angr;
+                resultValue -= p.enemyWeapon.Durability * p.enemyWeapon.Angr;
             }
             else
             {
                 if (p.enemyWeapon.Durability >= 1)
                 {
-                    retval += 12;
+                    resultValue += 12;
                 }
             }
 
@@ -77,61 +104,118 @@ namespace Chuck.SilverFish
             //RR if lethal is close, carddraw value is increased
             if (p.lethalMissing() <= 5) //RR
             {
-                retval += p.owncarddraw * 100;
+                resultValue += p.owncarddraw * 100;
             }
             if (p.ownMaxMana < 4)
             {
-                retval += p.owncarddraw * 2;
+                resultValue += p.owncarddraw * 2;
             }
             else
             {
-                retval += p.owncarddraw * 5;
+                resultValue += p.owncarddraw * 5;
             }
 
-            if (p.owncarddraw + 1 >= p.enemycarddraw) retval -= p.enemycarddraw * 7;
-            else retval -= (p.owncarddraw + 1) * 7 + (p.enemycarddraw - p.owncarddraw - 1) * 12;
+            if (p.owncarddraw + 1 >= p.enemycarddraw)
+            {
+                resultValue -= p.enemycarddraw * 7;
+            }
+            else
+            {
+                resultValue -= (p.owncarddraw + 1) * 7 + (p.enemycarddraw - p.owncarddraw - 1) * 12;
+            }
 
             //int owntaunt = 0;
             int readycount = 0;
             int ownMinionsCount = 0;
             foreach (Minion m in p.ownMinions)
             {
-                retval += 5;
-                retval += m.HealthPoints * 2;
-                retval += m.Attack * 2;
-                retval += m.handcard.card.rarity;
-                if (!m.playedThisTurn && m.windfury) retval += m.Attack;
-                if (m.DivineShield) retval += 1;
-                if (m.stealth) retval += 1;
+                resultValue += 5;
+                resultValue += m.HealthPoints * 2;
+                resultValue += m.Attack * 2;
+                resultValue += m.handcard.card.rarity;
+                if (!m.playedThisTurn && m.windfury)
+                {
+                    resultValue += m.Attack;
+                }
+
+                if (m.DivineShield)
+                {
+                    resultValue += 1;
+                }
+
+                if (m.stealth)
+                {
+                    resultValue += 1;
+                }
                 if (m.handcard.card.isSpecialMinion && !m.silenced)
                 {
-                    retval += 1;
-                    if (!m.taunt && m.stealth) retval += 20;
+                    resultValue += 1;
+                    if (!m.taunt && m.stealth)
+                    {
+                        resultValue += 20;
+                    }
                 }
                 else
                 {
-                    if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.DivineShield) retval -= 5;
+                    if (m.Attack <= 2 && m.HealthPoints <= 2 && !m.DivineShield) resultValue -= 5;
                 }
                 //if (!m.taunt && m.stealth && penman.specialMinions.ContainsKey(m.name)) retval += 20;
                 //if (m.poisonous) retval += 1;
-                if (m.lifesteal) retval += m.Attack/2;
-                if (m.DivineShield && m.taunt) retval += 4;
+                if (m.lifesteal)
+                {
+                    resultValue += m.Attack/2;
+                }
+
+                if (m.DivineShield && m.taunt)
+                {
+                    resultValue += 4;
+                }
                 //if (m.taunt && m.handcard.card.name == CardName.frog) owntaunt++;
                 //if (m.handcard.card.isToken && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
                 //if (!penman.specialMinions.ContainsKey(m.name) && m.Angr <= 2 && m.Hp <= 2) retval -= 5;
-                if (p.ownMinions.Count > 2 && (m.handcard.card.name == CardName.direwolfalpha || m.handcard.card.name == CardName.flametonguetotem || m.handcard.card.name == CardName.stormwindchampion || m.handcard.card.name == CardName.raidleader)) retval += 10;
-                if (m.handcard.card.name == CardName.bloodmagethalnos) retval += 10;
+                if (p.ownMinions.Count > 2
+                    && (m.handcard.card.name == CardName.direwolfalpha
+                        || m.handcard.card.name == CardName.flametonguetotem
+                        || m.handcard.card.name == CardName.stormwindchampion
+                        || m.handcard.card.name == CardName.raidleader))
+                {
+                    resultValue += 10;
+                }
+
+                if (m.handcard.card.name == CardName.bloodmagethalnos)
+                {
+                    resultValue += 10;
+                }
                 if (m.handcard.card.name == CardName.nerubianegg)
                 {
-                    if (m.Attack >= 1) retval += 2;
-                    if ((!m.taunt && m.Attack == 0) && (m.DivineShield || m.maxHp > 2)) retval -= 10;
+                    if (m.Attack >= 1)
+                    {
+                        resultValue += 2;
+                    }
+
+                    if (!m.taunt && m.Attack == 0
+                        && (m.DivineShield 
+                            || m.maxHp > 2))
+                    {
+                        resultValue -= 10;
+                    }
                 }
-                if (m.Ready) readycount++;
-                if (m.HealthPoints <= 4 && (m.Attack > 2 || m.HealthPoints > 3)) ownMinionsCount++;
-                retval += m.synergy;
+
+                if (m.Ready)
+                {
+                    readycount++;
+                }
+
+                if (m.HealthPoints <= 4
+                    && (m.Attack > 2
+                        || m.HealthPoints > 3))
+                {
+                    ownMinionsCount++;
+                }
+                resultValue += m.synergy;
             }
-            retval += p.anzOgOwnCThunAngrBonus;
-            retval += p.anzOwnExtraAngrHp - p.anzEnemyExtraAngrHp;
+            resultValue += p.anzOgOwnCThunAngrBonus;
+            resultValue += p.anzOwnExtraAngrHp - p.anzEnemyExtraAngrHp;
 
             /*if (p.enemyMinions.Count >= 0)
             {
@@ -156,8 +240,15 @@ namespace Chuck.SilverFish
                 switch (a.actionType)
                 {
                     case actionEnum.attackWithHero:
-                        if (p.enemyHero.HealthPoints <= p.attackFaceHP) retval++;
-                        if (p.ownHeroName == HeroEnum.warrior && useAbili) retval -= 1;
+                        if (p.enemyHero.HealthPoints <= p.attackFaceHP)
+                        {
+                            resultValue++;
+                        }
+
+                        if (p.ownHeroName == HeroEnum.warrior && useAbili)
+                        {
+                            resultValue -= 1;
+                        }
                         continue;
                     case actionEnum.useHeroPower:
                         useAbili = true;
@@ -172,35 +263,69 @@ namespace Chuck.SilverFish
                     case CardName.innervate:
                     case CardName.thecoin:
                         usecoin++;
-                        if (i == count - 1) retval -= 10;
+                        if (i == count - 1)
+                        {
+                            resultValue -= 10;
+                        }
                         goto default;
-                    case CardName.darkshirelibrarian: goto case CardName.soulfire;
-                    case CardName.darkbargain: goto case CardName.soulfire;
-                    case CardName.doomguard: goto case CardName.soulfire;
-                    case CardName.succubus: goto case CardName.soulfire;
-                    case CardName.soulfire: deletecardsAtLast = 1; break;
+                    case CardName.darkshirelibrarian:
+                        goto case CardName.soulfire;
+                    case CardName.darkbargain:
+                        goto case CardName.soulfire;
+                    case CardName.doomguard:
+                        goto case CardName.soulfire;
+                    case CardName.succubus:
+                        goto case CardName.soulfire;
+                    case CardName.soulfire:
+                        deletecardsAtLast = 1;
+                        break;
                     default:
-                        if (deletecardsAtLast == 1) retval -= 20;
+                        if (deletecardsAtLast == 1)
+                        {
+                            resultValue -= 20;
+                        }
                         break;
                 }
-                if (a.card.card.Combo && i > 0) wasCombo++;
-                if (a.target == null) continue;
-                //save spell for all classes
-                if (a.card.card.type == CardType.SPELL && (a.target.isHero && !a.target.own))
+
+                if (a.card.card.Combo && i > 0)
                 {
-                    if (i == 0) firstSpellToEnHero = true;
-                    retval -= 11;
+                    wasCombo++;
+                }
+
+                if (a.target == null)
+                {
+                    continue;
+                }
+                //save spell for all classes
+                if (a.card.card.type == CardType.SPELL 
+                    && a.target.isHero 
+                    && !a.target.own)
+                {
+                    if (i == 0)
+                    {
+                        firstSpellToEnHero = true;
+                    }
+                    resultValue -= 11;
                 }
             }
             if (wasCombo > 0 && firstSpellToEnHero)
             {
-                if (wasCombo + 1 == ownActCount) retval += 10;
+                if (wasCombo + 1 == ownActCount)
+                {
+                    resultValue += 10;
+                }
             }
             if (usecoin > 0)
             {
-                if (useAbili && p.ownMaxMana <= 2) retval -= 40;
-                retval -= 5 * p.manaTurnEnd;
-                if (p.manaTurnEnd + usecoin > 10) retval -= 5 * usecoin;
+                if (useAbili && p.ownMaxMana <= 2)
+                {
+                    resultValue -= 40;
+                }
+                resultValue -= 5 * p.manaTurnEnd;
+                if (p.manaTurnEnd + usecoin > 10)
+                {
+                    resultValue -= 5 * usecoin;
+                }
             }
             if (p.manaTurnEnd >= 2 && !useAbili && p.ownAbilityReady)
             {
@@ -208,8 +333,7 @@ namespace Chuck.SilverFish
                 {
                     case CardName.heal: goto case CardName.lesserheal;
                     case CardName.lesserheal:
-                        bool wereTarget = false;
-                        if (p.ownHero.HealthPoints < p.ownHero.maxHp) wereTarget = true;
+                        bool wereTarget = p.ownHero.HealthPoints < p.ownHero.maxHp;
                         if (!wereTarget)
                         {
                             foreach (Minion m in p.ownMinions)
@@ -217,35 +341,35 @@ namespace Chuck.SilverFish
                                 if (m.wounded) { wereTarget = true; break;}
                             }
                         }
-                        if (wereTarget && !(p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0)) retval -= 10;
+                        if (wereTarget && !(p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0)) resultValue -= 10;
                         break;
                     case CardName.poisoneddaggers: goto case CardName.daggermastery;
                     case CardName.daggermastery:
-                         if (!(p.ownWeapon.Durability > 1 || p.ownWeapon.Angr > 1)) retval -= 10;
+                         if (!(p.ownWeapon.Durability > 1 || p.ownWeapon.Angr > 1)) resultValue -= 10;
                          break;
                     case CardName.totemicslam: goto case CardName.totemiccall;
                     case CardName.totemiccall:
-                        if (p.ownMinions.Count < 7) retval -= 10;
-                        else retval -= 3;
+                        if (p.ownMinions.Count < 7) resultValue -= 10;
+                        else resultValue -= 3;
                         break;
                     case CardName.thetidalhand: goto case CardName.reinforce;
                     case CardName.thesilverhand: goto case CardName.reinforce;
                     case CardName.reinforce:
-                        if (p.ownMinions.Count < 7) retval -= 10;
-                        else retval -= 3;
+                        if (p.ownMinions.Count < 7) resultValue -= 10;
+                        else resultValue -= 3;
                         break;
                     case CardName.soultap: 
-                        if (p.owncards.Count < 10 && p.ownDeckSize > 0) retval -= 10;
+                        if (p.owncards.Count < 10 && p.ownDeckSize > 0) resultValue -= 10;
                         break;
                     case CardName.lifetap: 
                         if (p.owncards.Count < 10 && p.ownDeckSize > 0)
                         {
-                            retval -= 10;
-                            if (p.ownHero.immune) retval-= 5;
+                            resultValue -= 10;
+                            if (p.ownHero.immune) resultValue-= 5;
                         }
                         break;
                     default:
-                        retval -= 10;
+                        resultValue -= 10;
                         break;
                 }
             }
@@ -259,23 +383,23 @@ namespace Chuck.SilverFish
                 {
                     mobsInHand++;
                     if (hc.card.Attack + hc.addattack >= 3) bigMobsInHand++;
-                    retval += hc.addattack + hc.addHp + hc.elemPoweredUp;
+                    resultValue += hc.addattack + hc.addHp + hc.elemPoweredUp;
                 }
             }
 
             if (ownMinionsCount - p.enemyMinions.Count >= 4 && bigMobsInHand >= 1)
             {
-                retval += bigMobsInHand * 25;
+                resultValue += bigMobsInHand * 25;
             }
 
 
             //bool hasTank = false;
             foreach (Minion m in p.enemyMinions)
             {
-                retval -= this.getEnemyMinionValue(m, p);
+                resultValue -= this.getEnemyMinionValue(m, p);
                 //hasTank = hasTank || m.taunt;
             }
-            retval -= p.enemyMinions.Count * 2;
+            resultValue -= p.enemyMinions.Count * 2;
             /*foreach (SecretItem si in p.enemySecretList)
             {
                 if (readycount >= 1 && !hasTank && si.canbeTriggeredWithAttackingHero)
@@ -292,28 +416,28 @@ namespace Chuck.SilverFish
                 }
             }*/
 
-            retval -= p.enemySecretCount;
-            retval -= p.lostDamage;//damage which was to high (like killing a 2/1 with an 3/3 -> => lostdamage =2
-            retval -= p.lostWeaponDamage;
+            resultValue -= p.enemySecretCount;
+            resultValue -= p.lostDamage;//damage which was to high (like killing a 2/1 with an 3/3 -> => lostdamage =2
+            resultValue -= p.lostWeaponDamage;
 
             //if (p.ownMinions.Count == 0) retval -= 20;
             //if (p.enemyMinions.Count == 0) retval += 20;
 
             if (p.enemyHero.HealthPoints <= 0)
             {
-                retval += 10000;
-                if (retval < 10000) retval = 10000;
+                resultValue += 10000;
+                if (resultValue < 10000) resultValue = 10000;
             }
 
             if (p.enemyHero.HealthPoints >= 1 && p.guessingHeroHP <= 0)
             {
-                if (p.turnCounter < 2) retval += p.owncarddraw * 100;
-                retval -= 1000;
+                if (p.turnCounter < 2) resultValue += p.owncarddraw * 100;
+                resultValue -= 1000;
             }
-            if (p.ownHero.HealthPoints <= 0) retval -= 10000;
+            if (p.ownHero.HealthPoints <= 0) resultValue -= 10000;
 
-            p.value = retval;
-            return retval;
+            p.value = resultValue;
+            return resultValue;
         }
 
 
