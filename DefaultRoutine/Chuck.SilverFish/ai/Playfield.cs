@@ -5912,7 +5912,7 @@ namespace Chuck.SilverFish
             hero.Attack += c.Attack;
             hero.windfury = c.windfury;
             hero.UpdateReadiness();
-            hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow);
+            hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow) || (c.name == CardName.mirageblade);
 
             List<Minion> temp = (own) ? this.ownMinions : this.enemyMinions;
             foreach (Minion m in temp)
