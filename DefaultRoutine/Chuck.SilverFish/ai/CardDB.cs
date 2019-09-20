@@ -195,7 +195,8 @@ namespace Chuck.SilverFish
                     }
                 }
 
-                var playRequirements = dbCard.Entity?.Power?.PlayRequirements;
+                var power = dbCard.Entity?.Powers.FirstOrDefault(x => x?.PlayRequirements.Count >= 1);
+                var playRequirements = power?.PlayRequirements;
                 if (playRequirements != null)
                 {
                     foreach (var playRequirement in playRequirements)
