@@ -4543,6 +4543,14 @@ namespace Chuck.SilverFish
             if (this.anzEnemyMalGanis < 1) this.enemyHero.immune = false;
             this.ownWeapon.immune = false;
             this.enemyWeapon.immune = false;
+            switch (this.ownWeapon.name)
+            {
+                case CardName.aluneth:
+                    this.drawACard(CardName.unknown, ownturn);
+                    this.drawACard(CardName.unknown, ownturn);
+                    this.drawACard(CardName.unknown, ownturn);
+                    break;
+            }
         }
 
 
@@ -5912,7 +5920,7 @@ namespace Chuck.SilverFish
             hero.Attack += c.Attack;
             hero.windfury = c.windfury;
             hero.UpdateReadiness();
-            hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow) || (c.name == CardName.mirageblade);
+            hero.immuneWhileAttacking = (c.name == CardName.gladiatorslongbow);
 
             List<Minion> temp = (own) ? this.ownMinions : this.enemyMinions;
             foreach (Minion m in temp)
@@ -5985,7 +5993,7 @@ namespace Chuck.SilverFish
         /// It was introduced in the Saviors of Uldum expansion. 
         /// </summary>
         /// <param name="rebornMinion"></param>
-        public void Reborn(Minion rebornMinion)
+        public void Reborn(Minion rebornMinion)//复生
         {
             var position = rebornMinion.zonepos;
             var card = rebornMinion.handcard.card;
@@ -6001,6 +6009,28 @@ namespace Chuck.SilverFish
                 newMinion.HasBeenReborn = true;
                 newMinion.HealthPoints = 1;
             }
+        }
+		
+		public void Magnetic(Minion mOwn)//磁力
+        {
+           List<Minion> temp = (mOwn.own) ? this.ownMinions : this.enemyMinions;
+           foreach (Minion m in temp)
+           {
+               if (((TAG_RACE)m.handcard.card.race == TAG_RACE.MECHANICAL) && m.zonepos == mOwn.zonepos + 1)
+               {
+                   this.minionGetBuffed(m, mOwn.Attack, mOwn.HealthPoints);
+                   if (mOwn.taunt) m.taunt = true;
+                   if(mOwn.DivineShield) m.DivineShield = true;
+                   if (mOwn.lifesteal) m.lifesteal = true;
+                   if (mOwn.poisonous) m.poisonous = true;
+                   //if (mOwn.rush != 0) this.minionGetRush(m);突袭没写完？
+                   m.UpdateReadiness();
+                   this.minionGetSilenced(mOwn);
+                   this.minionGetDestroyed(mOwn);
+                   if (m.Ready) this.evaluatePenality -= 30;
+                   break;
+               }
+           }
         }
 
         public void minionGetFrozen(Minion target)
