@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Chuck.SilverFish.Extensions;
 using HearthDb;
 using HearthDb.Enums;
 using SilverFish.Helpers;
@@ -195,8 +196,7 @@ namespace Chuck.SilverFish
                     }
                 }
 
-                var power = dbCard.Entity?.Powers.FirstOrDefault(x => x?.PlayRequirements.Count >= 1);
-                var playRequirements = power?.PlayRequirements;
+                var playRequirements = dbCard.Entity.GetPlayRequirements();
                 if (playRequirements != null)
                 {
                     foreach (var playRequirement in playRequirements)

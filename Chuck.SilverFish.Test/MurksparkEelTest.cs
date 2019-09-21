@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Chuck.SilverFish;
+using Chuck.SilverFish.Extensions;
 using HearthDb;
 using HearthDb.Enums;
 using NUnit.Framework;
@@ -36,7 +37,7 @@ namespace SilverFish.Test
             var error2 = entity.GetReferencedTag(GameTag.ADDITIONAL_PLAY_REQS_2);
             Console.WriteLine(error2);
 
-            var playRequirements = entity.Power.PlayRequirements;
+            var playRequirements = entity.GetPlayRequirements();
             foreach (var item in playRequirements)
             {
                 Console.WriteLine($"{nameof(item.ReqId)} = {item.ReqId}, {nameof(item.Param)} = {item.Param} ");

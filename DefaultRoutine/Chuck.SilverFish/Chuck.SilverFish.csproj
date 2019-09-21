@@ -334,6 +334,7 @@
     <Compile Include="Enums\CardTrigger.cs" />
     <Compile Include="Enums\CardType.cs" />
     <Compile Include="Enums\PlayErrors\ErrorType.cs" />
+    <Compile Include="Extensions\ExtensionClass.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Helpers\ConvertHelper.cs" />
     <Compile Include="Helpers\EvenDeckHelper.cs" />
