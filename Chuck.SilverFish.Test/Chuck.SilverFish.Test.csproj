@@ -76,7 +76,7 @@
   <ItemGroup>
     <Content Include="Data\MurksparkEelTest.txt" />
     <Content Include="Data\RebornTest.txt" />
-    <Content Include="Data\RushTest.txt" />
+    <Content Include="Data\Mechanism\Rush\RushCard.txt" />
     <Content Include="Data\test-new.txt" />
     <Content Include="Data\test.txt" />
   </ItemGroup>

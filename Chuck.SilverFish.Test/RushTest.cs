@@ -8,9 +8,9 @@ namespace SilverFish.Test
     class RushTest : TestBase
     {
         [Test]
-        public void Test()
+        public void RushCardTest()
         {
-            var testFilePath = Path.Combine(Settings.Instance.BaseDirectory, @"Chuck.SilverFish.Test\Data\RushTest.txt");
+            var testFilePath = Path.Combine(Settings.Instance.BaseDirectory, @"Chuck.SilverFish.Test\Data\Mechanism\Rush\RushCard.txt");
             var data = File.ReadAllText(testFilePath);
             //Console.WriteLine(data);
 
