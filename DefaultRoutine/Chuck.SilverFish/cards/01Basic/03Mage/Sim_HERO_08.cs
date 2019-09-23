@@ -2,10 +2,11 @@ using Chuck.SilverFish;
 
 namespace SilverFish.cards._01Basic._03Mage
 {
-	class Sim_HERO_08 : SimTemplate //jainaproudmoore
-	{
-
-//
-		
-	}
+    /// <summary>
+    /// Jaina Proudmoore
+    /// ¼ª°²ÄÈ¡¤ÆÕÂÞµÂÄ¦¶û
+    /// </summary>
+    class Sim_HERO_08 : SimTemplate
+    {
+    }
 }

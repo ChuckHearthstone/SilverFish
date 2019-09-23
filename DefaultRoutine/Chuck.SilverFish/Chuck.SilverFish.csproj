@@ -814,10 +814,6 @@
     <Compile Include="cards\01Basic\03Mage\10Sim_CS2_032.cs" />
     <Compile Include="cards\01Basic\03Mage\09Sim_CS2_033.cs" />
     <Compile Include="cards\01Basic\03Mage\Sim_CS2_034.cs" />
-    <Compile Include="cards\01Basic\03Mage\Sim_CS2_034_H1.cs" />
-    <Compile Include="cards\01Basic\03Mage\Sim_CS2_034_H1_AT_132.cs" />
-    <Compile Include="cards\01Basic\03Mage\Sim_CS2_034_H2.cs" />
-    <Compile Include="cards\01Basic\03Mage\Sim_CS2_034_H2_AT_132.cs" />
     <Compile Include="cards\01Basic\07Shaman\Sim_CS2_037.cs" />
     <Compile Include="cards\01Basic\07Shaman\Sim_CS2_038.cs" />
     <Compile Include="cards\01Basic\07Shaman\Sim_CS2_039.cs" />
