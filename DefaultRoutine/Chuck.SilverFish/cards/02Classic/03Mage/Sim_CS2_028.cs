@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Chuck.SilverFish;
 
-namespace SilverFish.cards._01Basic._03Mage
+namespace Chuck.SilverFish.cards._02Classic._03Mage
 {
 	class Sim_CS2_028 : SimTemplate //* blizzard
 	{

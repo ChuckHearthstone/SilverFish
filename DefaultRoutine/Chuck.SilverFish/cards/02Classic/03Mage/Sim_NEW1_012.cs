@@ -1,7 +1,6 @@
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-namespace SilverFish.cards._01Basic.Mage
+namespace Chuck.SilverFish.cards._02Classic._03Mage
 {
 	class Sim_NEW1_012 : SimTemplate //* Mana Wyrm
 	{

@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._02Classic
+namespace Chuck.SilverFish.cards._01Basic._03Mage
 {
     class Sim_EX1_277 : SimTemplate //* Arcane Missiles
     {
