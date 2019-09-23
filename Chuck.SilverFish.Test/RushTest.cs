@@ -17,5 +17,16 @@ namespace SilverFish.Test
             Ai ai = Ai.Instance;
             ai.autoTester(true, data, 2);
         }
+
+        [Test]
+        public void RushMinionTest()
+        {
+            var testFilePath = Path.Combine(Settings.Instance.BaseDirectory, @"Chuck.SilverFish.Test\Data\Mechanism\Rush\RushMinion.txt");
+            var data = File.ReadAllText(testFilePath);
+            //Console.WriteLine(data);
+
+            Ai ai = Ai.Instance;
+            ai.autoTester(true, data, 2);
+        }
     }
 }

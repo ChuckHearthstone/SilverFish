@@ -1,0 +1,36 @@
+﻿#######################################################################
+start calculations, current time: 12:16:19 V2019.08.29.001 Control 3000 face 15 berserk:1 ets 40 secret iC 1 aA 0
+#######################################################################
+turn 11/0
+mana 6/6
+emana 6
+own secretsCount: 0
+enemy secretsCount: 0 ;
+player:
+0 0 0 0 1
+ownhero:
+shaman 29 30 0 False False 64 False 0 False 0 0 False HERO_02
+weapon: 0 0 unknown None 0 0
+ability: True CS2_049_H1
+osecrets:
+cthunbonus: 0 0 0
+jadegolems: 0 0
+elementals: 0 0 0
+quests: None 0 1000 None 3 5
+advanced: 0 0
+enemyhero:
+pala 10 30 0 False False 66 False HERO_04
+weapon: 0 0 unknown None 0 0
+ability: True ULD_431p
+fatigue: 21 0 20 0
+OwnMinions:
+sightlessranger TRL_020 zp:1 e:13 A:3 H:4 mH:4 rdy:True ex
+EnemyMinions:
+snowflipperpenguin ICC_023 zp:1 e:63 A:1 H:1 mH:1 rdy:False ex
+snowflipperpenguin ICC_023 zp:2 e:67 A:1 H:1 mH:1 rdy:False ex
+Own Handcards:
+Enemy cards: 3
+ownDiedMinions:
+enemyDiedMinions:
+otg:
+etg:

@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\Mechanism\Rush\RushMinion.txt" />
     <Content Include="Data\MurksparkEelTest.txt" />
     <Content Include="Data\RebornTest.txt" />
     <Content Include="Data\Mechanism\Rush\RushCard.txt" />
