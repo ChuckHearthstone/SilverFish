@@ -97,6 +97,7 @@
     <Compile Include="ai\CardDB.cs" />
     <Compile Include="ai\CardDB_Card.cs" />
     <Compile Include="ai\CardDB_SpecialName.cs" />
+    <Compile Include="cards\01Basic\05Priest\05Sim_EX1_192.cs" />
     <Compile Include="cards\04Expansion\004CFM\Sim_CFM_712.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_117.cs" />
     <Compile Include="cards\04Expansion\008GIL\Sim_GIL_118.cs" />
