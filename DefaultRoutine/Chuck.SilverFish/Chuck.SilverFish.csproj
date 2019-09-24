@@ -790,7 +790,7 @@
     <Compile Include="cards\01Basic\00Neutral\Sim_CS1_069.cs" />
     <Compile Include="cards\01Basic\05Priest\09Sim_CS1_112.cs" />
     <Compile Include="cards\01Basic\05Priest\10Sim_CS1_113.cs" />
-    <Compile Include="cards\01Basic\05Priest\Sim_CS1_129.cs" />
+    <Compile Include="cards\02Classic\05Priest\Sim_CS1_129.cs" />
     <Compile Include="cards\01Basic\05Priest\01Sim_CS1_130.cs" />
     <Compile Include="cards\01Basic\05Priest\02Sim_CS2_003.cs" />
     <Compile Include="cards\01Basic\05Priest\04Sim_CS2_004.cs" />
@@ -1905,7 +1905,7 @@
     <Compile Include="cards\01Basic\02Hunter\03Sim_DS1_184.cs" />
     <Compile Include="cards\01Basic\02Hunter\01Sim_DS1_185.cs" />
     <Compile Include="cards\02Classic\02Hunter\Sim_DS1_188.cs" />
-    <Compile Include="cards\01Basic\05Priest\Sim_DS1_233.cs" />
+    <Compile Include="cards\05HallOfFame\Sim_DS1_233.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_ds1_whelptoken.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_GAME_002.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_GAME_005.cs" />

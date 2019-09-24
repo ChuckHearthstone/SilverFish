@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic._05Priest
+namespace Chuck.SilverFish.cards._02Classic._05Priest
 {
 	class Sim_CS1_129 : SimTemplate //innerfire
 	{

@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic._05Priest
+namespace Chuck.SilverFish.cards._05HallOfFame
 {
     class Sim_DS1_233 : SimTemplate //mindblast
     {
