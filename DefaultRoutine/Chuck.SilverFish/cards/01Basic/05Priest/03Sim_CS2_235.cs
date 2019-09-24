@@ -1,7 +1,6 @@
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-namespace SilverFish.cards._01Basic
+namespace Chuck.SilverFish.cards._01Basic._05Priest
 {
 	class Sim_CS2_235 : SimTemplate //* northshirecleric
 	{
