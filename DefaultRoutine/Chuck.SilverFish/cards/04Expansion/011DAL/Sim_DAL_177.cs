@@ -16,10 +16,11 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
+            int pos = target.zonepos;
+            int manacost = target.handcard.manacost;
             p.minionGetDestroyed(target);
-            int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
-            p.CallKid(p.getRandomCardForManaMinion(target.handcard.manacost), pos, ownplay);
-            p.CallKid(p.getRandomCardForManaMinion(target.handcard.manacost), pos + 1, ownplay);
+            p.CallKid(p.getRandomCardForManaMinion(manacost), pos, ownplay);
+            p.CallKid(p.getRandomCardForManaMinion(manacost), pos + 1, ownplay);
         }
     }
 }
