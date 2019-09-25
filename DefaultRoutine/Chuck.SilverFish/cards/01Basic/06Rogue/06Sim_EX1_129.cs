@@ -1,7 +1,6 @@
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-namespace SilverFish.cards._02Classic
+namespace Chuck.SilverFish.cards._01Basic._06Rogue
 {
 	class Sim_EX1_129 : SimTemplate //fanofknives
 	{

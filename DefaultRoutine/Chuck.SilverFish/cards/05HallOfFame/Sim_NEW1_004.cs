@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic.Rogue
+namespace Chuck.SilverFish.cards._05HallOfFame
 {
 	class Sim_NEW1_004 : SimTemplate //vanish
 	{

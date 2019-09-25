@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic._06Rogue
+namespace Chuck.SilverFish.cards._02Classic._06Rogue
 {
 	class Sim_CS2_073 : SimTemplate //coldblood
 	{

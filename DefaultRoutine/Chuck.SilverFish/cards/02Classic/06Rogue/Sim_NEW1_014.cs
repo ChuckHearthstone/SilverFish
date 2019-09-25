@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic.Rogue
+namespace Chuck.SilverFish.cards._02Classic._06Rogue
 {
     class Sim_NEW1_014 : SimTemplate //* Master of Disguise
 	{
