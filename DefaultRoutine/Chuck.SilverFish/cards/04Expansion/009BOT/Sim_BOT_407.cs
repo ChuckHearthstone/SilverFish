@@ -6,7 +6,7 @@ namespace Chuck.SilverFish.cards._04Expansion._009BOT
     /// Thunderhead
     /// 雷云元素
     /// </summary>
-    public class Sim_Sim_BOT_407 : SimTemplate
+    public class Sim_BOT_407 : SimTemplate
     {
         /// <summary>
         /// After you play a card with Overload, summon two 1/1 Sparks with Rush.
