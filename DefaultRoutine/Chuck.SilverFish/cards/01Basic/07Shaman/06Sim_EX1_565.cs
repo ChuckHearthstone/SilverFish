@@ -1,6 +1,4 @@
-﻿using Chuck.SilverFish;
-
-namespace SilverFish.cards._02Classic
+﻿namespace Chuck.SilverFish.cards._01Basic._07Shaman
 {
     class Sim_EX1_565 : SimTemplate//Flametongue Totem
     {

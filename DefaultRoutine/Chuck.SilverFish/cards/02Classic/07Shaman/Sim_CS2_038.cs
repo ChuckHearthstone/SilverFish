@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic._07Shaman
+namespace Chuck.SilverFish.cards._02Classic._07Shaman
 {
 	class Sim_CS2_038 : SimTemplate //ancestralspirit
 	{

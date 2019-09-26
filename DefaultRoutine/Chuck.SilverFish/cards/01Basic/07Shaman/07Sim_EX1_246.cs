@@ -1,7 +1,6 @@
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-namespace SilverFish.cards._02Classic
+namespace Chuck.SilverFish.cards._01Basic._07Shaman
 {
 	class Sim_EX1_246 : SimTemplate //hex
 	{

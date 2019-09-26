@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._01Basic.Shaman
+namespace Chuck.SilverFish.cards._02Classic._07Shaman
 {
 	class Sim_NEW1_010 : SimTemplate //alakirthewindlord
 	{

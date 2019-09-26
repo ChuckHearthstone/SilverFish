@@ -1,7 +1,6 @@
-﻿using Chuck.SilverFish;
-using SilverFish.Enums;
+﻿using SilverFish.Enums;
 
-namespace SilverFish.cards._01Basic._07Shaman
+namespace Chuck.SilverFish.cards._02Classic._07Shaman
 {
     class Sim_CS2_053 : SimTemplate//far sight
     {
