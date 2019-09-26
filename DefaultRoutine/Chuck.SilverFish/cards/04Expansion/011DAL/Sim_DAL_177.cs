@@ -4,7 +4,7 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
     /// Conjurer's Calling
     /// 咒术师的召唤
     /// </summary>
-    public class Sim_DAL_177 : SimTemplate
+    public class Sim_DAL_177 : TwinSpell
     {
         /// <summary>
         /// Twinspell Destroy a minion.Summon 2 minions of the same Cost to replace it.

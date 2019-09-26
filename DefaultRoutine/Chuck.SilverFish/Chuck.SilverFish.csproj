@@ -262,6 +262,7 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_769.cs" />
     <Compile Include="cards\04Expansion\003OG\Sim_OG_028.cs" />
+    <Compile Include="cards\04Expansion\011DAL\TwinSpell.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_003.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_133.cs" />
     <Compile Include="cards\04Expansion\012ULD\SIm_ULD_134t.cs" />

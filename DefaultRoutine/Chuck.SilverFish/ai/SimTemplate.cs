@@ -115,6 +115,13 @@
             return;
         }
 
+        /// <summary>
+        /// CardTrigger.onCardWasPlayed
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="c"></param>
+        /// <param name="wasOwnCard"></param>
+        /// <param name="triggerEffectMinion"></param>
         public virtual void onCardWasPlayed(Playfield p, CardDB.Card c, bool wasOwnCard, Minion triggerEffectMinion)
         {
             return;
