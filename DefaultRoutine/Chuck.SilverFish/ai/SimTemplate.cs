@@ -121,7 +121,7 @@
         }
 
         /// <summary>
-        /// 使用一张牌后触发
+        /// 使用一张牌后，触发场上随从的效果
         /// </summary>
         /// <param name="p"></param>
         /// <param name="hc"></param>
@@ -133,7 +133,7 @@
         }
 
         /// <summary>
-        /// 使用一张牌后触发
+        /// 使用一张牌后触发，触发手牌的效果
         /// </summary>
         /// <param name="p"></param>
         /// <param name="hc"></param>
