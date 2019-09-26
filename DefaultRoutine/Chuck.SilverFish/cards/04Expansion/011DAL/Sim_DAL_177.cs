@@ -22,7 +22,12 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
             p.CallKid(p.getRandomCardForManaMinion(manaCost), pos, ownplay, true, true);
             p.CallKid(p.getRandomCardForManaMinion(manaCost), pos + 1, ownplay, true, true);
 
-            base.onCardPlay(p, ownplay, target, choice);
+            TriggerTwinSpell(p, ownplay);
         }
+    }
+
+    public class Sim_DAL_177ts : Sim_DAL_177
+    {
+
     }
 }
