@@ -47,10 +47,19 @@ namespace SilverFish.cards._01Basic._07Shaman
             }
             else
             {
-                if (!wrath) kid = wrathofair;
-                else kid = searing;
+                if (!wrath)
+                {
+                    kid = wrathofair;
+                }
+                else
+                {
+                    kid = searing;
+                }
 
-                if (p.ownHeroHasDirectLethal()) kid = stoneclaw;
+                if (p.ownHeroHasDirectLethal())
+                {
+                    kid = stoneclaw;
+                }
             }
             p.CallKid(kid, pos, ownplay, false);
         }
