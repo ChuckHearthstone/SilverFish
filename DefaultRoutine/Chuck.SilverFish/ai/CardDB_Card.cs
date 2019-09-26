@@ -8,7 +8,7 @@ namespace Chuck.SilverFish
 {
     public partial class CardDB
     {
-        public class Card
+        public partial class Card
         {
             public string ChineseName { get; set; }
 
@@ -86,6 +86,8 @@ namespace Chuck.SilverFish
             public List<ErrorType> playrequires;
 
             public List<CardTrigger> Triggers { get; set; }
+
+            public int DbfId { get; set; }
 
             public SimTemplate CardSimulation
             {

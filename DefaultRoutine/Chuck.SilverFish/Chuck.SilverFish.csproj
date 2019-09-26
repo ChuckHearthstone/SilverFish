@@ -221,6 +221,7 @@
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_509.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_526.cs" />
     <Compile Include="cards\04Expansion\010TRL\Sim_TRL_566.cs" />
+    <Compile Include="cards\04Expansion\011DAL\Card.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_049.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_071.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_087.cs" />

@@ -143,6 +143,7 @@ namespace Chuck.SilverFish
                 card.rarity = (int) dbCard.Rarity;
                 card.cost = dbCard.Cost;
                 card.type = (CardType) dbCard.Type;
+                card.DbfId = dbCard.DbfId;
                 if (card.type == CardType.Token)
                 {
                     card.isToken = true;
@@ -188,6 +189,8 @@ namespace Chuck.SilverFish
                 card.Morph = dbCard.Entity.GetTag(GameTag.MORPH) == 1;
                 card.Spellpower = dbCard.Entity.GetTag(GameTag.SPELLPOWER) > 0;
                 card.spellpowervalue = dbCard.Entity.GetTag(GameTag.SPELLPOWER);
+                card.TwinSpell = dbCard.Entity.GetTag(GameTag.TWINSPELL) == 1;
+                card.TwinSpellCopyDbfId = dbCard.Entity.GetTag(GameTag.TWINSPELL);
                 if (!string.IsNullOrEmpty(dbCard.Text))
                 {
                     if (dbCard.Text.ToLower().Contains("choose one"))
@@ -248,6 +251,12 @@ namespace Chuck.SilverFish
         public Card getCardDataFromID(CardIdEnum id)
         {
             return cardidToCardList.ContainsKey(id) ? cardidToCardList[id] : unknownCard;
+        }
+
+        public Card GetCardByDbfId(int dbfId)
+        {
+            var card = CardList.First(x => x.DbfId == dbfId);
+            return card;
         }
 
         private void enumCreator()
