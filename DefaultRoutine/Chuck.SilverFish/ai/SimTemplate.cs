@@ -19,12 +19,27 @@
         }
 
 
-
+        /// <summary>
+        /// 使用卡牌
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ownplay"></param>
+        /// <param name="target"></param>
+        /// <param name="choice"></param>
         public virtual void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             return;
         }
 
+        /// <summary>
+        /// 弃牌
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="hc"></param>
+        /// <param name="own"></param>
+        /// <param name="num"></param>
+        /// <param name="checkBonus"></param>
+        /// <returns></returns>
         public virtual bool onCardDicscard(Playfield p, Handmanager.Handcard hc, Minion own, int num, bool checkBonus = false) 
         {
             return false;
@@ -105,18 +120,32 @@
             return;
         }
 
+        /// <summary>
+        /// 使用一张牌后触发
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="hc"></param>
+        /// <param name="wasOwnCard"></param>
+        /// <param name="triggerEffectMinion"></param>
         public virtual void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Minion triggerEffectMinion)
         {
             return;
         }
 
+        /// <summary>
+        /// 使用一张牌后触发
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="hc"></param>
+        /// <param name="wasOwnCard"></param>
+        /// <param name="triggerhc"></param>
         public virtual void onCardIsGoingToBePlayed(Playfield p, Handmanager.Handcard hc, bool wasOwnCard, Handmanager.Handcard triggerhc)
         {
             return;
         }
 
         /// <summary>
-        /// CardTrigger.onCardWasPlayed
+        /// 原来就没有调用的地方，应该不能使用
         /// </summary>
         /// <param name="p"></param>
         /// <param name="c"></param>
