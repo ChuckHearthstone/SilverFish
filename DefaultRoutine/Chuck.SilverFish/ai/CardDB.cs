@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Chuck.SilverFish.cards._04Expansion._011DAL;
 using Chuck.SilverFish.Extensions;
 using HearthDb;
 using HearthDb.Enums;
@@ -98,9 +99,14 @@ namespace Chuck.SilverFish
                     instance = new CardDB();
                     //instance.enumCreator();// only call this to get latest cardids
                     // have to do it 2 times (or the kids inside the simcards will not have a simcard :D
-                    foreach (Card c in instance.CardList)
+                    foreach (Card card in instance.CardList)
                     {
-                        c.CardSimulation = CardHelper.GetCardSimulation(c.cardIDenum);
+                        var cardSimulation = CardHelper.GetCardSimulation(card.cardIDenum);
+                        if (cardSimulation is TwinSpell twinSpell)
+                        {
+                            twinSpell.Card = card;
+                        }
+                        card.CardSimulation = cardSimulation;
                     }
 
                     var totalCardSimCount = instance.CardList.Count;

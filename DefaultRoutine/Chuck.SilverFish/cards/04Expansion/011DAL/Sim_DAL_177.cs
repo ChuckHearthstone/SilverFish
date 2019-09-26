@@ -21,6 +21,8 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
             p.minionGetDestroyed(target);
             p.CallKid(p.getRandomCardForManaMinion(manaCost), pos, ownplay, true, true);
             p.CallKid(p.getRandomCardForManaMinion(manaCost), pos + 1, ownplay, true, true);
+
+            base.onCardPlay(p, ownplay, target, choice);
         }
     }
 }
