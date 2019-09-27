@@ -881,13 +881,13 @@
     <Compile Include="cards\01Basic\04Paladin\Sim_CS2_101.cs" />
     <Compile Include="cards\01Basic\04Paladin\Sim_CS2_101t.cs" />
     <Compile Include="cards\01Basic\09Warrior\Sim_CS2_102.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_103.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_104.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_105.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_106.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_108.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_112.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_CS2_114.cs" />
+    <Compile Include="cards\01Basic\09Warrior\02Sim_CS2_103.cs" />
+    <Compile Include="cards\02Classic\09Warrior\Sim_CS2_104.cs" />
+    <Compile Include="cards\01Basic\09Warrior\05Sim_CS2_105.cs" />
+    <Compile Include="cards\01Basic\09Warrior\06Sim_CS2_106.cs" />
+    <Compile Include="cards\01Basic\09Warrior\03Sim_CS2_108.cs" />
+    <Compile Include="cards\01Basic\09Warrior\10Sim_CS2_112.cs" />
+    <Compile Include="cards\01Basic\09Warrior\04Sim_CS2_114.cs" />
     <Compile Include="cards\01Basic\Sim_CS2_117.cs" />
     <Compile Include="cards\01Basic\Sim_CS2_118.cs" />
     <Compile Include="cards\01Basic\Sim_CS2_119.cs" />
@@ -990,7 +990,7 @@
     <Compile Include="cards\02Classic\Sim_EX1_080.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_082.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_083.cs" />
-    <Compile Include="cards\02Classic\Sim_EX1_084.cs" />
+    <Compile Include="cards\01Basic\09Warrior\08Sim_EX1_084.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_085.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_089.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_091.cs" />
@@ -1127,7 +1127,7 @@
     <Compile Include="cards\02Classic\Sim_EX1_398.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_398t.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_399.cs" />
-    <Compile Include="cards\02Classic\Sim_EX1_400.cs" />
+    <Compile Include="cards\01Basic\09Warrior\01Sim_EX1_400.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_402.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_405.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_407.cs" />
@@ -1195,7 +1195,7 @@
     <Compile Include="cards\02Classic\Sim_EX1_598.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_603.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_604.cs" />
-    <Compile Include="cards\02Classic\Sim_EX1_606.cs" />
+    <Compile Include="cards\01Basic\09Warrior\07Sim_EX1_606.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_607.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_608.cs" />
     <Compile Include="cards\02Classic\Sim_EX1_609.cs" />
@@ -1753,7 +1753,7 @@
     <Compile Include="cards\02Classic\01Druid\Sim_NEW1_008b.cs" />
     <Compile Include="cards\01Basic\07Shaman\Sim_NEW1_009.cs" />
     <Compile Include="cards\02Classic\07Shaman\Sim_NEW1_010.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_NEW1_011.cs" />
+    <Compile Include="cards\01Basic\09Warrior\09Sim_NEW1_011.cs" />
     <Compile Include="cards\02Classic\03Mage\Sim_NEW1_012.cs" />
     <Compile Include="cards\02Classic\06Rogue\Sim_NEW1_014.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_016.cs" />
@@ -1772,7 +1772,7 @@
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_029.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_030.cs" />
     <Compile Include="cards\01Basic\02Hunter\05Sim_NEW1_031.cs" />
-    <Compile Include="cards\01Basic\09Warrior\Sim_NEW1_036.cs" />
+    <Compile Include="cards\02Classic\09Warrior\Sim_NEW1_036.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_037.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_038.cs" />
     <Compile Include="cards\01Basic\00Neutral\Sim_NEW1_040.cs" />

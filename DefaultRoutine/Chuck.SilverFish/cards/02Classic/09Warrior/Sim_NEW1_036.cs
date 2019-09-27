@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Chuck.SilverFish;
 using SilverFish.Enums;
 
-namespace SilverFish.cards._01Basic._09Warrior
+namespace Chuck.SilverFish.cards._02Classic._09Warrior
 {
     class Sim_NEW1_036 : SimTemplate//commanding shout
     {

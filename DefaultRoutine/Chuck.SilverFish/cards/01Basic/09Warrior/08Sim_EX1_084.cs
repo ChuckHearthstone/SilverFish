@@ -1,6 +1,4 @@
-using Chuck.SilverFish;
-
-namespace SilverFish.cards._02Classic
+namespace Chuck.SilverFish.cards._01Basic._09Warrior
 {
     class Sim_EX1_084 : SimTemplate //* Warsong Commander
     {
