@@ -1,14 +1,14 @@
 namespace Chuck.SilverFish.cards._04Expansion._011DAL
 {
     /// <summary>
-    /// Blessing of the Ancients
-    /// 远古祝福
-	///</summary>
-    class Sim_DAL_351 : TwinSpell
+    /// Lightforged Blessing
+    /// 光铸祝福
+    /// </summary>
+    public class Sim_DAL_568 : TwinSpell
     {
         /// <summary>
-        /// Twinspell Give your minions +1/+1.
-        /// 双生法术 使你的所有随从获得+1/+1。
+        /// Twinspell Give a friendly minion Lifesteal.
+        /// 双生法术 使一个友方随从获得吸血。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>
@@ -16,13 +16,13 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
         /// <param name="choice"></param>
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            p.allMinionOfASideGetBuffed(ownplay, 1, 1);
+            target.lifesteal = true;
 
             TriggerTwinSpell(p, ownplay);
         }
     }
 
-    class Sim_DAL_351ts : Sim_DAL_351
+    public class Sim_DAL_568ts : Sim_DAL_568
     {
 
     }
