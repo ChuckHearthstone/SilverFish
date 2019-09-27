@@ -13,7 +13,7 @@
         searchLowestCost,
         searchHighesCost,
     }
-    
+
     public enum GAME_TAGs
     {
         TAG_SCRIPT_DATA_NUM_1 = 2,
@@ -286,6 +286,7 @@
         VALEERASHADOW = 779,
         OVERRIDECARDNAME = 781,
         OVERRIDECARDTEXTBUILDER = 782,
+        RUSH = 791,
         HIDDEN_CHOICE = 813,
         ZOMBEAST = 823,
         HERO_EMOTE_SILENCED = 832,
@@ -354,7 +355,7 @@
         PIRATE = 23,
         DRAGON = 24
     }
-    
+
     public enum TAG_CARDTYPE
     {
         INVALID = 0,
@@ -413,5 +414,5 @@
         LEGENDARY = 5,
     }
 
-   
+
 }
