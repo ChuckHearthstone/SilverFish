@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Chuck.SilverFish;
 
-namespace SilverFish.cards._01Basic._08Warlock
+namespace Chuck.SilverFish.cards._02Classic._08Warlock
 {
     class Sim_CS2_059 : SimTemplate //* Blood Imp
 	{
