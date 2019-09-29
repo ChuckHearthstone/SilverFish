@@ -8,7 +8,7 @@ namespace Chuck.SilverFish.cards._04Expansion._011DAL
     {
         /// <summary>
         /// Twinspell Destroy a minion.Summon 2 minions of the same Cost to replace it.
-        /// 双生法术消灭一个随从。召唤两个法力值消耗相同的随从来替换它。
+        /// 双生法术 消灭一个随从。召唤两个法力值消耗相同的随从来替换它。
         /// </summary>
         /// <param name="p"></param>
         /// <param name="ownplay"></param>
