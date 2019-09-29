@@ -415,6 +415,7 @@
     <Compile Include="ai\Settings.cs" />
     <Compile Include="ai\SimTemplate.cs" />
     <Compile Include="ai\TAGGS.cs" />
+    <Compile Include="Helpers\SpecialCard.cs" />
     <Compile Include="Helpers\TrimHelper.cs" />
     <Compile Include="ai\Weapon.cs" />
     <Compile Include="behavior\control\BehaviorControl.cs" />

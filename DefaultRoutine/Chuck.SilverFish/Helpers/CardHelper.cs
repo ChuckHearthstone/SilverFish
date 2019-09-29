@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Chuck.SilverFish;
+using Chuck.SilverFish.Helpers;
 using SilverFish.Enums;
 
 namespace SilverFish.Helpers
@@ -72,11 +73,12 @@ namespace SilverFish.Helpers
         /// <summary>
         /// key is mana cost
         /// </summary>
-        public static Dictionary<int, CardIdEnum> MinionWithManaCost { get; } = new Dictionary<int, CardIdEnum>();
+        public static Dictionary<SpecialCard, CardIdEnum> SpecialCards { get; } = new Dictionary<SpecialCard, CardIdEnum>();
 
         private static void InitMinionWithManaCost()
         {
-            MinionWithManaCost.Add(1, CardIdEnum.NEW1_026t);//紫罗兰学徒(Violet Apprentice)
+            SpecialCards.Add(SpecialCard.RandomMinionManaCostOne, CardIdEnum.NEW1_026t);//紫罗兰学徒(Violet Apprentice)
+            SpecialCards.Add(SpecialCard.RandomMurloc, CardIdEnum.EX1_506a);//鱼人斥候(Murloc Scout)
         }
     }
 }

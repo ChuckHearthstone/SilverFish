@@ -1,4 +1,5 @@
-using SilverFish.Enums;
+using Chuck.SilverFish.Helpers;
+using SilverFish.Helpers;
 
 namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
@@ -18,8 +19,9 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
         /// <param name="choice"></param>
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.drawACard(CardName.unknown, own.own, true);
-            p.drawACard(CardName.unknown, !own.own, true);
+            var cardIdEnum = CardHelper.SpecialCards[SpecialCard.RandomMurloc];
+            p.drawACard(cardIdEnum, true, true);
+            p.drawACard(cardIdEnum, false, true);
         }
     }
 }

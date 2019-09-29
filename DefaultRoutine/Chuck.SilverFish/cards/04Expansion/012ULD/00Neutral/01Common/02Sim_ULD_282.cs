@@ -1,3 +1,4 @@
+using Chuck.SilverFish.Helpers;
 using SilverFish.Helpers;
 
 namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
@@ -16,7 +17,7 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            var cardIdEnum = CardHelper.MinionWithManaCost[1];
+            var cardIdEnum = CardHelper.SpecialCards[SpecialCard.RandomMinionManaCostOne];
             p.drawACard(cardIdEnum, m.own, true);
         }
     }
