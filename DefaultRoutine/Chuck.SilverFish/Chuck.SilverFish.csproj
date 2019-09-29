@@ -274,6 +274,7 @@
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_743t.cs" />
     <Compile Include="cards\04Expansion\011DAL\Sim_DAL_769.cs" />
     <Compile Include="cards\04Expansion\011DAL\TwinSpell.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\01Common\03Sim_ULD_723.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_003.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_133.cs" />
     <Compile Include="cards\04Expansion\012ULD\SIm_ULD_134t.cs" />
@@ -309,7 +310,7 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_186.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_189.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_190.cs" />
-    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_191.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\01Common\01Sim_ULD_191.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_195.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_196.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_197.cs" />
@@ -339,10 +340,10 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_273.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_276.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_280.cs" />
-    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_282.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\01Common\02Sim_ULD_282.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_285.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_288.cs" />
-    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_289.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\01Common\05Sim_ULD_289.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_290.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_292.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_293.cs" />
@@ -356,7 +357,7 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_329.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_429.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_430.cs" />
-    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_430t.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\05Uncollectible\01Sim_ULD_430t.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_431p.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_433p.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_435.cs" />
@@ -366,7 +367,7 @@
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_702.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_707.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_708.cs" />
-    <Compile Include="cards\04Expansion\012ULD\Sim_ULD_712.cs" />
+    <Compile Include="cards\04Expansion\012ULD\00Neutral\01Common\04Sim_ULD_712.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_713.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_714.cs" />
     <Compile Include="cards\04Expansion\012ULD\Sim_ULD_715.cs" />
@@ -2706,7 +2707,11 @@
     <Content Include="data\test.txt" />
     <Content Include="data\_carddb.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="cards\04Expansion\012ULD\00Neutral\02Rare\" />
+    <Folder Include="cards\04Expansion\012ULD\00Neutral\03Epic\" />
+    <Folder Include="cards\04Expansion\012ULD\00Neutral\04Legendary\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
