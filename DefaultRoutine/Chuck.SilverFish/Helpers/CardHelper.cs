@@ -15,6 +15,8 @@ namespace SilverFish.Helpers
         {
             var assembly = Assembly.GetExecutingAssembly();
             AssemblyTypes = assembly.GetTypes();
+            
+            InitMinionWithManaCost();
         }
 
         public static SimTemplate GetCardSimulation(CardIdEnum tempCardIdEnum)
@@ -65,6 +67,16 @@ namespace SilverFish.Helpers
             var baseType = typeof(SimTemplate);
             bool implemented = type.IsSubclassOf(baseType);
             return implemented;
+        }
+
+        /// <summary>
+        /// key is mana cost
+        /// </summary>
+        public static Dictionary<int, CardIdEnum> MinionWithManaCost { get; } = new Dictionary<int, CardIdEnum>();
+
+        private static void InitMinionWithManaCost()
+        {
+            MinionWithManaCost.Add(1, CardIdEnum.NEW1_026t);//紫罗兰学徒(Violet Apprentice)
         }
     }
 }

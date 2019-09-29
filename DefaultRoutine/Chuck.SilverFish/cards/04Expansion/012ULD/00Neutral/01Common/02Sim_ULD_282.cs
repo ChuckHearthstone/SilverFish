@@ -1,4 +1,4 @@
-using SilverFish.Enums;
+using SilverFish.Helpers;
 
 namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
@@ -16,7 +16,8 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.drawACard(CardName.unknown, m.own, true);
+            var cardIdEnum = CardHelper.MinionWithManaCost[1];
+            p.drawACard(cardIdEnum, m.own, true);
         }
     }
 }
