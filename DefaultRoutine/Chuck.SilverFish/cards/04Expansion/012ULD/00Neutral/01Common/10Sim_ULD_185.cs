@@ -1,4 +1,4 @@
-namespace Chuck.SilverFish.cards._04Expansion._012ULD
+namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
     /// <summary>
     /// Temple Berserker
@@ -16,6 +16,7 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD
         {
             m.Attack += 2;
         }
+
         public override void onEnrageStop(Playfield p, Minion m)
         {
             m.Attack -= 2;

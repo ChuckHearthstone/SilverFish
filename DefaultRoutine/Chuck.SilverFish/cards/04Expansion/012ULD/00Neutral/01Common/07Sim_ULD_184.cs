@@ -1,4 +1,4 @@
-namespace Chuck.SilverFish.cards._04Expansion._012ULD
+namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
     /// <summary>
     /// Kobold Sandtrooper
@@ -14,7 +14,8 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD
         /// <param name="m"></param>
         public override void onDeathrattle(Playfield p, Minion m)
         {
-            p.minionGetDamageOrHeal(m.own ? p.enemyHero : p.ownHero, 3);
+            var hero = m.own ? p.enemyHero : p.ownHero;
+            p.minionGetDamageOrHeal(hero, 3);
         }
     }
 }

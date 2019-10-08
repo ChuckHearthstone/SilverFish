@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Chuck.SilverFish.cards._04Expansion._012ULD
+namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
     /// <summary>
     /// Spitting Camel
