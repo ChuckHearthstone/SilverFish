@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
 {
@@ -19,19 +19,13 @@ namespace Chuck.SilverFish.cards._04Expansion._012ULD._00Neutral._01Common
         {
             if (triggerEffectMinion.own == turnEndOfOwner)
             {
-                List<Minion> tmp = turnEndOfOwner ? p.ownMinions : p.enemyMinions;
-                int count = tmp.Count;
-                if (count > 1)
+                var minions = triggerEffectMinion.own ? p.ownMinions : p.enemyMinions;
+                minions = minions.Where(x => x.entitiyID != triggerEffectMinion.entitiyID).ToList();
+                var minimumHealthPoints = minions.Min(x => x.HealthPoints);
+                var targetMinions = minions.Where(x => x.HealthPoints == minimumHealthPoints).ToList();
+                if (targetMinions.Count >= 1)
                 {
-                    Minion target = null;
-                    if (triggerEffectMinion.entitiyID != tmp[0].entitiyID) target = tmp[0];
-                    else target = tmp[1];
-                    for (int i = 1; i < count; i++)
-                    {
-                        if (triggerEffectMinion.entitiyID == tmp[i].entitiyID) continue;
-                        if (tmp[i].HealthPoints < target.HealthPoints) target = tmp[i]; //take the weakest
-                    }
-                    if (target != null) p.minionGetDamageOrHeal(target, 1);
+                    p.minionGetDamageOrHeal(targetMinions[0], 1);
                 }
             }
         }
