@@ -34,9 +34,13 @@ namespace MonoTest
             FunctionDictionary.Add(17, "mono_thread_interruption_checkpoint");
             FunctionDictionary.Add(18, "mono_thread_detach");
             FunctionDictionary.Add(19, "mono_class_get_methods");
-            //mono_class_get_nesting_type 还有另外1个 mono_image_get_guid
+            //165B2 - mono_class_get_nesting_type
+            //165B2 - mono_image_get_guid
             FunctionDictionary.Add(20, "mono_class_get_nesting_type");
-            //mono_event_get_raise_method 还有另外3个
+            //3875D - mono_event_get_raise_method
+            //3875D - mono_jit_info_get_code_size
+            //3875D - mono_method_get_name
+            //3875D - mono_property_get_flags
             FunctionDictionary.Add(21, "mono_event_get_raise_method");
             FunctionDictionary.Add(22, "mono_object_unbox");
             FunctionDictionary.Add(23, "mono_type_get_object");
@@ -46,7 +50,10 @@ namespace MonoTest
             FunctionDictionary.Add(27, "mono_thread_current");
             FunctionDictionary.Add(28, "mono_class_get_parent");
             FunctionDictionary.Add(29, "mono_get_root_domain");
-            //mono_event_get_name 还有另外3个
+            //16635 - mono_event_get_name
+            //16635 - mono_field_get_name
+            //16635 - mono_method_get_token
+            //16635 - mono_property_get_name
             FunctionDictionary.Add(30, "mono_event_get_name");
             FunctionDictionary.Add(31, "mono_thread_attach");
             FunctionDictionary.Add(32, "mono_string_to_utf8");
