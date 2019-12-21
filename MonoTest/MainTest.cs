@@ -11,7 +11,7 @@ namespace MonoTest
         [Test]
         public void Test()
         {
-            var addressFilePath = @"C:\repository\GitHub\ChuckLu\HearthBuddy\SilverFish\MonoTest\mono-address.txt";
+            var addressFilePath = @"C:\workspace\clu\repository\GitHub\HearthSim\SilverFish\MonoTest\mono-address.txt";
             var lines = File.ReadAllLines(addressFilePath);
             string separator = " - ";
 
