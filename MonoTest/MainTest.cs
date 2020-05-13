@@ -11,7 +11,7 @@ namespace MonoTest
         [Test]
         public void Test()
         {
-            var addressFilePath = @"C:\workspace\clu\repository\GitHub\HearthSim\SilverFish\MonoTest\mono-address.txt";
+            var addressFilePath = @"D:\GitHub\HearthSim\SilverFish\MonoTest\mono-address.txt";
             var lines = File.ReadAllLines(addressFilePath);
             string separator = " - ";
 
@@ -19,6 +19,10 @@ namespace MonoTest
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             foreach (var line in lines)
             {
+                if (line.EndsWith(".dll"))
+                {
+                    continue;
+                }
                 if (line.Contains(separator))
                 {
                    var array = line.Split(new[] { separator }, StringSplitOptions.None);
@@ -43,11 +47,13 @@ namespace MonoTest
                 var ptrId = item.Key;
                 if (!dictionary.ContainsKey(functionName))
                 {
-                    throw new Exception($"Can not find address for function {functionName}");
+                    Console.WriteLine($"//Can not find address for function {functionName}");
                 }
-
-                var address = dictionary[functionName];
-                Console.WriteLine(format, ptrId, address);
+                else
+                {
+                    var address = dictionary[functionName];
+                    Console.WriteLine(format, ptrId, address);
+                }
             }
         }
     }
