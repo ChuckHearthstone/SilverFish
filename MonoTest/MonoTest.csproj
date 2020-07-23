@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumTest\Option.cs" />
+    <Compile Include="EnumTest\OptionTest.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="MonoFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +57,7 @@
     <None Include="mono-address.txt" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
