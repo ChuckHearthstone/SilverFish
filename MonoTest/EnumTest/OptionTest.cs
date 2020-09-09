@@ -10,11 +10,11 @@ namespace MonoTest.EnumTest
         public void Test()
         {
             Option option1 = (Option)Enum.Parse(typeof(Option), "IN_WILD_MODE");
-            Console.WriteLine((int)option1);//new version is 214, old version is 212
+            Console.WriteLine((int)option1);//new version is 213, old version is 214
 
 
             Option option2 = (Option)Enum.Parse(typeof(Option), "IN_RANKED_PLAY_MODE");
-            Console.WriteLine((int)option2);//new version is 175, old version is 173
+            Console.WriteLine((int)option2);//new version is 174, old version is 175
         }
     }
 }
