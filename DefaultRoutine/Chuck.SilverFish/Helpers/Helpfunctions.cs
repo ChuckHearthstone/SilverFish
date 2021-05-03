@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Hearthbuddy.Windows;
 using Chuck.SilverFish;
 using log4net;
+using Triton.Common.LogUtilities;
 
 namespace SilverFish.Helpers
 {
@@ -14,7 +14,7 @@ namespace SilverFish.Helpers
     public class Helpfunctions
     {
         /// <summary>The logger for this type.</summary>
-        private static readonly ILog Log = MainWindow.ChuckLog;
+        private static readonly ILog Log = Logger.GetLoggerInstanceForType();
         public List<Playfield> storedBoards = new List<Playfield>();
 
 

@@ -4,12 +4,13 @@ using SilverFish.Helpers;
 using Triton.Bot;
 using Triton.Common;
 using Triton.Game;
+using Logger = Triton.Common.LogUtilities.Logger;
 
 namespace Chuck.SilverFish.Plugins.AutoConcede
 {
     public class AutoConcede : IPlugin
     {
-        private static readonly ILog Log = Hearthbuddy.Windows.MainWindow.ChuckLog;
+        private static readonly ILog Log = Logger.GetLoggerInstanceForType();
 
         private int _defeatCount;
 

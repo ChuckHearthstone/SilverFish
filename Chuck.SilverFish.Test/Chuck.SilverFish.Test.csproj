@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Chuck-HearthDb, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chuck-HearthDb.20.0.0\lib\netstandard2.0\Chuck-HearthDb.dll</HintPath>
+    </Reference>
     <Reference Include="Hearthbuddy">
       <HintPath>..\packages\Hearthbuddy.exe</HintPath>
     </Reference>

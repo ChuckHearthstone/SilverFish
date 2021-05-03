@@ -58,9 +58,6 @@
     <Compile Include="AutoStop\AutoStop.cs" />
     <Compile Include="AutoStop\AutoStopSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestPlus\QuestCardDB.cs" />
-    <Compile Include="QuestPlus\QuestPlus.cs" />
-    <Compile Include="QuestPlus\QuestPlusSettings.cs" />
     <Compile Include="Stats\Stats.cs" />
     <Compile Include="Stats\StatsSettings.cs" />
   </ItemGroup>
@@ -70,10 +67,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExportCollection\SettingsGui.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="QuestPlus\SettingsGui.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
