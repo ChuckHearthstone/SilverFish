@@ -24,11 +24,11 @@ namespace Chuck.SilverFish.cards._04Expansion._009BOT
             {
                 p.drawACard(CardName.unknown, ownplay, true);
                 p.drawACard(CardName.unknown, ownplay, true);
+                p.drawACard(CardName.unknown, ownplay, true);
             }
 
-            if (!ownplay && p.enemyMaxMana == 10)
+            if (ownplay && !p.enemyMaxMana == 10)
             {
-                p.drawACard(CardName.unknown, ownplay, true);
                 p.drawACard(CardName.unknown, ownplay, true);
             }
         }
